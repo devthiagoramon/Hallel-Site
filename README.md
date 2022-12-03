@@ -1,3 +1,3 @@
-# Hallel
+# Hallel (Site)
 
-Bem vindo ao GitHub da Hallel
+Bem vindo ao GitHub do site da Hallel
