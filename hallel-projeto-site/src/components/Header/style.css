@@ -1,0 +1,56 @@
+.topbar {
+    width: 100vw;
+    height: 75px;
+
+    background-color: #333;
+    z-index: 1040;
+
+    left: 0;
+    top: 0;
+
+    display: flex;
+    position: fixed;
+    align-items: center;
+}
+
+
+.topbar div {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+}
+
+.topbar div a {
+    height: 75px;
+    width: 100%;
+
+    font-size: 19px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+
+    padding: 0 6px;
+    line-height: 75px;
+}
+
+.topbar div a:hover {
+    background-color: rgb(122, 120, 115);
+}
+
+.topbar #btn {
+    border: none;
+    border-radius: 10px;
+    margin: 15px;
+    font-size: .9em;
+    width: 150px;
+    height: 2.5pc;
+    color: rgb(244, 244, 244);
+    background-color: rgb(152, 152, 152);
+}
+
+#logo {
+    width: 6pc;
+    margin: 0 8px;
+}
+

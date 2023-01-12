@@ -1,0 +1,106 @@
+
+.container{
+    margin: 0;
+    padding: 0;
+    padding-top: 100px;
+}
+
+.find {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 2em;
+    align-items: center;
+}
+
+
+.find div {
+    display: block;
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.find div * {
+    margin: 0px 40px;
+    height: 30px;
+    width: 200px;
+    max-width: 200px;
+}
+
+.search {
+    border-radius: 5px;
+    float: left;
+    text-align: left;
+    font-size: 18px;
+    
+}
+
+.hopper {
+    border-radius: 5px;
+    font-size: 14px;
+    float: right;
+}
+
+.crud {
+    margin-top: 2em;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 3em;
+    align-items: center;
+}
+
+.crud h1 {
+    margin: 0 0 0 5px;
+    max-width: 200px;
+}
+
+.crud * {
+    width: 100%;
+    text-align: center;
+}
+
+.inputs{
+    display: flex;
+    text-align: end;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 25px;
+}
+
+.inputs input {
+    background-color: white;
+    border-width: 1,5px;
+    border-radius: 5px;
+    min-width: 100px;
+    max-width: 100px;
+    height: 25px;
+    margin: 0px 10px;
+    font-size: 14px;
+}
+
+.tabela{
+    border-collapse: collapse;
+    margin: 0 auto;
+    margin-top: 6em;
+    max-width: 95%;
+    width: 100%;
+}
+
+.tabela tr{
+    background-color: #f2f2f2;
+}
+
+.tabela tr:hover{
+    background-color: #ddd;
+}
+
+.tabela td{
+    font-size: 18px;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
