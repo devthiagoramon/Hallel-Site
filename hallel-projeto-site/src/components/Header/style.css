@@ -1,5 +1,17 @@
+.topbar #topicos {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#logo {
+    width: 6pc;
+    margin: 0 8px;
+}
+
+
 .topbar {
-    width: 100vw;
+    width: 100%;
     height: 75px;
 
     background-color: #333;
@@ -14,13 +26,7 @@
 }
 
 
-.topbar div {
-    display: flex;
-    align-items: center;
-    width: 100vw;
-}
-
-.topbar div a {
+.topbar .topicos Link {
     height: 75px;
     width: 100%;
 
@@ -39,18 +45,148 @@
 }
 
 .topbar #btn {
+    margin: 0 15px;
     border: none;
     border-radius: 10px;
-    margin: 15px;
     font-size: .9em;
-    width: 150px;
+    width: 120px;
     height: 2.5pc;
     color: rgb(244, 244, 244);
     background-color: rgb(152, 152, 152);
 }
 
-#logo {
-    width: 6pc;
-    margin: 0 8px;
+.topbar #space {
+    display: none;
 }
 
+
+.hamburger-menu {
+    min-width: 70px;
+    display: none;
+    visibility: hidden;
+}
+
+.menu__btn {
+    margin: 0;
+}
+
+#menu__toggle {
+    display: none;
+    opacity: 0;
+}
+
+#menu__toggle:checked+.menu__btn>span {
+    margin-top: 7px;
+    transform: rotate(45deg);
+}
+
+#menu__toggle:checked+.menu__btn>span::before {
+    top: 0px;
+    transform: rotate(0deg);
+}
+
+#menu__toggle:checked+.menu__btn>span::after {
+    top: 0px;
+    transform: rotate(-90deg);
+}
+
+#menu__toggle:checked~.menu__box {
+    left: 0 !important;
+}
+
+.menu__btn {
+    position: fixed;
+    display: flex;
+    top: 22px;
+    left: 21px;
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #616161;
+    transition-duration: .3s;
+}
+
+.menu__btn>span::before {
+    content: '';
+    top: 8px;
+}
+
+.menu__btn>span::after {
+    content: '';
+    top: 16px;
+}
+
+.menu__box {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #ECEFF1;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: .25s;
+}
+
+.menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+}
+
+
+.menu__btn:hover>span,
+.menu__btn:hover>span::before,
+.menu__btn:hover>span::after {
+    background-color: #86878a;
+}
+
+@media screen and (max-width: 778px) {
+
+    .hamburger-menu {
+        display: unset;
+        visibility: visible;
+    }
+
+    #logo {
+        margin: 0;
+        max-width: 4pc;
+        margin: 5px;
+    }
+
+    .topbar {
+        height: 60px;
+    }
+
+    .topbar .topicos {
+        display: none;
+    }
+
+    .topbar #btn {
+        margin: 0 9px;
+    }
+
+    .topbar #space {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+}
