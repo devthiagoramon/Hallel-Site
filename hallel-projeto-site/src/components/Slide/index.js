@@ -13,7 +13,8 @@ class Slide extends Component {
     super(props)
     this.state = {
       slides: document.getElementsByClassName("slide"),
-      slidePosition: 5
+      slidePosition: 0,
+      time: 0
     }
     this.autoShow = this.autoShow.bind(this)
     this.SlideShow = this.SlideShow.bind(this)
@@ -35,9 +36,9 @@ class Slide extends Component {
     if (state.slidePosition > state.slides.length)
       state.slidePosition = 1;
 
-    state.slides[state.slidePosition - 1].style.display = "block";
+    state.slides[state.slidePosition-1].style.display = "block";
 
-    setTimeout(this.autoShow, 10000)
+    this.setState({time:setTimeout(this.autoShow, 10000)})
   }
 
   SlideShow(n) {
@@ -52,11 +53,15 @@ class Slide extends Component {
     for (let i = 0; i < state.slides.length; i++)
       state.slides[i].style.display = "none";
 
-    state.slides[this.state.slidePosition - 1].style.display = "block"
+    state.slides[state.slidePosition - 1].style.display = "block"
   }
 
   currentSlide(n) {
-    this.SlideShow(this.state.slidePosition = n);
+    let state = this.state;
+
+    this.SlideShow(state.slidePosition = n);
+    clearTimeout(state.time)
+    this.autoShow()
   }
 
   render() {
@@ -90,11 +95,11 @@ class Slide extends Component {
         </div>
 
         <div className="navigation-manual">
-          <label htmlFor="r1" className="manual-btn" onClick={() => this.currentSlide(1)} ></label>
-          <label htmlFor="r2" className="manual-btn" onClick={() => this.currentSlide(2)} ></label>
-          <label htmlFor="r3" className="manual-btn" onClick={() => this.currentSlide(3)} ></label>
-          <label htmlFor="r4" className="manual-btn" onClick={() => this.currentSlide(4)} ></label>
-          <label htmlFor="r5" className="manual-btn" onClick={() => this.currentSlide(5)} ></label>
+          <label htmlFor="r1" className="manual-btn" onClick={() => this.currentSlide(0)} ></label>
+          <label htmlFor="r2" className="manual-btn" onClick={() => this.currentSlide(1)} ></label>
+          <label htmlFor="r3" className="manual-btn" onClick={() => this.currentSlide(2)} ></label>
+          <label htmlFor="r4" className="manual-btn" onClick={() => this.currentSlide(3)} ></label>
+          <label htmlFor="r5" className="manual-btn" onClick={() => this.currentSlide(4)} ></label>
         </div>
 
       </div>
