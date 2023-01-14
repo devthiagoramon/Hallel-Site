@@ -9,7 +9,6 @@
     margin: 0 8px;
 }
 
-
 .topbar {
     width: 100%;
     height: 75px;
@@ -26,7 +25,7 @@
 }
 
 
-.topbar .topicos Link {
+.topbar #topicos * {
     height: 75px;
     width: 100%;
 
@@ -159,34 +158,36 @@
     background-color: #86878a;
 }
 
-@media screen and (max-width: 778px) {
+@media screen and (max-width: 694px) {
 
-    .hamburger-menu {
-        display: unset;
-        visibility: visible;
-    }
+  .hamburger-menu {
+    height: 60px;
+    display: unset;
+    visibility: visible;
+  }
 
-    #logo {
-        margin: 0;
-        max-width: 4pc;
-        margin: 5px;
-    }
+  #logo {
+    margin: 0;
+    max-width: 4pc;
+    margin: 5px;
+  }
 
-    .topbar {
-        height: 60px;
-    }
+  .topbar {
+    display: inline-block flex;
+    height: 60px;
+  }
 
-    .topbar .topicos {
-        display: none;
-    }
+  .topbar #topicos {
+    display: none;
+  }
 
-    .topbar #btn {
-        margin: 0 9px;
-    }
+  .topbar #btn {
+    margin: 0 9px;
+  }
 
-    .topbar #space {
-        display: flex;
-        align-items: center;
-        width: 100%;
-    }
+  .topbar #space {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 }
