@@ -31,7 +31,7 @@ class Slide extends Component {
     for (let i = 0; i < state.slides.length; i++)
       state.slides[i].style.display = "none";
 
-    state.slidePosition++
+    state.slidePosition+=1
 
     if (state.slidePosition > state.slides.length)
       state.slidePosition = 1;
