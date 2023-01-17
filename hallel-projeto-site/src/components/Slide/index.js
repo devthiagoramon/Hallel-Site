@@ -31,14 +31,14 @@ class Slide extends Component {
     for (let i = 0; i < state.slides.length; i++)
       state.slides[i].style.display = "none";
 
-    state.slidePosition+=1
+    state.slidePosition++
 
     if (state.slidePosition > state.slides.length)
       state.slidePosition = 1;
 
     state.slides[state.slidePosition-1].style.display = "block";
 
-    this.setState({time:setTimeout(this.autoShow, 10000)})
+    this.setState({time:setTimeout(this.autoShow, 1000)})
   }
 
   SlideShow(n) {

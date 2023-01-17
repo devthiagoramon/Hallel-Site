@@ -5,9 +5,7 @@ import RoutesApp from "./routes";
 
 function App() {
   return (
-    <React.StrictMode>
       <RoutesApp />
-    </React.StrictMode>
   );
 }
 
