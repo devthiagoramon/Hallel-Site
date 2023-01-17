@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import token from "../../../../files/token";
 import "./index.css";
 
 function Evento() {
@@ -11,7 +10,7 @@ function Evento() {
 
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("Authorization", token);
+      myHeaders.append("Authorization", localStorage.getItem("token"));
 
       fetch(url, {
         headers: myHeaders,

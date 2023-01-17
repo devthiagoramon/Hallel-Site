@@ -1,48 +1,145 @@
-import { Link } from 'react-router-dom'
-import './style.css';
-import Logo from '../../images/LogoHallel.png';
-
+import { Link } from "react-router-dom";
+import "./style.css";
+import Logo from "../../images/LogoHallel.png";
+import { useState } from "react";
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Modal from "./entrar/modal";
 
 function Header() {
+  const [isModalVisible, setisModalVisible] = useState();
+
+  const stylePerfil = {
+    "background-color": "#333",
+    "border-radius":"50%",
+  }
+
+  function isTokenExpired() {
+    let url = "http://localhost:8080/api/isTokenExpired";
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    fetch(url, {
+      headers: myHeaders,
+      method: "POST",
+      body: localStorage.getItem("token"),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((object) => {
+        console.log(object);
+        if (object === false) {
+          // Token expioru
+          return true;
+        } else {
+          return false;
+        }
+      })
+      .catch((error) => {
+        console.warn(error);
+        return true;
+      });
+  }
+
+  function isNotUsuario() {
+    if (localStorage.getItem("token") === null) {
+      return true;
+    } else if (isTokenExpired()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   return (
+    <div>
+      <nav className="topbar" id="topbar">
+        <div className="hamburger-menu">
+          <input id="menu__toggle" type="checkbox" />
+          <label className="menu__btn" htmlFor="menu__toggle">
+            <span></span>
+          </label>
 
-    <nav className="topbar">
+          <ul className="menu__box">
+            <li>
+              <a className="menu__item" href="/">
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a className="menu__item" href="/">
+                Igreja
+              </a>
+            </li>
+            <li>
+              <a className="menu__item" href="/">
+                Ministerios
+              </a>
+            </li>
+            <li>
+              <a className="menu__item" href="/">
+                Agenda
+              </a>
+            </li>
+            <li>
+              <a className="menu__item" href="/">
+                Loja
+              </a>
+            </li>
+            <li>
+              <a className="menu__item" href="/">
+                Doacoes
+              </a>
+            </li>
+            <li>
+              <a className="menu__item" href="/">
+                Contato
+              </a>
+            </li>
+          </ul>
+        </div>
+        <img id="logo" src={Logo} alt="logo" />
+        <div id="space"></div>
 
-      <div className="hamburger-menu">
-        <input id="menu__toggle" type="checkbox" />
-        <label className="menu__btn" htmlFor="menu__toggle">
-          <span></span>
-        </label>
-
-        <ul className="menu__box">
-          <li><a className="menu__item" href="#">Inicio</a></li>
-          <li><a className="menu__item" href="#">Igreja</a></li>
-          <li><a className="menu__item" href="#">Ministerios</a></li>
-          <li><a className="menu__item" href="#">Agenda</a></li>
-          <li><a className="menu__item" href="#">Loja</a></li>
-          <li><a className="menu__item" href="#">Doacoes</a></li>
-          <li><a className="menu__item" href="#">Contato</a></li>
-        </ul>
-      </div>
-      <img id="logo" src={Logo} alt="logo" />
-      <div id="space"></div>
-
-      <div id="topicos">
-        <Link to="/">Início</Link>
-        <Link to="/">Igreja</Link>
-        <Link to="/">Ministérios</Link>
-        <Link to="/">Agenda</Link>
-        <Link to="/">Loja</Link>
-        <Link to="/">Doações</Link>
-        <Link to="/">Contato</Link>
-      </div>
-
-      <button id="btn">Entre</button>
-
-    </nav>
-  )
-
+        <div id="topicos">
+          <Link to="/">Início</Link>
+          <Link to="/">Igreja</Link>
+          <Link to="/">Ministérios</Link>
+          <Link to="/">Agenda</Link>
+          <Link to="/">Loja</Link>
+          <Link to="/">Doações</Link>
+          <Link to="/">Contato</Link>
+        </div>
+        {isNotUsuario() ? (
+          <button
+            id="btn"
+            onClick={() => {
+              setisModalVisible(true);
+            }}
+          >
+            Entre
+          </button>
+        ) : (
+          <button style={stylePerfil}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              fill="white"
+              class="bi bi-person"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+            </svg>
+          </button>
+        )}
+      </nav>
+      {isModalVisible && localStorage.getItem("token") === null ? (
+        <Modal hide={() => setisModalVisible(false)} />
+      ) : (
+        ""
+      )}
+    </div>
+  );
 }
 
 export default Header;

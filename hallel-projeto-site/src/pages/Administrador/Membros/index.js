@@ -11,7 +11,7 @@ function MembrosAdministrador() {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append(
       "Authorization",
-      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG0uaGFsbGVsQGdtYWlsLmNvbSIsImlhdCI6MTY3MzQ2NjQ3NSwiZXhwIjoxNjczNTUyODc1fQ.6ryUIr07ka8flyOk9q1x0CO3HVSFhgwCtihXa03Nxb_vhsWFjsAvYokB2Gp0EAj5OuA9-V6H7VB3ti5qXyl-lw"
+      localStorage.getItem("token")
     );
 
     fetch(url, {
