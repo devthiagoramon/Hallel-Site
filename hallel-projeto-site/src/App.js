@@ -1,13 +1,13 @@
+import React from "react";
+import "./App.css";
 
-import './App.css';
-
-import RoutesApp from './routes';
+import RoutesApp from "./routes";
 
 function App() {
   return (
-    
-    <RoutesApp/>
-    
+    <React.StrictMode>
+      <RoutesApp />
+    </React.StrictMode>
   );
 }
 
