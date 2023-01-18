@@ -59,13 +59,6 @@ function MembrosAdministrador() {
             </tr>
           </thead>
           <tbody>
-            
-            
-          <tr >
-                <td>asdasd</td>
-                <td>dasdas</td>
-                <td>dasd</td>
-              </tr>
 
             {membro.map((item) => {
             return (
