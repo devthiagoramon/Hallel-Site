@@ -59,16 +59,6 @@ function MembrosAdministrador() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
             {membro.map((item) => {
               return (
                 <tr key={item.id}>
