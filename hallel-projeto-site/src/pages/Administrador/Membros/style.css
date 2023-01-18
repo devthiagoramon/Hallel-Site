@@ -1,5 +1,12 @@
+*{
+    font-family: helvetica sans-serif;
+}
 
-.container{
+body {
+    background-color: #F3F9FF;
+}
+
+.container {
     margin: 0;
     padding: 0;
     padding-top: 100px;
@@ -9,10 +16,9 @@
     display: flex;
     position: absolute;
     width: 100%;
-    height: 2em;
+    height: 2pc;
     align-items: center;
 }
-
 
 .find div {
     display: block;
@@ -25,24 +31,52 @@
 }
 
 .find div * {
-    margin: 0px 40px;
-    height: 30px;
-    width: 200px;
+    height: 27px;
     max-width: 200px;
+    border-style: none;
+    outline: none;
 }
 
 .search {
-    border-radius: 5px;
     float: left;
-    text-align: left;
-    font-size: 18px;
+    background-color: #CBDCEC;
+
+    width: 180px;
+    margin-left: 20px;
     
+    color: #6C879C;
+    font-size: 18px;
+    text-align: left;
+    text-indent: 7px;
+
+    border-radius: 5px;
+}
+
+.search::placeholder{
+    color: #6C879C;
 }
 
 .hopper {
-    border-radius: 5px;
-    font-size: 14px;
     float: right;
+    background-color: #CBDCEC;
+
+    margin-right: 20px;
+
+    text-align: center;
+
+    color: #6C879C;
+    font-size: 14px;
+
+    border-radius: 5px;
+
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding-right: 15px;
+    background-image: url('https://cdn.discordapp.com/attachments/903094207235895330/1065069747949011085/image.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 3px) center;
+    background-size: 18px;
 }
 
 .crud {
@@ -50,13 +84,16 @@
     display: flex;
     position: absolute;
     width: 100%;
-    height: 3em;
+    height: 3pc;
     align-items: center;
 }
 
 .crud h1 {
-    margin: 0 0 0 5px;
-    max-width: 200px;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 0 20px;
+    max-width: 133px;
+    color: #35404B;
 }
 
 .crud * {
@@ -64,42 +101,50 @@
     text-align: center;
 }
 
-.inputs{
+.inputs {
     display: flex;
     text-align: end;
     justify-content: flex-end;
     width: 100%;
-    padding-right: 25px;
+    margin-right: 20px;
 }
 
 .inputs input {
-    background-color: white;
-    border-width: 1,5px;
-    border-radius: 5px;
-    min-width: 100px;
-    max-width: 100px;
-    height: 25px;
-    margin: 0px 10px;
+    border-style: solid;
+    background-color: #CBDCEC;
+    color: #35404B;
+
+    min-width: 85px;
+    max-width: 85px;
+    height: 27px;
+    margin-left: 10px;
+
     font-size: 14px;
+
+    border-radius: 5px;
+    border-style: none;
 }
 
-.tabela{
+.tabela {
+    margin: auto;
     border-collapse: collapse;
-    margin: 0 auto;
-    margin-top: 6em;
-    max-width: 95%;
+
     width: 100%;
+    max-width: 95%;
+
+    border-radius: 10px;
+    margin-top: 6em;
 }
 
-.tabela tr{
-    background-color: #f2f2f2;
+.tabela tr {
+    background: none;
 }
 
-.tabela tr:hover{
-    background-color: #ddd;
+.tabela tr:hover {
+    background-color: #c2d6ea;
 }
 
-.tabela td{
+.tabela td {
     font-size: 18px;
     border: 1px solid #ddd;
     padding: 8px;

@@ -10,7 +10,7 @@ function Header() {
 
   const stylePerfil = {
     "background-color": "#333",
-    "border-radius":"50%",
+    "border-radius": "50%",
   }
 
   function isTokenExpired() {
@@ -52,7 +52,7 @@ function Header() {
 
   return (
     <div>
-      <nav className="topbar" id="topbar">
+      <nav id="topbar">
         <div className="hamburger-menu">
           <input id="menu__toggle" type="checkbox" />
           <label className="menu__btn" htmlFor="menu__toggle">
@@ -97,7 +97,9 @@ function Header() {
             </li>
           </ul>
         </div>
-        <img id="logo" src={Logo} alt="logo" />
+        <div id="cont-logo">
+          <img src={Logo} alt="logo" />
+        </div>
         <div id="space"></div>
 
         <div id="topicos">

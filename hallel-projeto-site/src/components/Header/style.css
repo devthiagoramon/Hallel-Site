@@ -1,19 +1,25 @@
-.topbar #topicos {
+#topbar #topicos {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-#logo {
-    width: 6pc;
-    margin: 0 8px;
+#cont-logo{
+    background-color: #B9D1E7;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 0 15px;
 }
 
-.topbar {
-    width: 100%;
-    height: 75px;
+#cont-logo img {
+    width: 6.5pc;
+}
 
-    background-color: #333;
+#topbar {
+    width: 100%;
+    height: 90px;
+
+    background-color: #E3F1FE;
     z-index: 1040;
 
     left: 0;
@@ -25,40 +31,41 @@
 }
 
 
-.topbar #topicos * {
+#topbar #topicos * {
     height: 75px;
     width: 100%;
 
     font-size: 19px;
     font-weight: bold;
-    color: white;
+    color: #35404B;
     text-decoration: none;
     text-align: center;
 
+    border-radius: 10px;
     padding: 0 6px;
     line-height: 75px;
 }
 
-.topbar div a:hover {
-    background-color: rgb(122, 120, 115);
+#topbar #topicos *:hover {
+    background-color: #c2d6ea;
 }
 
-.topbar #btn {
+#topbar #btn {
     margin: 0 15px;
     border: none;
     border-radius: 10px;
     font-size: .9em;
     width: 120px;
     height: 2.5pc;
-    color: rgb(244, 244, 244);
-    background-color: rgb(152, 152, 152);
+    color: #35404B;
+    background-color: #B9D1E7;
 }
 
-.topbar #btn:hover {
-    background-color: #86878a;
+#topbar #btn:hover {
+    background-color: #a9c4dc;
 }
 
-.topbar #space {
+#topbar #space {
     display: none;
 }
 
@@ -100,8 +107,8 @@
 .menu__btn {
     position: fixed;
     display: flex;
-    top: 22px;
-    left: 21px;
+    top: 24px;
+    left: 22px;
     width: 26px;
     height: 20px;
     cursor: pointer;
@@ -115,7 +122,7 @@
     position: absolute;
     width: 100%;
     height: 3px;
-    background-color: #616161;
+    background-color: #697c90;
     transition-duration: .3s;
 }
 
@@ -139,7 +146,7 @@
     margin: 0;
     padding: 80px 0;
     list-style: none;
-    background-color: #ECEFF1;
+    background-color: #E3F1FE;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
     transition-duration: .25s;
 }
@@ -159,10 +166,10 @@
 .menu__btn:hover>span,
 .menu__btn:hover>span::before,
 .menu__btn:hover>span::after {
-    background-color: #86878a;
+    background-color: #7d91a7;
 }
 
-@media screen and (max-width: 694px) {
+@media screen and (max-width: 768px) {
 
   .hamburger-menu {
     height: 60px;
@@ -170,28 +177,35 @@
     visibility: visible;
   }
 
-  #logo {
-    margin: 0;
+  #cont-logo{
+    margin: 0 1px;
+  }
+
+  #cont-logo img {
     max-width: 4pc;
-    margin: 5px;
+    margin: none;
   }
 
-  .topbar {
+  #topbar {
     display: inline-block flex;
-    height: 60px;
+    height: 65px;
   }
 
-  .topbar #topicos {
+  #topbar #topicos {
     display: none;
   }
 
-  .topbar #btn {
+  #topbar #btn {
     margin: 0 9px;
   }
 
-  .topbar #space {
+  #topbar #space {
     display: flex;
     align-items: center;
     width: 100%;
+  }
+
+  #btn{
+    min-width: 80px;
   }
 }

@@ -28,26 +28,28 @@ function MembrosAdministrador() {
   });
 
   return (
-    <div className="container">
-      <div className="find">
-        <div>
-          <input type="search" className="search" placeholder="Pesquisar" />
-          <select id="selectOptions" className="hopper">
-            <option value="all">Todos os membros</option>
-            <option value="ativos">Ativos</option>
-            <option value="inativos">Inativos</option>
-            <option value="pendentes">Pendentes</option>
-          </select>
+    <div>
+      <div className="container">
+        <div className="find">
+          <div>
+            <input type="search" className="search" placeholder="Pesquisar" />
+            <select id="selectOptions" className="hopper">
+              <option value="all">Todos os membros</option>
+              <option value="ativos">Ativos</option>
+              <option value="inativos">Inativos</option>
+              <option value="pendentes">Pendentes</option>
+            </select>
+          </div>
+        </div>
+        <div className="crud">
+          <h1>Membros</h1>
+          <div className="inputs">
+            <input type="button" value="Alterar" />
+            <input type="button" value="Excluir" />
+          </div>
         </div>
       </div>
-      <div className="crud">
-        <h1>Membros</h1>
-        <div className="inputs">
-          <input type="button" value="Alterar" />
-          <input type="button" value="Excluir" />
-        </div>
-      </div>
-      <div>
+      <div id="cont-table">
         <table className="tabela">
           <thead>
             <tr>

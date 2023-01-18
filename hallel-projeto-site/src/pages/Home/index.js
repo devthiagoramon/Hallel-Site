@@ -12,7 +12,7 @@ function Home() {
       <br />
       <Link to="/administrador/eventos">ADMINISTRADOR: Eventos</Link>
       <br />
-      <Link to="/administrador/eventos">ADMINISTRADOR: Membros</Link>
+      <Link to="/administrador/membros">ADMINISTRADOR: Membros</Link>
       <br />
     </div>
   );

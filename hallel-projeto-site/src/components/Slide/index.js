@@ -38,7 +38,7 @@ class Slide extends Component {
 
     state.slides[state.slidePosition-1].style.display = "block";
 
-    this.setState({time:setTimeout(this.autoShow, 1000)})
+    this.setState({time:setTimeout(this.autoShow, 10000)})
   }
 
   SlideShow(n) {
@@ -79,7 +79,7 @@ class Slide extends Component {
         </div>
 
         <div className="slide">
-          <img src={Img2} alt="Img 2" />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqkLWFx6VJN3T-ofayrB4GtQA0JLTABv1Cyw&usqp=CAU" alt="Img 2" />
         </div>
 
         <div className="slide">
