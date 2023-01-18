@@ -62,17 +62,16 @@ body {
 
     margin-right: 20px;
 
-    text-align: center;
-
     color: #6C879C;
     font-size: 14px;
+    text-align: center;
 
     border-radius: 5px;
 
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    padding-right: 15px;
+    padding-right: 25px;
     background-image: url('https://cdn.discordapp.com/attachments/903094207235895330/1065069747949011085/image.png');
     background-repeat: no-repeat;
     background-position: calc(100% - 3px) center;
