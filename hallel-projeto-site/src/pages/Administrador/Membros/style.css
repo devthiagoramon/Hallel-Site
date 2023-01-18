@@ -6,17 +6,24 @@ body {
     background-color: #F3F9FF;
 }
 
-.container {
+.tools {
+    top: 80px;
+    position: fixed;
+    display: inline;
+    background-color: #F3F9FF;
+
+    height:84px;
+    width: 100%;
+
     margin: 0;
-    padding: 0;
-    padding-top: 100px;
+    padding: 4px 0;
 }
 
 .find {
     display: flex;
     position: absolute;
     width: 100%;
-    height: 3pc;
+    height: 2.5pc;
     align-items: center;
 }
 
@@ -41,8 +48,8 @@ body {
     float: left;
     background-color: #CBDCEC;
 
-    width: 180px;
-    margin-left: 20px;
+    width: 170px;
+    margin-left: 15px;
     
     color: #6C879C;
     font-size: 18px;
@@ -60,7 +67,7 @@ body {
     float: right;
     background-color: #CBDCEC;
 
-    margin-right: 20px;
+    margin-right:15px;
 
     color: #6C879C;
     font-size: 14px;
@@ -71,15 +78,15 @@ body {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    padding-right: 25px;
+    padding: 0 33px 0 9px;
     background-image: url('https://cdn.discordapp.com/attachments/903094207235895330/1065069747949011085/image.png');
     background-repeat: no-repeat;
-    background-position: calc(100% - 3px) center;
+    background-position: calc(100% - 8px) center;
     background-size: 18px;
 }
 
 .crud {
-    margin-top: 3pc;
+    margin-top: 2.5pc;
     display: flex;
     position: absolute;
     width: 100%;
@@ -89,8 +96,8 @@ body {
 .crud h1 {
     font-size: 30px;
     font-weight: bold;
-    margin: 0 0 0 20px;
-    max-width: 133px;
+    margin: 0 0 0 15px;
+    width: 133px;
     color: #35404B;
 }
 
@@ -104,7 +111,7 @@ body {
     text-align: end;
     justify-content: flex-end;
     width: 100%;
-    margin-right: 20px;
+    margin-right: 15px;
 }
 
 .inputs input {
@@ -127,10 +134,9 @@ body {
     margin: auto;
     border-collapse: collapse;
 
-    width: 100%;
-    max-width: 95%;
+    width: 95%;
 
-    margin-top: 6pc;
+    margin-top: 10.5pc;
 }
 
 .tabela tr {
@@ -138,7 +144,8 @@ body {
 }
 
 .tabela td {
-    font-size: 18px;
+    font-size: 15px;
+    padding: 0 5px;
     color: #758B9F;
 }
 
@@ -149,11 +156,23 @@ body {
 .tabela tbody td {
     font-size: 18px;
     color: #35404B;
-    padding: 6px 0;
+    padding: 10px 5px;
 }
+
 .tabela tbody td:last-child {
     border-radius: 0 10px 10px 0;
 }
 .tabela tbody td:first-child {
     border-radius: 10px 0 0 10px;
+}
+@media screen and (max-width: 768px) {
+    .tools{
+        top:65px
+    }
+    .tabela{
+        margin-top: 9.5pc;
+    }
+    .tabela tbody td{
+        font-size: 16px;
+    }
 }

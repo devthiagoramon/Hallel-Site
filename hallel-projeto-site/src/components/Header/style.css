@@ -12,7 +12,7 @@
 }
 
 #cont-logo img {
-    width: 5.5pc;
+    height: 60px;
 }
 
 #topbar {
@@ -32,7 +32,7 @@
 
 
 #topbar #topicos * {
-    height: 75px;
+    height: 60px;
     width: 100%;
 
     font-size: 19px;
@@ -43,7 +43,7 @@
 
     border-radius: 10px;
     padding: 0 6px;
-    line-height: 75px;
+    line-height: 60px;
 }
 
 #topbar #topicos *:hover {
@@ -182,7 +182,7 @@
   }
 
   #cont-logo img {
-    max-width: 4pc;
+    height: 50px;
     margin: none;
   }
 

@@ -86,7 +86,7 @@ class App extends Component {
 
         <section id="container-event">
           <div id="adm">
-            <div id="cont-input">
+            <ul>
               <input
                 id="insert_title"
                 name="title"
@@ -94,9 +94,7 @@ class App extends Component {
                 onChange={this.conteudo}
                 placeholder="Adicionar título"
               />
-            </div>
 
-            <ul>
               <li>
                 <IMaskInput
                   id="selec_date"

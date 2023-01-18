@@ -2,6 +2,7 @@
   margin-left: 15px;
 }
 
+
 #container-event{
   background-color:#ECF1F6 ;
   align-items: center;
@@ -12,7 +13,7 @@
 
 #content{
   display: block;
-  width: 60%;
+  width: 100%;
   margin: 0 9px 0 0;
 }
 
@@ -25,22 +26,14 @@
   width: 25pc;
   margin: auto;
 }
-
 #adm{
-  width: 16%;
-  margin: 0 16vw;
+  width: 210px;
+  margin: 0 8vw;
 }
-
-#cont-input{
-  width: 100%;
-}
-
 #adm #insert_title{
   color: #35404B;
   font-weight: bold;
   font-size: 21px;
-  width: 97%;
-  max-width: 205px;
   height: 30px;
   background: none;
   border: none;
@@ -50,7 +43,7 @@
 
 #adm ul{
   margin: 10px 0;
-  max-width: 210px;
+  width: 210px;
   top: 125px;
   display: flex;
   flex-direction: column;
@@ -91,9 +84,9 @@
 }
 
 #conteste{
-  margin: 0 auto;
+  margin:0 auto;
   width: 400px;
-  height: 430px;
+  height: 420px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

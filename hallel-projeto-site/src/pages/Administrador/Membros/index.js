@@ -29,7 +29,7 @@ function MembrosAdministrador() {
 
   return (
     <div>
-      <div className="container">
+      <div className="tools">
         <div className="find">
           <div>
             <input type="search" className="search" placeholder="Pesquisar" />
@@ -68,6 +68,91 @@ function MembrosAdministrador() {
                 </tr>
               );
             })}
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
+            <tr>
+              <td>Wesley Felipe Rodrigues</td>
+              <td>wesleyfelipe1904@gmail.com</td>
+              <td>asdasd</td>
+            </tr>
           </tbody>
         </table>
       </div>
