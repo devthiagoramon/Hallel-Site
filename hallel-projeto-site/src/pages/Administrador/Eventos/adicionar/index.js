@@ -183,7 +183,7 @@ class App extends Component {
               <hr />
 
               <div id="date">
-                <img
+                <img /* ei mano tem que lembra de arruma esse srckkkkkk */
                   src="https://cdn.discordapp.com/attachments/903094207235895330/1061451300371435530/image.png"
                   alt="Imagem calendario"
                 />

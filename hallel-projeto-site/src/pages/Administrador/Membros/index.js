@@ -59,16 +59,26 @@ function MembrosAdministrador() {
             </tr>
           </thead>
           <tbody>
-
+            <tr>
+              <td>Nome</td>
+              <td>Email</td>
+              <td>Status</td>
+            </tr>
+            <tr>
+              <td>Nome</td>
+              <td>Email</td>
+              <td>Status</td>
+            </tr>
             {membro.map((item) => {
-            return (
-              <tr key={item.id}>
-                <td>{item.nome}</td>
-                <td>{item.email}</td>
-                <td>{item.status}</td>
-              </tr>
-            );
-          })}</tbody>
+              return (
+                <tr key={item.id}>
+                  <td>{item.nome}</td>
+                  <td>{item.email}</td>
+                  <td>{item.status}</td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </div>
     </div>

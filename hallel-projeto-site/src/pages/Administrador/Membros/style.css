@@ -16,7 +16,7 @@ body {
     display: flex;
     position: absolute;
     width: 100%;
-    height: 2pc;
+    height: 3pc;
     align-items: center;
 }
 
@@ -79,11 +79,10 @@ body {
 }
 
 .crud {
-    margin-top: 2em;
+    margin-top: 3pc;
     display: flex;
     position: absolute;
     width: 100%;
-    height: 3pc;
     align-items: center;
 }
 
@@ -131,20 +130,26 @@ body {
     width: 100%;
     max-width: 95%;
 
-    margin-top: 6em;
+    margin-top: 6pc;
 }
 
 .tabela tr {
     background: none;
 }
 
-.tabela tbody tr:hover {
-    background-color: #c2d6ea;
-}
-
 .tabela td {
     font-size: 18px;
-    padding: 8px;
+    color: #758B9F;
+}
+
+.tabela tbody tr:hover {
+    background-color: #d0e2f3;
+}
+
+.tabela tbody td {
+    font-size: 18px;
+    color: #35404B;
+    padding: 6px 0;
 }
 .tabela tbody td:last-child {
     border-radius: 0 10px 10px 0;
