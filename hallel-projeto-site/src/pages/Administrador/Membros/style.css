@@ -131,7 +131,6 @@ body {
     width: 100%;
     max-width: 95%;
 
-    border-radius: 10px;
     margin-top: 6em;
 }
 
@@ -139,12 +138,17 @@ body {
     background: none;
 }
 
-.tabela tr:hover {
+.tabela tbody tr:hover {
     background-color: #c2d6ea;
 }
 
 .tabela td {
     font-size: 18px;
-    border: 1px solid #ddd;
     padding: 8px;
+}
+.tabela tbody td:last-child {
+    border-radius: 0 10px 10px 0;
+}
+.tabela tbody td:first-child {
+    border-radius: 10px 0 0 10px;
 }
