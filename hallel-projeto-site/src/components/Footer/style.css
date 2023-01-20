@@ -1,0 +1,22 @@
+.main-footer {
+  color: black;
+  background-color: #b9d1e7;
+  padding-top: 3em;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#logo{
+  width: 100px;
+  height: 70px;
+}
+
+.col{
+  margin: 10px 10px;
+}
+.list-unstyled li{
+  text-align: justify;
+}
