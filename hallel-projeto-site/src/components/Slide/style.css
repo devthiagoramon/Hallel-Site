@@ -28,32 +28,32 @@
     position: absolute;
     display: flex;
     justify-content: center;
-    bottom: 4%;
+    bottom: 1%;
 }
 
 .manual-btn {
-    background-color: rgb(183, 183, 183);
-    padding: 6px;
-    border-radius: 50%;
+    background-color: rgb(240, 240, 240);
+    padding: 2px 20px;
     cursor: pointer;
     transition: 0.5s;
 
 }
 
 .manual-btn:not(:last-child) {
-    margin-right: 40px;
+    margin-right: 20px;
 }
 
 .manual-btn:hover {
-    background-color: rgba(217, 217, 217, 0.761);
+    background-color: rgba(255, 255, 255, 0.489);
+    padding: 3px 20px;
 }
 
 
 .fadee {
     -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.4s;
+    -webkit-animation-duration: 1s;
     animation-name: fade;
-    animation-duration: 1.4s;
+    animation-duration: 1s;
 }
 
 @-webkit-keyframes fadee {
