@@ -12,7 +12,7 @@ body {
     display: inline;
     background-color: #F3F9FF;
 
-    height: 130px;
+    height: 150px;
     width: 100%;
 
     margin: 0;
@@ -24,7 +24,7 @@ body {
     display: flex;
     position: absolute;
     width: 100%;
-    height: 54px;
+    height: 64px;
     align-items: center;
 }
 
@@ -87,7 +87,7 @@ body {
 }
 
 .crud {
-    margin-top: 52px;
+    margin-top: 60px;
     display: flex;
     position: absolute;
     width: 100%;
@@ -137,7 +137,7 @@ body {
 
     width: 95%;
 
-    margin-top: 96px;
+    margin-top: 110px;
 }
 .tools table tr{
     background: none;
@@ -154,7 +154,7 @@ body {
 
     width: 95%;
 
-    margin-top: 13.5pc;
+    margin-top: 14.5pc;
     margin-bottom: 20px;
 }
 
@@ -189,7 +189,7 @@ body {
         top:65px
     }
     .tabela{
-        margin-top: 12.5pc;
+        margin-top: 13.5pc;
     }
     .tabela tbody td{
         font-size: 16px;
