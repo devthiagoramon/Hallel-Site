@@ -1,0 +1,24 @@
+body{
+    overflow-x: hidden;
+}
+
+.painelEventosUser{
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    padding-top: 100px;
+    margin-bottom: 300px;
+}
+
+.TituloEventoUser{
+    margin-left: 40px;
+    padding-bottom: 50px;
+}
+
+.CorpoEventoUser{
+    margin-left: 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 300px 300px 300px 300px;
+    gap: 20px;
+}

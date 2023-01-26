@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import Slide from "../../components/Slide";
+import Fundadora from "../Fundadora";
+import Sobre from "../Sobre";
 
 function Home() {
   return (
     <div>
       <Slide />
 
-      <Link to="/Fundadora">Fundadora</Link>
+      <Fundadora />
       <br />
-      <Link to="/Sobre">Sobre nos</Link>
+      <Sobre />
       <br />
       <Link to="/administrador/eventos">ADMINISTRADOR: Eventos</Link>
       <br />

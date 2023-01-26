@@ -99,6 +99,10 @@ class Modal extends Component {
         })
         .then((object) => {
           localStorage.setItem("token", object.token);
+          localStorage.setItem("name", object.objeto.nome)
+          object.objeto.roles.map((role) => {
+            localStorage.setItem("R0l3s", role.name);  
+          })
           let modalMensagem = (
             <ModalMensagem
               mensagem={"Usuario logado com sucesso"}

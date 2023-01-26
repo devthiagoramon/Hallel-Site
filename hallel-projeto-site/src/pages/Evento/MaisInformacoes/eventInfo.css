@@ -1,0 +1,84 @@
+body{
+    overflow-x: hidden;
+}
+
+.corpo1 {
+  display: flex;
+  width: 100%;
+  height: 30%;
+  padding-top: 140px;
+  padding-bottom: 300px;
+}
+.corpo1 .imagem {
+  width: 30%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.corpo1 .imagem img {
+  background-color: rgb(164, 166, 168);
+  width: 300px;
+  height: 250px;
+  border-radius: 20px;
+  margin-left: 40px;
+}
+
+.corpo1 .descCp1 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.corpo1 .descCp1 h2 {
+  position: relative;
+  font-size: xx-large;
+  font-weight: bold;
+  width: 100%;
+}
+
+.corpo1 .descCp1 p {
+  max-width:100%;
+  font-size: 20px;
+  word-break: normal;
+  text-justify: auto;
+}
+/*INFORMAÇÕES*/
+
+.infos {
+  position: absolute;
+  padding: 200px 759px;
+}
+.sub {
+  position: inherit;
+  margin-left: -20cm;
+  top: 2px;
+}
+.sub ul li {
+  margin-top: 8px;
+  letter-spacing: 3px;
+  margin-left: 72px;
+}
+.participantes {
+  position: inherit;
+  top: 2px;
+  margin-left: 300px;
+}
+
+.voltar{
+  width: 20%;
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.voltar button{
+  width: 100px;
+  border-radius: 10px;
+  background-color: white;
+}

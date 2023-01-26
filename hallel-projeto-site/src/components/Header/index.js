@@ -7,11 +7,12 @@ import Modal from "./entrar/modal";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
+  const [isExpired, setIsExpired] = useState();
 
   const stylePerfil = {
     "background-color": "#333",
     "border-radius": "50%",
-  }
+  };
 
   function isTokenExpired() {
     let url = "http://localhost:8080/api/isTokenExpired";
@@ -26,26 +27,29 @@ function Header() {
         return res.json();
       })
       .then((object) => {
-        console.log(object);
         if (object === false) {
           // Token expioru
-          return true;
+          localStorage.clear();
+          setIsExpired(true);
         } else {
-          return false;
+          setIsExpired(false);
         }
       })
       .catch((error) => {
         console.warn(error);
-        return true;
+        setIsExpired(true);
       });
   }
 
   function isNotUsuario() {
     if (localStorage.getItem("token") === null) {
+      // Token inexistente, caso for null, pessoa tem que se logar
       return true;
-    } else if (isTokenExpired()) {
+    } else if (isExpired === true) {
+      // Token está expirado, caso for true, pessoa tem que se logar
       return true;
-    } else {
+    } else if (isExpired === false) {
+      // Token valido, pessoa ta logada
       return false;
     }
   }
@@ -67,7 +71,7 @@ function Header() {
             </li>
             <li>
               <a className="menu__item" href="/">
-                Igreja
+                Eventos
               </a>
             </li>
             <li>
@@ -104,7 +108,7 @@ function Header() {
 
         <div id="topicos">
           <Link to="/">Início</Link>
-          <Link to="/">Igreja</Link>
+          <Link to="/eventos">Eventos</Link>
           <Link to="/">Ministérios</Link>
           <Link to="/">Agenda</Link>
           <Link to="/">Loja</Link>
