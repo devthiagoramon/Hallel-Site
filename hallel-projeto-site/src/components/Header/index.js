@@ -4,10 +4,12 @@ import Logo from "../../images/LogoHallel.png";
 import { useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Modal from "./entrar/modal";
+import ModalPerfil from "./perfil/modal";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
-  const [isExpired, setIsExpired] = useState();
+  const [isModalPerfilVisible, setisModalPerfilVisible] = useState(false);
+  const [isExpired, setIsExpired] = useState(); 
 
   const stylePerfil = {
     "background-color": "#333",
@@ -51,6 +53,14 @@ function Header() {
     } else if (isExpired === false) {
       // Token valido, pessoa ta logada
       return false;
+    }
+  }
+
+  function showModalPerfil(){
+    if(isModalPerfilVisible === true){
+      setisModalPerfilVisible(false)
+    }else{
+      setisModalPerfilVisible(true)
     }
   }
 
@@ -125,7 +135,7 @@ function Header() {
             Entre
           </button>
         ) : (
-          <button style={stylePerfil}>
+          <button style={stylePerfil} onClick={() => showModalPerfil()}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="60"
@@ -144,6 +154,7 @@ function Header() {
       ) : (
         ""
       )}
+      {isModalPerfilVisible ? <ModalPerfil/> : ""}
     </div>
   );
 }

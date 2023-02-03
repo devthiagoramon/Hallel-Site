@@ -18,6 +18,8 @@ class App extends Component {
     this.conteudo = this.conteudo.bind(this);
     this.onFileSelected = this.onFileSelected.bind(this);
     this.publicarEvento = this.publicarEvento.bind(this);
+    this.toHora = this.toHora.bind(this);
+    this.toData = this.toData.bind(this);
   }
 
   conteudo(e) {
@@ -40,6 +42,14 @@ class App extends Component {
     reader.readAsDataURL(selectedFile);
   }
 
+  toData(date) {
+    return date.substr(0, 10);
+  }
+
+  toHora(hora) {
+    return hora.substr(14);
+  }
+
   publicarEvento() {
     if (this.state.title === "") {
       return;
@@ -51,7 +61,7 @@ class App extends Component {
       return;
     }
 
-    let url = "http://localhost:8080/api/eventos/create";
+    let url = "http://localhost:8080/api/administrador/evento/create";
 
     const myHeaders = new Headers();
 
@@ -65,6 +75,9 @@ class App extends Component {
         titulo: this.state.Evento.title,
         descricao: this.state.Evento.subtitle,
         local: "Local 1",
+        imagem: this.state.Evento.imagem,
+        date: this.toData(this.state.Evento.date),
+        horario: this.toHora(this.state.Evento.date),
       }),
     })
       .then((res) => {
@@ -86,7 +99,7 @@ class App extends Component {
 
         <section id="container-event">
           <div id="adm">
-            <ul>
+            <div id="cont-input">
               <input
                 id="insert_title"
                 name="title"
@@ -94,7 +107,9 @@ class App extends Component {
                 onChange={this.conteudo}
                 placeholder="Adicionar título"
               />
+            </div>
 
+            <ul>
               <li>
                 <IMaskInput
                   id="selec_date"
@@ -161,7 +176,11 @@ class App extends Component {
 
           <div id="content">
             <div id="conteste">
-              <img id="prev" alt="prev" />
+              <img
+                id="prev"
+                alt="prev"
+                onLoad={(e) => (this.state.Evento.imagem = e.target.src)}
+              />
               <p id="pub">
                 {this.state.Evento.public === ""
                   ? "--------"
@@ -181,7 +200,7 @@ class App extends Component {
               <hr />
 
               <div id="date">
-                <img /* ei mano tem que lembra de arruma esse srckkkkkk */
+                <img
                   src="https://cdn.discordapp.com/attachments/903094207235895330/1061451300371435530/image.png"
                   alt="Imagem calendario"
                 />

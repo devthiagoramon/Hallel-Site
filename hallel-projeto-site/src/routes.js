@@ -8,6 +8,8 @@ import EventosCriarAdm from "./pages/Administrador/Eventos/adicionar";
 import EventoListarAdm from "./pages/Administrador/Eventos/listar";
 import EventoUser from "./pages/Evento/listar";
 import Footer from "./components/Footer";
+import Perfil from "./pages/PerfilUsuario";
+import MaisInfo from "./pages/Evento/MaisInformacoes";
 
 function RoutesApp() {
   return (
@@ -24,6 +26,8 @@ function RoutesApp() {
           path="/administrador/eventos/criar"
           element={<EventosCriarAdm />}
         />
+        <Route path="/perfil" element={<Perfil/>}/>
+        <Route path="/maisInfo" element={<MaisInfo/>}/>
       </Routes>
       <footer>
         <Footer />

@@ -75,8 +75,6 @@ class Slide extends Component {
     let eventosLenght = eventosArray.length;
     let eventoDivTemp = [];
 
-    console.log(eventosArray.length);
-
     for (let i = 0; i < eventosLenght; i++) {
       eventoDivTemp.push(i + 5 + 1);
     }

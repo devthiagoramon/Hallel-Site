@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ModalMensagem from "../../mensagem/modal";
 import { createRoot } from "react-dom/client";
+import "./entrarModal.css";
+import iconeGoogle from "../../../../images/google-icon.svg";
 
 const container = createRoot(document.querySelector("#root"));
 
@@ -64,7 +66,7 @@ class Modal extends Component {
               hide={this.props.hide}
             />
           );
-         container.render(modalMensagem)
+          container.render(modalMensagem);
         })
         .catch((error) => {
           console.warn(error);
@@ -98,11 +100,17 @@ class Modal extends Component {
           return res.json();
         })
         .then((object) => {
+          let rolesName = [];
+
+          console.log(object);
+
           localStorage.setItem("token", object.token);
-          localStorage.setItem("name", object.objeto.nome)
+          localStorage.setItem("name", object.objeto.nome);
+          localStorage.setItem("email", object.objeto.email);
           object.objeto.roles.map((role) => {
-            localStorage.setItem("R0l3s", role.name);  
-          })
+            rolesName.push(role.name);
+          });
+          localStorage.setItem("R0l3s", rolesName);
           let modalMensagem = (
             <ModalMensagem
               mensagem={"Usuario logado com sucesso"}
@@ -124,6 +132,7 @@ class Modal extends Component {
         });
     }
   }
+
 
   render() {
     return (
@@ -171,7 +180,11 @@ class Modal extends Component {
                 <div className="modal-body">
                   <form className="priForm">
                     <div className="form-outline mb-4">
-                      <label className="form-label" for="forms">
+                      <label
+                        className="form-label"
+                        for="forms"
+                        style={{ fontWeight: "500" }}
+                      >
                         E-mail
                       </label>
                       <input
@@ -184,7 +197,11 @@ class Modal extends Component {
                     </div>
 
                     <div className="form-outline mb-4">
-                      <label className="form-label" for="forms">
+                      <label
+                        className="form-label"
+                        for="forms"
+                        style={{ fontWeight: "500" }}
+                      >
                         Senha
                       </label>
                       <input
@@ -202,21 +219,38 @@ class Modal extends Component {
                         }
                       />
                     </div>
+                    <div
+                      className="d-flex mt-3 mb-2"
+                      style={{
+                        height: "2.3rem",
+                        borderRadius: "5px",
+                        backgroundColor: "rgb(225, 238, 250)",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <img src={iconeGoogle} alt="" />
+                      <button
+                        className="btn-google"
+                        style={{ width: "90%", height: "inheret" }}
+                      >
+                        Logar com o google
+                      </button>
+                    </div>
                   </form>
                 </div>
               )}
 
               {/* SOLICITAR CADASTRO BODY*/}
               {this.state.indexSelect === 2 && (
-                <form class="priForm">
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="text">
+                <form className="priForm">
+                  <div className="form-outline mb-4">
+                    <label className="form-label" for="text">
                       Nome completo
                     </label>
                     <input
                       type="text"
                       id="forms-nome-solicitarCadastro"
-                      class="form-control"
+                      className="form-control"
                       value={this.state.solicitação.nome}
                       onChange={(e) => {
                         this.setState({
@@ -231,14 +265,15 @@ class Modal extends Component {
                     />
                   </div>
 
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="forms">
+                  <div className="form-outline mb-4">
+                    <label className="form-label" for="forms">
                       E-mail
                     </label>
                     <input
                       type="email"
                       id="forms-email-solicitarCadastro"
-                      class="form-control"
+                      className="form-control"
+                      value={this.state.solicitação.email}
                       onChange={(e) => {
                         this.setState({
                           solicitação: {
@@ -252,18 +287,19 @@ class Modal extends Component {
                     />
                   </div>
 
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="forms">
+                  <div className="form-outline mb-4">
+                    <label className="form-label" for="forms">
                       Digite sua senha
                     </label>
                     <input
                       type="password"
                       id="forms-senha1-solicitarCadastro"
-                      class="form-control"
+                      className="form-control"
+                      value={this.state.solicitação.senha1}
                       onChange={(e) => {
                         this.setState({
                           solicitação: {
-                            nome: this.state.solicitação.email,
+                            nome: this.state.solicitação.nome,
                             email: this.state.solicitação.email,
                             senha1: e.target.value,
                             senha2: this.state.solicitação.senha2,
@@ -273,14 +309,15 @@ class Modal extends Component {
                     />
                   </div>
 
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="forms">
+                  <div className="form-outline mb-4">
+                    <label className="form-label" for="forms">
                       Confirme sua senha
                     </label>
                     <input
                       type="password"
                       id="forms-senha2-solicitarCadastro"
-                      class="form-control"
+                      className="form-control"
+                      value={this.state.solicitação.senha2}
                       onChange={(e) => {
                         this.setState({
                           solicitação: {
@@ -292,6 +329,24 @@ class Modal extends Component {
                         });
                       }}
                     />
+                  </div>
+                  <div
+                    className="d-flex mt-3 mb-2"
+                    style={{
+                      height: "2.3rem",
+                      borderRadius: "5px",
+                      backgroundColor: "rgb(225, 238, 250)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img src={iconeGoogle} alt="" />
+                    <button
+                      className="btn-google"
+                      style={{ width: "90%", height: "inheret" }}
+                      onClick={() => this.olicitarCadastroGoogle()}
+                    >
+                      Solicitar cadastro com o Google
+                    </button>
                   </div>
                 </form>
               )}
@@ -305,22 +360,25 @@ class Modal extends Component {
                 Voltar
               </button>
               {this.state.indexSelect === 1 && (
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={this.logar}
-                >
-                  Entrar
-                </button>
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={this.logar}
+                  >
+                    Entrar
+                  </button>
+                </div>
               )}
               {this.state.indexSelect === 2 && (
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={this.solicitarCadastro}
-                >
-                  Solicitar Cadasrto
-                </button>
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                  >
+                    Solicitar Cadasrto
+                  </button>
+                </div>
               )}
             </div>
           </div>
