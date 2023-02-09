@@ -10,9 +10,8 @@ function App() {
           <div className = "content-wrap">
             <RoutesApp />
           </div>
+          <Footer/>
       </div>
   );
 }
-
 export default App;
-
