@@ -3,14 +3,14 @@ import "./style.css";
 import Logo from "../../images/LogoHallel.png";
 import { useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Down from "./DropDown.js";
 import Modal from "./entrar/modal";
 import ModalPerfil from "./perfil/modal";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
   const [isModalPerfilVisible, setisModalPerfilVisible] = useState(false);
-  const [isExpired, setIsExpired] = useState(); 
-
+  const [isExpired, setIsExpired] = useState();
   const stylePerfil = {
     "background-color": "#333",
     "border-radius": "50%",
@@ -119,6 +119,8 @@ function Header() {
         <div id="topicos">
           <Link to="/">Início</Link>
           <Link to="/eventos">Eventos</Link>
+          <Down />
+          
           <Link to="/">Ministérios</Link>
           <Link to="/">Agenda</Link>
           <Link to="/">Loja</Link>
@@ -155,7 +157,11 @@ function Header() {
         ""
       )}
       {isModalPerfilVisible ? <ModalPerfil/> : ""}
+      
+    
     </div>
+    
+   
   );
 }
 
