@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./style.css";
+import "./topbar.css";
 import Logo from "../../images/LogoHallel.png";
 import { useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -120,7 +120,6 @@ function Header() {
           <Link to="/">Início</Link>
           <Link to="/eventos">Eventos</Link>
           <Down />
-          
           <Link to="/">Ministérios</Link>
           <Link to="/">Agenda</Link>
           <Link to="/">Loja</Link>
@@ -130,6 +129,7 @@ function Header() {
         {isNotUsuario() ? (
           <button
             id="btn"
+            className="btnEntre"
             onClick={() => {
               setisModalVisible(true);
             }}

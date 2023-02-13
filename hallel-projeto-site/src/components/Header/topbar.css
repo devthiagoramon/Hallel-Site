@@ -5,7 +5,7 @@
 }
 
 #cont-logo{
-    background-color: #B9D1E7;
+    background-color: #81c599;
     border-radius: 10px;
     padding: 3px;
     margin: 0 15px;
@@ -59,6 +59,7 @@
     height: 2.5pc;
     color: #35404B;
     background-color: #B9D1E7;
+    box-shadow: #333 3px 3px 7px;
 }
 
 #topbar #btn:hover {
@@ -166,8 +167,9 @@
 .menu__btn:hover>span,
 .menu__btn:hover>span::before,
 .menu__btn:hover>span::after {
-    background-color: #7d91a7;
+    background-color: #abc4df;
 }
+
 
 @media screen and (max-width: 768px) {
 
