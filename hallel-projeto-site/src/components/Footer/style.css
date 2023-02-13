@@ -10,6 +10,11 @@
   text-align: center;
 }
 
+.container{
+  max-height: 18rem;
+
+}
+
 #logo{
   width: 100px;
   height: 70px;
