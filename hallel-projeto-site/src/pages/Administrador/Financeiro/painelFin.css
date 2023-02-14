@@ -1,5 +1,130 @@
-.container{
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+*{
+    font-family: 'Heebo', sans-serif;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.containerFinanceiro{
     width: 100vw;
     height: 100vh;
     margin-top: 100px;
+    margin-left: 0;
+    padding-right: 0;
+}
+
+.titulo{
+    position: inherit;
+    width: 80%;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+
+.titulo p{
+    font-size: 36px;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+}
+
+.cards {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 30%;
+}
+
+.cards div{
+    width: 25%;
+    height: 100%;
+    margin-right: 1.6rem;
+    margin-left: 4.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .25);
+}
+
+.cardLucroTotal{
+    background-color: #038c3396;
+}
+
+.cardLucroMensal{
+    background-color: #038c3375;
+}
+
+.cardDespesaMensal{
+    background-color: #FF961B;
+}
+
+.tituloCard{
+    font-weight: bold;
+    color: white;
+    margin-top: 25px;
+    margin-left: 20px;
+    font-size: 36px;
+}
+
+.valorNum{
+    margin-top: 2rem;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 34px;
+}
+
+.painelGrafico{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+}
+
+.graficoEsquerda{
+    margin-top: 3rem;
+    margin-left: 4.5em;
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .25);
+    width: 63%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.graficoEsquerda p{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+
+.escolhaDireita{
+    margin-left: 4.5em;
+    margin-top: 3rem;
+    width: 24%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .25);
+    border-radius: 15px;
+    row-gap:2rem;
+}
+
+.selecionado{
+    background-color: #6cad8396; 
+}
+.escolhaDireita button{
+    font-size: 2rem;
+    width: 70%;
+    border-color: inherit;
+    border-width: 0px;
+    text-align: center;
+    box-shadow: 1px 1px 25px 0 rgba(0, 0, 0, .20);    
+    border-radius: 30px;
+}
+
+.escolhaDireita button:hover{
+    background-color: #d2d6da;
 }
