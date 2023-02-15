@@ -37,7 +37,7 @@ export default class PainelFinanceiro extends Component {
         [22, 59],
         [23, 29],
         [24, 59],
-        [25, 49]
+        [25, 49],
       ],
     };
   }
@@ -50,7 +50,7 @@ export default class PainelFinanceiro extends Component {
         </div>
         <div className="cards">
           <div className="cardLucroTotal">
-            <p className="tituloCard">Lucro total</p>
+            <p className="tituloCard">Saldo</p>
             <p className="valorNum">R$ 3000.0</p>
           </div>
           <div className="cardLucroMensal">
@@ -80,6 +80,10 @@ export default class PainelFinanceiro extends Component {
             <button>Mês atual</button>
             <button>Ano atual</button>
           </div>
+        </div>
+        <div className="ultimosAssociado">
+          <p className="tituloAssociado" style={{ color: "#363636" }}>Ultimos associados</p>
+
         </div>
       </div>
     );

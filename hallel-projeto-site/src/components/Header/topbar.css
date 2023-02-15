@@ -5,10 +5,12 @@
 }
 
 #cont-logo{
-    background-color: #81c599;
+    background: none;
     border-radius: 10px;
     padding: 3px;
     margin: 0 15px;
+
+    
 }
 
 #cont-logo img {
@@ -28,6 +30,27 @@
     display: flex;
     position: fixed;
     align-items: center;
+
+    background: linear-gradient(45deg,#d9491496,#f2b707a6);
+    background-size: 500% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation-name: background;
+    animation-duration:3s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes background {
+    0%{
+        background-position-x: 0%;
+    }
+    100%{
+        background-position-x: 100%;
+    }
 }
 
 
