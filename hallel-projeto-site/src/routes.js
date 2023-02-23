@@ -10,6 +10,7 @@ import EventoUser from "./pages/Evento/listar";
 import Perfil from "./pages/PerfilUsuario";
 import MaisInfo from "./pages/Evento/MaisInformacoes";
 import PainelFinanceiro from "./pages/Administrador/Financeiro";
+import Renda from "./pages/Administrador/Financeiro/renda";
 
 function RoutesApp() {
   return (
@@ -29,6 +30,7 @@ function RoutesApp() {
         <Route path="/perfil" element={<Perfil/>}/>
         <Route path="/maisInfo" element={<MaisInfo/>}/>
         <Route path="/administrador/painelFinanceiro" element={<PainelFinanceiro/>}/>
+        <Route path="/administrador/painelFinanceiro/renda" element={<Renda/>}/>
       </Routes>
 
     </BrowserRouter>

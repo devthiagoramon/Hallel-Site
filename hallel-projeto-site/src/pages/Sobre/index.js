@@ -1,5 +1,5 @@
  import './style.css';
-import ImgQuemSomos from '../../images/quem-somos.png'
+
 
 function QuemSomos() {
   return (
@@ -8,7 +8,7 @@ function QuemSomos() {
       
         <h1 id='titulo'> QUEM SOMOS </h1> 
         <br/>
-        <img id='imgquemsomos' src={ImgQuemSomos}/>
+        {/*<img id='imgquemsomos' src={ImgQuemSomos}/>*/}
         <br/> <br/> <br/>
         <p> Nossa história começou a partir do Ministério de Música Hallel, e estava a serviço da RCC desde 1988.
           Na coordenação do Ministério, Clenir Viana Guimarães, atendeu ao chamado que Deus suscitou em seu coração, 
