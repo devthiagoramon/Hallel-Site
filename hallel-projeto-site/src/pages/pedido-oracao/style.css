@@ -1,0 +1,28 @@
+.main-footer {
+  color: black;
+  background-color: #81c599;
+  padding-top: 3em;
+  margin-top: 20rem;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.container{
+  max-height: 18rem;
+
+}
+
+#logo{
+  width: 100px;
+  height: 70px;
+}
+
+.col{
+  margin: 10px 10px;
+}
+.list-unstyled li{
+  text-align: justify;
+}
