@@ -1,28 +1,119 @@
-.main-footer {
-  color: black;
-  background-color: #81c599;
-  padding-top: 3em;
-  margin-top: 20rem;
-  align-items: center;
-  position: relative;
-  bottom: 0;
+.global {
+  font-family: 'Inter', sans-serif;
+  color:#35404B;
+  background-color: #FFFFFF;
+  display: block;
+ 
+}
+  
+
+#imgpedido{
+  
+  max-height: 600px;
   width: 100%;
-  text-align: center;
 }
 
-.container{
-  max-height: 18rem;
+#titulo {
+  color:#35404B;
+  display: inline-block;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 150px;
+  font-size: 55px;
+  font-family: 'Inter';
+  font-style: bold;
 
 }
 
-#logo{
-  width: 100px;
-  height: 70px;
+p {
+  font-family: 'Inter';
+  font-style: normal;
+  margin-right: 90px;
+  margin-left: 40px;
+  font-size: 25px;
+  text-indent: 20px;
+
 }
 
-.col{
-  margin: 10px 10px;
+
+
+/forms/
+form {
+    /* Apenas para centralizar o form na página */
+    margin: 0 auto;
+    width: 400px;
+    /* Para ver as bordas do formulário */
+    padding: 1em;
+    
+    border-radius: 1em;
 }
-.list-unstyled li{
-  text-align: justify;
+
+form div + div {
+    margin-top: 1em;
+}
+
+label {
+    /*Para ter certeza que todas as labels tem o mesmo tamanho e estão propriamente alinhadas */
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+
+#labelSeletor{
+  width: 205px;
+}
+
+
+input, textarea {
+    /* Para certificar-se que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
+    font: 1em, 'Inter', sans-serif;
+
+    /* Para dar o mesmo tamanho a todos os campo de texto */
+    width: 300px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    /* Para harmonizar o look & feel das bordas nos campos de texto*/
+    border: 1px solid #999;
+}
+
+input:focus, textarea:focus {
+    /* Dar um pouco de destaque nos elementos ativos */
+    border-color: #000;
+}
+
+textarea {
+    /* Para alinhar corretamente os campos de texto de várias linhas com sua label*/
+    vertical-align: top;
+
+    /* Para dar espaço suficiente para digitar algum texto */
+    height: 7em;
+
+    /* Para permitir aos usuários redimensionarem qualquer textarea verticalmente. Ele não funciona em todos os browsers */
+    resize: vertical;
+}
+
+.button {
+    /* Para posicionar os botões para a mesma posição dos campos de texto */
+    padding-left: 90px; /* mesmo tamanho que os elementos do tipo label */
+}
+button {
+    /* Esta margem extra representa aproximadamente o mesmo espaço que o espaço entre as labels e os seus campos de texto*/
+    margin-left: .3em;
+}
+#bt{
+  background-color: white;
+  border-radius: 5px;
+  padding: 2px;
+  border: 1px solid #999;
+  font: 'Inter', sans-serif
+}
+
+#paraquem{
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #D94814;
+}
+#labelSeletor{
+  display:inline-block;
 }
