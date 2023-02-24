@@ -1,91 +1,54 @@
-import React, { Component } from "react";
-import Chart from "react-google-charts";
-import "./painelFin.css";
+import './style.css';
+ import ImgPedido from "../../images/pedido.jpg";
 
-export default class PainelFinanceiro extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      opcoesGrafico: {
-        hAxis: { title: "Dia", viewWindow: { min: 0, max: 31 } },
-        vAxis: { title: "Valor", viewWindow: { min: 0, max: 500 } },
-        legend: "none",
-      },
-      data: [
-        ["Dia", "Valor"],
-        [1, 100],
-        [2, 120],
-        [3, 29],
-        [4, 190],
-        [5, 40],
-        [6, 200],
-        [7, 90],
-        [8, 100],
-        [9, 24],
-        [10, 200],
-        [11, 20],
-        [12, 400],
-        [13, 40],
-        [14, 215],
-        [15, 253],
-        [16, 125],
-        [17, 95],
-        [18, 93],
-        [19, 24],
-        [20, 16],
-        [21, 20],
-        [22, 59],
-        [23, 29],
-        [24, 59],
-        [25, 49],
-      ],
-    };
-  }
 
-  render() {
-    return (
-      <div className="containerFinanceiro">
-        <div className="titulo">
-          <p>Painel Financeiro</p>
-        </div>
-        <div className="cards">
-          <div className="cardLucroTotal">
-            <p className="tituloCard">Saldo</p>
-            <p className="valorNum">R$ 3000.0</p>
-          </div>
-          <div className="cardLucroMensal">
-            <p className="tituloCard">Lucro Mensal</p>
-            <p className="valorNum">R$ 1500.0</p>
-          </div>
-          <div className="cardDespesaMensal">
-            <p className="tituloCard">Gasto Mensal</p>
-            <p className="valorNum">R$ 1000.0</p>
-          </div>
-        </div>
-        <div className="painelGrafico">
-          <div className="graficoEsquerda">
-            <p>Gráfico de Renda</p>
-            <Chart
-              style={{ marginLeft: "20px", marginTop: "40px" }}
-              width="95%"
-              height={"17rem"}
-              chartType="ColumnChart"
-              data={this.state.data}
-              options={this.state.opcoesGrafico}
-            />
-          </div>
-          <div className="escolhaDireita">
-            <button>Dia Atual</button>
-            <button className="selecionado">Semana atual</button>
-            <button>Mês atual</button>
-            <button>Ano atual</button>
-          </div>
-        </div>
-        <div className="ultimosAssociado">
-          <p className="tituloAssociado" style={{ color: "#363636" }}>Ultimos associados</p>
-
-        </div>
+function Pedido() {
+  return (
+    
+    <div className='global'>
+      
+        <h1 id='titulo'> Pedido de oração </h1> 
+        <br/>
+        <img id='imgpedido' src={ImgPedido} alt = "nada"/>
+        <br/> <br/> <br/>
+        <p>
+        Abaixo, escreva seu pedido de oração, que será levado ao altar do Senhor. Estes pedidos têm cárater reservado. Que Deus abençõe você e conforte o seu coração.
+        </p>
+        
+        <form method="post">
+    <div>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" />
+    </div>
+    <div>
+        <label for="mail">E-mail:</label>
+        <input type="email" id="mail" />
+    </div>
+   
+    <label id ="labelSeletor" for = "paraquem">Para quem é o pedido?</label>
+    <div>
+    <select name="selector" id="paraquem">
+     <label>Para quem é o pedido?</label>
+    <option value="selecao">Selecione</option>
+    <option value="familia">Família</option>
+    <option value="amigos">Amigos</option>
+    <option value="conjugue">Conjugue</option>
+    <option value="filhos">Filhos</option>
+    </select>
+    </div>
+    
+    <div>
+        <label for="msg">Pedido:</label>
+        <textarea id="msg"></textarea>
+    </div>
+    <div class="button">
+        <button id = "bt"type="submit">Enviar</button>
+    </div>
+</form>
+        <br/>
+              
       </div>
-    );
-  }
+   
+  );
 }
+export default Pedido;
