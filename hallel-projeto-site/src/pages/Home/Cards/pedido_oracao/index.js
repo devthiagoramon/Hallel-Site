@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './style.css';
+import { Link } from "react-router-dom";
 
     function pedido_oracao(){
 
@@ -23,7 +24,7 @@ import './style.css';
                             </Card.Text>
                     </div>
 
-                <Button id = "bt" variant = "primary">Enviar</Button>
+                <Button id = "bt" variant = "primary"> <Link to="/pedido">Entrar</Link> </Button>
                 
             </Card.Body>
         </Card>
