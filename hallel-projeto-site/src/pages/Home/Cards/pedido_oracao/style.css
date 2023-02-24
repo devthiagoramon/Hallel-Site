@@ -1,34 +1,88 @@
-.card{
-
-    display: flex;
-    padding: 2px;
-    
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter';
 }
 
-#card-texto{
-   text-indent: 3px;
-    float: left;
-    margin-right: 100px;
-    
+.containerGeral {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  background: linear-gradient(135deg, #038C33, #D94814);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerSec {
+  position: relative;
+  padding: 150px;
+}
+
+.logo {
+  position: absolute;
+  top: -60px;
+  left: 155px;
+}
+
+#solicitar {
+  position: absolute;
+  color: #D94814;
+  font-size: 60px;
+  left: -110px;
+  top: 40px;
+
+}
+
+#cad {
+  position: absolute;
+  color: #038C33;
+  font-size: 60px;
+  left: 250px;
+  top: 40px;
+}
+#textoJatem{
+  position: absolute;
+  bottom: 30px;
+  left: 166px;
+}
+#Jatem{
+  position: absolute;
+  background-color: #038C33;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 100px;
+  bottom: 60px;
+  left: 120px;
+}
+#entre{
+  position: absolute;
+  bottom: 12px;
+  left: 212px;
+}
+.informacoes ul li{
+  display: column;
+  list-style-type: none;
+  float: column;
+  margin-bottom: 10px;
+}
+.informacoes input{
+  border: 10px;
+  border-color: #D94814;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+
+#ImgLogo{
+  width: 130px;
+  height: 100px;
+  margin-bottom: 1000px;
   
 }
-.space-in{
 
-    font-size: 14px;
-    font: 'Inter', sans-serif;
-   
-}
-#imagem{
-
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    float: right;
-}
-
-#bt{
-
-    background-color: #D94814;
-    float: right;
-    
+#solicitar, #cad{
+  font-weight: bold;
 }
