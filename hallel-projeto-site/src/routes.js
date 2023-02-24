@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Fundadora from "./pages/Fundadora";
-import Pedido from "./pages/pedido_oracao";
+import Pedido from "./pages/pedido-oracao";
 import SolicitacaoCadastro from "./pages/SolicitarCadastro"
 import Header from "./components/Header";
 import Sobre from "./pages/Sobre";
