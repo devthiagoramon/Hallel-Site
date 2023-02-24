@@ -1,28 +1,88 @@
-.main-footer {
-  color: black;
-  background-color: #81c599;
-  padding-top: 3em;
-  margin-top: 20rem;
-  align-items: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter';
+}
+
+.containerGeral {
   position: relative;
-  bottom: 0;
   width: 100%;
-  text-align: center;
+  height: 100vh;
+
+  background: linear-gradient(135deg, #038C33, #D94814);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.container{
-  max-height: 18rem;
+.containerSec {
+  position: relative;
+  padding: 150px;
+}
+
+.logo {
+  position: absolute;
+  top: -60px;
+  left: 155px;
+}
+
+#solicitar {
+  position: absolute;
+  color: #D94814;
+  font-size: 60px;
+  left: -110px;
+  top: 40px;
 
 }
 
-#logo{
-  width: 100px;
-  height: 70px;
+#cad {
+  position: absolute;
+  color: #038C33;
+  font-size: 60px;
+  left: 250px;
+  top: 40px;
+}
+#textoJatem{
+  position: absolute;
+  bottom: 30px;
+  left: 166px;
+}
+#Jatem{
+  position: absolute;
+  background-color: #038C33;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 100px;
+  bottom: 60px;
+  left: 120px;
+}
+#entre{
+  position: absolute;
+  bottom: 12px;
+  left: 212px;
+}
+.informacoes ul li{
+  display: column;
+  list-style-type: none;
+  float: column;
+  margin-bottom: 10px;
+}
+.informacoes input{
+  border: 10px;
+  border-color: #D94814;
+  border-radius: 6px;
+  padding: 10px;
 }
 
-.col{
-  margin: 10px 10px;
+/alteracoes complementares/
+#ImgLogo{
+  width: 130px;
+  height: 100px;
+  margin-bottom: 1000px;
+  
 }
-.list-unstyled li{
-  text-align: justify;
+
+#solicitar, #cad{
+  font-weight: bold;
 }
