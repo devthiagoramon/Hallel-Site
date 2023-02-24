@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Fundadora from "./pages/Fundadora";
+import Pedido from "./pages/pedido_oracao";
+import SolicitacaoCadastro from "./pages/SolicitarCadastro"
 import Header from "./components/Header";
 import Sobre from "./pages/Sobre";
 import MembrosAdm from "./pages/Administrador/Membros";
@@ -19,6 +21,8 @@ function RoutesApp() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/fundadora" element={<Fundadora />} />
+        <Route path="/pedido" element={<Pedido />} />
+        <Route path="/solicitacaoCadastro" element={<SolicitacaoCadastro />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
