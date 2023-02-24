@@ -7,7 +7,7 @@ import './style.css';
 
       return(
 
-        <Card className = "card mx-auto w-40" style = {{width: '18rem', border: '2px solid #D94814'}}>
+        <Card className = "card mx-auto w-40" style = {{width: '30rem', border: '2px solid #D94814'}}>
 
 
             <Card.Body>
