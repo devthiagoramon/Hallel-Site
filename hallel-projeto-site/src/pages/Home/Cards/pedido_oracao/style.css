@@ -2,23 +2,27 @@
 
     display: flex;
     padding: 2px;
+    
 }
 
-.card-texto{
-
-    padding-left: 15px;
-    text-align: justify;
+#card-texto{
+   text-indent: 3px;
+    float: left;
+    margin-right: 100px;
+    
+  
 }
 .space-in{
 
     font-size: 14px;
-    font: Arial
-    /*trocar pro inter*/
+    font: 'Inter', sans-serif;
+    background-color: pink;
+   
 }
 #imagem{
 
-    height: 120px;
-    width: 120px;
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
     float: right;
 }
