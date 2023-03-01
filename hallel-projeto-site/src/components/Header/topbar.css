@@ -20,7 +20,7 @@
     height: 80px;
 
     background-color: #81C599;
-    z-index: 1040;
+    z-index: 2;
 
     left: 0;
     top: 0;
@@ -29,7 +29,7 @@
     position: fixed;
     align-items: center;
 
-    background: linear-gradient(270deg,#d85526,#e0c36b);
+    background: linear-gradient(90deg,#eebb20,#2CD4B2);
     background-size: 100% 100%;
     display: flex;
     align-items: center;
@@ -58,7 +58,7 @@
 */
 
 #topbar #topicos #item:hover{
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.25);
 }
 
 #topbar #btn {
@@ -70,7 +70,7 @@
     width: 120px;
     height: 2.5pc;
     color: #35404B;
-    background-color: #ddb84a;
+    background-color: #2CD4B2;
     box-shadow: rgba(0, 0, 0, .50) 2px 2px 10px;
 }
 
@@ -229,3 +229,4 @@
 #botao{
   min-width: 80px;
 }
+
