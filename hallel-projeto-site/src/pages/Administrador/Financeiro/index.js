@@ -39,7 +39,76 @@ export default class PainelFinanceiro extends Component {
         [24, 59],
         [25, 49],
       ],
+      gastos: 0,
+      lucros: 0,
+      saldo: 0,
     };
+    this.loadSaldo = this.loadSaldo.bind(this)
+    this.loadDataFromAPI = this.loadDataFromAPI.bind(this)
+  }
+
+  loadDataFromAPI() {
+    this.loadSaldo()
+  }
+
+  /*
+  loadLucro() {
+    let url = "http://localhost:8080/api/financeiro/receita";
+    let myHeaders = new Headers();
+
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    }).then((res) => {
+      return res.json();
+    }).then((object) => {
+      this.setState({lucros:object})
+    }).catch((console.warn("Error in API: in request of lucros")));
+  }
+  */
+  /*
+  loadGastos() {
+    let url = "http://localhost:8080/api/financeiro/receita";
+    let myHeaders = new Headers();
+
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((object) => {
+        this.setState({ gastos: object });
+      })
+      .catch(console.warn("Error in API: in request of gastos"));
+  }
+  */
+  loadSaldo() {
+    let url = "http://localhost:8080/api/financeiro/lucro";
+    let myHeaders = new Headers();
+
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((object) => {
+        this.setState({ saldo: object });
+      })
+      .catch(console.warn("Error in API: in request of saldo"));
+  }
+
+  componentDidMount() {
+    this.loadDataFromAPI()
   }
 
   render() {
@@ -51,7 +120,7 @@ export default class PainelFinanceiro extends Component {
         <div className="cards">
           <div className="cardLucroTotal">
             <p className="tituloCard">Saldo</p>
-            <p className="valorNum">R$ 3000.0</p>
+            <p className="valorNum">{this.state.saldo}</p>
           </div>
           <div className="cardLucroMensal">
             <p className="tituloCard">Lucro Mensal</p>
@@ -82,8 +151,9 @@ export default class PainelFinanceiro extends Component {
           </div>
         </div>
         <div className="ultimosAssociado">
-          <p className="tituloAssociado" style={{ color: "#363636" }}>Ultimos associados</p>
-
+          <p className="tituloAssociado" style={{ color: "#363636" }}>
+            Ultimos associados
+          </p>
         </div>
       </div>
     );

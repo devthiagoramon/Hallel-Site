@@ -117,14 +117,14 @@ function Header() {
         <div id="space"></div>
 
         <div id="topicos">
-          <Link to="/">Início</Link>
-          <Link to="/eventos">Eventos</Link>
-          <Down />
-          <Link to="/">Ministérios</Link>
-          <Link to="/">Agenda</Link>
-          <Link to="/">Loja</Link>
-          <Link to="/">Doações</Link>
-          <Link to="/">Contato</Link>
+          <Link id="item" to="/">Início</Link>
+          <Link id="item" to="/eventos">Eventos</Link>
+          <Down id="item" />
+          <Link id="item" to="/">Ministérios</Link>
+          <Link id="item" to="/">Agenda</Link>
+          <Link id="item" to="/">Loja</Link>
+          <Link id="item" to="/">Doações</Link>
+          <Link id="item" to="/">Contato</Link>
         </div>
         {isNotUsuario() ? (
           <button

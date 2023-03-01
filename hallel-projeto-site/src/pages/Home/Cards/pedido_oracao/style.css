@@ -76,11 +76,12 @@
 }
 
 
-#ImgLogo{
-  width: 130px;
-  height: 100px;
-  margin-bottom: 1000px;
-  
+#imagem{
+  max-width:90%;
+  width: 80%;
+  max-height: 200px;
+  border-radius: 10px;
+  margin-left: 2.5rem;
 }
 
 #solicitar, #cad{

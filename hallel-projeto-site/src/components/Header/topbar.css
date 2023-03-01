@@ -9,8 +9,6 @@
     border-radius: 10px;
     padding: 3px;
     margin: 0 15px;
-
-    
 }
 
 #cont-logo img {
@@ -31,27 +29,13 @@
     position: fixed;
     align-items: center;
 
-    background: linear-gradient(45deg,#d9491496,#f2b707a6);
-    background-size: 500% 100%;
+    background: linear-gradient(270deg,#d85526,#e0c36b);
+    background-size: 100% 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    animation-name: background;
-    animation-duration:3s;
-    animation-timing-function: ease-in-out;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
 }
 
-@keyframes background {
-    0%{
-        background-position-x: 0%;
-    }
-    100%{
-        background-position-x: 100%;
-    }
-}
 
 
 #topbar #topicos * {
@@ -62,27 +46,32 @@
     color: #35404B;
     text-align: center;
 
-    border-radius: 10px;
+    border-radius: 7px;
     padding: 0 6px;
     line-height: 60px;
 }
 
+/*
 #topbar #topicos *:hover {
     background-color: #c2d6ea;
 }
+*/
 
+#topbar #topicos #item:hover{
+    background-color: rgba(255, 255, 255, 0.35);
+}
 
 #topbar #btn {
     margin: 0 15px;
+    border-radius: 7px;
     border: none;
-    border-radius: 10px;
     font-size: 19px;
     font-weight:lighter;
     width: 120px;
     height: 2.5pc;
     color: #35404B;
-    background-color: #B9D1E7;
-    box-shadow: #333 3px 3px 7px;
+    background-color: #ddb84a;
+    box-shadow: rgba(0, 0, 0, .50) 2px 2px 10px;
 }
 
 #topbar #btn:hover {
