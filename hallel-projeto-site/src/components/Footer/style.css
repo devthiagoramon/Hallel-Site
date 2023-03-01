@@ -1,6 +1,7 @@
 .main-footer {
   color: black;
-  background-color: #81c599;
+  background: linear-gradient(135deg,#eebb20,#2CD4B2);
+  background-size: 100% 100%;
   padding-top: 3em;
   margin-top: 20rem;
   align-items: center;
