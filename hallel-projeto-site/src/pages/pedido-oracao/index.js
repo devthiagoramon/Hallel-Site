@@ -1,54 +1,41 @@
-import './style.css';
- import ImgPedido from "../../images/pedido.jpg";
+import React, { Component } from "react";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import "./style.css";
+import { Link } from "react-router-dom";
 
-
-function Pedido() {
+function pedido_oracao() {
   return (
-    
-    <div className='global'>
-      
-        <h1 id='titulo'> Pedido de oração </h1> 
-        <br/>
-        <img id='imgpedido' src={ImgPedido} alt = "nada"/>
-        <br/> <br/> <br/>
-        <p>
-        Abaixo, escreva seu pedido de oração, que será levado ao altar do Senhor. Estes pedidos têm cárater reservado. Que Deus abençõe você e conforte o seu coração.
-        </p>
-        
-        <form method="post">
-    <div>
-        <label for="name">Nome:</label>
-        <input type="text" id="name" />
-    </div>
-    <div>
-        <label for="mail">E-mail:</label>
-        <input type="email" id="mail" />
-    </div>
-   
-    <label id ="labelSeletor" for = "paraquem">Para quem é o pedido?</label>
-    <div>
-    <select name="selector" id="paraquem">
-     <label>Para quem é o pedido?</label>
-    <option value="selecao">Selecione</option>
-    <option value="familia">Família</option>
-    <option value="amigos">Amigos</option>
-    <option value="conjugue">Conjugue</option>
-    <option value="filhos">Filhos</option>
-    </select>
-    </div>
-    
-    <div>
-        <label for="msg">Pedido:</label>
-        <textarea id="msg"></textarea>
-    </div>
-    <div class="button">
-        <button id = "bt"type="submit">Enviar</button>
-    </div>
-</form>
-        <br/>
-              
-      </div>
-   
+    <Card
+      className="card mx-auto w-40"
+      style={{ width: "30rem", border: "2px solid #D94814" }}
+    >
+      <Card.Body id = "corpo">
+        <Card.Title>
+          <h1>Pedido de oração</h1>
+          </Card.Title>
+
+        <div className="space-in" style={{display:"flex"}}>
+          <img
+            id="imagem"
+            src="https://www.basilicacoracaodemaria.com/area/img/noticias/6f7757f890370ad6cd8c9d062b5bac4c.jpg"
+            alt="Pedido_img"
+          />
+
+          <Card.Text id = "texto" style={{width: "100%",
+                            marginLeft:"0",wordBreak: "normal"}}> 
+              Resgatando para através do louvor, da formação e do amor por
+              excelência.
+          </Card.Text>
+        </div>
+
+        <Button id="bt">
+          <Link to="/pedido">Entrar</Link>
+        </Button>
+
+      </Card.Body>
+    </Card>
   );
 }
-export default Pedido;
+
+export default pedido_oracao;
