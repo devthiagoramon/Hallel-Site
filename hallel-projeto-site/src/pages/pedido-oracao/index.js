@@ -1,5 +1,5 @@
 import './style.css';
- import ImgPedido from "../../images/pedido.jpg";
+ import ImgPedido from "../../images/pedido.png";
 
 
 function Pedido() {
@@ -11,8 +11,7 @@ function Pedido() {
         <br/>
         <img id='imgpedido' src={ImgPedido} alt = "nada"/>
         <br/> <br/> <br/>
-        <p>
-        Abaixo, escreva seu pedido de oração, que será levado ao altar do Senhor. Estes pedidos têm cárater reservado. Que Deus abençõe você e conforte o seu coração.
+        <p id = "paragrafo">Abaixo, escreva seu pedido de oração, que será levado ao altar do Senhor. Estes pedidos têm cárater reservado. Que Deus abençõe você e conforte o seu coração.
         </p>
         
         <form method="post">
