@@ -13,6 +13,7 @@ import Perfil from "./pages/PerfilUsuario";
 import MaisInfo from "./pages/Evento/MaisInformacoes";
 import PainelFinanceiro from "./pages/Administrador/Financeiro";
 import Renda from "./pages/Administrador/Financeiro/renda";
+import Entrar from "./pages/Entrar";
 
 function RoutesApp() {
   return (
@@ -22,7 +23,7 @@ function RoutesApp() {
         <Route path="/" element={<Home />} />
         <Route path="/fundadora" element={<Fundadora />} />
         <Route path="/pedido" element={<Pedido />} />
-        <Route path="/solicitacaoCadastro" element={<SolicitacaoCadastro />} />
+        <Route path="/solicitarCadastro" element={<SolicitacaoCadastro />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
@@ -31,12 +32,18 @@ function RoutesApp() {
           path="/administrador/eventos/criar"
           element={<EventosCriarAdm />}
         />
-        <Route path="/perfil" element={<Perfil/>}/>
-        <Route path="/maisInfo" element={<MaisInfo/>}/>
-        <Route path="/administrador/painelFinanceiro" element={<PainelFinanceiro/>}/>
-        <Route path="/administrador/painelFinanceiro/renda" element={<Renda/>}/>
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/maisInfo" element={<MaisInfo />} />
+        <Route
+          path="/administrador/painelFinanceiro"
+          element={<PainelFinanceiro />}
+        />
+        <Route
+          path="/administrador/painelFinanceiro/renda"
+          element={<Renda />}
+        />
+        <Route path="/entrar" element={<Entrar/>}/>
       </Routes>
-
     </BrowserRouter>
   );
 }

@@ -130,11 +130,8 @@ function Header() {
           <button
             id="btn"
             className="btnEntre"
-           /* onClick={() => {
-              setisModalVisible(true);
-            }}   */
           >
-              <Link to="/solicitacaoCadastro">Entre</Link>
+              <Link to="/entrar">Entre</Link>
           </button>
         ) : (
           <button style={stylePerfil} onClick={() => showModalPerfil()}>

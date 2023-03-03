@@ -1,37 +1,43 @@
-import React, { Component } from 'react';
-import './style.css';
-import Logo from "../../images/LogoHallel.png"
+import React, { Component } from "react";
+import "./style.css";
+import Logo from "../../images/LogoHallel.png";
 
-class Componentes extends Component{
-  render(){
-    return(
-      <section className='containerSec'>
-        <div className='logo'>
-          <img id = "ImgLogo" src= {Logo} alt="logo site"></img>
+class Componentes extends Component {
+  render() {
+    return (
+      <section className="containerSecSC">
+        <div className="headSC">
+          <img id="ImgLogoSC" src={Logo} alt="logo site"></img>
+          <div className="textoHeadSC">
+            <h1 id="solicitarSC">SOLICITAR</h1>
+            <h1 id="cadSC">CADASTRO</h1>
+          </div>
         </div>
-          <h1 id='solicitar'>SOLICITAR</h1>
-          <h1 id='cad'>CADASTRO</h1>
-        <div className='informacoes'>
-          <ul>
-            <li><input itemType='text' placeholder='Nome completo'></input></li>
-            <li><input itemType='text' placeholder='Insira seu email'></input></li>
-            <li><input itemType='text' placeholder='Crie uma senha'></input></li>
-            <li><input itemType='text' placeholder='Confirme sua senha'></input></li>
-          </ul>
+        <div className="informacoesSC">
+          <input itemType="text" placeholder="Nome completo"></input>
+          <input itemType="text" placeholder="Insira seu email"></input>
+          <input itemType="text" placeholder="Crie uma senha"></input>
+          <input itemType="text" placeholder="Confirme sua senha"></input>
         </div>
-          <button id='Jatem'>ENVIAR</button>
-          <a id='textoJatem'>JA TEM UMA CONTA?</a>
-          <a href='entreaqui.html' id='entre'>Entre aqui</a>
+        <div className="footerSC">
+          <button id="JatemSC">ENVIAR</button>
+          <div className="textoFooterSC">
+            <a id="textoJatemSC">JA TEM UMA CONTA?</a>
+            <a href="/entrar" id="entreSC">
+              Entre aqui
+            </a>
+          </div>
+        </div>
       </section>
     );
   }
 }
 
-class Geral extends Component{
-  render(){
-    return(
-      <section className='containerGeral'>
-        <Componentes/>
+class Geral extends Component {
+  render() {
+    return (
+      <section className="containerGeralSC">
+        <Componentes />
       </section>
     );
   }
@@ -40,7 +46,7 @@ class Geral extends Component{
 function SolicitarCadastro() {
   return (
     <div>
-      <Geral/>
+      <Geral />
     </div>
   );
 }

@@ -1,0 +1,152 @@
+
+.containerlogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.containerlogin img {
+  display: flex;
+  margin-top: 7rem;
+  margin-left: 70px;
+  margin-bottom: 5px;
+  max-width: 9.375rem;
+  max-height: 9.375rem;
+  left: 654px;
+  top: 86px;
+  padding: 1px;
+}
+
+.containerlogin .log {
+  width: 171px;
+  height: 114px;
+  left: 581px;
+  top: 194px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 94px;
+  line-height: 114px;
+  color: #038c33;
+}
+
+.containerlogin .in {
+  width: 85px;
+  height: 114px;
+  left: 753px;
+  top: 194px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 94px;
+  line-height: 114px;
+  color: #d94214;
+}
+
+.containerlogin form {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.containerlogin form input {
+  align-items: flex-start;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.containerlogin form .inputContainerEmail input {
+  box-sizing: border-box;
+
+  width: 400px;
+  height: 45px;
+  left: 486px;
+  top: 350px;
+
+  border: 2px solid #d94814;
+  border-radius: 6px;
+}
+
+.containerlogin form .inputContainerSenha input {
+  margin-top: 20px;
+  position: flex;
+  width: 400px;
+  height: 45px;
+  left: 486px;
+  top: 400px;
+
+  border: 2px solid #d94814;
+  border-radius: 6px;
+}
+
+/* Esqueceu sua senha? */
+.containerlogin form a {
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 12px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  text-decoration-line: underline;
+
+  color: #758b9f;
+}
+
+/* botão entrar */
+.containerlogin form .buttonEntrar {
+  border: none;
+  width: 300px;
+  height: 40px;
+  left: 486px;
+  top: 574px;
+
+  color: #ffff;
+  background: #038c33;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerlogin form .buttonEntrar:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.containerlogin form .footerEntrar {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+}
+
+/* Não tem uma conta? */
+.containerlogin form .footerEntrar p {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  color: #35404b;
+  padding-top: 1.25rem;
+}
+
+/* Solicite seu cadastro */
+.containerlogin form .footerEntrar a {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 23px;
+  /* identical to box height */
+  text-decoration-line: underline;
+}

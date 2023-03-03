@@ -1,88 +1,119 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
-.containerGeral {
+.containerGeralSC {
   position: relative;
-  width: 100%;
-  height: 100vh;
-
-  background: linear-gradient(135deg, #038C33, #D94814);
+  width: 100vw;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 4rem;
 }
 
-.containerSec {
+.containerSecSC {
   position: relative;
-  padding: 150px;
+  height: 80%;
 }
 
-.logo {
-  position: absolute;
-  top: -60px;
-  left: 155px;
+.headSC {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 
-#solicitar {
-  position: absolute;
-  color: #D94814;
+.textoHeadSC {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textoHeadSC h1 {
+  text-shadow: rgba(0, 0, 0, 0.25) 1px 1px 2px;
+}
+
+#solicitarSC {
+  position: relative;
+  color: #ee4a0e;
   font-size: 60px;
-  left: -110px;
-  top: 40px;
-
+  margin-left: 2rem;
+  width: auto;
 }
 
-#cad {
-  position: absolute;
-  color: #038C33;
+#cadSC {
+  width: auto;
+  position: relative;
+  color: #038c33;
   font-size: 60px;
-  left: 250px;
-  top: 40px;
+  margin-left: 2rem;
 }
-#textoJatem{
-  position: absolute;
-  bottom: 30px;
-  left: 166px;
+#textoJatemSC {
+  position: relative;
 }
-#Jatem{
-  position: absolute;
-  background-color: #038C33;
+#JatemSC {
+  position: relative;
+  background-color: #038c33;
   color: #fff;
   border: none;
+  width: 300px;
+  height: 40px;
   border-radius: 6px;
   padding: 5px 100px;
-  bottom: 60px;
-  left: 120px;
+  font-weight: 600;
 }
-#entre{
-  position: absolute;
-  bottom: 12px;
-  left: 212px;
+#entreSC {
+  position: relative;
 }
-.informacoes ul li{
-  display: column;
-  list-style-type: none;
-  float: column;
-  margin-bottom: 10px;
+.informacoesSC {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 3rem;
 }
-.informacoes input{
-  border: 10px;
-  border-color: #D94814;
-  border-radius: 6px;
-  padding: 10px;
-}
-
-
-#ImgLogo{
-  width: 130px;
-  height: 100px;
-  margin-bottom: 1000px;
-  
+.informacoesSC input {
+  border-width: 2px;
+  border-color: #d94814;
+  border-style: solid;
+  border-radius: 7px;
+  width: 400px;
+  height: 45px;
+  padding-left: 1.5rem;
 }
 
-#solicitar, #cad{
+.footerSC {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.textoFooterSC {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+#ImgLogoSC {
+  max-width: 9.375rem;
+  max-height: 9.375rem;
+  margin-left: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+#solicitarSC,
+#cadSC {
   font-weight: bold;
 }
