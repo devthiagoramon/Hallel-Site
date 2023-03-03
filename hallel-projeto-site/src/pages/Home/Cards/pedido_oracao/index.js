@@ -37,3 +37,5 @@ function pedido_oracao() {
     </Card>
   );
 }
+
+export default pedido_oracao;
