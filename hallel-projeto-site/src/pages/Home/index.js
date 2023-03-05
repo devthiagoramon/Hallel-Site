@@ -6,11 +6,7 @@ function Home() {
   return (
     <div>
       <Slide />
-
-
-      
-      <br />
-   
+  
       <br />
       <Link to="/administrador/eventos">ADMINISTRADOR: Eventos</Link>
       <br />
@@ -22,5 +18,4 @@ function Home() {
     </div>
   );
 }
-
 export default Home;

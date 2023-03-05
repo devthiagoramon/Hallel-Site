@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "./style.css";

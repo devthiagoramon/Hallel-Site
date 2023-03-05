@@ -1,5 +1,5 @@
 import Img1 from "../../images/slide.jpeg";
-import Img2 from "../../images/slide2.jpeg";
+import Img2 from "../../images/slide2.jpg";
 import Img3 from "../../images/slide3.jpeg";
 import Img4 from "../../images/slide4.jpeg";
 import Img5 from "../../images/slide5.jpeg";
@@ -119,8 +119,7 @@ class Slide extends Component {
 
         <div className="slide">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqkLWFx6VJN3T-ofayrB4GtQA0JLTABv1Cyw&usqp=CAU"
-            alt="Img 2"
+            src={Img2} alt="Img 2"
           />
         </div>
 
