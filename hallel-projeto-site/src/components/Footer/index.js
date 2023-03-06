@@ -1,6 +1,8 @@
 import React from 'react'
 import "../../components/Footer/style.css";
 import Logo from '../../images/LogoHallel.png';
+import {FiTwitter, FiPhone, FiMapPin} from "react-icons/fi";
+import { AiOutlineInstagram, AiFillYoutube, AiFillFacebook} from "react-icons/ai";
 
 function Footer(){
   
@@ -18,20 +20,23 @@ function Footer(){
       {/*coluna 1*/}
       <div className = "col">
         <h4>Comunidade Hallel</h4>
+        <hr class = "linha"/>
           <ul className = "list-unstyled">
-            <li>(92) 3085-1787</li>
-            <li>Aparecida, Manaus - AM</li>
-            <li>222, Rua Leornado Malcher</li>
+          <li>Aparecida, Manaus - AM <br/>222, Rua Leornado Malcher <FiMapPin/></li>
+            <li>(92) 3085-1787 <FiPhone/></li>
           </ul>
       </div>
       {/*coluna 2*/}
        <div className = "col">
-      <h4>Midias sociais</h4>
+      <h4>Mídias Sociais</h4>
+      <hr class = "linha" />
           <ul className = "list-unstyled">
-            <li><a href = "https://youtube.com/@comunidadehallel">Youtube</a></li>
-            <li><a href = "https://twitter.com/hallelmanaus?s=20&t=2-TK1zPnVoCOCylv9Py7QQ">Twitter</a></li>
-            <li><a href = "https://instagram.com/comunidadehallel?igshid=YmMyMTA2M2Y=">Instagram</a></li>
-            <li><a href = "https://m.facebook.com/375394805846479/">Facebook</a></li>
+            <li><a href = "https://youtube.com/@comunidadehallel">Youtube</a> <AiFillYoutube/></li>
+            <li><a href = "https://twitter.com/hallelmanaus?s=20&t=2-TK1zPnVoCOCylv9Py7QQ">Twitter</a> <FiTwitter/></li>
+
+            
+            <li><a href = "https://instagram.com/comunidadehallel?igshid=YmMyMTA2M2Y=">Instagram</a> <AiOutlineInstagram/></li>
+            <li><a href = "https://m.facebook.com/375394805846479/">Facebook</a> <AiFillFacebook/></li>
           </ul>
     </div>
     </div>
