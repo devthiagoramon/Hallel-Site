@@ -43,17 +43,20 @@ export default class PainelFinanceiro extends Component {
       lucros: 0,
       saldo: 0,
     };
-    this.loadSaldo = this.loadSaldo.bind(this)
-    this.loadDataFromAPI = this.loadDataFromAPI.bind(this)
+    this.loadSaldo = this.loadSaldo.bind(this);
+    this.loadLucro = this.loadLucro.bind(this);
+    this.loadGastos = this.loadGastos.bind(this);
+    this.loadDataFromAPI = this.loadDataFromAPI.bind(this);
   }
 
   loadDataFromAPI() {
-    this.loadSaldo()
+    this.loadSaldo();
+    this.loadGastos();
+    this.loadLucro();
   }
 
-  /*
   loadLucro() {
-    let url = "http://localhost:8080/api/financeiro/receita";
+    let url = "http://localhost:8080/api/financeiro/lucroMensal";
     let myHeaders = new Headers();
 
     myHeaders.append("Content-Type", "application/json");
@@ -61,16 +64,18 @@ export default class PainelFinanceiro extends Component {
     fetch(url, {
       headers: myHeaders,
       method: "GET",
-    }).then((res) => {
-      return res.json();
-    }).then((object) => {
-      this.setState({lucros:object})
-    }).catch((console.warn("Error in API: in request of lucros")));
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((object) => {
+        this.setState({ lucros: object });
+      })
+      .catch(console.warn("Error in API: in request of lucros"));
   }
-  */
-  /*
+
   loadGastos() {
-    let url = "http://localhost:8080/api/financeiro/receita";
+    let url = "http://localhost:8080/api/financeiro/gastoMensal";
     let myHeaders = new Headers();
 
     myHeaders.append("Content-Type", "application/json");
@@ -87,7 +92,6 @@ export default class PainelFinanceiro extends Component {
       })
       .catch(console.warn("Error in API: in request of gastos"));
   }
-  */
   loadSaldo() {
     let url = "http://localhost:8080/api/financeiro/lucro";
     let myHeaders = new Headers();
@@ -108,7 +112,7 @@ export default class PainelFinanceiro extends Component {
   }
 
   componentDidMount() {
-    this.loadDataFromAPI()
+    this.loadDataFromAPI();
   }
 
   render() {
@@ -120,15 +124,15 @@ export default class PainelFinanceiro extends Component {
         <div className="cards">
           <div className="cardLucroTotal">
             <p className="tituloCard">Saldo</p>
-            <p className="valorNum">{this.state.saldo}</p>
+            <p className="valorNum">R$ {this.state.saldo}</p>
           </div>
           <div className="cardLucroMensal">
             <p className="tituloCard">Lucro Mensal</p>
-            <p className="valorNum">R$ 1500.0</p>
+            <p className="valorNum">R$ {this.state.lucros}</p>
           </div>
           <div className="cardDespesaMensal">
             <p className="tituloCard">Gasto Mensal</p>
-            <p className="valorNum">R$ 1000.0</p>
+            <p className="valorNum">R$ {this.state.gastos}</p>
           </div>
         </div>
         <div className="painelGrafico">
