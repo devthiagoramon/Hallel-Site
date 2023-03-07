@@ -19,6 +19,7 @@ const PopUpMensagem = (props) => {
           style={{ backgroundColor: props.color }}
           initial={{x:"+100px"}}
           animate={{x:"0"}}
+          transition={{duration: 0.8 }}
         >
           <motion.div className="innerPopUp">
             <a className="textPopUp">{props.mensagem}</a>

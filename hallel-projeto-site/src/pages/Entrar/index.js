@@ -4,9 +4,7 @@ import "./entrar.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PopUpMensagem from "../../components/popUpMensagem";
-import { createRoot } from "react-dom/client";
 
-const container = createRoot(document.querySelector("#root"));
 
 function Entrar() {
   const [emailInput, setEmail] = useState();
@@ -16,21 +14,18 @@ function Entrar() {
   const [isValid, setisValid] = useState(false);
 
   function entrar() {
-    const user = {
-      email: emailInput,
-      senha: senhaInput,
-    };
+   
 
-
-    
-    /*
     let url = "http://localhost:8080/api/login";
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     fetch(url, {
       headers: myHeaders,
       method: "POST",
-      body: user,
+      body: JSON.stringify({
+        email: emailInput,
+        senha: senhaInput
+      }),
     })
       .then((res) => {
         return res.json();
@@ -47,8 +42,19 @@ function Entrar() {
           rolesName.push(role.name);
         });
         localStorage.setItem("R0l3s", rolesName);
+        setMostrarPopUp(true)
+        setisValid(true)
+        setTimeout(() => {
+          window.location.href = "/"
+        }, 4200);
+      }).catch((e) => {
+        console.log(e)
+        setMostrarPopUp(true)
+        setisValid(false)
+        setTimeout(() => {
+          setMostrarPopUp(false);
+        }, 4200);
       });
-      */
   }
 
   return (
