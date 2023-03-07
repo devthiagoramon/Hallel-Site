@@ -1,77 +1,74 @@
-.slider {
-    height: 92vh;
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
+.containerCarroseul {
+    margin-top: 5rem;
     width: 100%;
-    position: relative;
-}
-
-.slider input {
-    display: none;
-}
-
-.slide{
-    display: none;
-}
-
-.slide img{
-    
-    position: absolute;
-    border: none;
-
-    width: 100%;
-    height: 92vh;
-
-    object-fit: cover;
-}
-
-.navigation-manual {
-    width: 100%;
-    position: absolute;
+    min-height: 80vh;
     display: flex;
+    align-items: center;
     justify-content: center;
-    bottom: 1%;
 }
 
-.manual-btn {
-    background-color: rgb(240, 240, 240);
-    padding: 2px 20px;
-    cursor: pointer;
-    transition: 0.5s;
-
+.carrousel {
+    cursor: grab;
+    overflow: hidden;
 }
 
-.manual-btn:not(:last-child) {
-    margin-right: 20px;
+.inner {
+    display: flex;
 }
 
-.manual-btn:hover {
-    background-color: rgba(255, 255, 255, 0.489);
-    padding: 3px 20px;
+.imagem {
+    position: relative;
+    min-width: 700px;
+    min-height: 700px;
+    padding: 15px;
+    
 }
 
-
-.fadee {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1s;
-    animation-name: fade;
-    animation-duration: 1s;
+.imagem img {
+    width: 100%;
+    height: 90%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
+    pointer-events: none;
 }
 
-@-webkit-keyframes fadee {
-    from {
-        opacity: .5
-    }
-
-    to {
-        opacity: 2
-    }
+.legenda {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 9.75%, rgba(0,0,0,0.75) 80%);
+    display: flex;
+    position: absolute;
+    bottom: 11.70%;
+    visibility: hidden;
+    border-radius: 10px;
+    align-items: end;
+    width: 96%;
+    height: 20%;
 }
 
-@keyframes fadee {
-    from {
-        opacity: .5
-    }
-
-    to {
-        opacity: 2
-    }
+.legenda>a {
+    margin-bottom: 1.10rem;
+    margin-left: 1.10rem;
+    padding: 5px;
+    background: none;
+    border-radius: 5px;
+    font-size: 36px;
+    color: #fafafa;
+    border-width: 1px;
+    font-weight: 500;
+    font-family: 'Archivo', sans-serif;
 }
+
+.imagem:hover .legenda {
+    visibility: visible;
+}
+
+.legenda:hover{
+    color: #fafafa;
+}
+
+.imagem:hover{
+    border-width: 3px;
+    scale: 1.009
+}
+

@@ -46,7 +46,7 @@
   color: #d94214;
 }
 
-.containerlogin form {
+.containerlogin .formulario {
   margin-top: 3rem;
   display: flex;
   align-items: center;
@@ -54,13 +54,13 @@
   flex-direction: column;
 }
 
-.containerlogin form input {
+.containerlogin .formulario input {
   align-items: flex-start;
   padding: 10px;
   font-size: 15px;
 }
 
-.containerlogin form .inputContainerEmail input {
+.containerlogin .formulario .inputContainerEmail input {
   box-sizing: border-box;
 
   width: 400px;
@@ -72,7 +72,7 @@
   border-radius: 6px;
 }
 
-.containerlogin form .inputContainerSenha input {
+.containerlogin .formulario .inputContainerSenha input {
   margin-top: 20px;
   position: flex;
   width: 400px;
@@ -85,7 +85,7 @@
 }
 
 /* Esqueceu sua senha? */
-.containerlogin form a {
+.containerlogin .formulario a {
   align-items: center;
   padding-top: 20px;
   padding-bottom: 12px;
@@ -100,7 +100,7 @@
 }
 
 /* botão entrar */
-.containerlogin form .buttonEntrar {
+.containerlogin .formulario .buttonEntrar {
   border: none;
   width: 300px;
   height: 40px;
@@ -118,19 +118,19 @@
   justify-content: center;
 }
 
-.containerlogin form .buttonEntrar:hover {
+.containerlogin .formulario .buttonEntrar:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
-.containerlogin form .footerEntrar {
+.containerlogin .formulario .footerEntrar {
   display: flex;
   width: 300px;
   justify-content: space-between;
 }
 
 /* Não tem uma conta? */
-.containerlogin form .footerEntrar p {
+.containerlogin .formulario .footerEntrar p {
   margin: 0;
   padding: 0;
   font-style: normal;
@@ -142,7 +142,7 @@
 }
 
 /* Solicite seu cadastro */
-.containerlogin form .footerEntrar a {
+.containerlogin .formulario .footerEntrar a {
   font-style: normal;
   font-weight: 600;
   font-size: 15px;
