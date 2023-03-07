@@ -30,11 +30,16 @@ p {
   font-style: normal;
   margin-right: 90px;
   margin-left: 40px;
-  font-size: 25px;
+  font-size: 18px;
 
 }
 
 .frasefinal{
   font-weight: bold;
 
+}
+
+#titulo, p{
+
+  margin-left: 20px;
 }

@@ -1,4 +1,6 @@
 import '../Fundadora/style.css';
+import ImgFundadora from '../../images/Fundadora.jpg';
+
 
 
 function Fundadora() {
@@ -9,9 +11,9 @@ function Fundadora() {
       <div className = "funda">
        
     <div className = "loc">
-     
-      <img id = "imgFundadora"src = "https://b95a2d89ab.cbaul-cdnwnd.com/ae099ed7e9472ab94465575db35cab11/system_preview_detail_200000774-7d7dc7e772-public/IMG_5955[1].JPG" alt = "fundadora"/>
-      
+
+      <img src = {ImgFundadora} alt = "fundadora img"/>
+        
       <div className = "texto">
         
         <h3>Clenir Viana Guimarães </h3>

@@ -24,6 +24,26 @@
 .col{
   margin: 10px 10px;
 }
+
+.col ul li{
+
+  font-weight: 400;
+}
+
+
 .list-unstyled li{
   text-align: justify;
+}
+
+.linha{
+
+  max-width: 20em;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.col-sm{
+
+  font-size: smaller;
+  font-weight: 550;
 }
