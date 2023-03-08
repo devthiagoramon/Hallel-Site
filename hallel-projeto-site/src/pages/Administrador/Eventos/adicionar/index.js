@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import "./style.css";
 import addImageIcon from "./../../../../images/addImage.svg";
+import addCircle from "./../../../../images/addCircle.svg";
 
 const AdicionarEvento = () => {
   const [tituloInput, setTituloInput] = useState();
@@ -12,6 +13,7 @@ const AdicionarEvento = () => {
   const imagemDiv = useRef();
   const imagemLabelInformativoDiv = useRef();
   const imagemLabelInformativoLabel = useRef();
+  const divPalestrantes = useRef();
 
   function verificando(e) {
     if (e.value.name) {
@@ -46,6 +48,7 @@ const AdicionarEvento = () => {
 
     reader.readAsDataURL(selectedFile);
   }
+
 
   return (
     <div>
@@ -89,6 +92,30 @@ const AdicionarEvento = () => {
               src={imagemInput}
             />
           )}
+        </div>
+        <div className="contDescricaoEvento">
+          <label className="lblDescEvento">Descrição</label>
+          <textarea className="descEvento" type="text" placeholder="Descrição *" />
+        </div>
+        <hr className="divisao" />
+        <div className="contDetalhes">
+          <div className="contDetalhesEsquerda">
+            <label>Data:</label>
+            <input placeholder="11/11/2011" />
+            <label >Horário:</label>
+            <input placeholder="20:30" />
+            <label>Endereço:</label>
+            <textarea placeholder="Av. Amazonas, 1113 Iranduba, AM, 69415-000" />
+          </div>
+          <div className="contDetalhesDireita">
+            <div className="headPalestrantes">
+              <label>Colaboradores e Palestrantes</label>
+              <img src={addCircle} for="addPalestrante"/>
+            </div>
+            <div className="bodyPalestrante" ref={divPalestrantes}>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>

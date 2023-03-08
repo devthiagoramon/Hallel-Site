@@ -13,10 +13,13 @@
   padding: 10px;
   border-radius: 10px;
 }
+.tituloEvento:hover{
+  transform: scale(1.009);
+}
 
 .contImagemEvento {
   margin-left: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
   width: 95%;
   height: 60vh;
   display: flex;
@@ -77,3 +80,107 @@
   height: 100%;
   border-radius: 10px;
 }
+
+.contDescricaoEvento{
+  margin-top: 3rem;
+  margin-left: 4rem;
+  width: 90vw;
+  height: 30vh;
+}
+
+.lblDescEvento{
+  font-weight: 500;
+  font-size: 38px;
+  margin-bottom: 2rem;
+}
+
+
+.descEvento:hover{
+  transform: scale(1.009);
+}
+
+.descEvento{
+  width: 100%;
+  height: 100%;
+  font-size: 19px;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  resize: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 1px 1px 5px ;
+}
+
+.divisao{
+  margin-top: 13rem;
+  width: 92vw;
+  margin-left: 3rem;
+  size: 20px;
+  border-top: 3px solid #000;
+}
+
+.contDetalhes{
+  width: 95vw;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  display: flex;
+}
+
+.contDetalhesEsquerda{
+  width: 47%;
+  margin-left: 2rem;
+  display: grid;
+  grid-template-columns: 25% 50%;
+  row-gap: 3rem;
+}
+
+.contDetalhesEsquerda label{
+  font-size: 26px;
+  text-align: left;
+}
+
+.contDetalhesEsquerda input{
+  width: 70%;
+  height: 100%;
+  font-size: 19px;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  resize: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 1px 1px 5px ;
+}
+
+.contDetalhesEsquerda textarea{
+  width: 100%;
+  height: 100%;
+  font-size: 19px;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  resize: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 1px 1px 5px ;
+}
+
+.contDetalhesDireita{
+  width: 40%;
+}
+
+.headPalestrantes{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.headPalestrantes label{
+  width: auto;
+  font-size: 26px;
+}
+
+.headPalestrantes img{
+  width: 2.5rem;
+  cursor: pointer;
+}
+
+.headPalestrantes button{
+  display: none;
+}
+

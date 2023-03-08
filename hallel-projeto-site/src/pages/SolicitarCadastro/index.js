@@ -59,10 +59,10 @@ const SolicitarCadastro = (props) => {
             </div>
           </div>
           <div className="informacoesSC">
-            <input itemType="text" placeholder="Nome completo" value={nomeInput} onChange={(e) => setNome(e.target.value)}></input>
-            <input itemType="text" placeholder="Insira seu email" value={emailInput} onChange={(e) => setEmail(e.target.value)}></input>
-            <input itemType="text" placeholder="Crie uma senha" value={senhaInput} onChange={(e) => setSenha(e.target.value)}></input>
-            <input itemType="text" placeholder="Confirme sua senha" value={senha2Input} onChange={(e) => setSenha2(e.target.value)}></input>
+            <input type="text" placeholder="Nome completo" value={nomeInput} onChange={(e) => setNome(e.target.value)}></input>
+            <input type="email" placeholder="Insira seu email" value={emailInput} onChange={(e) => setEmail(e.target.value)}></input>
+            <input type="password" placeholder="Crie uma senha" value={senhaInput} onChange={(e) => setSenha(e.target.value)}></input>
+            <input type="password" placeholder="Confirme sua senha" value={senha2Input} onChange={(e) => setSenha2(e.target.value)}></input>
           </div>
           <div className="footerSC">
             <button id="JatemSC" onClick={solicitar}>ENVIAR</button>

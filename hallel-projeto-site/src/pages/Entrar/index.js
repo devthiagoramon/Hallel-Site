@@ -69,7 +69,7 @@ function Entrar() {
       <div className="formulario">
         <div className="inputContainerEmail">
           <input
-            type="text"
+            type="email"
             name="email"
             id="email"
             placeholder="Endereço de e-mail"
