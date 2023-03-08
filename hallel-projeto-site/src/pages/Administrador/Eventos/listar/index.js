@@ -1,35 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./index.css";
 
 function Evento() {
   const [eventos, setEventos] = useState([]);
 
-  useEffect(() => {
-    function renderizarEventos() {
-      let url = "http://localhost:8080/api/administrador/eventos";
+  function renderizarEventos() {
+    let url = "http://localhost:8080/api/eventos/listar";
 
-      let myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("Authorization", localStorage.getItem("token"));
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
 
-      fetch(url, {
-        headers: myHeaders,
-        method: "GET",
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
       })
-        .then((res) => {
-          return res.json();
-        })
-        .then((evento) => {
-          console.log(evento);
-          setEventos(evento);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    renderizarEventos();
-  });
-
+      .then((evento) => {
+        console.log(evento);
+        setEventos(evento);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  useMemo(() => renderizarEventos(), []);
 
   return (
     <div className="painelEventos">
