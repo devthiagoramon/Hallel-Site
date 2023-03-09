@@ -4,16 +4,18 @@ import { useRef } from "react";
 import "./style.css";
 import addImageIcon from "./../../../../images/addImage.svg";
 import addCircle from "./../../../../images/addCircle.svg";
+import deleteIcon from "./../../../../images/deleteIcon.svg";
 
 const AdicionarEvento = () => {
   const [tituloInput, setTituloInput] = useState();
   const [imagemInput, setImagemInput] = useState("");
-
   const tituloDiv = useRef();
   const imagemDiv = useRef();
   const imagemLabelInformativoDiv = useRef();
   const imagemLabelInformativoLabel = useRef();
-  const divPalestrantes = useRef();
+  const [lastId, setLastId] = useState(0);
+  const valueBase = {id:lastId,nome:""};
+  const [inputsArray, setinputsArray] = useState([{...valueBase}]);
 
   function verificando(e) {
     if (e.value.name) {
@@ -49,8 +51,13 @@ const AdicionarEvento = () => {
     reader.readAsDataURL(selectedFile);
   }
 
+  function addNovoPalestrante() {
+    setinputsArray(state => [...state, {... valueBase}]);
+    setLastId(lastId++);
+  }
 
   return (
+
     <div>
       <div className="containerPrincipal">
         <div className="headCont">
@@ -62,36 +69,38 @@ const AdicionarEvento = () => {
             placeholder="Titulo *"
           />
         </div>
-        <div ref={imagemDiv} className="contImagemEvento">
-          {imagemInput === "" ? (
-            <div
-              className="innerImagem"
-              onDrop={dropImagemDiv}
-              onDragOver={imagemSobreDiv}
-              ref={imagemLabelInformativoDiv}
-            >
-              <label className="labelInputImagem" for="selecao-arquivo">
-                <img src={addImageIcon} />
-              </label>
-              <label className="labelInformativoImagem" ref={imagemLabelInformativoLabel}>
-                Clique no icone ou arraste a foto
-                <br />
-                <span>Resolução: 1460x480</span>
-              </label>
-              <input
-                className="inputImagem"
-                type="file"
-                id="selecao-arquivo"
-                onChange={onImageSelected}
+        <div className="contOutImgEvento">
+          <div ref={imagemDiv} className="contImagemEvento">
+            {imagemInput === "" ? (
+              <div
+                className="innerImagem"
+                onDrop={dropImagemDiv}
+                onDragOver={imagemSobreDiv}
+                ref={imagemLabelInformativoDiv}
+              >
+                <label className="labelInputImagem" for="selecao-arquivo">
+                  <img src={addImageIcon} />
+                </label>
+                <label className="labelInformativoImagem" ref={imagemLabelInformativoLabel}>
+                  Clique no icone ou arraste a foto
+                  <br />
+                  <span>Resolução: 1336x768</span>
+                </label>
+                <input
+                  className="inputImagem"
+                  type="file"
+                  id="selecao-arquivo"
+                  onChange={onImageSelected}
+                />
+              </div>
+            ) : (
+              <img
+                className="imagemEvento"
+                alt="Imagem do Evento"
+                src={imagemInput}
               />
-            </div>
-          ) : (
-            <img
-              className="imagemEvento"
-              alt="Imagem do Evento"
-              src={imagemInput}
-            />
-          )}
+            )}
+          </div>
         </div>
         <div className="contDescricaoEvento">
           <label className="lblDescEvento">Descrição</label>
@@ -110,10 +119,18 @@ const AdicionarEvento = () => {
           <div className="contDetalhesDireita">
             <div className="headPalestrantes">
               <label>Colaboradores e Palestrantes</label>
-              <img src={addCircle} for="addPalestrante"/>
+              <img src={addCircle} onClick={addNovoPalestrante} />
             </div>
-            <div className="bodyPalestrante" ref={divPalestrantes}>
-
+            <div className="bodyPalestrante">
+              {inputsArray.map(() => {
+                return (
+                  <div className="inputPalestrante">
+                    <input placeholder="Nome do palestrantes" />
+                    <img src={deleteIcon} alt="Deletar palestrante" />
+                  </div>
+                )
+              })
+              }
             </div>
           </div>
         </div>
