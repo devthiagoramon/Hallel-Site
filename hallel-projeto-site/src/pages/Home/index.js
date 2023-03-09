@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Slide from "../../components/Slide";
 import Card_oracao from "./Cards/pedido_oracao";
+import DoarPanel from "../../components/Panels/PanelDoacao"
 
 function Home() {
   return (
@@ -12,6 +13,8 @@ function Home() {
       <br />
       <Link to="/administrador/membros">ADMINISTRADOR: Membros</Link>
       <br />
+
+      <DoarPanel/>
 
       <Card_oracao/>
 

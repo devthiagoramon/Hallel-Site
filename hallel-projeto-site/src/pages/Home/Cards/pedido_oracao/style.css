@@ -1,21 +1,14 @@
-.card{
-
+.pedido-container{
   display: flex;
-  padding: 2px;
-  
-}
-#card-texto{
- text-indent: 3px;
+  background: linear-gradient(55deg,#d24646,#f16633);
+  width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    padding: 2%;
+    padding-top: 1.4%;
+    padding-bottom: 1.4%;
+    border-radius: 10px;
 
-}
-h1{
-  color: white;
-}
-
-.space-in{
-  font-size: 14px;
-  font: 'Inter', sans-serif;
- 
 }
 
 #imagem{
@@ -27,26 +20,20 @@ h1{
   float: right;  
 }
 
-#texto{
-  font-size: 15px;
-  color: white;
-  font-weight: bold;
-  margin-top: 5%;
+.pedido-info{
+  
+  color: #ffffff;
+  font-size: 18px;
 }
+.pedido-info >button{
 
-#corpo{
-
-  background: linear-gradient(135deg,#c14242,#d7663c);
-  background-size: 100% 100%;
-}
-
-#titulo{
-
-    color: white;
-}
-
-#bt{
-
-  background-color: #d94814;
-  float: right;
+  text-align:left;
+border: none;
+color: #FFFFFF;
+padding: 2.5px;
+padding-left: 3%;
+padding-right: 3%;
+border-radius: 10%;
+background-color: #D94814;
+box-shadow: rgba(0, 0, 0, .50) 5px 5px 20px;
 }
