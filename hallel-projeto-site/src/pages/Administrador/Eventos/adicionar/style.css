@@ -25,9 +25,8 @@
 }
 
 .contImagemEvento {
-  margin-left: 2rem;
   margin-top: 3rem;
-  width: 1336px;
+  width: 100vw;
   height: 768px;
   display: flex;
   flex-direction: column;
@@ -66,6 +65,11 @@
 .labelInputImagem img{
   padding: 10px;
   border-radius: 10px;
+}
+
+.labelInputImagem :hover{
+  transform: scale(1.09);
+
 }
 
 .labelInformativoImagem{

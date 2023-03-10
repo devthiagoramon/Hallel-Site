@@ -14,8 +14,7 @@ const AdicionarEvento = () => {
   const imagemLabelInformativoDiv = useRef();
   const imagemLabelInformativoLabel = useRef();
   const [lastId, setLastId] = useState(0);
-  const valueBase = {id:lastId,nome:""};
-  const [inputsArray, setinputsArray] = useState([{...valueBase}]);
+  const [inputsArray, setinputsArray] = useState([]);
 
   function verificando(e) {
     if (e.value.name) {
@@ -39,7 +38,6 @@ const AdicionarEvento = () => {
     event.preventDefault();
   };
 
-
   function onImageSelected(e) {
     var selectedFile = e.target.files[0];
     var reader = new FileReader();
@@ -52,12 +50,20 @@ const AdicionarEvento = () => {
   }
 
   function addNovoPalestrante() {
-    setinputsArray(state => [...state, {... valueBase}]);
-    setLastId(lastId++);
+    const valueBase = { id: lastId, nome: "" };
+    setinputsArray((state) => [...state, { ...valueBase }]);
+    setLastId(lastId + 1);
+  }
+
+  function removerInput(e) {
+    console.log(e.target.attributes.value.value);
+    let inputs = inputsArray;
+    inputs.splice(e.target.attributes.value.value);
+    inputs = [...inputs]
+    setinputsArray(inputs);
   }
 
   return (
-
     <div>
       <div className="containerPrincipal">
         <div className="headCont">
@@ -81,10 +87,13 @@ const AdicionarEvento = () => {
                 <label className="labelInputImagem" for="selecao-arquivo">
                   <img src={addImageIcon} />
                 </label>
-                <label className="labelInformativoImagem" ref={imagemLabelInformativoLabel}>
+                <label
+                  className="labelInformativoImagem"
+                  ref={imagemLabelInformativoLabel}
+                >
                   Clique no icone ou arraste a foto
                   <br />
-                  <span>Resolução: 1336x768</span>
+                  <span>Resolução: 1920x768</span>
                 </label>
                 <input
                   className="inputImagem"
@@ -104,14 +113,18 @@ const AdicionarEvento = () => {
         </div>
         <div className="contDescricaoEvento">
           <label className="lblDescEvento">Descrição</label>
-          <textarea className="descEvento" type="text" placeholder="Descrição *" />
+          <textarea
+            className="descEvento"
+            type="text"
+            placeholder="Descrição *"
+          />
         </div>
         <hr className="divisao" />
         <div className="contDetalhes">
           <div className="contDetalhesEsquerda">
             <label>Data:</label>
             <input placeholder="11/11/2011" />
-            <label >Horário:</label>
+            <label>Horário:</label>
             <input placeholder="20:30" />
             <label>Endereço:</label>
             <textarea placeholder="Av. Amazonas, 1113 Iranduba, AM, 69415-000" />
@@ -119,18 +132,32 @@ const AdicionarEvento = () => {
           <div className="contDetalhesDireita">
             <div className="headPalestrantes">
               <label>Colaboradores e Palestrantes</label>
-              <img src={addCircle} onClick={addNovoPalestrante} />
+              <img
+                src={addCircle}
+                onClick={addNovoPalestrante}
+                alt="Adicionar Palestrante"
+              />
             </div>
             <div className="bodyPalestrante">
-              {inputsArray.map(() => {
-                return (
-                  <div className="inputPalestrante">
-                    <input placeholder="Nome do palestrantes" />
-                    <img src={deleteIcon} alt="Deletar palestrante" />
-                  </div>
-                )
-              })
-              }
+              {inputsArray.length === 0 ? (
+                ""
+              ) : (
+                <div>
+                  {inputsArray.map((item) => {
+                    return (
+                      <div className="inputPalestrante" key={item.id}>
+                        <input placeholder="Nome do palestrantes" />
+                        <img
+                          src={deleteIcon}
+                          alt="Deletar palestrante"
+                          value={item.id}
+                          onClick={removerInput}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>
