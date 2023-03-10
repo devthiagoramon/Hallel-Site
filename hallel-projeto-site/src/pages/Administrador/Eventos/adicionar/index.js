@@ -5,6 +5,7 @@ import "./style.css";
 import addImageIcon from "./../../../../images/addImage.svg";
 import addCircle from "./../../../../images/addCircle.svg";
 import deleteIcon from "./../../../../images/deleteIcon.svg";
+import { motion } from "framer-motion";
 
 const AdicionarEvento = () => {
   const [tituloInput, setTituloInput] = useState();
@@ -15,6 +16,7 @@ const AdicionarEvento = () => {
   const imagemLabelInformativoLabel = useRef();
   const [lastId, setLastId] = useState(0);
   const [inputsArray, setinputsArray] = useState([]);
+  const addPalestrante = useRef();
 
   function verificando(e) {
     if (e.value.name) {
@@ -50,15 +52,19 @@ const AdicionarEvento = () => {
   }
 
   function addNovoPalestrante() {
-    const valueBase = { id: lastId, nome: "" };
-    setinputsArray((state) => [...state, { ...valueBase }]);
-    setLastId(lastId + 1);
+    if (inputsArray.length < 6) {
+      const valueBase = { id: inputsArray.length, nome: "" };
+      setinputsArray((state) => [...state, { ...valueBase }]);
+      setLastId();
+    }else{
+
+    }
   }
 
   function removerInput(e) {
     console.log(e.target.attributes.value.value);
     let inputs = inputsArray;
-    inputs.splice(e.target.attributes.value.value);
+    inputs.splice(e.target.attributes.value.value - 1, 1);
     inputs = [...inputs]
     setinputsArray(inputs);
   }
@@ -136,6 +142,7 @@ const AdicionarEvento = () => {
                 src={addCircle}
                 onClick={addNovoPalestrante}
                 alt="Adicionar Palestrante"
+                ref={addPalestrante}
               />
             </div>
             <div className="bodyPalestrante">
@@ -145,15 +152,18 @@ const AdicionarEvento = () => {
                 <div>
                   {inputsArray.map((item) => {
                     return (
-                      <div className="inputPalestrante" key={item.id}>
+                      <motion.div className="inputPalestrante" key={item.id} initial={{ width: "10%" }} animate={{ width: "100%" }}>
                         <input placeholder="Nome do palestrantes" />
-                        <img
+                        <motion.img
                           src={deleteIcon}
                           alt="Deletar palestrante"
                           value={item.id}
                           onClick={removerInput}
+                          initial={{ scale: 0.2 }}
+                          animate={{ scale: 1 }}
+                          transition={{ duration: 0.5 }}
                         />
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>
