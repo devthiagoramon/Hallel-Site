@@ -1,4 +1,5 @@
 import "./style.css";
+import { Link } from "react-router-dom";
 function pedido_oracao() {
   return (
     <div className="pedido-container">
@@ -15,7 +16,7 @@ function pedido_oracao() {
         <div className="pedido-info">
             <h1>Pedido Oração</h1>
             <p>Resgatando almas para Deus através do louvor,<br/>da formação e do Amor por excelência.</p>
-            <button>Entrar</button>
+            <Link to="/pedido"><button>Entrar</button></Link>
         </div>
 
     </div>
