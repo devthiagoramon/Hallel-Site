@@ -4,7 +4,7 @@
     width: 100%;
 }
 
-#cont-logo{
+#cont-logo {
     background: none;
     border-radius: 10px;
     padding: 3px;
@@ -29,7 +29,7 @@
     position: fixed;
     align-items: center;
 
-    background: linear-gradient(90deg,#e7b10e,#0cc7a1);
+    background: linear-gradient(90deg, #e7b10e, #0cc7a1);
     background-size: 100% 100%;
     display: flex;
     align-items: center;
@@ -57,7 +57,7 @@
 }
 */
 
-#topbar #topicos #item:hover{
+#topbar #topicos #item:hover {
     background-color: rgba(255, 255, 255, 0.25);
 }
 
@@ -66,13 +66,37 @@
     border-radius: 7px;
     border: none;
     font-size: 19px;
-    font-weight:lighter;
+    font-weight: lighter;
     width: 120px;
-    height: 2.5pc;
+    height: 4rem;
     color: #35404B;
     background-color: #2CD4B2;
     box-shadow: rgba(0, 0, 0, .50) 2px 2px 10px;
 }
+
+#topbar .contPerfilTopBar {
+    width: 100px;
+    margin-left: 1.5rem;
+}
+
+#topbar .perfilHomepage {
+    width: auto;
+    height: 100%;
+    display: flex;
+    background-color: inherit;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+#topbar .perfilHomepage:hover {
+    background-color: rgba(255, 255, 255, 0.50);
+}
+
+#topbar .perfilHomepage svg {
+    fill: #333;
+}
+
+
 
 #topbar #btn:hover {
     background-color: #a9c4dc;
@@ -185,48 +209,47 @@
 
 @media screen and (max-width: 768px) {
 
-  .hamburger-menu {
-    height: 60px;
-    display: unset;
-    visibility: visible;
-  }
+    .hamburger-menu {
+        height: 60px;
+        display: unset;
+        visibility: visible;
+    }
 
-  #cont-logo{
-    margin: 0 1px;
-  }
+    #cont-logo {
+        margin: 0 1px;
+    }
 
-  #cont-logo img {
-    height: 50px;
-    margin: none;
-  }
+    #cont-logo img {
+        height: 50px;
+        margin: none;
+    }
 
-  #topbar {
-    display: inline-block flex;
-    
-    
-  }
+    #topbar {
+        display: inline-block flex;
 
-  #topbar #topicos {
-    display: none;
-    
-  }
 
-  #topbar #btn {
-    margin: 0 9px;
-  }
+    }
 
-  #topbar #space {
-    display: flex;
-    align-items: center;
-    width: 100%;
-  }
+    #topbar #topicos {
+        display: none;
 
-  #btn{
+    }
+
+    #topbar #btn {
+        margin: 0 9px;
+    }
+
+    #topbar #space {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    #btn {
+        min-width: 80px;
+    }
+}
+
+#botao {
     min-width: 80px;
-  }
 }
-
-#botao{
-  min-width: 80px;
-}
-

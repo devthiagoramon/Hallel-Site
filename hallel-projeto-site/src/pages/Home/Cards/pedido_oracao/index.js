@@ -16,7 +16,7 @@ function pedido_oracao() {
         <div className="pedido-info">
             <h1>Pedido Oração</h1>
             <p>Resgatando almas para Deus através do louvor,<br/>da formação e do Amor por excelência.</p>
-            <Link to="/pedido"><button>Entrar</button></Link>
+            <Link to="/pedido"><button className="buttonPedidoOracao">Entrar</button></Link>
         </div>
 
     </div>

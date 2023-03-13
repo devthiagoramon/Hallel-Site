@@ -99,8 +99,6 @@ textarea {
 .button {
     /* Para posicionar os botões para a mesma posição dos campos de texto */
     padding-left: 90px; /* mesmo tamanho que os elementos do tipo label */
-}
-button {
     /* Esta margem extra representa aproximadamente o mesmo espaço que o espaço entre as labels e os seus campos de texto*/
     margin-left: .3em;
 }

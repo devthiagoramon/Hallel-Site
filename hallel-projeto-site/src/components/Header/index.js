@@ -11,10 +11,6 @@ function Header() {
   const [isModalVisible, setisModalVisible] = useState();
   const [isModalPerfilVisible, setisModalPerfilVisible] = useState(false);
   const [isExpired, setIsExpired] = useState();
-  const stylePerfil = {
-    "background-color": "#333",
-    "border-radius": "50%",
-  };
 
   function isTokenExpired() {
     let url = "http://localhost:8080/api/isTokenExpired";
@@ -56,10 +52,10 @@ function Header() {
     }
   }
 
-  function showModalPerfil(){
-    if(isModalPerfilVisible === true){
+  function showModalPerfil() {
+    if (isModalPerfilVisible === true) {
       setisModalPerfilVisible(false)
-    }else{
+    } else {
       setisModalPerfilVisible(true)
     }
   }
@@ -131,21 +127,23 @@ function Header() {
             id="btn"
             className="btnEntre"
           >
-              <Link to="/entrar">Entre</Link>
+            <Link to="/entrar">Entre</Link>
           </button>
         ) : (
-          <button style={stylePerfil} onClick={() => showModalPerfil()}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="60"
-              height="60"
-              fill="white"
-              class="bi bi-person"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-            </svg>
-          </button>
+          <div className="contPerfilTopBar">
+            <button className="perfilHomepage" onClick={() => showModalPerfil()}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="60"
+                height="60"
+                fill="white"
+                class="bi bi-person"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+              </svg>
+            </button>
+          </div>
         )}
       </nav>
       {isModalVisible && localStorage.getItem("token") === null ? (
@@ -153,12 +151,12 @@ function Header() {
       ) : (
         ""
       )}
-      {isModalPerfilVisible ? <ModalPerfil/> : ""}
-      
-    
+      {isModalPerfilVisible ? <ModalPerfil /> : ""}
+
+
     </div>
-    
-   
+
+
   );
 }
 
