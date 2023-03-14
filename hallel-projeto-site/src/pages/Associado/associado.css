@@ -1,0 +1,144 @@
+#body-associado{
+  
+    margin-top: 80px;
+    color: #35404B;
+    width: 100%;
+    height: 100%;
+  }
+  #body-associado h1{
+    
+    margin-top: 5em;
+    margin-left: 4%;
+    font-weight: bold;
+  }
+  #body-associado p{
+    margin-left: 4%;
+  }
+  
+  .texto-associado{
+    margin-top: 6%;
+    margin-bottom: 4%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-left: 5%;
+  }
+  .texto-associado > h2{
+    font-weight: bold;
+    text-align: right;
+  }
+  .texto-associado > p{
+    display: flex;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  
+  .imagem-associado{
+    background-image: url(https://primeiraipbitajai.com.br/wp-content/uploads/2021/08/pray-hands.jpeg);
+    width: 800px;
+    height: 49px;
+    margin-top: 50px;
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: pink;
+    
+
+  }
+  .imagem-associado >div{
+  
+    width: 20%;
+    background-color: white;
+    border-bottom-right-radius: 60%;
+    border-top-right-radius: 60%;
+    padding-top:1.5%;
+    padding-right: 5%;
+    padding-left: 2.5%;
+  }
+  .imagem-associado div > h2{
+    
+    font-weight: bold;
+    text-align: left;
+    margin-left: 2%;
+    
+  }
+  .imagem-associado div>p{
+    
+    font-weight: bold;
+    text-align: left;
+    margin-left: 0;
+    font-size: 16px;
+  }
+  
+  /*Parte dos blocos de vendas:0*/
+  .anuncio-associado{
+    
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+
+    /* justify-content: space-around; */
+  }
+  
+  .anuncio-associado > div{
+    
+    padding-top:4%;
+    height: 100%;
+    min-height: 500px;
+    padding-bottom:4%;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-left: 6%;
+    margin-right: 6%;
+    border-radius: 15px;
+  }
+  .anuncio-associado div > h2{
+    
+    font-weight: 1000;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .anuncio-associado div > p{
+    
+    margin-left: 10%;
+    text-align: left;
+  }
+  .anuncio-associado div > button{
+    
+    display: flex;
+    margin: auto;
+    margin-top: 10%;
+  }
+  .anuncio-associado >div:first-child{
+    
+    background-color: #69ba81;
+    margin-top: 5%;
+    margin-right: 2%;
+  }
+  .anuncio-associado >div:last-child{
+    
+    background-color: #df805d;
+    height: 95%;
+    margin-left: 2%;
+  }
+  
+  /*palavra no final*/
+  #duvidas-associado{
+    
+    margin-top: 4%;
+    text-align: center;
+    margin-left: 0;
+    margin-right:0;
+  }
+
+   button{
+    border: none;
+    color: #FFFFFF;
+    padding: 2.5px;
+    border-radius: 10%;
+    background-color: #d94814;
+    box-shadow: rgba(0, 0, 0, .50) 5px 5px 20px;
+  }

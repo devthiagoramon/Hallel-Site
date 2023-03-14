@@ -1,4 +1,5 @@
 import './style.css';
+import { Link } from "react-router-dom";
 
 function PanelDoacao(){
 
@@ -12,7 +13,10 @@ function PanelDoacao(){
 
             <p>Conheça os Eventos da Comunidade Hallel e entenda por que<br/>precisamos de sua ajuda.</p>
 
-            <button>Saiba mais</button>
+
+
+            
+            <Link to="/associado"><button>Saiba mais</button></Link>
             </div>
         </div>
     );
