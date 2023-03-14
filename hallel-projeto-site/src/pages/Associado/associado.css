@@ -91,9 +91,9 @@
     padding-bottom:4%;
     font-weight: bold;
     color: #FFFFFF;
-    margin-left: 6%;
-    margin-right: 6%;
-    border-radius: 15px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 30px;
   }
   .anuncio-associado div > h2{
     
@@ -104,7 +104,7 @@
   .anuncio-associado div > p{
     
     margin-left: 10%;
-    text-align: left;
+    text-align: center;
   }
   .anuncio-associado div > button{
     
