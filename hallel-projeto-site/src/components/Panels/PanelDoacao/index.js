@@ -16,7 +16,7 @@ function PanelDoacao(){
 
 
             
-            <Link to="/associado"><button>Saiba mais</button></Link>
+            <Link to="/associado"><button className='btnAssociado'>Saiba mais</button></Link>
             </div>
         </div>
     );

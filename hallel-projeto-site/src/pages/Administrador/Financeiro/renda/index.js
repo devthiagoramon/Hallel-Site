@@ -2,8 +2,36 @@ import React from "react";
 import "./renda.css";
 import Printer from "./../../../../images/impressora-svg.svg";
 import Arrow from "./../../../../images/arrow-icon.svg";
+import { useMemo } from "react";
+import { useState } from "react";
 
 const Renda = () => {
+
+  const [receitas, setReceitas] = useState([]);
+
+  useMemo(() => {
+    let url = "http://localhost:8080/api/financeiro/receita";
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((receitas) => {
+        setReceitas(receitas);
+        console.log(receitas)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [])
+
   return (
     <div className="containerRenda">
       <div className="cabecalho">
@@ -26,21 +54,25 @@ const Renda = () => {
         <table className="table">
           <thead>
             <tr>
-              <td>Descrição da renda</td>
-              <td>Para</td>
-              <td>Valor</td>
-              <td>Data do gasto</td>
-              <td>Feito por</td>
+              <th>Descrição da renda</th>
+              <th>Valor</th>
+              <th>Data da receita</th>
+              <th>Objeto</th>
+              <th>Feito por</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Teste</td>
-              <td>Teste</td>
-              <td>Teste</td>
-              <td>Teste</td>
-              <td>Teste</td>
-            </tr>
+            {receitas.map((item) => {
+              return (
+                <tr>
+                  <td>{item.descricaoReceita}</td>
+                  <td>{item.valor}</td>
+                  <td>{item.dataReceita}</td>
+                  <td>{item.objeto === false ? "Não" : "Sim"}</td>
+                  <td>{item.usuarioReceita}</td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>

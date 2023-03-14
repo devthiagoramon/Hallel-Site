@@ -18,7 +18,7 @@ function Associado(){
                   </h2>
                   
                   <p>Ajude a comunidade a continuar crescendo, seja um apoiador!</p>
-                  <button>Seja um associado</button>
+                  <button className="btnAssociado">Seja um associado</button>
               </div>
           </section>
           
@@ -42,7 +42,7 @@ function Associado(){
                <p><SlPresent/> Nosso mais sincero agradecimento.</p>
                <p><SlPresent/> Acesso à nossa área de recompensas, com vídeos no formato blog exclusivos.</p>
                
-               <button>Apoiar Agora!</button>
+               <button className="btnAssociado">Apoiar Agora!</button>
             </div>
             
             <div>
@@ -51,7 +51,7 @@ function Associado(){
                <p><SlPresent/> Sem anúncios. Navegue no curso em vídeo sem anúncios no site.</p>
                <p><SlPresent/> Nosso mais sincero agradecimento.</p>
                <p><SlPresent/> Acesso à nossa área de recompensas, com vídeos no formato blog exclusivos.</p>
-               <button>Apoiar Agora!</button>
+               <button className="btnAssociado">Apoiar Agora!</button>
             </div>
           </section>
           

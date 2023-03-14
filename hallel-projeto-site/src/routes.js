@@ -15,6 +15,7 @@ import MaisInfo from "./pages/Evento/MaisInformacoes";
 import PainelFinanceiro from "./pages/Administrador/Financeiro";
 import Renda from "./pages/Administrador/Financeiro/renda";
 import Entrar from "./pages/Entrar";
+import Gasto from "./pages/Administrador/Financeiro/gastos";
 
 function RoutesApp() {
   return (
@@ -41,10 +42,15 @@ function RoutesApp() {
           element={<PainelFinanceiro />}
         />
         <Route
-          path="/administrador/painelFinanceiro/renda"
+          path="/administrador/painelFinanceiro/rendas"
           element={<Renda />}
         />
+        <Route
+          path="/administrador/painelFinanceiro/gastos"
+          element={<Gasto/>}
+        />
         <Route path="/entrar" element={<Entrar/>}/>
+
       </Routes>
     </BrowserRouter>
   );
