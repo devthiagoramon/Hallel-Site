@@ -2,12 +2,15 @@ import React from "react";
 import "./gastos.css";
 import Printer from "./../../../../images/impressora-svg.svg";
 import Arrow from "./../../../../images/arrow-icon.svg";
+import Add from "./../../../../images/addCircle.svg";
 import { useMemo } from "react";
 import { useState } from "react";
+import ModalAddDespesa from "./addModal";
 
 const Gasto = () => {
 
   const [gastos, setgastos] = useState([]);
+  const [isModalOpen, setisModalOpen] = useState(false);
 
   useMemo(() => {
     let url = "http://localhost:8080/api/financeiro/gastos";
@@ -42,6 +45,10 @@ const Gasto = () => {
             <p>Tabela de gasto</p>
           </div>
           <div className="iconsHeadContTabela">
+            <a href="#" onClick={() => setisModalOpen(true)}>
+              <img src={Add} />
+              Adicionar Despesa
+            </a>
             <a href="#">
               <img src={Printer} className="icons" />
             </a>
@@ -70,7 +77,7 @@ const Gasto = () => {
                   <td>{item.dataGasto}</td>
                   <td>{item.usuarioGasto}</td>
                 </tr>
-              )
+              );
             })}
           </tbody>
         </table>
@@ -82,16 +89,17 @@ const Gasto = () => {
         <div className="containerTabelaUltGasto">
           <table>
             <tr>
-              <td>
-                Teste
-              </td>
-              <td>
-                Teste
-              </td>
+              <td>Teste</td>
+              <td>Teste</td>
             </tr>
           </table>
         </div>
       </div>
+      {isModalOpen === true ? (
+        <ModalAddDespesa hide={() => setisModalOpen(false)} />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

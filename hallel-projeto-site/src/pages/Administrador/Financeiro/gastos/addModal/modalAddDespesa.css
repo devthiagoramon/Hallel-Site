@@ -1,0 +1,87 @@
+.outContAddDespesa {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  margin-top: 2.5rem;
+}
+
+.contAddDespesa {
+  width: 35vw;
+  height: auto;
+  background-color: #fafafa;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 10px;
+}
+
+.headAddDespesa {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px 10px 0px 0px;
+  background-color: rgb(255, 159, 45, 0.9);
+}
+
+.bodyAddDespesa {
+  width: 100%;
+  margin-top: 1.1rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.bodyAddDespesa label {
+  font-size: 24px;
+  width: 100%;
+  text-align: left;
+  margin-left: 1.5rem;
+  margin-top: 1.001rem;
+}
+
+.bodyAddDespesa label span {
+  color: #e40000;
+}
+
+.bodyAddDespesa textarea,
+input {
+  margin-left: 1.5rem;
+  width: 85%;
+  resize: none;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 2px;
+  padding: 10px;
+}
+
+.bodyAddDespesa input {
+  height: 30px;
+  padding: 10px;
+}
+
+.footerAddDespesa {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 0.9rem;
+}
+
+.footerAddDespesa button {
+  font-size: 20px;
+  padding: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+  background-color: #fafafa;
+  box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 3px;
+}
+
+.footerAddDespesa button:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 10px;
+}
+
+.footerAddDespesa button:nth-child(2) {
+  background-color: rgb(91, 214, 57, 0.8);
+}

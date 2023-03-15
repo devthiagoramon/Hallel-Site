@@ -54,7 +54,7 @@ body{
 
 .iconsHeadContTabela{
     display: flex;
-    width: 14%;
+    width: 40%;
     justify-content: space-between;
 }
 
@@ -62,6 +62,21 @@ body{
     border-radius: 50%;
     height: fit-content;
     box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 5px;
+}
+
+.iconsHeadContTabela a:nth-child(1){
+    border-radius: 20px;
+    width: 50%;
+    cursor: pointer;
+}
+
+.iconsHeadContTabela a:hover{
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+.iconsHeadContTabela a:nth-child(1) img{
+    width: 55px;
+    padding: 5px;
 }
 
 .icons{
