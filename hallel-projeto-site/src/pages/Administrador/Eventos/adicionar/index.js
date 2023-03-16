@@ -6,6 +6,9 @@ import addImageIcon from "./../../../../images/addImage.svg";
 import addCircle from "./../../../../images/addCircle.svg";
 import deleteIcon from "./../../../../images/deleteIcon.svg";
 import { motion } from "framer-motion";
+import Tooltip from '@mui/material/Tooltip';
+import { Button, TextareaAutosize } from "@mui/material";
+import { Save } from "@mui/icons-material";
 
 const AdicionarEvento = () => {
   const [tituloInput, setTituloInput] = useState();
@@ -17,6 +20,7 @@ const AdicionarEvento = () => {
   const [lastId, setLastId] = useState(0);
   const [inputsArray, setinputsArray] = useState([]);
   const addPalestrante = useRef();
+  const [btnHabilitado, setbtnHabilitado] = useState(false);
 
   function verificando(e) {
     if (e.value.name) {
@@ -56,7 +60,7 @@ const AdicionarEvento = () => {
       const valueBase = { id: inputsArray.length, nome: "" };
       setinputsArray((state) => [...state, { ...valueBase }]);
       setLastId();
-    }else{
+    } else {
 
     }
   }
@@ -73,13 +77,15 @@ const AdicionarEvento = () => {
     <div>
       <div className="containerPrincipal">
         <div className="headCont">
-          <input
-            ref={tituloDiv}
-            name="tituloInput"
-            className="tituloEvento"
-            type="text"
-            placeholder="Titulo *"
-          />
+          <Tooltip title="Obrigatório" placement="right-start">
+            <input
+              ref={tituloDiv}
+              name="tituloInput"
+              className="tituloEvento"
+              type="text"
+              placeholder="Titulo *"
+            />
+          </Tooltip>
         </div>
         <div className="contOutImgEvento">
           <div ref={imagemDiv} className="contImagemEvento">
@@ -118,22 +124,31 @@ const AdicionarEvento = () => {
           </div>
         </div>
         <div className="contDescricaoEvento">
-          <label className="lblDescEvento">Descrição</label>
-          <textarea
-            className="descEvento"
-            type="text"
-            placeholder="Descrição *"
-          />
+          <label className="lblDescEvento">Descrição <span className="obrigatorio">*</span></label>
+          <Tooltip title="Obrigatório" placement="right-start">
+            <textarea
+              className="descEvento"
+              type="text"
+              placeholder="Descrição..."
+
+            />
+          </Tooltip>
         </div>
         <hr className="divisao" />
         <div className="contDetalhes">
           <div className="contDetalhesEsquerda">
-            <label>Data:</label>
-            <input placeholder="11/11/2011" />
-            <label>Horário:</label>
-            <input placeholder="20:30" />
-            <label>Endereço:</label>
-            <textarea placeholder="Av. Amazonas, 1113 Iranduba, AM, 69415-000" />
+            <label>Data <span className="obrigatorio">*</span>:</label>
+            <Tooltip title="Obrigatório" placement="right-start">
+              <input placeholder="11/11/2011" />
+            </Tooltip>
+            <label>Horário <span className="obrigatorio">*</span>:</label>
+            <Tooltip title="Obrigatório" placement="right-start">
+              <input placeholder="20:30" />
+            </Tooltip>
+            <label>Endereço <span className="obrigatorio">*</span>:</label>
+            <Tooltip title="Obrigatório" placement="right-start">
+              <TextareaAutosize placeholder="Av. Amazonas, 1113 Iranduba, AM, 69415-000" />
+            </Tooltip>
           </div>
           <div className="contDetalhesDireita">
             <div className="headPalestrantes">
@@ -153,6 +168,7 @@ const AdicionarEvento = () => {
                   {inputsArray.map((item) => {
                     return (
                       <motion.div className="inputPalestrante" key={item.id} initial={{ width: "10%" }} animate={{ width: "100%" }}>
+
                         <input placeholder="Nome do palestrantes" />
                         <motion.img
                           src={deleteIcon}
@@ -170,6 +186,16 @@ const AdicionarEvento = () => {
               )}
             </div>
           </div>
+        </div>
+        <div className="submitContainer">
+          {btnHabilitado === false ?
+            <Tooltip title="Preencha todos os campos obrigatorios com *">
+              <span>
+                <Button variant="contained" color="success" disabled>Salvar</Button>
+              </span>
+            </Tooltip>
+            : <Button variant="contained" color="success">Salvar</Button>
+          }
         </div>
       </div>
     </div>
