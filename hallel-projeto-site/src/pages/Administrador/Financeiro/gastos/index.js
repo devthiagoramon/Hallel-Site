@@ -6,6 +6,8 @@ import Add from "./../../../../images/addCircle.svg";
 import { useMemo } from "react";
 import { useState } from "react";
 import ModalAddDespesa from "./addModal";
+import gastosPDF from "../../../../Reports/gastos/gastos";
+import { SaveAlt } from "@mui/icons-material";
 
 const Gasto = () => {
 
@@ -34,6 +36,22 @@ const Gasto = () => {
       });
   }, [])
 
+  function getSaldoTotal() {
+    let saldoTotal = 0;
+    gastos.forEach((item) => {
+      saldoTotal += item.valor;
+    });
+    return saldoTotal;
+  }
+
+  function dataAtual() {
+    let date = new Date();
+    let dia = String(date.getDay());
+    let mes = String(date.getMonth());
+    let ano = String(date.getFullYear());
+
+    return dia + "/" + mes + "/" + ano;
+  }
   return (
     <div className="containerGasto">
       <div className="cabecalhoGasto">
@@ -50,7 +68,7 @@ const Gasto = () => {
               Adicionar Despesa
             </a>
             <a href="#">
-              <img src={Printer} className="icons" />
+              <SaveAlt style={{width: "55px", height: "55px", color: "#333"}} className="icons" onClick={() => gastosPDF(gastos)}/>
             </a>
             <a href="#">
               <img src={Arrow} className="icons" />
