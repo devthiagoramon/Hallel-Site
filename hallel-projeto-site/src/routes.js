@@ -3,7 +3,8 @@ import Home from "./pages/Home";
 import Fundadora from "./pages/Fundadora";
 import Pedido from "./pages/pedido-oracao";
 import Associado from "./pages/Associado";
-import SolicitacaoCadastro from "./pages/SolicitarCadastro"
+import SolicitacaoCadastro from "./pages/SolicitarCadastro";
+import Doacoes from "./pages/Doacoes/Doacoes.js";
 import Header from "./components/Header";
 import Sobre from "./pages/Sobre";
 import MembrosAdm from "./pages/Administrador/Membros";
@@ -26,6 +27,7 @@ function RoutesApp() {
         <Route path="/fundadora" element={<Fundadora />} />
         <Route path="/pedido" element={<Pedido />} />
         <Route path="/associado" element={<Associado />} />
+        <Route path="/doacoes" element={<Doacoes />} />
         <Route path="/solicitarCadastro" element={<SolicitacaoCadastro />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/eventos" element={<EventoUser />} />

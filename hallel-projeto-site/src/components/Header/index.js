@@ -119,7 +119,7 @@ function Header() {
           <Link id="item" to="/">Ministérios</Link>
           <Link id="item" to="/">Agenda</Link>
           <Link id="item" to="/">Loja</Link>
-          <Link id="item" to="/">Doações</Link>
+          <Link id="item" to="/doacoes">Doações</Link>
           <Link id="item" to="/">Contato</Link>
         </div>
         {isNotUsuario() ? (
