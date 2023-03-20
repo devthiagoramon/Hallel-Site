@@ -142,10 +142,12 @@
 
 .contDetalhesEsquerda{
   width: 47%;
+  height: 30vh;
   margin-left: 2rem;
   display: grid;
   grid-template-columns: 50% 50% ;
   row-gap: 3rem;
+  
 }
 
 .contDetalhesEsquerda label{
@@ -187,6 +189,9 @@
 
 .contDetalhesDireita{
   width: 40%;
+  height: auto;
+  margin-left: 3rem;
+ 
 }
 
 .headPalestrantes{
