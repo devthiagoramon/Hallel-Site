@@ -56,6 +56,7 @@ const PagamentosAssociado = () => {
               <th>Metodo</th>
               <th>Mensalidade</th>
               <th>Pago</th>
+              <th>Situação</th>
             </tr>
           </thead>
           <tbody>
@@ -67,7 +68,8 @@ const PagamentosAssociado = () => {
                   <td>{item.transacao.dataExp}</td>
                   <td>{item.transacao.metodoPagamento}</td>
                   <td>{item.transacao.mensalidade}</td>
-                  <td>{item.transacao.pago ? "Sim" : "Não"}</td>
+                  <td>{item.isPago ? "Sim" : "Não"}</td>
+                  <td>{item.situacao}</td>
                 </tr>
               );
             })}
