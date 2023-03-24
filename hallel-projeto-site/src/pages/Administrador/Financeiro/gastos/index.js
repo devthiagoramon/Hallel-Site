@@ -55,12 +55,12 @@ const Gasto = () => {
   return (
     <div className="containerGasto">
       <div className="cabecalhoGasto">
-        <p>Gastos</p>
+        <a>Gastos</a>
       </div>
       <div className="containerTabela">
         <div className="headContTabela">
           <div className="tituloHeadContTabela">
-            <p>Tabela de gasto</p>
+            <a>Tabela de gasto</a>
           </div>
           <div className="iconsHeadContTabela">
             <a href="#" onClick={() => setisModalOpen(true)}>
@@ -80,9 +80,9 @@ const Gasto = () => {
             <tr>
               <th>Descrição do gasto</th>
               <th>Para</th>
-              <th>Valor</th>
               <th>Data do gasto</th>
               <th>Feito por</th>
+              <th>Valor</th>
             </tr>
           </thead>
           <tbody>
@@ -91,9 +91,9 @@ const Gasto = () => {
                 <tr>
                   <td>{item.descricaoGasto}</td>
                   <td>{item.finalidadeGasto}</td>
-                  <td>{item.valor}</td>
                   <td>{item.dataGasto}</td>
                   <td>{item.usuarioGasto}</td>
+                  <td>R$ {item.valor}</td>
                 </tr>
               );
             })}

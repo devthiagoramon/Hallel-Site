@@ -4,6 +4,8 @@ import Printer from "./../../../../images/impressora-svg.svg";
 import Arrow from "./../../../../images/arrow-icon.svg";
 import { useMemo } from "react";
 import { useState } from "react";
+import rendasPDF from "../../../../Reports/rendas/rendas";
+import { SaveAlt } from "@mui/icons-material";
 
 const Renda = () => {
 
@@ -35,16 +37,20 @@ const Renda = () => {
   return (
     <div className="containerRenda">
       <div className="cabecalho">
-        <p>Rendas</p>
+        <a>Rendas</a>
       </div>
-      <div className="containerTabela">
-        <div className="headContTabela">
-          <div className="tituloHeadContTabela">
-            <p>Tabela de receitas</p>
+      <div className="containerTabelaRenda">
+        <div className="headContTabelaRenda">
+          <div className="tituloHeadContTabelaRenda">
+            <a>Tabela de receitas</a>
           </div>
-          <div className="iconsHeadContTabela">
+          <div className="iconsHeadContTabelaRenda">
             <a href="#">
-              <img src={Printer} className="icons" />
+              <SaveAlt
+                style={{ width: "55px", height: "55px", color: "#333" }}
+                className="icons"
+                onClick={() => rendasPDF(receitas)}
+              />
             </a>
             <a href="#">
               <img src={Arrow} className="icons" />
@@ -55,10 +61,10 @@ const Renda = () => {
           <thead>
             <tr>
               <th>Descrição da renda</th>
-              <th>Valor</th>
-              <th>Data da receita</th>
               <th>Objeto</th>
+              <th>Data da receita</th>
               <th>Feito por</th>
+              <th>Valor</th>
             </tr>
           </thead>
           <tbody>
@@ -66,12 +72,12 @@ const Renda = () => {
               return (
                 <tr>
                   <td>{item.descricaoReceita}</td>
-                  <td>{item.valor}</td>
-                  <td>{item.dataReceita}</td>
                   <td>{item.objeto === false ? "Não" : "Sim"}</td>
+                  <td>{item.dataReceita}</td>
                   <td>{item.usuarioReceita}</td>
+                  <td>R$ {item.valor}</td>
                 </tr>
-              )
+              );
             })}
           </tbody>
         </table>
@@ -83,12 +89,8 @@ const Renda = () => {
         <div className="containerTabelaUltRenda">
           <table>
             <tr>
-              <td>
-                Teste
-              </td>
-              <td>
-                Teste
-              </td>
+              <td>Teste</td>
+              <td>Teste</td>
             </tr>
           </table>
         </div>
