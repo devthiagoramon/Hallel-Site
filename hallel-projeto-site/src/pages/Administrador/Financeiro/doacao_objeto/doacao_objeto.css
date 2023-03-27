@@ -1,0 +1,26 @@
+.containerDoacaoObj{
+    width: 100%;
+    min-height: 100%;
+    margin-top: 6rem;
+    margin-left: 3rem;
+}
+
+.containerCardsDoacaoObj{
+    width: 70%;
+}
+
+.headerCardsDoacaoObj{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerCardsDoacaoObj label{
+    width: auto;
+    font-size: 36px;
+}
+
+.bodyCardsDoacaoObj{
+    width: 100%;
+    margin-top: 3rem;
+}

@@ -19,6 +19,7 @@ import Entrar from "./pages/Entrar";
 import Gasto from "./pages/Administrador/Financeiro/gastos";
 import PagamentosAssociado from "./pages/Administrador/Financeiro/pagamentos";
 import DoacoesDinheiroAdm from "./pages/Administrador/Financeiro/doacao";
+import DoacaoObjetoADM from "./pages/Administrador/Financeiro/doacao_objeto";
 
 function RoutesApp() {
   return (
@@ -58,6 +59,7 @@ function RoutesApp() {
           element={<PagamentosAssociado />}
         />
         <Route path="/administrador/painelFinanceiro/doacoes/dinheiro" element={<DoacoesDinheiroAdm/>}/>
+        <Route path="/administrador/painelFinanceiro/doacoes/objeto" element={<DoacaoObjetoADM/>}/>
         <Route path="/entrar" element={<Entrar />} />
       </Routes>
     </BrowserRouter>
