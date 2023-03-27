@@ -40,8 +40,9 @@ function rendasPDF(rendas) {
 
   function getDataAtual() {
     let date = new Date();
+    console.log(date)
     let dia = String(date.getDay());
-    let mes = String(date.getMonth());
+    let mes = String(date.getMonth()+1);
     let ano = String(date.getFullYear());
 
     if (dia.length === 1) {

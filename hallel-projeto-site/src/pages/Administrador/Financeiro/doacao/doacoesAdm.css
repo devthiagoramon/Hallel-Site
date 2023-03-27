@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.containerDoacoesAdm{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.cabecalhoDoacoesAdm{
+    width: 100vw;
+    height: 10%;
+    margin-left: 0;
+    margin-top: 120px;
+    margin-left: 3rem;
+}
+
+.cabecalhoDoacoesAdm a{
+    font-size: 36px;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+}
+
+.containerTabelaDoacoesAdm{
+    margin-top: 2rem;
+    width: 94%;
+    height: 100%;
+    margin-left: 3rem;
+}
+
+.headContTabelaDoacoesAdm{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.tituloHeadContTabelaDoacoesAdm a{
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.iconsHeadContTabelaDoacoesAdm{
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+}
+
+.iconsHeadContTabelaDoacoesAdm a{
+    border-radius: 50%;
+    height: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 5px;
+}
+
+.icons{
+    width: 55px;
+    color: #35404B;
+}
+
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid;
+    box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 5px;
+}
+
+.table,th,td{
+    border: 2px solid rgba(0, 0, 0, 0.75);
+    text-align: left;
+}
+
+.table thead{
+    width: 100%;
+}
+
+.containerUltRenda{
+    display: flex;
+    width: 27%;
+    height: 60%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

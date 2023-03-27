@@ -37,7 +37,7 @@ function gastosPDF(gastos) {
   function getDataAtual(){
     let date = new Date();
     let dia = String(date.getDay());
-    let mes = String(date.getMonth());
+    let mes = String(date.getMonth()+1);
     let ano = String(date.getFullYear());
 
     if(dia.length === 1){
