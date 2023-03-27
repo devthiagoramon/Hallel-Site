@@ -1,9 +1,9 @@
 .pedido-container{
   display: flex;
   background: linear-gradient(55deg,#d24646,#f16633);
-  width: 30%;
-    margin-left: 35%;
-    margin-right: 35%;
+  width: 50;
+    margin-left: 25%;
+    margin-right: 25%;
     padding: 2%;
     padding-top: 1.4%;
     padding-bottom: 1.4%;
