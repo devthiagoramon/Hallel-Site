@@ -42,17 +42,42 @@ export default class PainelFinanceiro extends Component {
       gastos: 0,
       lucros: 0,
       saldo: 0,
+      receitas: []
     };
     this.loadSaldo = this.loadSaldo.bind(this);
     this.loadLucro = this.loadLucro.bind(this);
     this.loadGastos = this.loadGastos.bind(this);
     this.loadDataFromAPI = this.loadDataFromAPI.bind(this);
+    this.loadUltimasReceitas = this.loadUltimasReceitas.bind(this);
   }
 
   loadDataFromAPI() {
     this.loadSaldo();
     this.loadGastos();
     this.loadLucro();
+    this.loadUltimasReceitas();
+  }
+
+  loadUltimasReceitas() {
+    let url = "http://localhost:8080/api/financeiro/ultimasReceitas";
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((receitasBD) => {
+        this.setState({ receitas: receitasBD })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   loadLucro() {
@@ -129,10 +154,12 @@ export default class PainelFinanceiro extends Component {
           <div className="cardLucroMensal">
             <p className="tituloCard">Lucro Mensal</p>
             <p className="valorNum">R$ {this.state.lucros}</p>
+            <a className="saibaMaisFin" href="/administrador/painelFinanceiro/rendas">Saber mais</a>
           </div>
           <div className="cardDespesaMensal">
             <p className="tituloCard">Gasto Mensal</p>
             <p className="valorNum">R$ {this.state.gastos}</p>
+            <a className="saibaMaisFin" href="/administrador/painelFinanceiro/gastos">Saber mais</a>
           </div>
         </div>
         <div className="painelGrafico">
@@ -154,10 +181,34 @@ export default class PainelFinanceiro extends Component {
             <button>Ano atual</button>
           </div>
         </div>
-        <div className="ultimosAssociado">
-          <p className="tituloAssociado" style={{ color: "#363636" }}>
-            Ultimos associados
+        <div className="ultimasRendas">
+          <p className="tituloUltimasRendas" style={{ color: "#363636" }}>
+            Ultimas receitas
           </p>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Descrição da renda</th>
+                <th>Objeto</th>
+                <th>Data da receita</th>
+                <th>Feito por</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.receitas.map((item) => {
+                return (
+                  <tr>
+                    <td>{item.descricaoReceita}</td>
+                    <td>{item.objeto === false ? "Não" : "Sim"}</td>
+                    <td>{item.dataReceita}</td>
+                    <td>{item.usuarioReceita}</td>
+                    <td>R$ {item.valor}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     );

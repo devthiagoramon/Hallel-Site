@@ -102,7 +102,7 @@ const Gasto = () => {
       </div>
       <div className="containerUltGastos">
         <div className="headUltGastos">
-          <p>Ultimas Rendas</p>
+          <p>Ultimos Gastos</p>
         </div>
         <div className="containerTabelaUltGasto">
           <table>

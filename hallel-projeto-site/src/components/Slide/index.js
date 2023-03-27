@@ -23,8 +23,6 @@ const Slide = (props) => {
       <motion.div
         ref={carrosel}
         className="carrousel"
-        initial={{x:100}}
-        animate={{x:0}}
         transition={{duration: 0.8}}
         whileTap={{ cursor: "grabbing" }}
       >
