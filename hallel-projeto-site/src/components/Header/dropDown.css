@@ -1,19 +1,22 @@
+
+
 #dropdown-basic{
   border: none;
   box-shadow: none;
-  background-color: rgba(0,0,0, .0);
+  background-color: rgba(255, 0, 0, 0);
 }
 
-#dropdown-basic :hover{
+#dropdown-basic:hover{
   background-color: rgba(255, 255, 255, 0.25);
 }
 
 #menu{
   width: 100%;
   border: none;
+  background-color: #e8e8e8;
   text-decoration: none !important;
 }
 
-#menu #link :hover{
-  background-color: rgba(255, 255, 255, .25);
+#menu #link:hover{
+  background-color: #d7d7d7;
 }

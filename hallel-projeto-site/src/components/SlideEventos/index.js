@@ -50,9 +50,9 @@ const SlideEventos = (props) => {
                 key={imagem2}
                 whileHover={{ scale: "1.02" }}
               >
-
-
-    <div classNamw="card">
+                
+                
+    <div className="card">
       <div className="card-image">
         <figure className="image is-4by3">
           <img src={imagem2} alt="Placeholder image"/>
@@ -61,13 +61,14 @@ const SlideEventos = (props) => {
       <div className="card-content">
         <h1 id = "title-cartao">Título do Evento</h1>
         <div className="content">
-         <p id = "desc-cartao" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet sem ac diam elementum suscipit vel eget dui. In metus est, lobortis at fringilla ac, euismod at metus.</p>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet sem ac diam elementum suscipit vel eget dui. In metus est, lobortis at fringilla ac, euismod at metus.</p>
          <time>??/??/????</time> <br/>
          <time>00:00</time>
            
         </div>
       </div>
     </div>
+
 
                
               </motion.div>
