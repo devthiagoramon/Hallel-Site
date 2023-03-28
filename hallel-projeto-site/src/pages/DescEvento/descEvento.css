@@ -24,6 +24,7 @@
 
 main.container{
     min-height: calc(100vh - 87px - 35px);
+    display: block;
 }
 .container{
     padding: 3rem 0;
@@ -41,7 +42,7 @@ main.container{
 .titulo{
     padding: 50px;
     font-weight: 800;
-    margin-top: 15%;
+    margin-top: 8%;
     color: #354045;
 }
 
@@ -55,20 +56,34 @@ main.container{
 }
 
 .infos-left {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.conteudoLeft{
+    
+    margin: 2%;
     display: inline-block;
 }
 
 .title{
     font-weight: 600;
+    width: 37%;
+    text-align: left;
+    
    
 }
 
 .cont {
-    text-align: right;
+
+    
     padding-left: 20px;
-    width: 50%;
+    width: 63%;
+    text-align: center;
 
 }
+
+
  
 
 label.cont{
@@ -80,6 +95,7 @@ label.cont{
     flex-direction: column;
     padding-left: 20%;
 
+
 }
 
 #titulo-palestrantes{
@@ -88,8 +104,13 @@ label.cont{
 
 .infos-palestrantes{
     text-align: center;
+    
+   
 }
 
-
-
-
+/*o display inline deixa o elemeto na mesma linha*/
+.infos-palestrantes > label{
+    text-align: left;
+    display: inline;
+   
+}
