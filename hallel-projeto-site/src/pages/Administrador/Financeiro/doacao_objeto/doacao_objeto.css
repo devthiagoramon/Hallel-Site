@@ -1,18 +1,19 @@
 .containerDoacaoObj{
     width: 100%;
     min-height: 100%;
-    margin-top: 6rem;
+    margin-top: 7rem;
     margin-left: 3rem;
 }
 
 .containerCardsDoacaoObj{
-    width: 70%;
+    width: 93%;
 }
 
 .headerCardsDoacaoObj{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .headerCardsDoacaoObj label{
@@ -20,7 +21,19 @@
     font-size: 36px;
 }
 
+.headerCardsDoacaoObj span{
+    font-size: 18px;
+}
+
 .bodyCardsDoacaoObj{
-    width: 100%;
+    width: auto;
     margin-top: 3rem;
+    display: flex;
+    gap: 3rem;
+}
+.addDoacaoHeaderCardsDoacao{
+    width: auto;
+    height: 100%;
+    align-items: center;
+    display: flex;
 }
