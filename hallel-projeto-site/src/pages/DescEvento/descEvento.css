@@ -79,13 +79,7 @@ main.container{
     
     padding-left: 20px;
     width: 63%;
-    text-align: center;
-
 }
-
-
- 
-
 label.cont{
     margin-left: auto;
     padding: 0;
@@ -105,12 +99,10 @@ label.cont{
 .infos-palestrantes{
     text-align: center;
     
-   
 }
 
 /*o display inline deixa o elemeto na mesma linha*/
 .infos-palestrantes > label{
     text-align: left;
     display: inline;
-   
 }

@@ -1,0 +1,38 @@
+
+.body-formDoacao{
+
+    display: flex;
+    margin-top: 2.8%;
+    height: 120vh;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: url('../../images/background-formDoar.jpg');    
+    background-repeat: no-repeat;
+    background-color: aqua;
+    background-size: cover;
+}
+
+.left-formDoacao{
+
+    border-radius: 30px;
+    margin-right: 5%;
+    background-color: #FFFFFF;
+    width: 30%;
+    height: 60%;
+}
+.left-formDoacao > .tituloforms{
+
+    margin: auto;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 3px 1.5px 1.5px #3d3d3d;
+    background: linear-gradient(90deg, #FF8A00, #289B00);
+    padding: 2%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+
+
+}

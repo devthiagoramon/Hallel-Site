@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
 
 .containerCarroseul {
-    margin-top: 5rem;
+    margin-top: 2rem;
     width: 100%;
     min-height: 80vh;
     display: flex;
@@ -33,7 +33,8 @@
     box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
     pointer-events: none;
 }
-
+ 
+ 
 .legenda {
     background: linear-gradient(180deg, rgba(0,0,0,0) 9.75%, rgba(0,0,0,0.75) 80%);
     display: flex;
