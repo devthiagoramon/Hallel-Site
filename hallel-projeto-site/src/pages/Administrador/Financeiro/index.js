@@ -1,54 +1,31 @@
 import React, { Component } from "react";
+import { useMemo } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Table } from "react-bootstrap";
 import Chart from "react-google-charts";
 import "./painelFin.css";
-
-export default class PainelFinanceiro extends Component {
+class PainelFinanceiro extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      opcoesGrafico: {
-        hAxis: { title: "Dia", viewWindow: { min: 0, max: 31 } },
-        vAxis: { title: "Valor", viewWindow: { min: 0, max: 500 } },
-        legend: "none",
-      },
       data: [
-        ["Dia", "Valor"],
-        [1, 100],
-        [2, 120],
-        [3, 29],
-        [4, 190],
-        [5, 40],
-        [6, 200],
-        [7, 90],
-        [8, 100],
-        [9, 24],
-        [10, 200],
-        [11, 20],
-        [12, 400],
-        [13, 40],
-        [14, 215],
-        [15, 253],
-        [16, 125],
-        [17, 95],
-        [18, 93],
-        [19, 24],
-        [20, 16],
-        [21, 20],
-        [22, 59],
-        [23, 29],
-        [24, 59],
-        [25, 49],
+        ["Dia", "Valor", {role:"style"}],
       ],
       gastos: 0,
       lucros: 0,
       saldo: 0,
-      receitas: []
+      receitas: [],
     };
     this.loadSaldo = this.loadSaldo.bind(this);
     this.loadLucro = this.loadLucro.bind(this);
     this.loadGastos = this.loadGastos.bind(this);
     this.loadDataFromAPI = this.loadDataFromAPI.bind(this);
     this.loadUltimasReceitas = this.loadUltimasReceitas.bind(this);
+    this.loadGraficoRendaDia = this.loadGraficoRendaDia.bind(this);
+    this.loadGraficoRendaMes = this.loadGraficoRendaMes.bind(this);
+    this.loadGraficoRendaSemana = this.loadGraficoRendaSemana.bind(this);
+    this.loadGraficoRendaSemana();
   }
 
   loadDataFromAPI() {
@@ -73,7 +50,7 @@ export default class PainelFinanceiro extends Component {
         return res.json();
       })
       .then((receitasBD) => {
-        this.setState({ receitas: receitasBD })
+        this.setState({ receitas: receitasBD });
       })
       .catch((error) => {
         console.log(error);
@@ -136,6 +113,55 @@ export default class PainelFinanceiro extends Component {
       .catch(console.warn("Error in API: in request of saldo"));
   }
 
+  loadGraficoRendaMes() {}
+
+  loadGraficoRendaSemana(){
+    let url = "http://localhost:8080/api/financeiro/receita/semana";
+    let myHeaders = new Headers();
+
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((object) => {
+        let index = 0;
+        let dias = object.datas;
+        let valores = object.valores;
+        let arrayObject = [["Dia", "Valor", {role:"style"}]]
+        dias.map((dia) => {
+          arrayObject.push([dia, valores[index], "#FFCC6C"]);
+          this.setState({data: arrayObject})
+          index++;
+        });
+      })
+      .catch(console.warn("Error in API: in request of actual date receita"));
+  }
+
+  loadGraficoRendaDia() {
+    let url = "http://localhost:8080/api/financeiro/receita/dia";
+    let myHeaders = new Headers();
+
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((object) => {
+        let arrayObject = [object.dia, object.valorTotal];
+        this.setState({ data: arrayObject });
+      })
+      .catch(console.warn("Error in API: in request of actual date receita"));
+  }
+
   componentDidMount() {
     this.loadDataFromAPI();
   }
@@ -154,12 +180,22 @@ export default class PainelFinanceiro extends Component {
           <div className="cardLucroMensal">
             <p className="tituloCard">Lucro Mensal</p>
             <p className="valorNum">R$ {this.state.lucros}</p>
-            <a className="saibaMaisFin" href="/administrador/painelFinanceiro/rendas">Saber mais</a>
+            <a
+              className="saibaMaisFin"
+              href="/administrador/painelFinanceiro/rendas"
+            >
+              Saber mais
+            </a>
           </div>
           <div className="cardDespesaMensal">
             <p className="tituloCard">Gasto Mensal</p>
             <p className="valorNum">R$ {this.state.gastos}</p>
-            <a className="saibaMaisFin" href="/administrador/painelFinanceiro/gastos">Saber mais</a>
+            <a
+              className="saibaMaisFin"
+              href="/administrador/painelFinanceiro/gastos"
+            >
+              Saber mais
+            </a>
           </div>
         </div>
         <div className="painelGrafico">
@@ -183,9 +219,13 @@ export default class PainelFinanceiro extends Component {
         </div>
         <div className="ultimasRendas">
           <p className="tituloUltimasRendas" style={{ color: "#363636" }}>
-            Ultimas receitas
+            Ultimas rendas
           </p>
-          <table className="table">
+          <Table
+            borderless
+            hover
+            style={{ maxWidth: "95%", marginLeft: "2.5rem" }}
+          >
             <thead>
               <tr>
                 <th>Descrição da renda</th>
@@ -208,9 +248,11 @@ export default class PainelFinanceiro extends Component {
                 );
               })}
             </tbody>
-          </table>
+          </Table>
         </div>
       </div>
     );
   }
 }
+
+export default PainelFinanceiro;

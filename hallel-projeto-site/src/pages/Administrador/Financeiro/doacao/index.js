@@ -3,6 +3,7 @@ import "./doacoesAdm.css";
 import Arrow from "./../../../../images/arrow-icon.svg";
 import { useMemo } from "react";
 import { useState } from "react";
+import { Table } from "react-bootstrap";
 
 const DoacoesDinheiroAdm = () => {
   const [doacoes, setdoacoes] = useState([]);
@@ -45,7 +46,7 @@ const DoacoesDinheiroAdm = () => {
             </a>
           </div>
         </div>
-        <table className="table">
+        <Table striped borderless hover>
           <thead>
             <tr>
               <th>Email do Doador</th>
@@ -68,7 +69,7 @@ const DoacoesDinheiroAdm = () => {
               );
             })}
           </tbody>
-        </table>
+        </Table>
       </div>
     </div>
   );

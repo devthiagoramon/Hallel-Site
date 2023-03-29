@@ -25,7 +25,7 @@
 
 }
 
-p {
+.global>p {
   font-family: 'Inter';
   font-style: normal;
   margin-right: 90px;
@@ -39,7 +39,7 @@ p {
 
 }
 
-#titulo, p{
+#titulo>p{
 
   margin-left: 20px;
 }

@@ -8,6 +8,7 @@ import { useState } from "react";
 import ModalAddDespesa from "./addModal";
 import gastosPDF from "../../../../Reports/gastos/gastos";
 import { SaveAlt } from "@mui/icons-material";
+import { Table } from "react-bootstrap";
 
 const Gasto = () => {
 
@@ -75,7 +76,7 @@ const Gasto = () => {
             </a>
           </div>
         </div>
-        <table className="table">
+        <Table striped borderless hover>
           <thead>
             <tr>
               <th>Descrição do gasto</th>
@@ -98,7 +99,7 @@ const Gasto = () => {
               );
             })}
           </tbody>
-        </table>
+        </Table>
       </div>
       <div className="containerUltGastos">
         <div className="headUltGastos">

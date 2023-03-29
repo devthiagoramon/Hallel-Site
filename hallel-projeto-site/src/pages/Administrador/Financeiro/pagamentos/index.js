@@ -5,6 +5,7 @@ import Arrow from "./../../../../images/arrow-icon.svg";
 import { useMemo } from "react";
 import { useState } from "react";
 import { SaveAlt } from "@mui/icons-material";
+import { Table } from "react-bootstrap";
 
 const PagamentosAssociado = () => {
   const [pagamentosAssociados, setpagamentosAssociados] = useState([]);
@@ -47,7 +48,7 @@ const PagamentosAssociado = () => {
             </a>
           </div>
         </div>
-        <table className="table">
+        <Table striped borderless hover>
           <thead>
             <tr>
               <th>Nome</th>
@@ -74,7 +75,7 @@ const PagamentosAssociado = () => {
               );
             })}
           </tbody>
-        </table>
+        </Table>
       </div>
     </div>
   );

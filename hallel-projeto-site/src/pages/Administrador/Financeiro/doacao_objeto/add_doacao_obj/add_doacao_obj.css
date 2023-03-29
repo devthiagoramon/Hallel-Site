@@ -1,6 +1,10 @@
 .page-container{
     overflow-y: hidden;
-    
+    overflow-x: hidden;
+}
+
+.content-wrap{
+    min-height: 100%;
 }
 
 .contAddDoacaoObjetoAdm{

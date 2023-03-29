@@ -67,22 +67,6 @@ body{
 }
 
 
-.table{
-    width: 100%;
-    border-collapse: collapse;
-    border: 3px solid;
-    box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 5px;
-}
-
-.table,th,td{
-    border: 2px solid rgba(0, 0, 0, 0.75);
-    text-align: left;
-}
-
-.table thead{
-    width: 100%;
-}
-
 .containerUltRenda{
     display: flex;
     width: 27%;
