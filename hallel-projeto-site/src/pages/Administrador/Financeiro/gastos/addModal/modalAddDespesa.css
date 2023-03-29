@@ -46,7 +46,7 @@
   color: #e40000;
 }
 
-.bodyAddDespesa textarea,
+.bodyAddDespesa textarea, .bodyAddDespesa
 input {
   margin-left: 1.5rem;
   width: 85%;
