@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { useState } from "react";
 import rendasPDF from "../../../../Reports/rendas/rendas";
 import { SaveAlt } from "@mui/icons-material";
+import { Table } from "react-bootstrap";
 
 const Renda = () => {
 
@@ -57,7 +58,7 @@ const Renda = () => {
             </a>
           </div>
         </div>
-        <table className="table">
+        <Table striped borderless hover>
           <thead>
             <tr>
               <th>Descrição da renda</th>
@@ -80,7 +81,7 @@ const Renda = () => {
               );
             })}
           </tbody>
-        </table>
+        </Table>
       </div>
       <div className="containerUltRenda">
         <div className="headUltRenda">
