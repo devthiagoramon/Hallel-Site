@@ -14,7 +14,7 @@ function Associado(){
           <section className = "imagem-associado">
           
               <div>
-                  <h2>Seja um<br/>membro<br/>associado
+                  <h2>Seja um membro<br/>associado
                   </h2>
                   
                   <p>Ajude a comunidade a continuar crescendo, seja um apoiador!</p>
@@ -24,8 +24,9 @@ function Associado(){
           
           <section className = "texto-associado">
           
-            <h2>Fique por dentro e receba palavras especiais</h2>
+            <h2>Fique por dentro e<br/>receba palavras especiais</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dui mi, venenatis sed nunc ut, maximus finibus nulla. Ut lectus diam, commodo id tempor nec, volutpat at dui.</p>
+            
             <p>Suspendisse potenti. Nam mollis metus eget lorem facilisis tincidunt vel a urna. Vestibulum pharetra egestas felis, at ullamcorper arcu porta sit amet. Nullam non dapibus ipsum.</p>
           
           </section>

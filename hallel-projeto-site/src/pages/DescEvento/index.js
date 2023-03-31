@@ -13,7 +13,7 @@ function DescEvento() {
             <div className="image-bg" > </div>
 
             <main className="container">
-                <p> O que é necessário para você ser feliz? </p>
+                <p id="titulo-desc"> O que é necessário para você ser feliz? </p>
                 <br />
                 <p>
                     Quando eu pensava em uma vocação, costumava logo pensar em realizações humanas, profissionais, afetivas, financeiras, etc.
@@ -74,11 +74,6 @@ function DescEvento() {
             </main>
 
         </div>
-
-
-
-
-
 
     );
 }

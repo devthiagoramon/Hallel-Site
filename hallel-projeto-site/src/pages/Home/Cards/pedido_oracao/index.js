@@ -7,7 +7,6 @@ function pedido_oracao() {
         <div className="pedido-imagem">
           
             <img
-                      id="imagem"
                       src="https://www.basilicacoracaodemaria.com/area/img/noticias/6f7757f890370ad6cd8c9d062b5bac4c.jpg"
                       alt="Pedido_img"
                     />

@@ -11,15 +11,15 @@ function Home() {
       <Slide />
   
       <br />
-      <Link to="/administrador/eventos">ADMINISTRADOR: Eventos</Link>
+        <Link to="/administrador/eventos">ADMINISTRADOR: Eventos</Link>
       <br />
-      <Link to="/administrador/membros">ADMINISTRADOR: Membros</Link>
+        <Link to="/administrador/membros">ADMINISTRADOR: Membros</Link>
       <br />
-      <Link to="/administrador/painelFinanceiro">ADMINISTRADOR: Painel Financeiro</Link>
-      <Eventos/>
-      <Programacao/>
-      <DoarPanel/>
-      <Card_oracao/>
+        <Link to="/administrador/painelFinanceiro">ADMINISTRADOR: Painel Financeiro</Link>
+        <Eventos/>
+        <Programacao/>
+        <DoarPanel/>
+        <Card_oracao/>
 
     </div>
   );

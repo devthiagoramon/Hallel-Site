@@ -11,29 +11,52 @@
 
 }
 
-#imagem{
+.pedido-imagem{
 
-  height: 120px;
-  width: 120px;
+  width: 20%;
+}
+
+.pedido-imagem > img{
+
+  height: 9em;
+  width: 9em;
+  float: left;
   border-radius: 50%;
-  margin-right: 20px;
-  float: right;  
+  margin-right: 0.5em;
+ 
 }
 
 .pedido-info{
-  
+
+  width: 80%;
+  display: inline;
   color: #ffffff;
   font-size: 18px;
+  text-align: left;
 }
+
+.pedido-info > h1{
+
+  text-align: center;
+  margin: auto;
+}
+
+.pedido-info > p{
+
+  text-align: center;
+}
+
 .buttonPedidoOracao{
 
-  text-align:left;
-border: none;
-color: #FFFFFF;
-padding: 2.5px;
-padding-left: 3%;
-padding-right: 3%;
-border-radius: 10%;
-background-color: #D94814;
-box-shadow: rgba(0, 0, 0, .50) 5px 5px 20px;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    border: none;
+    color: #FFFFFF;
+    padding: 2.5px;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 10%;
+    background-color: #D94814;
+    box-shadow: rgba(0, 0, 0, .50) 5px 5px 20px;
 }
