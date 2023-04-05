@@ -1,0 +1,109 @@
+.containerDesc-pretexto{
+
+    display: flex;
+    flex-direction: column;
+}
+
+.containerDesc-pretexto img{
+
+    width: 30em;
+    height: 20em;
+    margin: auto;
+    margin-top: 10em;
+    margin-bottom: 1.5em;
+    border-radius: 1em;
+}
+
+.containerDesc-pretexto h3, p{
+
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.containerDesc-pretexto #buttonInscricaoCurso{
+
+
+    width: 10%;
+    margin: auto;
+    margin-top: 0.6em;
+    margin-bottom: 1.6em;
+}
+
+.containerDesc-pretexto #tag{
+
+     border: 2px solid black;
+     padding: 0.2em;
+     padding-left: 0.8em;
+     padding-right: 0.8em;
+     border-radius: 0.8em;
+}
+
+.containerDesc-pretexto * #tag{
+
+    margin: 1em;
+
+}
+
+.containerDesc-postexto h3{
+
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+
+.containerDesc-postexto h3, li{
+
+    list-style-type: disc;
+}
+
+.containerDesc-postexto > div{
+
+    margin-left: 20%;
+    margin-right: 20%;
+
+}
+
+.containerDesc-postexto div #textoDescCurso{ 
+
+    text-align: justify;
+}
+
+.containerAreaButton{
+
+    flex-direction: row;
+    margin-top: 4em;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+}
+
+.containerAreaButton #buttonVoltarCurso{
+
+    background-color: #FFFFFF;
+    color: #575757;
+    padding: 0.2em;
+    border: none;
+    width: 20%;
+    font-size: 0.8em;
+}
+
+#buttonInscricaoCurso{
+
+    background-color: #298D05;
+    padding: 0.1em;
+    margin-right: 0.6em;
+    float: right;
+    border-radius: 10px;
+    color: #FFFFFF;
+    width: 20%;
+
+}
+
+
+/*complementos*/
+
+hr{
+
+    margin-left: 20%;
+    margin-right: 20%;
+}

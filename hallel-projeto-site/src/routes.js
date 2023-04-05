@@ -10,7 +10,8 @@ import Sobre from "./pages/Sobre";
 import MembrosAdm from "./pages/Administrador/Membros";
 import EventosCriarAdm from "./pages/Administrador/Eventos/adicionar";
 import EventoListarAdm from "./pages/Administrador/Eventos/listar";
-import DescricaoEvento from "./pages/DescEvento"
+import DescricaoEvento from "./pages/DescEvento";
+import DescricaoCurso from "./pages/DescCurso";
 import EventoUser from "./pages/Evento/listar";
 import DoacaoFormulario from "./pages/DoacaoForm";
 import Perfil from "./pages/PerfilUsuario";
@@ -41,6 +42,7 @@ function RoutesApp() {
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/descricao" element={<DescricaoEvento />} />
+        <Route path="/descricaoCurso" element={<DescricaoCurso />} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
         <Route
