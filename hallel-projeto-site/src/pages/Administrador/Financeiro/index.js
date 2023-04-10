@@ -170,16 +170,16 @@ class PainelFinanceiro extends Component {
     return (
       <div className="containerFinanceiro">
         <div className="titulo">
-          <p>Painel Financeiro</p>
+          <label>Painel Financeiro</label>
         </div>
         <div className="cards">
           <div className="cardLucroTotal">
-            <p className="tituloCard">Saldo</p>
-            <p className="valorNum">R$ {this.state.saldo}</p>
+            <label className="tituloCard">Saldo</label>
+            <label className="valorNum">R$ {this.state.saldo}</label>
           </div>
           <div className="cardLucroMensal">
-            <p className="tituloCard">Lucro Mensal</p>
-            <p className="valorNum">R$ {this.state.lucros}</p>
+            <label className="tituloCard">Lucro Mensal</label>
+            <label className="valorNum">R$ {this.state.lucros}</label>
             <a
               className="saibaMaisFin"
               href="/administrador/painelFinanceiro/rendas"
@@ -188,8 +188,8 @@ class PainelFinanceiro extends Component {
             </a>
           </div>
           <div className="cardDespesaMensal">
-            <p className="tituloCard">Gasto Mensal</p>
-            <p className="valorNum">R$ {this.state.gastos}</p>
+            <label className="tituloCard">Gasto Mensal</label>
+            <label className="valorNum">R$ {this.state.gastos}</label>
             <a
               className="saibaMaisFin"
               href="/administrador/painelFinanceiro/gastos"
@@ -218,13 +218,13 @@ class PainelFinanceiro extends Component {
           </div>
         </div>
         <div className="ultimasRendas">
-          <p className="tituloUltimasRendas" style={{ color: "#363636" }}>
+          <label className="tituloUltimasRendas" style={{ color: "#363636" }}>
             Ultimas rendas
-          </p>
+          </label>
           <Table
             borderless
             hover
-            style={{ maxWidth: "95%", marginLeft: "2.5rem" }}
+            style={{ maxWidth: "95%", marginLeft: "2.5rem", marginTop:"1.5rem" }}
           >
             <thead>
               <tr>

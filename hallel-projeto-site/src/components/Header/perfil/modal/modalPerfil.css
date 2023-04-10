@@ -13,6 +13,7 @@
     margin-right: 1.3rem ;
     border-radius: 10px 0px 10px 10px;
     box-shadow: rgb(82, 81, 81) 5px 10px 50px;
+    background-color: #fafafa;
     animation-name: showModal;
     animation-duration: 2s;
 }

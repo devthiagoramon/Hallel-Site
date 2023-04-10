@@ -37,3 +37,20 @@
     align-items: center;
     display: flex;
 }
+
+.modalDescricaoObjeto{
+    background-color: #fafafa;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 10px;
+}
+
+.loadingModalDescricaoObjeto{
+    min-height: 200px;
+    border-radius: 10px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
