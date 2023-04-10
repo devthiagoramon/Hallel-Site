@@ -12,6 +12,7 @@ import EventosCriarAdm from "./pages/Administrador/Eventos/adicionar";
 import EventoListarAdm from "./pages/Administrador/Eventos/listar";
 import DescricaoEvento from "./pages/DescEvento";
 import DescricaoCurso from "./pages/DescCurso";
+import MeusCursos from "./pages/VisualizarCursos";
 import EventoUser from "./pages/Evento/listar";
 import DoacaoFormulario from "./pages/DoacaoForm";
 import Perfil from "./pages/PerfilUsuario";
@@ -44,6 +45,7 @@ function RoutesApp() {
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/descricao" element={<DescricaoEvento />} />
         <Route path="/descricaoCurso" element={<DescricaoCurso />} />
+        <Route path="/meusCursos" element={<MeusCursos />} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
         <Route
