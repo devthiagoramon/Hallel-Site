@@ -37,12 +37,12 @@
     margin-left: 0.7rem;
     margin-top: 0.6rem;
 }
+
 .HeaderModalPerfil svg{
+    width: 75px;
+    height: 75px;
     margin-top: 0.6rem;
     margin-left: 0.6rem;
-    width: 20%;
-    background-color: black;
-    border-radius: 50%;
 }
 
 .BodyModalPerfil{

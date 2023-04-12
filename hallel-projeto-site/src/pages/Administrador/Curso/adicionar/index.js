@@ -1,5 +1,5 @@
 import { AddCircleOutline, AddCircleOutlineOutlined, Label, RemoveCircle } from '@mui/icons-material'
-import { Button, IconButton } from '@mui/material'
+import { Alert, Button, CircularProgress, IconButton, Snackbar } from '@mui/material'
 import { width } from '@mui/system'
 import React from 'react'
 import { useRef } from 'react'
@@ -7,15 +7,38 @@ import { useState } from 'react'
 import { FormControl } from 'react-bootstrap'
 import "./addCurso.css"
 import addImageIcon from "./../../../../images/addImage.svg";
+import { useEffect } from 'react'
 
 const AdicionarCursoAdm = () => {
 
     const [requisitosInputs, setRequisitosInputs] = useState([]);
+    const [nomeInput, setNome] = useState("");
     const [lastId, setLastId] = useState(0);
     const [imagemInput, setImagemInput] = useState("");
     const imagemDiv = useRef();
     const imagemLabelInformativoDiv = useRef();
     const imagemLabelInformativoLabel = useRef();
+    const [btnHabilitado, setbtnHabilitado] = useState();
+
+    const [enviando, setenviando] = useState(false);
+    const [enviadoSucesso, setenviadoSucesso] = useState(false);
+    const [enviadoErro, setEnviadoErro] = useState(false);
+
+    useEffect(() => {
+        if (
+            nomeInput !== "" &&
+            imagemInput !== ""
+        ) {
+            setbtnHabilitado(true)
+        } else {
+            setbtnHabilitado(false)
+        }
+    }, [imagemInput, nomeInput]);
+
+    function fecharAviso() {
+        enviadoSucesso === true ? setenviadoSucesso(false) : setenviadoSucesso(false)
+        enviadoErro === true ? setEnviadoErro(false) : setEnviadoErro(false)
+    }
 
 
     const dropImagemDiv = (event) => {
@@ -55,9 +78,59 @@ const AdicionarCursoAdm = () => {
         setRequisitosInputs(inputs);
     }
 
-    function teste() {
-        console.log("requisitos:")
-        console.log(requisitosInputs)
+    function solicitaçao(){
+        let arrayRequisitos = []
+
+        requisitosInputs.map((item) => {
+            arrayRequisitos.push(item.text);
+        })
+
+        let url = "http://localhost:8080/api/cursos/create";
+
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", localStorage.getItem("token"));
+
+
+        fetch(url, {
+            headers: myHeaders,
+            method: "POST",
+            body: JSON.stringify({
+                nome: nomeInput,
+                image: imagemInput,
+                requisitos: arrayRequisitos
+            })
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((object) => {
+                setenviadoSucesso(true);
+                console.log(object)
+                /*
+                setTimeout(() => {
+                    window.location.href = "/administrador/cursos"
+                }, 3000);
+                */
+            })
+            .catch((error) => {
+                console.warn(error);
+                setEnviadoErro(true);
+                /*
+                setTimeout(() => {
+                    setenviado(false);
+                }, 3000);
+                */
+            });
+    }
+
+    function cadastrarCurso() {
+        setenviando(true);
+        solicitaçao();
+
+        setTimeout(() => {
+            setenviando(false);
+        }, 3000);
     }
 
     return (
@@ -107,14 +180,14 @@ const AdicionarCursoAdm = () => {
                     <div className='contInputsAddCurso'>
                         <div>
                             <label>Nome do curso</label>
-                            <FormControl style={{ width: "80%" }} />
+                            <FormControl onChange={(e) => setNome(e.target.value)} style={{ width: "80%" }} />
                         </div>
                         <div>
                             <label>Requisitos
                                 <IconButton sx={{ color: "#333" }} onClick={() => {
                                     setRequisitosInputs((value) => [...value, { id: lastId, text: "" }]
                                     );
-                                    setLastId(requisitosInputs.length)
+                                    setLastId(lastId + 1);
                                 }}>
                                     <AddCircleOutline />
                                 </IconButton>
@@ -149,9 +222,30 @@ const AdicionarCursoAdm = () => {
             </div>
             <div className='footerAddCurso'>
                 <div className='contEnviarAddCurso'>
-                    <Button variant='contained' color='success' onClick={() => teste()}>Enviar</Button>
+                    {enviando ? <CircularProgress /> :
+                        <div>
+                            {btnHabilitado ? <Button variant='contained' color='success' onClick={() => cadastrarCurso()}>Enviar</Button> : <Button variant='contained' color='success' disabled>Enviar</Button>}
+
+                        </div>
+                    }
                 </div>
             </div>
+
+            <Snackbar open={enviadoErro}
+                autoHideDuration={3000}
+                onClose={fecharAviso}>
+                <Alert severity="success" sx={{ width: "100%" }}>
+                    Enviado com sucesso, redirecionando...
+                </Alert>
+            </Snackbar>
+            <Snackbar open={enviadoErro}
+                autoHideDuration={3000}
+                onClose={fecharAviso}>
+                <Alert severity="error" sx={{ width: "100%" }}>
+                    Error no envio
+                </Alert>
+            </Snackbar>
+
         </div>
     )
 }

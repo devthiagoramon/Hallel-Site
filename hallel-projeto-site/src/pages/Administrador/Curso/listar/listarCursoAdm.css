@@ -41,3 +41,11 @@
     display: flex;
     gap: 2rem;
 }
+
+.modalDescricaoCurso{
+    background-color: #fafafa;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 10px;
+}

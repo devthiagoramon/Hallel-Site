@@ -28,8 +28,8 @@
   display: flex;
   position: fixed;
   align-items: center;
-
-  background: linear-gradient(90deg, #e7b10e, #0cc7a1);
+  
+  background: linear-gradient(90deg, #00b09b, #96c93d);
   background-size: 100% 100%;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@
 #topicos > div > div > button {
   width: 100%;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 700;
   color: #35404b;
   text-align: center;
   letter-spacing: 0.00625em;

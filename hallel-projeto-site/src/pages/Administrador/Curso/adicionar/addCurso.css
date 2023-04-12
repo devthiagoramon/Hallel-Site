@@ -55,8 +55,8 @@
 
 .contImagemAddCurso {
     margin-top: 3rem;
-    width: 60vw;
-    height: 768px;
+    width: 640px;
+    height: 480px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

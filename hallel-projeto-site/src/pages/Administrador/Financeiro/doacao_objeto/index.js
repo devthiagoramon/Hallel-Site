@@ -22,8 +22,6 @@ const DoacaoObjetoADM = () => {
   const [doacoesObjeto, setdoacoesObjeto] = useState([]);
   const [atualizando, setAtualizando] = useState(false);
 
-  const arraySkeleton = [1, 2, 3, 4, 5];
-
   const templateDadoDoacaoModal = {
     descricao: "",
     recebido: false,
