@@ -55,18 +55,6 @@
   background-size: cover;
 }
 
-.imagem-associado>div {
-
-  width: 15em;
-  background-color: white;
-  border-bottom-right-radius: 15rem;
-  border-top-right-radius: 15em;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  padding-right: 4rem;
-  padding-left: 1.5em;
-}
-
 .imagem-associado div>h2 {
 
   font-weight: bold;

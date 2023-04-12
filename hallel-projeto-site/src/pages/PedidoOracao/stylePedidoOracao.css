@@ -1,0 +1,64 @@
+.containerPedidoOracao {
+  font-family: "Inter", sans-serif;
+  color: #35404b;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.imagem-pedido {
+  background-image: url(../../images/pedidoOracao.jpg
+  );
+
+  margin-top: 3rem;
+  height: 15em;
+  width: 100%;
+  position: relative;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.formularioContainerPedido{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.containerPedidoOracao #paragrafo{
+
+  font-size: 1.1em;
+  margin-top: 3em;
+  margin-left: 4em;
+  margin-bottom: 2.5em;
+}
+
+.containerPedidoOracao > #titulo{
+
+  font-size: 2.5em;
+  margin-left: 3em;
+}
+
+#paraquem {
+
+  color: #35404b;
+  font-weight: 500;
+  border-color: #999;
+}
+
+
+#bt{
+
+  background-color: #009e3f;
+  color: #ffffff;
+  border-radius: 0.5em;
+  border: 1px black;
+  padding: 0.5em;
+  font-weight: 700;
+  box-shadow: #00000080 1px 1.5px 8px;
+
+  align-self: flex-end;
+  float: inline-end;
+}

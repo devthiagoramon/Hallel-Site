@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Fundadora from "./pages/Fundadora";
-import Pedido from "./pages/pedido-oracao";
+import Pedido from "./pages/PedidoOracao";
 import Associado from "./pages/Associado";
 import SolicitacaoCadastro from "./pages/SolicitarCadastro";
 import Doacoes from "./pages/Doacoes/Doacoes.js";
@@ -30,6 +30,7 @@ import AdicionarCursoAdm from "./pages/Administrador/Curso/adicionar";
 import ListarCursosADM from "./pages/Administrador/Curso/listar";
 
 function RoutesApp() {
+
   return (
     <BrowserRouter>
       <Header />
