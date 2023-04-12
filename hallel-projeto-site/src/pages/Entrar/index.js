@@ -4,7 +4,7 @@ import "./entrar.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PopUpMensagem from "../../components/popUpMensagem";
-
+import { CircularProgress } from "@mui/material";
 
 function Entrar() {
   const [emailInput, setEmail] = useState();
@@ -12,10 +12,10 @@ function Entrar() {
 
   const [mostrarPopUp, setMostrarPopUp] = useState(false);
   const [isValid, setisValid] = useState(false);
+  const [isLoading, setisLoading] = useState(false)
 
   function entrar() {
-   
-
+    setisLoading(true);
     let url = "http://localhost:8080/api/login";
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -24,7 +24,7 @@ function Entrar() {
       method: "POST",
       body: JSON.stringify({
         email: emailInput,
-        senha: senhaInput
+        senha: senhaInput,
       }),
     })
       .then((res) => {
@@ -42,17 +42,19 @@ function Entrar() {
           rolesName.push(role.name);
         });
         localStorage.setItem("R0l3s", rolesName);
-        setMostrarPopUp(true)
-        setisValid(true)
+        setMostrarPopUp(true);
+        setisValid(true);
         setTimeout(() => {
-          window.location.href = "/"
+          window.location.href = "/";
         }, 4200);
-      }).catch((e) => {
-        console.log(e)
-        setMostrarPopUp(true)
-        setisValid(false)
+      })
+      .catch((e) => {
+        console.log(e);
+        setMostrarPopUp(true);
+        setisValid(false);
         setTimeout(() => {
           setMostrarPopUp(false);
+          setisLoading(false)
         }, 4200);
       });
   }
@@ -95,11 +97,18 @@ function Entrar() {
 
         <a href=""> Esqueceu sua senha?</a>
 
-        <button className="buttonEntrar" onClick={entrar}>
-          {" "}
-          Entrar
-        </button>
-
+        {isLoading === true ? (
+          <div>
+            <CircularProgress />
+          </div>
+        ) : (
+          <div>
+            <button className="buttonEntrar" onClick={entrar}>
+              {" "}
+              Entrar
+            </button>
+          </div>
+        )}
         <div className="footerEntrar">
           <p>Não tem uma conta? </p>
           <a href="/solicitarCadastro"> Solicite seu cadastro </a>

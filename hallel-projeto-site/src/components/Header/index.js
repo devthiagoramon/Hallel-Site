@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import "./topbar.css";
 import Logo from "../../images/LogoHallel.png";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Down from "./DropDown.js";
 import Modal from "./entrar/modal";
 import ModalPerfil from "./perfil/modal";
+import { IconButton } from "@mui/material";
+import { Login } from "@mui/icons-material";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
@@ -13,19 +15,18 @@ function Header() {
   const [isExpired, setIsExpired] = useState();
 
   function isTokenExpired() {
-    let url = "http://localhost:8080/api/isTokenExpired";
+    let url = "http://localhost:8080/api/isTokenExpired/"+String(localStorage.getItem("token"));
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     fetch(url, {
       headers: myHeaders,
-      method: "POST",
-      body: localStorage.getItem("token"),
+      method: "GET",
     })
       .then((res) => {
         return res.json();
       })
       .then((object) => {
-        if (object === false) {
+        if (object === true) {
           // Token expioru
           localStorage.clear();
           setIsExpired(true);
@@ -52,11 +53,13 @@ function Header() {
     }
   }
 
+  useMemo(() => isTokenExpired(), []);
+
   function showModalPerfil() {
     if (isModalPerfilVisible === true) {
-      setisModalPerfilVisible(false)
+      setisModalPerfilVisible(false);
     } else {
-      setisModalPerfilVisible(true)
+      setisModalPerfilVisible(true);
     }
   }
 
@@ -113,25 +116,39 @@ function Header() {
         <div id="space"></div>
 
         <div id="topicos">
-          <Link id="item" to="/">Início</Link>
-          <Link id="item" to="/eventos">Eventos</Link>
+          <Link id="item" to="/">
+            Início
+          </Link>
+          <Link id="item" to="/eventos">
+            Eventos
+          </Link>
           <Down id="item" />
-          <Link id="item" to="/">Ministérios</Link>
-          <Link id="item" to="/">Agenda</Link>
-          <Link id="item" to="/">Loja</Link>
-          <Link id="item" to="/doacoes">Doações</Link>
-          <Link id="item" to="/">Contato</Link>
+          <Link id="item" to="/">
+            Ministérios
+          </Link>
+          <Link id="item" to="/">
+            Agenda
+          </Link>
+          <Link id="item" to="/">
+            Loja
+          </Link>
+          <Link id="item" to="/doacoes">
+            Doações
+          </Link>
+          <Link id="item" to="/">
+            Contato
+          </Link>
         </div>
         {isNotUsuario() ? (
-          <button
-            id="btn"
-            className="btnEntre"
-          >
-            <Link to="/entrar">Entre</Link>
-          </button>
+          <IconButton sx={{width:"60px", height:"60px", color:"#252525"}} onClick={() => window.location.href="/entrar"}>
+            <Login/>
+          </IconButton>
         ) : (
           <div className="contPerfilTopBar">
-            <button className="perfilHomepage" onClick={() => showModalPerfil()}>
+            <button
+              className="perfilHomepage"
+              onClick={() => showModalPerfil()}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="60"
@@ -152,11 +169,7 @@ function Header() {
         ""
       )}
       {isModalPerfilVisible ? <ModalPerfil /> : ""}
-
-
     </div>
-
-
   );
 }
 
