@@ -1,0 +1,42 @@
+.homepage{
+
+    background-color: rgb(255, 255, 255);
+}
+
+.containerCapa{
+    background: linear-gradient(90deg, #078a7b, #658b23);
+    width: 100%;
+    height: 45em;
+    padding: 2em 0;
+    margin-top: 4em;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 1em 1em;
+    
+}
+
+.sectionCapa{
+    height: 100%;  
+    background-image: url(../../images/capaHallelHome.jpg);
+    background-size:cover;
+    background-attachment: fixed;
+    position: relative;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+
+.containerCapa label{
+
+    background-color: rgba(15, 32, 15, 0.6);
+    width: 100%;
+    align-self: center;
+    color: #ffffff;
+    padding: 1em 0 1em 2em;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.containerCapa label p{
+
+   color: #FFFFFF;
+ 
+}
