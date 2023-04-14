@@ -11,7 +11,7 @@ import MembrosAdm from "./pages/Administrador/Membros";
 import EventosCriarAdm from "./pages/Administrador/Eventos/adicionar";
 import EventoListarAdm from "./pages/Administrador/Eventos/listar";
 import DescricaoEvento from "./pages/DescEvento";
-import DescricaoCurso from "./pages/DescCurso";
+import DescricaoCurso from "./pages/Administrador/Curso/DescCurso";
 import MeusCursos from "./pages/VisualizarCursos";
 import EventoUser from "./pages/Evento/listar";
 import DoacaoFormulario from "./pages/DoacaoForm";

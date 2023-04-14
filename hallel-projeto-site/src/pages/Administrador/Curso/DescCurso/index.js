@@ -1,5 +1,5 @@
 import './styleCursoDesc.css'
-import Banner from "../../images/fundoCardTeste.jpg";
+import Banner from "../../../../images/fundoCardTeste.jpg";
 
 function Pretexto(){
 

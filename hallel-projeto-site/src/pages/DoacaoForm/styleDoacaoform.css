@@ -5,8 +5,9 @@
   justify-content: flex-end;
   margin-top: 5em;
   height: 120vh;
+  background-image: url('../../images/background-formDoar.jpg');  
   width: 100%;
-  background-image: url('../../images/background-formDoar.jpg');
+
 }
 
 
