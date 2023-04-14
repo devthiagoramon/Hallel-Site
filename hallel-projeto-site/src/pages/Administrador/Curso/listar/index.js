@@ -3,74 +3,84 @@ import "./listarCursoAdm.css";
 import {
   CardActionArea,
   CardContent,
+  Chip,
+  CircularProgress,
   FormControl,
   FormControlLabel,
   FormLabel,
   IconButton,
   Modal,
+  Tooltip,
   Typography,
 } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import { Edit, Search } from "@mui/icons-material";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Autocomplete, Card, CardCover, Input } from "@mui/joy";
 import { Box, height } from "@mui/system";
+import { Image } from "react-bootstrap";
 
 const ListarCursosADM = () => {
   const [pesquisarNome, setpesquisarNome] = useState(false);
   const [cardSelecionado, setcardSelecionado] = useState(null);
   const styleModal = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "background.paper",
+    border: "2px solid #000",
     boxShadow: 24,
     p: 4,
   };
   const [isModalAberto, setIsModalAberto] = useState(false);
-  const [abrindoModal, setAbrindoModal] = useState(false);
-  const [abrirModal, setAbrirModal] = useState(false);
-
-  const cursoModalTemplate = {
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0
-  }
-
-  const [cursoModaly, setCursoModaly] = useState(0);
-  const [cursoModalx, setcursoModalx] = useState(0);
-  const [cursoModalwidth, setCursoModalwidth] = useState(0);
-  const [cursoModalheight, setcursoModalheight] = useState(0);
-  const [imageModal, setImageModal] = useState("");
-
+  let descCursoTemplate = {
+    nome: "",
+    requisitos: [],
+    descricao: "",
+    image: "",
+  };
+  const [descCurso, setdescCurso] = useState(descCursoTemplate);
 
   function closeModal() {
-    setAbrirModal(false);
     setIsModalAberto(false);
-    setcursoModalx(0);
-    setCursoModaly(0);
-    setCursoModalwidth(0);
-    setcursoModalheight(0);
+    setdescCurso(descCursoTemplate);
   }
 
-  function abrirDescricao(e) {
-    setAbrirModal(true)
-    setAbrindoModal(true);
-    setImageModal(e.target.currentSrc)
-    setcursoModalx(parseInt(e.target.x));
-    setCursoModaly(parseInt(e.target.y));
-    setCursoModalwidth(parseInt(e.target.width));
-    setcursoModalheight(parseInt(e.target.height));
-    console.log(e);
-    console.log(cursoModalx+"\n"+cursoModaly+"\n"+cursoModalwidth+"\n"+cursoModalheight)
-    setTimeout(() => {
-      setAbrindoModal(false)
-      setIsModalAberto(true);
-    }, 1000);
+  function abrirDescricao(id) {
+    setIsModalAberto(true);
+    let url = "http://localhost:8080/api/cursos/" + id;
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((cursoObj) => {
+        console.log(cursoObj);
+        setdescCurso((prev) => {
+          return { ...prev, nome: cursoObj.nome };
+        });
+        setdescCurso((prev) => {
+          return { ...prev, requisitos: cursoObj.requisitos };
+        });
+        setdescCurso((prev) => {
+          return { ...prev, descricao: cursoObj.descricao };
+        });
+        setdescCurso((prev) => {
+          return { ...prev, image: cursoObj.image };
+        });
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
   }
 
   const ordenarPor = [
@@ -101,7 +111,7 @@ const ListarCursosADM = () => {
       .catch((error) => {
         console.warn(error);
       });
-  }, [])
+  }, []);
 
   function btnPesquisarNome() {
     setpesquisarNome(!pesquisarNome);
@@ -149,7 +159,7 @@ const ListarCursosADM = () => {
             >
               {item.nome}
             </FormLabel>
-            <CardActionArea onClick={(e) => abrirDescricao(e)}>
+            <CardActionArea onClick={() => abrirDescricao(item.id)}>
               <Card
                 sx={{
                   minWidth: "300px",
@@ -169,36 +179,85 @@ const ListarCursosADM = () => {
             </CardActionArea>
           </div>
         ))}
-        {
-          <div>
-            {abrirModal ?
-              < div >
-                {abrindoModal ? <motion.div style={{width: {cursoModalwidth}, height: {cursoModalheight}}} transition={{duration: 1}} initial={{ x: { cursoModalx }, y: { cursoModaly } }} animate={{
-                  top: "50%", left: "50%",
-                  transform: "translateX(-50%)" - cursoModalwidth,
-                  transform: "translateY(-50%)" - cursoModalheight
-                }}><img /></motion.div> : <div>
-                  {isModalAberto === false ? "" : <div>
-                    <Modal style={{ borderRadius: "10px" }} open={isModalAberto} onClose={closeModal}>
-                      <Box style={styleModal} className="modalDescricaoCurso">
-                        <Typography variant="h4" component="h3" sx={{ mt: 4, mb: 2 }}>Descrição do Curso</Typography>
-                        <Typography variant="label" sx={{ mt: 3 }}>
-                          <b>Nome: </b>
-                        </Typography>
-                        <br />
-                        <Typography variant="label" sx={{ mt: 3 }}>
-                          <b>Requisitos: </b>
-                        </Typography>
-                      </Box>
-                    </Modal>
-                  </div>}
-                </div>}
-              </div> : ""
-            }
-          </div>
-        }
-      </div >
-    </div >
+
+        {descCurso.nome !== "" ? (
+          <Modal
+            style={{ borderRadius: "10px" }}
+            open={isModalAberto}
+            onClose={closeModal}
+          >
+            <Box style={styleModal} className="modalDescricaoCurso">
+              <Image
+                style={{
+                  position: "relative",
+                  left: "13%",
+                  marginTop: "01rem",
+                }}
+                src={descCurso.image}
+                rounded
+              />
+              <Tooltip title="Editar curso">
+                <IconButton style={{ position: "absolute", right: "0%" }}>
+                  <Edit />
+                </IconButton>
+              </Tooltip>
+              <Typography
+                variant="h5"
+                style={{ width: "100%", justifyContent: "space-between" }}
+                component="h5"
+                sx={{ mt: 4 }}
+              >
+                <b>Nome: </b>{" "}
+              </Typography>
+              <Typography variant="span">{descCurso.nome}</Typography>
+              <Typography variant="h6" sx={{ mt: 2 }}>
+                <b>Descrição: </b>
+              </Typography>
+              {descCurso.descricao !== null ? (
+                descCurso.descricao
+              ) : (
+                <Typography variant="span">
+                  Sem descrição:{" "}
+                  <a href="/administrador/cursos">Adicione aqui</a>
+                </Typography>
+              )}
+              <br />
+              <Typography variant="h6" sx={{ mt: 2 }}>
+                <b>Requisitos: </b>
+              </Typography>
+              {descCurso.requisitos.map((item) => {
+                return <Chip label={item} variant="outlined" />;
+              })}
+            </Box>
+          </Modal>
+        ) : (
+          <Modal
+            open={isModalAberto}
+            onClose={closeModal}
+            style={{ borderRadius: "10px" }}
+          >
+            <Box
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: 400,
+                border: "2px solid #000",
+                boxShadow: 24,
+                height: "200px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              className="modalDescricaoCurso"
+            >
+              <CircularProgress />
+            </Box>
+          </Modal>
+        )}
+      </div>
+    </div>
   );
 };
 
