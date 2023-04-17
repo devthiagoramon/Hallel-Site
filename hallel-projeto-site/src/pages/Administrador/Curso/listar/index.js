@@ -36,6 +36,7 @@ const ListarCursosADM = () => {
   };
   const [isModalAberto, setIsModalAberto] = useState(false);
   let descCursoTemplate = {
+    id: "",
     nome: "",
     requisitos: [],
     descricao: "",
@@ -66,6 +67,9 @@ const ListarCursosADM = () => {
       .then((cursoObj) => {
         console.log(cursoObj);
         setdescCurso((prev) => {
+          return { ...prev, id: cursoObj.id };
+        });
+        setdescCurso((prev) => {
           return { ...prev, nome: cursoObj.nome };
         });
         setdescCurso((prev) => {
@@ -81,6 +85,9 @@ const ListarCursosADM = () => {
       .catch((error) => {
         console.warn(error);
       });
+  }
+  function editarCurso(id) {
+    window.location.href = "/administrador/cursos/editar/"+id
   }
 
   const ordenarPor = [
@@ -197,7 +204,10 @@ const ListarCursosADM = () => {
                 rounded
               />
               <Tooltip title="Editar curso">
-                <IconButton style={{ position: "absolute", right: "0%" }}>
+                <IconButton
+                  onClick={() => editarCurso(descCurso.id)}
+                  style={{ position: "absolute", right: "0%" }}
+                >
                   <Edit />
                 </IconButton>
               </Tooltip>
@@ -225,9 +235,17 @@ const ListarCursosADM = () => {
               <Typography variant="h6" sx={{ mt: 2 }}>
                 <b>Requisitos: </b>
               </Typography>
-              {descCurso.requisitos.map((item) => {
-                return <Chip label={item} variant="outlined" />;
-              })}
+              <div>
+                {descCurso.requisitos.map((item) => {
+                  return (
+                    <Chip
+                      style={{ margin: "3px" }}
+                      label={item}
+                      variant="outlined"
+                    />
+                  );
+                })}
+              </div>
             </Box>
           </Modal>
         ) : (

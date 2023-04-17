@@ -28,6 +28,7 @@ import AddDoacaoObjetoAdm from "./pages/Administrador/Financeiro/doacao_objeto/a
 import AssociadosADM from "./pages/Administrador/Financeiro/associados";
 import AdicionarCursoAdm from "./pages/Administrador/Curso/adicionar";
 import ListarCursosADM from "./pages/Administrador/Curso/listar";
+import EditarCursoAdm from "./pages/Administrador/Curso/editar";
 
 function RoutesApp() {
 
@@ -80,6 +81,7 @@ function RoutesApp() {
         <Route path="/administrador/painelFinanceiro/doacoes/objeto/add" element={<AddDoacaoObjetoAdm/>}/>;
         <Route path="/administrador/cursos/add" element={<AdicionarCursoAdm/>}/>
         <Route path="/administrador/cursos" element={<ListarCursosADM/>}/>
+        <Route path="/administrador/cursos/editar/:idCurso" element={<EditarCursoAdm/>}/>
         <Route path="/entrar" element={<Entrar />} />
       </Routes>
     </BrowserRouter>
