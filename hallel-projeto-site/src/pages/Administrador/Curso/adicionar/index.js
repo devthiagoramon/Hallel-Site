@@ -1,17 +1,29 @@
 import {
+  AddCircle,
   AddCircleOutline,
   AddCircleOutlineOutlined,
+  ExpandLess,
+  ExpandMore,
   Label,
   RemoveCircle,
+  VideoLabel,
 } from "@mui/icons-material";
 import {
   Alert,
   Button,
   CircularProgress,
+  Collapse,
+  Divider,
   IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
   Snackbar,
+  TextField,
+  Tooltip,
 } from "@mui/material";
-import { width } from "@mui/system";
 import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
@@ -25,14 +37,16 @@ const AdicionarCursoAdm = () => {
   const [nomeInput, setNome] = useState("");
   const [lastId, setLastId] = useState(0);
   const [imagemInput, setImagemInput] = useState("");
-  const imagemDiv = useRef();
-  const imagemLabelInformativoDiv = useRef();
-  const imagemLabelInformativoLabel = useRef();
   const [btnHabilitado, setbtnHabilitado] = useState();
+  const [modulosInput, setModulos] = useState([]);
 
   const [enviando, setenviando] = useState(false);
   const [enviadoSucesso, setenviadoSucesso] = useState(false);
   const [enviadoErro, setEnviadoErro] = useState(false);
+
+  const imagemDiv = useRef();
+  const imagemLabelInformativoDiv = useRef();
+  const imagemLabelInformativoLabel = useRef();
 
   useEffect(() => {
     if (nomeInput !== "" && imagemInput !== "") {
@@ -89,6 +103,9 @@ const AdicionarCursoAdm = () => {
   function solicitaçao() {
     let arrayRequisitos = [];
 
+    let modulosProv = modulosInput;
+
+    console.log(modulosProv)
     requisitosInputs.map((item) => {
       arrayRequisitos.push(item.text);
     });
@@ -106,6 +123,7 @@ const AdicionarCursoAdm = () => {
         nome: nomeInput,
         image: imagemInput,
         requisitos: arrayRequisitos,
+        modulos: modulosProv
       }),
     })
       .then((res) => {
@@ -121,6 +139,7 @@ const AdicionarCursoAdm = () => {
         console.warn(error);
         setEnviadoErro(true);
       });
+      
   }
 
   function cadastrarCurso() {
@@ -130,6 +149,53 @@ const AdicionarCursoAdm = () => {
     setTimeout(() => {
       setenviando(false);
     }, 3000);
+  }
+
+  function adicionarModulo() {
+    let modulo = {
+      numModulo: modulosInput.length + 1,
+      tituloModulo: "",
+      videosModulo: [],
+    };
+    setModulos((prev) => [...prev, modulo]);
+  }
+
+  function alterarTituloModulo(event, numModulo, text) {
+    let index = getIndexById(numModulo);
+
+    if (event.nativeEvent.inputType !== "deleteContentBackward") {
+      let modulosProv = modulosInput;
+      modulosProv[index].tituloModulo = modulosProv[index].tituloModulo + event.nativeEvent.data;
+      setModulos();
+      setModulos(modulosProv);
+    } else {
+      let modulosProv = modulosInput;
+      modulosProv[index].tituloModulo = modulosProv[index].tituloModulo.slice(
+        0,
+        modulosProv[index].tituloModulo.length - 1
+      );
+      setModulos([]);
+      setModulos(modulosProv);
+    }
+  }
+
+  function getIndexById(numModulo) {
+    let modulosProv = modulosInput;
+    let index = 0;
+    index = modulosProv.findIndex((item) => {
+      return item.numModulo === numModulo;
+    });
+    return index;
+  }
+
+  function removerModulo(numModulo){
+    let modulosProv = modulosInput;
+    modulosProv.splice(
+      getIndexById(numModulo),
+      1
+    );
+    modulosProv = [...modulosProv];
+    setModulos(modulosProv);
   }
 
   return (
@@ -244,6 +310,54 @@ const AdicionarCursoAdm = () => {
                 );
               })}
             </div>
+          </div>
+        </div>
+        <div className="contModulosAddCursoAdm">
+          <div className="headerModulosAddCursoAdm">
+            <h4>Modulos do curso</h4>
+            <Tooltip title="Adicionar modulo">
+              <IconButton onClick={() => adicionarModulo()}>
+                <AddCircle style={{ width: "30px", height: "30px" }} />
+              </IconButton>
+            </Tooltip>
+          </div>
+          <div className="bodyModulosAddCursoAdm">
+            <List component="nav" sx={{ width: "99.50%", maxWidth: "100%" }}>
+              <Divider />
+              {modulosInput.map((item) => {
+                return (
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Divider />
+                    <ListItem>
+                      <ListItemButton sx={{ justifyContent: "space-between" }}>
+                        <TextField
+                          size="small"
+                          variant="outlined"
+                          type="text"
+                          onChange={(e) => {
+                            alterarTituloModulo(
+                              e,
+                              item.numModulo,
+                              e.target.value
+                            );
+                          }}
+                        />
+                        <ExpandMore />
+                      </ListItemButton>
+                    </ListItem>
+                    <IconButton
+                      onClick={() => removerModulo(item.numModulo)}
+                      sx={{ height: "35px", width: "35px" }}
+                    >
+                      <RemoveCircle
+                        sx={{ color: "#333", height: "25px", width: "25px" }}
+                      />
+                    </IconButton>
+                  </div>
+                );
+              })}
+              <Divider />
+            </List>
           </div>
         </div>
       </div>

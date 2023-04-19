@@ -71,3 +71,27 @@
     display: flex;
     justify-content: center;
 }
+
+.contModulosAddCursoAdm{
+    width: 100%;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.headerModulosAddCursoAdm{
+    width: 70%;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bodyModulosAddCursoAdm{
+    width: 70%;
+    align-self: center;
+
+}
+

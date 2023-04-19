@@ -13,7 +13,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { Edit, Search } from "@mui/icons-material";
+import { AddCircle, Edit, Search } from "@mui/icons-material";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Autocomplete, Card, CardCover, Input } from "@mui/joy";
@@ -87,7 +87,7 @@ const ListarCursosADM = () => {
       });
   }
   function editarCurso(id) {
-    window.location.href = "/administrador/cursos/editar/"+id
+    window.location.href = "/administrador/cursos/editar/" + id;
   }
 
   const ordenarPor = [
@@ -136,11 +136,8 @@ const ListarCursosADM = () => {
           {pesquisarNome === false ? (
             ""
           ) : (
-            <motion.div
+            <div
               className="innerPesquisa"
-              initial={{ width: "20%" }}
-              animate={{ width: "40%" }}
-              transition={{ duration: 0.6 }}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -151,12 +148,25 @@ const ListarCursosADM = () => {
                 <FormLabel style={{ fontSize: "16px" }}>Nome</FormLabel>
                 <Input style={{ width: "100%" }} placeholder="Pesquise aqui" />
               </FormControl>
-            </motion.div>
+            </div>
           )}
-          <IconButton onClick={() => btnPesquisarNome()} sx={{ color: "#333" }}>
-            <Search />
-          </IconButton>
+          <Tooltip title="Abrir caixa de pesquisa">
+            <IconButton
+              onClick={() => btnPesquisarNome()}
+              sx={{ color: "#333" }}
+            >
+              <Search style={{ width: "30px", height: "30px" }} />
+            </IconButton>
+          </Tooltip>
         </div>
+        <Tooltip title="Adicionar Curso">
+          <IconButton
+            sx={{ color: "252525" }}
+            onClick={() => (window.location.href = "/administrador/cursos/add")}
+          >
+            <AddCircle style={{ width: "30px", height: "30px" }} />
+          </IconButton>
+        </Tooltip>
       </div>
       <div className="bodyListCursosAdm">
         {cursos.map((item) => (
@@ -194,19 +204,20 @@ const ListarCursosADM = () => {
             onClose={closeModal}
           >
             <Box style={styleModal} className="modalDescricaoCurso">
-              <Image
-                style={{
-                  position: "relative",
-                  left: "13%",
-                  marginTop: "01rem",
-                }}
-                src={descCurso.image}
-                rounded
-              />
+              <div style={{width:"90%", display:"flex", justifyContent:"center", alignContent:"center"}}>
+                <Image
+                  style={{
+                    position: "relative",
+                    marginTop: "01rem",
+                  }}
+                  src={descCurso.image}
+                  rounded
+                />
+              </div>
               <Tooltip title="Editar curso">
                 <IconButton
                   onClick={() => editarCurso(descCurso.id)}
-                  style={{ position: "absolute", right: "0%" }}
+                  style={{ position: "absolute", right: "0%", top:"0" }}
                 >
                   <Edit />
                 </IconButton>
