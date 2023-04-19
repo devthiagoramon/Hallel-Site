@@ -100,8 +100,6 @@ const EditarCursoAdm = () => {
 
   function removerInput(id) {
     let inputs = requisitosInputs;
-    console.log(inputs);
-    console.log(id);
     lastId -= 1;
     inputs.splice(
       inputs.findIndex((item) => {
@@ -109,7 +107,6 @@ const EditarCursoAdm = () => {
       }),
       1
     );
-    console.log(requisitosInputs);
     inputs = [...inputs];
     setRequisitosInputs(inputs);
   }
@@ -120,7 +117,6 @@ const EditarCursoAdm = () => {
     index = inputs.findIndex((item) => {
       return item.id === id;
     });
-    console.log(index);
     return index;
   }
 
