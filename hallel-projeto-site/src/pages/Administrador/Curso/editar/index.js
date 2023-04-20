@@ -1,6 +1,8 @@
 import {
+  AddCircle,
   AddCircleOutline,
   AddCircleOutlineOutlined,
+  ExpandMore,
   Label,
   RemoveCircle,
 } from "@mui/icons-material";
@@ -8,10 +10,15 @@ import {
   Alert,
   Button,
   CircularProgress,
+  Divider,
   IconButton,
   LinearProgress,
+  List,
+  ListItem,
+  ListItemButton,
   Skeleton,
   Snackbar,
+  TextField,
   Tooltip,
 } from "@mui/material";
 import { width } from "@mui/system";
@@ -28,14 +35,17 @@ const EditarCursoAdm = () => {
   const [requisitosInputs, setRequisitosInputs] = useState([]);
   const [nomeInput, setNome] = useState("");
   var lastId = 0;
+  var lastIdModulos = 0;
   const imagemDiv = useRef();
   const imagemLabelInformativoDiv = useRef();
   const imagemLabelInformativoLabel = useRef();
   const [btnHabilitado, setbtnHabilitado] = useState();
+  const [modulosInput, setModulos] = useState([]);
 
   const { idCurso } = useParams();
 
   const [oldLenghtArray, setoldLenghtArray] = useState(0);
+  const [oldLenghtArrayModulos, setoldLenghtArrayModulos] = useState(0);
 
   const cursoTemplate = {
     nome: "",
@@ -54,13 +64,14 @@ const EditarCursoAdm = () => {
     if (
       oldCurso.nome !== newCurso.nome ||
       oldCurso.image !== newCurso.image ||
-      oldLenghtArray !== requisitosInputs.length
+      oldLenghtArray !== requisitosInputs.length ||
+      oldLenghtArrayModulos !== modulosInput.length
     ) {
       setbtnHabilitado(true);
     } else {
       setbtnHabilitado(false);
     }
-  }, [newCurso, requisitosInputs]);
+  }, [newCurso, requisitosInputs, modulosInput]);
 
   function fecharAviso() {
     enviadoSucesso === true
@@ -146,10 +157,12 @@ const EditarCursoAdm = () => {
 
         let requisitosLoaded = loadRequisitosFromAPI(object.requisitos);
 
-        console.log(requisitosLoaded);
+        let modulosLoaded = loadModulosFromAPI(object.modulos);
 
         setRequisitosInputs(requisitosLoaded);
         setoldLenghtArray(object.requisitos.length);
+        setModulos(modulosLoaded);
+        setoldLenghtArrayModulos(object.modulos.length);
       })
       .catch((error) => {
         console.warn("Error requesting from API: " + error);
@@ -167,9 +180,68 @@ const EditarCursoAdm = () => {
     return requisitosArray;
   }
 
+  function loadModulosFromAPI(modulos){
+    let modulosArray = [];
+
+    modulos.map((item) => {
+      modulosArray.push({numModulo: item.numModulo, tituloModulo: item.tituloModulo, videosModulo: item.videosModulo});
+      lastIdModulos += 1;
+    })
+    return modulosArray;
+  }
+
+  function adicionarModulo() {
+    let modulo = {
+      numModulo: modulosInput.length + 1,
+      tituloModulo: "",
+      videosModulo: [],
+    };
+    setModulos((prev) => [...prev, modulo]);
+  }
+
+  function alterarTituloModulo(event, numModulo) {
+    let index = getIndexById(numModulo);
+
+    if (event.nativeEvent.inputType !== "deleteContentBackward") {
+      let modulosProv = modulosInput;
+      modulosProv[index].tituloModulo =
+        modulosProv[index].tituloModulo + event.nativeEvent.data;
+      setModulos();
+      setModulos(modulosProv);
+    } else {
+      let modulosProv = modulosInput;
+      modulosProv[index].tituloModulo = modulosProv[index].tituloModulo.slice(
+        0,
+        modulosProv[index].tituloModulo.length - 1
+      );
+      setModulos([]);
+      setModulos(modulosProv);
+    }
+  }
+
+  function getIndexById(numModulo) {
+    let modulosProv = modulosInput;
+    let index = 0;
+    index = modulosProv.findIndex((item) => {
+      return item.numModulo === numModulo;
+    });
+    return index;
+  }
+
+  function removerModulo(numModulo) {
+    let modulosProv = modulosInput;
+    modulosProv.splice(getIndexById(numModulo), 1);
+    modulosProv = [...modulosProv];
+    setModulos(modulosProv);
+  }
+
   function solicitaçao() {
     let arrayRequisitos = [];
 
+    let modulosProv = modulosInput;
+
+    console.log(modulosProv)
+  
     requisitosInputs.map((item) => {
       arrayRequisitos.push(item.text);
     });
@@ -187,6 +259,7 @@ const EditarCursoAdm = () => {
         nome: newCurso.nome,
         image: newCurso.image,
         requisitos: arrayRequisitos,
+        modulos: modulosProv
       }),
     })
       .then((res) => {
@@ -322,6 +395,71 @@ const EditarCursoAdm = () => {
                     );
                   })}
                 </div>
+              </div>
+            </div>
+            <div className="contModulosAddCursoAdm">
+              <div className="headerModulosAddCursoAdm">
+                <h4>Modulos do curso</h4>
+                <Tooltip title="Adicionar modulo">
+                  <IconButton onClick={() => adicionarModulo()}>
+                    <AddCircle style={{ width: "30px", height: "30px" }} />
+                  </IconButton>
+                </Tooltip>
+              </div>
+              <div className="bodyModulosAddCursoAdm">
+                <List
+                  component="nav"
+                  sx={{ width: "99.50%", maxWidth: "100%" }}
+                >
+                  <Divider />
+                  {modulosInput.map((item) => {
+                    return (
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <Divider />
+                        <ListItem>
+                          <ListItemButton
+                            sx={{ justifyContent: "space-between" }}
+                          >
+                            {item.tituloModulo !== "" ? (
+                              <TextField
+                                size="small"
+                                variant="outlined"
+                                type="text"
+                                value={item.tituloModulo}
+                                onChange={(e) => {
+                                  alterarTituloModulo(e, item.numModulo);
+                                }}
+                              />
+                            ) : (
+                              <TextField
+                                size="small"
+                                variant="outlined"
+                                type="text"
+                                onChange={(e) => {
+                                  alterarTituloModulo(e, item.numModulo);
+                                }}
+                              />
+                            )}
+                            <ExpandMore />
+                          </ListItemButton>
+                        </ListItem>
+                        <IconButton
+                          onClick={() => removerModulo(item.numModulo)}
+                          sx={{ height: "35px", width: "35px" }}
+                        >
+                          <RemoveCircle
+                            sx={{
+                              color: "#333",
+                              height: "25px",
+                              width: "25px",
+                            }}
+                          />
+                        </IconButton>
+                      </div>
+                    );
+                  })}
+                  <Divider />
+                </List>
               </div>
             </div>
           </div>
