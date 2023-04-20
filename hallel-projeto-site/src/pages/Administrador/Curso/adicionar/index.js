@@ -105,7 +105,6 @@ const AdicionarCursoAdm = () => {
 
     let modulosProv = modulosInput;
 
-    console.log(modulosProv)
     requisitosInputs.map((item) => {
       arrayRequisitos.push(item.text);
     });
@@ -160,7 +159,7 @@ const AdicionarCursoAdm = () => {
     setModulos((prev) => [...prev, modulo]);
   }
 
-  function alterarTituloModulo(event, numModulo, text) {
+  function alterarTituloModulo(event, numModulo) {
     let index = getIndexById(numModulo);
 
     if (event.nativeEvent.inputType !== "deleteContentBackward") {
