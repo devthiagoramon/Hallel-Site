@@ -7,18 +7,17 @@ function PanelDoacao(){
 
         <div className ="container_panel">
 
-            <div className ="container_panel2">
+            
 
-            <h1>Seja um associado Hallel</h1>
+            <label>Seja um associado Hallel</label>
 
             <p>Conheça os Eventos da Comunidade Hallel e entenda por que<br/>precisamos de sua ajuda.</p>
-
-
-
             
-            <Link to="/associado"><button className='btnAssociado'>Saiba mais</button></Link>
+            <Link to="/associado">
+                <button className='btnAssociado'>Saiba mais
+                </button>
+            </Link>
             </div>
-        </div>
     );
 }
 export default PanelDoacao;

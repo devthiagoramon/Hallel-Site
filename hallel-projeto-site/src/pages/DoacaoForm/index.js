@@ -1,91 +1,156 @@
 import "./styleDoacaoform.css"
-{/*import React, {useState, useEffect} from "react";*/}
+import Form from "react-bootstrap/Form"
+import Confirmar from "../../images/Confirmado.png"
 
 function Form1(){
 
-{/*const [status, setStatus] = useState(true); */}
-
     return(
 
-        <>
+        <section className="container-form1">
+
+            <div className="breadNav">
+
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            </div>
+
+            <label>Selecione a sua forma de doação</label>
+
+            <div className="forms1">
+
+                <button>Dinheiro</button>
+                <hr/>
+                <button>Objetos/Alimentos</button>
+                <hr/>
+            </div>
+
+            <div className="button-area">
+           
+                <button>Voltar</button>
+                <button id="avancaButton">Avançar</button>
+            </div>
         
-            <h1>SA</h1>
-        
-        
-        </>
+        </section>
 
     );
-
-
-    {/*useEffect( () => {
-
-        return handleTrocarPag(), [status]}
-    );  */}
-        
-    
-
-    {/*function handleAlterar() {
-
-        setStatus(!status);
-
-    }  */}
-
-    {/*function handleTrocarPag(){
-
-        return <Form2/>;
     }
+
+function Form2(){
+
+
     return(
 
-        <div className = "container-form1">            
+        <section className="container-form2">
 
-            <h1>Sou o 1 form teste</h1>
+            <div className="breadNav">
 
-            <button onClick={handleAlterar}>Avançar</button>
-        </div>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+            </div>
+
+            <form className = "inserirPag">
+
+                <label>Digite a sua quantia:</label>
+                <input id = "valorPreço" type= "number" placeholder = "R$ 0,00"></input>
+            </form>
+
+            <div className="button-area">
+           
+           <button>Voltar</button>
+           <button id="avancaButton">Avançar</button>
+       </div>
+
+
+
+        </section>
     );
-}; */}
+} 
 
-{/*function Form2(){
-
-    const [status2, setStatus] = useState(true);
+function Form3(){
 
     return(
 
-        <div className = "container-form2">
-
-            <h1>Sou o 2 form</h1>
-        </div>
-    );
-} */}
-
-{/*function Form3(){
-
-    const [status3, setStatus] = useState(true);
-
-    return(
-
-        <div className = "container-form3">
+        <section className = "container-form3">
   
-            <h1>Sou o 3 form</h1>
+            <div className="breadNav">
 
-        </div>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+            </div>
+
+            <label>Informe seus dados</label>
+            
+            <Form id = "formsDoar">
+
+
+                <Form.Group className="mb-3 row">
+
+                    <Form.Label className="labelforms" for = "cpfTitular">CPF:</Form.Label>
+
+                    <input type="number" id ="cpfTitular"/>
+                </Form.Group>
+
+                <Form.Group className="mb-3 row">
+
+                    <Form.Label  className="labelforms" for = "NomeTitular">Nome do titular:</Form.Label>
+                    <input type="text"/>
+                </Form.Group>
+
+                <Form.Group className="mb-3 row">
+
+                    <Form.Label  className="labelforms" for ="NumeroCartao">Número do cartão</Form.Label>
+                    <input type = "NumeroCartao"/>
+                </Form.Group>
+
+                <Form.Group className= "mb-3 row">
+
+                    <Form.Label  className="labelforms" for = "DateVenc">Data de vencimento:</Form.Label>
+                    <input type="date"></input>
+                </Form.Group>
+            </Form>
+            <div className= "button-area">
+
+                <button>Voltar</button>
+                <button>Confirmar</button>
+            </div>
+</section>
     );
-}
+}     
 
-function Form4(){
-
-    const [status4, setStatus] = useState(true);
+function Form3a(){
 
     return(
 
-        <div className = "container-form4">
-            
-            <h1>Sou o 4 form</h1>
+        <section className="forms-container3_1">
 
+            <div className="breadNav">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+            </div>
+
+
+        <div className="infoDoar">
+
+            <label>Sua doação foi recebida</label>
+
+            <img src={Confirmar} alt="Doar Confirmação"></img>
+            <label>Agracemos a sua coloboração!</label>
         </div>
-    );*/}
-}
 
+        <div className="button-area">
+           
+           <button>Voltar</button>
+           <button id="avancaButton">Avançar</button>
+       </div>
+
+
+        </section>
+    )
+}
 
 function DoacaoForm(){
 

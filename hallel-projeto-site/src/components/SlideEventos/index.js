@@ -1,12 +1,12 @@
-import Img1 from "../../images/fundoCardTeste.jpg";
-import Img2 from "../../images/fundoCardTeste.jpg";
-import Img3 from "../../images/fundoCardTeste.jpg";
-import Img4 from "../../images/fundoCardTeste.jpg";
-import Img5 from "../../images/fundoCardTeste.jpg";
-import Img6 from "../../images/fundoCardTeste.jpg";
-import Img7 from "../../images/fundoCardTeste.jpg";
+import Img1 from "../../images/CantoNovoDeLouvor.jpg";
+import Img2 from "../../images/BaileRomantico.jpg";
+import Img3 from "../../images/JubileuDePrata.jpg";
+import Img4 from "../../images/CercoDeJerico.jpg";
+import Img5 from "../../images/SeminarioDeVida.jpg";
+import Img6 from "../../images/FriendsDay.jpg";
+import Img7 from "../../images/AcampamentoHomem.jpg";
 import "./styleEventos.css";
-import 'bulma/css/bulma.min.css'; 
+import Card from "react-bootstrap/Card";
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -43,8 +43,14 @@ const SlideEventos = (props) => {
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
         >
+
+
           {images.map((imagem2) => {
             return (
+
+             
+
+          
               <motion.div
                 className="imagem2"
                 key={imagem2}
@@ -52,27 +58,27 @@ const SlideEventos = (props) => {
               >
                 
                 
-    <div className="card">
-      <div className="card-image">
-        <figure className="image is-4by3">
-          <img src={imagem2} alt="Placeholder image"/>
-        </figure>
-      </div>
-      <div className="card-content">
-        <h1 id = "title-cartao">Título do Evento</h1>
-        <div className="content">
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet sem ac diam elementum suscipit vel eget dui. In metus est, lobortis at fringilla ac, euismod at metus.</p>
-         <time>??/??/????</time> <br/>
-         <time>00:00</time>
+    <Card style={{width: '22rem'}}>
+
+      <Card.Img variant="top" src={imagem2}/>
+        
+         <Card.Body>
+            <Card.Title>Título do Evento</Card.Title>
+               <Card.Text>
+                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet sem ac diam elementum suscipit vel eget dui. In metus est, lobortis at fringilla ac, euismod at metus.</p>
+                   <time>??/??/????</time> <br/>
+                  <time>00:00</time>
            
-        </div>
-      </div>
-    </div>
+                </Card.Text>
+            </Card.Body>
+    </Card>
 
-
-               
               </motion.div>
+
+            
             );
+
+           
           })}
         </motion.div>
       </motion.div>

@@ -7,7 +7,7 @@ function QuemSomos() {
     
     <div className='global'>
       
-        <h1 id='titulo'> QUEM SOMOS </h1> 
+        <label id='titulo'> Quem somos </label> 
         <br/>
         <img id='imgquemsomos' src={ImgQuemSomos}/>
         <br/> <br/> <br/>
@@ -27,9 +27,7 @@ function QuemSomos() {
         espiritual transformando o mundo em lugar de amor.
         </p>
         <br/>
-        <p className='frasefinal'>
-        Conheça mais sobre nossa Comunidade acessando as demais páginas.
-        </p>
+        <span><p className='frasefinal'>Conheça mais sobre nossa Comunidade acessando as demais páginas.</p></span>
       </div>
    
   );

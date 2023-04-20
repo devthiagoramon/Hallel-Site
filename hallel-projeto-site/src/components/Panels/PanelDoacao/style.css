@@ -1,29 +1,28 @@
 .container_panel{
 
-    background: linear-gradient(55deg,#fc8a5d,#e5cb80);
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
+    background: linear-gradient(55deg,#fc8a5d,#e5cb80);
     width: 50%;
-    margin: auto;
-    margin-top: 4em;
-    margin-bottom: 4em;
+    margin: 4em auto;
     padding: 1.5em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    border-radius: 10px;
+    border-radius: 1.5em;
     text-align: center;
 }
-.container_panel2{
 
-    flex-direction: column;
-    color: #35404B;
+.container_panel label{
+
+    font-size: 2.1em;
+    font-weight: 800;
 }
-.container_panel2>p{
+
+.container_panel>p{
     
     color: #35404B;
-    font-size: 18px;
+    font-size: 1.125em;
+    font-weight: 600;
 }
-.container_panel2> button{
+.container_panel> button{
 
     float: right;
     border: none;
@@ -31,4 +30,20 @@
     padding: 2.5px;
     border-radius: 10%;
     background-color: #D94814;
+}
+.container_panel .btnAssociado{
+
+    background-color: #ffe492;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 8px;
+    color:#35404B;
+    font-weight: 600;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 1em;
+}
+
+.container_panel .btnAssociado:hover{
+
+
+    background-color: #dcc57f;
 }

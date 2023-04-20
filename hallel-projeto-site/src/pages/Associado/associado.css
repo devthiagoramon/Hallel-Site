@@ -1,151 +1,253 @@
-#body-associado {
+#body-associado{
 
-  margin-top: 80px;
-  color: #35404B;
-  width: 100%;
-  height: 100%;
-}
-
-#body-associado h1 {
-
-  margin-top: 5em;
-  margin-left: 3em;
-  margin-bottom: 0.5em;
-  font-weight: bold;
-}
-
-#body-associado p {
-  margin-left: 4%;
-  font-size: 1.2em;
-}
-
-.texto-associado {
-  margin-top: 6%;
-  margin-bottom: 4%;
-  width: 100%;
   display: flex;
-  justify-content: space-around;
-  padding-left: 5%;
+  flex-direction: column;
+  margin-top: 7em;
 }
 
-.texto-associado>h2 {
-  font-weight: bold;
-  text-align: center;
+#body-associado > label{
+
+  align-self: center;
+  margin-top: 3em;
+
 }
 
-.texto-associado>p {
+
+/*css do conteudo do topo*/
+
+.conteudo-top{
+
   display: flex;
-  font-weight: bold;
-  font-size: 14px;
-  font-size: 1.2em;
-  margin-right: 1em;
+  flex-direction: column;
+  margin: 2em 2em;
 }
 
+.conteudo-top label:nth-child(1){
 
-.imagem-associado {
-  background-image: url(
-    https://cdn.pixabay.com/photo/2017/02/15/13/39/tulips-2068688_960_720.jpg
-  );
-
-  margin-top: 3rem;
-  position: relative;
-  background-attachment: fixed;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.imagem-associado div>h2 {
-
-  font-weight: bold;
-  text-align: left;
-  margin-left: 2%;
-
-}
-
-.imagem-associado div > p {
-
-  font-weight: bold;
-  text-align: left;
-  margin-left: 0;
- 
-}
-
-/*Parte dos blocos de vendas:0*/
-.anuncio-associado {
-
-  margin-top: 0%;
-  display: flex;
-  justify-content: space-evenly;
-  height: 100%;
-
-  /* justify-content: space-around; */
-}
-
-.anuncio-associado>div {
-
-  padding-top: 5em;
-  min-height: 30em;
-  width: 30em;
-  padding-bottom: 5em;
-  font-weight: bold;
-  color: #FFFFFF;
-  margin-left: 5em;
-  margin-right: 5em;
-  border-radius: 30px;
-  
-}
-
-
-.anuncio-associado div>h2 {
-
-  font-weight: 1000;
-  text-align: center;
   text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2em;
 }
 
-.anuncio-associado div > p {
+.conteudo-top label:nth-child(2){
 
-  padding: 0 2em 0 2em;
-  text-align: left;
+
+  font-weight: 600;
+  font-size: 1.4em;
+  margin-left: 1em;
 }
 
-.anuncio-associado div>button {
+/*css do conteudo*/
+.imagem-top{
+
+    height: 20%;
+    background-image: url(
+      https://cdn.pixabay.com/photo/2017/02/15/13/39/tulips-2068688_960_720.jpg
+    );
+    background-size:cover;
+    background-attachment: fixed;
+    position: relative;
+    background-position: top;
+    background-repeat: no-repeat;
+    display: flex;
+}
+
+.imagem-top > .containerCircular{
+
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  padding: 3em;
+  border-radius: 20em;
+
+  margin-left: 2.5em;
+}
+
+.containerCircular div{
+  display: flex;
+  flex-direction: column;
+}
+
+.containerCircular div label:nth-child(1){
+
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.containerCircular div label:nth-child(2){
+
+  font-size: 1.2em;
+  font-weight:600;
+  margin: 0.5em 0;
+
+}
+
+.containerCircular div > button{
+
+  background:none;
+  border-color: rgb(255, 81, 0);
+  border-style: solid;
+  padding: 0;
+  border-radius: 10em;
+  color: orangered;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+.containerCircular div > button:hover {
+
+    background-color: rgb(255, 228, 184);
+
+}
+
+.containerCircular div .verdefonte{
+  color: #005B04;
+}
+
+.containerCircular div .laranjafonte{
+
+  color: #D94814;
+}
+
+.containerCircular div .amarelofonte{
+
+  color: #F2B807;
+}
+
+.containerCircular div .vermelhofonte{
+
+  color: #CA1E1E;
+}
+
+
+/*informacoes associado*/
+.informacoes-associado{
 
   display: flex;
-  margin: auto;
-  margin-top: 5em;
-  padding:0.5em;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 3em 0;
+  margin-left: 0.5em;
+  width: 100%;
+}
+.informacoes-associado .inftexto-Associado{
+
+  padding: 1em;
 }
 
-.anuncio-associado>div:first-child {
+/*nth child, porem para elementos com classe e etc*/
+.informacoes-associado .inftexto-Associado:nth-of-type(1){
 
-  background-color: #329550;
-  margin-top: 5%;
-  margin-right: 2%;
+  font-size: 2em;
+  font-weight: 600;
 }
 
-.anuncio-associado>div:last-child {
+.informacoes-associado .inftexto-Associado:nth-of-type(2){
 
-  background-color: #e66636;
-  height: 95%;
-  margin-left: 2%;
+  font-size: 1.3em;
+  font-weight: 500;
 }
 
-/*palavra no final*/
-#duvidas-associado {
+.informacoes-associado .inftexto-Associado:nth-of-type(3){
 
-  margin-top: 4%;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+
+/*cards seção css*/
+
+
+.containerCard{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.containerCard .divCard{
+
+  flex-direction: column;
+  display: flex;
+  padding: 1em;
+  background-color: rgb(255, 255, 255);
+}
+.divCard label{
+
   text-align: center;
-  margin-left: 0%;
-  margin-right: 4%;
+}
+.divCard label:nth-child(1){
+
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.5em;
 }
 
-.btnAssociado {
-  border: none;
-  color: #FFFFFF;
-  padding: 2.5px;
-  border-radius: 10%;
-  background-color: #d94814;
-  box-shadow: rgba(0, 0, 0, .50) 5px 5px 20px;
+.divCard label:nth-child(2){
+
+  font-size: 1.3em;
+  font-weight:600;
 }
+
+.divCard #tituloazul{
+
+  color: #0284AD;
+}
+.divCard #tituloverde{
+
+  color: #005B04;
+}
+
+#divcard1 hr{
+
+  background-color: #0284AD;
+}
+
+#divcard2 hr{
+
+  color: #005B04;
+}
+.divCard ul{
+
+  margin: 1em 5em
+}
+.divCard ul li{
+
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.divCard button{
+
+  margin: 0 30%;
+  padding: 0.4em 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.3em;
+  border-radius: 3em;
+  border: none;
+}
+
+#divcard1 button{
+
+  background-color: #95E5FF;
+}
+
+#divcard1 button:hover{
+
+  background-color: #67bfdc;
+
+}
+
+#divcard2 button{
+
+  background-color: #BDECB6;
+}
+
+#divcard2 button:hover{
+
+  background-color: #97c790;
+}
+
+

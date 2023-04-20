@@ -1,5 +1,5 @@
 import "./stylePedidoOracao.css";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 export default function Pedido() {
   return (

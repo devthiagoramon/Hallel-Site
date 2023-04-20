@@ -11,8 +11,9 @@
  
     display:block;
     text-align: center;
-    margin-top: 6%;
-    font-weight: 700;
+    margin-top: 1.5em;
+    font-size: 2.5em;
+    font-weight: 600;
 }
 .containerCarroseulEvent {
   
@@ -35,8 +36,8 @@
 
 .imagem2 {
     position: relative;
-    min-width: 400px;
-    min-height: 350px;
+    min-width: 25em;
+    min-height: 20em;
     padding: 15px;
     
 }

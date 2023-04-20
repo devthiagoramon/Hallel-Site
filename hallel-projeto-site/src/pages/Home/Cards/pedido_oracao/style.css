@@ -1,62 +1,69 @@
 .pedido-container{
+
   display: flex;
+  flex-direction: row;
   background: linear-gradient(55deg,#d24646,#f16633);
-  width: 50;
-    margin-left: 25%;
-    margin-right: 25%;
-    padding: 2%;
-    padding-top: 1.4%;
-    padding-bottom: 1.4%;
-    border-radius: 10px;
-
+  padding: 2em;
+  margin: 0 25%;
+  border-radius: 2em;
+  justify-content: space-around;
 }
 
-.pedido-imagem{
+.pedido-container .container-imagem > img{
 
-  width: 20%;
-}
-
-.pedido-imagem > img{
-
-  height: 9em;
-  width: 9em;
-  float: left;
+  width: 10em;
+  height: 10em;
+  background-size:8em;
+  background-repeat: no-repeat;
+  background-attachment:contain;
   border-radius: 50%;
-  margin-right: 0.5em;
- 
+  margin: 1em;
 }
 
-.pedido-info{
+.pedido-container .info-conteudo{
 
-  width: 80%;
-  display: inline;
-  color: #ffffff;
-  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pedido-container .info-conteudo label:nth-child(1){
+
+  font-weight: 600;
+  font-size: 2em;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.pedido-container .info-conteudo label:nth-child(2){
+
+  font-weight: 700;
+  font-size: 1.1em;
+  text-indent: 2em;
   text-align: left;
+  margin: 0.5em 10%;
+  color: #FFFFFF;
 }
 
-.pedido-info > h1{
+.pedido-container .info-conteudo > button{
 
-  text-align: center;
-  margin: auto;
-}
-
-.pedido-info > p{
-
-  text-align: center;
-}
-
-.buttonPedidoOracao{
-
-    display: flex;
-    margin: auto;
-    align-items: center;
-    border: none;
     color: #FFFFFF;
-    padding: 2.5px;
-    padding-left: 3%;
-    padding-right: 3%;
-    border-radius: 10%;
-    background-color: #D94814;
+    font-weight: 600;
+    border: none;
+    padding:  0.5em 1em;
+    max-width: 250px;
+    border-radius: 1em;
+    background-color: #0d761d;
     box-shadow: rgba(0, 0, 0, .50) 5px 5px 20px;
+    align-self: center;
+    margin: 0.6em 0;
+}
+
+.info-conteudo > button #textBt{
+
+  color: #FFFFFF;
+}
+
+.pedido-container .info-conteudo > button:hover{
+
+  background-color: #0b6218;
 }
