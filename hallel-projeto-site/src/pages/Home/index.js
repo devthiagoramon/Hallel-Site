@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Card_oracao from "./Cards/pedido_oracao";
-import DoarPanel from "../../components/Panels/PanelDoacao";
+import PanelPedido from "../../components/Panels/Pedido_oracao_panel";
+import PanelAssociado from "../../components/Panels/Associado_panel";
 import Programacao from "../../components/SlideProg";
 import Eventos from "../../components/SlideEventos";
 import "./homepage.css";
@@ -24,10 +24,9 @@ function Home() {
       </Link>
       <Eventos />
       <Programacao />
-      <DoarPanel />
-      <Card_oracao />
+      <PanelAssociado />
+      <PanelPedido />
     </div>
   );
 }
-
 export default Home;

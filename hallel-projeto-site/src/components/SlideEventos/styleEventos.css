@@ -57,7 +57,7 @@
     bottom: 13.5%;
     visibility: hidden;
     border-radius: 10px;
-    align-items: end;
+    align-items: flex-end;
     width: 92.5%;
     height: 25%;
 } 
