@@ -10,6 +10,7 @@ import {
   FormLabel,
   IconButton,
   Modal,
+  Skeleton,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -35,6 +36,7 @@ const ListarCursosADM = () => {
     p: 4,
   };
   const [isModalAberto, setIsModalAberto] = useState(false);
+  const skeletonArray = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
   let descCursoTemplate = {
     id: "",
     nome: "",
@@ -169,33 +171,52 @@ const ListarCursosADM = () => {
         </Tooltip>
       </div>
       <div className="bodyListCursosAdm">
-        {cursos.map((item) => (
-          <div>
-            <FormLabel
-              style={{ color: "#333", fontSize: "18px", marginTop: "0.9rem" }}
-            >
-              {item.nome}
-            </FormLabel>
-            <CardActionArea onClick={() => abrirDescricao(item.id)}>
-              <Card
-                sx={{
-                  minWidth: "300px",
-                  maxWidth: "500px",
-                  minHeight: "300px",
-                  maxHeight: "500px",
-                }}
-              >
-                <CardCover>
-                  <img
-                    src={item.image}
-                    alt={item.nome}
-                    style={{ objectFit: "fill" }}
-                  />
-                </CardCover>
-              </Card>
-            </CardActionArea>
+        {cursos.length === 0 ? (
+          <div className="bodyListCursosAdm">
+            {skeletonArray.map((item) => {
+              return (
+                <div>
+                  <Skeleton variant="text" />
+                  <Skeleton variant="rounded" width={300} height={300} />
+                </div>
+              );
+            })}
           </div>
-        ))}
+        ) : (
+          <div className="bodyListCursosAdm">
+            {cursos.map((item) => (
+              <div>
+                <FormLabel
+                  style={{
+                    color: "#333",
+                    fontSize: "18px",
+                    marginTop: "0.9rem",
+                  }}
+                >
+                  {item.nome}
+                </FormLabel>
+                <CardActionArea onClick={() => abrirDescricao(item.id)}>
+                  <Card
+                    sx={{
+                      minWidth: "300px",
+                      maxWidth: "500px",
+                      minHeight: "300px",
+                      maxHeight: "500px",
+                    }}
+                  >
+                    <CardCover>
+                      <img
+                        src={item.image}
+                        alt={item.nome}
+                        style={{ objectFit: "fill" }}
+                      />
+                    </CardCover>
+                  </Card>
+                </CardActionArea>
+              </div>
+            ))}
+          </div>
+        )}
 
         {descCurso.nome !== "" ? (
           <Modal
@@ -204,7 +225,14 @@ const ListarCursosADM = () => {
             onClose={closeModal}
           >
             <Box style={styleModal} className="modalDescricaoCurso">
-              <div style={{width:"90%", display:"flex", justifyContent:"center", alignContent:"center"}}>
+              <div
+                style={{
+                  width: "90%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignContent: "center",
+                }}
+              >
                 <Image
                   style={{
                     position: "relative",
@@ -217,7 +245,7 @@ const ListarCursosADM = () => {
               <Tooltip title="Editar curso">
                 <IconButton
                   onClick={() => editarCurso(descCurso.id)}
-                  style={{ position: "absolute", right: "0%", top:"0" }}
+                  style={{ position: "absolute", right: "0%", top: "0" }}
                 >
                   <Edit />
                 </IconButton>

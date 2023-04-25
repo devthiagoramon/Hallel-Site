@@ -131,6 +131,32 @@ const EditarCursoAdm = () => {
     return index;
   }
 
+  function loadModuloFromAPI(idCurso) {
+    let url = "http://localhost:8080/api/cursos/getModulo/" + idCurso;
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then(() => {
+        setenviadoSucesso(true);
+        setTimeout(() => {
+          window.location.href = "/administrador/cursos";
+        }, 3000);
+      })
+      .catch((error) => {
+        console.warn(error);
+        setEnviadoErro(true);
+      });
+  }
+
   useMemo(() => loadFromAPI(), []);
 
   function loadFromAPI() {

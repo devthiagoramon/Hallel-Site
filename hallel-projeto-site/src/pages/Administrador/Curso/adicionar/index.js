@@ -10,6 +10,7 @@ import {
 } from "@mui/icons-material";
 import {
   Alert,
+  Box,
   Button,
   CircularProgress,
   Collapse,
@@ -23,6 +24,7 @@ import {
   Snackbar,
   TextField,
   Tooltip,
+  Typography,
 } from "@mui/material";
 import React from "react";
 import { useRef } from "react";
@@ -40,9 +42,13 @@ const AdicionarCursoAdm = () => {
   const [btnHabilitado, setbtnHabilitado] = useState();
   const [modulosInput, setModulos] = useState([]);
 
+  const [videosModulo, setvideosModulo] = useState([]);
+
   const [enviando, setenviando] = useState(false);
   const [enviadoSucesso, setenviadoSucesso] = useState(false);
   const [enviadoErro, setEnviadoErro] = useState(false);
+
+  const [open, setopen] = useState(false);
 
   const imagemDiv = useRef();
   const imagemLabelInformativoDiv = useRef();
@@ -55,6 +61,10 @@ const AdicionarCursoAdm = () => {
       setbtnHabilitado(false);
     }
   }, [imagemInput, nomeInput]);
+
+  useEffect(() => {
+    setModulos(modulosInput);
+  }, [modulosInput]);
 
   function fecharAviso() {
     enviadoSucesso === true
@@ -87,6 +97,8 @@ const AdicionarCursoAdm = () => {
 
     reader.readAsDataURL(selectedFile);
   }
+
+  function alterarLinkVideo() {}
 
   function removerInput(id) {
     let inputs = requisitosInputs;
@@ -122,7 +134,7 @@ const AdicionarCursoAdm = () => {
         nome: nomeInput,
         image: imagemInput,
         requisitos: arrayRequisitos,
-        modulos: modulosProv
+        modulos: modulosProv,
       }),
     })
       .then((res) => {
@@ -138,7 +150,6 @@ const AdicionarCursoAdm = () => {
         console.warn(error);
         setEnviadoErro(true);
       });
-      
   }
 
   function cadastrarCurso() {
@@ -155,6 +166,7 @@ const AdicionarCursoAdm = () => {
       numModulo: modulosInput.length + 1,
       tituloModulo: "",
       videosModulo: [],
+      openModulo: false,
     };
     setModulos((prev) => [...prev, modulo]);
   }
@@ -164,7 +176,8 @@ const AdicionarCursoAdm = () => {
 
     if (event.nativeEvent.inputType !== "deleteContentBackward") {
       let modulosProv = modulosInput;
-      modulosProv[index].tituloModulo = modulosProv[index].tituloModulo + event.nativeEvent.data;
+      modulosProv[index].tituloModulo =
+        modulosProv[index].tituloModulo + event.nativeEvent.data;
       setModulos();
       setModulos(modulosProv);
     } else {
@@ -187,12 +200,16 @@ const AdicionarCursoAdm = () => {
     return index;
   }
 
-  function removerModulo(numModulo){
+  function expandMoreModulo(numModulo) {
+    let index = getIndexById(numModulo);
+    const modulosProv = [...modulosInput];
+    modulosProv[index].openModulo = !modulosProv[index].openModulo;
+    setModulos(modulosProv);
+  }
+
+  function removerModulo(numModulo) {
     let modulosProv = modulosInput;
-    modulosProv.splice(
-      getIndexById(numModulo),
-      1
-    );
+    modulosProv.splice(getIndexById(numModulo), 1);
     modulosProv = [...modulosProv];
     setModulos(modulosProv);
   }
@@ -325,33 +342,80 @@ const AdicionarCursoAdm = () => {
               <Divider />
               {modulosInput.map((item) => {
                 return (
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <Divider />
-                    <ListItem>
-                      <ListItemButton sx={{ justifyContent: "space-between" }}>
-                        <TextField
-                          size="small"
-                          variant="outlined"
-                          type="text"
-                          onChange={(e) => {
-                            alterarTituloModulo(
-                              e,
-                              item.numModulo,
-                              e.target.value
-                            );
-                          }}
+                  <div>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <Divider />
+                      <ListItem>
+                        <ListItemButton
+                          onClick={() => expandMoreModulo(item.numModulo)}
+                          sx={{ justifyContent: "space-between" }}
+                        >
+                          <TextField
+                            size="small"
+                            variant="outlined"
+                            type="text"
+                            placeholder="Nome do modulo"
+                            onChange={(e) => {
+                              alterarTituloModulo(
+                                e,
+                                item.numModulo,
+                                e.target.value
+                              );
+                            }}
+                          />
+                          {item.openModulo ? <ExpandLess /> : <ExpandMore />}
+                        </ListItemButton>
+                      </ListItem>
+                      <IconButton
+                        onClick={() => removerModulo(item.numModulo)}
+                        sx={{ height: "35px", width: "35px" }}
+                      >
+                        <RemoveCircle
+                          sx={{ color: "#333", height: "25px", width: "25px" }}
                         />
-                        <ExpandMore />
-                      </ListItemButton>
-                    </ListItem>
-                    <IconButton
-                      onClick={() => removerModulo(item.numModulo)}
-                      sx={{ height: "35px", width: "35px" }}
-                    >
-                      <RemoveCircle
-                        sx={{ color: "#333", height: "25px", width: "25px" }}
-                      />
-                    </IconButton>
+                      </IconButton>
+                    </div>
+                    <Collapse in={item.openModulo} timeout="auto" unmountOnExit>
+                      <Box style={{width: "95%", marginLeft: "3rem"}}>
+                        <Typography variant="h5">
+                          Modulo: {item.tituloModulo !== "" ? item.tituloModulo : <span style={{fontStyle: "italic", fontSize: "16px"}}>"Titulo do Modulo"</span>}
+                        </Typography>
+                        <List
+                          component="div"
+                          disablePadding
+                          style={{ display: "flex", alignItems: "center" }}
+                        >
+                          <ListItemButton
+                            sx={{ marginLeft: "2rem", width: "91%", pl: 4 }}
+                          >
+                            <ListItemIcon>
+                              <VideoLabel />
+                            </ListItemIcon>
+                            <TextField
+                              size="small"
+                              variant="outlined"
+                              type="text"
+                              placeholder="Link do video"
+                              onChange={(e) => {
+                                alterarLinkVideo(e, item.numModulo);
+                              }}
+                            />
+                          </ListItemButton>
+                          <IconButton
+                            onClick={() => removerModulo(item.numModulo)}
+                            sx={{ height: "35px", width: "35px" }}
+                          >
+                            <RemoveCircle
+                              sx={{
+                                color: "#333",
+                                height: "25px",
+                                width: "25px",
+                              }}
+                            />
+                          </IconButton>
+                        </List>
+                      </Box>
+                    </Collapse>
                   </div>
                 );
               })}
