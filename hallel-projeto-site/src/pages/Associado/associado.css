@@ -84,23 +84,24 @@
 
 }
 
-.containerCircular div > button{
+.containerCircular div .link > button{
 
   background:none;
   border-color: rgb(255, 81, 0);
   border-style: solid;
   padding: 0;
+  margin: 0.5em 0;
   border-radius: 10em;
   color: orangered;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 1.5rem;
+  width: 100%;
 }
 
-.containerCircular div > button:hover {
+.containerCircular div .link > button:hover {
 
     background-color: rgb(255, 228, 184);
-
 }
 
 .containerCircular div .verdefonte{
@@ -212,7 +213,7 @@
 }
 .divCard ul{
 
-  margin: 1em 5em
+  margin: 1em 5em;
 }
 .divCard ul li{
 
@@ -220,10 +221,11 @@
   font-weight: 500;
 }
 
-.divCard button{
+.divCard .link button{
 
   margin: 0 30%;
   padding: 0.4em 0;
+  width: 40%;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 1.3em;
@@ -231,25 +233,23 @@
   border: none;
 }
 
-#divcard1 button{
+#divcard1 .link button{
 
   background-color: #95E5FF;
 }
 
-#divcard1 button:hover{
+#divcard1 .link button:hover{
 
   background-color: #67bfdc;
 
 }
 
-#divcard2 button{
+#divcard2 .link button{
 
   background-color: #BDECB6;
 }
 
-#divcard2 button:hover{
+#divcard2 .link button:hover{
 
   background-color: #97c790;
 }
-
-

@@ -1,5 +1,6 @@
 import "./associado.css";
 import { SlPresent } from "react-icons/sl";
+import { Link } from "react-router-dom";
 
 function TopoConteudo(){
 
@@ -33,7 +34,8 @@ function BannerImagem(){
                 <span className="verdefonte">do</span>
               </label>
           <label>Ajude a comunidade a continuar crescendo, seja um apoiador!</label>
-          <button>Associar</button>
+          
+          <Link className="link" to="/"><button>Associar</button></Link>
           </div>
 
         </div>
@@ -58,12 +60,9 @@ function BannerImagem(){
 
     );
   }
-
   function OfertasCards(){
 
     return(
-
-
 
           <section className="containerCard">
 
@@ -79,7 +78,7 @@ function BannerImagem(){
                   <li>Nosso mais sincero agradecimento</li>
                   <li>Acesso à nossa Área de Recompensas, com vídeos no formato vlog exclusivos</li>
                 </ul>
-                <button>Apoiar</button>
+                <Link className ="link" to="/"><button>Apoiar</button></Link>
               </div>
 
               <div className="divCard" id="divcard2">
@@ -95,7 +94,7 @@ function BannerImagem(){
                   <li>Acesso à nossa Área de Recompensas, com vídeos no formato vlog exclusivos</li>
                 </ul>
 
-                <button>Apoiar</button>
+                <Link className ="link" to="/"><button>Apoiar</button></Link>
 
               </div>
             
