@@ -39,7 +39,7 @@ const AdicionarCursoAdm = () => {
   const [nomeInput, setNome] = useState("");
   const [lastId, setLastId] = useState(0);
   const [imagemInput, setImagemInput] = useState("");
-  const [btnHabilitado, setbtnHabilitado] = useState();
+  const [btnHabilitado, setbtnHabilitado] = useState(true);
   const [modulosInput, setModulos] = useState([]);
 
   const [videosModulo, setvideosModulo] = useState([]);
@@ -98,7 +98,53 @@ const AdicionarCursoAdm = () => {
     reader.readAsDataURL(selectedFile);
   }
 
-  function alterarLinkVideo() {}
+  function alterarLinkVideo(event, numModulo, numVideo) {
+    let indexModulo = getIndexById(numModulo);
+    let indexVideo = getIndexByIdVideo(numModulo, numVideo);
+
+    if (event.nativeEvent.inputType !== "deleteContentBackward") {
+      let modulosProv = [...modulosInput];
+      modulosProv[indexModulo].videosModulo[indexVideo].linkVideo =
+        modulosProv[indexModulo].videosModulo[indexVideo].linkVideo +
+        event.nativeEvent.data;
+      setModulos();
+      setModulos(modulosProv);
+    } else {
+      let modulosProv = [...modulosInput];
+      modulosProv[indexModulo].videosModulo[indexVideo].linkVideo = modulosProv[
+        indexModulo
+      ].videosModulo[indexVideo].linkVideo.slice(
+        0,
+        modulosProv[indexModulo].videosModulo[indexVideo].linkVideo.length - 1
+      );
+      setModulos([]);
+      setModulos(modulosProv);
+    }
+  }
+
+  function alterarTituloAula(event, numModulo, numVideo) {
+    let indexModulo = getIndexById(numModulo);
+    let indexVideo = getIndexByIdVideo(numModulo, numVideo);
+
+    if (event.nativeEvent.inputType !== "deleteContentBackward") {
+      let modulosProv = [...modulosInput];
+      modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo =
+        modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo +
+        event.nativeEvent.data;
+      setModulos();
+      setModulos(modulosProv);
+    } else {
+      let modulosProv = [...modulosInput];
+      modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo =
+        modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo.slice(
+          0,
+          modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo.length -
+            1
+        );
+      setModulos([]);
+      setModulos(modulosProv);
+    }
+  }
 
   function removerInput(id) {
     let inputs = requisitosInputs;
@@ -199,6 +245,15 @@ const AdicionarCursoAdm = () => {
     });
     return index;
   }
+  function getIndexByIdVideo(numModulo, numVideo) {
+    let modulosProv = modulosInput;
+    let indexModulo = getIndexById(numModulo);
+    let index = 0;
+    index = modulosProv[indexModulo].videosModulo.findIndex((item) => {
+      return item.numVideo === numVideo;
+    });
+    return index;
+  }
 
   function expandMoreModulo(numModulo) {
     let index = getIndexById(numModulo);
@@ -211,6 +266,26 @@ const AdicionarCursoAdm = () => {
     let modulosProv = modulosInput;
     modulosProv.splice(getIndexById(numModulo), 1);
     modulosProv = [...modulosProv];
+    setModulos(modulosProv);
+  }
+
+  function adicionarVideoModulo(numModulo) {
+    let index = getIndexById(numModulo);
+    const modulosProv = [...modulosInput];
+    let objectVideo = {
+      numVideo: modulosProv[index].videosModulo.length + 1,
+      tituloVideo: "",
+      linkVideo: "",
+    };
+    modulosProv[index].videosModulo.push(objectVideo);
+    setModulos(modulosProv);
+  }
+
+  function removerVideoModulo(numModulo, numVideo) {
+    let indexModulo = getIndexById(numModulo);
+    const modulosProv = [...modulosInput];
+    let indexVideo = getIndexByIdVideo(numModulo, numVideo);
+    modulosProv[indexModulo].videosModulo.splice(indexVideo, 1);
     setModulos(modulosProv);
   }
 
@@ -330,7 +405,7 @@ const AdicionarCursoAdm = () => {
         </div>
         <div className="contModulosAddCursoAdm">
           <div className="headerModulosAddCursoAdm">
-            <h4>Modulos do curso</h4>
+            <h3>Modulos do curso</h3>
             <Tooltip title="Adicionar modulo">
               <IconButton onClick={() => adicionarModulo()}>
                 <AddCircle style={{ width: "30px", height: "30px" }} />
@@ -342,7 +417,7 @@ const AdicionarCursoAdm = () => {
               <Divider />
               {modulosInput.map((item) => {
                 return (
-                  <div>
+                  <div className="containerModuloAddCursoAdm">
                     <div style={{ display: "flex", alignItems: "center" }}>
                       <Divider />
                       <ListItem>
@@ -366,53 +441,167 @@ const AdicionarCursoAdm = () => {
                           {item.openModulo ? <ExpandLess /> : <ExpandMore />}
                         </ListItemButton>
                       </ListItem>
-                      <IconButton
-                        onClick={() => removerModulo(item.numModulo)}
-                        sx={{ height: "35px", width: "35px" }}
-                      >
-                        <RemoveCircle
-                          sx={{ color: "#333", height: "25px", width: "25px" }}
-                        />
-                      </IconButton>
+                      <Tooltip title={"Remover modulo " + item.numModulo}>
+                        <IconButton
+                          onClick={() => removerModulo(item.numModulo)}
+                          sx={{ height: "35px", width: "35px" }}
+                        >
+                          <RemoveCircle
+                            sx={{
+                              color: "#333",
+                              height: "25px",
+                              width: "25px",
+                            }}
+                          />
+                        </IconButton>
+                      </Tooltip>
                     </div>
                     <Collapse in={item.openModulo} timeout="auto" unmountOnExit>
-                      <Box style={{width: "95%", marginLeft: "3rem"}}>
-                        <Typography variant="h5">
-                          Modulo: {item.tituloModulo !== "" ? item.tituloModulo : <span style={{fontStyle: "italic", fontSize: "16px"}}>"Titulo do Modulo"</span>}
-                        </Typography>
-                        <List
-                          component="div"
-                          disablePadding
-                          style={{ display: "flex", alignItems: "center" }}
+                      <Box style={{ width: "95%", marginLeft: "3rem" }}>
+                        <div
+                          style={{
+                            width: "100%",
+                            display: "flex",
+                            alignContent: "center",
+                            justifyContent: "space-between",
+                          }}
                         >
-                          <ListItemButton
-                            sx={{ marginLeft: "2rem", width: "91%", pl: 4 }}
+                          <Typography variant="h5" sx={{ maxWidth: "95%" }}>
+                            Modulo:{" "}
+                            {item.tituloModulo !== "" ? (
+                              item.tituloModulo
+                            ) : (
+                              <span
+                                style={{
+                                  fontStyle: "italic",
+                                  fontSize: "16px",
+                                }}
+                              >
+                                "Titulo do Modulo"
+                              </span>
+                            )}
+                          </Typography>
+                          <Tooltip
+                            title={
+                              "Adicionar um video ao modulo: " +
+                              item.tituloModulo
+                            }
                           >
-                            <ListItemIcon>
-                              <VideoLabel />
-                            </ListItemIcon>
-                            <TextField
-                              size="small"
-                              variant="outlined"
-                              type="text"
-                              placeholder="Link do video"
-                              onChange={(e) => {
-                                alterarLinkVideo(e, item.numModulo);
-                              }}
-                            />
-                          </ListItemButton>
-                          <IconButton
-                            onClick={() => removerModulo(item.numModulo)}
-                            sx={{ height: "35px", width: "35px" }}
-                          >
-                            <RemoveCircle
-                              sx={{
-                                color: "#333",
-                                height: "25px",
-                                width: "25px",
-                              }}
-                            />
-                          </IconButton>
+                            <IconButton
+                              sx={{ position: "relative", right: 0 }}
+                              onClick={() =>
+                                adicionarVideoModulo(item.numModulo)
+                              }
+                            >
+                              <AddCircle
+                                style={{ width: "25px", height: "25px" }}
+                              />
+                            </IconButton>
+                          </Tooltip>
+                        </div>
+                        <List component="div" disablePadding>
+                          {item.videosModulo.map((video) => {
+                            return (
+                              <div
+                                style={{
+                                  width: "100%",
+                                  display: "flex",
+                                  alignItems: "center",
+                                }}
+                              >
+                                <ListItemButton
+                                  sx={{
+                                    marginLeft: "2rem",
+                                    width: "91%",
+                                    pl: 4,
+                                  }}
+                                >
+                                  <ListItemIcon>
+                                    <VideoLabel />
+                                  </ListItemIcon>
+                                  {video.tituloVideo !== "" ? (
+                                    <TextField
+                                      sx={{ pr: 4 }}
+                                      size="small"
+                                      variant="outlined"
+                                      type="text"
+                                      placeholder="Titulo da Aula"
+                                      value={video.tituloVideo}
+                                      onChange={(e) => {
+                                        alterarTituloAula(
+                                          e,
+                                          item.numModulo,
+                                          video.numVideo
+                                        );
+                                      }}
+                                    />
+                                  ) : (
+                                    <TextField
+                                      sx={{ pr: 4 }}
+                                      size="small"
+                                      variant="outlined"
+                                      type="text"
+                                      placeholder="Titulo da Aula"
+                                      onChange={(e) => {
+                                        alterarTituloAula(
+                                          e,
+                                          item.numModulo,
+                                          video.numVideo
+                                        );
+                                      }}
+                                    />
+                                  )}
+                                  {video.linkVideo !== "" ? (
+                                    <TextField
+                                      size="small"
+                                      variant="outlined"
+                                      type="text"
+                                      placeholder="Link do video"
+                                      value={video.linkVideo}
+                                      onChange={(e) => {
+                                        alterarLinkVideo(
+                                          e,
+                                          item.numModulo,
+                                          video.numVideo
+                                        );
+                                      }}
+                                    />
+                                  ) : (
+                                    <TextField
+                                      size="small"
+                                      variant="outlined"
+                                      type="text"
+                                      placeholder="Link do video"
+                                      onChange={(e) => {
+                                        alterarLinkVideo(
+                                          e,
+                                          item.numModulo,
+                                          video.numVideo
+                                        );
+                                      }}
+                                    />
+                                  )}
+                                </ListItemButton>
+                                <IconButton
+                                  onClick={() =>
+                                    removerVideoModulo(
+                                      item.numModulo,
+                                      video.numVideo
+                                    )
+                                  }
+                                  sx={{ height: "35px", width: "35px" }}
+                                >
+                                  <RemoveCircle
+                                    sx={{
+                                      color: "#333",
+                                      height: "25px",
+                                      width: "25px",
+                                    }}
+                                  />
+                                </IconButton>
+                              </div>
+                            );
+                          })}
                         </List>
                       </Box>
                     </Collapse>
