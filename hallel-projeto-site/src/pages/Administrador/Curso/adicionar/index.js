@@ -42,13 +42,9 @@ const AdicionarCursoAdm = () => {
   const [btnHabilitado, setbtnHabilitado] = useState(true);
   const [modulosInput, setModulos] = useState([]);
 
-  const [videosModulo, setvideosModulo] = useState([]);
-
   const [enviando, setenviando] = useState(false);
   const [enviadoSucesso, setenviadoSucesso] = useState(false);
   const [enviadoErro, setEnviadoErro] = useState(false);
-
-  const [open, setopen] = useState(false);
 
   const imagemDiv = useRef();
   const imagemLabelInformativoDiv = useRef();
