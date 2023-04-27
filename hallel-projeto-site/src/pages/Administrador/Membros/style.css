@@ -1,197 +1,100 @@
-*{
-    font-family: helvetica sans-serif;
+.sessaoMembro{
+
+    margin-top: 11em;
+
 }
 
-body {
-    background-color: #F3F9FF;
+.table {
+
+    margin: 2em auto;
+    width: 70%;
+    border: none;
 }
 
-.tools {
-    top: 80px;
-    position: fixed;
-    display: inline;
-    background-color: #F3F9FF;
+.filtro{
 
-    height: 150px;
-    width: 100%;
-
-    margin: 0;
-    padding: 4px 0;
-    box-shadow: 0px 0px 10px #758B9F;
-}
-
-.find {
     display: flex;
-    position: absolute;
+    justify-content: space-around;
     width: 100%;
-    height: 64px;
-    align-items: center;
+    margin: 1.5em 0;
 }
 
-.find div {
-    display: block;
-    position: absolute;
-    width: 100%;
-    margin: 0;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
 
-.find div * {
-    height: 27px;
-    max-width: 200px;
-    border-style: none;
-    outline: none;
-}
 
-.search {
-    float: left;
-    background-color: #CBDCEC;
 
-    width: 170px;
-    margin-left: 15px;
-    
-    color: #6C879C;
-    font-size: 18px;
-    text-align: left;
-    text-indent: 7px;
+/*left container*/
 
-    border-radius: 5px;
-}
-
-.search::placeholder{
-    color: #6C879C;
-}
-
-.hopper {
-    float: right;
-    background-color: #CBDCEC;
-
-    margin-right:15px;
-
-    color: #6C879C;
-    font-size: 14px;
-    text-align: center;
-
-    border-radius: 5px;
-
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    padding: 0 33px 0 9px;
-    background-image: url('https://cdn.discordapp.com/attachments/903094207235895330/1065069747949011085/image.png');
-    background-repeat: no-repeat;
-    background-position: calc(100% - 8px) center;
-    background-size: 18px;
-}
-
-.crud {
-    margin-top: 60px;
+.left-area{
     display: flex;
-    position: absolute;
-    width: 100%;
-    align-items: center;
-}
-
-.crud h1 {
-    font-size: 30px;
-    font-weight: bold;
-    margin: 0 0 0 15px;
-    width: 133px;
-    color: #35404B;
-}
-
-.crud * {
-    width: 100%;
-    text-align: center;
-}
-
-.inputs {
-    display: flex;
-    text-align: end;
+    flex-direction: column;
     justify-content: flex-end;
-    width: 100%;
-    margin-right: 15px;
 }
 
-.inputs input {
-    border-style: solid;
-    background-color: #CBDCEC;
-    color: #35404B;
+.left-area  > div{
 
-    min-width: 85px;
-    max-width: 85px;
-    height: 27px;
-    margin-left: 10px;
-
-    font-size: 14px;
-
-    border-radius: 5px;
-    border-style: none;
+    align-content: flex-end;
+    display: flex;
+    flex-direction: row;
 }
 
-.tools table{
-    margin: auto;
-    border-collapse: collapse;
+/*right container*/
 
-    width: 95%;
-
-    margin-top: 110px;
-}
-.tools table tr{
-    background: none;
-}
-.tools table td{
-    font-size: 16px;
-    padding: 0 5px;
-    color: #758B9F;
+.right-area{
+    flex-direction: column;
 }
 
-.tabela {
-    margin: auto;
-    border-collapse: collapse;
 
-    width: 95%;
+.right-area .buttonArea{
 
-    margin-top: 14.5pc;
-    margin-bottom: 20px;
+    flex-direction: row;
 }
 
-.tabela tr {
-    background: none;
+.right-area .buttonArea > button{
+
+    border: none;
+    padding: 0.6em;
+    align-content: space-around;
+    margin: 0 1em;
+    border-radius: 0.6em;
+    color: #363b40;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
-.tabela td {
-    font-size: 15px;
-    padding: 0 5px;
-    color: #758B9F;
+.buttonArea button:nth-child(1){
+
+    background-color: #44b56c;
+}
+.buttonArea button:nth-child(1):hover{
+
+    background-color: #42a866;
+    color: #e9e9e9;
 }
 
-.tabela tbody tr:hover {
-    background-color: #d0e2f3;
+.buttonArea button:nth-child(2){
+
+    background-color: #fae4a3;
+}
+.buttonArea button:nth-child(2):hover{
+
+    background-color: #deca8f;
+    color: #000000;
 }
 
-.tabela tbody td {
-    font-size: 18px;
-    color: #35404B;
-    padding: 10px 5px;
+.buttonArea button:nth-child(3){
+
+    background-color: #dc6e68;
+
+}
+.buttonArea button:nth-child(3):hover{
+
+    background-color: #c74e48;
+    color: #e9e9e9;
 }
 
-.tabela tbody td:last-child {
-    border-radius: 0 10px 10px 0;
-}
-.tabela tbody td:first-child {
-    border-radius: 10px 0 0 10px;
-}
-@media screen and (max-width: 768px) {
-    .tools{
-        top:65px
-    }
-    .tabela{
-        margin-top: 13.5pc;
-    }
-    .tabela tbody td{
-        font-size: 16px;
-    }
+
+.select-area{
+
+    padding: 0 25%;
+    margin-bottom: 1.5em;
 }

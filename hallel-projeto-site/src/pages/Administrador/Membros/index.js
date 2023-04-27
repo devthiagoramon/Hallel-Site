@@ -1,5 +1,65 @@
 import "./style.css";
 import { useEffect, useState } from "react";
+import Table from "react-bootstrap/Table";
+import Select from "react-bootstrap/FormSelect"
+import {AiOutlineSearch} from 'react-icons/ai';
+import Search from "react-bootstrap/FormGroup"
+import Button from "react-bootstrap/Button"
+
+
+function Filtro(){
+
+  return(
+
+
+    <div className="filtro">
+
+
+        <div className="left-area">
+
+        <Search className="searchbar">
+
+        <input type="search" name = "q" placeholder="Pesquisar.." className="form-control"/>
+
+        <Button type="button" className="primary">
+
+            <i><AiOutlineSearch/></i>
+
+        </Button>
+
+
+        </Search>
+
+          
+        </div>
+
+
+        <div className="right-area">
+
+          <div className="select-area">
+
+              <Select className="select" aria-label="Selecione">
+
+                  <option value = "all">Filtrar por</option>
+                  <option value="ativo">Ativo</option>
+                  <option value= "inativo">Inativo</option>
+                  <option value = "pendente">Pendente</option>
+              </Select>
+          </div>
+
+            <div className="buttonArea">
+              <button className="adicionarBt">Adicionar</button>
+              <button className="alterarBt">Alterar</button>
+              <button className="removerBt">Remover</button>
+            </div>
+
+          </div>
+
+          
+        
+    </div>
+  );
+}
 
 function MembrosAdministrador() {
   const [membro, setMembro] = useState([]);
@@ -28,528 +88,71 @@ function MembrosAdministrador() {
   });
 
   return (
-    <div>
-      <div className="tools">
-        <div className="find">
-          <div>
-            <input type="search" className="search" placeholder="Pesquisar" />
-            <select id="selectOptions" className="hopper">
-              <option value="all">Todos os membros</option>
-              <option value="ativos">Ativos</option>
-              <option value="inativos">Inativos</option>
-              <option value="pendentes">Pendentes</option>
-            </select>
-          </div>
-        </div>
-        <div className="crud">
-          <h1>Membros</h1>
-          <div className="inputs">
-            <input type="button" value="Alterar" />
-            <input type="button" value="Excluir" />
-          </div>
-        </div>
-        <table>
-          <tr>
-            <td>Nome</td>
-            <td>Email</td>
-            <td>Status</td>
-          </tr>
-        </table>
+    
+      <section className="sessaoMembro">
 
-      </div>
-      <div id="cont-table">
-        <table className="tabela">
+       
+      <Filtro/>
+      
+
+        <Table bordered striped hover size="sm" variant="primary">
+
+          <thead>
+
+          <tr >
+
+              <th className="text-center">Nome</th>
+              <th className="text-center">E-mail</th>
+              <th className="text-center">Data de nascimento</th>
+              <th className="text-center">Status</th>
+
+            </tr>
+          </thead>
+
           <tbody>
             <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
+              <td>Fabian</td>
+              <td>Fabian@gmail.com</td>
+              <td>12/02/1998</td>
+              <td>Ativo</td>
             </tr>
             <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
+              <td>Maria do Carmo</td>
+              <td>Maria@gmail.com</td>
+              <td>23/01/1988</td>
+              <td>Ativo</td>
             </tr>
             <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
+              <td>Brazil Sampanho</td>
+              <td>brasil@gmail.com</td>
+              <td>16/12/1985</td>
+              <td>Ativo</td>
             </tr>
             <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
+              <td>Rebecca Agostinho</td>
+              <td>agosto@gmail.com</td>
+              <td>07/04/1999</td>
+              <td>Inativo</td>
             </tr>
             <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
-            </tr>
-            <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
+              <td>Murilo da Silva</td>
+              <td>murilo@gmail.com</td>
+              <td>26/10/1995</td>
+              <td>Pendente</td>
             </tr>
             <tr>
-              <td>Nome</td>
-              <td>Email</td>
-              <td>Status</td>
+              <td>Yuri Cardoso</td>
+              <td>yuri@gmail.com</td>
+              <td>29/11/1993</td>
+              <td>Ativo</td>
             </tr>
             <tr>
-              <td>Nome</td>
-              <td>Email</td>
+              <td>Heitor da Gama</td>
+              <td>gama@gmail.com</td>
+              <td>05/01/2000</td>
               <td>Status</td>
             </tr>
+            
             {membro.map((item) => {
               return (
                 <tr key={item.id}>
@@ -560,9 +163,10 @@ function MembrosAdministrador() {
               );
             })}
           </tbody>
-        </table>
-      </div>
-    </div>
+        </Table>
+      </section>
+   
   );
 }
+
 export default MembrosAdministrador;

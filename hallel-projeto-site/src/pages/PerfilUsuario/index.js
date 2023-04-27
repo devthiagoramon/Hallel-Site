@@ -1,19 +1,9 @@
-import React, { Component, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import "./perfil.css";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-
-function Section1(){
-    return (
-
-      <div className="secao1">
-
-          <div className="perfil"></div>
-      </div>
-    )
-}
 
 const Info = () => {
   const [usuario, setUsuario] = useState({});
@@ -144,37 +134,17 @@ const Info = () => {
    
       </Row>
 
-      <button id = "btAlterar"></button> 
+      <button id = "btAlterar">Alterar</button> 
    
     
     </Form>
     </section>
   );
 };
-class Info2 extends Component {
-  render() {
-    return <div id="info2"></div>;
-  }
-}
-
-class ContainerInfos extends Component {
-  render() {
-    return (
-      <div id="containerInfos">
-        <h1 id="meuPerfil">Meu perfil</h1>
-        <h1 id="info">Mais informação</h1>
-        <a id="linha"></a>
-       
-        <Info2 />
-      </div>
-    );
-  }
-}
 
 function Perfil() {
   return (
     <div>
-      <Section1 />
 
       <div className="forms">
 

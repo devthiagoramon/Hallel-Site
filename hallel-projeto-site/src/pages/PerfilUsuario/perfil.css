@@ -6,7 +6,7 @@
   margin-top: 4.5em;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   
 }
 
