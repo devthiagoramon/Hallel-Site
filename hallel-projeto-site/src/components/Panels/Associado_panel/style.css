@@ -33,9 +33,9 @@
 }
 .container_panel .btnAssociado{
 
-    background-color: #ffe492;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 8px;
-    color:#35404B;
+    background-color: #0d761d;
+    box-shadow: #00000080 0px 5px 8px;
+    color: #FFFFFF;
     font-weight: 600;
     padding: 0.5em 1em;
     border: none;
@@ -45,5 +45,5 @@
 .container_panel .btnAssociado:hover{
 
 
-    background-color: #dcc57f;
+    background-color: #0b6218;
 }

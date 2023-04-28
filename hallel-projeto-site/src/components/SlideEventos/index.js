@@ -23,66 +23,52 @@ const SlideEventos = (props) => {
   }, []);
 
   return (
-    
-    <div className = "body-eventos">
-    
-     
-    <h1 id = "title">Eventos</h1>
-    <div className="containerCarroseulEvent">
-   
-      <motion.div
-        ref={carrosel}
-        className="carrousel"
-        initial={{x:100}}
-        animate={{x:0}}
-        transition={{duration: 0.8}}
-        whileTap={{ cursor: "grabbing" }}
-      >
+    <div className="body-eventos">
+      <h1 id="title">Eventos</h1>
+      <div className="containerCarroseulEvent">
         <motion.div
-          className="inner"
-          drag="x"
-          dragConstraints={{ right: 0, left: -width }}
+          ref={carrosel}
+          className="carrousel"
+          initial={{ x: 100 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.8 }}
+          whileTap={{ cursor: "grabbing" }}
         >
+          <motion.div
+            className="inner"
+            drag="x"
+            dragConstraints={{ right: 0, left: -width }}
+          >
+            {images.map((imagem2) => {
+              return (
+                <motion.div
+                  className="imagem2"
+                  key={imagem2}
+                  whileHover={{ scale: "1.02" }}
+                >
+                  <Card style={{ width: "22rem" }}>
+                    <Card.Img variant="top" src={imagem2} />
 
-
-          {images.map((imagem2) => {
-            return (
-
-             
-
-          
-              <motion.div
-                className="imagem2"
-                key={imagem2}
-                whileHover={{ scale: "1.02" }}
-              >
-                
-                
-    <Card style={{width: '22rem'}}>
-
-      <Card.Img variant="top" src={imagem2}/>
-        
-         <Card.Body>
-            <Card.Title>Título do Evento</Card.Title>
-               <Card.Text>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet sem ac diam elementum suscipit vel eget dui. In metus est, lobortis at fringilla ac, euismod at metus.</p>
-                   <time>??/??/????</time> <br/>
-                  <time>00:00</time>
-           
-                </Card.Text>
-            </Card.Body>
-    </Card>
-
-              </motion.div>
-
-            
-            );
-
-           
-          })}
+                    <Card.Body>
+                      <Card.Title>Título do Evento</Card.Title>
+                      <Card.Text>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Nunc sit amet sem ac diam elementum suscipit vel
+                          eget dui. In metus est, lobortis at fringilla ac,
+                          euismod at metus.
+                        </p>
+                        <time>??/??/????</time> <br />
+                        <time>00:00</time>
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
     </div>
   );
 };

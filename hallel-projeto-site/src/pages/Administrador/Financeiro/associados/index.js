@@ -43,7 +43,7 @@ const AssociadosADM = () => {
             </a>
           </div>
         </div>
-        <Table borderless hover>
+        <Table style={{ width: "90vw" }} borderless hover>
           <thead>
             <tr>
               <th>Nome</th>
@@ -69,7 +69,7 @@ const AssociadosADM = () => {
         </Table>
       </div>
     </div>
-  )
+  );
 }
 
 export default AssociadosADM;

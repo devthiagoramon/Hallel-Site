@@ -224,7 +224,7 @@ class PainelFinanceiro extends Component {
           <Table
             borderless
             hover
-            style={{ maxWidth: "95%", marginLeft: "2.5rem", marginTop:"1.5rem" }}
+            style={{ width: "95%", maxWidth: "95%", marginLeft: "2.5rem", marginTop:"1.5rem" }}
           >
             <thead>
               <tr>

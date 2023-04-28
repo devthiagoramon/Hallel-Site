@@ -7,7 +7,7 @@
 .containerGeralSC {
   position: relative;
   width: 100vw;
-  height: 60vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +63,7 @@
   border: none;
   width: 300px;
   height: 40px;
-  border-radius: 6px;
+  border-radius: 24px;
   padding: 5px 100px;
   font-weight: 600;
 }

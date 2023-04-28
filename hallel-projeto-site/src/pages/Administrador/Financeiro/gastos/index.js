@@ -69,14 +69,18 @@ const Gasto = () => {
               Adicionar Despesa
             </a>
             <a href="#">
-              <SaveAlt style={{width: "55px", height: "55px", color: "#333"}} className="icons" onClick={() => gastosPDF(gastos)}/>
+              <SaveAlt
+                style={{ width: "55px", height: "55px", color: "#333" }}
+                className="icons"
+                onClick={() => gastosPDF(gastos)}
+              />
             </a>
             <a href="#">
               <img src={Arrow} className="icons" />
             </a>
           </div>
         </div>
-        <Table striped borderless hover>
+        <Table style={{ width: "60vw" }} striped borderless hover>
           <thead>
             <tr>
               <th>Descrição do gasto</th>

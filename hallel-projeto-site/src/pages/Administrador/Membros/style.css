@@ -1,100 +1,80 @@
-.sessaoMembro{
-
-    margin-top: 11em;
-
+.sessaoMembro {
+  margin-top: 11em;
 }
 
 .table {
-
-    margin: 2em auto;
-    width: 70%;
-    border: none;
+  margin: 2em auto;
+  width: 70%;
+  border: none;
 }
 
-.filtro{
-
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin: 1.5em 0;
+.filtro {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 1.5em 0;
 }
-
-
-
 
 /*left container*/
 
-.left-area{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+.left-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.left-area  > div{
-
-    align-content: flex-end;
-    display: flex;
-    flex-direction: row;
+.left-area > div {
+  align-content: flex-end;
+  display: flex;
+  flex-direction: row;
 }
 
 /*right container*/
 
-.right-area{
-    flex-direction: column;
+.right-area {
+  flex-direction: column;
 }
 
-
-.right-area .buttonArea{
-
-    flex-direction: row;
+.right-area .buttonArea {
+  flex-direction: row;
 }
 
-.right-area .buttonArea > button{
-
-    border: none;
-    padding: 0.6em;
-    align-content: space-around;
-    margin: 0 1em;
-    border-radius: 0.6em;
-    color: #363b40;
-    text-transform: uppercase;
-    font-weight: 700;
+.right-area .buttonArea > button {
+  border: none;
+  padding: 0.6em;
+  align-content: space-around;
+  margin: 0 1em;
+  border-radius: 0.6em;
+  color: #363b40;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
-.buttonArea button:nth-child(1){
-
-    background-color: #44b56c;
+.buttonArea button:nth-child(1) {
+  background-color: #44b56c;
 }
-.buttonArea button:nth-child(1):hover{
-
-    background-color: #42a866;
-    color: #e9e9e9;
+.buttonArea button:nth-child(1):hover {
+  background-color: #42a866;
+  color: #e9e9e9;
 }
 
-.buttonArea button:nth-child(2){
-
-    background-color: #fae4a3;
+.buttonArea button:nth-child(2) {
+  background-color: #fae4a3;
 }
-.buttonArea button:nth-child(2):hover{
-
-    background-color: #deca8f;
-    color: #000000;
+.buttonArea button:nth-child(2):hover {
+  background-color: #deca8f;
+  color: #000000;
 }
 
-.buttonArea button:nth-child(3){
-
-    background-color: #dc6e68;
-
+.buttonArea button:nth-child(3) {
+  background-color: #dc6e68;
 }
-.buttonArea button:nth-child(3):hover{
-
-    background-color: #c74e48;
-    color: #e9e9e9;
+.buttonArea button:nth-child(3):hover {
+  background-color: #c74e48;
+  color: #e9e9e9;
 }
 
-
-.select-area{
-
-    padding: 0 25%;
-    margin-bottom: 1.5em;
+.select-area {
+  padding: 0 25%;
+  margin-bottom: 1.5em;
 }

@@ -58,7 +58,7 @@ const Renda = () => {
             </a>
           </div>
         </div>
-        <Table striped borderless hover>
+        <Table style={{width: "60vw"}} striped borderless hover>
           <thead>
             <tr>
               <th>Descrição da renda</th>

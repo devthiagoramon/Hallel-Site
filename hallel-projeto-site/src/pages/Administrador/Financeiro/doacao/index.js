@@ -46,7 +46,7 @@ const DoacoesDinheiroAdm = () => {
             </a>
           </div>
         </div>
-        <Table striped borderless hover>
+        <Table style={{ width: "90vw" }} striped borderless hover>
           <thead>
             <tr>
               <th>Email do Doador</th>
