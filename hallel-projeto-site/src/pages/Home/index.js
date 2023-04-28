@@ -13,15 +13,6 @@ function Home() {
           <label>Seja bem-vindo(a) à Comunidade Hallel</label>
         </section>
       </div>
-
-      <br />
-      <Link to="/administrador/eventos">ADMINISTRADOR: Eventos</Link>
-      <br />
-      <Link to="/administrador/membros">ADMINISTRADOR: Membros</Link>
-      <br />
-      <Link to="/administrador/painelFinanceiro">
-        ADMINISTRADOR: Painel Financeiro
-      </Link>
       <Eventos />
       <Programacao />
       <PanelAssociado />

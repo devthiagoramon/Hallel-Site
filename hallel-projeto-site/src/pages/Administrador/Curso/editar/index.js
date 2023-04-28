@@ -31,13 +31,13 @@ import { width } from "@mui/system";
 import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
-import { FormControl, ProgressBar } from "react-bootstrap";
+import { FloatingLabel, Form, FormControl } from "react-bootstrap";
 import "./editarCursoAdm.css";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useMemo } from "react";
 
-const EditarCursoAdm = () => {
+const EditarCursosAdm = () => {
   const [requisitosInputs, setRequisitosInputs] = useState([]);
   const [nomeInput, setNome] = useState("");
   var lastId = 0;
@@ -65,6 +65,7 @@ const EditarCursoAdm = () => {
   const [enviando, setenviando] = useState(false);
   const [enviadoSucesso, setenviadoSucesso] = useState(false);
   const [enviadoErro, setEnviadoErro] = useState(false);
+  const [descInput, setdescInput] = useState("");
 
   useEffect(() => {
     if (
@@ -186,6 +187,7 @@ const EditarCursoAdm = () => {
         };
         setoldCurso(loadingObject);
         setnewCurso(loadingObject);
+        setdescInput(object.descricao !== null ? object.descricao : "")
 
         let requisitosLoaded = loadRequisitosFromAPI(object.requisitos);
 
@@ -290,6 +292,7 @@ const EditarCursoAdm = () => {
       body: JSON.stringify({
         nome: newCurso.nome,
         image: newCurso.image,
+        descricao: descInput,
         requisitos: arrayRequisitos,
         modulos: modulosProv
       }),
@@ -513,6 +516,13 @@ const EditarCursoAdm = () => {
                     );
                   })}
                 </div>
+              </div>
+            </div>
+            <div className="contTextAreaDescAddCursoAdm">
+              <div className="bodyDescAddCursoAdm">
+                <FloatingLabel controlId="floatingTextArea" label="Descrição" className="mb-3">
+                  <Form.Control value={descInput} onChange={(e) => setdescInput(e.target.value)} style={{ height: "100%" }} as="textarea" placeholder="Digite a descrição" />
+                </FloatingLabel>
               </div>
             </div>
             <div className="contModulosAddCursoAdm">
@@ -804,4 +814,4 @@ const EditarCursoAdm = () => {
   );
 };
 
-export default EditarCursoAdm;
+export default EditarCursosAdm;

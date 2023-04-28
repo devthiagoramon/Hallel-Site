@@ -15,6 +15,8 @@ function Header() {
   const [isModalPerfilVisible, setisModalPerfilVisible] = useState(false);
   const [isExpired, setIsExpired] = useState();
 
+  const [openAdm, setOpenAdm] = useState(false);
+
   function isTokenExpired() {
     let url = "http://localhost:8080/api/isTokenExpired/" + String(localStorage.getItem("token"));
     let myHeaders = new Headers();
@@ -58,8 +60,13 @@ function Header() {
 
   useMemo(() => isTokenExpired(), []);
 
+  const handleClose=()=> {
+    setOpenAdm(false);
+  }
+
   function showModalPerfil() {
     setisModalPerfilVisible(!isModalPerfilVisible);
+    setOpenAdm(true);
   }
 
   return (
@@ -168,7 +175,7 @@ function Header() {
       )}
       {isModalPerfilVisible &&
       localStorage.getItem("R0l3s") === "ROLE_ADMIN,ROLE_USER" ? (
-        <ModalPerfilAdm isOpen={true} />
+        <ModalPerfilAdm isOpen={openAdm} handleClose={handleClose} />
       ) : (
         ""
       )}

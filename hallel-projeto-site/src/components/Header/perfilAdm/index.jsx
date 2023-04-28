@@ -21,8 +21,7 @@ import {
 import { useState } from "react";
 import { Drawer } from "@mui/material";
 
-const ModalPerfilAdm = (isOpen) => {
-  const [open, setopen] = useState(isOpen);
+const ModalPerfilAdm = (props) => {
 
   const listaAdministrador = [
     { text: "Cursos - ADM", icon: "cursos", url: "/administrador/cursos" },
@@ -38,8 +37,8 @@ const ModalPerfilAdm = (isOpen) => {
       icon: "associados",
       url: "/administrador/painelFinanceiro/associados",
     },
-    {text: "Doações - ADM", icon: "doacao", url: "/administrador/painelFinanceiro/doacoes/dinheiro"},
-    {text: "Doações de objeto - ADM", icon: "doacaoObjeto", url: "/administrador/painelFinanceiro/doacoes/objeto"},
+    { text: "Doações - ADM", icon: "doacao", url: "/administrador/painelFinanceiro/doacoes/dinheiro" },
+    { text: "Doações de objeto - ADM", icon: "doacaoObjeto", url: "/administrador/painelFinanceiro/doacoes/objeto" },
     { text: "Perfil - ADM", icon: "perfil", url: "/perfil" },
   ];
 
@@ -56,21 +55,21 @@ const ModalPerfilAdm = (isOpen) => {
       return <Diversity3 />;
     } else if (icon === "perfil") {
       return <AccountCircleRounded />;
-    }else if (icon === "doacao"){
-      return <VolunteerActivismRounded/>
-    }else if(icon === "doacaoObjeto"){
-      return <Diversity1Rounded/>
+    } else if (icon === "doacao") {
+      return <VolunteerActivismRounded />
+    } else if (icon === "doacaoObjeto") {
+      return <Diversity1Rounded />
     }
   }
 
   return (
     <div>
-      <Drawer
+      <SwipeableDrawer
         style={{ position: "absolute" }}
         anchor="right"
-        open={open}
-        onClose={() => setopen(false)}
-        onKeyDown={() => setopen(false)}
+        open={props.isOpen}
+        onClose={() => props.handleClose()}
+        onKeyDown={() => props.handleClose()}
       >
         <Box sx={{ width: 300 }} role="presentation">
           <List>
@@ -91,7 +90,7 @@ const ModalPerfilAdm = (isOpen) => {
             ))}
           </List>
         </Box>
-      </Drawer>
+      </SwipeableDrawer>
     </div>
   );
 };

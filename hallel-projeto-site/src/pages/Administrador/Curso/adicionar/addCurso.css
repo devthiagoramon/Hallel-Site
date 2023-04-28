@@ -72,6 +72,28 @@
     justify-content: center;
 }
 
+.contTextAreaDescAddCursoAdm{
+    width: 100%;
+    min-height: 7vh;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.headDescAddCursoAdm{
+    width: 70%;
+    align-self: center;
+}
+
+.bodyDescAddCursoAdm{
+    width: 70%;
+    height: 6vh;
+    align-self: center;
+    margin-bottom: 3rem;
+}
+
 .contModulosAddCursoAdm{
     width: 100%;
     margin-top: 3rem;

@@ -29,7 +29,7 @@ import {
 import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
-import { FormControl } from "react-bootstrap";
+import { FloatingLabel, Form, FormControl } from "react-bootstrap";
 import "./addCurso.css";
 import addImageIcon from "./../../../../images/addImage.svg";
 import { useEffect } from "react";
@@ -37,6 +37,7 @@ import { useEffect } from "react";
 const AdicionarCursoAdm = () => {
   const [requisitosInputs, setRequisitosInputs] = useState([]);
   const [nomeInput, setNome] = useState("");
+  const [descInput, setDescInput] = useState("");
   const [lastId, setLastId] = useState(0);
   const [imagemInput, setImagemInput] = useState("");
   const [btnHabilitado, setbtnHabilitado] = useState(true);
@@ -135,7 +136,7 @@ const AdicionarCursoAdm = () => {
         modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo.slice(
           0,
           modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo.length -
-            1
+          1
         );
       setModulos([]);
       setModulos(modulosProv);
@@ -175,6 +176,7 @@ const AdicionarCursoAdm = () => {
       body: JSON.stringify({
         nome: nomeInput,
         image: imagemInput,
+        descricao: descInput,
         requisitos: arrayRequisitos,
         modulos: modulosProv,
       }),
@@ -397,6 +399,13 @@ const AdicionarCursoAdm = () => {
                 );
               })}
             </div>
+          </div>
+        </div>
+        <div className="contTextAreaDescAddCursoAdm">
+          <div className="bodyDescAddCursoAdm">
+              <FloatingLabel controlId="floatingTextArea" label="Descrição" className="mb-3">
+                <Form.Control value={descInput} onChange={(e) => setDescInput(e.target.value)}  style={{height: "100%"}} as="textarea" placeholder="Digite a descrição"/>
+              </FloatingLabel>
           </div>
         </div>
         <div className="contModulosAddCursoAdm">
