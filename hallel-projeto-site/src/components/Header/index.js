@@ -8,6 +8,7 @@ import Modal from "./entrar/modal";
 import ModalPerfil from "./perfil/modal";
 import { IconButton } from "@mui/material";
 import { AccountCircle, Login } from "@mui/icons-material";
+import ModalPerfilAdm from "./perfilAdm";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
@@ -53,14 +54,12 @@ function Header() {
     }
   }
 
+  
+
   useMemo(() => isTokenExpired(), []);
 
   function showModalPerfil() {
-    if (isModalPerfilVisible === true) {
-      setisModalPerfilVisible(false);
-    } else {
-      setisModalPerfilVisible(true);
-    }
+    setisModalPerfilVisible(!isModalPerfilVisible);
   }
 
   return (
@@ -140,14 +139,19 @@ function Header() {
           </Link>
         </div>
         {isNotUsuario() ? (
-          <IconButton sx={{ width: "60px", height: "60px", color: "#252525" }} onClick={() => window.location.href = "/entrar"}>
+          <IconButton
+            sx={{ width: "60px", height: "60px", color: "#252525" }}
+            onClick={() => (window.location.href = "/entrar")}
+          >
             <Login />
           </IconButton>
         ) : (
           <div className="contPerfilTopBar">
-            <IconButton className="perfilHomepage"
-              onClick={() => showModalPerfil()} >
-              <AccountCircle sx={{width: "55px", height: "55px"}} />
+            <IconButton
+              className="perfilHomepage"
+              onClick={() => showModalPerfil()}
+            >
+              <AccountCircle sx={{ width: "55px", height: "55px" }} />
             </IconButton>
           </div>
         )}
@@ -157,7 +161,17 @@ function Header() {
       ) : (
         ""
       )}
-      {isModalPerfilVisible ? <ModalPerfil /> : ""}
+      {isModalPerfilVisible && localStorage.getItem("R0l3s") === "ROLE_USER" ? (
+        <ModalPerfil />
+      ) : (
+        ""
+      )}
+      {isModalPerfilVisible &&
+      localStorage.getItem("R0l3s") === "ROLE_ADMIN,ROLE_USER" ? (
+        <ModalPerfilAdm isOpen={true} />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
