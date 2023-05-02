@@ -1,0 +1,39 @@
+.section-tabelaDesempenho{
+
+    margin: 10em 25%¨;
+}
+
+
+.desempenhoUser-body{
+
+
+    padding: 11em 0;
+}
+
+.desempenhoUser-body > label{
+
+    font-size: 2em;
+    color: #35404b;
+    font-weight: 800;
+    text-indent: 2em;
+
+}
+
+.barra-body{
+
+    display: flex;
+}
+
+
+.searchbar{
+
+    display: flex;
+    margin-left: 2em;
+    margin: 3em 0 1.5em 8em;
+}
+
+
+.coluna-historico > tr td,th{
+
+    text-align: center;
+}

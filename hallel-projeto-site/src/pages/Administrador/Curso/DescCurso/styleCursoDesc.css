@@ -2,6 +2,7 @@
 
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .containerDesc-pretexto img{
@@ -14,10 +15,12 @@
     border-radius: 1em;
 }
 
-.containerDesc-pretexto h3, p{
+ #labelTitle{
 
     text-align: center;
     margin-bottom: 1.5em;
+    font-size: 1.8em;
+    font-weight: 600;
 }
 
 .containerDesc-pretexto #buttonInscricaoCurso{
@@ -41,31 +44,26 @@
 .containerDesc-pretexto * #tag{
 
     margin: 1em;
-
 }
 
-.containerDesc-postexto h3{
+.containerDesc-postexto div .labelTitle{
 
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-}
-
-
-.containerDesc-postexto h3, li{
-
-    list-style-type: disc;
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
 .containerDesc-postexto > div{
 
     margin-left: 20%;
     margin-right: 20%;
-
 }
 
 .containerDesc-postexto div #textoDescCurso{ 
 
     text-align: justify;
+    text-indent: 2.5em;
 }
 
 .containerAreaButton{
@@ -81,29 +79,56 @@
 
     background-color: #FFFFFF;
     color: #575757;
-    padding: 0.2em;
+    padding: 0.4em 0.1em;
     border: none;
     width: 20%;
-    font-size: 0.8em;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+#buttonVoltarCurso::before{
+
+    content: "←";
 }
 
 #buttonInscricaoCurso{
 
-    background-color: #298D05;
-    padding: 0.1em;
+    background-color: #fbcd44;
+    padding: 0.5em 0.4em;
     margin-right: 0.6em;
     float: right;
-    border-radius: 10px;
-    color: #FFFFFF;
+    border-radius: 1em;
+    border: none;
+    color: #35404b;
     width: 20%;
-
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
-
 /*complementos*/
-
 hr{
 
     margin-left: 20%;
     margin-right: 20%;
 }
+
+/*arruma dps */
+
+.conteudoCurso .container-labels > label{
+
+    font-size: 1.4em;
+    margin: 0.3em 0;
+}
+
+.conteudoCurso .container-labels > label::after{
+
+    content: " ↓";
+}
+
+.conteudoCurso .container-labels{
+
+    display: flex;
+    flex-direction: column;
+}
+
+
