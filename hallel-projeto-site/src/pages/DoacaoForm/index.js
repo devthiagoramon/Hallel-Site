@@ -1,8 +1,11 @@
-import "./styleDoacaoform.css"
+{/*import "./styleDoacaoform.css"
 import Form from "react-bootstrap/Form"
-import Confirmar from "../../images/Confirmado.png"
+import Confirmar from "../../images/Confirmado.png";
+import { useState } from "react";
 
-function Form1(){
+const  Form1 = () => {
+
+    const [form1, setForm1] = useState(true);
 
     return(
 
@@ -36,8 +39,9 @@ function Form1(){
     );
     }
 
-function Form2(){
+    const  Form2 = () =>{
 
+        const [form2, setForm2] = useState(false);
 
     return(
 
@@ -61,14 +65,13 @@ function Form2(){
            <button>Voltar</button>
            <button id="avancaButton">Avançar</button>
        </div>
-
-
-
         </section>
     );
 } 
 
-function Form3(){
+const  Form3 = () =>{
+
+    const [form3, setForm3] = useState(false);
 
     return(
 
@@ -120,7 +123,10 @@ function Form3(){
     );
 }     
 
-function Form3a(){
+ const  Form3a = () =>{
+
+
+    const [form3a, setForm3a] = useState(false);
 
     return(
 
@@ -163,11 +169,12 @@ function DoacaoForm(){
                 <label>doações</label>
 
                 <div>
-
-                    <Form1/> 
                 </div>
             </div>
         </div>
     );
 }
-export default DoacaoForm;
+
+
+export default DoacaoForm; 
+*/}

@@ -2,12 +2,6 @@
   margin-top: 11em;
 }
 
-.table {
-  margin: 2em auto;
-  width: 70%;
-  border: none;
-}
-
 .filtro {
   display: flex;
   justify-content: space-around;
@@ -44,7 +38,7 @@
   padding: 0.6em;
   align-content: space-around;
   margin: 0 1em;
-  border-radius: 0.6em;
+  border-radius: 1em;
   color: #363b40;
   text-transform: uppercase;
   font-weight: 700;
@@ -77,4 +71,20 @@
 .select-area {
   padding: 0 25%;
   margin-bottom: 1.5em;
+}
+
+.tableMembro{
+
+  margin: 0 10%;
+}
+
+.tableMembro .table, thead td{
+
+  border: 2px solid #35404b;
+  text-align: center;
+}
+
+.tableMembro .table tr, th, td{
+
+  text-align: center;
 }

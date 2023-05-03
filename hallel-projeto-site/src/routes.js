@@ -11,10 +11,9 @@ import MembrosAdm from "./pages/Administrador/Membros";
 import EventosCriarAdm from "./pages/Administrador/Eventos/adicionar";
 import EventoListarAdm from "./pages/Administrador/Eventos/listar";
 import DescricaoEvento from "./pages/DescEvento";
-import DescricaoCursoAdm from "./pages/Administrador/Curso/DescCurso";
 import MeusCursos from "./pages/VisualizarCursos";
 import EventoUser from "./pages/Evento/listar";
-import DoacaoFormulario from "./pages/DoacaoForm";
+import DoacaoFormulario from "./pages/DoacaoForm/indexForms";
 import Perfil from "./pages/PerfilUsuario";
 import MaisInfo from "./pages/Evento/MaisInformacoes";
 import PainelFinanceiro from "./pages/Administrador/Financeiro";
@@ -47,7 +46,6 @@ function RoutesApp() {
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/descricao" element={<DescricaoEvento />} />
-        <Route path="/administrador/cursos/descricaoCurso" element={<DescricaoCursoAdm />} />
         <Route path="/meusCursos" element={<MeusCursos />} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />

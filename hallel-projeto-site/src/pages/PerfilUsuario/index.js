@@ -5,6 +5,20 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
+
+const PerfilRow = () => {
+
+  return(
+
+  <div className="secao1">
+
+    <div></div>
+
+  </div>
+  );
+
+}
+
 const Info = () => {
   const [usuario, setUsuario] = useState({});
 
@@ -45,6 +59,7 @@ const Info = () => {
   return (
 
     <section className="formularioPerfil">
+
     <Form>
 
       <label className= "tituloPerfil">Meu perfil:</label>
@@ -145,6 +160,8 @@ const Info = () => {
 function Perfil() {
   return (
     <div>
+
+      <PerfilRow/>
 
       <div className="forms">
 

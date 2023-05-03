@@ -5,7 +5,6 @@ import Select from "react-bootstrap/FormSelect";
 import { AiOutlineSearch } from "react-icons/ai";
 import Search from "react-bootstrap/FormGroup";
 import Button from "react-bootstrap/Button";
-import { useMemo } from "react";
 
 function Filtro() {
   return (
@@ -74,13 +73,15 @@ function MembrosAdministrador() {
     <section className="sessaoMembro">
       <Filtro />
 
-      <Table bordered striped hover size="sm" variant="primary">
+      <div className="tableMembro">
+      <Table style = {{backgroundColor: "#FCFBF8"}} bordered striped hover size="sm">
+
         <thead>
           <tr>
-            <th className="text-center">Nome</th>
-            <th className="text-center">E-mail</th>
-            <th className="text-center">Data de nascimento</th>
-            <th className="text-center">Status</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Data de nascimento</th>
+            <th>Status</th>
           </tr>
         </thead>
 
@@ -140,6 +141,7 @@ function MembrosAdministrador() {
           })}
         </tbody>
       </Table>
+      </div>
     </section>
   );
 }

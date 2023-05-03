@@ -10,9 +10,9 @@ const TabelaDesempenho = () =>{
 
         <section className="section-tabelaDesempenho">
 
-            <Table  variant="primary" striped hover >
+            <Table style = {{backgroundColor: "#FCFBF8"}} bordered striped hover size="sm" >
 
-                <thead className="coluna-historico">
+                <thead>
 
                     <tr >
 
@@ -23,7 +23,7 @@ const TabelaDesempenho = () =>{
                     </tr>
                 </thead>
 
-                <tbody className="coluna-historico">
+                <tbody>
 
                     <tr>
 
