@@ -29,6 +29,7 @@ import AdicionarCursoAdm from "./pages/Administrador/Curso/adicionar";
 import ListarCursosADM from "./pages/Administrador/Curso/listar";
 import EditarCursoAdm from "./pages/Administrador/Curso/editar";
 import Historico from "./pages/Administrador/Curso/HistoricoCurso/HistoricoCurso.js";
+import DescCurso from "./pages/DescCurso";
 
 function RoutesApp() {
 
@@ -47,6 +48,7 @@ function RoutesApp() {
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/descricao" element={<DescricaoEvento />} />
         <Route path="/meusCursos" element={<MeusCursos />} />
+        <Route path="/descCurso" element={<DescCurso/>} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
         <Route
