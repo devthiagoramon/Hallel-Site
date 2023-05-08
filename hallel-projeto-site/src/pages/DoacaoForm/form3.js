@@ -1,9 +1,7 @@
 import "./styleDoacaoform.css"
 import Form from "react-bootstrap/Form"
-import { useState } from "react";
 
 const  Form3 = () =>{
-
 
     return(
 
@@ -51,7 +49,7 @@ const  Form3 = () =>{
                 <button>Voltar</button>
                 <button>Confirmar</button>
             </div>
-</section>
+        </section>
     );
 }     
 

@@ -1,9 +1,6 @@
 import "./styleDoacaoform.css"
-import { useState } from "react";
 
 const  Form2 = () =>{
-
-    const [form2, setForm2] = useState(false);
 
 return(
 
