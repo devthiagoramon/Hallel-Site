@@ -24,8 +24,8 @@ const SlideEventos = (props) => {
     setWidht(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth);
   }, []);
 
-  const renderizarEventos = useMemo(() => {
-    let url = "http://localhost:8080/api/eventos";
+  useMemo(() => {
+    let url = "http://localhost:8080/api/eventos/listar";
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

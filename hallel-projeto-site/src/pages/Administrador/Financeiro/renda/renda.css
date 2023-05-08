@@ -5,8 +5,9 @@ body{
 
 .containerRenda{
     width: 100vw;
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
+    align-items: normal;
     flex-wrap: wrap;
     flex-direction: row;
 }
@@ -31,6 +32,7 @@ body{
     width: 65%;
     height: 100%;
     margin-left: 3rem;
+    margin-right: 2rem;
 }
 
 .headContTabelaRenda{
@@ -38,6 +40,7 @@ body{
     height: 10%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2rem;
 }
 
 
@@ -55,7 +58,7 @@ body{
     justify-content: space-between;
 }
 
-.iconsHeadContTabelaRenda a{
+.iconsHeadContTabelaRenda a, .iconsHeadContTabelaRenda span{
     border-radius: 50%;
     height: fit-content;
     box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 5px;
@@ -79,6 +82,7 @@ body{
     width: 100%;
     height: 5%;
     margin-top: 3rem;
+    margin-bottom: 2rem;
 }
 
 .headUltRenda p{
