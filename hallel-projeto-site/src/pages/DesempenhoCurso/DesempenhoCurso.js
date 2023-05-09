@@ -1,5 +1,9 @@
 import './desempenhoUser.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { useState } from 'react';
+import Modal from "react-modal";
+
+
 
 const PanelDesempenho = () =>{
 
@@ -33,12 +37,27 @@ const SessaoTop = () =>{
 
 const SessaoMeio = () =>{ 
 
+    Modal.setAppElement('#root');
+
+
+    const [modalIsOpen, setIsOpen] = useState(false);
+const showModal = () =>{
+
+        setIsOpen(true)
+    }
+    const closeModal = () =>{
+
+        setIsOpen(false)
+        }
+
     return(
 
     <div className='SessaoMeioDesempenho'>
 
         <div className='modulos-container'>
             <label>Conteúdo</label>
+
+           
 
             <div>
                 <label>Módulo 1</label>
@@ -69,16 +88,56 @@ const SessaoMeio = () =>{
         </div>
         <div className='anotacoes-container'>
 
+                <Modal
+                closeTimeoutMS={200} 
+                 className="modall"
+                 transparent
+                 overlayClassName="modal-over"
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Modal de exemplo" 
+              
+            >
+                    
+                <div className="modal-anotacoes">
+                    
+
+                <label>Aula 1</label>
+                
+                <div className='list-anotacoes'>
+
+                    <label>Anotações</label>
+
+                    <ul>
+
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                    </ul>
+                </div>
+
+                <div className="bottom-area">
+                <u><span>Ir à videoaula</span></u>
+                    <button className='btmodal' onClick={closeModal}>X</button>
+                </div>
+
+                </div>
+            </Modal>
+
 
             <label>Anotações</label>
 
             <ul>
-                <li>Aula 3</li>
-                <li>Aula 4</li>
-                <li>Aula 9</li>
-            </ul>
+                <li onClick={showModal}>Aula 3</li>
 
+                <li onClick={showModal}>Aula 4</li>
+                <li onClick={showModal}>Aula 9</li>
+            </ul>
+   
         </div>
+    
+        
     </div>
     );
 }
@@ -90,6 +149,12 @@ function DesempenhoUser(){
         <section className='sessaoDesempenhoUser'>
 
             <SessaoTop/>
+
+
+            
+
+-
+
             <SessaoMeio/>
 
         </section>

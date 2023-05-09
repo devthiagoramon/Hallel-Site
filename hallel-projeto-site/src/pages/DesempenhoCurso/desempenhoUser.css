@@ -145,3 +145,93 @@
     font-size: 1.1em;
 }
 
+
+
+/*modals area*/
+
+.modall{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background-color: #D1DB5A;
+    border-radius: 1em;
+    width: 40%;
+    height: 60%;
+    max-width: 25em;
+    max-height: 28em;
+    padding: 2em 2em 0 2em ;
+
+}
+.modal-over{
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(161, 161, 161, 0.5);
+}
+.modal-anotacoes{
+    
+    color: #35404b;
+}
+
+.modal-anotacoes > label{
+
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.modal-anotacoes .list-anotacoes > label{
+
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.modal-anotacoes .list-anotacoes > ul li{
+
+    text-indent: 1em;
+    font-weight: 600;
+}
+
+.bottom-area{
+
+    display: flex;
+    justify-self:flex-end;
+    justify-content: space-around;
+}
+
+.bottom-area > button{
+
+    border: none;
+    background: none;
+    font-weight: 700;
+    color: #35404b;
+    text-transform: uppercase;
+}
+
+.modal-anotacoes > label{
+
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+  }
+  
+  .ReactModal__Overlay--after-open{
+    opacity: 1;
+  }
+  
+  .ReactModal__Overlay--before-close{
+    opacity: 0;
+  }
+
+
