@@ -208,7 +208,7 @@ const ListarCursosADM = () => {
                       <img
                         src={item.image}
                         alt={item.nome}
-                        style={{ objectFit: "fill" }}
+                        style={{ objectFit: "contain" }}
                       />
                     </CardCover>
                   </Card>
@@ -237,6 +237,8 @@ const ListarCursosADM = () => {
                   style={{
                     position: "relative",
                     marginTop: "01rem",
+                    maxWidth: "90%",
+                    maxHeight: "175px",
                   }}
                   src={descCurso.image}
                   rounded

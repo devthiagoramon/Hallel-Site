@@ -5,7 +5,11 @@ import {
   ExpandLess,
   ExpandMore,
   Label,
+  MoreVert,
+  NoteAddRounded,
   RemoveCircle,
+  RemoveCircleRounded,
+  UploadFileRounded,
   VideoLabel,
 } from "@mui/icons-material";
 import {
@@ -21,6 +25,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Menu,
+  MenuItem,
   Snackbar,
   TextField,
   Tooltip,
@@ -42,6 +48,10 @@ const AdicionarCursoAdm = () => {
   const [imagemInput, setImagemInput] = useState("");
   const [btnHabilitado, setbtnHabilitado] = useState(true);
   const [modulosInput, setModulos] = useState([]);
+  const [anchorElementMenuModal, setanchorElementMenuModal] = useState(null);
+  const openMenuModulo = Boolean(anchorElementMenuModal);
+
+  const inputFileAtividade = useRef([]);
 
   const [enviando, setenviando] = useState(false);
   const [enviadoSucesso, setenviadoSucesso] = useState(false);
@@ -136,7 +146,7 @@ const AdicionarCursoAdm = () => {
         modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo.slice(
           0,
           modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo.length -
-          1
+            1
         );
       setModulos([]);
       setModulos(modulosProv);
@@ -210,6 +220,7 @@ const AdicionarCursoAdm = () => {
       numModulo: modulosInput.length + 1,
       tituloModulo: "",
       videosModulo: [],
+      atividadesModulo: [],
       openModulo: false,
     };
     setModulos((prev) => [...prev, modulo]);
@@ -243,6 +254,7 @@ const AdicionarCursoAdm = () => {
     });
     return index;
   }
+
   function getIndexByIdVideo(numModulo, numVideo) {
     let modulosProv = modulosInput;
     let indexModulo = getIndexById(numModulo);
@@ -285,6 +297,114 @@ const AdicionarCursoAdm = () => {
     let indexVideo = getIndexByIdVideo(numModulo, numVideo);
     modulosProv[indexModulo].videosModulo.splice(indexVideo, 1);
     setModulos(modulosProv);
+  }
+
+  function openMenuModuloClick(event) {
+    setanchorElementMenuModal(event.currentTarget);
+  }
+
+  function handleCloseMenuModulo() {
+    setanchorElementMenuModal(null);
+  }
+
+  function adicionarAtividadeModulo(numModulo) {
+    let index = getIndexById(numModulo);
+    const modulosProv = [...modulosInput];
+    let objectAtividade = {
+      numAtividade: modulosProv[index].atividadesModulo.length + 1,
+      tituloAtividade: "",
+      descricaoAtividade: "",
+      arquivoAtividade: null,
+      expandAtividade: false,
+    };
+
+    modulosProv[index].atividadesModulo.push(objectAtividade);
+    setModulos(modulosProv);
+  }
+
+  function getIndexAtividadeById(numModulo, numAtividade) {
+    let modulosProv = modulosInput;
+    let indexModulo = getIndexById(numModulo);
+    let index = 0;
+    index = modulosProv[indexModulo].atividadesModulo.findIndex((item) => {
+      return item.numAtividade === numAtividade;
+    });
+    return index;
+  }
+  function alterarTituloAtividade(event, numModulo, numAtividade) {
+    let index = getIndexById(numModulo);
+    let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);
+
+    if (event.nativeEvent.inputType !== "deleteContentBackward") {
+      let modulosProv = modulosInput;
+      modulosProv[index].atividadesModulo[indexAtividade].tituloAtividade =
+        modulosProv[index].atividadesModulo[indexAtividade].tituloAtividade +
+        event.nativeEvent.data;
+      setModulos();
+      setModulos(modulosProv);
+    } else {
+      let modulosProv = modulosInput;
+      modulosProv[index].atividadesModulo[indexAtividade].tituloAtividade =
+        modulosProv[index].atividadesModulo[
+          indexAtividade
+        ].tituloAtividade.slice(0, modulosProv[index].tituloModulo.length - 1);
+      setModulos([]);
+      setModulos(modulosProv);
+    }
+  }
+
+  function expandMoreAtividade(numModulo, numAtividade) {
+    let index = getIndexById(numModulo);
+    let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);
+    const modulosProv = [...modulosInput];
+    modulosProv[index].atividadesModulo[indexAtividade].expandAtividade =
+      !modulosProv[index].atividadesModulo[indexAtividade].expandAtividade;
+    setModulos(modulosProv);
+  }
+
+  function alterarDescricaoAtividade(event, numModulo, numAtividade) {
+
+    let index = getIndexById(numModulo);
+    let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);
+
+    if (event.nativeEvent.inputType !== "deleteContentBackward") {
+      let modulosProv = modulosInput;
+      modulosProv[index].atividadesModulo[indexAtividade].descricaoAtividade =
+        modulosProv[index].atividadesModulo[indexAtividade].descricaoAtividade +
+        event.nativeEvent.data;
+      setModulos();
+      setModulos(modulosProv);
+    } else {
+      let modulosProv = modulosInput;
+      modulosProv[index].atividadesModulo[indexAtividade].descricaoAtividade =
+        modulosProv[index].atividadesModulo[
+          indexAtividade
+        ].descricaoAtividade.slice(
+          0,
+          modulosProv[index].tituloModulo.length - 1
+        );
+      setModulos([]);
+      setModulos(modulosProv);
+    }
+  }
+
+  function handleFileChanged(event, numModulo, numAtividade) {
+
+    let file = event.target.files[0];
+
+    let indexModulo = getIndexById(numModulo);
+    let indexAtividade = getIndexAtividadeById(numModulo,numAtividade);
+
+    let modulosProv = [...modulosInput];
+    
+    let reader = new FileReader();
+    reader.onload = function (event) {
+      modulosProv[indexModulo].atividadesModulo[indexAtividade].arquivoAtividade = event.target.result;
+    };
+    reader.readAsDataURL(file);
+    setModulos(modulosProv);
+
+    console.log(modulosProv);
   }
 
   return (
@@ -403,9 +523,19 @@ const AdicionarCursoAdm = () => {
         </div>
         <div className="contTextAreaDescAddCursoAdm">
           <div className="bodyDescAddCursoAdm">
-              <FloatingLabel controlId="floatingTextArea" label="Descrição" className="mb-3">
-                <Form.Control value={descInput} onChange={(e) => setDescInput(e.target.value)}  style={{height: "100%"}} as="textarea" placeholder="Digite a descrição"/>
-              </FloatingLabel>
+            <FloatingLabel
+              controlId="floatingTextArea"
+              label="Descrição"
+              className="mb-3"
+            >
+              <Form.Control
+                value={descInput}
+                onChange={(e) => setDescInput(e.target.value)}
+                style={{ height: "100%" }}
+                as="textarea"
+                placeholder="Digite a descrição"
+              />
+            </FloatingLabel>
           </div>
         </div>
         <div className="contModulosAddCursoAdm">
@@ -423,7 +553,10 @@ const AdicionarCursoAdm = () => {
               {modulosInput.map((item) => {
                 return (
                   <div className="containerModuloAddCursoAdm">
-                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      className="contTxtTituloModulo"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
                       <Divider />
                       <ListItem>
                         <ListItemButton
@@ -486,37 +619,54 @@ const AdicionarCursoAdm = () => {
                               </span>
                             )}
                           </Typography>
-                          <Tooltip
-                            title={
-                              "Adicionar um video ao modulo: " +
-                              item.tituloModulo
-                            }
+                          <IconButton
+                            onClick={(e) => {
+                              openMenuModuloClick(e);
+                            }}
+                            style={{ width: "25px", height: "25px" }}
                           >
-                            <IconButton
+                            <MoreVert />
+                          </IconButton>
+                          <Menu
+                            anchorEl={anchorElementMenuModal}
+                            open={openMenuModulo}
+                            onClose={handleCloseMenuModulo}
+                          >
+                            <MenuItem
                               sx={{ position: "relative", right: 0 }}
                               onClick={() =>
                                 adicionarVideoModulo(item.numModulo)
                               }
                             >
-                              <AddCircle
+                              <ListItemIcon
                                 style={{ width: "25px", height: "25px" }}
-                              />
-                            </IconButton>
-                          </Tooltip>
+                              >
+                                <VideoLabel />
+                              </ListItemIcon>
+                              <ListItemText primary="Adicionar video" />
+                            </MenuItem>
+                            <MenuItem
+                              sx={{ position: "relative", right: 0 }}
+                              onClick={() =>
+                                adicionarAtividadeModulo(item.numModulo)
+                              }
+                            >
+                              <ListItemIcon
+                                style={{ width: "25px", height: "25px" }}
+                              >
+                                <NoteAddRounded />
+                              </ListItemIcon>
+                              <ListItemText primary="Adicionar Atividade" />
+                            </MenuItem>
+                          </Menu>
                         </div>
                         <List component="div" disablePadding>
+                          <Typography variant="h6">Videos</Typography>
                           {item.videosModulo.map((video) => {
                             return (
-                              <div
-                                style={{
-                                  width: "100%",
-                                  display: "flex",
-                                  alignItems: "center",
-                                }}
-                              >
+                              <div className="contVideosModulosAddCurso">
                                 <ListItemButton
                                   sx={{
-                                    marginLeft: "2rem",
                                     width: "91%",
                                     pl: 4,
                                   }}
@@ -604,6 +754,106 @@ const AdicionarCursoAdm = () => {
                                     }}
                                   />
                                 </IconButton>
+                              </div>
+                            );
+                          })}
+                          <Typography variant="h6">Atividades</Typography>
+                          {item.atividadesModulo.map((atividade) => {
+                            return (
+                              <div className="contAtividadesCursoAdd">
+                                <div className="contListItemCursoAdd">
+                                  <ListItem>
+                                    <ListItemButton
+                                      onClick={() =>
+                                        expandMoreAtividade(
+                                          item.numModulo,
+                                          atividade.numAtividade
+                                        )
+                                      }
+                                      sx={{ justifyContent: "space-between" }}
+                                    >
+                                      <div style={{ display: "flex" }}>
+                                        <ListItemIcon
+                                          sx={{ alignItems: "center" }}
+                                        >
+                                          <NoteAddRounded />
+                                        </ListItemIcon>
+                                        <TextField
+                                          size="small"
+                                          variant="outlined"
+                                          type="text"
+                                          placeholder="Titulo da atividade"
+                                          onChange={(e) => {
+                                            alterarTituloAtividade(
+                                              e,
+                                              item.numModulo,
+                                              atividade.numAtividade
+                                            );
+                                          }}
+                                        />
+                                      </div>
+                                      {atividade.expandAtividade ? (
+                                        <ExpandLess />
+                                      ) : (
+                                        <ExpandMore />
+                                      )}
+                                    </ListItemButton>
+                                  </ListItem>
+                                  <IconButton sx={{ height: "50px" }}>
+                                    <RemoveCircleRounded />
+                                  </IconButton>
+                                </div>
+                                <Collapse
+                                  in={atividade.expandAtividade}
+                                  timeout="auto"
+                                  unmountOnExit
+                                >
+                                  <Box
+                                    style={{
+                                      width: "90%",
+                                      marginLeft: "5rem",
+                                    }}
+                                  >
+                                    <div
+                                      style={{
+                                        width: "87%",
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        marginLeft: "2rem",
+                                        alignItems: "center"
+                                      }}
+                                    >
+                                      <TextField
+                                        size="small"
+                                        variant="outlined"
+                                        type="text"
+                                        placeholder="Descrição da atividade"
+                                        onChange={(e) => {
+                                          alterarDescricaoAtividade(
+                                            e,
+                                            item.numModulo,
+                                            atividade.numAtividade
+                                          );
+                                        }}
+                                      />
+                                      <div className="contInputArquivoAtividade">
+                                        <label>Importar Arquivo (Atividade)</label>
+                                        <input
+                                          id="inputFileAtividade"
+                                          type="file"
+                                          ref={inputFileAtividade}
+                                          onChange={(e) =>
+                                            handleFileChanged(
+                                              e,
+                                              item.numModulo,
+                                              atividade.numAtividade
+                                            )
+                                          }
+                                        />
+                                      </div>
+                                    </div>
+                                  </Box>
+                                </Collapse>
                               </div>
                             );
                           })}
