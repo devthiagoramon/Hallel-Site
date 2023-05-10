@@ -4,6 +4,7 @@ import PanelAssociado from "../../components/Panels/Associado_panel";
 import Programacao from "../../components/SlideProg";
 import Eventos from "../../components/SlideEventos";
 import "./homepage.css";
+import DescCurso from "../DescCurso";
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
       <Programacao />
       <PanelAssociado />
       <PanelPedido />
+      <Link to="/descCurso"> Descrição Curso </Link>
     </div>
   );
 }

@@ -1,17 +1,25 @@
 import "./styleDoacaoform.css"
 
-const  Form1 = ({estado1, estado2}) => {
+const  Form1 = ({estado1}) => {
 
 
     const mudarEstado = () =>{
 
         return(
 
-        estado1 = !estado1,
-        estado2 = !estado2,
+            <>
 
-        console.log(estado1),
-        console.log(estado2)
+
+
+
+
+            
+            </>
+
+    
+        
+
+    
         
         )
 

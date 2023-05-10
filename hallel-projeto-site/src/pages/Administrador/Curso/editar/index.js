@@ -36,6 +36,7 @@ import "./editarCursoAdm.css";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useMemo } from "react";
+import axios from "axios";
 
 const EditarCursosAdm = () => {
   const [requisitosInputs, setRequisitosInputs] = useState([]);
@@ -56,6 +57,7 @@ const EditarCursosAdm = () => {
   const cursoTemplate = {
     nome: "",
     image: "",
+    descricao: "",
     requisitos: [],
   };
 
@@ -72,13 +74,13 @@ const EditarCursosAdm = () => {
       oldCurso.nome !== newCurso.nome ||
       oldCurso.image !== newCurso.image ||
       oldLenghtArray !== requisitosInputs.length ||
-      oldLenghtArrayModulos !== modulosInput.length
+      oldLenghtArrayModulos !== modulosInput.length || descInput !== oldCurso.descricao
     ) {
       setbtnHabilitado(true);
     } else {
       setbtnHabilitado(false);
     }
-  }, [newCurso, requisitosInputs, modulosInput]);
+  }, [newCurso, requisitosInputs, modulosInput, descInput]);
 
   function fecharAviso() {
     enviadoSucesso === true
@@ -184,6 +186,7 @@ const EditarCursosAdm = () => {
         let loadingObject = {
           nome: object.nome,
           image: object.image,
+          descricao: object.descricao,
         };
         setoldCurso(loadingObject);
         setnewCurso(loadingObject);
@@ -282,24 +285,17 @@ const EditarCursosAdm = () => {
 
     let url = "http://localhost:8080/api/cursos/update/" + idCurso;
 
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-
-    fetch(url, {
-      headers: myHeaders,
-      method: "POST",
-      body: JSON.stringify({
-        nome: newCurso.nome,
-        image: newCurso.image,
-        descricao: descInput,
-        requisitos: arrayRequisitos,
-        modulos: modulosProv
-      }),
+    axios.post(url, {
+      nome: newCurso.nome,
+      image: newCurso.image,
+      descricao: descInput,
+      requisitos: arrayRequisitos,
+      modulos: modulosProv
+    }, {
+      headers: {
+        "Authorization": localStorage.getItem("token")
+      }
     })
-      .then((res) => {
-        return res.json();
-      })
       .then(() => {
         setenviadoSucesso(true);
         setTimeout(() => {
@@ -310,6 +306,7 @@ const EditarCursosAdm = () => {
         console.warn(error);
         setEnviadoErro(true);
       });
+
   }
 
   function cadastrarCurso() {

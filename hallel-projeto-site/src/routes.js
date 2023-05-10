@@ -29,6 +29,8 @@ import AdicionarCursoAdm from "./pages/Administrador/Curso/adicionar";
 import ListarCursosADM from "./pages/Administrador/Curso/listar";
 import EditarCursoAdm from "./pages/Administrador/Curso/editar";
 import Historico from "./pages/Administrador/Curso/HistoricoCurso/HistoricoCurso.js";
+import DesempenhoUser from "./pages/DesempenhoCurso/DesempenhoCurso";
+import DescCurso from "./pages/DescCurso";
 
 function RoutesApp() {
 
@@ -47,6 +49,7 @@ function RoutesApp() {
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/descricao" element={<DescricaoEvento />} />
         <Route path="/meusCursos" element={<MeusCursos />} />
+        <Route path="/descCurso" element={<DescCurso/>} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
         <Route
@@ -85,6 +88,7 @@ function RoutesApp() {
         <Route path="/administrador/cursos/add" element={<AdicionarCursoAdm/>}/>
         <Route path="/administrador/cursos" element={<ListarCursosADM/>}/>
         <Route path="/administrador/cursos/editar/:idCurso" element={<EditarCursoAdm/>}/>
+        <Route path="/desempenhoUser"element={<DesempenhoUser />}/>
         <Route path="/entrar" element={<Entrar />} />
       </Routes>
     </BrowserRouter>

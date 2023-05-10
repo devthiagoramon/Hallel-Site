@@ -1,11 +1,7 @@
 import Confirmar from "../../images/Confirmado.png";
-import { useState } from "react";
 import "./styleDoacaoform.css"
 
 const  Form3a = () =>{
-
-
-    const [form3a, setForm3a] = useState(false);
 
     return(
 
