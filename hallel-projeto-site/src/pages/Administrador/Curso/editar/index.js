@@ -5,7 +5,9 @@ import {
   ExpandLess,
   ExpandMore,
   Label,
+  NoteAddRounded,
   RemoveCircle,
+  RemoveCircleRounded,
   VideoLabel,
 } from "@mui/icons-material";
 import {
@@ -48,6 +50,8 @@ const EditarCursosAdm = () => {
   const imagemLabelInformativoLabel = useRef();
   const [btnHabilitado, setbtnHabilitado] = useState();
   const [modulosInput, setModulos] = useState([]);
+  const [anchorElementMenuModal, setanchorElementMenuModal] = useState(null);
+  const openMenuModulo = Boolean(anchorElementMenuModal);
 
   const { idCurso } = useParams();
 
@@ -74,7 +78,8 @@ const EditarCursosAdm = () => {
       oldCurso.nome !== newCurso.nome ||
       oldCurso.image !== newCurso.image ||
       oldLenghtArray !== requisitosInputs.length ||
-      oldLenghtArrayModulos !== modulosInput.length || descInput !== oldCurso.descricao
+      oldLenghtArrayModulos !== modulosInput.length ||
+      descInput !== oldCurso.descricao
     ) {
       setbtnHabilitado(true);
     } else {
@@ -190,7 +195,7 @@ const EditarCursosAdm = () => {
         };
         setoldCurso(loadingObject);
         setnewCurso(loadingObject);
-        setdescInput(object.descricao !== null ? object.descricao : "")
+        setdescInput(object.descricao !== null ? object.descricao : "");
 
         let requisitosLoaded = loadRequisitosFromAPI(object.requisitos);
 
@@ -220,9 +225,14 @@ const EditarCursosAdm = () => {
     let modulosArray = [];
 
     modulos.map((item) => {
-      modulosArray.push({ numModulo: item.numModulo, tituloModulo: item.tituloModulo, videosModulo: item.videosModulo });
+      modulosArray.push({
+        numModulo: item.numModulo,
+        tituloModulo: item.tituloModulo,
+        videosModulo: item.videosModulo,
+        atividadesModulo: item.atividadesModulo,
+      });
       lastIdModulos += 1;
-    })
+    });
     return modulosArray;
   }
 
@@ -277,7 +287,7 @@ const EditarCursosAdm = () => {
 
     let modulosProv = modulosInput;
 
-    console.log(modulosProv)
+    console.log(modulosProv);
 
     requisitosInputs.map((item) => {
       arrayRequisitos.push(item.text);
@@ -285,17 +295,22 @@ const EditarCursosAdm = () => {
 
     let url = "http://localhost:8080/api/cursos/update/" + idCurso;
 
-    axios.post(url, {
-      nome: newCurso.nome,
-      image: newCurso.image,
-      descricao: descInput,
-      requisitos: arrayRequisitos,
-      modulos: modulosProv
-    }, {
-      headers: {
-        "Authorization": localStorage.getItem("token")
-      }
-    })
+    axios
+      .post(
+        url,
+        {
+          nome: newCurso.nome,
+          image: newCurso.image,
+          descricao: descInput,
+          requisitos: arrayRequisitos,
+          modulos: modulosProv,
+        },
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
       .then(() => {
         setenviadoSucesso(true);
         setTimeout(() => {
@@ -306,7 +321,6 @@ const EditarCursosAdm = () => {
         console.warn(error);
         setEnviadoErro(true);
       });
-
   }
 
   function cadastrarCurso() {
@@ -396,7 +410,7 @@ const EditarCursosAdm = () => {
         modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo.slice(
           0,
           modulosProv[indexModulo].videosModulo[indexVideo].tituloVideo.length -
-          1
+            1
         );
       setModulos([]);
       setModulos(modulosProv);
@@ -427,6 +441,111 @@ const EditarCursosAdm = () => {
     }
   }
 
+  function openMenuModuloClick(event) {
+    setanchorElementMenuModal(event.currentTarget);
+  }
+
+  function handleCloseMenuModulo() {
+    setanchorElementMenuModal(null);
+  }
+
+  function adicionarAtividadeModulo(numModulo) {
+    let index = getIndexById(numModulo);
+    const modulosProv = [...modulosInput];
+    let objectAtividade = {
+      numAtividade: modulosProv[index].atividadesModulo.length + 1,
+      tituloAtividade: "",
+      descricaoAtividade: "",
+      arquivoAtividade: null,
+      expandAtividade: false,
+    };
+
+    modulosProv[index].atividadesModulo.push(objectAtividade);
+    setModulos(modulosProv);
+  }
+
+  function getIndexAtividadeById(numModulo, numAtividade) {
+    let modulosProv = modulosInput;
+    let indexModulo = getIndexById(numModulo);
+    let index = 0;
+    index = modulosProv[indexModulo].atividadesModulo.findIndex((item) => {
+      return item.numAtividade === numAtividade;
+    });
+    return index;
+  }
+  function alterarTituloAtividade(event, numModulo, numAtividade) {
+    let index = getIndexById(numModulo);
+    let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);
+
+    if (event.nativeEvent.inputType !== "deleteContentBackward") {
+      let modulosProv = modulosInput;
+      modulosProv[index].atividadesModulo[indexAtividade].tituloAtividade =
+        modulosProv[index].atividadesModulo[indexAtividade].tituloAtividade +
+        event.nativeEvent.data;
+      setModulos();
+      setModulos(modulosProv);
+    } else {
+      let modulosProv = modulosInput;
+      modulosProv[index].atividadesModulo[indexAtividade].tituloAtividade =
+        modulosProv[index].atividadesModulo[
+          indexAtividade
+        ].tituloAtividade.slice(0, modulosProv[index].tituloModulo.length - 1);
+      setModulos([]);
+      setModulos(modulosProv);
+    }
+  }
+
+  function expandMoreAtividade(numModulo, numAtividade) {
+    let index = getIndexById(numModulo);
+    let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);
+    const modulosProv = [...modulosInput];
+    modulosProv[index].atividadesModulo[indexAtividade].expandAtividade =
+      !modulosProv[index].atividadesModulo[indexAtividade].expandAtividade;
+    setModulos(modulosProv);
+  }
+
+  function alterarDescricaoAtividade(event, numModulo, numAtividade) {
+    let index = getIndexById(numModulo);
+    let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);
+
+    if (event.nativeEvent.inputType !== "deleteContentBackward") {
+      let modulosProv = modulosInput;
+      modulosProv[index].atividadesModulo[indexAtividade].descricaoAtividade =
+        modulosProv[index].atividadesModulo[indexAtividade].descricaoAtividade +
+        event.nativeEvent.data;
+      setModulos();
+      setModulos(modulosProv);
+    } else {
+      let modulosProv = modulosInput;
+      modulosProv[index].atividadesModulo[indexAtividade].descricaoAtividade =
+        modulosProv[index].atividadesModulo[
+          indexAtividade
+        ].descricaoAtividade.slice(
+          0,
+          modulosProv[index].tituloModulo.length - 1
+        );
+      setModulos([]);
+      setModulos(modulosProv);
+    }
+  }
+
+  function handleFileChanged(event, numModulo, numAtividade) {
+    let file = event.target.files[0];
+
+    let indexModulo = getIndexById(numModulo);
+    let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);
+
+    let modulosProv = [...modulosInput];
+
+    let reader = new FileReader();
+    reader.onload = function (event) {
+      modulosProv[indexModulo].atividadesModulo[
+        indexAtividade
+      ].arquivoAtividade = event.target.result;
+    };
+    reader.readAsDataURL(file);
+    setModulos(modulosProv);
+  }
 
   return (
     <div>
@@ -517,8 +636,18 @@ const EditarCursosAdm = () => {
             </div>
             <div className="contTextAreaDescAddCursoAdm">
               <div className="bodyDescAddCursoAdm">
-                <FloatingLabel controlId="floatingTextArea" label="Descrição" className="mb-3">
-                  <Form.Control value={descInput} onChange={(e) => setdescInput(e.target.value)} style={{ height: "100%" }} as="textarea" placeholder="Digite a descrição" />
+                <FloatingLabel
+                  controlId="floatingTextArea"
+                  label="Descrição"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    value={descInput}
+                    onChange={(e) => setdescInput(e.target.value)}
+                    style={{ height: "100%" }}
+                    as="textarea"
+                    placeholder="Digite a descrição"
+                  />
                 </FloatingLabel>
               </div>
             </div>
@@ -575,7 +704,11 @@ const EditarCursosAdm = () => {
                                   }}
                                 />
                               )}
-                              {item.openModulo ? <ExpandLess /> : <ExpandMore />}
+                              {item.openModulo ? (
+                                <ExpandLess />
+                              ) : (
+                                <ExpandMore />
+                              )}
                             </ListItemButton>
                           </ListItem>
                           <IconButton
@@ -591,7 +724,11 @@ const EditarCursosAdm = () => {
                             />
                           </IconButton>
                         </div>
-                        <Collapse in={item.openModulo} timeout="auto" unmountOnExit>
+                        <Collapse
+                          in={item.openModulo}
+                          timeout="auto"
+                          unmountOnExit
+                        >
                           <Box style={{ width: "95%", marginLeft: "3rem" }}>
                             <div
                               style={{
@@ -734,6 +871,164 @@ const EditarCursosAdm = () => {
                                         }}
                                       />
                                     </IconButton>
+                                  </div>
+                                );
+                              })}
+                              {item.atividadesModulo.map((atividade) => {
+                                return (
+                                  <div className="contAtividadesCursoAdd">
+                                    <div className="contListItemCursoAdd">
+                                      <ListItem>
+                                        <ListItemButton
+                                          onClick={() =>
+                                            expandMoreAtividade(
+                                              item.numModulo,
+                                              atividade.numAtividade
+                                            )
+                                          }
+                                          sx={{
+                                            justifyContent: "space-between",
+                                          }}
+                                        >
+                                          <div style={{ display: "flex" }}>
+                                            <ListItemIcon
+                                              sx={{ alignItems: "center" }}
+                                            >
+                                              <NoteAddRounded />
+                                            </ListItemIcon>
+                                            {atividade.tituloAtividade !==
+                                            "" ? (
+                                              <TextField
+                                                size="small"
+                                                variant="outlined"
+                                                type="text"
+                                                value={
+                                                  atividade.tituloAtividade
+                                                }
+                                                placeholder="Titulo da atividade"
+                                                onChange={(e) => {
+                                                  alterarTituloAtividade(
+                                                    e,
+                                                    item.numModulo,
+                                                    atividade.numAtividade
+                                                  );
+                                                }}
+                                              />
+                                            ) : (
+                                              <TextField
+                                                size="small"
+                                                variant="outlined"
+                                                type="text"
+                                                placeholder="Titulo da atividade"
+                                                onChange={(e) => {
+                                                  alterarTituloAtividade(
+                                                    e,
+                                                    item.numModulo,
+                                                    atividade.numAtividade
+                                                  );
+                                                }}
+                                              />
+                                            )}
+                                          </div>
+                                          {atividade.expandAtividade ? (
+                                            <ExpandLess />
+                                          ) : (
+                                            <ExpandMore />
+                                          )}
+                                        </ListItemButton>
+                                      </ListItem>
+                                      <IconButton sx={{ height: "50px" }}>
+                                        <RemoveCircleRounded />
+                                      </IconButton>
+                                    </div>
+                                    <Collapse
+                                      in={atividade.expandAtividade}
+                                      timeout="auto"
+                                      unmountOnExit
+                                    >
+                                      <Box
+                                        style={{
+                                          width: "90%",
+                                          marginLeft: "5rem",
+                                        }}
+                                      >
+                                        <div
+                                          style={{
+                                            width: "87%",
+                                            display: "flex",
+                                            justifyContent: "space-between",
+                                            marginLeft: "2rem",
+                                            alignItems: "center",
+                                          }}
+                                        >
+                                          {atividade.descricaoAtividade !==
+                                          "" ? (
+                                            <TextField
+                                              size="small"
+                                              variant="outlined"
+                                              type="text"
+                                              placeholder="Descrição da atividade"
+                                              value={
+                                                atividade.descricaoAtividade
+                                              }
+                                              onChange={(e) => {
+                                                alterarDescricaoAtividade(
+                                                  e,
+                                                  item.numModulo,
+                                                  atividade.numAtividade
+                                                );
+                                              }}
+                                            />
+                                          ) : (
+                                            <TextField
+                                              size="small"
+                                              variant="outlined"
+                                              type="text"
+                                              placeholder="Descrição da atividade"
+                                              onChange={(e) => {
+                                                alterarDescricaoAtividade(
+                                                  e,
+                                                  item.numModulo,
+                                                  atividade.numAtividade
+                                                );
+                                              }}
+                                            />
+                                          )}
+                                          <div className="contInputArquivoAtividade">
+                                            <label>
+                                              Importar Arquivo (Atividade)
+                                            </label>
+                                            {atividade.arquivoAtividade !==
+                                            "" ? (
+                                              <input
+                                                id="inputFileAtividade"
+                                                type="file"
+                                                value={() => window.atob(atividade.arquivoAtividade.substring(atividade.arquivoAtividade.indexOf(",")+1))}
+                                                onChange={(e) =>
+                                                  handleFileChanged(
+                                                    e,
+                                                    item.numModulo,
+                                                    atividade.numAtividade
+                                                 )
+                                                }
+                                              />
+                                            ) : (
+                                              <input
+                                                id="inputFileAtividade"
+                                                type="file"
+                                                onChange={(e) =>
+                                                  handleFileChanged(
+                                                    e,
+                                                    item.numModulo,
+                                                    atividade.numAtividade
+                                                  )
+                                                }
+                                              />
+                                            )}
+                                          </div>
+                                        </div>
+                                      </Box>
+                                    </Collapse>
                                   </div>
                                 );
                               })}
