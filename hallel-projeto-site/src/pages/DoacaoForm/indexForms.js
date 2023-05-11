@@ -15,38 +15,34 @@ function FormInterface(){
 
     const testaForm = () => {
 
-        if(estado1 === true){
+        if(estado1){
+            return <Form1 setEstado1 = {setEstado1} setEstado2 = {setEstado2}/>            
+        } else{
 
+            return <Form2 setEstado1 = {setEstado1} setEstado2 = {setEstado2}/> 
+        }
     
-
-            return console.log(estado1), <Form1 setEstado1 = {setEstado1}/>
+             
+        
              
 
+        if(estado2){
+
+            return <Form2 setEstado2 = {setEstado2}/>
         }
-        else if(estado2 === true){
+        if(estado3){
 
-            setEstado2(true)
-
-
-            console.log("caiu aqui")
-
-            return <Form2 setEstado1 = {setEstado1} setEstado2 = {setEstado2} setEstado3 = {setEstado3}/>
-
+            return <Form3/>
         }
-            
-    
-        
-        else if(estado3 === true){
+        if(estado3a){
 
-            return <Form3 setEstado1 = {setEstado1} setEstado2 = {setEstado2} setEstado3 = {setEstado3} setEstado3a = {setEstado3a}/>
-
+            return <Form3a/>
         }
-        
-        
-        else if(estado3a === true){
+    }
 
-            return <Form3a setEstado1 = {setEstado1} setEstado2 = {setEstado2} setEstado3 = {setEstado3} setEstado3a = {setEstado3a}/>
-        }
+    function mudarEstado(estado){
+
+        return estado = !estado
     }
 
     return(
