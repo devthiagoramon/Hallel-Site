@@ -68,7 +68,7 @@ const AdicionarCursoAdm = () => {
       setbtnHabilitado(false);
     }
   }, [imagemInput, nomeInput]);
-
+  
   useEffect(() => {
     setModulos(modulosInput);
   }, [modulosInput]);
@@ -404,7 +404,6 @@ const AdicionarCursoAdm = () => {
     reader.readAsDataURL(file);
     setModulos(modulosProv);
 
-    console.log(modulosProv);
   }
 
   return (
