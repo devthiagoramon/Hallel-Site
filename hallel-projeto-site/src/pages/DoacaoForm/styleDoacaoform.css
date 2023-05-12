@@ -28,7 +28,7 @@
 
  .container-right > label{
 
-   background: linear-gradient(90deg, #ef860e, #18c349);
+   background: linear-gradient(90deg, #ffae51, #9cf7b5);
    padding: 0.5em;
    width: 100%;
    border-top-left-radius: 1.5em;
@@ -235,6 +235,14 @@ background-color: #01913a;
   margin: 0 25%
 }
 
+.container-form3 > label{
+
+  text-indent: 4em;
+  margin: 1em ;
+
+  
+}
+
 .labelforms::after{
 
   content: " *";
@@ -308,7 +316,7 @@ background-color: #01913a;
   font-weight: 600;
   font-size: 1.2em;
   background-color: #e1e1e1;
-  border: 0.1em solid #398a12;
+  border: 0.1em solid #66d135;
 }
 .forms-container3_1 .breadNav > button:nth-child(3){
 

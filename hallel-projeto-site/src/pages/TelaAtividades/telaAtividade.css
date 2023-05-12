@@ -24,34 +24,39 @@
 .atividade-curso{
 
     display: flex;
-    justify-content: space-around;
-    background-color: rgb(255, 255, 255);
+    justify-content: space-between;
+    padding: 0 15em 0 10em;
 }
 
-.atividade-curso .list-curso-atividades, .painelAtividade{
+.atividade-curso .list-curso-atividades{
+    
+    flex-direction: column;
+    margin-left: 2em;
 
+}
+
+.atividade-curso .section-painel{
+
+    max-width: 25em;
+}
+.atividade-curso .list-curso-atividades, .painelAtividade{
     margin: 1em 2em;
-    max-width: 20em;
     padding: 2em;
+    
 }    
 
 .list-curso-atividades{
-
-    background-color: rgb(255, 255, 255);
+    
     font-size: 1.2em;
     margin-bottom: 1em;
-    flex-grow: 1;
 }    
-
 
 .list-curso-atividades > label{
 
     font-size: 1.2em;
     font-weight: 700;
     margin-bottom: 1em;
-    
 }    
-
 
 .list-curso-atividades ul{
 
@@ -67,9 +72,20 @@
     font-weight: 500;
 }
 
+.painelAtividade .progressAreaAtividades > div{
+
+    background-color: #14376B;
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 1em;
+    padding: 0.3em 1em;
+    text-align: center;
+    border-radius: 0.6em;
+    font-size: 1.2rem;
+}
+
 .painelAtividade{
 
-    flex-flow: 2;
     background: linear-gradient(40deg, #79AFED, #BADAFF);
     border-radius: 1.2em;
     display: flex;
@@ -77,8 +93,9 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
+    max-height: 22em;
+    display: flex;
     box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
-
 }    
 
 .painelAtividade > label{
@@ -91,14 +108,3 @@
     text-shadow: 0px 2px 2px #003F63, 0px -2px 2px #003F63, 2px 0px 2px #003F63, -2px 0px 2px #003F63;
 }    
 
-.painelAtividade .progressAreaAtividades > div{
-
-    background-color: #14376B;
-    color: #ffffff;
-    font-weight: 700;
-    margin-top: 1em;
-    padding: 0.3em 1em;
-    text-align: center;
-    border-radius: 0.6em;
-    font-size: 1.2rem;
-}

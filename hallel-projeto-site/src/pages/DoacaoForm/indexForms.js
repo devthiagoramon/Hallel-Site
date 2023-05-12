@@ -5,6 +5,8 @@ import Form2 from "./form2";
 import Form3 from "./form3";
 import Form3a from "./form3a";
 
+// falta terminar a lógica 
+
 function FormInterface(){
 
     const [estado1, setEstado1] = useState(true);
@@ -13,36 +15,21 @@ function FormInterface(){
     const [estado3a, setEstado3a] = useState(false);
 
 
-    const testaForm = () => {
+    function testaForm1(){
 
-        if(estado1){
-            return <Form1 setEstado1 = {setEstado1} setEstado2 = {setEstado2}/>            
-        } else{
-
-            return <Form2 setEstado1 = {setEstado1} setEstado2 = {setEstado2}/> 
-        }
-    
-             
-        
-             
-
-        if(estado2){
-
-            return <Form2 setEstado2 = {setEstado2}/>
-        }
-        if(estado3){
-
-            return <Form3/>
-        }
-        if(estado3a){
-
-            return <Form3a/>
-        }
+        return <Form1 setEstado1={setEstado1} estado1 = {estado1} setEstado2 = {setEstado2} estado2 ={estado2} /> 
     }
-
-    function mudarEstado(estado){
-
-        return estado = !estado
+    function testaForm2(){
+        
+        return <Form2 setEstado2 = {setEstado2} estado2 = {estado2} setEstado3 = {setEstado3} estado3 = {estado3}/> 
+    }
+    function testaForm3(){
+        
+        return  <Form3 setEstado3 = {setEstado3} estado3 = {estado3} setEstado3a = {setEstado3a} estado3a = {estado3a}/> 
+    }
+    function testaForm4(){
+        
+        return <Form3a setEstado3a = {setEstado3a}/> 
     }
 
     return(
@@ -55,13 +42,22 @@ function FormInterface(){
 
                     <label>doações</label>
 
-                    {
 
-                        testaForm()
+                    { estado1 &&
+                    testaForm1()
                     }
 
-            
-                    
+                    { estado2 &&
+                    testaForm2()
+                    }
+
+                    { estado3 &&
+                    testaForm3()
+                    }
+
+                    { estado3a &&
+                    testaForm4()
+                    }
                 </div>
             </div>
         </>

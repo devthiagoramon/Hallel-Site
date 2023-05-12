@@ -1,17 +1,40 @@
+import { useState } from "react"
 import "./styleDoacaoform.css"
 
-const  Form1 = ({setEstado1, setEstado2}) => {
+
+const  Form1 = ({setEstado2, estado1, setEstado1, estado2}) => {
 
 
-    function mudarSinais(e){
+    const [showDoacao, setShowDoacao] = useState(false);
 
-        setEstado1(!setEstado1)
-        setEstado2(!setEstado2)
+
+    function mudarSinais(){
+
+        return(
+            setEstado2(!estado2),
+            setEstado1(!estado1)
+        )
+
     }
 
-    return(
+    function showDonation(){
 
-        <section className="container-form1">
+        return(
+         
+            {
+
+            }
+         
+        )
+    }
+
+
+    function elementos(){
+        
+
+        return(
+
+            <section className="container-form1">
 
             <div className="breadNav">
 
@@ -24,7 +47,8 @@ const  Form1 = ({setEstado1, setEstado2}) => {
 
             <div className="forms1">
 
-                <button>Dinheiro</button>
+                <button onClick={showDonation}>Dinheiro</button>
+                
                 <hr/>
                 <button>Objetos/Alimentos</button>
                 <hr/>
@@ -33,12 +57,17 @@ const  Form1 = ({setEstado1, setEstado2}) => {
             <div className="button-area">
            
                 <button>Voltar</button>
-                <button id="avancaButton" onClick={ mudarSinais}>Avançar</button>
+                <button id="avancaButton" onClick={mudarSinais}>Avançar</button>
             </div>
-        
         </section>
+        )
+    }
+    return(
+
+            elementos()
 
     );
+   
 }
 
 export default Form1;

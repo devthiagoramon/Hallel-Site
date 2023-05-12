@@ -7,8 +7,7 @@ const ContainerAtividade = () => {
         <div className="atividade-curso">
 
             <section className="list-curso-atividades">
-
-                
+         
                     <label>Exercícios</label>
                     <ul>
                         <li>Atividade 1</li>
@@ -22,13 +21,16 @@ const ContainerAtividade = () => {
                         <li>Prova 2</li>
                         <li>Prova 3</li>
                     </ul>
+
+    
               
             </section>
 
-            <section className="painelAtividade">
+
+            <section className = "section-painel">
+            <div className="painelAtividade">
 
             
-
                 <label>Visão geral</label>
 
                     <div className='progressAreaAtividades'>
@@ -52,7 +54,7 @@ const ContainerAtividade = () => {
                             
                         </div>
                     </div>
-            
+            </div>
             </section>
 
     </div>
