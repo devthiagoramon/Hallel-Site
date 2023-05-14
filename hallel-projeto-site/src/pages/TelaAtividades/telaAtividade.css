@@ -1,0 +1,110 @@
+.telaAtividades-central{
+
+    margin-top: 4.5em;
+    padding: 3em 0;
+    display: flex;
+    flex-direction: column;
+    color: #35404b;
+}
+.telaAtividades-central > label:nth-child(1){
+
+    font-size: 1.8em;
+    font-weight: 700;
+    text-indent: 4em;
+}
+.telaAtividades-central > label:nth-child(2){
+
+    font-size: 1.2em;
+    color: #52606d;
+    font-weight: 700;
+    text-indent: 10rem;
+}
+/*paineis parte*/
+
+.atividade-curso{
+
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15em 0 10em;
+}
+
+.atividade-curso .list-curso-atividades{
+    
+    flex-direction: column;
+    margin-left: 2em;
+
+}
+
+.atividade-curso .section-painel{
+
+    max-width: 25em;
+}
+.atividade-curso .list-curso-atividades, .painelAtividade{
+    margin: 1em 2em;
+    padding: 2em;
+    
+}    
+
+.list-curso-atividades{
+    
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}    
+
+.list-curso-atividades > label{
+
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 1em;
+}    
+
+.list-curso-atividades ul{
+
+    list-style: none;
+    font-size: 1em;
+}
+
+.list-curso-atividades ul li{
+
+    text-indent: 0.5em;
+    text-decoration: underline;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.painelAtividade .progressAreaAtividades > div{
+
+    background-color: #14376B;
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 1em;
+    padding: 0.3em 1em;
+    text-align: center;
+    border-radius: 0.6em;
+    font-size: 1.2rem;
+}
+
+.painelAtividade{
+
+    background: linear-gradient(40deg, #79AFED, #BADAFF);
+    border-radius: 1.2em;
+    display: flex;
+    padding: 2.5em;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-height: 22em;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
+}    
+
+.painelAtividade > label{
+
+    align-self: center;
+    margin-bottom: 0.5em;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #FDFF8F;
+    text-shadow: 0px 2px 2px #003F63, 0px -2px 2px #003F63, 2px 0px 2px #003F63, -2px 0px 2px #003F63;
+}    
+

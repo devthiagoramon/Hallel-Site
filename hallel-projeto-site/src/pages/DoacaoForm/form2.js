@@ -1,6 +1,16 @@
 import "./styleDoacaoform.css"
 
-const  Form2 = () =>{
+const  Form2 = ({setEstado2, estado2, setEstado3, estado3}) =>{
+
+    function mudarSinais(){
+
+
+        return(
+
+        setEstado2(!estado2),
+        setEstado3(!estado3)
+        )
+    }
 
 return(
 
@@ -22,7 +32,7 @@ return(
         <div className="button-area">
        
        <button>Voltar</button>
-       <button id="avancaButton">Avançar</button>
+       <button id="avancaButton" onClick={mudarSinais}>Avançar</button>
    </div>
     </section>
 );

@@ -1,7 +1,13 @@
 import Confirmar from "../../images/Confirmado.png";
 import "./styleDoacaoform.css"
 
-const  Form3a = () =>{
+const  Form3a = ({setEstado3a}) =>{
+
+    
+    function mudarSinais(e){
+
+        setEstado3a(!setEstado3a)
+    }
 
     return(
 
@@ -25,7 +31,7 @@ const  Form3a = () =>{
         <div className="button-area">
            
            <button>Voltar</button>
-           <button id="avancaButton">Avançar</button>
+           <button id="avancaButton" onClick={mudarSinais}>Avançar</button>
        </div>
 
 

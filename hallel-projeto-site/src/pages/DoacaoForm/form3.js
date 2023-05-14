@@ -1,7 +1,16 @@
 import "./styleDoacaoform.css"
 import Form from "react-bootstrap/Form"
 
-const  Form3 = () =>{
+const Form3 = ({setEstado3, estado3, setEstado3a, estado3a}) =>{
+
+    function mudarSinais(e){
+
+
+        return(
+
+        setEstado3(!estado3), setEstado3a(!estado3a)
+        )
+    }
 
     return(
 
@@ -47,7 +56,7 @@ const  Form3 = () =>{
             <div className= "button-area">
 
                 <button>Voltar</button>
-                <button>Confirmar</button>
+                <button onClick={mudarSinais}>Confirmar</button>
             </div>
         </section>
     );
