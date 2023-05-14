@@ -392,6 +392,8 @@ const AdicionarCursoAdm = () => {
 
     let file = event.target.files[0];
 
+    console.log(file);
+
     let indexModulo = getIndexById(numModulo);
     let indexAtividade = getIndexAtividadeById(numModulo,numAtividade);
 
