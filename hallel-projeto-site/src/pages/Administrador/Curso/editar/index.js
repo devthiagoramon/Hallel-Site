@@ -994,22 +994,27 @@ const EditarCursosAdm = () => {
                                               }}
                                             />
                                           )}
+
                                           <div className="contInputArquivoAtividade">
+                                            <Tooltip title="Selecionando outro arquivo, irá editar o arquivo anteriormente selecionada para essa atividade">
+                                              <label className="avisoInputArquivoAtividadeEdit">
+                                                AVISO
+                                              </label>
+                                            </Tooltip>
                                             <label>
-                                              Importar Arquivo (Atividade)
+                                              Selecionar Arquivo (Atividade)
                                             </label>
                                             {atividade.arquivoAtividade !==
                                             "" ? (
                                               <input
                                                 id="inputFileAtividade"
                                                 type="file"
-                                                value={() => window.atob(atividade.arquivoAtividade.substring(atividade.arquivoAtividade.indexOf(",")+1))}
                                                 onChange={(e) =>
                                                   handleFileChanged(
                                                     e,
                                                     item.numModulo,
                                                     atividade.numAtividade
-                                                 )
+                                                  )
                                                 }
                                               />
                                             ) : (

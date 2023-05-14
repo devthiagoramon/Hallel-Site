@@ -79,3 +79,8 @@
     display: flex;
     justify-content: center;
 }
+
+.avisoInputArquivoAtividadeEdit{
+  color: "#F4D03F";
+  font-weight: bold;
+}
