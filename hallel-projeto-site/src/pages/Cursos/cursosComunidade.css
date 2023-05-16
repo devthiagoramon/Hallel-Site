@@ -1,0 +1,16 @@
+.containerCursosComunidade{
+    margin-top: 6rem;
+    width: 94vw;
+    min-height: 100%;
+    margin-left: 3rem;
+}
+
+.headerContainerCursosComunidade{
+    width: 100%;
+}
+
+.tituloCursosComunidade{
+    font-size: xx-large;
+    color:"#252525";
+    font-weight: 500;
+}

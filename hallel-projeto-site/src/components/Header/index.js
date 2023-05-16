@@ -135,14 +135,14 @@ function Header() {
           <Link id="item" to="/">
             Agenda
           </Link>
-          <Link id="item" to="/">
-            Loja
+          <Link id="item" to="/cursos">
+            Cursos
           </Link>
           <Link id="item" to="/doacoes">
             Doações
           </Link>
           <Link id="item" to="/">
-            Contato
+            Loja
           </Link>
         </div>
         {isNotUsuario() ? (
