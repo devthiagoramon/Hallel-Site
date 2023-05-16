@@ -1,12 +1,13 @@
 import Confirmar from "../../images/Confirmado.png";
-import "./styleDoacaoform.css"
+import "./styles/styleForm3a.css"
+import { Link } from "react-router-dom";
 
-const  Form3a = ({setEstado3a}) =>{
+const  Form3a = ({setEstado3a, estado3a}) =>{
 
     
     function mudarSinais(e){
 
-        setEstado3a(!setEstado3a)
+        setEstado3a(!estado3a);
     }
 
     return(
@@ -30,8 +31,8 @@ const  Form3a = ({setEstado3a}) =>{
 
         <div className="button-area">
            
-           <button>Voltar</button>
-           <button id="avancaButton" onClick={mudarSinais}>Avançar</button>
+        
+           <Link to ="/"><button id="avancaButton" onClick={mudarSinais}>Home</button></Link>
        </div>
 
 

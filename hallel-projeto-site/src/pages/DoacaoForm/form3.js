@@ -1,16 +1,25 @@
-import "./styleDoacaoform.css"
+import "./styles/styleForm3.css"
 import Form from "react-bootstrap/Form"
 
-const Form3 = ({setEstado3, estado3, setEstado3a, estado3a}) =>{
+const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a}) =>{
 
     function mudarSinais(e){
 
+        if(e
+         == 1){
+            return(
 
-        return(
+            setEstado3(!estado3), setEstado3a(!estado3a)
+            )
+        } else{
+            
+            return(
+            setEstado2(!estado2), setEstado3(!estado3)
+        
+            )
+        }
 
-        setEstado3(!estado3), setEstado3a(!estado3a)
-        )
-    }
+        }
 
     return(
 
@@ -55,8 +64,8 @@ const Form3 = ({setEstado3, estado3, setEstado3a, estado3a}) =>{
             </Form>
             <div className= "button-area">
 
-                <button>Voltar</button>
-                <button onClick={mudarSinais}>Confirmar</button>
+                <button onClick={()=> mudarSinais(0)}>Voltar</button>
+                <button onClick={() =>mudarSinais(1)}>Confirmar</button>
             </div>
         </section>
     );

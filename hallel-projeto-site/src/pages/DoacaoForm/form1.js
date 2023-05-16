@@ -1,11 +1,13 @@
 import { useState } from "react"
-import "./styleDoacaoform.css"
-
+import "./styles/styleForm1.css"
+import { Link } from "react-router-dom";
 
 const  Form1 = ({setEstado2, estado1, setEstado1, estado2}) => {
 
 
     const [showDoacao, setShowDoacao] = useState(false);
+    const [showObj, setShowObj] = useState(false);
+    const [selectOption, setSelectOption] = useState("");
 
 
     function mudarSinais(){
@@ -19,13 +21,17 @@ const  Form1 = ({setEstado2, estado1, setEstado1, estado2}) => {
 
     function showDonation(){
 
-        return(
-         
-            {
+        return setShowDoacao(!showDoacao)  
+    }
 
-            }
-         
-        )
+    function showObjetoDoacao(){
+
+        setShowObj(!showObj)
+    }
+
+    function onValueChange(e){
+
+        return setSelectOption(e);
     }
 
 
@@ -48,15 +54,55 @@ const  Form1 = ({setEstado2, estado1, setEstado1, estado2}) => {
             <div className="forms1">
 
                 <button onClick={showDonation}>Dinheiro</button>
-                
+
+                { showDoacao &&
+
+
+                    <form className="formasDinheiro">
+
+                        <span><selectOption/></span>
+
+                    <label>
+                        
+                        PicPay
+                       
+                        <input type="radio" value="PicPay" name="picpay" checked = {selectOption === "picpay"} onChange={() =>onValueChange("picpay")}/>                    
+                        
+                    </label>
+
+                    <label>
+
+                        Cartão
+                       
+                            <input type="radio" value="Cartão" name="cartao" checked = {selectOption === "cartao"} onChange = {()=>onValueChange("cartao")}/>
+                    </label>
+
+                    <label>
+
+                        QR-Code
+                       
+                            <input type="radio" value="QR-Code" name="qrcode" checked = {selectOption === "qrcode"} onChange = {()=>onValueChange("qrcode")}/>
+                        
+                    </label>
+                    </form>
+                }
+
                 <hr/>
-                <button>Objetos/Alimentos</button>
+                <button onClick = {showObjetoDoacao}>Objetos/Alimentos</button>
+                { showObj &&
+
+                    <>
+                    <label id = "objLabel">Acesse <span>aqui</span> para doar objetos/alimentos</label>
+                    {/*evento on Clique*/}
+                    </>
+                }
                 <hr/>
             </div>
 
             <div className="button-area">
            
-                <button>Voltar</button>
+
+                <button onClick={mudarSinais}><Link to= "/">Home</Link></button>
                 <button id="avancaButton" onClick={mudarSinais}>Avançar</button>
             </div>
         </section>

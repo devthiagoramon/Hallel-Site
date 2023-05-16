@@ -1,0 +1,44 @@
+.container-DoacaoForm{
+
+  display: flex;
+  padding: 2em;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 4.5em;
+  height: 100%;
+  background-image: url('../../../images/background-formDoar.jpg');
+  background-repeat: no-repeat;  
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.container-right{
+
+  background-color: #ffffff;
+  width: 30em;
+  min-width: 22em;
+  height: 40em;
+  margin-top: 5%;
+  margin-bottom: 5em;
+  margin-right: 10em;
+  border-radius: 3em;
+  box-shadow: 0.5px 0.5px 5px #000000;
+}
+
+.container-right > label{
+
+  background: linear-gradient(90deg, #ffae51, #9cf7b5);
+  padding: 0.5em;
+  width: 100%;
+  border-top-left-radius: 1.5em;
+  border-top-right-radius: 1.5em;
+
+  /*em relacao ao texto*/
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.8em;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 3px black;
+}
