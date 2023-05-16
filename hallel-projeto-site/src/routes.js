@@ -32,6 +32,7 @@ import Historico from "./pages/Administrador/Curso/HistoricoCurso/HistoricoCurso
 import DesempenhoUser from "./pages/DesempenhoCurso/DesempenhoCurso";
 import DescCurso from "./pages/DescCurso";
 import CursoAtividade from "./pages/TelaAtividades/TelaAtividade";
+import Cursos from "./pages/Cursos";
 
 function RoutesApp() {
 
@@ -47,6 +48,7 @@ function RoutesApp() {
         <Route path="/formulario" element={<DoacaoFormulario />} />
         <Route path="/solicitarCadastro" element={<SolicitacaoCadastro />} />
         <Route path="/sobre" element={<Sobre />} />
+        <Route path="/cursos" element={<Cursos/>}/>
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/descricao" element={<DescricaoEvento />} />
         <Route path="/meusCursos" element={<MeusCursos />} />
