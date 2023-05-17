@@ -11,6 +11,7 @@ import {
   IconButton,
   Modal,
   Skeleton,
+  TextField,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -45,6 +46,8 @@ const ListarCursosADM = () => {
     image: "",
   };
   const [descCurso, setdescCurso] = useState(descCursoTemplate);
+  const [pesquisa, setPesquisa] = useState("");
+  const [orderBy, setOrderBy] = useState("");
 
   function closeModal() {
     setIsModalAberto(false);
@@ -126,6 +129,23 @@ const ListarCursosADM = () => {
     setpesquisarNome(!pesquisarNome);
   }
 
+  const cursosFiltrados = useMemo(() => {
+    let lowerPesquisa = pesquisa.toLowerCase();
+    let cursosProv = cursos.filter((curso) =>
+      curso.nome.toLowerCase().includes(lowerPesquisa)
+    );
+    if (orderBy === "Nome") {
+      cursosProv.sort((a, b) => {
+        if (a.nome < b.nome) {
+          return -1;
+        } else {
+          return true;
+        }
+      });
+    }
+    return cursosProv;
+  }, [cursos, pesquisa, orderBy]);
+
   return (
     <div className="contListarCursosAdm">
       <div className="headListCursosAdm">
@@ -133,7 +153,16 @@ const ListarCursosADM = () => {
         <div className="contPesquisaCursoAdm">
           <FormControl>
             <FormLabel style={{ fontSize: "16px" }}>Ordenar por</FormLabel>
-            <Autocomplete options={ordenarPor} />
+            <Autocomplete
+              options={ordenarPor}
+              autoHighlight
+              renderInput={(params) => (
+                <TextField {...params} label="Ordenar" />
+              )}
+              onChange={(event, newValue) => {
+                setOrderBy(newValue.label);
+              }}
+            />
           </FormControl>
           {pesquisarNome === false ? (
             ""
@@ -148,7 +177,11 @@ const ListarCursosADM = () => {
             >
               <FormControl>
                 <FormLabel style={{ fontSize: "16px" }}>Nome</FormLabel>
-                <Input style={{ width: "100%" }} placeholder="Pesquise aqui" />
+                <Input
+                  onChange={(e) => setPesquisa(e.target.value)}
+                  style={{ width: "100%" }}
+                  placeholder="Pesquise aqui"
+                />
               </FormControl>
             </div>
           )}
@@ -184,7 +217,7 @@ const ListarCursosADM = () => {
           </div>
         ) : (
           <div className="bodyListCursosAdm">
-            {cursos.map((item) => (
+            {cursosFiltrados.map((item) => (
               <div>
                 <FormLabel
                   style={{

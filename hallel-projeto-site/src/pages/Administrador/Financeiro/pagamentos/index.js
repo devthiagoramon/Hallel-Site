@@ -1,17 +1,15 @@
 import React from "react";
 import "./pagamentos.css";
-import Printer from "./../../../../images/impressora-svg.svg";
-import Arrow from "./../../../../images/arrow-icon.svg";
 import { useMemo } from "react";
 import { useState } from "react";
-import { SaveAlt } from "@mui/icons-material";
-import { Table } from "react-bootstrap";
+import { Form, Table } from "react-bootstrap";
 
 const PagamentosAssociado = () => {
   const [pagamentosAssociados, setpagamentosAssociados] = useState([]);
+  const [pesquisa, setPesquisa] = useState("");
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/associado/getAllPagamentos";
+    let url = "http://localhost:8080/api/associados/getAllPagamentos";
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -32,6 +30,13 @@ const PagamentosAssociado = () => {
       });
   }, []);
 
+  const pagamentosAssociadosFiltrado = useMemo(() => {
+    let lowerPesquisa = pesquisa.toLowerCase();
+    return pagamentosAssociados.filter((pagamento) =>
+      pagamento.nome.toLowerCase().includes(lowerPesquisa)
+    );
+  }, [pagamentosAssociados, pesquisa]);
+
   return (
     <div className="containerPagamentos">
       <div className="cabecalhoPagamentos">
@@ -42,13 +47,16 @@ const PagamentosAssociado = () => {
           <div className="tituloHeadContTabelaPagamentos">
             <a>Tabela de Pagamentos de Associados</a>
           </div>
-          <div className="iconsHeadContTabelaPagamentos">
-            <a href="#">
-              <img src={Arrow} className="icons" />
-            </a>
+          <div className="pesquisaHeadContTabelaPagamentos">
+            <Form.Control
+              onChange={(e) => {
+                setPesquisa(e.target.value);
+              }}
+              placeholder="Pesquisar pagamento (Nome)"
+            />
           </div>
         </div>
-        <Table style={{ width: "90vw" }} striped borderless hover>
+        <Table style={{ width: "100%" }} striped borderless hover>
           <thead>
             <tr>
               <th>Nome</th>
@@ -61,7 +69,7 @@ const PagamentosAssociado = () => {
             </tr>
           </thead>
           <tbody>
-            {pagamentosAssociados.map((item) => {
+            {pagamentosAssociadosFiltrado.map((item) => {
               return (
                 <tr>
                   <td>{item.nome}</td>

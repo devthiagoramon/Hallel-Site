@@ -15,6 +15,7 @@ import {
   Diversity1Rounded,
   Diversity3,
   Event,
+  PaymentRounded,
   Person4Rounded,
   VolunteerActivismRounded,
 } from "@mui/icons-material";
@@ -22,7 +23,6 @@ import { useState } from "react";
 import { Drawer } from "@mui/material";
 
 const ModalPerfilAdm = (props) => {
-
   const listaAdministrador = [
     { text: "Cursos - ADM", icon: "cursos", url: "/administrador/cursos" },
     {
@@ -37,8 +37,21 @@ const ModalPerfilAdm = (props) => {
       icon: "associados",
       url: "/administrador/painelFinanceiro/associados",
     },
-    { text: "Doações - ADM", icon: "doacao", url: "/administrador/painelFinanceiro/doacoes/dinheiro" },
-    { text: "Doações de objeto - ADM", icon: "doacaoObjeto", url: "/administrador/painelFinanceiro/doacoes/objeto" },
+    {
+      text: "Pagamentos Associados - ADM",
+      icon: "associadosPagamentos",
+      url: "/administrador/painelFinanceiro/pagamentosAssociado",
+    },
+    {
+      text: "Doações - ADM",
+      icon: "doacao",
+      url: "/administrador/painelFinanceiro/doacoes/dinheiro",
+    },
+    {
+      text: "Doações de objeto - ADM",
+      icon: "doacaoObjeto",
+      url: "/administrador/painelFinanceiro/doacoes/objeto",
+    },
     { text: "Perfil - ADM", icon: "perfil", url: "/perfil" },
   ];
 
@@ -56,9 +69,11 @@ const ModalPerfilAdm = (props) => {
     } else if (icon === "perfil") {
       return <AccountCircleRounded />;
     } else if (icon === "doacao") {
-      return <VolunteerActivismRounded />
+      return <VolunteerActivismRounded />;
     } else if (icon === "doacaoObjeto") {
-      return <Diversity1Rounded />
+      return <Diversity1Rounded />;
+    } else if (icon === "associadosPagamentos") {
+      return <PaymentRounded/>
     }
   }
 

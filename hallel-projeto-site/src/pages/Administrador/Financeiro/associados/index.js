@@ -1,12 +1,13 @@
 import { ArrowBack } from '@mui/icons-material';
 import React, { useMemo, useState } from 'react'
-import { Table } from 'react-bootstrap';
+import { Form, Table } from 'react-bootstrap';
 
 const AssociadosADM = () => {
  const [associados, setassociados] = useState([]);
+ const [pesquisa, setPesquisa] = useState("");
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/associado";
+    let url = "http://localhost:8080/api/associados";
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -27,6 +28,13 @@ const AssociadosADM = () => {
       });
   }, []);
 
+  const associadosFiltrado = useMemo(() => {
+    let lowerPesquisa = pesquisa.toLowerCase();
+    return associados.filter((associado) =>
+      associado.nome.toLowerCase().includes(lowerPesquisa)
+    );
+  }, [associados, pesquisa]);
+
   return (
     <div className="containerPagamentos">
       <div className="cabecalhoPagamentos">
@@ -37,24 +45,27 @@ const AssociadosADM = () => {
           <div className="tituloHeadContTabelaPagamentos">
             <a>Tabela de Associados</a>
           </div>
-          <div className="iconsHeadContTabelaPagamentos">
-            <a href="#">
-              <img src={ArrowBack} className="icons" />
-            </a>
+          <div className="pesquisaHeadContTabelaPagamentos">
+            <Form.Control
+              onChange={(e) => {
+                setPesquisa(e.target.value);
+              }}
+              placeholder="Pesquisar Associado"
+            />
           </div>
         </div>
-        <Table style={{ width: "90vw" }} borderless hover>
+        <Table style={{ width: "100%" }} borderless hover>
           <thead>
             <tr>
               <th>Nome</th>
               <th>Email</th>
-              <th>Participando</th>
+              <th>Participando dos eventos</th>
               <th>Status</th>
               <th>Pago</th>
             </tr>
           </thead>
           <tbody>
-            {associados.map((item) => {
+            {associadosFiltrado.map((item) => {
               return (
                 <tr>
                   <td>{item.nome}</td>

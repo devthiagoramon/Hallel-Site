@@ -49,24 +49,14 @@ body{
     margin-left: 0;
 }
 
-.iconsHeadContTabelaPagamentos{
-    display: flex;
-    width: auto;
-    justify-content: space-between;
-}
-
-.iconsHeadContTabelaPagamentos a{
-    border-radius: 50%;
-    height: fit-content;
-    box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 5px;
+.pesquisaHeadContTabelaPagamentos{
+    width: 17%;
 }
 
 .icons{
     width: 55px;
     color: #35404B;
 }
-
-
 
 .containerUltRenda{
     display: flex;
