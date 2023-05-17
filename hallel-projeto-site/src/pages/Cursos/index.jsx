@@ -1,17 +1,68 @@
-import React from 'react'
-import "./cursosComunidade.css"
+import React, { useMemo, useState } from "react";
+import "./cursosComunidade.css";
+import imgTeste from "../../images/AcampamentoHomem.jpg";
+import { Card, Form, FormControl, FormLabel } from "react-bootstrap";
+import {
+  Autocomplete,
+  Box,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+} from "@mui/material";
+import axios from "axios";
 
 const Cursos = () => {
-    return (
-        <div className='containerCursosComunidade'>
-            <div className='headerContainerCursosComunidade'>
-                <label className='tituloCursosComunidade'>Cursos da comunidade</label>
-            </div>
-            <div className='bodyContainerCursosComunidade'>
-                
-            </div>
-        </div>
-    )
-}
+  const [cursos, setCursos] = useState([]);
 
-export default Cursos
+  useMemo(() => {
+    let url = "http://localhost:8080/api/cursos";
+
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        setCursos(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  return (
+    <div className="containerCursosComunidade">
+      <div className="headerContainerCursosComunidade">
+        <label className="tituloCursosComunidade">Cursos da comunidade</label>
+        <div className="contPesquisaCursosComunidade">
+          <Form.Control placeholder="Pesquisar curso" />
+        </div>
+      </div>
+      <div className="bodyContainerCursosComunidade">
+        <Box className="containerCadsCursosComunidade">
+          {cursos.map((curso) => {
+            return (
+              <CardActionArea sx={{width:"auto", minHeight:"350px", maxHeight: "350px"}}>
+                <Card className="cardCursosComunidade" key={curso.id}>
+                  <img
+                    alt={curso.nome.concat(" Curso")}
+                    className="imgCardCursosComunidade"
+                    src={curso.image}
+                  />
+                  <CardContent>
+                    <Typography variant="h5">{curso.nome}</Typography>
+                  </CardContent>
+                </Card>
+              </CardActionArea>
+            );
+          })}
+        </Box>
+      </div>
+    </div>
+  );
+};
+
+export default Cursos;
