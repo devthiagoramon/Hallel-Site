@@ -2,6 +2,7 @@ import './desempenhoUser.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useState } from 'react';
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 
 
 
@@ -135,9 +136,7 @@ const showModal = () =>{
                 <li onClick={showModal}>Aula 9</li>
             </ul>
    
-        </div>
-    
-        
+        </div>        
     </div>
     );
 }
@@ -150,12 +149,9 @@ function DesempenhoUser(){
 
             <SessaoTop/>
 
-
-            
-
--
-
             <SessaoMeio/>
+
+            <Link to = "/atividades"><button id = "botaoatividade">Visualizar atividades</button></Link>
 
         </section>
     );

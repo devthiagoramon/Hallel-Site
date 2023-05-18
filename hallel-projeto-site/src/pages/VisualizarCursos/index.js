@@ -2,6 +2,7 @@ import './visualizarCurso.css'
 import Img from "../../images/fundoCardTeste.jpg";
 import Card from 'react-bootstrap/Card';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { Link } from "react-router-dom";
 
 function AreaTopo() {
 
@@ -63,6 +64,7 @@ function AreaCurso() {
                     <div className='cartoes' id="i">
 
                         {card}
+                        
 
                     </div>
                 );
@@ -77,7 +79,8 @@ function CursosCards() {
 
         <Card style={{ width: '18rem' }}>
 
-            <Card.Img variant="top" src={Img} />
+
+        <Link id='linkcard' to = "/desempenhoUser"><Card.Img variant="top" src={Img} /></Link>
             <Card.Body>
 
                 <Card.Title>Nome do Curso</Card.Title>

@@ -9,6 +9,7 @@ import ModalPerfil from "./perfil/modal";
 import { IconButton } from "@mui/material";
 import { AccountCircle, Login } from "@mui/icons-material";
 import ModalPerfilAdm from "./perfilAdm";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
@@ -41,6 +42,32 @@ function Header() {
         console.warn(error);
         setIsExpired(true);
       });
+  }
+
+  function DropDown() {
+    return (
+      <div className="Dropdown">
+        <Dropdown id='dropdown'>
+          <Dropdown.Toggle variant="sucess btn-lg" id="dropdown-basic">
+            Cursos
+          </Dropdown.Toggle>
+  
+          <Dropdown.Menu id="menu">
+            <Dropdown.Item id='link'>
+              <Link to="/cursos">Cursos</Link>
+            </Dropdown.Item>
+  
+            <div className="dropdown-divider"></div>
+  
+            <Dropdown.Item id="link" className="meuscursos">
+              <Link to="/meusCursos">Meus cursos</Link>
+            </Dropdown.Item>
+
+
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+    );
   }
 
   function isNotUsuario() {
@@ -135,9 +162,11 @@ function Header() {
           <Link id="item" to="/">
             Agenda
           </Link>
-          <Link id="item" to="/cursos">
+          
+          <DropDown/>
+          {/*<Link id="item" to="/meuscursos">
             Cursos
-          </Link>
+  </Link>*/}
           <Link id="item" to="/doacoes">
             Doações
           </Link>

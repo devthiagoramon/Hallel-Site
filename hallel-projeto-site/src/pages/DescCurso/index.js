@@ -6,11 +6,9 @@ import Icon3 from '../../images/icon3.png'
 import Icon4 from '../../images/icon4.png'
 
 
-
 function DescCurso() {
     return (
         
-
         <div className='containerDescCurso'>
 
             <section className="conteudo-topo">
