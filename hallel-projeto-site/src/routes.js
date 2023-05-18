@@ -52,7 +52,7 @@ function RoutesApp() {
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/descricao" element={<DescricaoEvento />} />
         <Route path="/meusCursos" element={<MeusCursos />} />
-        <Route path="/descCurso" element={<DescCurso/>} />
+        <Route path="/descCurso/:idCurso" element={<DescCurso/>} />
         <Route path="/atividades" element= {<CursoAtividade/>} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />

@@ -41,6 +41,10 @@ const Cursos = () => {
     return cursos.filter((curso) => curso.nome.toLowerCase().includes(pesquisaLowerCase))
   }, [cursos, pesquisa]);
 
+  function abrirDescricaoCurso(idCurso){
+    window.location.href = "/descCurso/"+idCurso;
+  }
+
   return (
     <div className="containerCursosComunidade">
       <div className="headerContainerCursosComunidade">
@@ -65,6 +69,7 @@ const Cursos = () => {
               {cursosFiltrados.map((curso) => {
                 return (
                   <CardActionArea
+                    onClick={() => abrirDescricaoCurso(curso.id)}
                     sx={{
                       width: "auto",
                       minHeight: "350px",
