@@ -234,3 +234,26 @@
   }
 
 
+
+#botaoatividade{
+
+
+    margin-right: 80%;
+    margin-left: 10%;
+    border: none;
+    padding: 0.8em;
+    border-radius: 1.2em;
+    background-color: #D1DB5A;
+    font-weight: 700;
+    font-size: 1em;
+    color: #35404b
+}
+
+#botaoatividade:hover{
+
+
+    background-color: #c0ca4f;
+
+
+}
+

@@ -65,7 +65,7 @@ const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a}
             <div className= "button-area">
 
                 <button onClick={()=> mudarSinais(0)}>Voltar</button>
-                <button onClick={() =>mudarSinais(1)}>Confirmar</button>
+                <button id="avancaButton" onClick={() =>mudarSinais(1)}>Confirmar</button>
             </div>
         </section>
     );

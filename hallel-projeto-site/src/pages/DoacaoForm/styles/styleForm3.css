@@ -46,19 +46,27 @@
     margin-top: 3em;
    }
   
-   .button-area button, .button-area a > #avancaButton{
+   .button-area button, .button-area  > #avancaButton{
   
     padding: 0.5em;
   }
   
-
+  .container-form3 .button-area button:nth-child(1){
   
-  .button-area a #avancaButton{
+    border: none;
+    font-size: 0.9em;
+    color: #959595;
+    background: none;
+  }
+  
+   .container-form3 .button-area button:nth-child(2){
   
     background-color: #009e3f;
     color: #ffffff;
     border-radius: 0.8em;
-    padding: 0.6em 1em;
+    padding: 0.5em;
     border: none;
     font-weight: 600;
   }
+
+  

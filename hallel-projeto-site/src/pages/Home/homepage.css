@@ -19,7 +19,8 @@
     background-size:cover;
     background-attachment: fixed;
     position: relative;
-    background-position: top;
+    background-position-y: bottom 4em;
+   
     background-repeat: no-repeat;
 }
 

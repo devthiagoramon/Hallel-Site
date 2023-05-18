@@ -92,7 +92,7 @@ function DescCurso() {
           <div className="left">
             <section className="conteudo-curso">
               <h2> O que você irá aprender: </h2>
-
+                <section className="conteudo-curso">
               <ul>
                 <li> Nam suscipit turpis vel diam vestibulum, at volutpat. </li>
                 <li>
@@ -105,7 +105,7 @@ function DescCurso() {
                   velit.{" "}
                 </li>
               </ul>
-
+                        <li> Aenean non est consequat, aliquet ipsum ac, pellentesque velit. </li>
               <h2> Conteúdo e materiais: </h2>
               {curso.modulos !== null ? (
                 <>
@@ -149,7 +149,7 @@ function DescCurso() {
               ) : (
                 <></>
               )}
-
+                        <li> TESTE DE CONHECIMENTO </li>
               <h2> Descrição: </h2>
               {curso.descricao !== null ? (
                 <>
@@ -204,6 +204,9 @@ function DescCurso() {
       )}
     </div>
   );
+    );
+
 }
+
 
 export default DescCurso;

@@ -1,4 +1,5 @@
 import "./doacoes.css";
+import { Link } from "react-router-dom";
 
 function Doacoes() {
   return (
@@ -88,7 +89,7 @@ function Doacoes() {
             <label>Li e aceito as Políticas de Privacidade. </label>
           </div>
           <br />
-          <button className="buttonQueroDoar"> Quero Doar!</button>
+          <Link to ="/formulario"><button className="buttonQueroDoar"> Quero Doar!</button></Link>
         </div>
       </div>
     </div>

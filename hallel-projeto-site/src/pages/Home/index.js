@@ -4,7 +4,6 @@ import PanelAssociado from "../../components/Panels/Associado_panel";
 import Programacao from "../../components/SlideProg";
 import Eventos from "../../components/SlideEventos";
 import "./homepage.css";
-import DescCurso from "../DescCurso";
 
 function Home() {
   return (
