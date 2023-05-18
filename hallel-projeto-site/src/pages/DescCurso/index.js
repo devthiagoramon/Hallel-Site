@@ -158,8 +158,9 @@ function DescCurso() {
               ) : (
                 <></>
               )}
-            </section>
-          </div>
+              </section>
+          </section>
+        </div>
 
           <div className="right">
             <img src={CapaCurso} alt="capa do curso" className="cart-image" />
@@ -204,7 +205,6 @@ function DescCurso() {
       )}
     </div>
   );
-    );
 
 }
 
