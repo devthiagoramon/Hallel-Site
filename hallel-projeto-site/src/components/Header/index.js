@@ -9,7 +9,6 @@ import ModalPerfil from "./perfil/modal";
 import { IconButton } from "@mui/material";
 import { AccountCircle, Login } from "@mui/icons-material";
 import ModalPerfilAdm from "./perfilAdm";
-import Dropdown from 'react-bootstrap/Dropdown';
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
@@ -43,33 +42,6 @@ function Header() {
         setIsExpired(true);
       });
   }
-
-  function DropDown() {
-    return (
-      <div className="Dropdown">
-        <Dropdown id='dropdown'>
-          <Dropdown.Toggle variant="sucess btn-lg" id="dropdown-basic">
-            Cursos
-          </Dropdown.Toggle>
-  
-          <Dropdown.Menu id="menu">
-            <Dropdown.Item id='link'>
-              <Link to="/cursos">Cursos</Link>
-            </Dropdown.Item>
-  
-            <div className="dropdown-divider"></div>
-  
-            <Dropdown.Item id="link" className="meuscursos">
-              <Link to="/meusCursos">Meus cursos</Link>
-            </Dropdown.Item>
-
-
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
-    );
-  }
-
   function isNotUsuario() {
     if (localStorage.getItem("token") === null) {
       // Token inexistente, caso for null, pessoa tem que se logar
@@ -155,18 +127,21 @@ function Header() {
           <Link id="item" to="/eventos">
             Eventos
           </Link>
-          <Down id="item" />
+
+          <Down id="item" titulo = "Igreja" item1 = "Quem somos" link1 = "/sobre" item2 = "Fundadora" link2 = "/fundadora" />
+
           <Link id="item" to="/">
             Ministérios
           </Link>
+
           <Link id="item" to="/">
             Agenda
           </Link>
-          
-          <DropDown/>
+      
+          <Down id = "item" titulo = "Cursos" item1 = "Cursos" link1 = "/cursos" item2 = "Meus Cursos" link2 = "/meuscursos"/>
           {/*<Link id="item" to="/meuscursos">
             Cursos
-  </Link>*/}
+          </Link>*/}
           <Link id="item" to="/doacoes">
             Doações
           </Link>
@@ -211,5 +186,4 @@ function Header() {
     </div>
   );
 }
-
 export default Header;

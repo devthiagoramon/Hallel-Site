@@ -4,6 +4,7 @@
   width: 100%;
 }
 
+
 #cont-logo {
   background: none;
   border-radius: 10px;
@@ -41,7 +42,7 @@
 #topbar #topicos > a,
 #topicos > div > div > button {
   width: 100%;
-  font-size: 1.3rem;
+  font-size: 1.2em;
   font-weight: 700;
   color: #252525;
   text-align: center;
