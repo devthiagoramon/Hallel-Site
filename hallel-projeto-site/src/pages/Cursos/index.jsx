@@ -1,16 +1,11 @@
 import React, { useMemo, useState } from "react";
 import "./cursosComunidade.css";
-import imgTeste from "../../images/AcampamentoHomem.jpg";
-import { Card, Form, FormControl, FormLabel } from "react-bootstrap";
+import { Card, Form } from "react-bootstrap";
 import {
-  Autocomplete,
   Box,
   CardActionArea,
   CardContent,
-  CardMedia,
   CircularProgress,
-  Grid,
-  Skeleton,
   Typography,
 } from "@mui/material";
 import axios from "axios";
@@ -38,11 +33,13 @@ const Cursos = () => {
 
   const cursosFiltrados = useMemo(() => {
     let pesquisaLowerCase = pesquisa.toLowerCase();
-    return cursos.filter((curso) => curso.nome.toLowerCase().includes(pesquisaLowerCase))
+    return cursos.filter((curso) =>
+      curso.nome.toLowerCase().includes(pesquisaLowerCase)
+    );
   }, [cursos, pesquisa]);
 
-  function abrirDescricaoCurso(idCurso){
-    window.location.href = "/descCurso/"+idCurso;
+  function abrirDescricaoCurso(idCurso) {
+    window.location.href = "/descCurso/" + idCurso;
   }
 
   return (
@@ -62,7 +59,7 @@ const Cursos = () => {
         <Box className="containerCadsCursosComunidade">
           {cursosFiltrados.length === 0 ? (
             <div className="containerLoadCardsCursosComunidade">
-              <CircularProgress/>
+              <CircularProgress />
             </div>
           ) : (
             <>

@@ -7,11 +7,13 @@ import Icon4 from "../../images/icon4.png";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { CircularProgress, Skeleton } from "@mui/material";
+import { Modal, Skeleton } from "@mui/material";
+import InnerModalMatricular from "./innerModalMatricular";
 
 function DescCurso() {
   const [curso, setCurso] = useState({});
   const { idCurso } = useParams();
+  const [isModalMatricularOpen, setisModalMatricularOpen] = useState(false);
 
   useMemo(() => {
     let url = "http://localhost:8080/api/cursos/descCurso/" + idCurso;
@@ -24,11 +26,20 @@ function DescCurso() {
       })
       .then((curso) => {
         setCurso(curso.data);
+        console.log(curso.data);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
+
+  function openModalMatricular() {
+    setisModalMatricularOpen(true);
+  }
+
+  const handleCloseModalMatricular = () => {
+    setisModalMatricularOpen(false);
+  };
 
   return (
     <div className="containerDescCurso">
@@ -60,7 +71,8 @@ function DescCurso() {
           </div>
 
           <div className="right">
-            <img src={CapaCurso} alt="capa do curso" className="cart-image" />
+            <Skeleton variant="rounded" width={"100%"} height={300} />
+
             <section className="capacurso-infos">
               <Skeleton
                 variant="rounded"
@@ -92,78 +104,84 @@ function DescCurso() {
           <div className="left">
             <section className="conteudo-curso">
               <h2> O que você irá aprender: </h2>
-                <section className="conteudo-curso">
-              <ul>
-                <li> Nam suscipit turpis vel diam vestibulum, at volutpat. </li>
-                <li>
-                  {" "}
-                  Mauris quis nisi vestibulum, mollis risus vel, dapibus lorem.{" "}
-                </li>
-                <li>
-                  {" "}
-                  Aenean non est consequat, aliquet ipsum ac, pellentesque
-                  velit.{" "}
-                </li>
-              </ul>
-                        <li> Aenean non est consequat, aliquet ipsum ac, pellentesque velit. </li>
-              <h2> Conteúdo e materiais: </h2>
-              {curso.modulos !== null ? (
-                <>
-                  {" "}
-                  {curso.modulos.map((modulo) => {
-                    return (
-                      <>
-                        <div id="modulo">
-                          {" "}
-                          <label> {modulo.tituloModulo} </label>{" "}
-                        </div>
-                        <ul>
-                          {modulo.videosModulo !== null ? (
-                            <>
-                              {modulo.videosModulo.map((video) => {
-                                <li>
-                                  {" "}
-                                  AULA {video.numVideo} - {video.tituloVideo}{" "}
-                                </li>;
-                              })}
-                            </>
-                          ) : (
-                            <></>
-                          )}
-                          {modulo.atividadesModulo !== null ? (
-                            <>
-                              {modulo.atividadesModulo.map((atividade) => {
-                                return (
-                                  <li>ATIVIDADE {atividade.tituloAtividade}</li>
-                                );
-                              })}
-                            </>
-                          ) : (
-                            <></>
-                          )}
-                        </ul>
-                      </>
-                    );
-                  })}
-                </>
-              ) : (
-                <></>
-              )}
-                        <li> TESTE DE CONHECIMENTO </li>
-              <h2> Descrição: </h2>
-              {curso.descricao !== null ? (
-                <>
-                  <p>{curso.descricao}</p>
-                </>
-              ) : (
-                <></>
-              )}
+              <section className="conteudo-curso-inner">
+                <ul>
+                  {curso.aprendizado !== null ? (
+                    <>
+                      {curso.aprendizado.map((aprendizado) => {
+                        return <li>{aprendizado}</li>;
+                      })}
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </ul>
+                <h2> Conteúdo e materiais: </h2>
+                {curso.modulos !== null ? (
+                  <>
+                    {" "}
+                    {curso.modulos.map((modulo) => {
+                      return (
+                        <>
+                          <div id="modulo">
+                            {" "}
+                            <label> {modulo.tituloModulo} </label>{" "}
+                          </div>
+                          <ul>
+                            {modulo.videosModulo !== null ? (
+                              <>
+                                {modulo.videosModulo.map((video) => {
+                                  <li>
+                                    {" "}
+                                    AULA {video.numVideo} - {video.tituloVideo}{" "}
+                                  </li>;
+                                })}
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                            {modulo.atividadesModulo !== null ? (
+                              <>
+                                {modulo.atividadesModulo.map((atividade) => {
+                                  return (
+                                    <li>
+                                      ATIVIDADE {atividade.tituloAtividade}
+                                    </li>
+                                  );
+                                })}
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                          </ul>
+                        </>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <></>
+                )}
+                <h2> Descrição: </h2>
+                {curso.descricao !== null ? (
+                  <>
+                    <p>{curso.descricao}</p>
+                  </>
+                ) : (
+                  <></>
+                )}
               </section>
-          </section>
-        </div>
+            </section>
+          </div>
+
+          <Modal
+            open={isModalMatricularOpen}
+            onClose={handleCloseModalMatricular}
+          >
+            <InnerModalMatricular curso={curso} />
+          </Modal>
 
           <div className="right">
-            <img src={CapaCurso} alt="capa do curso" className="cart-image" />
+            <img src={curso.image} alt="capa do curso" className="cart-image" />
             <section className="capacurso-infos">
               <img src={Icon1} alt="icone 1" className="icones" id="icone1" />
               <p id="txt-icon1"> 12h de duração </p> <br />
@@ -191,7 +209,11 @@ function DescCurso() {
               <br />
               <img src={Icon4} alt="icone 4" className="icones" id="icone4" />
               <p id="txt-icon4"> Certificado de conclusão </p>
-              <button className="button" id="button1">
+              <button
+                className="button"
+                id="button1"
+                onClick={() => openModalMatricular()}
+              >
                 {" "}
                 MATRICULAR-ME{" "}
               </button>
@@ -205,8 +227,6 @@ function DescCurso() {
       )}
     </div>
   );
-
 }
-
 
 export default DescCurso;

@@ -42,6 +42,8 @@ import { useEffect } from "react";
 
 const AdicionarCursoAdm = () => {
   const [requisitosInputs, setRequisitosInputs] = useState([]);
+  const [aprendizadoInputs, setAprendizadoInputs] = useState([]);
+  const [lastIdAprendizado, setLastIdAprendizado] = useState(0);
   const [nomeInput, setNome] = useState("");
   const [descInput, setDescInput] = useState("");
   const [lastId, setLastId] = useState(0);
@@ -68,7 +70,7 @@ const AdicionarCursoAdm = () => {
       setbtnHabilitado(false);
     }
   }, [imagemInput, nomeInput]);
-  
+
   useEffect(() => {
     setModulos(modulosInput);
   }, [modulosInput]);
@@ -165,14 +167,33 @@ const AdicionarCursoAdm = () => {
     setRequisitosInputs(inputs);
   }
 
+  function removerInputAprendizado(id) {
+    console.log(id);
+    let inputsAprendizado = [...aprendizadoInputs];
+    inputsAprendizado.splice(
+      inputsAprendizado.findIndex((input) => {
+        return input.id === id;
+      }),
+      1
+    );
+
+    setAprendizadoInputs(inputsAprendizado);
+  }
+
   function solicitaçao() {
     let arrayRequisitos = [];
+    let arrayAprendizado = [];
 
     let modulosProv = modulosInput;
 
     requisitosInputs.map((item) => {
       arrayRequisitos.push(item.text);
     });
+
+    aprendizadoInputs.map((item) => {
+      arrayAprendizado.push(item.text);
+    })
+  
 
     let url = "http://localhost:8080/api/cursos/create";
 
@@ -188,6 +209,7 @@ const AdicionarCursoAdm = () => {
         image: imagemInput,
         descricao: descInput,
         requisitos: arrayRequisitos,
+        aprendizado: arrayAprendizado,
         modulos: modulosProv,
       }),
     })
@@ -319,6 +341,7 @@ const AdicionarCursoAdm = () => {
     };
 
     modulosProv[index].atividadesModulo.push(objectAtividade);
+
     setModulos(modulosProv);
   }
 
@@ -363,7 +386,6 @@ const AdicionarCursoAdm = () => {
   }
 
   function alterarDescricaoAtividade(event, numModulo, numAtividade) {
-
     let index = getIndexById(numModulo);
     let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);
 
@@ -389,23 +411,23 @@ const AdicionarCursoAdm = () => {
   }
 
   function handleFileChanged(event, numModulo, numAtividade) {
-
     let file = event.target.files[0];
 
     console.log(file);
 
     let indexModulo = getIndexById(numModulo);
-    let indexAtividade = getIndexAtividadeById(numModulo,numAtividade);
+    let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);
 
     let modulosProv = [...modulosInput];
-    
+
     let reader = new FileReader();
     reader.onload = function (event) {
-      modulosProv[indexModulo].atividadesModulo[indexAtividade].arquivoAtividade = event.target.result;
+      modulosProv[indexModulo].atividadesModulo[
+        indexAtividade
+      ].arquivoAtividade = event.target.result;
     };
     reader.readAsDataURL(file);
     setModulos(modulosProv);
-
   }
 
   return (
@@ -513,6 +535,66 @@ const AdicionarCursoAdm = () => {
                     <IconButton
                       sx={{ color: "#333" }}
                       onClick={() => removerInput(item.id)}
+                    >
+                      <RemoveCircle />
+                    </IconButton>
+                  </div>
+                );
+              })}
+            </div>
+            <div style={{ marginTop: "10px" }}>
+              <label>
+                O que vai ser aprendido?
+                <IconButton
+                  sx={{ color: "#333" }}
+                  onClick={() => {
+                    setAprendizadoInputs((value) => [
+                      ...value,
+                      { id: lastIdAprendizado, text: "" },
+                    ]);
+                    setLastIdAprendizado(lastIdAprendizado + 1);
+                  }}
+                >
+                  <AddCircleOutline />
+                </IconButton>
+              </label>
+              {aprendizadoInputs.map((item) => {
+                return (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      border: "1px solid #ced4da",
+                      width: "100%",
+                      borderRadius: "0.375rem",
+                      marginTop: "1.1rem",
+                    }}
+                  >
+                    <FormControl
+                      key={item}
+                      style={{ width: "95%", alignSelf: "center" }}
+                      onChange={(e) => {
+                        if (
+                          e.nativeEvent.inputType !== "deleteContentBackward"
+                        ) {
+                          let aprendizado = aprendizadoInputs;
+                          aprendizado[item.id].text =
+                            aprendizado[item.id].text + e.nativeEvent.data;
+                          setAprendizadoInputs();
+                          setAprendizadoInputs(aprendizado);
+                        } else {
+                          let aprendizado = aprendizadoInputs;
+                          aprendizado[item.id].text = aprendizado[
+                            item.id
+                          ].text.slice(0, aprendizado[item.id].text.length - 1);
+                          setAprendizadoInputs();
+                          setAprendizadoInputs(aprendizado);
+                        }
+                      }}
+                    />
+                    <IconButton
+                      sx={{ color: "#333" }}
+                      onClick={() => removerInputAprendizado(item.id)}
                     >
                       <RemoveCircle />
                     </IconButton>
@@ -665,7 +747,7 @@ const AdicionarCursoAdm = () => {
                           <Typography variant="h6">Videos</Typography>
                           {item.videosModulo.map((video) => {
                             return (
-                              <div className="contVideosModulosAddCurso">
+                              <div style={{display: "flex"}} className="contVideosModulosAddCurso">
                                 <ListItemButton
                                   sx={{
                                     width: "91%",
@@ -821,7 +903,7 @@ const AdicionarCursoAdm = () => {
                                         display: "flex",
                                         justifyContent: "space-between",
                                         marginLeft: "2rem",
-                                        alignItems: "center"
+                                        alignItems: "center",
                                       }}
                                     >
                                       <TextField
@@ -838,7 +920,9 @@ const AdicionarCursoAdm = () => {
                                         }}
                                       />
                                       <div className="contInputArquivoAtividade">
-                                        <label>Importar Arquivo (Atividade)</label>
+                                        <label>
+                                          Importar Arquivo (Atividade)
+                                        </label>
                                         <input
                                           id="inputFileAtividade"
                                           type="file"

@@ -33,7 +33,7 @@
 
 .conteudo-topo {
    padding-top: 01em;
-   padding-left: 03em;
+   padding-left: 3em;
    padding-bottom: 01em;
    background: rgba(212, 215, 214, 0.2);
 
@@ -49,12 +49,17 @@
 }
 
 .conteudo-curso {
-   padding-left: 04em;
+   padding-left: 3em;
 }
 
-.conteudo-curso il {
+.conteudo-curso-inner{
+   margin-left: 2rem;
+}
+
+.conteudo-curso ul {
    list-style-type: disc;
 }
+
 
 .conteudo-curso #modulo {
 
@@ -73,8 +78,9 @@
 
 .cart-image {
    width: 100%;
-   height: 100%;
-   background: url('../../images/capacurso.png') no-repeat center;
+   max-height: 300px;
+   aspect-ratio: 1/5;
+   object-fit: contain;
    background-size: cover;
    margin-right: 10px;
    top: 10px;

@@ -43,6 +43,8 @@ import axios from "axios";
 const EditarCursosAdm = () => {
   const [requisitosInputs, setRequisitosInputs] = useState([]);
   const [nomeInput, setNome] = useState("");
+  const [aprendizadoInputs, setAprendizadoInputs] = useState([]);
+  const [lastIdAprendizado, setLastIdAprendizado] = useState(0);
   var lastId = 0;
   var lastIdModulos = 0;
   const imagemDiv = useRef();
@@ -57,6 +59,7 @@ const EditarCursosAdm = () => {
 
   const [oldLenghtArray, setoldLenghtArray] = useState(0);
   const [oldLenghtArrayModulos, setoldLenghtArrayModulos] = useState(0);
+  const [oldLenghtArrayAprendizado, setOldLenghtArrayAprendizado] = useState(0);
 
   const cursoTemplate = {
     nome: "",
@@ -79,13 +82,14 @@ const EditarCursosAdm = () => {
       oldCurso.image !== newCurso.image ||
       oldLenghtArray !== requisitosInputs.length ||
       oldLenghtArrayModulos !== modulosInput.length ||
-      descInput !== oldCurso.descricao
+      descInput !== oldCurso.descricao ||
+      oldLenghtArrayAprendizado !== aprendizadoInputs.length
     ) {
       setbtnHabilitado(true);
     } else {
       setbtnHabilitado(false);
     }
-  }, [newCurso, requisitosInputs, modulosInput, descInput]);
+  }, [newCurso, requisitosInputs, modulosInput, descInput, aprendizadoInputs]);
 
   function fecharAviso() {
     enviadoSucesso === true
@@ -188,6 +192,7 @@ const EditarCursosAdm = () => {
         return res.json();
       })
       .then((object) => {
+         console.log(object);
         let loadingObject = {
           nome: object.nome,
           image: object.image,
@@ -198,13 +203,18 @@ const EditarCursosAdm = () => {
         setdescInput(object.descricao !== null ? object.descricao : "");
 
         let requisitosLoaded = loadRequisitosFromAPI(object.requisitos);
+        let aprendizadoLoaded = loadAprendizadoFromAPI(object.aprendizado);
 
         let modulosLoaded = loadModulosFromAPI(object.modulos);
 
+        setLastIdAprendizado(object.aprendizado.length)
+
         setRequisitosInputs(requisitosLoaded);
-        setoldLenghtArray(object.requisitos.length);
+        setAprendizadoInputs(aprendizadoLoaded);
         setModulos(modulosLoaded);
+        setoldLenghtArray(object.requisitos.length);
         setoldLenghtArrayModulos(object.modulos.length);
+        setOldLenghtArrayAprendizado(object.aprendizado.length)
       })
       .catch((error) => {
         console.warn("Error requesting from API: " + error);
@@ -219,6 +229,14 @@ const EditarCursosAdm = () => {
     });
 
     return requisitosArray;
+  }
+
+  function loadAprendizadoFromAPI(aprendizado) {
+    let aprendizadoArray = [];
+    aprendizado.map((item) => {
+      aprendizadoArray.push({ id: aprendizadoArray.length, text: item });
+    });
+    return aprendizadoArray;
   }
 
   function loadModulosFromAPI(modulos) {
@@ -281,13 +299,44 @@ const EditarCursosAdm = () => {
     modulosProv = [...modulosProv];
     setModulos(modulosProv);
   }
+  function removerInputAprendizado(id) {
+    console.log(id);
+    let inputsAprendizado = [...aprendizadoInputs];
+    inputsAprendizado.splice(
+      inputsAprendizado.findIndex((input) => {
+        return input.id === id;
+      }),
+      1
+    );
+
+    setAprendizadoInputs(inputsAprendizado);
+  }
+
+  function alterarTextoInputAprendizado(e, id) {
+    if (e.nativeEvent.inputType !== "deleteContentBackward") {
+      let aprendizado = aprendizadoInputs;
+      aprendizado[id].text = aprendizado[id].text + e.nativeEvent.data;
+      setAprendizadoInputs();
+      setAprendizadoInputs(aprendizado);
+    } else {
+      let aprendizado = aprendizadoInputs;
+      aprendizado[id].text = aprendizado[id].text.slice(
+        0,
+        aprendizado[id].text.length - 1
+      );
+      setAprendizadoInputs();
+      setAprendizadoInputs(aprendizado);
+    }
+  }
 
   function solicitaçao() {
     let arrayRequisitos = [];
 
     let modulosProv = modulosInput;
-
-    console.log(modulosProv);
+    let arrayAprendizado = [];
+    aprendizadoInputs.map((item) => {
+      arrayAprendizado.push(item.text);
+    });
 
     requisitosInputs.map((item) => {
       arrayRequisitos.push(item.text);
@@ -296,18 +345,20 @@ const EditarCursosAdm = () => {
     let url = "http://localhost:8080/api/cursos/update/" + idCurso;
 
     axios
-      .post(
+      .put(
         url,
         {
           nome: newCurso.nome,
           image: newCurso.image,
           descricao: descInput,
           requisitos: arrayRequisitos,
+          aprendizado: arrayAprendizado,
           modulos: modulosProv,
         },
         {
           headers: {
             Authorization: localStorage.getItem("token"),
+            "Content-Type": "application/json"
           },
         }
       )
@@ -625,6 +676,63 @@ const EditarCursosAdm = () => {
                         <IconButton
                           sx={{ color: "#333" }}
                           onClick={() => removerInput(item.id)}
+                        >
+                          <RemoveCircle />
+                        </IconButton>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div style={{ marginTop: "10px" }}>
+                  <label>
+                    O que vai ser aprendido?
+                    <IconButton
+                      sx={{ color: "#333" }}
+                      onClick={() => {
+                        setAprendizadoInputs((value) => [
+                          ...value,
+                          { id: lastIdAprendizado, text: "" },
+                        ]);
+                        setLastIdAprendizado(lastIdAprendizado + 1);
+                      }}
+                    >
+                      <AddCircleOutline />
+                    </IconButton>
+                  </label>
+                  {aprendizadoInputs.map((item) => {
+                    return (
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          border: "1px solid #ced4da",
+                          width: "100%",
+                          borderRadius: "0.375rem",
+                          marginTop: "1.1rem",
+                        }}
+                      >
+                        {item.text === "" ? (
+                          <FormControl
+                            key={item}
+                            style={{ width: "95%", alignSelf: "center" }}
+                            onChange={(e) => {
+                              alterarTextoInputAprendizado(e, item.id);
+                            }}
+                          />
+                        ) : (
+                          <FormControl
+                            key={item}
+                            style={{ width: "95%", alignSelf: "center" }}
+                            value={item.text}
+                            onChange={(e) => {
+                              alterarTextoInputAprendizado(e, item.id);
+                            }}
+                          />
+                        )}
+
+                        <IconButton
+                          sx={{ color: "#333" }}
+                          onClick={() => removerInputAprendizado(item.id)}
                         >
                           <RemoveCircle />
                         </IconButton>
