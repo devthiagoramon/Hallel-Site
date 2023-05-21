@@ -36,8 +36,7 @@ function Entrar() {
         console.log(object);
 
         localStorage.setItem("token", object.token);
-        localStorage.setItem("name", object.objeto.nome);
-        localStorage.setItem("email", object.objeto.email);
+        localStorage.setItem("HallelId", object.objeto.id)
         object.objeto.roles.map((role) => {
           rolesName.push(role.name);
         });

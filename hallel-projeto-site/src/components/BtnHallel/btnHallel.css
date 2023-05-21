@@ -1,0 +1,11 @@
+.btnHallel{
+    width: 45%;
+    height: 32px;
+    border-radius: 8px;
+    border-width: 0;
+    box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 8px;
+}
+
+.btnHallel:hover{
+    opacity: 0.88;
+}
