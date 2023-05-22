@@ -16,7 +16,7 @@ function DescCurso() {
   const [isModalMatricularOpen, setisModalMatricularOpen] = useState(false);
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/cursos/descCurso/" + idCurso;
+    let url = "http://localhost:8080/api/descCurso/" + idCurso;
 
     axios
       .get(url, {
@@ -177,7 +177,7 @@ function DescCurso() {
             open={isModalMatricularOpen}
             onClose={handleCloseModalMatricular}
           >
-            <InnerModalMatricular curso={curso} />
+            <InnerModalMatricular curso={curso} id={idCurso}/>
           </Modal>
 
           <div className="right">

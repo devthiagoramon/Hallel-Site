@@ -33,41 +33,41 @@ function DescEvento() {
                 <hr />
                 <br />
                 <br />
-                
+
                 {/*container-infos é o container principal*/}
                 <div className="container-infos">
 
-                <div className="infos-left">
-                    <div className="conteudoLeft">
-                        <label className="title"> Data: </label>
-                        <label className="cont"> 10/03 e 11/03 </label>
+                    <div className="infos-left">
+                        <div className="conteudoLeft">
+                            <label className="title"> Data: </label>
+                            <label className="cont"> 10/03 e 11/03 </label>
+                        </div>
+
+                        < br />
+
+                        <div className="conteudoLeft">
+                            <label className="title"> Horário: </label>
+                            <label className="cont">1° dia - 19H30 e 2° dia - 15H </label>
+                        </div>
+                        < br />
+
+                        <div className="conteudoLeft">
+                            <label className="title">Endereço:</label>
+                            <label className="cont">Comunidade Católica Hallel - RUA LEONARDO MALCHER, 194</label>
+                        </div>
                     </div>
 
-                    < br />
+                    <div className="infos-right">
 
-                    <div className="conteudoLeft">
-                        <label className="title"> Horário: </label>
-                        <label className="cont">1° dia - 19H30 e 2° dia - 15H </label>
+                        <h4 id="titulo-palestrantes"> COLABORADORES E PALESTRANTES </h4>
+                        <br />
+                        <div className="infos-palestrantes">
+                            <label>EMMERSON SANTA RITA</label> <br /><br />
+                            <label>LUCIANA BARBOSA VILAÇA</label> <br /><br />
+                            <label>MANFRED VEIGA</label> <br />
+                        </div>
+
                     </div>
-                    < br />
-
-                    <div className="conteudoLeft">
-                        <label className="title">Endereço:</label>
-                        <label className="cont">Comunidade Católica Hallel - RUA LEONARDO MALCHER, 194</label>
-                    </div>
-                </div>
-
-                <div className="infos-right">
-                
-                    <h4 id="titulo-palestrantes"> COLABORADORES E PALESTRANTES </h4>
-                    <br/>
-                    <div className="infos-palestrantes">
-                        <label>EMMERSON SANTA RITA</label> <br/><br/>
-                        <label>LUCIANA BARBOSA VILAÇA</label> <br/><br/>
-                        <label>MANFRED VEIGA</label> <br/>
-                    </div>
-
-                </div>
 
                 </div>
 
