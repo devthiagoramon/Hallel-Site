@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./perfil.css";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import axios from "axios";
 
 const PerfilRow = () => {
   return (
@@ -29,18 +30,19 @@ const Info = () => {
     setPasswordType("password");
   };
 
-  useEffect(() => {
-    let url = "http://localhost:8080/api/membros/perfil" + localStorage.getItem("HallelId");
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
+  useMemo(() => {
+    let url =
+      "http://localhost:8080/api/membros/perfil/" +
+      localStorage.getItem("HallelId");
+    axios.get(url, {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+        "Content-Type": "application/json"
+      }
     })
-      .then((response) => response.json())
       .then((object) => {
-        setUsuario(object);
+        console.log(object.data)
+        setUsuario(object.data);
       })
       .catch((error) => console.warn(error));
   });

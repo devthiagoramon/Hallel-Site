@@ -28,6 +28,7 @@ function Entrar() {
       }),
     })
       .then((res) => {
+        console.log(res)
         return res.json();
       })
       .then((object) => {
