@@ -15,13 +15,14 @@ const Cursos = () => {
   const [pesquisa, setPesquisa] = useState("");
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/cursos";
-
+    let url = "http://localhost:8080/api/listarCurso";
     axios
       .get(url, {
         headers: {
           Authorization: localStorage.getItem("token"),
+          "Content-Type": "application/json"
         },
+        withCredentials: false
       })
       .then((response) => {
         setCursos(response.data);
