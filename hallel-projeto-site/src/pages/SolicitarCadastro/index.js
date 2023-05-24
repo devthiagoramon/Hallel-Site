@@ -2,9 +2,9 @@ import React, { Component, useEffect, useState } from "react";
 import "./style.css";
 import Logo from "../../images/LogoHallel.png";
 import PopUpMensagem from "../../components/popUpMensagem";
+import { Alert, Snackbar } from "@mui/material";
 
 const SolicitarCadastro = (props) => {
-
   const [nomeInput, setNome] = useState();
   const [emailInput, setEmail] = useState();
   const [senhaInput, setSenha] = useState();
@@ -12,6 +12,7 @@ const SolicitarCadastro = (props) => {
 
   const [mostrarPopUp, setMostrarPopUp] = useState(false);
   const [isValid, setisValid] = useState(false);
+  const [isValidError, setIsValidError] = useState(false);
 
   function solicitar() {
     if (senhaInput === senha2Input) {
@@ -28,24 +29,26 @@ const SolicitarCadastro = (props) => {
         }),
       })
         .then(() => {
-          setMostrarPopUp(true)
-          setisValid(true)
+          setMostrarPopUp(true);
+          setisValid(true);
           setTimeout(() => {
-            window.location.href = "/"
-          }, 4200);
+            window.location.href = "/";
+          }, 3000);
         })
         .catch((error) => {
-          console.log(error)
-          setMostrarPopUp(true)
-          setisValid(false)
+          console.log(error);
+          setIsValidError(true);
           setTimeout(() => {
             setMostrarPopUp(false);
-          }, 4200);
-
-        })
+          }, 3000);
+        });
     }
   }
 
+  const handleClose = () => {
+    setIsValidError(false);
+    setisValid(false);
+  };
 
   return (
     <div>
@@ -59,13 +62,35 @@ const SolicitarCadastro = (props) => {
             </div>
           </div>
           <div className="informacoesSC">
-            <input type="text" placeholder="Nome completo" value={nomeInput} onChange={(e) => setNome(e.target.value)}></input>
-            <input type="email" placeholder="Insira seu email" value={emailInput} onChange={(e) => setEmail(e.target.value)}></input>
-            <input type="password" placeholder="Crie uma senha" value={senhaInput} onChange={(e) => setSenha(e.target.value)}></input>
-            <input type="password" placeholder="Confirme sua senha" value={senha2Input} onChange={(e) => setSenha2(e.target.value)}></input>
+            <input
+              type="text"
+              placeholder="Nome completo"
+              value={nomeInput}
+              onChange={(e) => setNome(e.target.value)}
+            ></input>
+            <input
+              type="email"
+              placeholder="Insira seu email"
+              value={emailInput}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <input
+              type="password"
+              placeholder="Crie uma senha"
+              value={senhaInput}
+              onChange={(e) => setSenha(e.target.value)}
+            ></input>
+            <input
+              type="password"
+              placeholder="Confirme sua senha"
+              value={senha2Input}
+              onChange={(e) => setSenha2(e.target.value)}
+            ></input>
           </div>
           <div className="footerSC">
-            <button id="JatemSC" onClick={solicitar}>ENVIAR</button>
+            <button id="JatemSC" onClick={solicitar}>
+              ENVIAR
+            </button>
             <div className="textoFooterSC">
               <a id="textoJatemSC">JA TEM UMA CONTA?</a>
               <a href="/entrar" id="entreSC">
@@ -75,26 +100,21 @@ const SolicitarCadastro = (props) => {
           </div>
         </section>
       </section>
-      {mostrarPopUp === true ? (
-        <div>
-          {isValid === true ? (
-            <div>
-              <PopUpMensagem
-                mensagem="Solicitação realizada com sucesso"
-                color="#63DA98"
-              />
-            </div>
-          ) : (
-            <div>
-              <PopUpMensagem mensagem="Erro ao solicitar cadastro" color="#F54C4C" />
-            </div>
-          )}
-        </div>
-      ) : (
-        ""
-      )}
+      <Snackbar
+        open={isValidError}
+        onClose={handleClose}
+        autoHideDuration={3000}
+      >
+        <Alert severity="error">Error na solicitação de cadastro</Alert>
+      </Snackbar>
+      <Snackbar open={isValid} onClose={handleClose} autoHideDuration={3000}>
+        <Alert severity="success">
+          Solicitado com sucesso, aguarde a nossa equipe administrativa aceitar
+          a sua solicitação.
+        </Alert>
+      </Snackbar>
     </div>
   );
-}
+};
 
 export default SolicitarCadastro;

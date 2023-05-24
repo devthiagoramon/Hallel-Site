@@ -4,7 +4,7 @@ import "./entrar.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PopUpMensagem from "../../components/popUpMensagem";
-import { CircularProgress } from "@mui/material";
+import { Alert, CircularProgress, Snackbar } from "@mui/material";
 
 function Entrar() {
   const [emailInput, setEmail] = useState();
@@ -12,7 +12,8 @@ function Entrar() {
 
   const [mostrarPopUp, setMostrarPopUp] = useState(false);
   const [isValid, setisValid] = useState(false);
-  const [isLoading, setisLoading] = useState(false)
+  const [isValidError, setIsValidError] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   function entrar() {
     setisLoading(true);
@@ -42,21 +43,24 @@ function Entrar() {
           rolesName.push(role.name);
         });
         localStorage.setItem("R0l3s", rolesName);
-        setMostrarPopUp(true);
         setisValid(true);
         setTimeout(() => {
           window.location.href = "/";
-        }, 4200);
+        }, 3000);
       })
       .catch((e) => {
         console.log(e);
-        setMostrarPopUp(true);
-        setisValid(false);
+        setIsValidError(true);
         setTimeout(() => {
-          setMostrarPopUp(false);
+          setIsValidError(false);
           setisLoading(false)
-        }, 4200);
+        }, 3000);
       });
+  }
+
+  const handleClose = () => {
+    setIsValidError(false);
+    setisValid(false);
   }
 
   return (
@@ -114,24 +118,20 @@ function Entrar() {
           <a href="/solicitarCadastro"> Solicite seu cadastro </a>
         </div>
       </div>
-      {mostrarPopUp === true ? (
-        <div>
-          {isValid === true ? (
-            <div>
-              <PopUpMensagem
-                mensagem="Login realizado com sucesso"
-                color="#63DA98"
-              />
-            </div>
-          ) : (
-            <div>
-              <PopUpMensagem mensagem="Erro no login" color="#F54C4C" />
-            </div>
-          )}
-        </div>
-      ) : (
-        ""
-      )}
+      <Snackbar
+        open={isValidError}
+        onClose={handleClose}
+        autoHideDuration={3000}
+      >
+        <Alert severity="error">Error no login</Alert>
+      </Snackbar>
+      <Snackbar
+        open={isValid}
+        onClose={handleClose}
+        autoHideDuration={3000}
+      >
+        <Alert severity="success">Logado com sucesso, redirecionando...</Alert>
+      </Snackbar>
     </div>
   );
 }
