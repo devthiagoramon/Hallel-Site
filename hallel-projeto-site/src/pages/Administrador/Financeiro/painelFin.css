@@ -11,7 +11,7 @@ body{
 .containerFinanceiro{
     width: 100vw;
     height: 200vh;
-    margin-top: 100px;
+    margin-top: 0px;
     margin-left: 0;
     padding-right: 0;
     margin-bottom: 10rem;
@@ -21,7 +21,7 @@ body{
     position: inherit;
     width: 80%;
     padding-left: 40px;
-    padding-top: 20px;
+    padding-top: 0px;
 }
 
 .titulo label{
@@ -32,7 +32,7 @@ body{
 }
 
 .cards {
-    margin-top: 3rem;
+    margin-top: 2rem;
     display: flex;
     flex-direction: row;
     width: 100%;

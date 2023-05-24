@@ -7,22 +7,25 @@ const DropDown = ({titulo, item1, link1, item2, link2}) => {
   return (
     <div className="Dropdown">
       <Dropdown id="dropdown">
-        <Dropdown.Toggle variant="sucess btn-lg" id="dropdown-basic">
+        <Dropdown.Toggle className='tituloDrop' variant="sucess btn-lg" id="dropdown-basic">
           {titulo}
         </Dropdown.Toggle>
 
         <Dropdown.Menu id="menu">
-          <Dropdown.Item to="toLink1" id="link1">
+          <Dropdown.Item to="toLink1" id="link1" className='itensdrop'>
             <Link id="toLink1" to={link1}>
-              {item1}
+
+
+              <label>{item1}</label>
             </Link>
           </Dropdown.Item>
 
           <div className="dropdown-divider"></div>
 
-          <Dropdown.Item to="toLink2" id="link2" className="qmSomos">
+          <Dropdown.Item to="toLink2" id="link2" className="itensdrop">
             <Link id="toLink2" to={link2}>
-              {item2}
+
+              <label>{item2}</label>
             </Link>
           </Dropdown.Item>
         </Dropdown.Menu>

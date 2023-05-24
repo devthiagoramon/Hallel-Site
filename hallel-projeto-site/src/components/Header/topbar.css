@@ -1,7 +1,55 @@
-#topbar #topicos {
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.header_top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 5em;
+	padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+	background: linear-gradient(90deg, #00b09b, #96c93d);
+	color: var(--textColor);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+nav a {
+	margin: 0 1rem;
+	color: var(--textColor);
+	text-decoration: none;
+}
+
+nav > a:hover {
+	 background-color: rgba(255, 255, 255, 0.25);
+   padding: 1em;
+   transition: 0.5s;
+   border-radius: 0.4em;
+   color: #ca4700;
+}
+
+header .nav-btn {
+	padding: 5px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: var(--textColor);
+	visibility: hidden;
+  display: none;
+	opacity: 0;
+	font-size: 1.8rem;
+}
+
+header div,
+nav {
   display: flex;
-  align-items: center;
-  width: 100%;
+	align-items: center;
 }
 
 
@@ -15,27 +63,69 @@
 #cont-logo img {
   height: 60px;
 }
+@media only screen and (max-width: 1024px) {
+	.header_top .nav-btn {
+		visibility: visible;
+    display: inline-flex;
+		opacity: 1;
+	}
+
+	.header_top nav {
+		position: fixed;
+		top: -100vh;
+    box-shadow: #00000080 2px 6px 15px;
+		left: 0;
+		height: 80%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		background: linear-gradient(90deg, #019c8a, #85b435);
+		transition: 1s;
+	}
+
+	.header_top .responsive_nav {
+		transform: translateY(100vh);
+	}
+
+	nav .nav-close-btn {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+
+	nav a {
+		font-size: 1.5rem;
+	}
+
+  nav div{
+
+    font-size: 1.2em;
+  }
+}
+/*#topbar #topicos {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 
 #topbar {
   width: 100%;
   height: auto;
-
   background-color: #81c599;
   z-index: 2;
-
   left: 0;
   top: 0;
-
   display: flex;
   position: fixed;
-  align-items: center;
-  
   background: linear-gradient(90deg, #00b09b, #96c93d);
   background-size: 100% 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-
+  justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 5px;
 }
 
@@ -55,12 +145,6 @@
 #topicos > div > div > button {
     width: 120px;
 }
-
-/*
-#topbar #topicos *:hover {
-    background-color: #c2d6ea;
-}
-*/
 
 #topbar #topicos #item:hover {
   background-color: rgba(255, 255, 255, 0.25);
@@ -206,13 +290,12 @@
   background-color: #abc4df;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .hamburger-menu {
     height: 60px;
     display: unset;
     visibility: visible;
   }
-
   #cont-logo {
     margin: 0 1px;
   }
@@ -239,7 +322,6 @@
     align-items: center;
     width: 100%;
   }
-
   #btn {
     min-width: 80px;
   }
@@ -247,4 +329,4 @@
 
 #botao {
   min-width: 80px;
-}
+}*/

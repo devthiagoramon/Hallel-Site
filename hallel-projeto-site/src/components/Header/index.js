@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./topbar.css";
 import Logo from "../../images/LogoHallel.png";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Down from "./DropDown.js";
 import Modal from "./entrar/modal";
@@ -9,11 +9,25 @@ import ModalPerfil from "./perfil/modal";
 import { IconButton } from "@mui/material";
 import { AccountCircle, Login } from "@mui/icons-material";
 import ModalPerfilAdm from "./perfilAdm";
+import {FaBars, FaTimes} from "react-icons/fa";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
   const [isModalPerfilVisible, setisModalPerfilVisible] = useState(false);
+
   const [isExpired, setIsExpired] = useState();
+  const navRef = useRef();
+	const showNavbar = () => {
+		navRef.current.classList.toggle(
+			"responsive_nav"
+		);
+	};
+
+  const hideNavbar =()=>{
+    navRef.current.remove(
+      ""
+    );
+  }
 
   const [openAdm, setOpenAdm] = useState(false);
 
@@ -69,86 +83,44 @@ function Header() {
   }
 
   return (
-    <div>
-      <nav id="topbar">
-        <div className="hamburger-menu">
-          <input id="menu__toggle" type="checkbox" />
-          <label className="menu_btn" htmlFor="menu_toggle">
-            <span></span>
-          </label>
-
-          <ul className="menu__box">
-            <li>
-              <a className="menu__item" href="/">
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a className="menu__item" href="/">
-                Eventos
-              </a>
-            </li>
-            <li>
-              <a className="menu__item" href="/">
-                Ministerios
-              </a>
-            </li>
-            <li>
-              <a className="menu__item" href="/">
-                Agenda
-              </a>
-            </li>
-            <li>
-              <a className="menu__item" href="/">
-                Loja
-              </a>
-            </li>
-            <li>
-              <a className="menu__item" href="/">
-                Doacoes
-              </a>
-            </li>
-            <li>
-              <a className="menu__item" href="/">
-                Contato
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="cont-logo">
+    <header className="header_top">
+      <div id="cont-logo">
           <img src={Logo} alt="logo" />
         </div>
-        <div id="space"></div>
 
-        <div id="topicos">
+      <nav id="topbar" ref ={navRef}>
+
           <Link id="item" to="/">
             Início
           </Link>
+
           <Link id="item" to="/eventos">
             Eventos
           </Link>
-
+  
           <Down id="item" titulo = "Igreja" item1 = "Quem somos" link1 = "/sobre" item2 = "Fundadora" link2 = "/fundadora" />
-
+    
           <Link id="item" to="/">
             Ministérios
           </Link>
-
+     
           <Link id="item" to="/">
             Agenda
           </Link>
-      
+       
           <Down id = "item" titulo = "Cursos" item1 = "Cursos" link1 = "/cursos" item2 = "Meus Cursos" link2 = "/meuscursos"/>
           {/*<Link id="item" to="/meuscursos">
             Cursos
           </Link>*/}
+         
           <Link id="item" to="/doacoes">
             Doações
           </Link>
+       
           <Link id="item" to="/">
             Loja
           </Link>
-        </div>
+      
         {isNotUsuario() ? (
           <IconButton
             sx={{ width: "60px", height: "60px", color: "#252525" }}
@@ -166,7 +138,14 @@ function Header() {
             </IconButton>
           </div>
         )}
+        <button
+					className="nav-btn nav-close-btn"
+					onClick={showNavbar}>
+					<FaTimes />
+				</button>
+        
       </nav>
+      
       {isModalVisible && localStorage.getItem("token") === null ? (
         <Modal hide={() => setisModalVisible(false)} />
       ) : (
@@ -183,7 +162,12 @@ function Header() {
       ) : (
         ""
       )}
-    </div>
+      <button
+				className="nav-btn"
+				onClick={showNavbar}>
+				<FaBars />
+			</button>
+    </header>
   );
 }
 export default Header;

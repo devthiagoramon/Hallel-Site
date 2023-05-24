@@ -28,16 +28,44 @@
   margin: 10px 10px;
 }
 
+.col h4{
+  
+  color: #272e36;
+  font-weight: 600;
+}
+
 .col ul li{
 
   font-weight: 400;
 }
 
 
-.list-unstyled li{
-  text-align: justify;
+
+
+.list-unstyled ul li{
+  
+  text-align: center;
+  text-decoration: none;
 }
 
+.col ul li{
+
+   color:  #262e35;
+   font-weight: 600;
+}
+
+.list-unstyled li a{
+
+  text-decoration: none;
+  color: #1b2023;
+}
+
+.list-unstyled li a:hover{
+
+  
+  color: #0e5d98;
+
+}
 .linha{
 
   max-width: 20em;

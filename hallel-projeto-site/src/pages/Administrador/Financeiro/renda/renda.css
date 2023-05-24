@@ -16,8 +16,9 @@ body{
     width: 100vw;
     height: 10%;
     margin-left: 0;
-    margin-top: 120px;
+    margin-top: 60px;
     margin-left: 3rem;
+    text-indent: 2em;
 }
 
 .cabecalho a{
