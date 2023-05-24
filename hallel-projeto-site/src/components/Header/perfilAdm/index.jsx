@@ -15,6 +15,7 @@ import {
   Diversity1Rounded,
   Diversity3,
   Event,
+  ExitToAppRounded,
   PaymentRounded,
   Person4Rounded,
   VolunteerActivismRounded,
@@ -83,11 +84,16 @@ const ModalPerfilAdm = (props) => {
         style={{ position: "absolute" }}
         anchor="right"
         open={props.isOpen}
-        onClose={() => props.handleClose()}
-        onKeyDown={() => props.handleClose()}
+        onClose={() => props.fecharModal()}
+        onKeyDown={() => props.fecharModal()}
       >
         <Box sx={{ width: 300 }} role="presentation">
           <List>
+            <ListItem onClick={() => props.fecharModal()}>
+              <ListItemIcon sx={{ right: 0 }}>
+                <ExitToAppRounded />
+              </ListItemIcon>
+            </ListItem>
             {listaAdministrador.map((item) => (
               <ListItem key={item.text} disablePadding>
                 <ListItemIcon sx={{ pl: 4 }}>

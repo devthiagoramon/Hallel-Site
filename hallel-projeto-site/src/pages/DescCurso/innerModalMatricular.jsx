@@ -43,7 +43,6 @@ const InnerModalMatricular = (props) => {
       }
     }).then(() => {
       setEnviado(true);
-
       setTimeout(() => {
         window.location.href = "/meusCursos";
       }, 3000);

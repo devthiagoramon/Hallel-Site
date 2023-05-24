@@ -17,7 +17,6 @@ function Home() {
       <Programacao />
       <PanelAssociado />
       <PanelPedido />
-      <Link to="/descCurso"> Descrição Curso </Link>
     </div>
   );
 }

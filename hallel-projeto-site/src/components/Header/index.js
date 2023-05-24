@@ -9,7 +9,7 @@ import ModalPerfil from "./perfil/modal";
 import { IconButton } from "@mui/material";
 import { AccountCircle, Login } from "@mui/icons-material";
 import ModalPerfilAdm from "./perfilAdm";
-import {FaBars, FaTimes} from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
@@ -17,22 +17,20 @@ function Header() {
 
   const [isExpired, setIsExpired] = useState();
   const navRef = useRef();
-	const showNavbar = () => {
-		navRef.current.classList.toggle(
-			"responsive_nav"
-		);
-	};
+  const showNavbar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  };
 
-  const hideNavbar =()=>{
-    navRef.current.remove(
-      ""
-    );
-  }
+  const hideNavbar = () => {
+    navRef.current.remove("");
+  };
 
   const [openAdm, setOpenAdm] = useState(false);
 
   function isTokenExpired() {
-    let url = "http://localhost:8080/api/isTokenExpired/" + String(localStorage.getItem("token"));
+    let url =
+      "http://localhost:8080/api/isTokenExpired/" +
+      String(localStorage.getItem("token"));
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     fetch(url, {
@@ -69,13 +67,7 @@ function Header() {
     }
   }
 
-  
-
   useMemo(() => isTokenExpired(), []);
-
-  const handleClose=()=> {
-    setOpenAdm(false);
-  }
 
   function showModalPerfil() {
     setisModalPerfilVisible(!isModalPerfilVisible);
@@ -85,42 +77,55 @@ function Header() {
   return (
     <header className="header_top">
       <div id="cont-logo">
-          <img src={Logo} alt="logo" />
-        </div>
+        <img src={Logo} alt="logo" />
+      </div>
 
-      <nav id="topbar" ref ={navRef}>
+      <nav id="topbar" ref={navRef}>
+        <Link id="item" to="/">
+          Início
+        </Link>
 
-          <Link id="item" to="/">
-            Início
-          </Link>
+        <Link id="item" to="/eventos">
+          Eventos
+        </Link>
 
-          <Link id="item" to="/eventos">
-            Eventos
-          </Link>
-  
-          <Down id="item" titulo = "Igreja" item1 = "Quem somos" link1 = "/sobre" item2 = "Fundadora" link2 = "/fundadora" />
-    
-          <Link id="item" to="/">
-            Ministérios
-          </Link>
-     
-          <Link id="item" to="/">
-            Agenda
-          </Link>
-       
-          <Down id = "item" titulo = "Cursos" item1 = "Cursos" link1 = "/cursos" item2 = "Meus Cursos" link2 = "/meuscursos"/>
-          {/*<Link id="item" to="/meuscursos">
+        <Down
+          id="item"
+          titulo="Igreja"
+          item1="Quem somos"
+          link1="/sobre"
+          item2="Fundadora"
+          link2="/fundadora"
+        />
+
+        <Link id="item" to="/">
+          Ministérios
+        </Link>
+
+        <Link id="item" to="/">
+          Agenda
+        </Link>
+
+        <Down
+          id="item"
+          titulo="Cursos"
+          item1="Cursos"
+          link1="/cursos"
+          item2="Meus Cursos"
+          link2="/meuscursos"
+        />
+        {/*<Link id="item" to="/meuscursos">
             Cursos
           </Link>*/}
-         
-          <Link id="item" to="/doacoes">
-            Doações
-          </Link>
-       
-          <Link id="item" to="/">
-            Loja
-          </Link>
-      
+
+        <Link id="item" to="/doacoes">
+          Doações
+        </Link>
+
+        <Link id="item" to="/">
+          Loja
+        </Link>
+
         {isNotUsuario() ? (
           <IconButton
             sx={{ width: "60px", height: "60px", color: "#252525" }}
@@ -138,35 +143,39 @@ function Header() {
             </IconButton>
           </div>
         )}
-        <button
-					className="nav-btn nav-close-btn"
-					onClick={showNavbar}>
-					<FaTimes />
-				</button>
-        
+        <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+          <FaTimes />
+        </button>
       </nav>
-      
+
       {isModalVisible && localStorage.getItem("token") === null ? (
         <Modal hide={() => setisModalVisible(false)} />
       ) : (
         ""
       )}
-      {isModalPerfilVisible && localStorage.getItem("R0l3s") === "ROLE_USER" ? (
+      {isModalPerfilVisible &&
+      (localStorage.getItem("R0l3s") === "ROLE_USER" ||
+        localStorage.getItem("R0l3s") === "ROLE_ASSOCIADO,ROLE_USER") ? (
         <ModalPerfil />
       ) : (
         ""
       )}
       {isModalPerfilVisible &&
-      localStorage.getItem("R0l3s") === "ROLE_ADMIN,ROLE_USER" ? (
-        <ModalPerfilAdm isOpen={openAdm} handleClose={handleClose} />
+      localStorage.getItem("R0l3s") ===
+        "ROLE_ADMIN,ROLE_ASSOCIADO,ROLE_USER" ? (
+        <ModalPerfilAdm
+          isOpen={openAdm}
+          fecharModal={() => {
+            setOpenAdm(false);
+            setisModalPerfilVisible(false);
+          }}
+        />
       ) : (
         ""
       )}
-      <button
-				className="nav-btn"
-				onClick={showNavbar}>
-				<FaBars />
-			</button>
+      <button className="nav-btn" onClick={showNavbar}>
+        <FaBars />
+      </button>
     </header>
   );
 }

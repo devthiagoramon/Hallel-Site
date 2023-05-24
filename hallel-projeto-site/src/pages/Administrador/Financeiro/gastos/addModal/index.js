@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./modalAddDespesa.css";
+import { Modal } from "@mui/material";
 
 const ModalAddDespesa = (props) => {
   const [descricao, Setdescricao] = useState();
@@ -44,7 +45,7 @@ const ModalAddDespesa = (props) => {
       });
   }
   return (
-    <div className="outContAddDespesa">
+    <Modal open={props.open} onClose={props.onClose} className="outContAddDespesa">
       <div className="contAddDespesa">
         <div className="headAddDespesa">
           <h1>Adicionar Gasto</h1>
@@ -86,11 +87,11 @@ const ModalAddDespesa = (props) => {
           />
         </div>
         <div className="footerAddDespesa">
-          <button onClick={props.hide}>Voltar</button>
+          <button onClick={props.onClose}>Voltar</button>
           <button onClick={() => addDespesa()}>Adicionar</button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 };
 

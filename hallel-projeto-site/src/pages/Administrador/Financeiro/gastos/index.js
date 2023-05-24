@@ -153,7 +153,7 @@ const Gasto = () => {
         </div>
         {gastos.length === 0 ? (
           <div style={{ width: "65vw" }}>
-            <LinearProgress sx={{width: "100%"}} />
+            <LinearProgress sx={{ width: "100%" }} />
             <Table style={{ width: "100%" }} striped borderless hover>
               <thead>
                 <tr>
@@ -206,11 +206,8 @@ const Gasto = () => {
           </table>
         </div>
       </div>
-      {isModalOpen === true ? (
-        <ModalAddDespesa hide={() => setisModalOpen(false)} />
-      ) : (
-        ""
-      )}
+
+      <ModalAddDespesa open={isModalOpen} onClose={() => setisModalOpen(false)} />
     </div>
   );
 };

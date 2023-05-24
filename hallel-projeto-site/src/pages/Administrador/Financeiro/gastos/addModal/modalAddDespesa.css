@@ -6,7 +6,6 @@
   align-items: center;
   position: fixed;
   z-index: 1;
-  margin-top: 2.5rem;
 }
 
 .contAddDespesa {
@@ -21,8 +20,8 @@
   display: flex;
   justify-content: center;
   padding: 20px;
-  border-radius: 10px 10px 0px 0px;
-  background-color: rgb(255, 159, 45, 0.9);
+  border-radius: 10px 10px 24px 24px;
+  background-color: #F39C12;
 }
 
 .bodyAddDespesa {
@@ -51,7 +50,7 @@ input {
   margin-left: 1.5rem;
   width: 85%;
   resize: none;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 2px;
   padding: 10px;
 }
@@ -70,10 +69,11 @@ input {
 
 .footerAddDespesa button {
   font-size: 20px;
+  width: 200px;
   padding: 3px;
   padding-right: 10px;
   padding-left: 10px;
-  border-radius: 5px;
+  border-radius: 24px;
   background-color: #fafafa;
   box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 3px;
 }
