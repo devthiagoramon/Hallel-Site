@@ -31,7 +31,11 @@ const InnerModalMatricular = (props) => {
   };
 
   function matricular() {
-    let url = "http://localhost:8080/api/matricularCurso/" + localStorage.getItem("HallelId") + "/" + props.id;
+    let url =
+      "http://localhost:8080/api/matricularParticipante/" +
+      localStorage.getItem("HallelId") +
+      "/" +
+      props.id;
 
     axios.post(url, {
       headers: {
