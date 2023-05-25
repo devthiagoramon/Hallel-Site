@@ -7,6 +7,15 @@
   margin: 0 25%;
   border-radius: 2em;
   justify-content: space-around;
+  transition: 0.5s;
+}
+
+
+.pedido-container:hover{
+
+  padding: 2.5em;
+  transition: 0.5s;
+  margin: 0 24%;
 }
 
 .pedido-container .container-imagem > img{

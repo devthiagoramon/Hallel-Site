@@ -8,6 +8,17 @@
     padding: 1.5em;
     border-radius: 1.5em;
     text-align: center;
+    transition: 0.5s;
+}
+
+
+.container_panel:hover{
+
+    padding: 2em;
+    width: 53%;
+    transition: 0.5s;
+
+
 }
 
 .container_panel label{
