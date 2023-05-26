@@ -33,6 +33,7 @@ import DesempenhoUser from "./pages/DesempenhoCurso/DesempenhoCurso";
 import DescCurso from "./pages/DescCurso";
 import CursoAtividade from "./pages/TelaAtividades/TelaAtividade";
 import Cursos from "./pages/Cursos";
+import AssociadosListaCursosAdm from "./pages/Administrador/Curso/associadosParticipandoCurso";
 
 function RoutesApp() {
 
@@ -92,6 +93,7 @@ function RoutesApp() {
         <Route path="/administrador/cursos/add" element={<AdicionarCursoAdm/>}/>
         <Route path="/administrador/cursos" element={<ListarCursosADM/>}/>
         <Route path="/administrador/cursos/editar/:idCurso" element={<EditarCursoAdm/>}/>
+        <Route path="/administrador/cursos/associados/:idCurso" element={<AssociadosListaCursosAdm/>}/>
         <Route path="/desempenhoUser"element={<DesempenhoUser />}/>
         <Route path="/entrar" element={<Entrar />} />
       </Routes>

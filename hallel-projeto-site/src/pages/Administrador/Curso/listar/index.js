@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import "./listarCursoAdm.css";
 import {
+  Button,
   CardActionArea,
   CardContent,
   Chip,
@@ -320,6 +321,12 @@ const ListarCursosADM = () => {
                   );
                 })}
               </div>
+              <Typography variant="h6" sx={{ mt: 2 }}>
+                <b>Associados cadastrados</b>
+              </Typography>
+              <Button onClick={() => window.location.href="/administrador/cursos/associados/"+descCurso.id} variant="contained" sx={{mt: 1, ml: 2}}>
+                Abrir associados
+              </Button>
             </Box>
           </Modal>
         ) : (

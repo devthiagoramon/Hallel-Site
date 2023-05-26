@@ -1,0 +1,50 @@
+.containerCursosListaAssociado{
+    width: 94vw;
+    min-height: 100%;
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.headerContainerCursosListaAssociado{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tituloCursosListaAssociado{
+    font-size: xx-large;
+    color:"#252525";
+    font-weight: 500;
+}
+
+.bodyContainerCursosListaAssociado{
+    margin-top: 2rem;
+}
+
+.cardCursosListaAssociado{
+    width: 17rem;
+    max-height: 350px;
+    height: 350px;
+}
+
+.imgCardCursosListaAssociado{
+    height: 80%;
+    object-fit: contain;
+}
+
+.containerCadsCursosListaAssociado{
+    width: 100%;
+    min-height: 100%;
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.containerLoadCardsCursosListaAssociado{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
