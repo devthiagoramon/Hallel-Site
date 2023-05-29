@@ -113,7 +113,7 @@ const DoacoesDinheiroAdm = () => {
         {doacoes.length === 0 ? (
           <div style={{width: "94vw"}}>
             <LinearProgress sx={{width: "100%"}}/>
-            <Table style={{ width: "100%" }} striped borderless hover>
+            <Table style={{ width: "100%" }} striped hover>
               <thead>
                 <tr>
                   <th>Email do Doador</th>
@@ -126,7 +126,7 @@ const DoacoesDinheiroAdm = () => {
             </Table>
           </div>
         ) : (
-          <Table style={{ width: "94vw" }} striped borderless hover>
+          <Table style={{ width: "94vw" }} striped hover>
             <thead>
               <tr>
                 <th>Email do Doador</th>

@@ -56,7 +56,7 @@ const PagamentosAssociado = () => {
             />
           </div>
         </div>
-        <Table style={{ width: "100%" }} striped borderless hover>
+        <Table style={{ width: "100%" }} striped hover>
           <thead>
             <tr>
               <th>Nome</th>
