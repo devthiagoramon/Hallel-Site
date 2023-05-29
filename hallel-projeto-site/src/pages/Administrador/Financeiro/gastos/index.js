@@ -101,20 +101,27 @@ const Gasto = () => {
             <a>Tabela de gasto</a>
           </div>
           <div className="iconsHeadContTabela">
-            <a href="#" onClick={() => setisModalOpen(true)}>
-              <img src={Add} />
-            </a>
-            <a href="#">
-              <SaveAlt
-                style={{ width: "55px", height: "55px", color: "#333" }}
-                className="icons"
-                onClick={() => gastosPDF(gastos)}
-              />
-            </a>
+            <span>
+              <IconButton
+                style={{ width: "50px", height: "50px" }}
+                onClick={() => setisModalOpen(true)}
+              >
+                <img style={{ width: "40px", height: "40px" }} src={Add} />
+              </IconButton>
+            </span>
+            <span>
+              <IconButton style={{ width: "50px", height: "50px" }}>
+                <SaveAlt
+                  style={{ width: "30px", height: "30px", color: "#333" }}
+                  className="icons"
+                  onClick={() => gastosPDF(gastos)}
+                />
+              </IconButton>
+            </span>
             <span>
               <IconButton
                 onClick={(e) => abrirMenuDate(e)}
-                sx={{ width: "60px", height: "60px" }}
+                sx={{ width: "50px", height: "50px" }}
               >
                 <MoreVertRounded
                   sx={{ width: "30px", height: "30px", color: "#252525" }}
@@ -167,7 +174,7 @@ const Gasto = () => {
             </Table>
           </div>
         ) : (
-          <Table style={{ width: "65vw" }} striped borderless hover>
+          <Table style={{ width: "65vw", height: "100%" }} striped hover>
             <thead>
               <tr>
                 <th>Descrição do gasto</th>
@@ -207,7 +214,10 @@ const Gasto = () => {
         </div>
       </div>
 
-      <ModalAddDespesa open={isModalOpen} onClose={() => setisModalOpen(false)} />
+      <ModalAddDespesa
+        open={isModalOpen}
+        onClose={() => setisModalOpen(false)}
+      />
     </div>
   );
 };

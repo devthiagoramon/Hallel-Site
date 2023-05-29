@@ -74,11 +74,11 @@ a {
 .painelEventos {
   display: flex;
   flex-direction: column;
-  padding-top: 90px;
+  padding-top: 2rem;
 }
 .painelEventos h1 {
   padding-top: 10px;
-  padding-left: 10px;
+  padding-left: 2.5rem;
 }
 
 .options {

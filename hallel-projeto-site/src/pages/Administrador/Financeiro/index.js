@@ -169,7 +169,7 @@ class PainelFinanceiro extends Component {
   render() {
     return (
       <div className="containerFinanceiro">
-        <div className="titulo">
+        <div className="tituloPainelFinanceiro">
           <label>Painel Financeiro</label>
         </div>
         <div className="cards">
@@ -222,9 +222,13 @@ class PainelFinanceiro extends Component {
             Ultimas rendas
           </label>
           <Table
-            borderless
             hover
-            style={{ width: "95%", maxWidth: "95%", marginLeft: "2.5rem", marginTop:"1.5rem" }}
+            style={{
+              width: "95%",
+              maxWidth: "95%",
+              marginLeft: "2.5rem",
+              marginTop: "1.5rem",
+            }}
           >
             <thead>
               <tr>
