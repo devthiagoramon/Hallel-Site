@@ -56,11 +56,17 @@ function RoutesApp() {
         <Route path="/descCurso/:idCurso" element={<DescCurso/>} />
         <Route path="/atividades" element= {<CursoAtividade/>} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
+
+
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
+
+
         <Route
           path="/administrador/eventos/criar"
           element={<EventosCriarAdm />}
         />
+
+
         <Route
           path="/administrador/cursos/historicoCurso"
           element={<Historico />}
@@ -89,11 +95,18 @@ function RoutesApp() {
         />
         <Route path="/administrador/painelFinanceiro/doacoes/dinheiro" element={<DoacoesDinheiroAdm/>}/>
         <Route path="/administrador/painelFinanceiro/doacoes/objeto" element={<DoacaoObjetoADM/>}/>
-        <Route path="/administrador/painelFinanceiro/doacoes/objeto/add" element={<AddDoacaoObjetoAdm/>}/>;
+
+        <Route path="/administrador/painelFinanceiro/doacoes/objeto/add" element={<AddDoacaoObjetoAdm/>}/>
+
         <Route path="/administrador/cursos/add" element={<AdicionarCursoAdm/>}/>
+
         <Route path="/administrador/cursos" element={<ListarCursosADM/>}/>
+
         <Route path="/administrador/cursos/editar/:idCurso" element={<EditarCursoAdm/>}/>
+
         <Route path="/administrador/cursos/associados/:idCurso" element={<AssociadosListaCursosAdm/>}/>
+
+
         <Route path="/desempenhoUser"element={<DesempenhoUser />}/>
         <Route path="/entrar" element={<Entrar />} />
       </Routes>

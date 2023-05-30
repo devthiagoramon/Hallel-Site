@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import "./index.css";
+import Table from "react-bootstrap/Table";
+import {Skeleton } from "@mui/material";
 
 function Evento() {
   const [eventos, setEventos] = useState([]);
@@ -44,12 +46,16 @@ function Evento() {
         <button className="btnAltera">Alterar Evento</button>
         <button className="btnExcluir">Excluir</button>
       </div>
-      <table className="tabelaEvento">
+
+      <div className="container-tb">
+
+      {eventos.length === 0 ? <div className="loaderEventos"><Skeleton width={1150} height={450} /></div> :
+      <Table className="tabela-eventos" style = {{backgroundColor: "#FCFBF8"}} bordered striped hover size="sm">
         <thead>
           <tr>
-            <td>Titulo</td>
-            <td>Descrição</td>
-            <td>Local</td>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Local</th>
           </tr>
         </thead>
         <tbody>
@@ -63,7 +69,8 @@ function Evento() {
             );
           })}
         </tbody>
-      </table>
+      </Table>}
+      </div>
     </div>
   );
 }

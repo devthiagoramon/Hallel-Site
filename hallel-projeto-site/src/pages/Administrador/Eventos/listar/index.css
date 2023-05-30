@@ -27,6 +27,7 @@ a {
   margin-top: 8px;
   letter-spacing: 3px;
   margin-left: 72px;
+
 }
 .nav-list li :hover {
   padding: 15px 10px;
@@ -37,6 +38,12 @@ a {
   position: absolute;
   top: 18px;
   margin-left: 20px;
+}
+
+.container-tb{
+
+
+  margin: 2em 20%;
 }
 
 .menuHam {
@@ -77,8 +84,12 @@ a {
   padding-top: 90px;
 }
 .painelEventos h1 {
-  padding-top: 10px;
-  padding-left: 10px;
+  font-weight: 700;
+  font-size: 2em;
+  color: #35404b;
+  text-indent: 2.5em;
+
+
 }
 
 .options {
@@ -87,47 +98,34 @@ a {
   justify-content: flex-end;
   align-items: flex-end;
   gap: 20px;
-  padding-top: 30px;
-  padding-right: 30px;
+  padding-top: 4em;
+  padding-right: 8em;
 }
 
 .options button {
-  width: 150px;
-  height: 30px;
-  border-radius: 10px 10px 0px 0px;
+  width: 9em;
+  height: 2.2em;
+  border-radius: 2em;
+  font-weight: 700;
+  color: #35404b;
+  border: none;
+  transition: 0.5s;
   background-color: #d5ecef;
 }
 
 .options button:hover {
-  background-color: #b3c7c7;
+  background-color: rgb(169, 201, 201);
+  transition: 0.5s;
+}
+.tabela-eventos {
+
+  border: 1px solid #35404b;
+  margin-top: 6em;
 }
 
-.tabelaEvento {
-  border-collapse: collapse;
-  margin: 0 auto;
-  margin-top: 40px;
-  max-width: 95%;
-  width: 95%;
+.loaderEventos{
 
+ display: flex;
+ justify-content: center;
+ top: 30em;
 }
-
-.tabelaEvento thead{
-  height: 30px;
-}
-
-.tabelaEvento thead td{
-  text-align: center;
-  background-color: #d5ecef;
-  border: solid black 2px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.tabelaEvento tbody td {
-  height: 30px;
-  background-color: #e2e2e2;
-  text-transform: uppercase;
-  border: groove black 1px;
-  font-weight: 400;
-}
-
