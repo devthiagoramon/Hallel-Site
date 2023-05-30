@@ -81,7 +81,7 @@ a {
 .painelEventos {
   display: flex;
   flex-direction: column;
-  padding-top: 90px;
+  padding-top: 2rem;
 }
 .painelEventos h1 {
   font-weight: 700;

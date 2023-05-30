@@ -1,7 +1,18 @@
+import { useState } from "react";
 import "./doacoes.css";
 import { Link } from "react-router-dom";
+import { useMemo } from "react";
 
 function Doacoes() {
+
+  const [isMembro, setIsMembro] = useState(false);
+
+  useMemo(() => {
+    if(localStorage.getItem("R0l3s").contains("ROLE_USER")){
+      setIsMembro(isMembro);
+    }
+  }, [])
+
   return (
     <div className="containerdoacoes">
       <div className="left-doacoes">
@@ -89,7 +100,12 @@ function Doacoes() {
             <label>Li e aceito as Políticas de Privacidade. </label>
           </div>
           <br />
-          <Link to ="/formulario"><button className="buttonQueroDoar"> Quero Doar!</button></Link>
+          <Link to="/formulario">
+            <button className="buttonQueroDoar"> Quero Doar!</button>
+          </Link>
+          <Link to="/formulario">
+            <button></button>
+          </Link>
         </div>
       </div>
     </div>

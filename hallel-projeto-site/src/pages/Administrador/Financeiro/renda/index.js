@@ -105,16 +105,20 @@ const Renda = () => {
           </div>
           <div className="iconsHeadContTabelaRenda">
             <a href="#">
-              <SaveAlt
-                style={{ width: "55px", height: "55px", color: "#333" }}
-                className="icons"
+              <IconButton
+                sx={{ width: "50px", height: "50px" }}
                 onClick={() => rendasPDF(receitas)}
-              />
+              >
+                <SaveAlt
+                  style={{ width: "30px", height: "30px", color: "#333" }}
+                  className="icons"
+                />
+              </IconButton>
             </a>
             <span>
               <IconButton
                 onClick={(e) => abrirMenuDate(e)}
-                sx={{ width: "60px", height: "60px" }}
+                sx={{ width: "50px", height: "50px" }}
               >
                 <MoreVertRounded
                   sx={{ width: "30px", height: "30px", color: "#252525" }}
@@ -154,7 +158,7 @@ const Renda = () => {
         {receitas.length === 0 ? (
           <div style={{ width: "65vw" }}>
             <LinearProgress sx={{ width: "100%" }} />
-            <Table style={{ width: "100%" }} striped borderless hover>
+            <Table style={{ width: "100%" }} striped  hover>
               <thead>
                 <tr>
                   <th>Descrição da renda</th>
@@ -167,7 +171,7 @@ const Renda = () => {
             </Table>
           </div>
         ) : (
-          <Table style={{ width: "65vw" }} striped borderless hover>
+          <Table style={{ width: "65vw" }} striped  hover>
             <thead>
               <tr>
                 <th>Descrição da renda</th>
@@ -200,7 +204,7 @@ const Renda = () => {
         <div className="containerTabelaUltRenda">
           {lastReceitas.length === 0 ? (
             <div>
-              <LinearProgress sx={{width: "90%"}}/>
+              <LinearProgress sx={{ width: "90%" }} />
               <Table striped borderless hover>
                 <thead>
                   <tr>

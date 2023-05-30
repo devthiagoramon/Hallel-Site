@@ -54,7 +54,7 @@ const AssociadosADM = () => {
             />
           </div>
         </div>
-        <Table style={{ width: "100%" }} borderless hover>
+        <Table style={{ width: "100%" }} hover>
           <thead>
             <tr>
               <th>Nome</th>

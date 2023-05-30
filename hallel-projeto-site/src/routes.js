@@ -46,7 +46,7 @@ function RoutesApp() {
         <Route path="/pedido" element={<Pedido />} />
         <Route path="/associado" element={<Associado />} />
         <Route path="/doacoes" element={<Doacoes />} />
-        <Route path="/formulario" element={<DoacaoFormulario />} />
+        <Route path="/formularioDoacao" element={<DoacaoFormulario />} />
         <Route path="/solicitarCadastro" element={<SolicitacaoCadastro />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/cursos" element={<Cursos/>}/>
