@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./styles/styleDoacaoform.css";
 import Form1 from "./form1";
 import Form2 from "./form2";
@@ -12,6 +12,20 @@ function FormInterface() {
   const [estado2, setEstado2] = useState(false);
   const [estado3, setEstado3] = useState(false);
   const [estado3a, setEstado3a] = useState(false);
+  const objDoacaoTemplate = {
+    formaDoacao: "",
+    quantidadeDoacao: 0,
+    cpf: "",
+    nomeTitular: "",
+    numCartao: "",
+    dataVencimento: "",
+  }
+
+  const [objDoacao, setObjDoacao] = useState(objDoacaoTemplate);
+
+  useMemo(() => {
+    console.log(objDoacao);
+  }, [objDoacao])
 
   function testaForm1() {
     return (
@@ -20,6 +34,7 @@ function FormInterface() {
         estado1={estado1}
         setEstado2={setEstado2}
         estado2={estado2}
+        setObjDoacao={setObjDoacao}
       />
     );
   }
@@ -32,6 +47,7 @@ function FormInterface() {
         estado2={estado2}
         setEstado3={setEstado3}
         estado3={estado3}
+        setObjDoacao={setObjDoacao}
       />
     );
   }
@@ -44,6 +60,7 @@ function FormInterface() {
         estado3={estado3}
         setEstado3a={setEstado3a}
         estado3a={estado3a}
+        objDoacao={objDoacao}
       />
     );
   }
