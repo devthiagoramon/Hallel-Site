@@ -24,7 +24,7 @@ body{
 }
 
 .tituloPainelFinanceiro label{
-    font-size: 36px;
+    font-size: 2.3em;
     font-weight: bold;
     top: 0;
     left: 0;
@@ -34,8 +34,11 @@ body{
     margin-top: 2rem;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     width: 100%;
-    height: 30vh;
+    height: 10em;
+    min-height: 20vh;
+    
 }
 
 
@@ -45,67 +48,91 @@ body{
     grid-template-columns: 100%;
     grid-template-rows: 40% 20% 30%;
     height: 100%;
-    margin-right: 5rem;
-    margin-left: 4.5rem;
-    border-radius: 15px;
+    border-radius: 2em;
     box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .25);
+    transition: 0.5s;
 }
 
-.cards>div>a{
+.cards > div > a{
     justify-self: center;
+    border: none;
+    background: none;
+    transition: 0.5s;
+    background-color: rgb(98, 98, 98, 0.7);
 }
 
 .cards div:hover a{
     display: inherit;
+    transition: 0.5s;
+}
+
+.cards div a:hover{
+
+
+    color: #ffffd3;
 }
 
 .saibaMaisFin{
     color: #333;
-    font-size: 20px;
+    font-size: 1em;
     font-weight: 600;
     display: none;
+    transition: 0.5s;
     align-self: flex-end;
     padding: 0.4rem;
-    background-color: rgba(255, 255, 255, .50);
+    background-color: rgba(255, 255, 255, 1);
     border-radius: 5px;
 }
 
 .cardLucroTotal{
-    background-color: #038c3396;
+    background-color: #03a05e;
 }
 
+
 .cardLucroMensal{
-    background-color: #038c3375;
+    background-color: #339F72;
+}
+
+.cardLucroMensal:hover{
+
+    background-color: #288b62;
+
 }
 
 .cardDespesaMensal{
-    background-color: #FF961B;
+    background-color: #F06D15;
+}
+
+.cardDespesaMensal:hover{
+    background-color: #ce7208;
 }
 
 .tituloCard{
     font-weight: bold;
+    text-align: center;
     color: white;
-    margin-top: 25px;
-    margin-left: 20px;
-    font-size: 36px;
+    margin-top: 1em;
+    font-size: 1.8em;
 }
 
 .valorNum{
-    margin-left: 20px;
-    font-weight: 600;
-    font-size: 34px;
+    font-weight: 700;
+    font-size: 2em;
+    color: #f5f5f5;
+    text-align: center;
 }
 
 .painelGrafico{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     width: 100%;
-    height: 30%;
+    height: auto;
 }
 
 .graficoEsquerda{
     margin-top: 3rem;
-    margin-left: 4.5em;
+    margin-left: 2em;
     box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .25);
     width: 63%;
     height: 50%;
@@ -113,16 +140,16 @@ body{
 }
 
 .graficoEsquerda p{
-    font-size: 30px;
+    font-size: 2em;
     margin-top: 20px;
     margin-left: 20px;
 }
 
 
 .escolhaDireita{
-    margin-left: 4.5em;
+    margin-left: 6em;
     margin-top: 3rem;
-    width: 24%;
+    width: 30%;
     height: 50vh;
     display: flex;
     flex-direction: column;
@@ -134,40 +161,54 @@ body{
     row-gap:2rem;
 }
 
-.selecionado{
-    background-color: #6cad8396; 
-}
 .escolhaDireita button{
-    font-size: 2rem;
+    color: #171d24;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 0.4em;
     width: 70%;
     border-color: inherit;
     border-width: 0px;
     text-align: center;
     box-shadow: 1px 1px 25px 0 rgba(0, 0, 0, .20);    
     border-radius: 30px;
+    background-color: #68d98f96;
+    transition: 0.5s;
 }
 
 .escolhaDireita button:hover{
-    background-color: #d2d6da;
+    background-color: #49b56e96;
+    transition: 0.5s;
+
+}
+
+.escolhaDireita .selecionado{
+    background-color: #47966d96; 
 }
 
 .ultimasRendas{
     display: flex;
     flex-direction: column;
     margin-top: 5rem;
-    margin-left: 4.5em;
-    width: 91%;
-    max-height: 50%;
+    justify-content: center;
+    width: 100%;
+    max-height: 100%;
     overflow-x: hidden;
     box-shadow: 1px 1px 25px 0 rgba(0, 0, 0, .20); 
     border-radius: 30px;
     margin-bottom: 3rem;
 }
 
+.ultimasRendas table{
+
+    margin: 0 auto;
+}
+
 .tituloUltimasRendas{
     margin-top: 1.6rem;
     margin-left: 2rem;
-    font-size: 30px;
+    font-size: 2em;
+    font-weight: 700;
     width: 95%;
     display: flex;
     justify-content: center;

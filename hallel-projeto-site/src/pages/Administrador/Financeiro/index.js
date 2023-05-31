@@ -219,15 +219,15 @@ class PainelFinanceiro extends Component {
         </div>
         <div className="ultimasRendas">
           <label className="tituloUltimasRendas" style={{ color: "#363636" }}>
-            Ultimas rendas
+            Últimas rendas
           </label>
           <Table
             hover
             style={{
-              width: "95%",
-              maxWidth: "95%",
-              marginLeft: "2.5rem",
+              width: "60%",
+              maxWidth: "100%",
               marginTop: "1.5rem",
+              marginBottom: "1.5rem",
             }}
           >
             <thead>
