@@ -1,0 +1,245 @@
+/*css central*/
+
+.centralSorteio{
+
+    display: flex;
+    flex-direction: column;
+    color: #35404b;
+    font-family: 'Inter',
+}
+
+.centralSorteio > label{
+
+    font-size: 1.8em;
+    text-indent: 3em;
+    font-weight: 700;
+    margin: 1em 0;
+}
+
+.divisor{
+
+    margin: 2em 20%;
+    font-weight: 700;
+    height: 0.1em;
+}
+
+/*css banner*/
+
+.painelBanner{
+
+
+    margin: 2em 20%;
+    margin-bottom: 20em;
+    min-height: 15em;
+    display: flex;
+    justify-content: center;
+}
+
+.painelBanner > div{
+
+    padding-top: 0.5em;
+    color: #35404b;
+}
+
+.painelBanner div{
+
+    position: absolute;
+    height: 18em;
+    width: 18em;
+    border-radius: 1.5em;
+    font-size: 1.5em;
+}
+
+
+.painelBanner .verde-quadro{
+
+    background-color: #62B77A;
+    text-align: center;
+    color: #FFF279;
+    box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
+}
+
+
+.painelBanner .amarelo-quadro{
+
+
+    position: absolute;
+}
+
+.painelBanner .verde-quadro > label{
+
+    font-weight: 700;
+    font-size: 1.5em;
+    text-align: center;
+    text-shadow: 0px 2px 2px #3A5741, 0px -2px 2px #3A5741, 2px 0px 2px #3A5741, -2px 0px 2px #3A5741;
+
+}
+
+
+.painelBanner .amarelo-quadro{
+
+    background-color: #FFF48F;
+    margin-left: 10em;
+    height: 16em;
+    width: 16em;
+    bottom: 10em;
+    box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
+}
+
+.painelBanner .amarelo-quadro img:nth-child(1){
+
+    position: relative;
+    right: 3em;
+    bottom: 2em;
+    z-index: 4;
+}
+
+.painelBanner .amarelo-quadro img:nth-child(2){
+    position: relative;
+    bottom: 10em;
+    left: 2em;
+
+}
+
+
+/*tabela css */
+.tabelaSorteio{
+
+    margin: 0 10%;
+}
+
+.tabelaSorteio > label{
+
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 1em 0;
+
+}
+
+/*Como funciona - tela*/
+
+.comofunciona{
+
+    display: flex;
+    flex-direction: column;
+    margin: 2em 0;
+}
+
+.comofunciona > label{
+
+    font-size: 1.8em;
+    text-indent: 4em;
+    font-weight: 700;
+    margin: 1em 0;
+}
+
+.conteudo-funciona{
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+}
+
+
+#passo1, #passo2, #passo3{
+
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    align-items: right;
+}
+
+
+.passos > label {
+
+    font-size: 1.4em;
+    margin: 0.6em 0;
+    font-weight: 700;
+    color: #35404b;
+    display: flex;
+    align-items: center;
+    align-content: left;
+}
+
+
+#passo1 .circle{
+
+    background-color: #AFECFF;
+
+}
+
+#passo2 .circle{
+
+    background-color: #F7C9FF;
+}
+
+#passo3 .circle{
+
+    background-color: #D6FFA3;
+    
+}
+
+.circle{
+
+   
+    width: 3em;
+    height: 3em;
+    align-items: center;
+    background-color: #FFF48F;
+    border-radius: 50%;
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #35404b;
+    background-color: #627db7;
+    display: flex;
+    justify-content: center;
+    justify-self: center;  
+    margin: auto;
+}
+
+.circle > label{
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+
+/*lista premios*/
+
+
+.listaPremios{
+
+    display: flex;
+    margin: 2em 0;
+    flex-direction: column;
+}
+
+.listaPremios > label{
+
+    font-size: 1.8em;
+    text-indent: 4em;
+    font-weight: 700;
+    margin: 1em 0;
+}
+
+.conteudo-listapremios{
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.premios > label{
+
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.premio_produto img{
+
+    width: 100%;
+    height: 15rem;
+}

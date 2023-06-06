@@ -1,4 +1,5 @@
 import { AddCircle } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 import {
   Box,
   Button,
@@ -122,6 +123,7 @@ const DoacaoObjetoADM = () => {
         setTimeout(() => {
           window.location.href =
             "http://localhost:3000/administrador/painelFinanceiro/doacoes/objeto";
+
         }, 3000);
       }).catch((e) => console.warn(e));
     } else {
@@ -195,7 +197,8 @@ const DoacaoObjetoADM = () => {
                               style={{
                                 display: "flex",
                                 justifyContent: "center",
-                                backgroundColor: "#74E753",
+                                backgroundColor: "#77EB7F",
+                                fontWeight: "700"
                               }}
                               onClick={() => recebido(objeto.id, true)}
                             >
@@ -208,7 +211,8 @@ const DoacaoObjetoADM = () => {
                               style={{
                                 display: "flex",
                                 justifyContent: "center",
-                                backgroundColor: "#F72727",
+                                backgroundColor: "#FA444A",
+                                fontWeight: "700"
                               }}
                               onClick={() => recebido(objeto.id, false)}
                             >
