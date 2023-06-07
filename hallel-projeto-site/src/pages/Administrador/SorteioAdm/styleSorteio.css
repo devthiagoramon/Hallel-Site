@@ -1,0 +1,80 @@
+.sorteioAdm{
+
+    display: flex;
+    flex-direction: column;
+    color: #35404b;
+}
+
+.sorteioAdm > label {
+
+    font-size: 1.8em;
+    font-weight: 700;
+    text-indent: 2em;
+    margin: 2em 0;
+}
+
+
+/*meio - tela de sorteio*/
+.painelSort-bt{
+
+        display: flex;
+        flex-direction: column;
+        margin: 2em 0;
+}
+.painelSort-bt > label{
+
+    font-size: 1.5em;
+    color: #35404b;
+    font-weight: 700;
+}
+
+
+.painelSort-bt > label:first-child{
+
+    text-indent: 2em;
+}
+
+.painelSort-bt > button{
+
+    align-self: flex-start;
+    margin-left: 4em;
+    margin-top: 0.6em;
+    padding: 0.2em 0.8em;
+    border: none;
+    border-radius: 0.8em;
+    background-color: #80D88E;
+    color: #35404b;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.painelSort-bt > button:hover{
+
+    background-color: #7bc687;
+}
+
+
+#ganhador .associado-sorteado{
+
+    background-color: #D9D9D9;
+    border-radius: 1em;
+    width: 15em;
+    text-align: center;
+    margin: 1em 0 0 3em;
+    font-size: 1.1em;
+}
+
+/*tabela css*/
+.table-sorteados{
+
+    margin: 2em 20%;
+}
+
+.head-table > label{
+
+    font-size: 1.5em;
+    font-weight: 700;
+    text-indent: 2em;
+    margin: 0.6em 0;
+
+}

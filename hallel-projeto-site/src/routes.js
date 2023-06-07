@@ -35,6 +35,7 @@ import CursoAtividade from "./pages/TelaAtividades/TelaAtividade";
 import Cursos from "./pages/Cursos";
 import AssociadosListaCursosAdm from "./pages/Administrador/Curso/associadosParticipandoCurso";
 import Sorteio from "./pages/Sorteio";
+import AdmSorteio from "./pages/Administrador/SorteioAdm/indexSorteio";
 
 function RoutesApp() {
 
@@ -59,20 +60,22 @@ function RoutesApp() {
         <Route path="/atividades" element= {<CursoAtividade/>} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
 
-
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
-
 
         <Route
           path="/administrador/eventos/criar"
           element={<EventosCriarAdm />}
         />
 
-
         <Route
           path="/administrador/cursos/historicoCurso"
           element={<Historico />}
         />
+
+        <Route
+            path="/administrador/sorteio"
+            element = {<AdmSorteio/>} />
+
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/maisInfo" element={<MaisInfo />} />
         <Route
@@ -108,8 +111,7 @@ function RoutesApp() {
 
         <Route path="/administrador/cursos/associados/:idCurso" element={<AssociadosListaCursosAdm/>}/>
 
-
-        <Route path="/desempenhoUser"element={<DesempenhoUser />}/>
+        <Route path="/desempenhoUser" element={<DesempenhoUser />}/>
         <Route path="/entrar" element={<Entrar />} />
       </Routes>
     </BrowserRouter>
