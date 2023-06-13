@@ -36,6 +36,7 @@ import Cursos from "./pages/Cursos";
 import AssociadosListaCursosAdm from "./pages/Administrador/Curso/associadosParticipandoCurso";
 import Sorteio from "./pages/Sorteio";
 import AdmSorteio from "./pages/Administrador/SorteioAdm/indexSorteio";
+import LojaPrincipal from "./pages/Loja/index"
 
 function RoutesApp() {
 
@@ -58,6 +59,7 @@ function RoutesApp() {
         <Route path="/meusCursos" element={<MeusCursos />} />
         <Route path="/descCurso/:idCurso" element={<DescCurso/>} />
         <Route path="/atividades" element= {<CursoAtividade/>} />
+        <Route path="/loja" element= {<LojaPrincipal/>} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
 
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />

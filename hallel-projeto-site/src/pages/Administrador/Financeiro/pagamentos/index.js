@@ -3,6 +3,7 @@ import "./pagamentos.css";
 import { useMemo } from "react";
 import { useState } from "react";
 import { Form, Table } from "react-bootstrap";
+import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const PagamentosAssociado = () => {
   const [pagamentosAssociados, setpagamentosAssociados] = useState([]);

@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Table } from "react-bootstrap";
+import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Chart from "react-google-charts";
 import "./painelFin.css";
 class PainelFinanceiro extends Component {

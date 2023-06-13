@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import "./index.css";
 import Table from "react-bootstrap/Table";
 import {Skeleton } from "@mui/material";
+import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function Evento() {
   const [eventos, setEventos] = useState([]);

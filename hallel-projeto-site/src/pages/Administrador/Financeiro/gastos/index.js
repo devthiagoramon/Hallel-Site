@@ -9,6 +9,7 @@ import ModalAddDespesa from "./addModal";
 import gastosPDF from "../../../../Reports/gastos/gastos";
 import { MoreVertRounded, SaveAlt } from "@mui/icons-material";
 import { Table } from "react-bootstrap";
+import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
 
 const Gasto = () => {

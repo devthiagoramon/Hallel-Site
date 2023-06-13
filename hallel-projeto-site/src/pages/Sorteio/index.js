@@ -8,7 +8,8 @@ import Artesanato from "../../images/artesanato.png";
 import Alimento from "../../images/alimentos.png";
 import Roupas from "../../images/roupas.png";
 import Devocao from "../../images/obj_devocao.png";
-
+import axios from "axios";
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Sorteio = () =>{
 
@@ -59,25 +60,20 @@ function TableArea(){
 
     const [sorteio, setSorteio] = useState([]);
 
-    useEffect(() => {
+    useEffect (() =>{
+
         let url = "http://localhost:8080/api/sorteio";
-    
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", localStorage.getItem("token"));
-    
-        fetch(url, {
-          headers: myHeaders,
-          method: "GET",
-        })
-          .then((r) => r.json())
-          .then((object) => {
-            setSorteio(object);
-          })
-          .catch((r) => {
-            console.log("Erro ao carregar os dados dos sorteios da API");
-          });
-      });
+
+            axios.get(url)
+            .then((response) => {
+
+                setSorteio(response.data)
+            })
+                .catch((response) => {
+
+                    console.log("ERRO AO PUXAR OS DADOS DA API")
+                })
+    })
 
     return(
 
@@ -99,13 +95,37 @@ function TableArea(){
             
             {sorteio.map((item) => {
                 return (
-                <tr key={item.id}>
+                <tr key={item.nome}>
                     <td>{item.titulo}</td>
                     <td>{item.descricao}</td>
                     <td>{item.data}</td>
                 </tr>
                 );
             })}
+
+            <tr>
+
+                <td>Franscisco Ferdinando</td>
+                <td>Bíblia</td>
+                <td>22/04/06</td>
+            </tr>
+
+            <tr>
+
+                <td>Amalia das Neves</td>
+                <td>Cesta Básica</td>
+                <td>16/03/06</td>
+            </tr>
+
+            <tr>
+
+                <td>Hegtor Farias da Silva</td>
+                <td>Cruz</td>
+                <td>05/02/06</td>
+            </tr>
+
+
+
             </tbody>
             </Table>
         
@@ -155,8 +175,6 @@ function ComoFunciona(){
                 </div>
 
             </div>
-
-
 
         </section>
 

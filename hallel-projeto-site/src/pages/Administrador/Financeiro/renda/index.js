@@ -7,6 +7,7 @@ import { useState } from "react";
 import rendasPDF from "../../../../Reports/rendas/rendas";
 import { MoreVertRounded, SaveAlt } from "@mui/icons-material";
 import { Table } from "react-bootstrap";
+import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
 
 const Renda = () => {

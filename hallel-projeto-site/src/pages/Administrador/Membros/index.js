@@ -5,6 +5,7 @@ import Select from "react-bootstrap/FormSelect";
 import { AiOutlineSearch } from "react-icons/ai";
 import Search from "react-bootstrap/FormGroup";
 import Button from "react-bootstrap/Button";
+import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function Filtro() {
   return (

@@ -1,9 +1,10 @@
 import { Tab } from "bootstrap";
 import {useState, useEffect} from "react";
 import Table from "react-bootstrap/Table";
-import Drop from "react-bootstrap/Dropdown"
-import MenuItem from "react-bootstrap/DropdownItem"
 import './styleSorteio.css';
+import axios from "axios"
+import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 
 const SorteioAdm = () => {
 
@@ -28,22 +29,18 @@ function Tabela(){
 
     useEffect(() => {
         let url = "http://localhost:8080/api/sorteio";
-    
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", localStorage.getItem("token"));
-    
-        fetch(url, {
-          headers: myHeaders,
-          method: "GET",
+
+        axios.get(url)
+
+        .then((response) => {
+
+            setSorteio(response.data)
+
         })
-          .then((r) => r.json())
-          .then((object) => {
-            setSorteio(object);
-          })
-          .catch((r) => {
-            console.log("Erro ao carregar os dados dos sorteios da API");
-          });
+        .catch((response) =>{
+
+            console.log("ERRO AO PUXAR DA API")
+        })
       });
 
     return(
@@ -79,6 +76,31 @@ function Tabela(){
                 </tr>
                 );
             })}
+
+            <tr>
+
+                <td>1</td>
+                <td>Franscisco Ferdinando</td>
+                <td>Bíblia</td>
+                <td>22/04/06</td>
+                </tr>
+
+                <tr>
+
+                <td>2</td>
+                <td>Amalia das Neves</td>
+                <td>Cesta Básica</td>
+                <td>16/03/06</td>
+                </tr>
+
+                <tr>
+
+                <td>3</td>
+                <td>Hegtor Farias da Silva</td>
+                <td>Cruz</td>
+                <td>05/02/06</td>
+            </tr>
+
             </tbody>
             </Table>
 
