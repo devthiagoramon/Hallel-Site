@@ -16,12 +16,10 @@ function Loja() {
 
       <header className='topo'>
         <h2>Principal</h2>
-        <h2>Produtos
-          <IoChevronDown className='iconeSeta' />
-        </h2>
-        <h2>Compras
-          <IoChevronDown className='itemsTopoDireita' />
-        </h2>
+        <h2>Produtos</h2>
+        <IoChevronDown />
+        <h2>Compras</h2>
+        <IoChevronDown className='iconeSeta' />
         <AiFillHeart className='itemsExtra' />
         <FaShoppingCart className='itemsExtra' />
       </header>

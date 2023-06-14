@@ -7,21 +7,17 @@
     width: 100%;
     height: 10vh;
     background: linear-gradient(#FFC691,#FFC691);
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    flex-direction: row;
+   display: flex;
+   align-items: center;
+   justify-content: left;
     
   }
   .topo h2{
     margin: 0 0 0 50px;
   }
   .iconeSeta{
-    margin-right: 0;
+    margin-right: 60%;
   
-  }
-  .iconeCompra{
-   position: absolute;
   }
   .itemsTopoDireita{
     margin-right: 130vh;
