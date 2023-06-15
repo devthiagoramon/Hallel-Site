@@ -76,15 +76,10 @@
    PARTE 3
   */
   
-  .title2{
-    font-weight: bold;
-    font-size: 48px;
-    margin: 60px 0px 60px 150px;
-  }
+ 
   .contItens{
     height: 40vh;
     margin: 40px ;
-    border-radius: 20px;
   }
   .imagens{
     height: 25vh;
@@ -92,9 +87,71 @@
     justify-content: space-around;
     align-items: center;
   }
-  .imageItens{
+  .imagens img{
     width: 20vh;
     height: 20vh;
   }
-  
+
+  /*
+    PARTE 4
+  */
+  .title3{
+    font-weight: bold;
+    font-size: 48px;
+    margin: 60px 0px 60px 150px;
+  }
+  .contItensArtigo{
+    height: 40vh;
+    margin: 40px;
+  }
+  .divImagensArtigo{
+    height: 25vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .divImagensArtigo img{
+    width: 20vh;
+    height: 20vh;
+  }
+
+  /*
+    PARTE 5
+  */
+  .title4{
+    font-weight: bold;
+    font-size: 48px;
+    margin: 60px 0px 60px 150px;
+  }
+  .divItensJovem{
+    height: 40vh;
+    margin: 40px;
+  }
+  .divImagensJovem{
+    height: 25vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .divImagensJovem img{
+    width: 20vh;
+    height: 20vh;
+  }
+
+  /*
+    PARTE 6
+  */
+
+  .title5{
+    font-weight: bold;
+    font-size: 48px;
+    margin: 60px 0px 60px 150px;
+  }
+  .divItensArtesanato{
+    height: 40vh;
+    margin: ;
+  }
+
+
+
   

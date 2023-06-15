@@ -12,7 +12,7 @@ import './lojaPrincipalStyle.css'
 function Loja() {
   return (
     <div>
-      
+
 
       <header className='topo'>
         <h2>Principal</h2>
@@ -31,7 +31,7 @@ function Loja() {
           <FaBible className='itemsPainel' id='biblia' />
           <GiCandles className='itemsPainel' id='vela' />
         </div>
-        
+
         <div className='div2'>
           <FaTshirt className='itemsPainel' id='blusa' />
           <h1>Loja Hallel</h1>
@@ -44,14 +44,41 @@ function Loja() {
         </div>
 
       </div>
-      <h1 className='title2'>Objetos de devoção</h1>
+      <h1 className='title'>Objetos de devoção</h1>
       <div className='contItens'>
         <div className='imagens'>
-        <img className='imageItens'/>
-        <img className='imageItens'/>
-        <img className='imageItens'/>
-        <img className='imageItens'/>
+          <img />
+          <img />
+          <img />
+          <img  />
         </div>
+      </div>
+      <h1 className='title'>Aritigos personalizados</h1>
+      <div className='contItens'>
+        <div className='imagens'>
+          <img />
+          <img />
+          <img />
+          <img />
+        </div>
+      </div>
+      <h1 className='title'>Jovens</h1>
+      <div className='contItens'>
+        <div className='imagens'>
+          <img />
+          <img />
+          <img />
+          <img />
+        </div>
+      </div>
+      <h1 className='title'>Artesanato</h1>
+      <div className='contItens'>
+          <div className='imagens'>
+          <img />
+          <img />
+          <img />
+          <img />
+          </div>
       </div>
     </div>
   );
