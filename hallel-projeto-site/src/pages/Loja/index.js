@@ -8,20 +8,78 @@ import { AiFillTrophy } from 'react-icons/ai'
 import { AiFillShopping } from 'react-icons/ai'
 import { FaGlobe } from 'react-icons/fa'
 import './lojaPrincipalStyle.css'
+import { FormControl, MenuItem, Select} from '@mui/material'
+import { useState } from 'react'
+import Button from '@mui/material/Button';
+import Devocao from '../../components/LojaCards/ObjetosDevocao/indexDevo'
+import Artigos from '../../components/LojaCards/Artigos/indexArtigo'
+import Jovens from "../../components/LojaCards/Jovens/indexJovens";
+import Artesanato from "../../components/LojaCards/Artesanato/indexArtesanato";
+
 
 function Loja() {
+    const [age, setAge] = useState('');
+    const [age2, setAge2] = useState('');
+
+    const handleChange = (event) => {
+      setAge(event.target.value);
+    };
+    const handleChange2 = (event) => {
+      setAge2(event.target.value);
+    };
   return (
     <div>
 
 
       <header className='topo'>
-        <h2>Principal</h2>
-        <h2>Produtos</h2>
-        <IoChevronDown />
-        <h2>Compras</h2>
-        <IoChevronDown className='iconeSeta' />
+
+        <div className='topo-left'>
+
+        <Button style = {{textTransform: "capitalize", color: "#000000", fontWeight: "700", fontSize: "1em", fontFamily: "Inter"}}>Principal</Button>
+
+            <FormControl >
+            <Select
+              value={age}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+              style ={{color: "#000000", fontWeight: "700"}}
+            >
+              <MenuItem value="">
+              Produtos
+              </MenuItem>
+              <MenuItem value={10}>Objetos de devoção</MenuItem>
+              <MenuItem value={20}>Objetos personalizados</MenuItem>
+              <MenuItem value={30}>Jovens</MenuItem>
+              <MenuItem value={40}>Artesanato</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl sx={{ m: 1, minWidth: 120 }} style={{color: "#ffffff"}}>
+            <Select
+              value={age2}
+              onChange={handleChange2}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+              style ={{color: "#000000", fontWeight: "700"}}
+            >
+              <MenuItem value="">
+              Compras
+              </MenuItem>
+              <MenuItem value={10}>Carrinho</MenuItem>
+              <MenuItem value={20}>Favoritos</MenuItem>
+            </Select>
+          </FormControl>
+
+      </div>
+
+      <div className='topo-right'>
+
         <AiFillHeart className='itemsExtra' />
         <FaShoppingCart className='itemsExtra' />
+
+      </div>
+
       </header>
 
       <h1 className='title'>Loja</h1>
@@ -44,43 +102,17 @@ function Loja() {
         </div>
 
       </div>
-      <h1 className='title'>Objetos de devoção</h1>
-      <div className='contItens'>
-        <div className='imagens'>
-          <img />
-          <img />
-          <img />
-          <img  />
-        </div>
+
+      <Devocao />
+
+      <Artigos />
+      
+    
+      <Jovens />
+
+      <Artesanato/>
+
       </div>
-      <h1 className='title'>Aritigos personalizados</h1>
-      <div className='contItens'>
-        <div className='imagens'>
-          <img />
-          <img />
-          <img />
-          <img />
-        </div>
-      </div>
-      <h1 className='title'>Jovens</h1>
-      <div className='contItens'>
-        <div className='imagens'>
-          <img />
-          <img />
-          <img />
-          <img />
-        </div>
-      </div>
-      <h1 className='title'>Artesanato</h1>
-      <div className='contItens'>
-          <div className='imagens'>
-          <img />
-          <img />
-          <img />
-          <img />
-          </div>
-      </div>
-    </div>
   );
 }
 

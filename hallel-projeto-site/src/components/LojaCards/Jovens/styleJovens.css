@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
+.body-eventos{
+  
+    display: block;
+    color: #35404B;
+    font-family: 'Inter';
+}
+
+.body-eventos #title{
+ 
+    display:block;
+    text-align: left;
+    margin-top: 1.5em;
+    font-size: 2.5em;
+    font-weight: 600;
+    text-indent: 3.5em;
+}
+.containerCarroseulEvent {
+  
+    margin-top: 5rem;
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrousel {
+    cursor: grab;
+    overflow: hidden;
+}
+
+.inner {
+    display: flex;
+}
+
+.imagem2 {
+    position: relative;
+    min-width: 25em;
+    min-height: 20em;
+    padding: 15px;
+    
+}
+
+.imagem2 img {
+    width: 100%;
+    height: 90%;
+    box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.legenda2 {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 9.75%, rgba(0,0,0,0.75) 80%);
+    display: flex;
+    position: absolute;
+    bottom: 13.5%;
+    visibility: hidden;
+    border-radius: 10px;
+    align-items: flex-end;
+    width: 92.5%;
+    height: 25%;
+} 
+
+.legenda2>a {
+    margin-bottom: 1.10rem;
+    margin-left: 1.10rem;
+    padding: 5px;
+    background: none;
+    border-radius: 5px;
+    font-size: 36px;
+    color: #fafafa;
+    border-width: 1px;
+    font-weight: 500;
+    font-family: 'Archivo', sans-serif;
+}
+
+.imagem2:hover .legenda2 {
+    visibility: visible;
+}
+
+.legenda2:hover{
+    color: #fafafa;
+} 
+
+.imagem2:hover{
+    border-width: 2px;
+    scale: 1.009;
+}
+
+#desc-cartao{
+  font-size: 16px;
+}
+#title-cartao{
+  font-weight: 16px;
+}
+
+.loaderEventoCarroseul{
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    margin-left: 3rem;
+}

@@ -6,12 +6,22 @@
   .topo{
     width: 100%;
     height: 10vh;
-    background: linear-gradient(#FFC691,#FFC691);
+    background: linear-gradient(#ed9644,#e07919);
    display: flex;
    align-items: center;
-   justify-content: left;
+   justify-content: space-between;
     
   }
+
+.topo > .topo-left{
+
+  display: flex;
+  justify-content: space-around;
+  margin-left: 1em;
+
+}
+
+
   .topo h2{
     margin: 0 0 0 50px;
   }
@@ -39,14 +49,21 @@
   
   .containerImagemEntrar{
     width: 70%;
-    height: 80vh;
+    height: 70vh;
     margin: 40px 15%;
-    background: linear-gradient(#FFE39D,#F3D78F);
+    background: linear-gradient(#ff9f31,#ab5e06);
     border-radius: 20px;
    
   }
   .containerImagemEntrar h1{
-    font-size: 60px;
+    font-size: 6em;
+    font-weight: 700;
+    color: #21282f;
+  }
+
+  #biblia > path{
+
+    border: 2px solid #ffffff;
   }
   
   #divUm{
@@ -68,8 +85,8 @@
     justify-content: space-around;
   }
   .itemsPainel{
-    width: 100px;
-    height: 1000px;
+    width: 5em;
+    height: 5em;
   }
   
   /*
@@ -149,7 +166,6 @@
   }
   .divItensArtesanato{
     height: 40vh;
-    margin: ;
   }
 
 
