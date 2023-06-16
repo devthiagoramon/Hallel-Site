@@ -6,7 +6,7 @@
   .topo{
     width: 100%;
     height: 10vh;
-    background: linear-gradient(#ed9644,#e07919);
+    background: linear-gradient(90deg, #f1a55e,#e99446);
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -51,14 +51,14 @@
     width: 70%;
     height: 70vh;
     margin: 40px 15%;
-    background: linear-gradient(#ff9f31,#ab5e06);
+    background: linear-gradient(#feab4b,#b36205);
     border-radius: 20px;
    
   }
   .containerImagemEntrar h1{
     font-size: 6em;
     font-weight: 700;
-    color: #21282f;
+    color: #ffe762;
   }
 
   #biblia > path{

@@ -36,7 +36,8 @@ import Cursos from "./pages/Cursos";
 import AssociadosListaCursosAdm from "./pages/Administrador/Curso/associadosParticipandoCurso";
 import Sorteio from "./pages/Sorteio";
 import AdmSorteio from "./pages/Administrador/SorteioAdm/indexSorteio";
-import LojaPrincipal from "./pages/Loja/index"
+import LojaPrincipal from "./pages/Loja/index";
+import LojaProduto from "./pages/Loja/LojaProduto/indexProduto";
 
 function RoutesApp() {
 
@@ -60,6 +61,7 @@ function RoutesApp() {
         <Route path="/descCurso/:idCurso" element={<DescCurso/>} />
         <Route path="/atividades" element= {<CursoAtividade/>} />
         <Route path="/loja" element= {<LojaPrincipal/>} />
+        <Route path="/loja/produto" element= {<LojaProduto/>} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
 
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
@@ -102,7 +104,7 @@ function RoutesApp() {
         />
         <Route path="/administrador/painelFinanceiro/doacoes/dinheiro" element={<DoacoesDinheiroAdm/>}/>
         <Route path="/administrador/painelFinanceiro/doacoes/objeto" element={<DoacaoObjetoADM/>}/>
-
+    
         <Route path="/administrador/painelFinanceiro/doacoes/objeto/add" element={<AddDoacaoObjetoAdm/>}/>
 
         <Route path="/administrador/cursos/add" element={<AdicionarCursoAdm/>}/>

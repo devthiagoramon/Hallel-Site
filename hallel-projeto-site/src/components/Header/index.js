@@ -114,9 +114,6 @@ function Header() {
           item2="Meus Cursos"
           link2="/meuscursos"
         />
-        {/*<Link id="item" to="/meuscursos">
-            Cursos
-          </Link>*/}
 
         {localStorage.getItem("R0l3s").includes("ROLE_USER") ? (
           <>
@@ -132,7 +129,7 @@ function Header() {
           </>
         )}
 
-        <Link id="item" to="/">
+        <Link id="item" to="/loja">
           Loja
         </Link>
 
