@@ -3,13 +3,13 @@ import './sorteio.css';
 import Table from "react-bootstrap/Table";
 import Logo from "../../images/logo.png";
 import Loteria from "../../images/loteria.png"
-
 import Artesanato from "../../images/artesanato.png";
 import Alimento from "../../images/alimentos.png";
 import Roupas from "../../images/roupas.png";
 import Devocao from "../../images/obj_devocao.png";
 import axios from "axios";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { CircularProgress } from '@mui/material';
 
 const Sorteio = () =>{
 
@@ -81,53 +81,46 @@ function TableArea(){
 
             <label>Últimos ganhadores</label>
 
-            <Table style = {{backgroundColor: "#FCFBF8"}} bordered striped hover size="sm">
+            {sorteio.length === 0 ?(
+                
+                <div className="circuloProgresso">
+        
+                <CircularProgress/>
+                </div>
+            ): (
 
-            <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Prêmio</th>
-                <th>Data do sorteio</th>
-            </tr>
-            </thead>
+                <>
 
-            <tbody>
-            
-            {sorteio.map((item) => {
-                return (
-                <tr key={item.nome}>
-                    <td>{item.titulo}</td>
-                    <td>{item.descricao}</td>
-                    <td>{item.data}</td>
+                <Table style = {{backgroundColor: "#FCFBF8"}} bordered striped hover size="sm" border={2}>
+
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Prêmio</th>
+                    <th>Nome do sorteado</th>
+                    <th>Data do Sorteio</th>
                 </tr>
-                );
-            })}
+                </thead>
 
-            <tr>
+                <tbody>
 
-                <td>Franscisco Ferdinando</td>
-                <td>Bíblia</td>
-                <td>22/04/06</td>
-            </tr>
+                {sorteio.map((item) => {
+                    return (
+                        <tr key={item.id}>
 
-            <tr>
+                            <td>{item.titulo}</td>
+                            <td>{item.sorteioAssociados}</td>
+                            <td>{item.data}</td>
+                        </tr>
+                    );
+                })}
 
-                <td>Amalia das Neves</td>
-                <td>Cesta Básica</td>
-                <td>16/03/06</td>
-            </tr>
+                     
+                </tbody>
+                </Table>
 
-            <tr>
-
-                <td>Hegtor Farias da Silva</td>
-                <td>Cruz</td>
-                <td>05/02/06</td>
-            </tr>
-
-
-
-            </tbody>
-            </Table>
+                </>
+            )} 
         
         </section>
     )

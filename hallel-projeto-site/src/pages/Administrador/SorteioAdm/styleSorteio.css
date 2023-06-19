@@ -76,5 +76,13 @@
     font-weight: 700;
     text-indent: 2em;
     margin: 0.6em 0;
+}
 
+
+
+.circuloProgresso{
+
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
 }

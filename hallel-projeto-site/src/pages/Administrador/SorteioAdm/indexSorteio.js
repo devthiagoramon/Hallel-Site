@@ -1,10 +1,9 @@
-import { Tab } from "bootstrap";
 import {useState, useEffect} from "react";
 import Table from "react-bootstrap/Table";
 import './styleSorteio.css';
 import axios from "axios"
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
+import { CircularProgress } from "@mui/material";
 
 const SorteioAdm = () => {
 
@@ -54,30 +53,47 @@ function Tabela(){
                 
             </div>
 
-            <Table style = {{backgroundColor: "#FCFBF8"}} bordered striped hover size="sm">
+            {sorteio.length === 0 ?(
+                
+                <div className="circuloProgresso">
+        
+                <CircularProgress/>
+                </div>
+            ): (
 
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Prêmio</th>
-                <th>Data do Sorteio</th>
-            </tr>
-            </thead>
+                <>
 
-            <tbody>
+                <Table style = {{backgroundColor: "#FCFBF8"}} bordered striped hover size="sm" border={2}>
 
-            {sorteio.map((item) => {
-                return (
-                <tr key={item.id}>
-                    <td>{item.titulo}</td>
-                    <td>{item.descricao}</td>
-                    <td>{item.data}</td>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Prêmio</th>
+                    <th>Nome do sorteado</th>
+                    <th>Data do Sorteio</th>
                 </tr>
-                );
-            })}
+                </thead>
 
-            <tr>
+                <tbody>
+
+                {sorteio.map((item) => {
+                    return (
+                        <tr key={item.id}>
+
+                            <td>{item.titulo}</td>
+                            <td>{item.sorteioAssociados}</td>
+                            <td>{item.data}</td>
+                        </tr>
+                    );
+                })}
+
+                     
+                </tbody>
+                </Table>
+
+                </>
+            )}
+            {/*<tr>
 
                 <td>1</td>
                 <td>Franscisco Ferdinando</td>
@@ -100,11 +116,7 @@ function Tabela(){
                 <td>Cruz</td>
                 <td>05/02/06</td>
             </tr>
-
-            </tbody>
-            </Table>
-
-
+            */}
         </section>
     )
 }
@@ -116,6 +128,7 @@ function MeioConteudo(){
     function invertBoolean(){
 
         setShow(true);
+        <CircularProgress/>
     }
 
 

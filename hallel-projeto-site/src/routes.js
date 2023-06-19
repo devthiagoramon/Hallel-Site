@@ -38,6 +38,7 @@ import Sorteio from "./pages/Sorteio";
 import AdmSorteio from "./pages/Administrador/SorteioAdm/indexSorteio";
 import LojaPrincipal from "./pages/Loja/index";
 import LojaProduto from "./pages/Loja/LojaProduto/indexProduto";
+import LojaPagamento from "./pages/Loja/LojaProduto/LojaPagamento/indexPagLoja";
 
 function RoutesApp() {
 
@@ -62,6 +63,7 @@ function RoutesApp() {
         <Route path="/atividades" element= {<CursoAtividade/>} />
         <Route path="/loja" element= {<LojaPrincipal/>} />
         <Route path="/loja/produto" element= {<LojaProduto/>} />
+        <Route path="/loja/pagamento" element= {<LojaPagamento/>} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
 
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
