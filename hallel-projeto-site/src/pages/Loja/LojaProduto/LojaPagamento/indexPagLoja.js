@@ -6,15 +6,16 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import HeaderLoja from "../../../../components/HeaderLoja/indexTopLoja";
-
+import  {MdOutlinePix} from "react-icons/md"
+import {AiFillCreditCard} from "react-icons/ai"
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import  FormControl from '@mui/material/FormControl';
 
 function LojaPagamento(){
 
-    
-
     return(
-
-
 
         <div className='pagamentoLoja'>
             <HeaderLoja/>
@@ -35,6 +36,7 @@ function LojaPagamento(){
 
                     <label>Método de pagamento</label>
                     <MetodoPagamento/>
+                    <Botao/>
                 </div>
             </div>
 
@@ -50,7 +52,7 @@ const TabelaProdutos = () =>{
 
         return(
 
-            <Table  border={2} striped bordered size="md">
+            <Table  border={3} striped bordered size="md">
 
                 <thead>
                 <tr>
@@ -81,20 +83,21 @@ const MetodoPagamento = () =>{
 
     return(
 
-        <>
+        <FormControl>
+            <RadioGroup>
         <Accordion>
         <AccordionSummary
           
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          Pix
+          Pix <MdOutlinePix/>
         </AccordionSummary>
         <AccordionDetails>
-          
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          
+          <div className='colunaAcordeao'>
+        O QR Code do Pix será exibido após a confirmação de compra
+        <FormControlLabel value="pagamentoPix" control={<Radio />} label="Pix"/>
+        </div>
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -102,18 +105,34 @@ const MetodoPagamento = () =>{
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-            Cartão de Crédito
+            Cartão de Crédito <AiFillCreditCard/>
         </AccordionSummary>
         <AccordionDetails>
+
+            <div className='colunaAcordeao'>
           
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          
+        Utilizar o cartão de crédito
+        <FormControlLabel value="pagamentoCartão" control={<Radio />} label="Cartão de crédito"/>
+            </div>
         </AccordionDetails>
       </Accordion>
+      </RadioGroup>
 
-    </>
+    </FormControl>
   
+    )
+}
+
+const Botao = () => {
+
+    return(
+
+        <button className='botao-loja'>
+
+            <label>Finalizar com o pix</label>
+
+
+        </button>
     )
 }
 export default LojaPagamento;

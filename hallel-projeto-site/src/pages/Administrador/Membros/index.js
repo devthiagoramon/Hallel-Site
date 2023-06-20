@@ -87,49 +87,7 @@ function MembrosAdministrador() {
         </thead>
 
         <tbody>
-          <tr>
-            <td>Fabian</td>
-            <td>Fabian@gmail.com</td>
-            <td>12/02/1998</td>
-            <td>Ativo</td>
-          </tr>
-          <tr>
-            <td>Maria do Carmo</td>
-            <td>Maria@gmail.com</td>
-            <td>23/01/1988</td>
-            <td>Ativo</td>
-          </tr>
-          <tr>
-            <td>Brazil Sampanho</td>
-            <td>brasil@gmail.com</td>
-            <td>16/12/1985</td>
-            <td>Ativo</td>
-          </tr>
-          <tr>
-            <td>Rebecca Agostinho</td>
-            <td>agosto@gmail.com</td>
-            <td>07/04/1999</td>
-            <td>Inativo</td>
-          </tr>
-          <tr>
-            <td>Murilo da Silva</td>
-            <td>murilo@gmail.com</td>
-            <td>26/10/1995</td>
-            <td>Pendente</td>
-          </tr>
-          <tr>
-            <td>Yuri Cardoso</td>
-            <td>yuri@gmail.com</td>
-            <td>29/11/1993</td>
-            <td>Ativo</td>
-          </tr>
-          <tr>
-            <td>Heitor da Gama</td>
-            <td>gama@gmail.com</td>
-            <td>05/01/2000</td>
-            <td>Status</td>
-          </tr>
-
+          
           {membro.map((item) => {
             return (
               <tr key={item.id}>

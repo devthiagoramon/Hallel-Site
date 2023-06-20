@@ -16,7 +16,6 @@ import Artigos from '../../components/LojaCards/Artigos/indexArtigo'
 import Jovens from "../../components/LojaCards/Jovens/indexJovens";
 import Artesanato from "../../components/LojaCards/Artesanato/indexArtesanato";
 
-
 function Loja() {
     const [age, setAge] = useState('');
     const [age2, setAge2] = useState('');

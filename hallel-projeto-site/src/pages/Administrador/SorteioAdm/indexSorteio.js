@@ -26,21 +26,33 @@ function Tabela(){
 
     const [sorteio, setSorteio] = useState([]);
 
+    const addSorteio = data => axios.sorteio("http://localhost:8080/api/sorteio", data).then(() => {
+
+        alert("deu certo")
+    })
+    .catch(() =>{
+
+        alert("deu errado ")
+
+
+    })
+
     useEffect(() => {
-        let url = "http://localhost:8080/api/sorteio";
+        let url = "http://localhost:8080/api/administrador/sorteio";
 
         axios.get(url)
 
         .then((response) => {
 
             setSorteio(response.data)
+        console.log("tudo crto manfredo");
 
         })
         .catch((response) =>{
 
             console.log("ERRO AO PUXAR DA API")
         })
-      });
+      }, []);
 
     return(
         
@@ -93,30 +105,6 @@ function Tabela(){
 
                 </>
             )}
-            {/*<tr>
-
-                <td>1</td>
-                <td>Franscisco Ferdinando</td>
-                <td>Bíblia</td>
-                <td>22/04/06</td>
-                </tr>
-
-                <tr>
-
-                <td>2</td>
-                <td>Amalia das Neves</td>
-                <td>Cesta Básica</td>
-                <td>16/03/06</td>
-                </tr>
-
-                <tr>
-
-                <td>3</td>
-                <td>Hegtor Farias da Silva</td>
-                <td>Cruz</td>
-                <td>05/02/06</td>
-            </tr>
-            */}
         </section>
     )
 }

@@ -32,5 +32,30 @@
 .componenteReviewLoja > div:nth-child(2){
 
     max-width: 30em;
+}
 
+
+/*finalizar pedido, o botao*/
+.botao-loja{
+
+    background-color: #80D88E;
+    border: 2px solid black;
+    color: #35404b;
+    font-weight: 700;
+    padding: 0.5em;
+    border-radius: 1em;
+    margin: 2em auto;
+    display: flex;
+}
+
+.botao-loja:hover{
+
+    background-color: #6ec37c;
+    border: 2px solid black;
+}
+
+.colunaAcordeao{
+
+    display: flex;
+    flex-direction: column;
 }

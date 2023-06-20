@@ -60,20 +60,45 @@ function TableArea(){
 
     const [sorteio, setSorteio] = useState([]);
 
-    useEffect (() =>{
+    const handleSubmit = (e) => {
+        e.preventDefault();
+     };
+  
+     // post
+     const addSorteado = async (id, titulo, sorteioAssociados, data) => {
 
         let url = "http://localhost:8080/api/sorteio";
+        let response = await url.post('', {
+           id: id,
+           titulo: titulo,
+           sorteioAssociados: sorteioAssociados,
+           data: data,
+        });
+        setSorteio([response.data, ...sorteio]);
+        setSorteio('')
+     };
 
-            axios.get(url)
-            .then((response) => {
 
-                setSorteio(response.data)
-            })
-                .catch((response) => {
-
-                    console.log("ERRO AO PUXAR OS DADOS DA API")
-                })
-    })
+     // get
+     useEffect(() => {
+        let url = "http://localhost:8080/api/sorteio";
+    
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", localStorage.getItem("token"));
+    
+        fetch(url, {
+          headers: myHeaders,
+          method: "GET",
+        })
+          .then((r) => r.json())
+          .then((object) => {
+            setSorteio(object);
+          })
+          .catch((r) => {
+            console.log("Erro");
+          });
+      });
 
     return(
 
@@ -95,7 +120,7 @@ function TableArea(){
 
                 <thead>
                 <tr>
-                    <th>Id</th>
+
                     <th>Prêmio</th>
                     <th>Nome do sorteado</th>
                     <th>Data do Sorteio</th>
@@ -108,14 +133,15 @@ function TableArea(){
                     return (
                         <tr key={item.id}>
 
+                
                             <td>{item.titulo}</td>
+                            <td>{item.descricao}</td>
                             <td>{item.sorteioAssociados}</td>
                             <td>{item.data}</td>
                         </tr>
                     );
                 })}
 
-                     
                 </tbody>
                 </Table>
 
