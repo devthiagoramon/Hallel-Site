@@ -4,6 +4,7 @@ import Fundadora from "./pages/Fundadora";
 import Pedido from "./pages/PedidoOracao";
 import Associado from "./pages/Associado";
 import SolicitacaoCadastro from "./pages/SolicitarCadastro";
+import VideoChamada from "./pages/VideoChamada/indexVideo"
 import Doacoes from "./pages/Doacoes/Doacoes.js";
 import Header from "./components/Header";
 import Sobre from "./pages/Sobre";
@@ -119,7 +120,17 @@ function RoutesApp() {
 
         <Route path="/desempenhoUser" element={<DesempenhoUser />}/>
         <Route path="/entrar" element={<Entrar />} />
+
+
+        <Route path="/videoChamada" element={<VideoChamada />}/>
+
+      
       </Routes>
+
+     
+
+
+      
     </BrowserRouter>
   );
 }

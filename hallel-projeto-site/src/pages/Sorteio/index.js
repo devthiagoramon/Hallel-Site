@@ -7,7 +7,6 @@ import Artesanato from "../../images/artesanato.png";
 import Alimento from "../../images/alimentos.png";
 import Roupas from "../../images/roupas.png";
 import Devocao from "../../images/obj_devocao.png";
-import axios from "axios";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgress } from '@mui/material';
 
@@ -94,11 +93,16 @@ function TableArea(){
           .then((r) => r.json())
           .then((object) => {
             setSorteio(object);
+            console.log(sorteio)
+
+       
+            
           })
           .catch((r) => {
+
             console.log("Erro");
           });
-      });
+      }, []);
 
     return(
 
@@ -130,13 +134,31 @@ function TableArea(){
                 <tbody>
 
                 {sorteio.map((item) => {
+
                     return (
+
+                        
                         <tr key={item.id}>
 
-                
-                            <td>{item.titulo}</td>
+
+
+
+
+                            <td>
+
+                                {item.sorteioAssociados.map((user) => {
+
+                                    return(
+
+                                        <>
+                                 {user.nome}
+                                 </>
+                                    )
+                                })
+                                }
+                            </td>
+
                             <td>{item.descricao}</td>
-                            <td>{item.sorteioAssociados}</td>
                             <td>{item.data}</td>
                         </tr>
                     );
@@ -151,6 +173,8 @@ function TableArea(){
         </section>
     )
 }
+
+
 
 function ComoFunciona(){
 
@@ -257,11 +281,7 @@ function ListaPremios(){
                 </div>
 
             </div>
-
-
-
         </section>
-
     )
 }
 
