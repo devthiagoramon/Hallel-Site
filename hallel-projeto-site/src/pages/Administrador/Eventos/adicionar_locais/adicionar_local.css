@@ -1,0 +1,50 @@
+.containerAdicionarLocais {
+  width: 100vw;
+  min-height: 100%;
+  margin-bottom: 3rem;
+}
+
+.headerAdicionarLocais {
+  width: 100%;
+  margin-left: 3rem;
+  margin-top: 1.5rem;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.headerAdicionarLocais > label {
+  font-size: 28px;
+  color: #252525;
+  font-weight: 600;
+}
+
+.bodyAdicionarLocais {
+  width: 94%;
+  margin-left: 3rem;
+  margin-top: 2rem;
+}
+
+.bodyAdicionarLocais > label {
+    font-size: 18px;
+}
+
+.esquerdaAdicionarLocais{
+    width: 45%;
+}
+
+.inputAdicionarLocaisContainer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 75%;
+    row-gap: 20px;
+}
+
+.inputAdicionarLocaisComponents{
+    width: 100%;
+    display: flex;
+    gap: 5px;
+}
