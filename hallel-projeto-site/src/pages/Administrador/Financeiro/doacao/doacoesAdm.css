@@ -73,3 +73,13 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+
+
+
+.Progressobar{
+
+    display: flex;
+    justify-content: center;
+    margin: 10em 0;
+}

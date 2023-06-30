@@ -5,6 +5,7 @@
   box-shadow: none;
   background-color: rgba(255, 3, 3, 0);
   font-size: 1em;
+  color: white;
   font-weight: 700;
 }
 
@@ -23,7 +24,7 @@
 
 .itensdrop a:hover {
 
-  color: #ca4700;
+  color: #ff5900;
   transition: 0.2s;
 }
 

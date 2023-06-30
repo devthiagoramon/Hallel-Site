@@ -40,7 +40,7 @@ function Footer(){
           </ul>
     </div>
     </div>
-    <hr />
+    <hr className="linha"/>
       {/*subscrito*/}
     <div className = "row">
         <p className="col-sm">

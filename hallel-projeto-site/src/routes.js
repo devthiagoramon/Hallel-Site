@@ -4,7 +4,7 @@ import Fundadora from "./pages/Fundadora";
 import Pedido from "./pages/PedidoOracao";
 import Associado from "./pages/Associado";
 import SolicitacaoCadastro from "./pages/SolicitarCadastro";
-import VideoChamada from "./pages/VideoChamada/indexVideo"
+import VideoChamada from "./pages/VideoChamada/indexVideo";
 import Doacoes from "./pages/Doacoes/Doacoes.js";
 import Header from "./components/Header";
 import Sobre from "./pages/Sobre";
@@ -40,9 +40,9 @@ import AdmSorteio from "./pages/Administrador/SorteioAdm/indexSorteio";
 import LojaPrincipal from "./pages/Loja/index";
 import LojaProduto from "./pages/Loja/LojaProduto/indexProduto";
 import LojaPagamento from "./pages/Loja/LojaProduto/LojaPagamento/indexPagLoja";
+import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/AdicionarLocais";
 
 function RoutesApp() {
-
   return (
     <BrowserRouter>
       <Header />
@@ -56,15 +56,15 @@ function RoutesApp() {
         <Route path="/formularioDoacao" element={<DoacaoFormulario />} />
         <Route path="/solicitarCadastro" element={<SolicitacaoCadastro />} />
         <Route path="/sobre" element={<Sobre />} />
-        <Route path="/cursos" element={<Cursos/>}/>
+        <Route path="/cursos" element={<Cursos />} />
         <Route path="/eventos" element={<EventoUser />} />
         <Route path="/descricao" element={<DescricaoEvento />} />
         <Route path="/meusCursos" element={<MeusCursos />} />
-        <Route path="/descCurso/:idCurso" element={<DescCurso/>} />
-        <Route path="/atividades" element= {<CursoAtividade/>} />
-        <Route path="/loja" element= {<LojaPrincipal/>} />
-        <Route path="/loja/produto" element= {<LojaProduto/>} />
-        <Route path="/loja/pagamento" element= {<LojaPagamento/>} />
+        <Route path="/descCurso/:idCurso" element={<DescCurso />} />
+        <Route path="/atividades" element={<CursoAtividade />} />
+        <Route path="/loja" element={<LojaPrincipal />} />
+        <Route path="/loja/produto" element={<LojaProduto />} />
+        <Route path="/loja/pagamento" element={<LojaPagamento />} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
 
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
@@ -79,9 +79,7 @@ function RoutesApp() {
           element={<Historico />}
         />
 
-        <Route
-            path="/administrador/sorteio"
-            element = {<AdmSorteio/>} />
+        <Route path="/administrador/sorteio" element={<AdmSorteio />} />
 
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/maisInfo" element={<MaisInfo />} />
@@ -105,32 +103,46 @@ function RoutesApp() {
           path="/administrador/painelFinanceiro/associados"
           element={<AssociadosADM />}
         />
-        <Route path="/administrador/painelFinanceiro/doacoes/dinheiro" element={<DoacoesDinheiroAdm/>}/>
-        <Route path="/administrador/painelFinanceiro/doacoes/objeto" element={<DoacaoObjetoADM/>}/>
-    
-        <Route path="/administrador/painelFinanceiro/doacoes/objeto/add" element={<AddDoacaoObjetoAdm/>}/>
+        <Route
+          path="/administrador/painelFinanceiro/doacoes/dinheiro"
+          element={<DoacoesDinheiroAdm />}
+        />
+        <Route
+          path="/administrador/painelFinanceiro/doacoes/objeto"
+          element={<DoacaoObjetoADM />}
+        />
 
-        <Route path="/administrador/cursos/add" element={<AdicionarCursoAdm/>}/>
+        <Route
+          path="/administrador/painelFinanceiro/doacoes/objeto/add"
+          element={<AddDoacaoObjetoAdm />}
+        />
 
-        <Route path="/administrador/cursos" element={<ListarCursosADM/>}/>
+        <Route
+          path="/administrador/cursos/add"
+          element={<AdicionarCursoAdm />}
+        />
 
-        <Route path="/administrador/cursos/editar/:idCurso" element={<EditarCursoAdm/>}/>
+        <Route path="/administrador/cursos" element={<ListarCursosADM />} />
 
-        <Route path="/administrador/cursos/associados/:idCurso" element={<AssociadosListaCursosAdm/>}/>
+        <Route
+          path="/administrador/cursos/editar/:idCurso"
+          element={<EditarCursoAdm />}
+        />
 
-        <Route path="/desempenhoUser" element={<DesempenhoUser />}/>
+        <Route
+          path="/administrador/cursos/associados/:idCurso"
+          element={<AssociadosListaCursosAdm />}
+        />
+
+        <Route path="/desempenhoUser" element={<DesempenhoUser />} />
         <Route path="/entrar" element={<Entrar />} />
 
-
-        <Route path="/videoChamada" element={<VideoChamada />}/>
-
-      
+        <Route path="/videoChamada" element={<VideoChamada />} />
+        <Route
+          path="/administrador/locaisEvento"
+          element={<LocaisEventos />}
+        />
       </Routes>
-
-     
-
-
-      
     </BrowserRouter>
   );
 }

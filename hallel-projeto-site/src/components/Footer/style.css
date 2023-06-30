@@ -1,7 +1,7 @@
 .main-footer {
   display: flex;
-  color: black;
-  background: linear-gradient(90deg, #00b09b, #96c93d);
+  color: #f1f1f1;
+  background: #094e49;
   background-size: 100% 100%;
   padding-top: 3em;
   margin-top: 0rem;
@@ -24,7 +24,7 @@
 
 .col h4{
   
-  color: #272e36;
+  color: #f1f1f1;
   font-weight: 600;
 }
 
@@ -32,9 +32,6 @@
 
   font-weight: 400;
 }
-
-
-
 
 .list-unstyled ul li{
   
@@ -44,14 +41,14 @@
 
 .col ul li{
 
-   color:  #262e35;
+  color: #f1f1f1;
    font-weight: 600;
 }
 
 .list-unstyled li a{
 
   text-decoration: none;
-  color: #1b2023;
+  color: #f1f1f1;
 }
 
 .list-unstyled li a:hover{
@@ -64,6 +61,8 @@
 
   max-width: 20em;
   margin: auto;
+  background-color: #f1f1f1;
+  color: #f1f1f1;
   margin-bottom: 10px;
 }
 
@@ -71,4 +70,5 @@
 
   font-size: smaller;
   font-weight: 550;
+  color: #f1f1f1;
 }

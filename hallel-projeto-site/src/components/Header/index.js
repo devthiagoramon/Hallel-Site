@@ -146,12 +146,12 @@ function Header() {
               className="perfilHomepage"
               onClick={() => showModalPerfil()}
             >
-              <AccountCircle sx={{ width: "55px", height: "55px" }} />
+              <AccountCircle sx={{ width: "55px", height: "55px" }} style = {{color: "#f1f1f1"}}/>
             </IconButton>
           </div>
         )}
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-          <FaTimes />
+          <FaTimes  style = {{color: "white"}}/>
         </button>
       </nav>
 
@@ -163,7 +163,7 @@ function Header() {
       {isModalPerfilVisible &&
       (localStorage.getItem("R0l3s") === "ROLE_USER" ||
         localStorage.getItem("R0l3s") === "ROLE_ASSOCIADO,ROLE_USER") ? (
-        <ModalPerfil />
+        <ModalPerfil  />
       ) : (
         ""
       )}
@@ -181,7 +181,7 @@ function Header() {
         ""
       )}
       <button className="nav-btn" onClick={showNavbar}>
-        <FaBars />
+        <FaBars style = {{color: "white"}} />
       </button>
     </header>
   );

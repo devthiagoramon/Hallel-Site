@@ -42,7 +42,7 @@ body{
 }
 
 
-.cards div{
+.cards > div{
     display: grid;
     width: 25%;
     grid-template-columns: 100%;
@@ -85,7 +85,8 @@ body{
 }
 
 .cardLucroTotal{
-    background-color: #03a05e;
+    
+    background-color: #F06D15;
 }
 
 
@@ -100,11 +101,9 @@ body{
 }
 
 .cardDespesaMensal{
-    background-color: #F06D15;
-}
 
-.cardDespesaMensal:hover{
-    background-color: #ce7208;
+    background-color: #03a05e;
+    
 }
 
 .tituloCard{
@@ -212,6 +211,12 @@ body{
     width: 95%;
     display: flex;
     justify-content: center;
+}
+
+.progressoBarra{
+
+    margin: auto;
+    margin-top: 4em;
 }
 
 

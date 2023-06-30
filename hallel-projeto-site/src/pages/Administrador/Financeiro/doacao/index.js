@@ -4,8 +4,9 @@ import Arrow from "./../../../../images/arrow-icon.svg";
 import { useMemo } from "react";
 import { useState } from "react";
 import {Table} from "react-bootstrap";
-import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
+import { CircularProgress, IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
 import { MoreVert, MoreVertRounded } from "@mui/icons-material";
+import { CDBCard, CDBCardBody, CDBDataTable, CDBRow, CDBCol, CDBContainer } from 'cdbreact';
 
 const DoacoesDinheiroAdm = () => {
   const [doacoes, setdoacoes] = useState([]);
@@ -61,6 +62,57 @@ const DoacoesDinheiroAdm = () => {
     }
   }
 
+
+  const data = () => {
+    return {
+      columns: [
+        {
+          label: 'E-mail',
+          field: 'email',
+          width: 50,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'E-mail do Doador',
+          },
+        },
+        {
+          label: 'Descrição',
+          field: 'descricao',
+          width: 100,
+        },
+        {
+          label: 'Tipo',
+          field: 'tipo',
+          width: 150,
+        },
+        {
+          label: 'Data da Doacao',
+          field: 'dataDoacao',
+          width: 150,
+        },
+        {
+          label: 'Valor da doação',
+          field: 'dataDoacao',
+          width: 150,
+        },
+      ],
+
+      rows: doacoes.map((item) => ({
+        email: item.emailDoador,
+        descricao: item.descricao,
+        status: item.localidade,
+        tipo: item.tipo,
+        dataDoacao: item.dataDoacao,
+        valorDoacao: item.valorDoacao,
+
+      })),
+      
+    };
+  };
+
+
+
+
   return (
     <div className="containerDoacoesAdm">
       <div className="cabecalhoDoacoesAdm">
@@ -112,50 +164,37 @@ const DoacoesDinheiroAdm = () => {
         </div>
 
         
-        {doacoes.length === 0 ? (
+        {doacoes.length == 0 ? 
 
-          <div style={{width: "94vw"}}>
+            <div className="Progressobar">
 
-
-            <LinearProgress sx={{width: "100%"}}/>
-            <Table style={{ width: "100%" }} striped hover>
-              <thead>
-                <tr>
-                  <th>Email do Doador</th>
-                  <th>Descrição</th>
-                  <th>Tipo</th>
-                  <th>Data da Doação</th>
-                  <th>Valor da Doação</th>
-                </tr>
-              </thead>
-            </Table>
-          </div>
-        ) : (
-          <Table style={{ width: "94vw" }} striped hover>
-            <thead>
-              <tr>
-                <th>Email do Doador</th>
-                <th>Descrição</th>
-                <th>Tipo</th>
-                <th>Data da Doação</th>
-                <th>Valor da Doação</th>
-              </tr>
-            </thead>
-            <tbody>
-              {doacoes.map((item) => {
-                return (
-                  <tr>
-                    <td>{item.emailDoador}</td>
-                    <td>{item.descricao}</td>
-                    <td>{item.tipo}</td>
-                    <td>{item.dataDoacao}</td>
-                    <td>{item.valorDoacao}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
-        )}
+                <CircularProgress/>
+            </div>
+         : 
+                <CDBContainer>
+                    <CDBCard>
+                      <CDBCardBody>
+                        <CDBDataTable 
+                        entriesLabel="Mostrar eventos" 
+                        searchLabel="Pesquisar"
+                          paginationLabel={["Anterior", "Próximo"]}
+                          infoLabel={["Mostrando de", "até", "de", "eventos"]}
+                          noRecordsFoundLabel="Nenhum evento encontrado"
+                          hover
+                          materialSearch
+                          bordered
+                          entriesOptions={[10, 20, 30]}
+                          entries={15}
+                          pagesAmount={4}
+                          maxHeight = "10vh"
+                          fixed
+                        theadColor="#BF25E6"
+                          data={data()}
+                        />
+                      </CDBCardBody>
+                    </CDBCard>
+          </CDBContainer>
+        }
       </div>
     </div>
   );

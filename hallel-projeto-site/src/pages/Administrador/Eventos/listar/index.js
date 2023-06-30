@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { CDBCard, CDBCardBody, CDBDataTable, CDBRow, CDBCol, CDBContainer } from 'cdbreact';
 import "./index.css";
 import Table from "react-bootstrap/Table";
-import {Skeleton } from "@mui/material";
+import {CircularProgress, Skeleton } from "@mui/material";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function Evento() {
@@ -31,6 +32,40 @@ function Evento() {
   }
   useMemo(() => renderizarEventos(), []);
 
+  const data = () => {
+    return {
+      columns: [
+        {
+          label: 'Nome',
+          field: 'nome',
+          width: 50,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Nome',
+          },
+        },
+        {
+          label: 'E-mail',
+          field: 'email',
+          width: 100,
+        },
+        {
+          label: 'Status',
+          field: 'status',
+          width: 150,
+        },
+  
+      ],
+
+      rows: eventos.map((item) => ({
+        nome: item.titulo,
+        email: item.descricao,
+        status: item.localidade,
+      })),
+      
+    };
+  };
+
   return (
     <div className="painelEventos">
       <h1>Eventos</h1>
@@ -50,27 +85,30 @@ function Evento() {
 
       <div className="container-tb">
 
-      {eventos.length === 0 ? <div className="loaderEventos"><Skeleton width={1150} height={450} /></div> :
-      <Table className="tabela-eventos" style = {{backgroundColor: "#FCFBF8"}} bordered striped hover size="sm">
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Descrição</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          {eventos.map((item) => {
-            return (
-              <tr key={item.id}>
-                <td>{item.titulo}</td>
-                <td>{item.descricao}</td>
-                <td>{item.localidade}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>}
+      {eventos.length === 0 ? <div className="loaderEventos"><CircularProgress style={{margin: "10em 0"}} /></div> :
+      <CDBContainer>
+      <CDBCard>
+        <CDBCardBody>
+          <CDBDataTable 
+          entriesLabel="Mostrar eventos" 
+          searchLabel="Pesquisar"
+            paginationLabel={["Anterior", "Próximo"]}
+            infoLabel={["Mostrando de", "até", "de", "eventos"]}
+            noRecordsFoundLabel="Nenhum evento encontrado"
+            hover
+            materialSearch
+            bordered
+            entriesOptions={[10, 20, 30]}
+            entries={15}
+            pagesAmount={4}
+            maxHeight = "10vh"
+            fixed
+          theadColor="#BF25E6"
+            data={data()}
+          />
+        </CDBCardBody>
+      </CDBCard>
+    </CDBContainer>}
       </div>
     </div>
   );

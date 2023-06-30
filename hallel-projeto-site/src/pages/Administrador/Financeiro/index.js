@@ -6,6 +6,7 @@ import { Table } from "react-bootstrap";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Chart from "react-google-charts";
 import "./painelFin.css";
+import { CircularProgress } from "@mui/material";
 class PainelFinanceiro extends Component {
   constructor(props) {
     super(props);
@@ -174,21 +175,37 @@ class PainelFinanceiro extends Component {
           <label>Painel Financeiro</label>
         </div>
         <div className="cards">
-          <div className="cardLucroTotal">
-            <label className="tituloCard">Saldo</label>
-            <label className="valorNum">R$ {this.state.saldo}</label>
-          </div>
           <div className="cardLucroMensal">
-            <label className="tituloCard">Lucro Mensal</label>
-            <label className="valorNum">R$ {this.state.lucros}</label>
-            <a
-              className="saibaMaisFin"
-              href="/administrador/painelFinanceiro/rendas"
-            >
-              Saber mais
-            </a>
+
+            {this.state.gastos == 0 ? 
+
+           <div className="progressoBarra">
+            <CircularProgress color= "info"/> 
+
+            </div>
+            :
+              <>
+                <label className="tituloCard">Lucro Mensal</label>
+                <label className="valorNum">R$ {this.state.lucros}</label>
+                  <a
+                    className="saibaMaisFin"
+                    href="/administrador/painelFinanceiro/rendas"
+                  >
+                    Saber mais
+                  </a>
+              </>
+            }
           </div>
           <div className="cardDespesaMensal">
+            {this.state.gastos == 0 ?
+
+              <div className="progressoBarra">
+
+                  <CircularProgress color= "info"/> 
+              </div>
+             :
+
+            <>
             <label className="tituloCard">Gasto Mensal</label>
             <label className="valorNum">R$ {this.state.gastos}</label>
             <a
@@ -197,11 +214,31 @@ class PainelFinanceiro extends Component {
             >
               Saber mais
             </a>
+            </>
+          }
           </div>
+          <div className="cardLucroTotal">
+
+              {this.state.saldo == 0 ?
+              
+              <div className="progressoBarra">
+
+                <CircularProgress color= "info"/> 
+              </div>
+               :
+                <>
+                  <label className="tituloCard">Saldo</label>
+                  <label className="valorNum">R$ {this.state.saldo}</label>
+                </>
+              }
+          </div>
+          
         </div>
         <div className="painelGrafico">
           <div className="graficoEsquerda">
             <p>Gráfico de Renda</p>
+
+            {this.state.data == 0 ? <CircularProgress/>:
             <Chart
               style={{ marginLeft: "20px", marginTop: "40px" }}
               width="95%"
@@ -210,6 +247,7 @@ class PainelFinanceiro extends Component {
               data={this.state.data}
               options={this.state.opcoesGrafico}
             />
+          }
           </div>
           <div className="escolhaDireita">
             <button>Dia Atual</button>
