@@ -139,7 +139,7 @@ function RoutesApp() {
 
         <Route path="/videoChamada" element={<VideoChamada />} />
         <Route
-          path="/administrador/adicionarLocal"
+          path="/administrador/locaisEvento"
           element={<LocaisEventos />}
         />
       </Routes>

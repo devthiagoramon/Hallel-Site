@@ -1,11 +1,41 @@
-import { Button, Paper, TableContainer } from '@mui/material';
+import { Button, LinearProgress, Paper, TableContainer } from '@mui/material';
+import axios from 'axios';
 import React from 'react'
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 
-const TabelaLocaisEventos = () => {
+const TabelaLocaisEventos = (props) => {
+
+  const [eventosLocais, seteventosLocais] = useState([]);
+
+  useEffect(() => {
+    loadEventosLocais();
+
+
+  }, [props.enviadoSucesso])
+
+  function loadEventosLocais() {
+    axios.get("http://localhost:8080/api/locais/listLocalizacao", {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    }).then((res) => {
+      seteventosLocais(res.data);
+    }).catch((error) => {
+      console.error("Erro na requisição de listar localização: " + error);
+    })
+  }
+
+  function handleEditarLocal(id){
+    props.setIdLocalEvento(id)
+  }
+
+
   return (
     <div className="container_tabela_locais_eventos">
-        <Table hover>
+      <Table hover>
+        {eventosLocais.length !== 0 ? <>
           <thead>
             <tr>
               <th>Localização</th>
@@ -13,12 +43,26 @@ const TabelaLocaisEventos = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-                <td>Teste</td>
-                <td><Button sx={{width:"100%", height: "100%"}} variant='contained'>Editar</Button></td>
-            </tr>
+            {eventosLocais.map((local) => {
+              return(
+              <tr key={local.localizacao}> 
+                <td>{local.localizacao}</td>
+                <td><Button sx={{ width: "100%", height: "100%" }} variant='contained' onClick={() => handleEditarLocal(local.id)}>Editar</Button></td>
+              </tr>
+              )
+            })}
           </tbody>
-        </Table>
+        </> : <>
+          <thead>
+            <tr>
+              <th>Localização</th>
+              <th>Editar</th>
+            </tr>
+          </thead>
+          <LinearProgress />
+
+        </>}
+      </Table>
     </div>
   );
 }

@@ -1,12 +1,8 @@
-import { SendRounded } from "@mui/icons-material";
-import { Button, TextField } from "@mui/material";
+import { DoneRounded, ErrorOutlineRounded, ErrorRounded, SendRounded } from "@mui/icons-material";
+import { Button, CircularProgress, TextField } from "@mui/material";
 import React from "react";
 
-const InputsBodyAdicionarLocais = ({setisClicked}) => {
-
-    const onClickHandle = () => {
-        setisClicked(true);
-    }
+const InputsBodyAdicionarLocais = (props) => {
 
   return (
     <div className="inputAdicionarLocaisContainer">
@@ -17,14 +13,38 @@ const InputsBodyAdicionarLocais = ({setisClicked}) => {
           label="Nome da localidade"
           size="small"
           variant="outlined"
+          value={props.localizacao}
+          onChange={(e) => { props.setLocalizacao(e.target.value) }}
         />
-        <Button
+        {props.isRequestSucessFull === true && 
+          <Button
           variant="contained"
-          onClick={onClickHandle}
-          endIcon={<SendRounded />}
+          onClick={props.enviarRequest}
+          endIcon={<DoneRounded />}
+          color="success"
         >
-          Adicionar
+          Sucesso
         </Button>
+        }
+        {props.isRequestSucessFull === null &&
+          <Button
+            variant="contained"
+            onClick={props.enviarRequest}
+            endIcon={props.enviando ? <CircularProgress sx={{color: "#FAF4F4"}}/> : <SendRounded />}
+          >
+            Adicionar
+          </Button>
+        }
+        {props.isRequestSucessFull === false &&
+          <Button
+            variant="contained"
+            onClick={props.enviarRequest}
+            endIcon={<ErrorOutlineRounded />}
+            color="error"
+          >
+            Error
+          </Button>
+        }
       </div>
     </div>
   );
