@@ -1,13 +1,13 @@
 import { PlaceRounded } from "@mui/icons-material";
 import React from "react";
 
-const HeaderAdicionarLocais = () => {
+const HeaderLocaisEventos = () => {
   return (
     <div className="headerAdicionarLocais">
-      <label>Adicionar local</label>
+      <label>Locais</label>
       <PlaceRounded />
     </div>
   );
 };
 
-export default HeaderAdicionarLocais;
+export default HeaderLocaisEventos;

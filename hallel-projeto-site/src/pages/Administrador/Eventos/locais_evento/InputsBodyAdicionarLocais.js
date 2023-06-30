@@ -1,4 +1,4 @@
-import { SearchRounded } from "@mui/icons-material";
+import { SendRounded } from "@mui/icons-material";
 import { Button, TextField } from "@mui/material";
 import React from "react";
 
@@ -14,16 +14,16 @@ const InputsBodyAdicionarLocais = ({setisClicked}) => {
       <div className="inputAdicionarLocaisComponents">
         <TextField
           sx={{ width: "70%" }}
-          label="CEP ou Nome da localidade"
+          label="Nome da localidade"
           size="small"
           variant="outlined"
         />
         <Button
           variant="contained"
           onClick={onClickHandle}
-          endIcon={<SearchRounded />}
+          endIcon={<SendRounded />}
         >
-          Pesquisar
+          Adicionar
         </Button>
       </div>
     </div>

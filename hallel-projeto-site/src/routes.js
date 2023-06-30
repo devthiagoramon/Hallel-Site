@@ -40,7 +40,7 @@ import AdmSorteio from "./pages/Administrador/SorteioAdm/indexSorteio";
 import LojaPrincipal from "./pages/Loja/index";
 import LojaProduto from "./pages/Loja/LojaProduto/indexProduto";
 import LojaPagamento from "./pages/Loja/LojaProduto/LojaPagamento/indexPagLoja";
-import AdicionarLocais from "./pages/Administrador/Eventos/adicionar_locais/AdicionarLocais";
+import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/AdicionarLocais";
 
 function RoutesApp() {
   return (
@@ -140,7 +140,7 @@ function RoutesApp() {
         <Route path="/videoChamada" element={<VideoChamada />} />
         <Route
           path="/administrador/adicionarLocal"
-          element={<AdicionarLocais />}
+          element={<LocaisEventos />}
         />
       </Routes>
     </BrowserRouter>
