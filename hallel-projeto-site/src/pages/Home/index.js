@@ -10,7 +10,7 @@ function Home() {
     <div className="homepage">
       <div className="containerCapa">
         <section className="sectionCapa">
-          <label>Seja bem-vindo(a) à Comunidade Hallel</label>
+          <label>Seja bem-vindo(a) à Comunidade Católica Hallel</label>
         </section>
       </div>
       <Eventos />

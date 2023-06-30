@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { useState } from "react";
 import { Form, Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { CircularProgress } from "@mui/material";
 
 const PagamentosAssociado = () => {
   const [pagamentosAssociados, setpagamentosAssociados] = useState([]);
@@ -56,7 +57,18 @@ const PagamentosAssociado = () => {
               placeholder="Pesquisar pagamento (Nome)"
             />
           </div>
+
         </div>
+
+
+        {pagamentosAssociados.length == 0    
+        ?
+          
+        <div className="CircularProgress" style={{marginBottom: "10em"}}>
+          <CircularProgress/>
+        </div>
+          
+        :
         <Table style={{ width: "100%" }} striped hover>
           <thead>
             <tr>
@@ -70,6 +82,7 @@ const PagamentosAssociado = () => {
             </tr>
           </thead>
           <tbody>
+
             {pagamentosAssociadosFiltrado.map((item) => {
               return (
                 <tr>
@@ -85,6 +98,7 @@ const PagamentosAssociado = () => {
             })}
           </tbody>
         </Table>
+        }
       </div>
     </div>
   );

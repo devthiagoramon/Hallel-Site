@@ -1,6 +1,8 @@
-import { ArrowBack } from '@mui/icons-material';
 import React, { useMemo, useState } from 'react'
-import { Form, Table } from 'react-bootstrap';
+import { Form} from 'react-bootstrap';
+import { CircularProgress } from '@mui/material';
+import './associadosadm.css'
+import { CDBCard, CDBCardBody, CDBDataTable, CDBRow, CDBCol, CDBContainer } from 'cdbreact';
 
 const AssociadosADM = () => {
  const [associados, setassociados] = useState([]);
@@ -28,59 +30,112 @@ const AssociadosADM = () => {
       });
   }, []);
 
-  const associadosFiltrado = useMemo(() => {
-    let lowerPesquisa = pesquisa.toLowerCase();
-    return associados.filter((associado) =>
-      associado.nome.toLowerCase().includes(lowerPesquisa)
-    );
-  }, [associados, pesquisa]);
+  // const associadosFiltrado = useMemo(() => {
+  //   let lowerPesquisa = pesquisa.toLowerCase();
+  //   return associados.filter((associado) =>
+  //     associado.nome.toLowerCase().includes(lowerPesquisa)
+  //   );
+  // }, [associados, pesquisa]);
+
+
+  const data = () => {
+    return {
+      columns: [
+        {
+          label: 'Nome',
+          field: 'nome',
+          width: 50,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Nome',
+          },
+        },
+        {
+          label: 'E-mail',
+          field: 'email',
+          width: 100,
+        },
+        {
+          label: 'Participando do evento',
+          field: 'participandoDoEvento',
+          width: 150,
+        },
+        {
+          label: 'Status',
+          field: 'status',
+          width: 150,
+        },
+        {
+          label: 'Pago',
+          field: 'pago',
+          width: 150,
+        },
+      ],
+
+      rows: associados.map((item) => ({
+        nome: item.nome,
+        email: item.email,
+        participandoDoEvento: item.eventoParticipando,
+        status: item.isAssociado,
+        pago: item.isPago ? "Sim" : "Não",
+      })),
+    }; 
+  };
 
   return (
-    <div className="containerPagamentos">
+    <div className="containerViewAssociados">
       <div className="cabecalhoPagamentos">
         <a>Associados</a>
       </div>
+
+      {associados.length == 0 ?
+
+    <div className='CircleProgress' style={{top: "10em"}} >
+
+      <CircularProgress/>
+
+      </div>
+      :
       <div className="containerTabelaPagamentos">
         <div className="headContTabelaPagamentos">
           <div className="tituloHeadContTabelaPagamentos">
             <a>Tabela de Associados</a>
           </div>
-          <div className="pesquisaHeadContTabelaPagamentos">
+          {/* <div className="pesquisaHeadContTabelaPagamentos">
             <Form.Control
               onChange={(e) => {
                 setPesquisa(e.target.value);
               }}
               placeholder="Pesquisar Associado"
             />
-          </div>
+          </div> */}
         </div>
-        <Table style={{ width: "100%" }} hover>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>Participando dos eventos</th>
-              <th>Status</th>
-              <th>Pago</th>
-            </tr>
-          </thead>
-          <tbody>
-            {associadosFiltrado.map((item) => {
-              return (
-                <tr>
-                  <td>{item.nome}</td>
-                  <td>{item.email}</td>
-                  <td>{item.eventoParticipando}</td>
-                  <td>{item.isAssociado}</td>
-                  <td>{item.isPago ? "Sim" : "Não"}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
+        <CDBContainer>
+      <CDBCard>
+        <CDBCardBody>
+          <CDBDataTable 
+          entriesLabel="Mostrar associados" 
+          searchLabel="Pesquisar"
+            paginationLabel={["Anterior", "Próximo"]}
+            infoLabel={["Mostrando de", "até", "de", "associados"]}
+            noRecordsFoundLabel="Nenhum associado encontrado"
+            hover
+            materialSearch
+            bordered
+            entriesOptions={[10, 20, 30]}
+            entries={15}
+            pagesAmount={4}
+            maxHeight = "10vh"
+            fixed
+          theadColor="#BF25E6"
+            data={data()}
+          />
+        </CDBCardBody>
+      </CDBCard>
+    </CDBContainer>
       </div>
+      }
     </div>
   );
 }
-
 export default AssociadosADM;

@@ -3,7 +3,7 @@ import "./doacoesAdm.css";
 import Arrow from "./../../../../images/arrow-icon.svg";
 import { useMemo } from "react";
 import { useState } from "react";
-import { Table } from "react-bootstrap";
+import {Table} from "react-bootstrap";
 import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
 import { MoreVert, MoreVertRounded } from "@mui/icons-material";
 
@@ -110,8 +110,13 @@ const DoacoesDinheiroAdm = () => {
             </Menu>
           </div>
         </div>
+
+        
         {doacoes.length === 0 ? (
+
           <div style={{width: "94vw"}}>
+
+
             <LinearProgress sx={{width: "100%"}}/>
             <Table style={{ width: "100%" }} striped hover>
               <thead>

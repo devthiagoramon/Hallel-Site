@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect} from "react";
 import InfoEventos from "../MaisInformacoes";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Skeleton } from "@mui/material";
 import "./eventoUser.css";
 
 function EventoUser() {
@@ -14,7 +15,7 @@ function EventoUser() {
     setEventoEspc(item);
   }
 
-  const renderizarEventos = useMemo(() => {
+  /*const renderizarEventos = useMemo(() => {
     let url = "http://localhost:8080/api/eventos";
 
     let myHeaders = new Headers();
@@ -25,9 +26,7 @@ function EventoUser() {
       headers: myHeaders,
       method: "GET",
     })
-      .then((res) => {
-        return res.json();
-      })
+   
       .then((evento) => {
         console.log(evento);
         setEventos(evento);
@@ -35,6 +34,30 @@ function EventoUser() {
       .catch((error) => {
         console.log(error);
       });
+  }, []);  */
+
+
+
+  useEffect(() => {
+    let url = "http://localhost:8080/api/eventos/listar";
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+    .then((r) => r.json())
+    .then((object) => {
+      setEventos(object);
+      console.log(eventos)
+    })
+    .catch((r) => {
+
+      console.log("Erro");
+    });
   }, []);
 
   return (
@@ -45,7 +68,11 @@ function EventoUser() {
         <div>
           <h1 className="TituloEventoUser">Eventos</h1>
           <div className="CorpoEventoUser">
-            {eventos.map((evento) => {
+
+
+     {eventos.length === 0 ? <div className="loaderEventoCarroseul"><Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /></div> :
+          
+            eventos.map((evento) => {
               return (
                 <div className="card" style={{ width: "18rem",
                                                maxHeight: "480px" }}>
@@ -64,6 +91,7 @@ function EventoUser() {
                 </div>
               );
             })}
+
           </div>
         </div>
       )}

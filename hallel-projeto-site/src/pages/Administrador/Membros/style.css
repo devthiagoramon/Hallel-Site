@@ -1,24 +1,37 @@
-.sessaoMembro {
-  margin-top: 11em;
+.sessaoMembro > label{
+
+  color: #35404b;
+  font-weight: 700;
+  font-size: 2em;
+  margin-top: 2em;
+  text-indent: 4em;
 }
 
 .filtro {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  align-items: flex-end;
   width: 100%;
   margin: 1.5em 0;
+}
+
+
+.filtro .buttonArea, .right-area{
+
+
+  margin: 0 0.5em;
 }
 
 /*left container*/
 
 .left-area {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .left-area > div {
-  align-content: flex-end;
+  align-content: flex-start;
   display: flex;
   flex-direction: row;
 }
@@ -26,65 +39,84 @@
 /*right container*/
 
 .right-area {
-  flex-direction: column;
+  flex-direction: row;
+  display: flex;
 }
 
 .right-area .buttonArea {
   flex-direction: row;
+  
+}
+
+.adicionarBt > button{
+
+  border-radius: 0.5em;
+  border: none;
+  padding: 0.2em 0.5em;
+  font-weight: 700;
+  color: #1e242a;
 }
 
 .right-area .buttonArea > button {
+  border-radius: 0.5em;
   border: none;
-  padding: 0.6em;
-  align-content: space-around;
-  margin: 0 1em;
-  border-radius: 1em;
-  color: #363b40;
-  text-transform: uppercase;
+  padding: 0.5em 0.5em;
   font-weight: 700;
-}
-
-.buttonArea button:nth-child(1) {
-  background-color: #44b56c;
-}
-.buttonArea button:nth-child(1):hover {
-  background-color: #42a866;
-  color: #e9e9e9;
-}
-
-.buttonArea button:nth-child(2) {
-  background-color: #fae4a3;
-}
-.buttonArea button:nth-child(2):hover {
-  background-color: #deca8f;
-  color: #000000;
-}
-
-.buttonArea button:nth-child(3) {
-  background-color: #dc6e68;
-}
-.buttonArea button:nth-child(3):hover {
-  background-color: #c74e48;
-  color: #e9e9e9;
+  color: #1e242a;
+  background-color: rgb(53, 178, 103);
 }
 
 .select-area {
-  padding: 0 25%;
+  min-width: 10dp;
   margin-bottom: 1.5em;
 }
 
+
+.progressCircle{
+
+  display: block;
+  margin: auto;
+  }
+
 .tableMembro{
 
-  margin: 0 10%;
+  margin: 0 0
 }
 
 .tableMembro .table, thead td{
 
-  border: 2px solid #35404b;
-  text-align: center;
+
+ 
 }
 
 .tableMembro .table tr, th, td{
 
-  text-align: center;
+}
+
+.progressCircle{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5em 0;
+}
+
+
+.coluna_opcoes > button{
+
+  border-radius: 0.5em;
+  border: none;
+  padding: 0.2em 0.5em;
+  font-weight: 700;
+  color: #1e242a;
+}
+
+.coluna_opcoes > button:first-child{
+
+  background-color: #ffd885;
+}
+
+.coluna_opcoes > button:last-child{
+
+  background-color: #fd8282;
 }

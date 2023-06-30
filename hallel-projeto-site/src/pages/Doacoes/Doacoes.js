@@ -5,14 +5,7 @@ import { useMemo } from "react";
 
 function Doacoes() {
 
-  const [isMembro, setIsMembro] = useState(false);
-
-  useMemo(() => {
-    if(localStorage.getItem("R0l3s").contains("ROLE_USER")){
-      setIsMembro(isMembro);
-    }
-  }, [])
-
+  
   return (
     <div className="containerdoacoes">
       <div className="left-doacoes">

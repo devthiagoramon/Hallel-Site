@@ -1,31 +1,18 @@
 import "./style.css";
 import { useEffect, useState } from "react";
-import Table from "react-bootstrap/Table";
+import Table from "react-bootstrap/Table"
 import Select from "react-bootstrap/FormSelect";
 import { AiOutlineSearch } from "react-icons/ai";
 import Search from "react-bootstrap/FormGroup";
 import Button from "react-bootstrap/Button";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { CDBCard, CDBCardBody, CDBDataTable, CDBRow, CDBCol, CDBContainer } from 'cdbreact';
+import { CircularProgress } from "@mui/material";
 
 function Filtro() {
   return (
     <div className="filtro">
-      <div className="left-area">
-        <Search className="searchbar">
-          <input
-            type="search"
-            name="q"
-            placeholder="Pesquisar.."
-            className="form-control"
-          />
-
-          <Button type="button" className="primary">
-            <i>
-              <AiOutlineSearch />
-            </i>
-          </Button>
-        </Search>
-      </div>
+    
 
       <div className="right-area">
         <div className="select-area">
@@ -39,8 +26,7 @@ function Filtro() {
 
         <div className="buttonArea">
           <button className="adicionarBt">Adicionar</button>
-          <button className="alterarBt">Alterar</button>
-          <button className="removerBt">Remover</button>
+        
         </div>
       </div>
     </div>
@@ -57,6 +43,8 @@ function MembrosAdministrador() {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", localStorage.getItem("token"));
 
+    
+
     fetch(url, {
       headers: myHeaders,
       method: "GET",
@@ -68,39 +56,102 @@ function MembrosAdministrador() {
       .catch((r) => {
         console.log("Erro na hora de puxar os membros da API");
       });
-  });
+  }, []);
+
+
+  const data = () => {
+    return {
+      columns: [
+        {
+          label: 'Nome',
+          field: 'nome',
+          width: 50,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Nome',
+          },
+        },
+        {
+          label: 'E-mail',
+          field: 'email',
+          width: 100,
+        },
+        {
+          label: 'Status',
+          field: 'status',
+          width: 150,
+        },
+  
+      ],
+
+      rows: membro.map((item) => ({
+        nome: item.nome,
+        email: item.email,
+        status: item.status,
+      })),
+      
+    };
+  };
 
   return (
     <section className="sessaoMembro">
-      <Filtro />
 
-      <div className="tableMembro">
-      <Table style = {{backgroundColor: "#FCFBF8"}} bordered striped hover size="sm">
+{/* <div className="left-area">
+        <Search className="searchbar">
+          <input
+            type="search"
+            name="q"
+            placeholder="Pesquisar.."
+            className="form-control"
+          />
 
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Data de nascimento</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+          <Button type="button" className="primary">
+            <i>
+              <AiOutlineSearch />
+            </i>
+          </Button>
+        </Search>
+      </div> */}
 
-        <tbody>
-          
-          {membro.map((item) => {
-            return (
-              <tr key={item.id}>
-                <td>{item.nome}</td>
-                <td>{item.email}</td>
-                <td></td>
-                <td>{item.status}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-      </div>
+      <label>Membros</label>
+
+      {membro.length == 0 ?
+
+        <div className="progressCircle" style={{marginBottom: "10em"}}>
+
+
+        <CircularProgress/>
+
+
+        </div>
+
+      : 
+      
+      <CDBContainer>
+      <CDBCard>
+        <CDBCardBody>
+          <CDBDataTable 
+          entriesLabel="Mostrar membros" 
+          searchLabel="Pesquisar"
+            paginationLabel={["Anterior", "Próximo"]}
+            infoLabel={["Mostrando de", "até", "de", "membros"]}
+            noRecordsFoundLabel="Nenhum membro encontrado"
+            hover
+            materialSearch
+            bordered
+            entriesOptions={[10, 20, 30]}
+            entries={15}
+            pagesAmount={4}
+            maxHeight = "10vh"
+            fixed
+          theadColor="#BF25E6"
+            data={data()}
+          />
+        </CDBCardBody>
+      </CDBCard>
+    </CDBContainer>
+
+}
     </section>
   );
 }
