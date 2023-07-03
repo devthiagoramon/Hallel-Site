@@ -135,7 +135,7 @@ function Header() {
 
         {isNotUsuario() ? (
           <IconButton
-            sx={{ width: "60px", height: "60px", color: "#252525" }}
+            sx={{ width: "60px", height: "60px", color: "#FAF4F4" }}
             onClick={() => (window.location.href = "/entrar")}
           >
             <Login />
@@ -146,7 +146,7 @@ function Header() {
               className="perfilHomepage"
               onClick={() => showModalPerfil()}
             >
-              <AccountCircle sx={{ width: "55px", height: "55px" }} style = {{color: "#f1f1f1"}}/>
+              <AccountCircle sx={{ width: "55px", height: "55px" }} style = {{color: "#FAF4F4"}}/>
             </IconButton>
           </div>
         )}

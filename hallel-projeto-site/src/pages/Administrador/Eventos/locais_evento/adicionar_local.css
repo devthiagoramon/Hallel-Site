@@ -111,7 +111,7 @@
 .container_btn_modal_editar_local{
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-top: 2rem;
 }
