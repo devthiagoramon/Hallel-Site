@@ -7,8 +7,11 @@ import addCircle from "./../../../../images/addCircle.svg";
 import deleteIcon from "./../../../../images/deleteIcon.svg";
 import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
-import { Button, TextareaAutosize } from "@mui/material";
-import { Save } from "@mui/icons-material";
+import { Button, IconButton, TextareaAutosize } from "@mui/material";
+import { AddLocationRounded, Save } from "@mui/icons-material";
+import axios from "axios";
+import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
+import { MuiFileInput } from "mui-file-input";
 
 const AdicionarEvento = () => {
   const [tituloInput, setTituloInput] = useState();
@@ -21,12 +24,14 @@ const AdicionarEvento = () => {
   const addPalestrante = useRef();
   const [btnHabilitado, setbtnHabilitado] = useState(false);
 
+  const [anchorEl, setAnchorEl] = useState(null);
+
   const eventoTemplate = {
     titulo: "",
     descricao: "",
     date: "",
     horario: "",
-    endereco: "",
+    localEvento: null,
     imagem: "",
     palestrantes: [],
   };
@@ -39,7 +44,7 @@ const AdicionarEvento = () => {
       evento.descricao !== "" &&
       evento.horario !== "" &&
       evento.date !== "" &&
-      evento.endereco !== ""
+      evento.localEvento !== null
     ) {
       setbtnHabilitado(true);
     } else {
@@ -89,8 +94,46 @@ const AdicionarEvento = () => {
     setinputsArray(inputs);
   }
 
-  function teste() {
-    console.log(evento);
+  const enviarEvento = () => {
+    let url = "http://localhost:8080/api/administrador/evento/create"
+
+    axios.post(url, {
+      ...evento
+    }, {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    })
+
+  }
+
+  const abrirModalLocalizacao = (e) => {
+    setAnchorEl(e.currentTarget);
+  }
+
+  const handleCloseLocaisEvento = () => {
+    setAnchorEl(null);
+  }
+
+  function setLocalEvento(localEvento) {
+    setevento((prevState) => {
+      return { ...prevState, localEvento };
+    })
+  }
+
+  const onImageSelectedMui = (e) => {
+    const file = e;
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const dataURL = e.target.result;
+        setImagemInput(dataURL);
+      };
+
+      reader.readAsDataURL(file);
+    }
   }
 
   return (
@@ -99,73 +142,83 @@ const AdicionarEvento = () => {
         <label>Adicionar eventos</label>
 
         <div className="headCont">
-          <Tooltip title="Obrigatório" placement="right-start">
-            <input
-              ref={tituloDiv}
-              name="tituloInput"
-              className="tituloEvento"
-              type="text"
-              placeholder="Titulo *"
-              onChange={(e) =>
-                setevento((prevState) => {
-                  return { ...prevState, titulo: e.target.value };
-                })
-              }
-            />
-          </Tooltip>
-        </div>
-        <div className="contOutImgEvento">
-          <div ref={imagemDiv} className="contImagemEvento">
-            {imagemInput === "" ? (
-              <div
-                className="innerImagem"
-                onDrop={dropImagemDiv}
-                onDragOver={imagemSobreDiv}
-                ref={imagemLabelInformativoDiv}
-              >
-                <label className="labelInputImagem" for="selecao-arquivo">
-                  <img src={addImageIcon} />
-                </label>
-                <label
-                  className="labelInformativoImagem"
-                  ref={imagemLabelInformativoLabel}
-                >
-                  Clique no icone ou arraste a foto
-                  <br />
-                  <span>Resolução: 1920x768</span>
-                </label>
+          <div className="head_cont_inputs">
+            <div className="head_cont_inputs_texts">
+              <Tooltip sx={{ width: "100%" }} title="Obrigatório" placement="right-start">
+                <label className="lblTituloEvento">Titulo <span className="obrigatorio">*</span></label>
                 <input
-                  className="inputImagem"
-                  type="file"
-                  id="selecao-arquivo"
-                  onChange={onImageSelected}
+                  ref={tituloDiv}
+                  name="tituloInput"
+                  className="tituloEvento"
+                  type="text"
+                  placeholder="Titulo *"
+                  onChange={(e) =>
+                    setevento((prevState) => {
+                      return { ...prevState, titulo: e.target.value };
+                    })
+                  }
                 />
+              </Tooltip>
+              <div className="contDescricaoEvento">
+                <label className="lblDescEvento">
+                  Descrição <span className="obrigatorio">*</span>
+                </label>
+                <Tooltip title="Obrigatório" placement="right-start">
+                  <textarea
+                    className="descEvento"
+                    type="text"
+                    placeholder="Descrição..."
+                    onChange={(e) =>
+                      setevento((prevState) => {
+                        return { ...prevState, descricao: e.target.value };
+                      })
+                    }
+                  />
+                </Tooltip>
               </div>
-            ) : (
-              <img
-                className="imagemEvento"
-                alt="Imagem do Evento"
-                src={imagemInput}
-              />
-            )}
+            </div>
+            <div className="head_cont_inputs_image">
+              <div className="contOutImgEvento">
+                <div ref={imagemDiv} className="contImagemEvento">
+                  {imagemInput === "" ? (
+                    <div
+                      className="innerImagem"
+                      onDrop={dropImagemDiv}
+                      onDragOver={imagemSobreDiv}
+                      ref={imagemLabelInformativoDiv}
+                    >
+                      <label className="labelInputImagem" for="selecao-arquivo">
+                        <img src={addImageIcon} />
+                      </label>
+                      <label
+                        className="labelInformativoImagem"
+                        ref={imagemLabelInformativoLabel}
+                      >
+                        Clique no icone ou arraste a foto
+                        <br />
+                      </label>
+                      <input
+                        className="inputImagem"
+                        type="file"
+                        id="selecao-arquivo"
+                        onChange={onImageSelected}
+                      />
+                    </div>
+                  ) : (
+                    <div className="contImagemEventoInner">
+                      <img
+                        className="imagemEvento"
+                        alt="Imagem do Evento"
+                        src={imagemInput}
+                      />
+                      <MuiFileInput sx={{width: "100%", mt: 2}} onChange={onImageSelectedMui}/>
+
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="contDescricaoEvento">
-          <label className="lblDescEvento">
-            Descrição <span className="obrigatorio">*</span>
-          </label>
-          <Tooltip title="Obrigatório" placement="right-start">
-            <textarea
-              className="descEvento"
-              type="text"
-              placeholder="Descrição..."
-              onChange={(e) =>
-                setevento((prevState) => {
-                  return { ...prevState, descricao: e.target.value };
-                })
-              }
-            />
-          </Tooltip>
         </div>
         <hr className="divisao" />
         <div className="contDetalhes">
@@ -197,17 +250,24 @@ const AdicionarEvento = () => {
               />
             </Tooltip>
             <label>
-              Endereço <span className="obrigatorio">*</span>:
+              Local do Evento <span className="obrigatorio">*</span>:
             </label>
             <Tooltip title="Obrigatório" placement="right-start">
-              <TextareaAutosize
-                placeholder="Av. Amazonas, 1113 Iranduba, AM, 69415-000"
-                onChange={(e) =>
-                  setevento((prevState) => {
-                    return { ...prevState, endereco: e.target.value };
-                  })
-                }
-              />
+              {evento.localEvento === null
+                ?
+                <IconButton sx={{ width: "35px" }} onClick={abrirModalLocalizacao}>
+                  <AddLocationRounded sx={{ width: "35px", color: "#252525" }} />
+                </IconButton>
+                :
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <label style={{ fontSize: "18px", width: "80%" }}>
+                    {evento.localEvento.localizacao}
+                  </label>
+                  <IconButton sx={{ width: "35px" }} onClick={abrirModalLocalizacao}>
+                    <AddLocationRounded sx={{ width: "35px", color: "#252525" }} />
+                  </IconButton>
+                </div>
+              }
             </Tooltip>
           </div>
           <div className="contDetalhesDireita">
@@ -261,11 +321,12 @@ const AdicionarEvento = () => {
               </span>
             </Tooltip>
           ) : (
-            <Button variant="contained" color="success" onClick={teste}>
+            <Button variant="contained" color="success" onClick={enviarEvento}>
               Salvar
             </Button>
           )}
         </div>
+        <ModalListarLocalEvento handleCloseLocaisEvento={handleCloseLocaisEvento} anchorEl={anchorEl} setAnchorEl={setAnchorEl} setLocalEvento={setLocalEvento} />
       </div>
     </div>
   );

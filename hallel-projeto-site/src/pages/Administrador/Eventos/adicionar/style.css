@@ -13,11 +13,26 @@
   margin: 1em 0;
 }
 
+.head_cont_inputs{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 3rem;
+  height: 100%;
+}
+
+.head_cont_inputs_texts{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
 .tituloEvento {
-  margin-top: 1rem;
-  margin-left: 4rem;
-  min-width: 30vw;
-  height: 2.5rem;
+  width: 100%;
+  height: 24px;
   font-size: 1.4em;
   padding: 1em;
   border: 2px solid rgb(217, 72, 20, .70);
@@ -30,18 +45,26 @@
   transition: 0.5s;
 }
 
+.head_cont_inputs_image{
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
+
 .contOutImgEvento{
   width: 100vw;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .contImagemEvento {
-  margin-top: 3rem;
-  width: 50vw;
+  width: 70%;
   height: auto;
-  min-height: 60vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -53,7 +76,7 @@
 
 .innerImagem{
   width: 40%;
-  height: 60%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -71,7 +94,8 @@
   border-radius: 5px;
   cursor: pointer;
   margin: 10px;
-  padding: 6px 20px
+  padding: 6px 20px;
+  max-height: 150px;
 }
 
 .labelInputImagem :hover{
@@ -103,23 +127,38 @@
   display: none;
 }
 
+.contImagemEventoInner{
+  width: 100%;
+  height: 100%;
+   display: block;
+}
+
 .imagemEvento{
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  object-fit: fill;
+  aspect-ratio: 1/9;
 }
 
+
 .contDescricaoEvento{
-  margin-top: 3rem;
-  margin-left: 4rem;
-  width: 60vw;
+  width: 100%;
   height: 30vh;
+}
+
+.lblTituloEvento{
+  font-size: 2em;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  text-align: left;
 }
 
 .lblDescEvento{
   font-weight: 500;
   font-size: 2em;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   width: 100%;
   text-align: left;
 }
@@ -130,7 +169,7 @@
 
 .descEvento{
   width: 100%;
-  min-height: 100%;
+  height: 150px;
   font-size: 1.2em;
   padding: 10px;
   border-radius: 10px;
@@ -142,7 +181,7 @@
 }
 
 .divisao{
-  margin-top: 13rem;
+  margin-top: 5rem;
   width: 92vw;
   margin-left: 3rem;
   size: 20px;
@@ -284,12 +323,13 @@
 }
 
 .submitContainer{
-  margin-top: 4rem;
+  margin-top: 9rem;
   width: 100vw;
   height: 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5rem;
 }
 
 .submitContainer Button{

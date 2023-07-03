@@ -114,20 +114,24 @@ function Header() {
           item2="Meus Cursos"
           link2="/meuscursos"
         />
-
-        {localStorage.getItem("R0l3s").includes("ROLE_USER") ? (
-          <>
-            <Link id="item" to="/doacoes">
-              Doações
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link id="item" to="/doacoes">
-              Doações
-            </Link>
-          </>
-        )}
+        {localStorage.getItem("R0l3s") !== null && <>
+          {
+            localStorage.getItem("R0l3s").includes("ROLE_USER") ? (
+              <>
+                <Link id="item" to="/doacoes">
+                  Doações
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link id="item" to="/doacoes">
+                  Doações
+                </Link>
+              </>
+            )
+          }
+        </>
+        }
 
         <Link id="item" to="/loja">
           Loja
@@ -146,12 +150,12 @@ function Header() {
               className="perfilHomepage"
               onClick={() => showModalPerfil()}
             >
-              <AccountCircle sx={{ width: "55px", height: "55px" }} style = {{color: "#FAF4F4"}}/>
+              <AccountCircle sx={{ width: "55px", height: "55px" }} style={{ color: "#FAF4F4" }} />
             </IconButton>
           </div>
         )}
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-          <FaTimes  style = {{color: "white"}}/>
+          <FaTimes style={{ color: "white" }} />
         </button>
       </nav>
 
@@ -161,14 +165,14 @@ function Header() {
         ""
       )}
       {isModalPerfilVisible &&
-      (localStorage.getItem("R0l3s") === "ROLE_USER" ||
-        localStorage.getItem("R0l3s") === "ROLE_ASSOCIADO,ROLE_USER") ? (
-        <ModalPerfil  />
+        (localStorage.getItem("R0l3s") === "ROLE_USER" ||
+          localStorage.getItem("R0l3s") === "ROLE_ASSOCIADO,ROLE_USER") ? (
+        <ModalPerfil />
       ) : (
         ""
       )}
       {isModalPerfilVisible &&
-      localStorage.getItem("R0l3s") ===
+        localStorage.getItem("R0l3s") ===
         "ROLE_ADMIN,ROLE_ASSOCIADO,ROLE_USER" ? (
         <ModalPerfilAdm
           isOpen={openAdm}
@@ -181,7 +185,7 @@ function Header() {
         ""
       )}
       <button className="nav-btn" onClick={showNavbar}>
-        <FaBars style = {{color: "white"}} />
+        <FaBars style={{ color: "white" }} />
       </button>
     </header>
   );

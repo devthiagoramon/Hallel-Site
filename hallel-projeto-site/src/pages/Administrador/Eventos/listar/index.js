@@ -9,7 +9,7 @@ function Evento() {
   const [eventos, setEventos] = useState([]);
 
   function renderizarEventos() {
-    let url = "http://localhost:8080/api/eventos/listar";
+    let url = "http://localhost:8080/api/eventos";
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
