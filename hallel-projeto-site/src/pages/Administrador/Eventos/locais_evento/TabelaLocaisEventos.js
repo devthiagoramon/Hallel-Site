@@ -1,4 +1,4 @@
-import { Button, LinearProgress, Paper, TableContainer } from '@mui/material';
+import { Button, LinearProgress } from '@mui/material';
 import axios from 'axios';
 import React from 'react'
 import { useState } from 'react';
@@ -60,7 +60,6 @@ const TabelaLocaisEventos = (props) => {
             </tr>
           </thead>
           <LinearProgress />
-
         </>}
       </Table>
     </div>
