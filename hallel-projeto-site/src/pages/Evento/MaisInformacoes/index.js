@@ -1,6 +1,39 @@
 import React, { Component, useState } from "react";
 import "./eventInfo.css";
+import {BsArrowReturnLeft} from "react-icons/bs"
 
+class InfoEventos extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      evento: this.props.evento
+    }
+  }
+
+  render() {
+    return (
+          
+          <section className="containerEvents">
+
+                      <div className="voltar">
+                          
+                          <button onClick={this.props.hide}><BsArrowReturnLeft style={{fontSize: "1.8em"}}/></button>
+                    </div>
+                            
+
+            <div className="area-infos">
+                
+                <Corpo evento={this.state.evento} hide={this.props.hide}/>
+                <hr/>
+                <Infos evento={this.state.evento}/>
+            </div>
+
+          </section>
+      
+    );
+  }
+}
 
 class Corpo extends Component {
   constructor(props) {
@@ -11,8 +44,17 @@ class Corpo extends Component {
   }
 
   render() {
+
+     console.log(this.state.evento)
     return (
-      <div className="corpo1">
+      <div className="corpo_evento">
+
+        <div className="evento_banner">
+
+          <div className= "titulo_evento">
+
+          <h1 className="tituloEventos">{this.state.evento.titulo}</h1>
+          </div>
         <div className="imagem">
           <img
             className="imagemCp1"
@@ -20,13 +62,13 @@ class Corpo extends Component {
             alt="imagem"
           ></img>
         </div>
-        <div className="descCp1">
-          <h2>DESCRIÇÃO</h2>
+
+        </div>
+        <div className="descricaoEvento">
+          <h2>Descrição</h2>
           <p>{this.state.evento.descricao}</p>
         </div>
-        <div className="voltar">
-          <button onClick={this.props.hide}>Voltar</button>
-        </div>
+       
       </div>
     );
   }
@@ -42,7 +84,7 @@ class Infos extends Component {
   render() {
     return (
       <div className="infos">
-        <div className="sub">
+        <div className="subtopicos">
           <ul id="topicosInfo">
             <li>
               <a>Endereço: {this.state.evento.localidade}</a>
@@ -62,32 +104,10 @@ class Infos extends Component {
           </ul>
         </div>
         <div className="participantes">
-          <h2>PARTICIPANTES:</h2>
+          <h2>Participantes:</h2>
         </div>
       </div>
     );
   }
 }
-
-class InfoEventos extends Component {
-
-  constructor(props){
-    super(props);
-    this.state = {
-      evento: this.props.evento
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <h1 className="titulo">Hallel</h1>
-        <Corpo evento={this.state.evento} hide={this.props.hide}/>
-        <hr></hr>
-        <Infos evento={this.state.evento}/>
-      </div>
-    );
-  }
-}
-
 export default InfoEventos;

@@ -2,83 +2,103 @@ body{
     overflow-x: hidden;
 }
 
-.corpo1 {
+
+  .containerEvents > .titulo_evento{
+
+
+    display: flex;
+    flex-direction: column;
+    color: #35404b;
+    font-weight: 700;
+  
+  }
+
+  .containerEvents .voltar{
+
+    display: flex;
+    justify-content: right;
+  }
+/* Corpo */
+
+.corpo_evento{
+
   display: flex;
-  width: 100%;
-  height: 30%;
-  padding-top: 3rem;
-  padding-bottom: 5rem;
+  justify-content: space-evenly;
+  margin: 0 8% 0 0 
 }
-.corpo1 .imagem {
-  width: 30%;
-  height: auto;
+
+
+.corpo_evento .evento_banner> .imagem{
+
+  display: block;
+    background-color: #8da0b2;
+    width: 30em;
+    height: 20em;
+}
+
+
+.corpo_evento .evento_banner > .imagem .imagemCp1{
+
+    height: 100%;
+    width: 100%;
+}
+
+.descricaoEvento{
+
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
+  flex-direction: column;  
 }
 
-.corpo1 .imagem img {
-  background-color: rgb(164, 166, 168);
-  width: 300px;
-  height: 250px;
-  border-radius: 20px;
-  margin-left: 40px;
-}
-
-.corpo1 .descCp1 {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.corpo1 .descCp1 h2 {
-  position: relative;
-  font-size: xx-large;
-  font-weight: bold;
-  width: 100%;
-}
-
-.corpo1 .descCp1 p {
-  max-width:100%;
-  font-size: 20px;
-  word-break: normal;
-  text-justify: auto;
-}
 /*INFORMAÇÕES*/
 
-.infos {
-  position: absolute;
-  padding: 200px 759px;
-}
-.sub {
-  position: inherit;
-  margin-left: -20cm;
-  top: 2px;
-}
-.sub ul li {
-  margin-top: 8px;
-  letter-spacing: 3px;
-  margin-left: 72px;
-}
-.participantes {
-  position: inherit;
-  top: 2px;
-  margin-left: 300px;
-}
-
-.voltar{
-  width: 20%;
-  height: 30px;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .voltar button{
-  width: 100px;
-  border-radius: 10px;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
   background-color: white;
+  border: none;
+  background-color: #ffb783;
+  font-weight: 700;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #35404b;
+  margin-right: 5em;
+}
+
+
+.voltar button:hover{
+  width: 3.2em;
+  height: 3.2em;
+  background-color: #ffa768;
+  transition: 0.5s;
+}
+
+.subtopicos{
+  
+  margin: 0 10em;
+}
+
+#topicosInfo > li a{
+
+  font-weight: 700;
+  font-size: 1.2em;
+  color: #35404b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  text-decoration: none;
+  text-indent: 5em;
+}
+
+.participantes{
+
+  flex-direction: column;
+  display: flex;
+}
+
+.participantes > h2{
+
+  text-align: left;
+  font-weight: 700;
+  color: #35404b;
+  text-indent: 5em;
 }

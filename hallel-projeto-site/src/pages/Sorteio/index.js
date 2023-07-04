@@ -95,8 +95,6 @@ function TableArea(){
             setSorteio(object);
             console.log(sorteio)
 
-       
-            
           })
           .catch((r) => {
 
@@ -140,27 +138,16 @@ function TableArea(){
                         
                         <tr key={item.id}>
 
-
-
-
-
                             <td>
-
-                                {item.sorteioAssociados.map((user) => {
-
-                                    return(
-
-                                        <>
-                                 {user.nome}
-                                 </>
-                                    )
-                                })
+                                {
+                                item.descricao
                                 }
                             </td>
 
-                            <td>{item.descricao}</td>
+                            <td>{item.sorteioAssociados?.recompensas?.nome}</td>
                             <td>{item.data}</td>
                         </tr>
+
                     );
                 })}
 

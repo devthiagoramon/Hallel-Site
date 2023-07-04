@@ -38,7 +38,7 @@ function Tabela(){
     })
 
     useEffect(() => {
-        let url = "http://localhost:8080/api/administrador/sorteio";
+        let url = "http://localhost:8080/api/sorteio";
 
         axios.get(url)
 
@@ -93,7 +93,7 @@ function Tabela(){
                         <tr key={item.id}>
 
                             <td>{item.titulo}</td>
-                            <td>{item.sorteioAssociados}</td>
+                            <td>{item.sorteioAssociados?.nome}</td>
                             <td>{item.data}</td>
                         </tr>
                     );
