@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
-body{
+body {
   font-family: 'DM Sans', sans-serif;
 }
 
@@ -29,18 +29,20 @@ a {
   margin-left: 72px;
 
 }
+
 .nav-list li :hover {
   padding: 15px 10px;
   background-color: #688c91;
   border-radius: 10px;
 }
+
 .titulo {
   position: absolute;
   top: 18px;
   margin-left: 20px;
 }
 
-.container-tb{
+.container-tb {
 
 
   margin: 2em 20%;
@@ -51,20 +53,24 @@ a {
   margin-left: 1250px;
   top: 34px;
 }
+
 .menuHam div {
   width: 32px;
   height: 4px;
   background: rgb(7, 7, 7);
   margin: 8px;
 }
+
 .borda :hover {
   background-color: #688c91;
   border-radius: 8px;
 }
+
 .corpo1 {
   padding: 15px;
   margin-top: 5px;
 }
+
 .corpo1 a {
   margin-top: -120px;
   margin-left: 900px;
@@ -74,6 +80,7 @@ a {
   padding: 5px 10px;
   font-size: 20px;
 }
+
 .input {
   margin-top: -50px;
 }
@@ -83,6 +90,7 @@ a {
   flex-direction: column;
   padding-top: 2rem;
 }
+
 .painelEventos h1 {
   font-weight: 700;
   font-size: 2em;
@@ -95,11 +103,20 @@ a {
 .options {
   display: flex;
   width: 100vw;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end;
-  gap: 20px;
   padding-top: 4em;
   padding-right: 8em;
+}
+
+.direita_options {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.esquerda_options {
+  margin-left: 4.5rem;
 }
 
 .options button {
@@ -113,19 +130,29 @@ a {
   background-color: #d5ecef;
 }
 
+
 .options button:hover {
   background-color: rgb(169, 201, 201);
   transition: 0.5s;
 }
+
 .tabela-eventos {
 
   border: 1px solid #35404b;
   margin-top: 6em;
 }
 
-.loaderEventos{
+.loaderEventos {
 
- display: flex;
- justify-content: center;
- top: 30em;
+  display: flex;
+  justify-content: center;
+  top: 30em;
+}
+
+.menu_evento {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 300px;
+  max-height: 400px;
 }

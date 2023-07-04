@@ -1,0 +1,82 @@
+.container_despesas_eventos{
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.container_load_despesas_eventos{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+
+.header_despesa_evento{
+    width: 100%;
+    margin-left: 3rem;
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.container_titulo_despesa_evento{
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.titulo_despesa_evento{
+    font-size: 28px;
+}
+
+.body_despesas_evento{
+    width: 100%;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    display: flex;
+}
+
+.esquerda_body_despesas_evento{
+    width: 45%;
+}
+
+.direita_body_despesas_evento{
+    width: 45%;
+}
+
+.container_inputs_despesas_evento{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.inputs_despesas_evento{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+    row-gap: 10px;
+}
+
+
+.inputs_despesas_evento>label{
+    font-size: 16px;
+}
+
+.inputs_despesas_evento>label:nth-child(1){
+    font-size: 24px;
+}
+
+.btn_despesas_evento{
+    width: 100%;
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
