@@ -41,6 +41,7 @@ import LojaPrincipal from "./pages/Loja/index";
 import LojaProduto from "./pages/Loja/LojaProduto/indexProduto";
 import LojaPagamento from "./pages/Loja/LojaProduto/LojaPagamento/indexPagLoja";
 import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/AdicionarLocais";
+import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaEvento";
 
 function RoutesApp() {
   return (
@@ -142,6 +143,9 @@ function RoutesApp() {
           path="/administrador/locaisEvento"
           element={<LocaisEventos />}
         />
+        <Route
+          path="/administrador/eventos/:idEvento/despesas" 
+          element={<DespesaEvento />} />
       </Routes>
     </BrowserRouter>
   );
