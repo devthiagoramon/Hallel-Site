@@ -17,14 +17,12 @@
     padding: 2em;
     width: 53%;
     transition: 0.5s;
-
-
 }
 
 .container_panel label{
 
     font-size: 2.1em;
-    font-weight: 800;
+    font-weight: 500;
 }
 
 .container_panel>p{

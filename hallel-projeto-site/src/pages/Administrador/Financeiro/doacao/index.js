@@ -175,11 +175,11 @@ const DoacoesDinheiroAdm = () => {
                     <CDBCard>
                       <CDBCardBody>
                         <CDBDataTable 
-                        entriesLabel="Mostrar eventos" 
+                        entriesLabel="Mostrar doações" 
                         searchLabel="Pesquisar"
                           paginationLabel={["Anterior", "Próximo"]}
-                          infoLabel={["Mostrando de", "até", "de", "eventos"]}
-                          noRecordsFoundLabel="Nenhum evento encontrado"
+                          infoLabel={["Mostrando de", "até", "de", "doações"]}
+                          noRecordsFoundLabel="Nenhuma doação encontrada"
                           hover
                           materialSearch
                           bordered

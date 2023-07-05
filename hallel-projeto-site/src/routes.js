@@ -42,6 +42,7 @@ import LojaProduto from "./pages/Loja/LojaProduto/indexProduto";
 import LojaPagamento from "./pages/Loja/LojaProduto/LojaPagamento/indexPagLoja";
 import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/AdicionarLocais";
 import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaEvento";
+import Despesa from "./pages/Administrador/DespTeste/indexDesp";
 
 function RoutesApp() {
   return (
@@ -146,7 +147,19 @@ function RoutesApp() {
         <Route
           path="/administrador/eventos/:idEvento/despesas" 
           element={<DespesaEvento />} />
+
+
+          //rota de teste
+
+          <Route
+              path="/administrador/despesas" 
+              element={<Despesa />} />
       </Routes>
+
+
+     
+
+
     </BrowserRouter>
   );
 }

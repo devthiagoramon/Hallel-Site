@@ -18,7 +18,7 @@ function Evento() {
   const navigator = useNavigate();
 
   function renderizarEventos() {
-    let url = "http://localhost:8080/api/eventos";
+    let url = "http://localhost:8080/api/eventos/listar";
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
