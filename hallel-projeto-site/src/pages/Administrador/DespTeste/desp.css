@@ -1,0 +1,48 @@
+.body_despesas{
+
+    display: flex;
+    flex-direction: column;
+}
+
+.body_despesas > label{
+
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #35404b;
+    text-indent: 2em;
+    margin: 1em 0; 
+}
+
+
+.row_opcoes{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.sessao_tabela {
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.sessao_tabela > div{
+
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    margin: 0 10em;
+}
+
+.sessao_tabela div > button{
+
+    background-color: #73db9b;
+    color: rgb(18, 18, 18);
+    font-weight: 700;
+    padding: 0.6em 0.4em; 
+    border: none;
+    border-radius: 0.6em;
+}
