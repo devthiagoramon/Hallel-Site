@@ -41,7 +41,7 @@ const DespesaEvento = () => {
                 <>
                     <HeaderDespesasEventos evento={evento} />
                     <BodyDespesaEvento evento={evento} />
-                    <ModalEditDespesaEvento openModal={openModal} setOpenModal={setOpenModal} />
+                    <ModalEditDespesaEvento openModal={openModal} setOpenModal={setOpenModal} idEvento={idEvento} despesaSelected={despesaSelected} setEditPopUp={setEditPopUp} setOpenPopUp={setopenPopUp} />
                     {editPopUp !== null &&
                         <>
                             {editPopUp === true &&
