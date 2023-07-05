@@ -80,3 +80,35 @@
     justify-content: center;
     align-items: center;
 }
+
+.head_edit_despesas_evento{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.head_edit_despesas_evento>label{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.container_inputs_edit_despesas_evento{
+    width: 80%;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.inputs_edit_despesas_evento{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.container_btn_edit_despesas_evento{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
