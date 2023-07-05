@@ -3,9 +3,10 @@ import DireitaBodyDespesasEvento from './DireitaBodyDespesasEvento'
 import EsquerdaBodyDespesasEvento from './EsquerdaBodyDespesasEvento'
 
 const BodyDespesaEvento = (props) => {
+
   return (
     <div className='body_despesas_evento'>
-        <EsquerdaBodyDespesasEvento/>
+        <EsquerdaBodyDespesasEvento evento={props.evento} />
         <DireitaBodyDespesasEvento evento={props.evento}/>
     </div>
   )

@@ -25,7 +25,7 @@ const SlideEventos = (props) => {
   }, []);
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/eventos/listar";
+    let url = "http://localhost:8080/api/eventos";
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -63,7 +63,8 @@ const SlideEventos = (props) => {
             <motion.div
               className="inner"
               drag="x"
-              dragConstraints={{ right: 0, left: -width }}
+              dragConstraints={{ right: 0, left: -width, maxWidth: "100%" }}
+              
             >
               {eventos.map((evento) => {
                 return (
@@ -73,15 +74,20 @@ const SlideEventos = (props) => {
                     key={evento.titulo}
                     whileHover={{ scale: "1.02" }}
                   >
-                    <div className="card" style={{ width: "18rem",
-                                                     maxHeight: "480px" }}>
-                        <img src={evento.imagem} className="card-img-top" alt="..." style={{maxHeight:"200px",
-                                                                                            minHeight:"200px"}}/>
-                        <div className="card-body">
-                          <h5 className="card-title">{evento.titulo}</h5>
-                          <p className="card-text">{evento.descricao}</p>
-                        </div>
-                      </div>
+                    <Card style={{ width: "22rem" }}>
+                      <Card.Img variant="top" src={evento.imagem} />
+
+                      <Card.Body>
+                        <Card.Title>{evento.titulo}</Card.Title>
+                        <Card.Text>
+                          <p>
+                            {evento.descricao}
+                          </p>
+                          <time>{evento.date}</time> <br />
+                          <time>{evento.horario}</time>
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
                   </motion.div>
                 );
               })}

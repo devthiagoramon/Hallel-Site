@@ -1,26 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Table } from "react-bootstrap";
-import {BsPencilFill} from "react-icons/bs"
-import {AiFillDelete} from "react-icons/ai"
-import {useState} from "react";
+import { BsPencilFill } from "react-icons/bs"
+import { AiFillDelete } from "react-icons/ai"
+import { useState } from 'react'
+import axios from 'axios';
 
 const ListaDespesasEvento = (props) => {
 
-  const [evento, setEvento] = useState([]);
+  const [despesas, setDespesas] = useState([]);
+
+  useEffect(() => {
+
+    axios.get("http://localhost:8080/api/administrador/eventos/" + props.evento.id + "/despesa/listAll", {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    }).then((res) => {
+      setDespesas(res.data);
+    }).catch((error) => {
+      console.log("Error requerindo da url de despesas: " + error);
+    })
+
+  }, [])
+
 
   return (
 
     <section className="sessao_tabela">
 
-        <div>
-
-            <button>Adicionar despesa</button>
-        </div>
-
-        <Table
+      <Table
         hover
         style={{
-          width: "70%",
+          width: "100%",
           maxWidth: "100%",
           marginTop: "1.5rem",
           marginBottom: "1.5rem",
@@ -30,144 +41,38 @@ const ListaDespesasEvento = (props) => {
       >
         <thead>
           <tr>
-            <th>Valor</th>
-            <th>Finalidade</th>
-            <th>Data do gasto</th>
-            <th>Emissor</th>
-            <th style={{textAlign: "center"}}>Opções</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Tipo de despesa</th>
+            <th>Valor/Quantidade</th>
+            <th style={{ textAlign: "center" }}>Opções</th>
           </tr>
         </thead>
         <tbody>
-          
+
+
+          {/* estava dando como indefinida, então coloqueia a interrogação para realizar um teste */}
+          {despesas.map((item) => {
+            return (
               <tr>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td >
-
-                    <div className="row_opcoes">
-
-                        <AiFillDelete/>
-                        <BsPencilFill/>
-                    </div>
+                <td>{item.nome}</td>
+                <td>{item.descricao}</td>
+                <td>{item.tipoDespesa}</td>
+                <td>{item.tipoDespesa !== "DINHEIRO" ? item.quantidade+" unidades" : "R$"+item.valor}</td>
+                <td>
+                  <div className="row_opcoes">
+                    <AiFillDelete />
+                    <BsPencilFill />
+                  </div>
                 </td>
               </tr>
-
-
-              <tr>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td >
-
-                    <div className="row_opcoes">
-                        
-                        <AiFillDelete/>
-                        <BsPencilFill/>
-                    </div>
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td >
-
-                    <div className="row_opcoes">
-                        
-                        <AiFillDelete/>
-                        <BsPencilFill/>
-                    </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td >
-
-                    <div className="row_opcoes">
-                        
-                        <AiFillDelete/>
-                        <BsPencilFill/>
-                    </div>
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td >
-
-                    <div className="row_opcoes">
-                        
-                        <AiFillDelete/>
-                        <BsPencilFill/>
-                    </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td >
-
-                    <div className="row_opcoes">
-                        
-                        <AiFillDelete/>
-                        <BsPencilFill/>
-                    </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td >
-
-                    <div className="row_opcoes">
-                        
-                        <AiFillDelete/>
-                        <BsPencilFill/>
-                    </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td >
-
-                    <div className="row_opcoes">
-                        
-                        <AiFillDelete/>
-                        <BsPencilFill/>
-                    </div>
-                </td>
-              </tr>
-          
+            );
+          })}
         </tbody>
-        </Table>
+      </Table>
 
     </section>
-)
+  )
 }
-
 
 export default ListaDespesasEvento

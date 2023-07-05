@@ -3,41 +3,8 @@ import './desp.css'
 import { Table } from "react-bootstrap";
 import {BsPencilFill} from "react-icons/bs"
 import {AiFillDelete} from "react-icons/ai"
-import AliceCarousel from "react-alice-carousel";
-import 'react-alice-carousel/lib/alice-carousel.css';
 
 function DespesaListagem(){
-
-  const items = [
-    <div className="item" data-value="1">
-        
-
-    </div>,
-    <div className="item" data-value="2">2</div>,
-    <div className="item" data-value="3">3</div>,
-    <div className="item" data-value="4">4</div>,
-    <div className="item" data-value="5">5</div>,
-  ];
-
-  const responsive = {
-    0: { items: 1 },
-    568: { items: 2 },
-    1024: { items: 3 },
-};
-
-const Carousel = () => {
-
-  return(
-  <AliceCarousel
-      mouseTracking
-      items={items}
-      responsive={responsive}
-      controlsStrategy="alternate"
-  />
-
-  )
-
-}
 
 
 
@@ -46,8 +13,7 @@ const Carousel = () => {
         <section className="body_despesas">
 
             <label>Despesa</label>
-            
-            <TabelaDespesa/>
+
         </section>
     )
 }
