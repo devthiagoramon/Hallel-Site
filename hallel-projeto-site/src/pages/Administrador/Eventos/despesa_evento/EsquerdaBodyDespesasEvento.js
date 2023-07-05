@@ -1,10 +1,10 @@
 import React from 'react'
 import ListaDespesasEvento from './ListaDespesasEvento'
 
-const EsquerdaBodyDespesasEvento = () => {
+const EsquerdaBodyDespesasEvento = (props) => {
   return (
     <div className='esquerda_body_despesas_evento'>
-        <ListaDespesasEvento/>
+        <ListaDespesasEvento evento={props.evento}/>
     </div>
   )
 }
