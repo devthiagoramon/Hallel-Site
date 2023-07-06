@@ -4,6 +4,7 @@ import { BsPencilFill } from "react-icons/bs"
 import { AiFillDelete } from "react-icons/ai"
 import { useState } from 'react'
 import axios from 'axios';
+import { IconButton } from '@mui/material';
 
 const ListaDespesasEvento = (props) => {
 
@@ -16,13 +17,25 @@ const ListaDespesasEvento = (props) => {
         Authorization: localStorage.getItem("token")
       }
     }).then((res) => {
-      setDespesas(res.data);
+      if (res.data !== null) {
+        setDespesas(res.data);
+      }
     }).catch((error) => {
       console.log("Error requerindo da url de despesas: " + error);
     })
 
-  }, [])
+  }, [props.changedTabela])
 
+
+  function abrirModalEdit(despesa) {
+    props.setDespesaSelected(despesa);
+    props.setOpenModal(true);
+  }
+
+  function abrirModalDelete(despesa){
+    props.setopenModalDelete(true);
+    props.setDespesaSelected(despesa);
+  }
 
   return (
 
@@ -52,22 +65,34 @@ const ListaDespesasEvento = (props) => {
 
 
           {/* estava dando como indefinida, então coloqueia a interrogação para realizar um teste */}
-          {despesas.map((item) => {
-            return (
-              <tr>
-                <td>{item.nome}</td>
-                <td>{item.descricao}</td>
-                <td>{item.tipoDespesa}</td>
-                <td>{item.tipoDespesa !== "DINHEIRO" ? item.quantidade+" unidades" : "R$"+item.valor}</td>
-                <td>
-                  <div className="row_opcoes">
-                    <AiFillDelete />
-                    <BsPencilFill />
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
+          <>
+            {despesas.length !== 0 &&
+              <>
+                {
+                  despesas.map((item) => {
+                    return (
+                      <tr>
+                        <td>{item.nome}</td>
+                        <td>{item.descricao}</td>
+                        <td>{item.tipoDespesa}</td>
+                        <td>{item.tipoDespesa !== "DINHEIRO" ? item.quantidade + " unidades" : "R$" + item.valor}</td>
+                        <td>
+                          <span style={{ display: "flex", justifyContent: "center" }}>
+                            <IconButton onClick={() => {abrirModalDelete(item)}}>
+                              <AiFillDelete style={{ height: "20px" }} />
+                            </IconButton>
+                            <IconButton onClick={() => { abrirModalEdit(item) }}>
+                              <BsPencilFill style={{ height: "20px" }} />
+                            </IconButton>
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })
+                }
+              </>
+            }
+          </>
         </tbody>
       </Table>
 

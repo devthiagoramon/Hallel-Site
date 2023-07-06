@@ -38,7 +38,7 @@ const InputsBodyDespesasEvento = (props) => {
         }).then(() => {
             setEnviando(false);
             setenviado(true);
-
+            props.setChangedTabela(!props.changedTabela)
             setTimeout(() => {
                 setenviado(null);
             }, 3000);

@@ -112,3 +112,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.body_delete_despesas_evento{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.body_delete_despesas_evento>Button{
+    border-radius: 24px;
+}

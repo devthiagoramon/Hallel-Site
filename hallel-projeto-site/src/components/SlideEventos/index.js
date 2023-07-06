@@ -66,7 +66,7 @@ const SlideEventos = (props) => {
             <motion.div
               className="inner"
               drag="x"
-              dragConstraints={{ right: 10, left: -width, maxWidth: "100%" }}
+              dragConstraints={{ right: 10, left: -width, maxWidth: "100vw" }}
             >
               {eventos.map((evento) => {
                 return (

@@ -6,16 +6,19 @@ import axios from 'axios';
 import { Alert, CircularProgress, Snackbar } from '@mui/material';
 import BodyDespesaEvento from './BodyDespesaEvento';
 import ModalEditDespesaEvento from './ModalEditDespesaEvento';
+import ModalDeleteEvento from './ModalDeleteEvento';
 
 
 const DespesaEvento = () => {
 
     const { idEvento } = useParams();
     const [evento, setEvento] = useState(null);
-    const [openModal, setOpenModal] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
     const [despesaSelected, setDespesaSelected] = useState(null);
     const [editPopUp, setEditPopUp] = useState(null);
     const [openPopUp, setopenPopUp] = useState(false);
+    const [changedTabela, setChangedTabela] = useState(false);
+    const [openModalDelete, setopenModalDelete] = useState(false);
 
     useEffect(() => {
         axios.get("http://localhost:8080/api/administrador/evento/" + idEvento + "/list", {
@@ -40,18 +43,19 @@ const DespesaEvento = () => {
             {evento !== null ?
                 <>
                     <HeaderDespesasEventos evento={evento} />
-                    <BodyDespesaEvento evento={evento} />
-                    <ModalEditDespesaEvento openModal={openModal} setOpenModal={setOpenModal} idEvento={idEvento} despesaSelected={despesaSelected} setEditPopUp={setEditPopUp} setOpenPopUp={setopenPopUp} />
+                    <BodyDespesaEvento setOpenModal={setOpenModal} setDespesaSelected={setDespesaSelected} changedTabela={changedTabela} setChangedTabela={setChangedTabela} evento={evento} setopenModalDelete={setopenModalDelete} />
+                    <ModalEditDespesaEvento changedTabela={changedTabela} setChangedTabela={setChangedTabela} openModal={openModal} setOpenModal={setOpenModal} idEvento={idEvento} despesaSelected={despesaSelected} setEditarPopUp={setEditPopUp} setOpenPopUp={setopenPopUp} setDespesaSelected={setDespesaSelected}/>
+                    <ModalDeleteEvento openModalDelete ={openModalDelete} setDespesaSelected={setDespesaSelected} setopenModalDelete={setopenModalDelete} despesaSelected={despesaSelected} setChangedTabela={setChangedTabela} changedTabela={changedTabela} idEvento={idEvento} />
                     {editPopUp !== null &&
                         <>
                             {editPopUp === true &&
                                 <Snackbar open={openPopUp} onClose={handleClosePopUp} autoHideDuration={3000} >
-                                    <Alert severity='success' sx={{width: "100%"}}>Editado com sucesso</Alert>
+                                    <Alert severity='success' sx={{ width: "100%" }}>Editado com sucesso</Alert>
                                 </Snackbar>
                             }
                             {editPopUp === false &&
                                 <Snackbar open={openPopUp} onClose={handleClosePopUp} autoHideDuration={3000} >
-                                    <Alert severity='success' sx={{width: "100%"}}>Error na edição</Alert>
+                                    <Alert severity='error' sx={{ width: "100%" }}>Error na edição</Alert>
                                 </Snackbar>
                             }
                         </>
