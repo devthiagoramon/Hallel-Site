@@ -64,7 +64,7 @@ function TableArea(){
      };
   
      // post
-     const addSorteado = async (id, titulo, sorteioAssociados, data) => {
+    const addSorteado = async (id, titulo, sorteioAssociados, data) => {
 
         let url = "http://localhost:8080/api/sorteio";
         let response = await url.post('', {
@@ -138,13 +138,10 @@ function TableArea(){
                         
                         <tr key={item.id}>
 
-                            <td>
-                                {
-                                item.descricao
-                                }
-                            </td>
-
-                            <td>{item.sorteioAssociados?.recompensas?.nome}</td>
+                            <td>{
+                                item.titulo
+                                }</td>
+                            <td>{item.descricao}</td>
                             <td>{item.data}</td>
                         </tr>
 

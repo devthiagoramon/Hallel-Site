@@ -96,6 +96,8 @@ function Header() {
           link1="/sobre"
           item2="Fundadora"
           link2="/fundadora"
+          item3="sorteio"
+          link3="/sorteioAssociado"
         />
 
         <Link id="item" to="/">

@@ -8,6 +8,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import {GiPerspectiveDiceSixFacesRandom} from "react-icons/gi"
+
 import {
   AccountBalance,
   AccountCircleRounded,
@@ -54,6 +56,7 @@ const ModalPerfilAdm = (props) => {
       url: "/administrador/painelFinanceiro/doacoes/objeto",
     },
     { text: "Perfil - ADM", icon: "perfil", url: "/perfil" },
+    { text: "Sorteio - Associados", icon: "sorteioAssociados", url: "/administrador/sorteio" },
   ];
 
   function getImage(icon) {
@@ -75,6 +78,9 @@ const ModalPerfilAdm = (props) => {
       return <Diversity1Rounded />;
     } else if (icon === "associadosPagamentos") {
       return <PaymentRounded/>
+    }
+      else if (icon === "sorteioAssociados") {
+      return <GiPerspectiveDiceSixFacesRandom style={{width: "1.5em", height: "2em"}}/>
     }
   }
 

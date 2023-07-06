@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './dropDown.css';
 
 
-const DropDown = ({titulo, item1, link1, item2, link2}) => {
+const DropDown = ({titulo, item1, link1, item2, link2, item3, link3}) => {
   return (
     <div className="Dropdown">
       <Dropdown id="dropdown">
@@ -28,6 +28,16 @@ const DropDown = ({titulo, item1, link1, item2, link2}) => {
               <label>{item2}</label>
             </Link>
           </Dropdown.Item>
+
+
+          <Dropdown.Item to="toLink3" id="link3" className="itensdrop">
+            <Link id="toLink2" to={link3}>
+
+              <label>{item3}</label>
+            </Link>
+          </Dropdown.Item>
+
+
         </Dropdown.Menu>
       </Dropdown>
     </div>

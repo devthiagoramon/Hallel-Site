@@ -14,6 +14,12 @@ body{
     padding-bottom: 50px;
 }
 
+#pesquisaEvents{
+
+    display: flex;
+    margin: 0 80%;
+}
+
 .CorpoEventoUser{
     margin-left: 40px;
     width: 100%;
@@ -21,4 +27,24 @@ body{
     flex-wrap: wrap;
 
     gap: 20px;
+}
+
+
+.loaderEventoCarroseulEventos{
+    width: 100%;
+    display: flex;
+    margin-left: 1rem;
+}
+
+
+.loaderEventoCarroseulEventos > span{
+
+    width: 10em;
+    height: 10em;
+    margin: 0 2em;
+}
+
+.grupo-evento{
+
+    margin-top: 5em;
 }

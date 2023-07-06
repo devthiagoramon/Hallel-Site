@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Skeleton } from "@mui/material";
+import { Link } from "react-router-dom";
 
 //  images controls
 const SlideEventos = (props) => {
@@ -25,6 +26,7 @@ const SlideEventos = (props) => {
   useEffect(() => {
     setWidht(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth);
   }, []);
+
 
   useMemo(() => {
     let url = "http://localhost:8080/api/eventos";
@@ -50,9 +52,11 @@ const SlideEventos = (props) => {
       });
   }, []);
 
+
   return (
     <div className="body-eventos">
       <h1 id="title">Eventos</h1>
+
       <div className="containerCarroseulEventos">
         {eventos.length === 0 ? <div className="loaderEventoCarroseul"><Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /></div> :
           <motion.div
@@ -68,6 +72,8 @@ const SlideEventos = (props) => {
               drag="x"
               dragConstraints={{ right: 10, left: -width, maxWidth: "100vw" }}
             >
+
+
               {eventos.map((evento) => {
                 return (
 
@@ -83,11 +89,13 @@ const SlideEventos = (props) => {
                   <div className="card-body">
                     <h5 className="card-title">{evento.titulo}</h5>
                     <p className="card-text">{evento.descricao}</p>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => alterarEventoEspc(evento)}
-                    >
-                      Saber mais
+                    <button className="btn btn-primary">
+
+
+                      <Link style={{color: "#ffffff", fontWeight: "bold"}} to = "/eventos">
+                        Saiba mais 
+                      </Link>
+                 
                     </button>
                   </div>
                 </div>

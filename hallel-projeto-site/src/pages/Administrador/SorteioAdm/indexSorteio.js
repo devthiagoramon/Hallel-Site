@@ -39,19 +39,25 @@ function Tabela(){
 
     useEffect(() => {
         let url = "http://localhost:8080/api/sorteio";
-
-        axios.get(url)
-
-        .then((response) => {
-
-            setSorteio(response.data)
-        console.log("tudo crto manfredo");
-
+    
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", localStorage.getItem("token"));
+    
+        fetch(url, {
+          headers: myHeaders,
+          method: "GET",
         })
-        .catch((response) =>{
+          .then((r) => r.json())
+          .then((object) => {
+            setSorteio(object);
+            console.log(sorteio)
 
-            console.log("ERRO AO PUXAR DA API")
-        })
+          })
+          .catch((r) => {
+
+            console.log("Erro");
+          });
       }, []);
 
     return(
@@ -65,7 +71,7 @@ function Tabela(){
                 
             </div>
 
-            {sorteio.length === 0 ?(
+            {sorteio.length == 0 ?(
                 
                 <div className="circuloProgresso">
         

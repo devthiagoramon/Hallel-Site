@@ -7,6 +7,7 @@ import {BsArrowReturnLeft} from "react-icons/bs"
 
 function EventoUser() {
   const [eventos, setEventos] = useState([]);
+  const [eventos2, setEventos2] = useState([]);
   const [showInfos, setshowInfos] = useState(false);
   const [eventoEspc, setEventoEspc] = useState();
 
@@ -16,29 +17,28 @@ function EventoUser() {
     setEventoEspc(item);
   }
 
-  /*const renderizarEventos = useMemo(() => {
-    let url = "http://localhost:8080/api/eventos";
+  const filterEventos = (event) => {
 
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
+    const query = event.target.value;
 
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
+    if(query == ""){
+
+      setEventos(eventos2)
+
+    } else{
+    var updateList = [...eventos];
+
+    updateList = updateList.filter((item) => {
+
+  
+      return item.titulo.toLowerCase().toString().indexOf(query.toLowerCase()) !== -1;
+
     })
-   
-      .then((evento) => {
-        console.log(evento);
-        setEventos(evento);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);  */
+    setEventos(updateList);
+  }
 
-
-
+  
+  };
   useEffect(() => {
     let url = "http://localhost:8080/api/eventos";
 
@@ -53,6 +53,7 @@ function EventoUser() {
     .then((r) => r.json())
     .then((object) => {
       setEventos(object);
+      setEventos2(object);
       console.log(eventos)
       
     })
@@ -63,46 +64,45 @@ function EventoUser() {
   }, []);
 
 
-//  const eventosFiltrado = useMemo(() => {
-//   let lowerPesquisa = pesquisa.toLowerCase();
-//    return eventos.filter((eventos) =>
-//       eventos.titulo.toLowerCase().includes(lowerPesquisa)
-//     );
-//    }, [eventos, pesquisa ,eventoEspc]);
-
   return (
     <div className="painelEventosUser">
 
-    
 
       {showInfos ? (
         <InfoEventos evento={eventoEspc} hide={() => setshowInfos(false)} />
       ) : (
         <div>
+
+
           <h1 className="TituloEventoUser">Eventos</h1>
+
+          <input id="pesquisaEvents" placeholder="Pesquisa..." onChange={filterEventos}/>
 
 
           <div className="CorpoEventoUser">
 
 
-     {eventos.length === 0 ? <div className="loaderEventoCarroseul"><Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /></div> :
+     {eventos.length == 0 ? <div className="loaderEventoCarroseulEventos"><Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /> <Skeleton width={300} height={450} /></div> :
           
             eventos.map((evento) => {
               return (
-                <div className="card" style={{ width: "18rem",
-                                               maxHeight: "480px" }}>
-                  <img src={evento.imagem} className="card-img-top" alt="..." style={{maxHeight:"200px",
-                                                                                      minHeight:"200px"}}/>
-                  <div className="card-body">
-                    <h5 className="card-title">{evento.titulo}</h5>
-                    <p className="card-text">{evento.descricao}</p>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => alterarEventoEspc(evento)}
-                    >
-                      Saber mais
-                    </button>
-                  </div>
+
+                <div className="grupo-evento">
+                    <div className="card" style={{ width: "18rem",
+                                                  maxHeight: "480px" }}>
+                      <img src={evento.imagem} className="card-img-top" alt="..." style={{maxHeight:"200px",
+                                                                                          minHeight:"200px"}}/>
+                      <div className="card-body">
+                        <h5 className="card-title">{evento.titulo}</h5>
+                        <p className="card-text">{evento.descricao}</p>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => alterarEventoEspc(evento)}
+                        >
+                          Saber mais
+                        </button>
+                      </div>
+                    </div>
                 </div>
               );
             })}
