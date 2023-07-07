@@ -3,6 +3,9 @@ import Card from "react-bootstrap/Card";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {Skeleton } from "@mui/material";
+import axios from "axios";
+import Img from "../../../images/fundoCardTeste.jpg";
+
 
 //  images controls
 const SlideProdutos = (props) => {
@@ -15,34 +18,28 @@ const SlideProdutos = (props) => {
     setWidht(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth);
   }, []);
 
-  useMemo(() => {
-    let url = "http://localhost:8080/api/eventos/listar";
+  useEffect(()=>{
 
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
+    let url = "http://localhost:8080/api/loja/produto";
 
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
+      axios.get(url, {
+
+        headers:{
+          Authorization:localStorage.getItem("token"),
+        }
+      }).then((res) =>{
+
+        setProduto(res.data);
+      }).catch((error) =>{
+
+        console.error("Requisição não concluída, erro: "+ error);
       })
-      .then((produto) => {
-        console.log(produto);
-        setProduto(produto);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }, []);
 
-
   return (
-    <div className="body-eventos">
+    <div className="body-card-devocao">
       <h1 id="title">Objetos de Devoção</h1>
-      <div className="containerCarroseulEvent">
+      <div className="containerCarroseulCardDev">
         {produto.length === 0 ? <div className="loaderEventoCarroseul"><Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /></div> :
           <motion.div
             ref={carrosel}
@@ -60,12 +57,13 @@ const SlideProdutos = (props) => {
               {produto.map((produtos) => {
                 return (
                   <motion.div
-                    className="imagem2"
+                    className="CardObjetoDevocao"
                     key={produtos.titulo}
                     whileHover={{ scale: "1.02" }}
                   >
-                    <Card style={{ width: "22rem" }}>
-                      <Card.Img variant="top" src={produto.imagem} />
+                    <Card style={{ width: "20rem" }}>
+                      <Card.Img variant="top" src={ produtos.imagem == null ? Img : produtos.imagem
+                      } />
 
                       <Card.Body>
                         <Card.Title>{produtos.titulo}</Card.Title>

@@ -1,4 +1,4 @@
-import Img1 from "../../images/capacurso.png";
+import Img from "../../images/fundoCardTeste.jpg";
 import "./styleEventos.css";
 import Card from "react-bootstrap/Card";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -58,7 +58,7 @@ const SlideEventos = (props) => {
       <h1 id="title">Eventos</h1>
 
       <div className="containerCarroseulEventos">
-        {eventos.length === 0 ? <div className="loaderEventoCarroseul"><Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /> <Skeleton width={400} height={500} /></div> :
+        {eventos.length === 0 ? <div className="loaderEventoCarroseul"><Skeleton width={300} height={400} /> <Skeleton width={300} height={400} /> <Skeleton width={300} height={400} /> <Skeleton width={300} height={400} /> <Skeleton width={300} height={400} /></div> :
           <motion.div
             ref={carrosel}
             className="carrousel"
@@ -78,13 +78,13 @@ const SlideEventos = (props) => {
                 return (
 
                   <motion.div
-                    className="imagem2"
+                    className="imgCartoesEvents"
                     key={evento.titulo}
                     whileHover={{ scale: "1.02" }}
                   >
                     <div className="card" style={{ width: "18rem",
-                                               maxHeight: "100em" }}>
-                  <img src={evento.imagem} className="card-img-top" alt="..." style={{maxHeight:"200px",
+                                               maxHeight: "50em" }}>
+                  <img src={evento.imagem == null ? Img : evento.imagem} className="card-img-top" alt="..." style={{maxHeight:"200px",
                                                                                       minHeight:"200px"}}/>
                   <div className="card-body">
                     <h5 className="card-title">{evento.titulo}</h5>

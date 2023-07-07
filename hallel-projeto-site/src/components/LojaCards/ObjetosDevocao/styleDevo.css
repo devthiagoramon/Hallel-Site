@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
 
-.body-eventos{
+.body-card-devocao{
   
     display: block;
     color: #35404B;
     font-family: 'Inter';
 }
 
-.body-eventos #title{
+.body-card-devocao #title{
  
     display:block;
     text-align: left;
@@ -16,14 +16,14 @@
     font-weight: 600;
     text-indent: 3.5em;
 }
-.containerCarroseulEvent {
+.containerCarroseulCardDev {
   
     margin-top: 5rem;
     width: 100%;
     min-height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 }
 
 .carrousel {
@@ -35,17 +35,17 @@
     display: flex;
 }
 
-.imagem2 {
-    position: relative;
+.CardObjetoDevocao {
+
+    display: flex;
     min-width: 25em;
     min-height: 20em;
     padding: 15px;
-    
 }
 
-.imagem2 img {
+.containerCarroseulCardDev img {
     width: 100%;
-    height: 90%;
+    height: 100%;
     box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
     border-radius: 10px;
     pointer-events: none;
@@ -76,7 +76,7 @@
     font-family: 'Archivo', sans-serif;
 }
 
-.imagem2:hover .legenda2 {
+.containerCarroseulCardDev:hover .legenda2 {
     visibility: visible;
 }
 
@@ -84,7 +84,7 @@
     color: #fafafa;
 } 
 
-.imagem2:hover{
+.containerCarroseulCardDev:hover{
     border-width: 2px;
     scale: 1.009;
 }
