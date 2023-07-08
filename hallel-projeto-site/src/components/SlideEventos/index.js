@@ -28,7 +28,7 @@ const SlideEventos = (props) => {
   }, []);
 
 
-  useMemo(() => {
+  useEffect(() => {
     let url = "http://localhost:8080/api/eventos";
 
     let myHeaders = new Headers();
@@ -43,14 +43,13 @@ const SlideEventos = (props) => {
         return res.json();
       })
       .then((evento) => {
-        console.log(evento);
         setEventos(evento);
 
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [eventos]);
 
 
   return (

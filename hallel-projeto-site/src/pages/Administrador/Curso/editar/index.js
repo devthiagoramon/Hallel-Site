@@ -192,7 +192,6 @@ const EditarCursosAdm = () => {
         return res.json();
       })
       .then((object) => {
-         console.log(object);
         let loadingObject = {
           nome: object.nome,
           image: object.image,
@@ -300,7 +299,6 @@ const EditarCursosAdm = () => {
     setModulos(modulosProv);
   }
   function removerInputAprendizado(id) {
-    console.log(id);
     let inputsAprendizado = [...aprendizadoInputs];
     inputsAprendizado.splice(
       inputsAprendizado.findIndex((input) => {

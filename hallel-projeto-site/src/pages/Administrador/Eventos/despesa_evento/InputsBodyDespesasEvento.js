@@ -26,7 +26,6 @@ const InputsBodyDespesasEvento = (props) => {
 
     const adicionarDespesaEmEvento = () => {
 
-        console.log(idEvento);
         setEnviando(true);
 
         axios.post("http://localhost:8080/api/administrador/eventos/" + idEvento + "/despesa/add", {

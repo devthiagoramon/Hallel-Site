@@ -1,29 +1,33 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
-import "./style.css";
+import "../adicionar/style.css";
 import addImageIcon from "./../../../../images/addImage.svg";
 import addCircle from "./../../../../images/addCircle.svg";
 import deleteIcon from "./../../../../images/deleteIcon.svg";
 import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
-import { Button, IconButton, TextareaAutosize } from "@mui/material";
-import { AddLocationRounded, Save } from "@mui/icons-material";
+import { Button, IconButton } from "@mui/material";
+import { AddLocationRounded } from "@mui/icons-material";
 import axios from "axios";
 import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
 import { MuiFileInput } from "mui-file-input";
-import { kMaxLength } from "buffer";
+import { useParams } from "react-router-dom";
 
-const AdicionarEvento = () => {
+const EditarEventoAdm = () => {
   const tituloDiv = useRef();
   const imagemDiv = useRef();
   const imagemLabelInformativoDiv = useRef();
   const imagemLabelInformativoLabel = useRef();
   const [inputsArray, setinputsArray] = useState([]);
+  const [lastId, setlastId] = useState(0);
   const addPalestrante = useRef();
   const [btnHabilitado, setbtnHabilitado] = useState(false);
+  const [isRequest, setisRequest] = useState(false);
 
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const { idEvento } = useParams();
 
   const eventoTemplate = {
     titulo: "",
@@ -31,20 +35,57 @@ const AdicionarEvento = () => {
     date: "",
     horario: "",
     localEventoRequest: null,
-    imagem: null,
+    imagem: "",
     palestrantes: [],
   };
-
   const [evento, setevento] = useState(eventoTemplate);
-  const [lastIdArrayInputs, setLastIdArrayInputs] = useState(0);
+  const [eventoAntigo, seteventoAntigo] = useState(eventoTemplate);
+
+  useEffect(() => {
+    let url =
+      "http://localhost:8080/api/administrador/evento/" + idEvento + "/list";
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        let eventoTemp = res.data;
+        seteventoAntigo(eventoTemp);
+        setevento({
+          titulo: eventoTemp.titulo,
+          descricao: eventoTemp.descricao,
+          date: eventoTemp.date,
+          horario: eventoTemp.horario,
+          localEventoRequest: eventoTemp.localEvento,
+          imagem: eventoTemp.imagem,
+        });
+        if (eventoTemp.palestrantes !== null && isRequest === false) {
+          loadInputsArray(eventoTemp.palestrantes);
+          setisRequest(true);
+        }
+      });
+  }, []);
+
+  function loadInputsArray(arrayPalestrantes) {
+    let ids = 0;
+    let inputsProv = [...inputsArray];
+    arrayPalestrantes.forEach((palestranteNome) => {
+      inputsProv.push({ id: ids, nome: palestranteNome });
+      ids++;
+    });
+    setlastId(ids);
+    setinputsArray(inputsProv);
+  }
 
   useEffect(() => {
     if (
-      evento.titulo !== "" &&
-      evento.descricao !== "" &&
-      evento.horario !== "" &&
-      evento.date !== "" &&
-      evento.localEventoRequest !== null
+      evento.titulo !== eventoAntigo.titulo ||
+      evento.descricao !== eventoAntigo.descricao ||
+      evento.horario !== eventoAntigo.horario ||
+      evento.date !== eventoAntigo.date ||
+      evento.localEventoRequest !== eventoAntigo.localEventoRequest
     ) {
       setbtnHabilitado(true);
     } else {
@@ -83,8 +124,8 @@ const AdicionarEvento = () => {
   }
 
   function addNovoPalestrante() {
-    setinputsArray((state) => [...state, {id: lastIdArrayInputs, nome: "" }]);
-    setLastIdArrayInputs(lastIdArrayInputs+1)
+    setinputsArray((state) => [...state, { id: lastId, nome: "" }]);
+    setlastId(lastId + 1);
   }
 
   function removerInput(e) {
@@ -99,9 +140,7 @@ const AdicionarEvento = () => {
     setinputsArray(inputs);
   }
 
-  const enviarEvento = () => {
-    let url = "http://localhost:8080/api/administrador/evento/create";
-
+  useEffect(() => {
     let palestranteDTO = [];
 
     let inputsProv = [...inputsArray];
@@ -113,6 +152,11 @@ const AdicionarEvento = () => {
     setevento((prev) => {
       return { ...prev, palestrantes: palestranteDTO };
     });
+  }, [inputsArray])
+
+  const atualizarEvento = () => {
+    let url =
+      "http://localhost:8080/api/administrador/evento/" + idEvento + "/edit";
 
     axios
       .post(
@@ -196,14 +240,10 @@ const AdicionarEvento = () => {
     return inputsProv[indexPalestrante].nome;
   }
 
-  const getImagem = () => {
-    return evento.imagem;
-  }
-
   return (
     <div>
       <div className="containerPrincipal">
-        <label>Adicionar eventos</label>
+        <label>Editar evento</label>
 
         <div className="headCont">
           <div className="head_cont_inputs">
@@ -222,6 +262,7 @@ const AdicionarEvento = () => {
                   className="tituloEvento"
                   type="text"
                   placeholder="Titulo *"
+                  value={evento.titulo}
                   onChange={(e) =>
                     setevento((prevState) => {
                       return { ...prevState, titulo: e.target.value };
@@ -238,6 +279,7 @@ const AdicionarEvento = () => {
                     className="descEvento"
                     type="text"
                     placeholder="Descrição..."
+                    value={evento.descricao}
                     onChange={(e) =>
                       setevento((prevState) => {
                         return { ...prevState, descricao: e.target.value };
@@ -302,6 +344,7 @@ const AdicionarEvento = () => {
             <Tooltip title="Obrigatório" placement="right-start">
               <input
                 placeholder="11/11/2011"
+                value={evento.date}
                 onChange={(e) =>
                   setevento((prevState) => {
                     return { ...prevState, date: e.target.value };
@@ -314,7 +357,8 @@ const AdicionarEvento = () => {
             </label>
             <Tooltip title="Obrigatório" placement="right-start">
               <input
-                placeholder="20:30"
+                placeholder="20h30"
+                value={evento.horario}
                 onChange={(e) =>
                   setevento((prevState) => {
                     return { ...prevState, horario: e.target.value };
@@ -408,13 +452,17 @@ const AdicionarEvento = () => {
             <Tooltip title="Preencha todos os campos obrigatorios com *">
               <span>
                 <Button variant="contained" color="success" disabled>
-                  Salvar
+                  Editar
                 </Button>
               </span>
             </Tooltip>
           ) : (
-            <Button variant="contained" color="success" onClick={enviarEvento}>
-              Salvar
+            <Button
+              variant="contained"
+              color="success"
+              onClick={atualizarEvento}
+            >
+              Editar
             </Button>
           )}
         </div>
@@ -429,4 +477,4 @@ const AdicionarEvento = () => {
   );
 };
 
-export default AdicionarEvento;
+export default EditarEventoAdm;

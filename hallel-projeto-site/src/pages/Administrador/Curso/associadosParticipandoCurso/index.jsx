@@ -31,7 +31,6 @@ const AssociadosListaCursosAdm = () => {
 
   const listaAssociadoFiltrado = useMemo(() => {
     let pesquisaLowerCase = pesquisa.toLowerCase();
-    console.log(listaAssociado)
     return listaAssociado.filter((associado) =>
       associado.nome.toLowerCase().includes(pesquisaLowerCase)
     );

@@ -10,9 +10,8 @@ function Entrar() {
   const [emailInput, setEmail] = useState();
   const [senhaInput, setSenha] = useState();
 
-  const [mostrarPopUp, setMostrarPopUp] = useState(false);
-  const [isValid, setisValid] = useState(false);
-  const [isValidError, setIsValidError] = useState(false);
+  const [isValid, setisValid] = useState(null);
+  const [isValidError, setisValidError] = useState(true);
   const [isLoading, setisLoading] = useState(false);
 
   function entrar() {
@@ -29,7 +28,7 @@ function Entrar() {
       }),
     })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         return res.json();
       })
       .then((object) => {
@@ -38,7 +37,7 @@ function Entrar() {
         console.log(object);
 
         localStorage.setItem("token", object.token);
-        localStorage.setItem("HallelId", object.objeto.id)
+        localStorage.setItem("HallelId", object.objeto.id);
         object.objeto.roles.map((role) => {
           rolesName.push(role.name);
         });
@@ -50,18 +49,18 @@ function Entrar() {
       })
       .catch((e) => {
         console.log(e);
-        setIsValidError(true);
+        setisValid(false);
+        setisValidError(true);
         setTimeout(() => {
-          setIsValidError(false);
-          setisLoading(false)
+          setisLoading(false);
         }, 3000);
       });
   }
 
   const handleClose = () => {
-    setIsValidError(false);
-    setisValid(false);
-  }
+    setisValid(null);
+    setisValidError(false);
+  };
 
   return (
     <div className="containerlogin">
@@ -118,20 +117,30 @@ function Entrar() {
           <a href="/solicitarCadastro"> Solicite seu cadastro </a>
         </div>
       </div>
-      <Snackbar
-        open={isValidError}
-        onClose={handleClose}
-        autoHideDuration={3000}
-      >
-        <Alert severity="error">Error no login</Alert>
-      </Snackbar>
-      <Snackbar
-        open={isValid}
-        onClose={handleClose}
-        autoHideDuration={3000}
-      >
-        <Alert severity="success">Logado com sucesso, redirecionando...</Alert>
-      </Snackbar>
+      {isValid !== null && (
+        <>
+          {isValid === false && (
+            <Snackbar
+              open={isValidError}
+              onClose={handleClose}
+              autoHideDuration={3000}
+            >
+              <Alert severity="error">Error no login</Alert>
+            </Snackbar>
+          )}
+          {isValid === true && (
+            <Snackbar
+              open={isValid}
+              onClose={handleClose}
+              autoHideDuration={3000}
+            >
+              <Alert severity="success">
+                Logado com sucesso, redirecionando...
+              </Alert>
+            </Snackbar>
+          )}
+        </>
+      )}
     </div>
   );
 }

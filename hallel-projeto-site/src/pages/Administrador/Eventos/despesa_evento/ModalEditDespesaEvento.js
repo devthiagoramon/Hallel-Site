@@ -9,7 +9,6 @@ const ModalEditDespesaEvento = (props) => {
     const { changedTabela,setChangedTabela,idEvento, despesaSelected, openModal, setOpenModal, setEditarPopUp, setOpenPopUp, setDespesaSelected } = props;
 
     function num_tipoDespesa_despesaSelected (){
-        console.log(despesaSelected.tipoDespesa)
         switch (despesaSelected.tipoDespesa) {
             case "DINHEIRO":
                 return 1;

@@ -1,6 +1,7 @@
 .container_despesas_eventos{
-    width: 100vw;
+    width: 90vw;
     min-height: 100vh;
+    margin-left: 4rem;
 }
 
 .container_load_despesas_eventos{
@@ -42,18 +43,18 @@
 }
 
 .esquerda_body_despesas_evento{
-    width: 45%;
+    width: 60%;
 }
 
 .direita_body_despesas_evento{
-    width: 45%;
+    width: 35%;
 }
 
 .container_inputs_despesas_evento{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .inputs_despesas_evento{

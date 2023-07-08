@@ -71,7 +71,6 @@ const ListarCursosADM = () => {
         return res.json();
       })
       .then((cursoObj) => {
-        console.log(cursoObj);
         setdescCurso((prev) => {
           return { ...prev, id: cursoObj.id };
         });

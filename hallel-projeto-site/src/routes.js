@@ -42,6 +42,7 @@ import LojaProduto from "./pages/Loja/LojaProduto/indexProduto";
 import LojaPagamento from "./pages/Loja/LojaProduto/LojaPagamento/indexPagLoja";
 import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/AdicionarLocais";
 import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaEvento";
+import EditarEventoAdm from "./pages/Administrador/Eventos/editar/EditarEventoAdm";
 
 function RoutesApp() {
   return (
@@ -139,19 +140,17 @@ function RoutesApp() {
         <Route path="/entrar" element={<Entrar />} />
 
         <Route path="/videoChamada" element={<VideoChamada />} />
+        <Route path="/administrador/locaisEvento" element={<LocaisEventos />} />
         <Route
-          path="/administrador/locaisEvento"
-          element={<LocaisEventos />}
+          path="/administrador/eventos/:idEvento/despesas"
+          element={<DespesaEvento />}
         />
+
         <Route
-          path="/administrador/eventos/:idEvento/despesas" 
-          element={<DespesaEvento />} />
+          path="/administrador/eventos/:idEvento/editar"
+          element={<EditarEventoAdm />}
+        />
       </Routes>
-
-
-     
-
-
     </BrowserRouter>
   );
 }

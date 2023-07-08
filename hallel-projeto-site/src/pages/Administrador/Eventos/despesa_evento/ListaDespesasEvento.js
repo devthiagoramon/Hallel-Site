@@ -48,7 +48,6 @@ const ListaDespesasEvento = (props) => {
           maxWidth: "100%",
           marginTop: "1.5rem",
           marginBottom: "1.5rem",
-          marginLeft: "8rem",
           marginRight: "8rem",
         }}
       >
@@ -73,7 +72,7 @@ const ListaDespesasEvento = (props) => {
                     return (
                       <tr>
                         <td>{item.nome}</td>
-                        <td>{item.descricao}</td>
+                        <td style={{wordBreak: "break-word"}}>{item.descricao}</td>
                         <td>{item.tipoDespesa}</td>
                         <td>{item.tipoDespesa !== "DINHEIRO" ? item.quantidade + " unidades" : "R$" + item.valor}</td>
                         <td>

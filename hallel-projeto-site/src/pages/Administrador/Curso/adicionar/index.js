@@ -168,7 +168,6 @@ const AdicionarCursoAdm = () => {
   }
 
   function removerInputAprendizado(id) {
-    console.log(id);
     let inputsAprendizado = [...aprendizadoInputs];
     inputsAprendizado.splice(
       inputsAprendizado.findIndex((input) => {
@@ -413,7 +412,6 @@ const AdicionarCursoAdm = () => {
   function handleFileChanged(event, numModulo, numAtividade) {
     let file = event.target.files[0];
 
-    console.log(file);
 
     let indexModulo = getIndexById(numModulo);
     let indexAtividade = getIndexAtividadeById(numModulo, numAtividade);

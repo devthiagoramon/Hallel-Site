@@ -30,7 +30,6 @@ const SlideArtigo = (props) => {
         return res.json();
       })
       .then((produto) => {
-        console.log(produto);
         setProduto(produto);
       })
       .catch((error) => {
