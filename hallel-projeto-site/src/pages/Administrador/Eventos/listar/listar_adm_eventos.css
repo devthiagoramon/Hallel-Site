@@ -117,6 +117,8 @@ a {
 
 .esquerda_options {
   margin-left: 4.5rem;
+  display: flex;
+  column-gap: 15px;
 }
 
 .options button {

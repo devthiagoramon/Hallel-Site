@@ -1,57 +1,53 @@
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
+}
+.titulo_evento {
+  display: flex;
+  flex-direction: column;
+  color: #252525;
+  margin-left: 3rem;
 }
 
+.cont_titulo_desc_evento_user {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+}
 
-  .containerEvents > .titulo_evento{
-
-
-    display: flex;
-    flex-direction: column;
-    color: #35404b;
-    font-weight: 700;
-  
-  }
-
-  .containerEvents .voltar{
-
-    display: flex;
-    justify-content: right;
-  }
+.containerEvents .voltar {
+  display: flex;
+  justify-content: right;
+}
 /* Corpo */
 
-.corpo_evento{
-
+.corpo_evento {
   display: flex;
-  justify-content: space-evenly;
-  margin: 0 8% 0 0 
+  justify-content: center;
 }
 
-
-.corpo_evento .evento_banner> .imagem{
-
+.corpo_evento > container_imagem_evento_user {
   display: block;
-    background-color: #8da0b2;
-    width: 30em;
-    height: 20em;
+  background-color: #8da0b2;
 }
 
-
-.corpo_evento .evento_banner > .imagem .imagemCp1{
-
-    height: 100%;
-    width: 100%;
+.corpo_evento > img {
+  max-width: 640px;
+  max-height: 480px;
+  aspect-ratio: 6/2;
 }
 
-.descricaoEvento{
-
+.descricao_evento_user {
   display: flex;
-  flex-direction: column;  
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 5rem;
 }
 
 /*INFORMAÇÕES*/
 
-.voltar button{
+.voltar button {
   width: 3em;
   height: 3em;
   border-radius: 50%;
@@ -62,43 +58,80 @@ body{
   font-size: 1.1em;
   font-weight: 700;
   color: #35404b;
-  margin-right: 5em;
+  margin-right: 3rem;
 }
 
-
-.voltar button:hover{
+.voltar button:hover {
   width: 3.2em;
   height: 3.2em;
   background-color: #ffa768;
   transition: 0.5s;
 }
 
-.subtopicos{
-  
-  margin: 0 10em;
+.subtopicos {
+  margin-left: 2rem;
 }
 
-#topicosInfo > li a{
-
+.topicosInfo > li {
   font-weight: 700;
   font-size: 1.2em;
   color: #35404b;
   font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   text-decoration: none;
-  text-indent: 5em;
+  text-indent: 1em;
+  margin-top: 1.5rem;
 }
 
-.participantes{
-
+.participantes {
   flex-direction: column;
+  display: flex;
+  margin-left: 3rem;
+}
+
+.participantes > label {
+  font-size: 24px;
+  font-weight: 600;
+  color: #252525;
+  margin-bottom: 1.25rem;
+}
+
+.descricao_evento_user {
+  display: flex;
+  margin-left: 3rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.descricao_evento_user label {
+  font-size: 24px;
+  font-weight: 600;
+  color: #252525;
+}
+
+.container_infos_desc_evento {
+  width: 100%;
   display: flex;
 }
 
-.participantes > h2{
+.subtopicos > label {
+  font-size: 24px;
+  font-weight: 600;
+  color: #252525;
+  margin-bottom: 1.25rem;
+}
 
-  text-align: left;
-  font-weight: 700;
-  color: #35404b;
-  text-indent: 5em;
+.container_participar_evento{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+.container_participar_evento>button{
+  border-radius: 12px;
+}
+
+.container_participar_evento>button:hover{
+  background-color: #613191;
 }

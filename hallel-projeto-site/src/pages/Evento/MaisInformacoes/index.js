@@ -1,36 +1,26 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "./eventInfo.css";
-import {BsArrowReturnLeft} from "react-icons/bs"
+import {  } from "react-icons/bs";
+import { ConnectWithoutContactRounded } from "@mui/icons-material";
+import { Button } from "@mui/material";
 
 class InfoEventos extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      evento: this.props.evento
-    }
+      evento: this.props.evento,
+    };
   }
 
   render() {
     return (
-          
-          <section className="containerEvents">
-
-                      <div className="voltar">
-                          
-                          <button onClick={this.props.hide}><BsArrowReturnLeft style={{fontSize: "1.8em"}}/></button>
-                    </div>
-                            
-
-            <div className="area-infos">
-                
-                <Corpo evento={this.state.evento} hide={this.props.hide}/>
-                <hr/>
-                <Infos evento={this.state.evento}/>
-            </div>
-
-          </section>
-      
+      <section className="containerEvents">
+        <div className="area-infos">
+          <Corpo evento={this.state.evento} hide={this.props.hide} />
+          <hr style={{marginTop: "30px", marginBottom: "30px"}}/>
+          <Infos evento={this.state.evento} />
+        </div>
+      </section>
     );
   }
 }
@@ -44,31 +34,33 @@ class Corpo extends Component {
   }
 
   render() {
-
-     console.log(this.state.evento)
+    console.log(this.state.evento);
     return (
       <div className="corpo_evento">
-
-        <div className="evento_banner">
-
-          <div className= "titulo_evento">
-
-          <h1 className="tituloEventos">{this.state.evento.titulo}</h1>
+        <div className="cont_titulo_desc_evento_user">
+          <h1 className="titulo_evento">{this.state.evento.titulo}</h1>
+          <div className="descricao_evento_user">
+            <label style={{ justifySelf: "flex-start" }}>Descrição</label>
+            <p style={{wordBreak: "break-word"}}>{this.state.evento.descricao}</p>
           </div>
-        <div className="imagem">
+          <div className="container_participar_evento">
+            <Button
+              sx={{ background: "#1a0631" }}
+              variant="contained"
+              endIcon={<ConnectWithoutContactRounded />}
+            >
+              Participar do evento
+            </Button>
+          </div>
+        </div>
+        <div className="container_imagem_evento_user">
           <img
-            className="imagemCp1"
-            src={this.state.evento.imagem} 
+            style={{ maxHeight: "450px", marginRight: "3rem" }}
+            className="imagemCp1_evento_user"
+            src={this.state.evento.imagem}
             alt="imagem"
-          ></img>
+          />
         </div>
-
-        </div>
-        <div className="descricaoEvento">
-          <h2>Descrição</h2>
-          <p>{this.state.evento.descricao}</p>
-        </div>
-       
       </div>
     );
   }
@@ -84,27 +76,23 @@ class Infos extends Component {
   render() {
     return (
       <div className="infos">
-        <div className="subtopicos">
-          <ul id="topicosInfo">
-            <li>
-              <a>Endereço: {this.state.evento.localidade}</a>
-            </li>
-            <br />
-            <br />
-            <li>
-              <a>Data: {this.state.evento.date}</a>
-            </li>
-            <br />
-            <br />
-            <li>
-              <a>Horário: {this.state.evento.horario}</a>
-            </li>
-            <br />
-            <br />
-          </ul>
-        </div>
-        <div className="participantes">
-          <h2>Participantes:</h2>
+        <div className="container_infos_desc_evento">
+          <div className="subtopicos">
+            <label>Informações</label>
+            <ul className="topicosInfo">
+              <li>Endereço: {this.state.evento.localEvento.localizacao}</li>
+              <li>Data: {this.state.evento.date}</li>
+              <li>Horário: {this.state.evento.horario}</li>
+            </ul>
+          </div>
+          <div className="participantes">
+            <label>Participantes:</label>
+            <ul className="topicosInfo">
+              {this.state.evento.palestrantes.map((palestrante) => {
+                return <li>{palestrante}</li>;
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     );

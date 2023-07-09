@@ -43,6 +43,7 @@ import LojaPagamento from "./pages/Loja/LojaProduto/LojaPagamento/indexPagLoja";
 import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/AdicionarLocais";
 import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaEvento";
 import EditarEventoAdm from "./pages/Administrador/Eventos/editar/EditarEventoAdm";
+import EventosArquivado from "./pages/Administrador/Eventos/listar/EventosArquivado";
 
 function RoutesApp() {
   return (
@@ -149,6 +150,10 @@ function RoutesApp() {
         <Route
           path="/administrador/eventos/:idEvento/editar"
           element={<EditarEventoAdm />}
+        />
+        <Route
+          path="/administrador/eventos/arquivados"
+          element={<EventosArquivado />}
         />
       </Routes>
     </BrowserRouter>

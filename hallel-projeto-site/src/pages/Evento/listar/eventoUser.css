@@ -1,50 +1,51 @@
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
 
-.painelEventosUser{
-    display: flex;
-    flex-direction: column;
-    padding-top: 100px;
-    margin-bottom: 300px;
+.painelEventosUser {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
-.TituloEventoUser{
-    margin-left: 40px;
-    padding-bottom: 50px;
+.TituloEventoUser {
+  margin-left: 40px;
+  padding-bottom: 50px;
 }
 
-#pesquisaEvents{
-
-    display: flex;
-    margin: 0 80%;
+.contPesquisaEventoUser {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
-.CorpoEventoUser{
-    margin-left: 40px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 20px;
+#pesquisaEvents {
+  display: flex;
 }
 
-
-.loaderEventoCarroseulEventos{
-    width: 100%;
-    display: flex;
-    margin-left: 1rem;
+.CorpoEventoUser {
+  margin-left: 40px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-
-.loaderEventoCarroseulEventos > span{
-
-    width: 10em;
-    height: 10em;
-    margin: 0 2em;
+.loaderEventoCarroseulEventos {
+  width: 100%;
+  display: flex;
+  margin-left: 1rem;
+  flex-wrap: wrap;
 }
 
-.grupo-evento{
+.loaderEventoCarroseulEventos > span {
+  width: 10em;
+  height: 10em;
+  margin: 0 2em;
+}
 
-    margin-top: 5em;
+.grupo-evento {
+  margin-top: 5em;
 }

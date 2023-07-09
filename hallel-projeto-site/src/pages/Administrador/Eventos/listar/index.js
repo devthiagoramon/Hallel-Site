@@ -17,8 +17,9 @@ import {
   Skeleton,
 } from "@mui/material";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { LocationOn } from "@mui/icons-material";
+import { ArchiveRounded, LocationOn } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import ModalArquivarEvento from "./ModalArquivarEvento";
 
 function Evento() {
   const [eventos, setEventos] = useState([]);
@@ -27,6 +28,12 @@ function Evento() {
   const [anchorEl, setanchorEl] = useState(null);
 
   const openMenu = Boolean(anchorEl);
+
+  const [openModalArquivar, setOpenModalArquivar] = useState(false);
+  const [atualizarTabela, setAtualizarTabela] = useState(false);
+
+  const [tabelaVazia, setTabelaVazia] = useState(true);
+  const [timer, setTimer] = useState(false);
 
   const navigator = useNavigate();
 
@@ -45,13 +52,17 @@ function Evento() {
         return res.json();
       })
       .then((evento) => {
+        if (evento.length !== 0) {
+          setTabelaVazia(false);
+        }
         setEventos(evento);
+        setTimer(true);
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  useMemo(() => renderizarEventos(), []);
+  useMemo(() => renderizarEventos(), [atualizarTabela]);
 
   const data = () => {
     return {
@@ -104,6 +115,10 @@ function Evento() {
     navigator("/administrador/locaisEvento");
   };
 
+  const handleClickArquivados = () => {
+    navigator("/administrador/eventos/arquivados");
+  };
+
   const handleCloseMenuEvento = () => {
     setanchorEl(null);
     setEventoIdClick("");
@@ -114,10 +129,18 @@ function Evento() {
       <h1>Eventos</h1>
       <div className="options">
         <div className="esquerda_options">
-          <LocationOn sx={{ marginRight: "10px" }} />
-          <Button style={{ width: "15em" }} onClick={handleClickLocaisEvento}>
-            Locais de Evento
-          </Button>
+          <div>
+            <LocationOn sx={{ marginRight: "10px" }} />
+            <Button style={{ width: "15em" }} onClick={handleClickLocaisEvento}>
+              Locais de Evento
+            </Button>
+          </div>
+          <div>
+            <ArchiveRounded sx={{ marginRight: "10px" }} />
+            <Button style={{ width: "15em" }} onClick={handleClickArquivados}>
+              Eventos arquivados
+            </Button>
+          </div>
         </div>
         <div className="direita_options">
           <button
@@ -132,12 +155,41 @@ function Evento() {
         </div>
       </div>
       <div className="container-tb">
-        {eventos.length === 0 ? (
-          <div className="loaderEventos">
-            <CircularProgress style={{ margin: "10em 0" }} />
-          </div>
+        {tabelaVazia ? (
+          <>
+            {timer === false && (
+              <div className="loaderEventos">
+                <CircularProgress style={{ margin: "10em 0" }} />
+              </div>
+            )}
+            {timer === true && (
+              <CDBContainer style={{ width: "100%" }}>
+                <CDBCard>
+                  <CDBCardBody>
+                    <CDBDataTable
+                      entriesLabel="Mostrar eventos"
+                      searchLabel="Pesquisar"
+                      paginationLabel={["Anterior", "Próximo"]}
+                      infoLabel={["Mostrando de", "até", "de", "eventos"]}
+                      noRecordsFoundLabel="Nenhum evento encontrado"
+                      hover
+                      materialSearch
+                      bordered
+                      entriesOptions={[5, 10, 20, 30]}
+                      entries={15}
+                      pagesAmount={4}
+                      maxHeight="10vh"
+                      fixed
+                      theadColor="#BF25E6"
+                      data={data()}
+                    />
+                  </CDBCardBody>
+                </CDBCard>
+              </CDBContainer>
+            )}
+          </>
         ) : (
-          <CDBContainer>
+          <CDBContainer style={{ width: "100%" }}>
             <CDBCard>
               <CDBCardBody>
                 <CDBDataTable
@@ -175,7 +227,13 @@ function Evento() {
         >
           Editar Evento
         </MenuItem>
-        <MenuItem>Arquivar Evento</MenuItem>
+        <MenuItem
+          onClick={() => {
+            setOpenModalArquivar(true);
+          }}
+        >
+          Arquivar Evento
+        </MenuItem>
         <MenuItem
           onClick={() => {
             navigator("/administrador/eventos/" + eventoIdClick + "/despesas");
@@ -184,6 +242,13 @@ function Evento() {
           Despesas
         </MenuItem>
       </Menu>
+      <ModalArquivarEvento
+        setAtualizarTabela={setAtualizarTabela}
+        atualizarTabela={atualizarTabela}
+        idEvento={eventoIdClick}
+        openModalArquivar={openModalArquivar}
+        setOpenModalArquivar={setOpenModalArquivar}
+      />
     </div>
   );
 }

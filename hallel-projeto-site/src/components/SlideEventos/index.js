@@ -28,7 +28,7 @@ const SlideEventos = (props) => {
   }, []);
 
 
-  useEffect(() => {
+  useMemo(() => {
     let url = "http://localhost:8080/api/eventos";
 
     let myHeaders = new Headers();
@@ -49,7 +49,7 @@ const SlideEventos = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, [eventos]);
+  }, []);
 
 
   return (
@@ -69,10 +69,8 @@ const SlideEventos = (props) => {
             <motion.div
               className="inner"
               drag="x"
-              dragConstraints={{ right: 10, left: -width, maxWidth: "100vw" }}
+              dragConstraints={{ right: 10, left: -width }}
             >
-
-
               {eventos.map((evento) => {
                 return (
 
