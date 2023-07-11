@@ -73,23 +73,22 @@ const PagamentosAssociado = () => {
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Email</th>
-              <th>Data de expiração</th>
-              <th>Metodo</th>
-              <th>Mensalidade</th>
-              <th>Pago</th>
-              <th>Situação</th>
+              <th>Valor</th>
+              <th>Mês de pagamento</th>
+              <th>Tipo de pagamento</th>
             </tr>
           </thead>
           <tbody>
 
+
+            {/* parametros falta */}
             {pagamentosAssociadosFiltrado.map((item) => {
               return (
                 <tr>
                   <td>{item.nome}</td>
-                  <td>{item.email}</td>
-                  <td>{item.isPago ? "Sim" : "Não"}</td>
-                  <td>{item.situacao}</td>
+                  <td>{item.dataFinalPagamento}</td>
+                  <td>{item.dataFinalPagamento}</td>
+                  <td>{item.dataFinalPagamento}</td>
                 </tr>
               );
             })}

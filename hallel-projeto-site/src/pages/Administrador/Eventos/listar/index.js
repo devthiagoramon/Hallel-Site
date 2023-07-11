@@ -20,6 +20,7 @@ import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { ArchiveRounded, LocationOn } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import ModalArquivarEvento from "./ModalArquivarEvento";
+import {VscKebabVertical} from "react-icons/vsc";
 
 function Evento() {
   const [eventos, setEventos] = useState([]);
@@ -34,7 +35,6 @@ function Evento() {
 
   const [tabelaVazia, setTabelaVazia] = useState(true);
   const [timer, setTimer] = useState(false);
-
   const navigator = useNavigate();
 
   function renderizarEventos() {
@@ -94,14 +94,21 @@ function Evento() {
       ],
 
       rows: eventos.map((item) => ({
-        titulo: item.titulo,
+        titulo: (
+
+          <div style = {{display: "flex", justifyContent: "space-around"}}>
+            <label>{item.titulo}</label>
+            <VscKebabVertical  id= "icKebab" onClick={(e) => abrirMenuEvento(e, item.id)}/>
+          </div>
+        ),
+        // (item.titulo) + (<VscKebabVertical onClick={(e) => abrirMenuEvento(e, item.id)}/>),
+        // (<VscKebabVertical onClick={(e) => abrirMenuEvento(e, item.id)}/>),
         date: item.date,
         horario: item.horario,
         localizacao:
           item.localEvento === null
             ? "Nenhuma localização adicionada"
             : item.localEvento.localizacao,
-        clickEvent: (e) => abrirMenuEvento(e, item.id),
       })),
     };
   };
