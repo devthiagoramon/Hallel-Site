@@ -1,207 +1,184 @@
-@import url("https://fonts.googleapis.com/css2?family=Heebo&display=swap");
-
-* {
-  font-family: "Inter", "Heebo", sans-serif;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-.containerFinanceiro {
+.container_painel_financeiro {
   width: 100vw;
-  min-height: 100vh;
-  margin-top: 2rem;
-  margin-left: 0;
-  padding-right: 0;
+  min-height: 1238px;
 }
 
-.tituloPainelFinanceiro {
-  position: inherit;
-  width: 80%;
-  padding-left: 4.5rem;
-  padding-top: 0px;
-}
-
-.tituloPainelFinanceiro label {
-  font-size: 2.3em;
-  font-weight: bold;
-  top: 0;
-  left: 0;
-}
-
-.cards {
-  margin-top: 2rem;
+.header_painel_financeiro {
+  width: auto;
+  margin-top: 40px;
+  margin-left: 75px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  height: 10em;
-  min-height: 20vh;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
-.cards > div {
-  display: grid;
-  width: 25%;
-  grid-template-columns: 100%;
-  grid-template-rows: 40% 20% 30%;
-  height: 100%;
-  border-radius: 2em;
-  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.25);
-  transition: 0.5s;
-}
-
-.cards > div > a {
-  justify-self: center;
-  border: none;
-  background: none;
-  transition: 0.5s;
-  background-color: rgb(98, 98, 98, 0.7);
-}
-
-.cards div:hover a {
-  display: inherit;
-  transition: 0.5s;
-}
-
-.cards div a:hover {
-  color: #ffffd3;
-}
-
-.saibaMaisFin {
-  color: #333;
-  font-size: 1em;
-  font-weight: 600;
-  display: none;
-  transition: 0.5s;
-  align-self: flex-end;
-  padding: 0.4rem;
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 5px;
-}
-
-.cardLucroTotal {
-    background-color: #03a05e;
-}
-
-.cardLucroMensal {
-  background-color: #339f72;
-}
-
-.cardLucroMensal:hover {
-  background-color: #288b62;
-}
-
-.cardDespesaMensal {
-  background-color: #f06d15;
-}
-
-.tituloCard {
+.header_painel_financeiro > label {
+  font-size: 40px;
   font-weight: bold;
-  text-align: center;
-  color: white;
-  margin-top: 1em;
-  font-size: 1.8em;
+  color: #252525;
 }
 
-.valorNum {
+.header_info_mes_painel_financeiro > span {
+  font-size: 24px;
   font-weight: 700;
-  font-size: 2em;
-  color: #f5f5f5;
-  text-align: center;
+  color: #252525;
 }
 
-.painelGrafico {
+.header_info_mes_painel_financeiro > svg {
+  height: 24px;
+}
+
+.header_info_mes_painel_financeiro {
+  width: 100%;
+  height: 30px;
+  margin-top: 30px;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 97%;
-  height: auto;
+  align-items: center;
+  column-gap: 20px;
 }
 
-.graficoEsquerda {
-  margin-top: 3rem;
-  margin-left: 2em;
-  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.25);
-  width: 63%;
-  height: 50%;
-  border-radius: 15px;
+.cont_fragmento_one_painel_financeiro {
+  width: 100%;
+  margin-left: 75px;
+  display: flex;
 }
 
-.graficoEsquerda p {
-  font-size: 2em;
-  margin-top: 20px;
-  margin-left: 20px;
+.cont_esquerda_fragmento_one {
+  width: 45%;
 }
 
-.escolhaDireita {
-  margin-left: 6em;
-  margin-top: 3rem;
-  width: 30%;
-  height: 50vh;
+.container_meta_painel_financeiro {
+  width: 100%;
+  margin-top: 60px;
+  display: flex;
+}
+
+.container_circular_progress {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.container_circular_progress > label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #252525;
+}
+
+.container_info_circular_progress {
+  align-self: flex-end;
+}
+
+.container_info_circular_progress > label > span {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.container_info_circular_progress > label {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.cont_direita_fragmento_one {
+  width: 45%;
+}
+
+.cont_infos_fragmentos_one {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.container_info_fragmentos_one_painel_financeiro {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  row-gap: 2rem;
+  width: 226px;
+  height: 145px;
+  background: linear-gradient(180deg, #1a0631 70%, rgb(26, 6, 49, 0.85));
+  row-gap: 12px;
+  border-radius: 12px;
 }
 
-.escolhaDireita button {
-  color: #171d24;
-  font-size: 1.4rem;
-  font-weight: 700;
-  padding: 0.4em;
-  width: 70%;
-  border-color: inherit;
-  border-width: 0px;
+.container_info_fragmentos_one_painel_financeiro > label {
+  color: #faf4f4;
   text-align: center;
-  box-shadow: 1px 1px 25px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  background-color: #68d98f96;
-  transition: 0.5s;
+  font-size: 32px;
+  font-weight: 600;
+}
+.container_info_fragmentos_one_painel_financeiro > span {
+  color: #faf4f4;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.container_info_fragmentos_one_painel_financeiro > a {
+  color: #faf4f4;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  justify-self: flex-end;
 }
 
-.escolhaDireita button:hover {
-  background-color: #49b56e96;
-  transition: 0.5s;
+.container_info_fragmentos_one_painel_financeiro > a:hover {
+  color: blue;
 }
 
-.escolhaDireita .selecionado {
-  background-color: #47966d96;
+.cont_tabelas_ultimas_painel_financeiro {
+  width: 100%;
+  margin-top: 40px;
 }
 
-.ultimasRendas {
+.cont_tabelas_ultimas_painel_financeiro > label {
+  font-size: 24px;
+  font-size: 600;
+}
+
+.cont_frag_two_painel_financeiro {
+  width: 100%;
+  margin-top: 72px;
+  margin-left: 75px;
+  display: flex;
+}
+
+.cont_esquerda_frag_two_painel_financeiro {
+  width: 50%;
+}
+
+.cont_direita_frag_two_painel_financeiro {
+  width: 40%;
+  display: flex;
+}
+
+.cont_info_frag_two_painel {
+  margin-left: 15px;
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
-  justify-content: center;
-  width: 95%;
-  max-height: 100%;
-  overflow-x: hidden;
-  box-shadow: 1px 1px 25px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  margin-bottom: 3rem;
-  margin-left: 2rem;
+  flex-wrap: wrap;
+  align-self: flex-end;
+  width: 50%;
+  align-items: flex-end;
 }
 
-.ultimasRendas table {
-  margin: 0 auto;
-}
-
-.tituloUltimasRendas {
-  margin-top: 1.6rem;
-  margin-left: 2rem;
-  font-size: 2em;
+.cont_info_frag_two_painel > span {
+  font-size: 18px;
   font-weight: 700;
-  width: 95%;
-  display: flex;
-  justify-content: center;
 }
 
-.progressoBarra {
-  margin: auto;
-  margin-top: 4em;
+.cont_info_frag_two_painel > label {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: end;
+}
+
+.cont_grafico_pizza_frag_two_painel_financeiro {
+  width: 400px;
+  justify-self: flex-end;
 }

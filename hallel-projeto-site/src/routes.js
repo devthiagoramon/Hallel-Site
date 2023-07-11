@@ -17,7 +17,6 @@ import EventoUser from "./pages/Evento/listar";
 import DoacaoFormulario from "./pages/DoacaoForm/indexForms";
 import Perfil from "./pages/PerfilUsuario";
 import MaisInfo from "./pages/Evento/MaisInformacoes";
-import PainelFinanceiro from "./pages/Administrador/Financeiro";
 import Renda from "./pages/Administrador/Financeiro/renda";
 import Entrar from "./pages/Entrar";
 import Gasto from "./pages/Administrador/Financeiro/gastos";
@@ -44,6 +43,7 @@ import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/Adicionar
 import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaEvento";
 import EditarEventoAdm from "./pages/Administrador/Eventos/editar/EditarEventoAdm";
 import EventosArquivado from "./pages/Administrador/Eventos/listar/EventosArquivado";
+import PainelFinanceiroAdm from "./pages/Administrador/Financeiro/PainelFinanceiroAdm";
 
 function RoutesApp() {
   return (
@@ -88,7 +88,7 @@ function RoutesApp() {
         <Route path="/maisInfo" element={<MaisInfo />} />
         <Route
           path="/administrador/painelFinanceiro"
-          element={<PainelFinanceiro />}
+          element={<PainelFinanceiroAdm />}
         />
         <Route
           path="/administrador/painelFinanceiro/rendas"
