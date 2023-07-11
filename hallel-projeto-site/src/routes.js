@@ -45,6 +45,7 @@ import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaE
 import EditarEventoAdm from "./pages/Administrador/Eventos/editar/EditarEventoAdm";
 import EventosArquivado from "./pages/Administrador/Eventos/listar/EventosArquivado";
 import HistoricoAssociado from "./pages/Administrador/Financeiro/associados/HistoricoAssociado/index.js"
+import FormEvento from "./pages/CadastroEvento/FormEvento";
 
 function RoutesApp() {
   return (
@@ -160,6 +161,10 @@ function RoutesApp() {
         <Route
           path="/administrador/eventos/arquivados"
           element={<EventosArquivado />}
+        />
+        <Route
+        path="/CadastroEvento/FormEvento"
+        element={<FormEvento/>}
         />
       </Routes>
     </BrowserRouter>
