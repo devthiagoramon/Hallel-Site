@@ -158,3 +158,18 @@ a {
   max-width: 300px;
   max-height: 400px;
 }
+
+
+/* icone do kebab */
+
+
+#icKebab{
+
+  font-weight: 700;
+}
+#icKebab:hover{
+
+  background-color: rgba(164, 164, 164, 0.5);
+  border-radius: 1em;
+  transition: 0.5s;
+}

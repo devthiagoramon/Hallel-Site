@@ -5,6 +5,7 @@ import { AiFillDelete } from "react-icons/ai"
 import { useState } from 'react'
 import axios from 'axios';
 import { IconButton } from '@mui/material';
+import { CircularProgress } from '@mui/joy';
 
 const ListaDespesasEvento = (props) => {
 
@@ -41,6 +42,16 @@ const ListaDespesasEvento = (props) => {
 
     <section className="sessao_tabela">
 
+
+      {despesas.length == 0 ? 
+
+        <CircularProgress/>
+      
+      : despesas.length == null?
+
+          <h2>Nenhuma despesa encontrada</h2>
+      :
+
       <Table
         hover
         style={{
@@ -63,9 +74,8 @@ const ListaDespesasEvento = (props) => {
         <tbody>
 
 
-          {/* estava dando como indefinida, então coloqueia a interrogação para realizar um teste */}
-          <>
-            {despesas.length !== 0 &&
+
+          
               <>
                 {
                   despesas.map((item) => {
@@ -90,10 +100,11 @@ const ListaDespesasEvento = (props) => {
                   })
                 }
               </>
-            }
-          </>
+    
         </tbody>
       </Table>
+
+    }
 
     </section>
   )

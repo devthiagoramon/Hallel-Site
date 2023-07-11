@@ -1,0 +1,98 @@
+.main{
+    width: 100%;
+    height: 100vh;
+}
+
+.topoSec{
+    background-color: white;
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    justify-content: left;
+}
+
+.seta{
+    width: 50px;
+    height: 50px;
+    color: white;
+    margin-right: 98%;
+}
+
+.um{
+    text-indent: 30px;
+    color: #35404b;
+    font-size: 50px;
+    margin-top: 20px;
+}
+.dois{
+    color: white;
+    margin-top: 10px;
+    font-size: 30px;
+}
+.cont-form{
+    width: 187vh;
+    height: 65vh;
+    margin: 50px;
+    background: linear-gradient(to bottom,#82C6DC,#B5EAFB);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+
+}
+.div1{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+
+}
+.div1 div{
+    margin-left: 10%;
+    margin-top: 60px;
+    font-size: 20px;
+}
+.div1 div input{
+    width: 500px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+.div2{
+    width: 50%;
+    height: 85%;
+    margin: 50px;
+    background-image: url('/src/images/paisagemTeste.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+#btnApagar{
+    width: 125px;
+    height: 40px;
+    font-size:12px;
+    border-radius: 10px;
+    color: white;
+    background-color: #EB2B2B;
+    border: none;
+    margin-left: 5vh;
+    opacity: 0.9;
+}
+#btnEnviar{
+    width: 125px;
+    height: 40px;
+    font-size:12px;
+    border-radius: 10px;
+    color: white;
+    background-color: #28B962;
+    border: none;
+    margin-left: 15vh;
+    opacity: 0.9;
+}
+#btnApagar:hover{
+    opacity: 1;
+}
+#btnEnviar:hover{
+    opacity: 1;
+}

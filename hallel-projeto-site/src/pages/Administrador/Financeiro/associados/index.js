@@ -1,12 +1,14 @@
 import React, { useMemo, useState } from 'react'
-import { Form} from 'react-bootstrap';
 import { CircularProgress } from '@mui/material';
 import './associadosadm.css'
+import {CgProfile} from "react-icons/cg"
 import { CDBCard, CDBCardBody, CDBDataTable, CDBRow, CDBCol, CDBContainer } from 'cdbreact';
+import { useNavigate } from 'react-router-dom';
 
 const AssociadosADM = () => {
  const [associados, setassociados] = useState([]);
- const [pesquisa, setPesquisa] = useState("");
+
+ const navigate = useNavigate();
 
   useMemo(() => {
     let url = "http://localhost:8080/api/associados";
@@ -30,14 +32,6 @@ const AssociadosADM = () => {
       });
   }, []);
 
-  // const associadosFiltrado = useMemo(() => {
-  //   let lowerPesquisa = pesquisa.toLowerCase();
-  //   return associados.filter((associado) =>
-  //     associado.nome.toLowerCase().includes(lowerPesquisa)
-  //   );
-  // }, [associados, pesquisa]);
-
-
   const data = () => {
     return {
       columns: [
@@ -51,13 +45,8 @@ const AssociadosADM = () => {
           },
         },
         {
-          label: 'E-mail',
-          field: 'email',
-          width: 100,
-        },
-        {
-          label: 'Participando do evento',
-          field: 'participandoDoEvento',
+          label: 'Data de nascimento',
+          field: 'dataNascimento',
           width: 150,
         },
         {
@@ -66,18 +55,23 @@ const AssociadosADM = () => {
           width: 150,
         },
         {
-          label: 'Pago',
-          field: 'pago',
+          label: 'Visualizar',
+          field: 'vizualizar',
           width: 150,
         },
       ],
 
       rows: associados.map((item) => ({
         nome: item.nome,
-        email: item.email,
-        participandoDoEvento: item.eventoParticipando,
-        status: item.isAssociado,
-        pago: item.isPago ? "Sim" : "Não",
+        dataNascimento: item.dataNascimentoAssociado,
+        status: item.isPago == true ? "Quitado" : "Pendente",
+        vizualizar: (
+          <div style={{display: "flex", justifyContent:"center"}}>
+            <CgProfile onClick={ () => navigate("/administrador/associado/historicoAssociado")} style={{width:"1.2em", height:"1.2em"}}/>
+          </div>
+        )
+        
+        
       })),
     }; 
   };
@@ -101,14 +95,7 @@ const AssociadosADM = () => {
           <div className="tituloHeadContTabelaPagamentos">
             <a>Tabela de Associados</a>
           </div>
-          {/* <div className="pesquisaHeadContTabelaPagamentos">
-            <Form.Control
-              onChange={(e) => {
-                setPesquisa(e.target.value);
-              }}
-              placeholder="Pesquisar Associado"
-            />
-          </div> */}
+  
         </div>
         <CDBContainer>
       <CDBCard>
