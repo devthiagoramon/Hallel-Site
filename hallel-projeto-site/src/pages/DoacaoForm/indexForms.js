@@ -4,29 +4,45 @@ import Form1 from "./form1";
 import Form2 from "./form2";
 import Form3 from "./form3";
 import Form3a from "./form3a";
-
-// falta terminar a lógica
+import axios from "axios"
 
 function FormInterface() {
   const [estado1, setEstado1] = useState(true);
   const [estado2, setEstado2] = useState(false);
   const [estado3, setEstado3] = useState(false);
   const [estado3a, setEstado3a] = useState(false);
-  const objDoacaoTemplate = {
-    formaDoacao: "",
-    quantidadeDoacao: 0,
-    cpf: "",
-    nomeTitular: "",
-    numCartao: "",
-    dataVencimento: "",
-  }
 
-  const [objDoacao, setObjDoacao] = useState(objDoacaoTemplate);
 
-  useMemo(() => {
-    console.log(objDoacao);
-  }, [objDoacao])
+  // valores de base para teste
+  const [doacao, setDoacao] = useState({
+    emailDoador: "",
+    tipo: "",
+    dataDoacao: "",
+    valorDoacao: ""
+});
 
+const addDoar = () => {
+
+  let url = "http://localhost:8080/api/formularioDoacao/doar"
+
+  axios.post(url, {
+
+      ...doacao
+
+  },   {
+      headers: {
+        Authorization: localStorage.getItem("token")
+        }
+  }).then(() => {
+
+    alert("enviou")
+   
+
+  }).catch(() => {
+    
+    alert("erro")
+  })
+}
   function testaForm1() {
     return (
       <Form1
@@ -34,7 +50,8 @@ function FormInterface() {
         estado1={estado1}
         setEstado2={setEstado2}
         estado2={estado2}
-        setObjDoacao={setObjDoacao}
+        doacao={doacao}
+        setDoacao={setDoacao}
       />
     );
   }
@@ -47,7 +64,8 @@ function FormInterface() {
         estado2={estado2}
         setEstado3={setEstado3}
         estado3={estado3}
-        setObjDoacao={setObjDoacao}
+        doacao={doacao}
+        setDoacao={setDoacao}
       />
     );
   }
@@ -60,7 +78,9 @@ function FormInterface() {
         estado3={estado3}
         setEstado3a={setEstado3a}
         estado3a={estado3a}
-        objDoacao={objDoacao}
+        doacao={doacao}
+        setDoacao={setDoacao}
+        addDoar ={addDoar}
       />
     );
   }

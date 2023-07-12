@@ -1,14 +1,13 @@
 import "./styles/styleForm3.css"
 import Form from "react-bootstrap/Form"
 
-const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a}) =>{
+const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a, setDoacao, addDoar}) =>{
 
     function mudarSinais(e){
 
-        if(e
-         == 1){
+        if(e == 1){
             return(
-
+            addDoar(),
             setEstado3(!estado3), setEstado3a(!estado3a)
             )
         } else{
@@ -18,7 +17,6 @@ const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a}
         
             )
         }
-
         }
 
     return(
@@ -39,33 +37,23 @@ const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a}
 
                 <Form.Group className="mb-3 row">
 
-                    <Form.Label className="labelforms" for = "cpfTitular">CPF:</Form.Label>
+                    <Form.Label className="labelforms" for = "cpfTitular"
+                    
+                    
+                    >Email:</Form.Label>
 
-                    <input type="number" id ="cpfTitular"/>
+                    <input onChange={(e) =>{
+                        setDoacao(prevState =>{
+                          return{... prevState, valorDoacao: e.target.value}
+                        })
+                      }} type="text" id ="cpfTitular"/>
                 </Form.Group>
 
-                <Form.Group className="mb-3 row">
-
-                    <Form.Label  className="labelforms" for = "NomeTitular">Nome do titular:</Form.Label>
-                    <input type="text"/>
-                </Form.Group>
-
-                <Form.Group className="mb-3 row">
-
-                    <Form.Label  className="labelforms" for ="NumeroCartao">Número do cartão</Form.Label>
-                    <input type = "NumeroCartao"/>
-                </Form.Group>
-
-                <Form.Group className= "mb-3 row">
-
-                    <Form.Label  className="labelforms" for = "DateVenc">Data de vencimento:</Form.Label>
-                    <input type="date"></input>
-                </Form.Group>
             </Form>
             <div className= "button-area">
 
                 <button onClick={()=> mudarSinais(0)}>Voltar</button>
-                <button id="avancaButton" onClick={() =>mudarSinais(1)}>Confirmar</button>
+                <button id="avancaButton" onClick={addDoar}>Confirmar</button>
             </div>
         </section>
     );

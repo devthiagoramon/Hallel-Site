@@ -88,7 +88,7 @@ class Infos extends Component {
           <div className="participantes">
             <label>Participantes:</label>
             <ul className="topicosInfo">
-              {this.state.evento.palestrantes.map((palestrante) => {
+              {this.state.evento.palestrantes?.map((palestrante) => {
                 return <li>{palestrante}</li>;
               })}
             </ul>

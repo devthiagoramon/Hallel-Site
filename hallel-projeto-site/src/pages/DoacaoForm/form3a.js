@@ -20,7 +20,6 @@ const  Form3a = ({setEstado3a, estado3a}) =>{
                 <button>3</button>
             </div>
 
-
         <div className="infoDoar">
 
             <label>Sua doação foi recebida</label>

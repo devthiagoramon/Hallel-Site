@@ -8,7 +8,7 @@ const Form2 = ({
   estado2,
   setEstado3,
   estado3,
-  setObjDoacao,
+  setDoacao,
 }) => {
   function mudarSinais(e) {
     if (e == 1) {
@@ -18,14 +18,6 @@ const Form2 = ({
     }
   }
 
-  const [quantidade, setQuantidade] = useState(0);
-
-  useMemo(() => {
-    setObjDoacao(prev => {
-        return {...prev, quantidadeDoacao: quantidade}
-    })
-  }, [quantidade])
-
   return (
     <section className="container-form2">
       <div className="breadNav">
@@ -34,13 +26,19 @@ const Form2 = ({
         <button>3</button>
       </div>
 
+
+     {/* o input do valor */}
       <form className="inserirPag">
         <label>Digite a sua quantia:</label>
         <input
           id="valorPreço"
           type="number"
           placeholder="R$ 0,00"
-          onChange={(e) => setQuantidade(parseFloat(e.target.value))}
+          onChange={(e) =>{
+            setDoacao(prevState =>{
+              return{... prevState, valorDoacao: e.target.value}
+            })
+          }}
         />
       </form>
 

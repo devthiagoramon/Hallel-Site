@@ -120,13 +120,13 @@ function Header() {
           {
             localStorage.getItem("R0l3s").includes("ROLE_USER") ? (
               <>
-                <Link id="item" to="/doacoes">
+                <Link id="item" to="/formularioDoacao">
                   Doações
                 </Link>
               </>
             ) : (
               <>
-                <Link id="item" to="/doacoes">
+                <Link id="item" to="/formularioDoacao">
                   Doações
                 </Link>
               </>

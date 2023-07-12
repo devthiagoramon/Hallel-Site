@@ -1,11 +1,10 @@
-import { useMemo, useState } from "react";
+import {useState } from "react";
 import "./styles/styleForm1.css";
 import { Link } from "react-router-dom";
 
-const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setObjDoacao }) => {
+const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setDoacao, doacao }) => {
   const [showDoacao, setShowDoacao] = useState(false);
   const [showObj, setShowObj] = useState(false);
-  const [selectOption, setSelectOption] = useState("");
 
   function mudarSinais() {
     return setEstado2(!estado2), setEstado1(!estado1);
@@ -19,15 +18,11 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setObjDoacao }) => {
     setShowObj(!showObj);
   }
 
-  function onValueChange(e) {
-    return setSelectOption(e);
-  }
-
-  useMemo(() => {
-    setObjDoacao(prev => {
-        return {...prev, formaDoacao: selectOption};
+  function onRadioChange (e) {
+       setDoacao({
+      tipo: e.target.value
     });
-  }, [selectOption])
+  }
 
   function elementos() {
     return (
@@ -43,6 +38,8 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setObjDoacao }) => {
         <div className="forms1">
           <button onClick={showDonation}>Dinheiro</button>
 
+
+          {/* eu estava tentando atribuir os radios no 'doacao', mas deu b.o. vou verificar dps */}
           {showDoacao && (
             <form className="formasDinheiro">
               <span>
@@ -53,10 +50,10 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setObjDoacao }) => {
                 PIX
                 <input
                   type="radio"
-                  value="Pix"
+                  value="pix"
                   name="pix"
-                  checked={selectOption === "pix"}
-                  onChange={() => onValueChange("pix")}
+                  checked={doacao.tipo === "pix"}
+                  onChange={onRadioChange}
                 />
               </label>
 
@@ -64,10 +61,10 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setObjDoacao }) => {
                 Cartão de Crédito
                 <input
                   type="radio"
-                  value="CC"
-                  name="cc"
-                  checked={selectOption === "cc"}
-                  onChange={() => onValueChange("cc")}
+                  value="credito"
+                  name="credito"
+                  checked={doacao.tipo === "credito"}
+                  onChange={onRadioChange}
                 />
               </label>
 
@@ -75,10 +72,10 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setObjDoacao }) => {
                 Cartão de débito
                 <input
                   type="radio"
-                  value="CD"
-                  name="cd"
-                  checked={selectOption === "cd"}
-                  onChange={() => onValueChange("cd")}
+                  value="debito"
+                  name="debito"
+                  checked={doacao.tipo === "debito"}
+                  onChange={onRadioChange}
                 />
               </label>
             </form>

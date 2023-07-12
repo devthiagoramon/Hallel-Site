@@ -5,7 +5,7 @@ const FormEvento = () => {
     return (
         <div className="main">
             <div className="topoSec">
-                    <a className="um">Formulario de inscrição para (Nome do Evento)</a>
+                    <a className="tituloFormsInsc">Formulario de inscrição para (Nome do Evento)</a>
             </div>
             <div className="cont-form">
                 <div className="div1">
@@ -15,7 +15,7 @@ const FormEvento = () => {
                             <input type="text"/>
                     </div>
                     <div>
-                            Cpf:
+                            CPF:
                             <br></br>
                             <input type="text"/>
                     </div>

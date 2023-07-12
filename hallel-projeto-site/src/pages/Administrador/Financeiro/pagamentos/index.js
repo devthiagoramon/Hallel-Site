@@ -5,10 +5,12 @@ import { useState } from "react";
 import { Form, Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgress } from "@mui/material";
+import { CDBCard, CDBCardBody, CDBDataTable, CDBContainer  } from "cdbreact";
 
 const PagamentosAssociado = () => {
   const [pagamentosAssociados, setpagamentosAssociados] = useState([]);
   const [pesquisa, setPesquisa] = useState("");
+
 
   useMemo(() => {
     let url = "http://localhost:8080/api/associados/getAllPagamentos";
@@ -22,7 +24,10 @@ const PagamentosAssociado = () => {
       method: "GET",
     })
       .then((res) => {
+       
         return res.json();
+
+
       })
       .then((pagAssociados) => {
         setpagamentosAssociados(pagAssociados);
@@ -39,6 +44,61 @@ const PagamentosAssociado = () => {
     );
   }, [pagamentosAssociados, pesquisa]);
 
+  const data = () => {
+    return {
+      columns: [
+        {
+          label: 'Nome',
+          field: 'nome',
+          width: 50,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Nome',
+          },
+        },
+        {
+          label: 'Valor',
+          field: 'valor',
+          width: 150,
+        },
+        {
+          label: 'Data de pagamento',
+          field: 'datadepagamento',
+          width: 150,
+        },
+        {
+          label: 'Tipo de pagamento',
+          field: 'tipo',
+          width: 150,
+        },
+      ],
+
+      rows: pagamentosAssociados.map((item) => ({
+        nome: item.nome,
+        valor: 
+          item.transacao == null || item.transacao.mensalidade == null ?
+          ""
+          : 
+          item.transacao.mensalidade + ",00 R$"
+        ,
+
+        datadepagamento: 
+          item.transacao == null || item.transacao.dataExp == null ?
+          ""
+          : 
+          item.transacao.dataExp
+          ,
+        tipo:  
+          item.transacao == null || item.transacao.metodoPagamento == null ?
+          ""
+          : 
+          item.transacao.metodoPagamento == "CARTAO_CREDITO"?
+          "Crédito":
+          ""    
+      })),
+    }; 
+  };
+
   return (
     <div className="containerPagamentos">
       <div className="cabecalhoPagamentos">
@@ -49,19 +109,20 @@ const PagamentosAssociado = () => {
           <div className="tituloHeadContTabelaPagamentos">
             <a>Tabela de Pagamentos de Associados</a>
           </div>
-          <div className="pesquisaHeadContTabelaPagamentos">
+          {/* <div className="pesquisaHeadContTabelaPagamentos">
             <Form.Control
               onChange={(e) => {
                 setPesquisa(e.target.value);
               }}
               placeholder="Pesquisar pagamento (Nome)"
             />
-          </div>
+          </div> */}
 
         </div>
 
 
         {pagamentosAssociados.length == 0    
+
         ?
           
         <div className="CircularProgress" style={{marginBottom: "10em"}}>
@@ -69,31 +130,38 @@ const PagamentosAssociado = () => {
         </div>
           
         :
-        <Table style={{ width: "100%" }} striped hover>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Valor</th>
-              <th>Mês de pagamento</th>
-              <th>Tipo de pagamento</th>
-            </tr>
-          </thead>
-          <tbody>
 
+        <>
+       
+ 
 
             {/* parametros falta */}
-            {pagamentosAssociadosFiltrado.map((item) => {
-              return (
-                <tr>
-                  <td>{item.nome}</td>
-                  <td>{item.dataFinalPagamento}</td>
-                  <td>{item.dataFinalPagamento}</td>
-                  <td>{item.dataFinalPagamento}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
+            <CDBContainer>
+      <CDBCard>
+        <CDBCardBody>
+          <CDBDataTable 
+          entriesLabel="Mostrar associados" 
+          searchLabel="Pesquisar"
+            paginationLabel={["Anterior", "Próximo"]}
+            infoLabel={["Mostrando de", "até", "de", "associados"]}
+            noRecordsFoundLabel="Nenhum associado encontrado"
+            hover
+            materialSearch
+            bordered
+            entriesOptions={[10, 20, 30]}
+            entries={15}
+            pagesAmount={4}
+            maxHeight = "10vh"
+            fixed
+          theadColor="#BF25E6"
+            data={data()}
+          />
+        </CDBCardBody>
+      </CDBCard>
+    </CDBContainer>
+
+    </>
+           
         }
       </div>
     </div>

@@ -3,12 +3,9 @@ import {
   CDBCard,
   CDBCardBody,
   CDBDataTable,
-  CDBRow,
-  CDBCol,
   CDBContainer,
 } from "cdbreact";
 import "./listar_adm_eventos.css";
-import Table from "react-bootstrap/Table";
 import {
   Button,
   CircularProgress,
@@ -93,16 +90,14 @@ function Evento() {
         },
       ],
 
-      rows: eventos.map((item) => ({
+      rows: eventos?.map((item) => ({
         titulo: (
 
           <div style = {{display: "flex", justifyContent: "space-around"}}>
             <label>{item.titulo}</label>
-            <VscKebabVertical  id= "icKebab" onClick={(e) => abrirMenuEvento(e, item.id)}/>
+            <VscKebabVertical  id= "icKebab" onClick={(e) => abrirMenuEvento(e, item?.id)}/>
           </div>
         ),
-        // (item.titulo) + (<VscKebabVertical onClick={(e) => abrirMenuEvento(e, item.id)}/>),
-        // (<VscKebabVertical onClick={(e) => abrirMenuEvento(e, item.id)}/>),
         date: item.date,
         horario: item.horario,
         localizacao:
