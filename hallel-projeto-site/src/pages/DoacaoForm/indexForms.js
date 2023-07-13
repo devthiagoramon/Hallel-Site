@@ -14,23 +14,22 @@ function FormInterface() {
 
 
   // valores de base para teste
-  const [doacao, setDoacao] = useState({
-    id: null,
+  const [doacao, setDoacao] = useState(
+  {
     emailDoador: "",
-    descricao: null,
-    tipo: "Dinheiro",
-    dataDoacao: null,
-    valorDoacao: 0,
-    totalDoacao: 0
-});
+    descricao: "",
+    tipo: null,
+    dataDoacao: new Date(),
+    valorDoacao: 0
+  }
+  );
 
 
 const postDoacao = () => {
 
+  axios.post("http://localhost:8080/api/doacao/doar", {
 
-  axios.post("http://localhost:8080/api/doacoes/doar", {
-
-      ...doacao
+    ...doacao
   },  {
     headers: {
       Authorization: localStorage.getItem("token")
@@ -43,7 +42,7 @@ const postDoacao = () => {
 
   }).catch((erro) => {
     
-    console.log(erro)
+    alert(erro)
   })
 }
   function testaForm1() {

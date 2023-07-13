@@ -47,7 +47,7 @@ const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a,
                         setDoacao(prevState =>{
                           return{... prevState, emailDoador: e.target.value}
                         })
-                      }} type="text" id ="cpfTitular"/>
+                      }} type="text" id ="emailTitular"/>
                 </Form.Group>
 
             </Form>

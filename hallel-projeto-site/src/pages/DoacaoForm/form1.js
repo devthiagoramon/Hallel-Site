@@ -22,7 +22,7 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setDoacao, doacao }) 
 
   function onRadioChange (e) {
        setDoacao({
-      tipo: e.target.value
+      tipo: null
     });
   }
 
