@@ -1,4 +1,3 @@
-import { useMemo, useState } from "react";
 import "./styles/styleForm2.css";
 
 const Form2 = ({
@@ -8,10 +7,13 @@ const Form2 = ({
   estado2,
   setEstado3,
   estado3,
+  doacao, 
   setDoacao,
 }) => {
   function mudarSinais(e) {
     if (e == 1) {
+
+      console.log("doacao.valor: "+doacao.valorDoacao)
       return setEstado2(!estado2), setEstado3(!estado3);
     } else {
       return setEstado1(!estado1), setEstado2(!estado2);
