@@ -17,9 +17,8 @@ import EventoUser from "./pages/Evento/listar";
 import DoacaoFormulario from "./pages/DoacaoForm/indexForms";
 import Perfil from "./pages/PerfilUsuario";
 import MaisInfo from "./pages/Evento/MaisInformacoes";
-import Renda from "./pages/Administrador/Financeiro/renda";
 import Entrar from "./pages/Entrar";
-import Gasto from "./pages/Administrador/Financeiro/gastos";
+import SaidasFinanceirasADM from "./pages/Administrador/Financeiro/gastos";
 import PagamentosAssociado from "./pages/Administrador/Financeiro/pagamentos";
 import DoacoesDinheiroAdm from "./pages/Administrador/Financeiro/doacao";
 import DoacaoObjetoADM from "./pages/Administrador/Financeiro/doacao_objeto";
@@ -46,6 +45,7 @@ import EventosArquivado from "./pages/Administrador/Eventos/listar/EventosArquiv
 import HistoricoAssociado from "./pages/Administrador/Financeiro/associados/HistoricoAssociado/index.js"
 import FormEvento from "./pages/CadastroEvento/FormEvento";
 import PainelFinanceiroAdm from "./pages/Administrador/Financeiro/PainelFinanceiroAdm";
+import EntradasFinanceiroAdm from "./pages/Administrador/Financeiro/renda";
 
 function RoutesApp() {
   return (
@@ -93,12 +93,12 @@ function RoutesApp() {
           element={<PainelFinanceiroAdm />}
         />
         <Route
-          path="/administrador/painelFinanceiro/rendas"
-          element={<Renda />}
+          path="/administrador/painelFinanceiro/entradas"
+          element={<EntradasFinanceiroAdm />}
         />
         <Route
-          path="/administrador/painelFinanceiro/gastos"
-          element={<Gasto />}
+          path="/administrador/painelFinanceiro/saidas"
+          element={<SaidasFinanceirasADM />}
         />
         <Route
           path="/administrador/painelFinanceiro/pagamentosAssociado"

@@ -4,20 +4,20 @@ import Printer from "./../../../../images/impressora-svg.svg";
 import Arrow from "./../../../../images/arrow-icon.svg";
 import { useMemo } from "react";
 import { useState } from "react";
-import rendasPDF from "../../../../Reports/rendas/rendas";
+import rendasPDF from "../../../../Reports/rendas/entradas";
 import { MoreVertRounded, SaveAlt } from "@mui/icons-material";
 import { Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
 
-const Renda = () => {
-  const [receitas, setReceitas] = useState([]);
+const EntradasFinanceiroAdm = () => {
+  const [entradas, setEntradas] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const openDateMenu = Boolean(anchorEl);
 
   const [datasToBePushed, setdatasToBePushed] = useState("todos");
 
-  const [lastReceitas, setlastReceitas] = useState([]);
+  const [lastEntradas, setlastEntradas] = useState([]);
 
   useMemo(() => {
     let url;
@@ -48,7 +48,7 @@ const Renda = () => {
         return res.json();
       })
       .then((receitas) => {
-        setReceitas(receitas);
+        setEntradas(receitas);
       })
       .catch((error) => {
         console.log(error);
@@ -56,7 +56,7 @@ const Renda = () => {
   }, [datasToBePushed]);
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/financeiro/ultimasReceitas";
+    let url = "http://localhost:8080/api/financeiro/ultimasEntradas";
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", localStorage.getItem("token"));
@@ -69,7 +69,7 @@ const Renda = () => {
         return res.json();
       })
       .then((lastReceitas) => {
-        setlastReceitas(lastReceitas);
+        setlastEntradas(lastReceitas);
       })
       .catch((error) => {
         console.log(error);
@@ -97,25 +97,23 @@ const Renda = () => {
   return (
     <div className="containerRenda">
       <div className="cabecalho">
-        <a>Rendas</a>
+        <a>Entradas</a>
       </div>
       <div className="containerTabelaRenda">
         <div className="headContTabelaRenda">
           <div className="tituloHeadContTabelaRenda">
-            <a>Tabela de receitas</a>
+            <a>Tabela de entradas</a>
           </div>
           <div className="iconsHeadContTabelaRenda">
-            <a href="#">
-              <IconButton
-                sx={{ width: "50px", height: "50px" }}
-                onClick={() => rendasPDF(receitas)}
-              >
-                <SaveAlt
-                  style={{ width: "30px", height: "30px", color: "#333" }}
-                  className="icons"
-                />
-              </IconButton>
-            </a>
+            <IconButton
+              sx={{ width: "50px", height: "50px" }}
+              onClick={() => rendasPDF(entradas)}
+            >
+              <SaveAlt
+                style={{ width: "30px", height: "30px", color: "#333" }}
+                className="icons"
+              />
+            </IconButton>
             <span>
               <IconButton
                 onClick={(e) => abrirMenuDate(e)}
@@ -156,15 +154,15 @@ const Renda = () => {
             </span>
           </div>
         </div>
-        {receitas.length === 0 ? (
+        {entradas.length === 0 ? (
           <div style={{ width: "65vw" }}>
             <LinearProgress sx={{ width: "100%" }} />
-            <Table style={{ width: "100%" }} striped  hover>
+            <Table style={{ width: "100%" }} striped hover>
               <thead>
                 <tr>
-                  <th>Descrição da renda</th>
+                  <th>Descrição da entrada</th>
                   <th>Objeto</th>
-                  <th>Data da receita</th>
+                  <th>Data da entrada</th>
                   <th>Feito por</th>
                   <th>Valor</th>
                 </tr>
@@ -172,25 +170,30 @@ const Renda = () => {
             </Table>
           </div>
         ) : (
-          <Table style={{ width: "65vw" }} striped  hover>
+          <Table style={{ width: "65vw" }} hover>
             <thead>
               <tr>
-                <th>Descrição da renda</th>
+                <th>Descrição da entrada</th>
                 <th>Objeto</th>
-                <th>Data da receita</th>
+                <th>Data da entrada</th>
                 <th>Feito por</th>
                 <th>Valor</th>
               </tr>
             </thead>
             <tbody>
-              {receitas.map((item) => {
+              {entradas.map((item) => {
                 return (
                   <tr>
                     <td>{item.descricaoReceita}</td>
                     <td>{item.objeto === false ? "Não" : "Sim"}</td>
                     <td>{item.dataReceita}</td>
                     <td>{item.usuarioReceita}</td>
-                    <td>R$ {item.valor}</td>
+                    <td>
+                      {item.valor.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}
+                    </td>
                   </tr>
                 );
               })}
@@ -200,13 +203,13 @@ const Renda = () => {
       </div>
       <div className="containerUltRenda">
         <div className="headUltRenda">
-          <p>Ultimas Rendas</p>
+          <p>Ultimas Entradas</p>
         </div>
         <div className="containerTabelaUltRenda">
-          {lastReceitas.length === 0 ? (
+          {lastEntradas.length === 0 ? (
             <div>
               <LinearProgress sx={{ width: "90%" }} />
-              <Table striped borderless hover>
+              <Table borderless hover>
                 <thead>
                   <tr>
                     <th>Descrição</th>
@@ -216,7 +219,7 @@ const Renda = () => {
               </Table>
             </div>
           ) : (
-            <Table striped borderless hover>
+            <Table hover>
               <thead>
                 <tr>
                   <th>Descrição</th>
@@ -224,11 +227,16 @@ const Renda = () => {
                 </tr>
               </thead>
               <tbody>
-                {lastReceitas.map((item) => {
+                {lastEntradas.map((item) => {
                   return (
                     <tr>
-                      <td>{item.descricaoReceita}</td>
-                      <td>R$ {item.valor}</td>
+                      <td>{item.descricaoEntrada}</td>
+                      <td>
+                        {item.valorEntrada.toLocaleString("pt-BR", {
+                          style: "currency",
+                          currency: "BRL",
+                        })}
+                      </td>
                     </tr>
                   );
                 })}
@@ -241,4 +249,4 @@ const Renda = () => {
   );
 };
 
-export default Renda;
+export default EntradasFinanceiroAdm;
