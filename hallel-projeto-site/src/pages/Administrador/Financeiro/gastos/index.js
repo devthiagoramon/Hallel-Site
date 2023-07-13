@@ -6,20 +6,21 @@ import Add from "./../../../../images/addCircle.svg";
 import { useMemo } from "react";
 import { useState } from "react";
 import ModalAddDespesa from "./addModal";
-import gastosPDF from "../../../../Reports/gastos/gastos";
+import gastosPDF from "../../../../Reports/gastos/saidas";
 import { MoreVertRounded, SaveAlt } from "@mui/icons-material";
 import { Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
 
-const Gasto = () => {
+const SaidasFinanceirasADM = () => {
   const [gastos, setgastos] = useState([]);
-  const [isModalOpen, setisModalOpen] = useState(false);
-
   const [anchorEl, setAnchorEl] = useState(null);
   const openDateMenu = Boolean(anchorEl);
 
   const [datasToBePushed, setdatasToBePushed] = useState("todos");
+  const [lastSaidas, setLastSaidas] = useState([]);
+
+  const [openModalAddDespesas, setopenModalAddDespesas] = useState(false);
 
   useMemo(() => {
     let url;
@@ -56,6 +57,27 @@ const Gasto = () => {
         console.log(error);
       });
   }, [datasToBePushed]);
+
+  useMemo(() => {
+    let url = "http://localhost:8080/api/financeiro/ultimasSaida";
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", localStorage.getItem("token"));
+
+    fetch(url, {
+      headers: myHeaders,
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((lastSaidas) => {
+        setLastSaidas(lastSaidas);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 
   function getSaldoTotal() {
     let saldoTotal = 0;
@@ -94,31 +116,27 @@ const Gasto = () => {
   return (
     <div className="containerGasto">
       <div className="cabecalhoGasto">
-        <a>Gastos</a>
+        <a>Saidas</a>
       </div>
       <div className="containerTabela">
         <div className="headContTabela">
           <div className="tituloHeadContTabela">
-            <a>Tabela de gasto</a>
+            <a>Tabela de saidas</a>
           </div>
           <div className="iconsHeadContTabela">
-            <span>
-              <IconButton
-                style={{ width: "50px", height: "50px" }}
-                onClick={() => setisModalOpen(true)}
-              >
-                <img style={{ width: "40px", height: "40px" }} src={Add} />
-              </IconButton>
-            </span>
-            <span>
-              <IconButton style={{ width: "50px", height: "50px" }}>
-                <SaveAlt
-                  style={{ width: "30px", height: "30px", color: "#333" }}
-                  className="icons"
-                  onClick={() => gastosPDF(gastos)}
-                />
-              </IconButton>
-            </span>
+            <IconButton
+              style={{ width: "50px", height: "50px" }}
+              onClick={() => setopenModalAddDespesas(true)}
+            >
+              <img style={{ width: "40px", height: "40px" }} src={Add} />
+            </IconButton>
+            <IconButton style={{ width: "50px", height: "50px" }}>
+              <SaveAlt
+                style={{ width: "30px", height: "30px", color: "#333" }}
+                className="icons"
+                onClick={() => gastosPDF(gastos)}
+              />
+            </IconButton>
             <span>
               <IconButton
                 onClick={(e) => abrirMenuDate(e)}
@@ -162,12 +180,12 @@ const Gasto = () => {
         {gastos.length === 0 ? (
           <div style={{ width: "65vw" }}>
             <LinearProgress sx={{ width: "100%" }} />
-            <Table style={{ width: "100%" }} striped borderless hover>
+            <Table style={{ width: "100%" }} borderless hover>
               <thead>
                 <tr>
-                  <th>Descrição do gasto</th>
+                  <th>Descrição da saida</th>
                   <th>Para</th>
-                  <th>Data do gasto</th>
+                  <th>Data da saida</th>
                   <th>Feito por</th>
                   <th>Valor</th>
                 </tr>
@@ -175,12 +193,12 @@ const Gasto = () => {
             </Table>
           </div>
         ) : (
-          <Table style={{ width: "65vw", height: "100%" }} striped hover>
+          <Table style={{ width: "65vw", height: "100%" }} hover>
             <thead>
               <tr>
-                <th>Descrição do gasto</th>
+                <th>Descrição da saida</th>
                 <th>Para</th>
-                <th>Data do gasto</th>
+                <th>Data da saida</th>
                 <th>Feito por</th>
                 <th>Valor</th>
               </tr>
@@ -193,7 +211,12 @@ const Gasto = () => {
                     <td>{item.finalidadeGasto}</td>
                     <td>{item.dataGasto}</td>
                     <td>{item.usuarioGasto}</td>
-                    <td>R$ {item.valor}</td>
+                    <td>
+                      {item.valor.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}
+                    </td>
                   </tr>
                 );
               })}
@@ -203,24 +226,55 @@ const Gasto = () => {
       </div>
       <div className="containerUltGastos">
         <div className="headUltGastos">
-          <p>Ultimos Gastos</p>
+          <p>Ultimas saidas</p>
         </div>
         <div className="containerTabelaUltGasto">
-          <table>
-            <tr>
-              <td>Teste</td>
-              <td>Teste</td>
-            </tr>
-          </table>
+          {lastSaidas.length === 0 ? (
+            <div>
+              <LinearProgress sx={{ width: "90%" }} />
+              <Table borderless hover>
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                  </tr>
+                </thead>
+              </Table>
+            </div>
+          ) : (
+            <Table hover>
+              <thead>
+                <tr>
+                  <th>Descrição</th>
+                  <th>Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                {lastSaidas.map((item) => {
+                  return (
+                    <tr>
+                      <td>{item.descricaoSaida}</td>
+                      <td>
+                        {item.valorSaida.toLocaleString("pt-BR", {
+                          style: "currency",
+                          currency: "BRL",
+                        })}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+          )}
         </div>
       </div>
 
       <ModalAddDespesa
-        open={isModalOpen}
-        onClose={() => setisModalOpen(false)}
+        openModalAddDespesas={openModalAddDespesas}
+        setopenModalAddDespesas={setopenModalAddDespesas}
       />
     </div>
   );
 };
 
-export default Gasto;
+export default SaidasFinanceirasADM;

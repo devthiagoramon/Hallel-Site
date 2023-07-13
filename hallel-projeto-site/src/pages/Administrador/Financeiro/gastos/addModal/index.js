@@ -1,22 +1,51 @@
 import React, { useState } from "react";
 import "./modalAddDespesa.css";
-import { Modal } from "@mui/material";
+import {
+  Autocomplete,
+  Box,
+  Button,
+  IconButton,
+  Modal,
+  TextField,
+  TextareaAutosize,
+} from "@mui/material";
+import { AddRounded, ListRounded } from "@mui/icons-material";
+import { Textarea } from "@mui/joy";
 
 const ModalAddDespesa = (props) => {
-  const [descricao, Setdescricao] = useState();
-  const [para, setPara] = useState();
-  const [valor, Setvalor] = useState();
-  const [data, setData] = useState();
-  const [por, Setpor] = useState();
+  const styleInnerModal = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "#F2F2F8",
+    borderRadius: "12px",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const [saida, setSaida] = useState({
+    codigo: "",
+    descricaoDespesa: "",
+    para: "",
+    valor: 0.0,
+    dataDespesa: "",
+    feitoPor: "",
+  });
 
   function alterarData(data) {
     let dataTemp = data;
     let anoTemp = dataTemp.substring(0, 4);
-    let mesTemp = dataTemp.substring(5,7);
+    let mesTemp = dataTemp.substring(5, 7);
     let diaTemp = dataTemp.substring(8);
-    dataTemp = diaTemp+"/"+mesTemp+"/"+anoTemp;
+    dataTemp = diaTemp + "/" + mesTemp + "/" + anoTemp;
     return dataTemp;
   }
+
+  const handleCloseAddDespesas = () => {
+    props.setopenModalAddDespesas(false);
+  };
 
   function addDespesa() {
     let url = "http://localhost:8080/api/financeiro/gasto/criar";
@@ -28,13 +57,7 @@ const ModalAddDespesa = (props) => {
     fetch(url, {
       headers: myHeaders,
       method: "POST",
-      body: JSON.stringify({
-        descricaoGasto: descricao,
-        valor: valor,
-        finalidadeGasto: para,
-        dataGasto: alterarData(data),
-        usuarioGasto: por,
-      }),
+      body: JSON.stringify({}),
     })
       .then(() => {
         window.location.href =
@@ -45,52 +68,88 @@ const ModalAddDespesa = (props) => {
       });
   }
   return (
-    <Modal open={props.open} onClose={props.onClose} className="outContAddDespesa">
-      <div className="contAddDespesa">
-        <div className="headAddDespesa">
-          <h1>Adicionar Gasto</h1>
+    <Modal open={props.openModalAddDespesas} onClose={handleCloseAddDespesas}>
+      <Box sx={styleInnerModal}>
+        <div className="container_add_saidas">
+          <div className="header_add_saidas">
+            <label>Adicionar Saida</label>
+          </div>
+          <div className="container_inputs_add_saidas">
+            <div className="inputs_add_saidas">
+              <div className="add_codigo_texto_saidas">
+                <label>Código</label>
+                <IconButton>
+                  <ListRounded />
+                </IconButton>
+                <IconButton>
+                  <AddRounded />
+                </IconButton>
+              </div>
+
+              {saida.codigo !== "" && <label>{saida.codigo}</label>}
+
+              <label>Descrição</label>
+              <Textarea
+                onChange={(e) => {
+                  setSaida((prev) => {
+                    return { ...prev, descricaoDespesa: e.target.value };
+                  });
+                }}
+                value={saida.descricaoDespesa}
+                sx={{ background: "none" }}
+              ></Textarea>
+              <label>Para</label>
+              <TextField
+                onChange={(e) => {
+                  setSaida((prev) => {
+                    return { ...prev, para: e.target.value };
+                  });
+                }}
+                value={saida.para}
+                size="small"
+              />
+              <div className="inner_inputs_add_saidas_grid">
+                <label>Valor</label>
+                <label>Data</label>
+                <TextField
+                  size="small"
+                  type="number"
+                  onChange={(e) => {
+                    setSaida((prev) => {
+                      return { ...prev, valor: e.target.value };
+                    });
+                  }}
+                  value={saida.valor}
+                />
+                <TextField
+                  size="small"
+                  id="dataAddDespesa"
+                  type="date"
+                  className="dataDespesa"
+                  onChange={(e) => {
+                    setSaida((prev) => {
+                      return { ...prev, dataDespesa: e.target.value };
+                    });
+                  }}
+                  value={saida.dataDespesa.toLocaleString("pt-BR")}
+                />
+              </div>
+              <label>Feito por</label>
+              <TextField
+                size="small"
+                onChange={(e) => {
+                  setSaida((prev) => {
+                    return { ...prev, feitoPor: e.target.value };
+                  });
+                }}
+              />
+            </div>
+          </div>
+          <div className="container_btn_add_saidas">
+            <Button variant="contained">Adicionar Saida</Button>
+          </div>
         </div>
-        <div className="bodyAddDespesa">
-          <label>
-            Descrição <span>*</span>
-          </label>
-          <textarea onChange={(e) => Setdescricao(e.target.value)}></textarea>
-          <label>
-            Para <span>*</span>
-          </label>
-          <input
-            placeholder="Ex: (Conserto da igreja)"
-            onChange={(e) => setPara(e.target.value)}
-          />
-          <label>
-            Valor <span>*</span>
-          </label>
-          <input
-            placeholder="Ex: (R$20,00)"
-            onChange={(e) => Setvalor(e.target.value)}
-          />
-          <label>
-            Data <span>*</span>
-          </label>
-          <input
-            id="dataAddDespesa"
-            type="date"
-            className="dataDespesa"
-            onChange={(e) => setData(e.target.value)}
-          />
-          <label>
-            Feito por <span>*</span>
-          </label>
-          <input
-            placeholder="Ex: (contHallel@gmail.com)"
-            onChange={(e) => Setpor(e.target.value)}
-          />
-        </div>
-        <div className="footerAddDespesa">
-          <button onClick={props.onClose}>Voltar</button>
-          <button onClick={() => addDespesa()}>Adicionar</button>
-        </div>
-      </div>
+      </Box>
     </Modal>
   );
 };
