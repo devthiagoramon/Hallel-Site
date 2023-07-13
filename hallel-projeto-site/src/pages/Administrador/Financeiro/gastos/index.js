@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./gastos.css";
 import Printer from "./../../../../images/impressora-svg.svg";
 import Arrow from "./../../../../images/arrow-icon.svg";
@@ -7,10 +7,20 @@ import { useMemo } from "react";
 import { useState } from "react";
 import ModalAddDespesa from "./addModal";
 import gastosPDF from "../../../../Reports/gastos/saidas";
-import { MoreVertRounded, SaveAlt } from "@mui/icons-material";
+import { Delete, MoreVertRounded, SaveAlt, Visibility } from "@mui/icons-material";
 import { Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
+import {
+  IconButton,
+  LinearProgress,
+  Menu,
+  MenuItem,
+  Tooltip,
+} from "@mui/material";
+import MenuSpecCodigo from "./MenuSpecCodigo";
+import { Edit } from "lucide-react";
+import ModalDeleterSaida from "./ModalDeletar";
+import ModalMostrarImagemSaida from "./addModal/ModalMostrarImagemSaida";
 
 const SaidasFinanceirasADM = () => {
   const [gastos, setgastos] = useState([]);
@@ -19,10 +29,19 @@ const SaidasFinanceirasADM = () => {
 
   const [datasToBePushed, setdatasToBePushed] = useState("todos");
   const [lastSaidas, setLastSaidas] = useState([]);
+  const [alterou, setAlterou] = useState(false);
+  const [anchorMenuSpec, setAnchorMenuSpec] = useState(null);
+  const [codigoVisualizar, setCodigoVisualizar] = useState(0);
+
+  const [idSaida, setIdSaida] = useState("");
+  const [openModalDeletar, setOpenModalDeletar] = useState(false);
 
   const [openModalAddDespesas, setopenModalAddDespesas] = useState(false);
+  const [openModalAnexoSaida, setopenModalAnexoSaida] = useState(false);
+  const [imagemAnexoSelecionada, setimagemAnexoSelecionada] = useState("");
+  
 
-  useMemo(() => {
+  useEffect(() => {
     let url;
     switch (datasToBePushed) {
       case "todos":
@@ -56,9 +75,9 @@ const SaidasFinanceirasADM = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [datasToBePushed]);
+  }, [alterou, datasToBePushed]);
 
-  useMemo(() => {
+  useEffect(() => {
     let url = "http://localhost:8080/api/financeiro/ultimasSaida";
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -77,7 +96,7 @@ const SaidasFinanceirasADM = () => {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, [alterou]);
 
   function getSaldoTotal() {
     let saldoTotal = 0;
@@ -113,6 +132,22 @@ const SaidasFinanceirasADM = () => {
       setdatasToBePushed("todos");
     }
   }
+
+  function openMenuSpecCodigo(e, codigo) {
+    setAnchorMenuSpec(e.currentTarget);
+    setCodigoVisualizar(codigo);
+  }
+
+  function handleOpenModalDeletar(id) {
+    setIdSaida(id);
+    setOpenModalDeletar(true);
+  }
+
+  function handleOpenModalMostrarImagem(imagem) {
+    setopenModalAnexoSaida(true);
+    setimagemAnexoSelecionada(imagem);
+  };
+
   return (
     <div className="containerGasto">
       <div className="cabecalhoGasto">
@@ -188,6 +223,8 @@ const SaidasFinanceirasADM = () => {
                   <th>Data da saida</th>
                   <th>Feito por</th>
                   <th>Valor</th>
+                  <th>Comprovante</th>
+                  <th>Opções</th>
                 </tr>
               </thead>
             </Table>
@@ -196,17 +233,30 @@ const SaidasFinanceirasADM = () => {
           <Table style={{ width: "65vw", height: "100%" }} hover>
             <thead>
               <tr>
+                <th>Código #</th>
                 <th>Descrição da saida</th>
                 <th>Para</th>
                 <th>Data da saida</th>
                 <th>Feito por</th>
                 <th>Valor</th>
+                <th>Comprovante</th>
+                <th>Opções</th>
               </tr>
             </thead>
             <tbody>
               {gastos.map((item) => {
                 return (
-                  <tr>
+                  <tr key={item.id}>
+                    <Tooltip title="Clique para ver mais sobre o código">
+                      <td
+                        onClick={(e) =>
+                          openMenuSpecCodigo(e, item.codigo.numCodigo)
+                        }
+                        className="td_hover_codigo_saida"
+                      >
+                        #{item.codigo.numCodigo}
+                      </td>
+                    </Tooltip>
                     <td>{item.descricaoGasto}</td>
                     <td>{item.finalidadeGasto}</td>
                     <td>{item.dataGasto}</td>
@@ -216,6 +266,24 @@ const SaidasFinanceirasADM = () => {
                         style: "currency",
                         currency: "BRL",
                       })}
+                    </td>
+                    <td style={{textAlign: "center"}}>
+                      <IconButton onClick={() => handleOpenModalMostrarImagem(item.imagemAnexo)} sx={{height: "20px", color: "#252525"}}>
+                        <Visibility/>
+                      </IconButton>
+                    </td>
+                    <td>
+                      <IconButton sx={{ height: "20px", color: "#252525" }}>
+                        <Edit />
+                      </IconButton>
+                      <IconButton
+                        sx={{ height: "20px", color: "#252525" }}
+                        onClick={() => {
+                          handleOpenModalDeletar(item.id);
+                        }}
+                      >
+                        <Delete />
+                      </IconButton>
                     </td>
                   </tr>
                 );
@@ -272,6 +340,26 @@ const SaidasFinanceirasADM = () => {
       <ModalAddDespesa
         openModalAddDespesas={openModalAddDespesas}
         setopenModalAddDespesas={setopenModalAddDespesas}
+        alterou={alterou}
+        setAlterou={setAlterou}
+      />
+      <MenuSpecCodigo
+        anchorMenuSpec={anchorMenuSpec}
+        setAnchorMenuSpec={setAnchorMenuSpec}
+        codigoVisualizar={codigoVisualizar}
+        setCodigoVisualizar={setCodigoVisualizar}
+      />
+      <ModalDeleterSaida
+        idSaida={idSaida}
+        openModalDeletar={openModalDeletar}
+        setOpenModalDeletar={setOpenModalDeletar}
+        setAlterou={setAlterou}
+        alterou={alterou}
+      />
+      <ModalMostrarImagemSaida
+        imagemAnexoSrc={imagemAnexoSelecionada}
+        openModalAnexoSaida={openModalAnexoSaida}
+        setOpenModalAnexoSaida={setopenModalAnexoSaida}
       />
     </div>
   );

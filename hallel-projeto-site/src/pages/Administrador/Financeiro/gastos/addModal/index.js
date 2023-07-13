@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import "./modalAddDespesa.css";
+import { Box, Button, IconButton, Modal, TextField } from "@mui/material";
 import {
-  Autocomplete,
-  Box,
-  Button,
-  IconButton,
-  Modal,
-  TextField,
-  TextareaAutosize,
-} from "@mui/material";
-import { AddRounded, ListRounded } from "@mui/icons-material";
+  AddRounded,
+  ListRounded,
+  VisibilityRounded,
+} from "@mui/icons-material";
 import { Textarea } from "@mui/joy";
+import ModalCodigoAdicionar from "./ModalCodigoAdicionar";
+import MenuCodigosSaida from "./MenuCodigosSaida";
+import axios from "axios";
+import { MuiFileInput } from "mui-file-input";
+import ModalMostrarImagemSaida from "./ModalMostrarImagemSaida";
 
 const ModalAddDespesa = (props) => {
   const styleInnerModal = {
@@ -26,13 +27,19 @@ const ModalAddDespesa = (props) => {
   };
 
   const [saida, setSaida] = useState({
-    codigo: "",
-    descricaoDespesa: "",
-    para: "",
+    codigo: null,
+    descricaoGasto: "",
+    finalidadeGasto: "",
     valor: 0.0,
-    dataDespesa: "",
-    feitoPor: "",
+    usuarioGasto: "",
+    imagemAnexo: "",
   });
+
+  const [dataGasto, setdataGasto] = useState();
+
+  const [openAdicionarCodigo, setOpenAdicionarCodigo] = useState(false);
+  const [anchorMenu, setanchorMenu] = useState(null);
+  const [openModalAnexoSaida, setopenModalAnexoSaida] = useState(false);
 
   function alterarData(data) {
     let dataTemp = data;
@@ -47,110 +54,172 @@ const ModalAddDespesa = (props) => {
     props.setopenModalAddDespesas(false);
   };
 
-  function addDespesa() {
+  const handleOpenMenuCodigos = (e) => {
+    setanchorMenu(e.currentTarget);
+  };
+
+  function addSaida() {
     let url = "http://localhost:8080/api/financeiro/gasto/criar";
-
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-
-    fetch(url, {
-      headers: myHeaders,
-      method: "POST",
-      body: JSON.stringify({}),
-    })
+    axios
+      .post(
+        url,
+        { ...saida, dataGasto: alterarData(String(dataGasto)) },
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
       .then(() => {
-        window.location.href =
-          "http://localhost:3000/administrador/painelFinanceiro/gastos";
-      })
-      .catch((error) => {
-        console.log(error);
+        props.setopenModalAddDespesas(false);
+        props.setAlterou(!props.alterou);
       });
   }
+
+  const onImageSelectedMui = (e) => {
+    const file = e;
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const dataURL = e.target.result;
+        setSaida((prev) => {
+          return { ...prev, imagemAnexo: dataURL };
+        });
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleOpenModalMostrarImagem = () => {
+    setopenModalAnexoSaida(true);
+  };
+
   return (
-    <Modal open={props.openModalAddDespesas} onClose={handleCloseAddDespesas}>
-      <Box sx={styleInnerModal}>
-        <div className="container_add_saidas">
-          <div className="header_add_saidas">
-            <label>Adicionar Saida</label>
-          </div>
-          <div className="container_inputs_add_saidas">
-            <div className="inputs_add_saidas">
-              <div className="add_codigo_texto_saidas">
-                <label>Código</label>
-                <IconButton>
-                  <ListRounded />
-                </IconButton>
-                <IconButton>
-                  <AddRounded />
-                </IconButton>
-              </div>
+    <>
+      <Modal open={props.openModalAddDespesas} onClose={handleCloseAddDespesas}>
+        <Box sx={styleInnerModal}>
+          <div className="container_add_saidas">
+            <div className="header_add_saidas">
+              <label>Adicionar Saida</label>
+            </div>
+            <div className="container_inputs_add_saidas">
+              <div className="inputs_add_saidas">
+                <div className="add_codigo_texto_saidas">
+                  <label>Código</label>
+                  <IconButton
+                    onClick={handleOpenMenuCodigos}
+                    sx={{ color: "#252525" }}
+                  >
+                    <ListRounded />
+                  </IconButton>
+                  <IconButton
+                    sx={{ color: "#252525" }}
+                    onClick={() => setOpenAdicionarCodigo(true)}
+                  >
+                    <AddRounded />
+                  </IconButton>
+                </div>
 
-              {saida.codigo !== "" && <label>{saida.codigo}</label>}
+                {saida.codigo !== null && (
+                  <label>
+                    Número: {saida.codigo.numCodigo}
+                    <br />
+                    Nome: {saida.codigo.nomeCodigo}
+                  </label>
+                )}
 
-              <label>Descrição</label>
-              <Textarea
-                onChange={(e) => {
-                  setSaida((prev) => {
-                    return { ...prev, descricaoDespesa: e.target.value };
-                  });
-                }}
-                value={saida.descricaoDespesa}
-                sx={{ background: "none" }}
-              ></Textarea>
-              <label>Para</label>
-              <TextField
-                onChange={(e) => {
-                  setSaida((prev) => {
-                    return { ...prev, para: e.target.value };
-                  });
-                }}
-                value={saida.para}
-                size="small"
-              />
-              <div className="inner_inputs_add_saidas_grid">
-                <label>Valor</label>
-                <label>Data</label>
-                <TextField
-                  size="small"
-                  type="number"
+                <label>Descrição</label>
+                <Textarea
                   onChange={(e) => {
                     setSaida((prev) => {
-                      return { ...prev, valor: e.target.value };
+                      return { ...prev, descricaoGasto: e.target.value };
                     });
                   }}
-                  value={saida.valor}
-                />
+                  value={saida.descricaoGasto}
+                  sx={{ background: "none" }}
+                ></Textarea>
+                <label>Para</label>
                 <TextField
-                  size="small"
-                  id="dataAddDespesa"
-                  type="date"
-                  className="dataDespesa"
                   onChange={(e) => {
                     setSaida((prev) => {
-                      return { ...prev, dataDespesa: e.target.value };
+                      return { ...prev, finalidadeGasto: e.target.value };
                     });
                   }}
-                  value={saida.dataDespesa.toLocaleString("pt-BR")}
+                  value={saida.finalidadeGasto}
+                  size="small"
                 />
+                <div className="inner_inputs_add_saidas_grid">
+                  <label>Valor</label>
+                  <label>Data</label>
+                  <TextField
+                    size="small"
+                    type="number"
+                    onChange={(e) => {
+                      setSaida((prev) => {
+                        return { ...prev, valor: e.target.value };
+                      });
+                    }}
+                    value={saida.valor}
+                  />
+                  <TextField
+                    size="small"
+                    id="dataAddDespesa"
+                    type="date"
+                    className="dataDespesa"
+                    onChange={(e) => {
+                      setdataGasto(e.target.value);
+                    }}
+                    value={dataGasto}
+                  />
+                </div>
+                <label>Feito por</label>
+                <TextField
+                  size="small"
+                  onChange={(e) => {
+                    setSaida((prev) => {
+                      return { ...prev, usuarioGasto: e.target.value };
+                    });
+                  }}
+                />
+                <label>Comprovante</label>
+                <div className="container_comprovante_add_saida">
+                  {saida.imagemAnexo !== "" ? (
+                    <IconButton onClick={handleOpenModalMostrarImagem}>
+                      <VisibilityRounded />
+                    </IconButton>
+                  ) : (
+                    ""
+                  )}
+                  <MuiFileInput size="small" onChange={onImageSelectedMui} />
+                </div>
               </div>
-              <label>Feito por</label>
-              <TextField
-                size="small"
-                onChange={(e) => {
-                  setSaida((prev) => {
-                    return { ...prev, feitoPor: e.target.value };
-                  });
-                }}
-              />
+            </div>
+            <div className="container_btn_add_saidas">
+              <Button variant="contained" onClick={addSaida}>
+                Adicionar Saida
+              </Button>
             </div>
           </div>
-          <div className="container_btn_add_saidas">
-            <Button variant="contained">Adicionar Saida</Button>
-          </div>
-        </div>
-      </Box>
-    </Modal>
+        </Box>
+      </Modal>
+      <ModalCodigoAdicionar
+        openAdicionarCodigo={openAdicionarCodigo}
+        setOpenAdicionarCodigo={setOpenAdicionarCodigo}
+      />
+      <MenuCodigosSaida
+        anchorMenu={anchorMenu}
+        setanchorMenu={setanchorMenu}
+        setSaida={setSaida}
+      />
+      <ModalMostrarImagemSaida
+        imagemAnexoSrc={saida.imagemAnexo}
+        openModalAnexoSaida={openModalAnexoSaida}
+        setOpenModalAnexoSaida={setopenModalAnexoSaida}
+      />
+    </>
   );
 };
 

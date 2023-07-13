@@ -6,6 +6,7 @@ function gastosPDF(gastos) {
 
   const dados = gastos.map((gasto) => {
     return [
+      { text: gasto.codigo, fontSize: 10, margin: [0, 2, 0, 2]},
       { text: gasto.descricaoGasto, fontSize: 10, margin: [0, 2, 0, 2] },
       { text: gasto.finalidadeGasto, fontSize: 10, margin: [0, 2, 0, 2] },
       { text: gasto.dataGasto, fontSize: 10, margin: [0, 2, 0, 2] },
@@ -68,7 +69,8 @@ function gastosPDF(gastos) {
         widths: ["*", "*", "*", "*", "*"],
         body: [
           [
-            { text: "Descrição da saida", style: "tableHeader", fontSize: 14 },
+            {text: "Código da saida", style: "tableHeader", fontSize: 12},
+            { text: "Descrição da saida", style: "tableHeader", fontSize: 12 },
             { text: "Para", style: "tableHeader", fontSize: 12 },
             { text: "Data da saida", style: "tableHeader", fontSize: 12 },
             { text: "Feito por", style: "tableHeader", fontSize: 12 },

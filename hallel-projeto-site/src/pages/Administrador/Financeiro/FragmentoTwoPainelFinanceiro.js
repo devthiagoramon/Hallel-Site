@@ -1,6 +1,6 @@
 import { LinearProgress } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Table } from "react-bootstrap";
 import Chart from "react-google-charts";
 
@@ -9,9 +9,6 @@ const FragmentoTwoPainelFinanceiro = () => {
   const [entradaMensaisValor, setEntradaMensaisValor] = useState(0);
   const [saidaMensaisValor, setSaidaMensaisValor] = useState(0);
   const [saldo, setsaldo] = useState("");
-  const [pizzaData, setPizzaData] = useState([
-    ["Tipo", "Valor"],
-  ]);
 
   function loadEntradasMensais() {
     let mesString = "0" + String(new Date().getMonth() + 1);
@@ -32,10 +29,6 @@ const FragmentoTwoPainelFinanceiro = () => {
       })
       .then((res) => {
         setEntradaMensaisValor(res.data);
-        setPizzaData((prevArray) => [
-          ...prevArray,
-          ["Entrada", res.data],
-        ]);
       })
       .catch((error) => {
         console.log(error);
@@ -62,10 +55,6 @@ const FragmentoTwoPainelFinanceiro = () => {
       })
       .then((res) => {
         setSaidaMensaisValor(res.data);
-        setPizzaData((prevArray) => [
-          ...prevArray,
-          ["Saida", res.data],
-        ]);
       })
       .catch((error) => {
         console.log(error);
@@ -81,7 +70,6 @@ const FragmentoTwoPainelFinanceiro = () => {
   };
 
   useEffect(() => {
-
     let url = "http://localhost:8080/api/financeiro/ultimasSaida";
 
     axios
@@ -93,13 +81,13 @@ const FragmentoTwoPainelFinanceiro = () => {
       .then((res) => {
         setUltimasSaidas(res.data);
       });
-  }, []);
+  }, [ultimasSaidas]);
 
-  useEffect(() => {
+  useMemo(() => {
     loadEntradasMensais();
     loadSaidaMensais();
     loadSaldo();
-  })
+  }, [entradaMensaisValor, saidaMensaisValor, saldo]);
 
   // Load saldo
   function loadSaldo() {
@@ -166,7 +154,11 @@ const FragmentoTwoPainelFinanceiro = () => {
           <Chart
             chartType="PieChart"
             options={optionsGraficoPizza}
-            data={pizzaData}
+            data={[
+              ["Tipo", "Valor"],
+              ["Entrada", entradaMensaisValor],
+              ["Saída", saidaMensaisValor],
+            ]}
             width={"400px"}
             height={"350px"}
           />
