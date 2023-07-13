@@ -1,13 +1,14 @@
 import "./styles/styleForm3.css"
 import Form from "react-bootstrap/Form"
 
-const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a, setDoacao, addDoar}) =>{
+const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a, doacao, setDoacao, postDoacao}) =>{
 
     function mudarSinais(e){
 
         if(e == 1){
             return(
-            addDoar(),
+            console.log("email: "+doacao.emailDoador),
+            postDoacao(),
             setEstado3(!estado3), setEstado3a(!estado3a)
             )
         } else{
@@ -44,16 +45,16 @@ const Form3 = ({setEstado2, estado2, setEstado3, estado3, setEstado3a, estado3a,
 
                     <input onChange={(e) =>{
                         setDoacao(prevState =>{
-                          return{... prevState, valorDoacao: e.target.value}
+                          return{... prevState, emailDoador: e.target.value}
                         })
-                      }} type="text" id ="cpfTitular"/>
+                      }} type="text" id ="emailTitular"/>
                 </Form.Group>
 
             </Form>
             <div className= "button-area">
 
                 <button onClick={()=> mudarSinais(0)}>Voltar</button>
-                <button id="avancaButton" onClick={addDoar}>Confirmar</button>
+                <button id="avancaButton" onClick={() =>mudarSinais(1)}>Confirmar</button>
             </div>
         </section>
     );

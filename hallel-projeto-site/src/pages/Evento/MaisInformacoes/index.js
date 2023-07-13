@@ -3,6 +3,7 @@ import "./eventInfo.css";
 import {  } from "react-icons/bs";
 import { ConnectWithoutContactRounded } from "@mui/icons-material";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 class InfoEventos extends Component {
   constructor(props) {
@@ -12,11 +13,12 @@ class InfoEventos extends Component {
     };
   }
 
+  
   render() {
     return (
       <section className="containerEvents">
         <div className="area-infos">
-          <Corpo evento={this.state.evento} hide={this.props.hide} />
+          <Corpo evento={this.state.evento} hide={this.props.hide}/>
           <hr style={{marginTop: "30px", marginBottom: "30px"}}/>
           <Infos evento={this.state.evento} />
         </div>
@@ -33,8 +35,12 @@ class Corpo extends Component {
     };
   }
 
+
+
   render() {
     console.log(this.state.evento);
+    
+  
     return (
       <div className="corpo_evento">
         <div className="cont_titulo_desc_evento_user">
@@ -49,7 +55,12 @@ class Corpo extends Component {
               variant="contained"
               endIcon={<ConnectWithoutContactRounded />}
             >
-              Participar do evento
+
+            <Link to="/CadastroEvento/FormEvento">
+                <button style={{background: "none", border: "none", color: "white", fontWeight: "700"}}>Participar do evento
+                </button>
+            </Link>
+              
             </Button>
           </div>
         </div>

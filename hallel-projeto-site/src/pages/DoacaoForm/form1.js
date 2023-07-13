@@ -7,6 +7,8 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setDoacao, doacao }) 
   const [showObj, setShowObj] = useState(false);
 
   function mudarSinais() {
+
+    console.log("doacao.tipo: "+doacao.tipo)
     return setEstado2(!estado2), setEstado1(!estado1);
   }
 
@@ -20,7 +22,7 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setDoacao, doacao }) 
 
   function onRadioChange (e) {
        setDoacao({
-      tipo: e.target.value
+      tipo: null
     });
   }
 
@@ -42,15 +44,12 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setDoacao, doacao }) 
           {/* eu estava tentando atribuir os radios no 'doacao', mas deu b.o. vou verificar dps */}
           {showDoacao && (
             <form className="formasDinheiro">
-              <span>
-                <selectOption />
-              </span>
 
               <label>
                 PIX
                 <input
                   type="radio"
-                  value="pix"
+                  value="Dinheiro"
                   name="pix"
                   checked={doacao.tipo === "pix"}
                   onChange={onRadioChange}
@@ -61,7 +60,7 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setDoacao, doacao }) 
                 Cartão de Crédito
                 <input
                   type="radio"
-                  value="credito"
+                  value="Dinheiro"
                   name="credito"
                   checked={doacao.tipo === "credito"}
                   onChange={onRadioChange}
@@ -72,7 +71,7 @@ const Form1 = ({ setEstado2, estado1, setEstado1, estado2, setDoacao, doacao }) 
                 Cartão de débito
                 <input
                   type="radio"
-                  value="debito"
+                  value="Dinheiro"
                   name="debito"
                   checked={doacao.tipo === "debito"}
                   onChange={onRadioChange}

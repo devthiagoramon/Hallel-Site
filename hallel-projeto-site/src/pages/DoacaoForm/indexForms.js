@@ -14,33 +14,35 @@ function FormInterface() {
 
 
   // valores de base para teste
-  const [doacao, setDoacao] = useState({
+  const [doacao, setDoacao] = useState(
+  {
     emailDoador: "",
-    tipo: "",
-    dataDoacao: "",
-    valorDoacao: ""
-});
+    descricao: "",
+    tipo: null,
+    dataDoacao: new Date(),
+    valorDoacao: 0
+  }
+  );
 
-const addDoar = () => {
 
-  let url = "http://localhost:8080/api/formularioDoacao/doar"
+const postDoacao = () => {
 
-  axios.post(url, {
+  axios.post("http://localhost:8080/api/doacao/doar", {
 
-      ...doacao
-
-  },   {
-      headers: {
-        Authorization: localStorage.getItem("token")
-        }
+    ...doacao
+  },  {
+    headers: {
+      Authorization: localStorage.getItem("token")
+      
+  }
   }).then(() => {
 
     alert("enviou")
-   
 
-  }).catch(() => {
+
+  }).catch((erro) => {
     
-    alert("erro")
+    alert(erro)
   })
 }
   function testaForm1() {
@@ -80,7 +82,7 @@ const addDoar = () => {
         estado3a={estado3a}
         doacao={doacao}
         setDoacao={setDoacao}
-        addDoar ={addDoar}
+        postDoacao ={postDoacao}
       />
     );
   }

@@ -31,7 +31,7 @@ const  Form3a = ({setEstado3a, estado3a}) =>{
         <div className="button-area">
            
         
-           <Link to ="/"><button id="avancaButton" onClick={mudarSinais}>Home</button></Link>
+           <Link to ="/"><button id="avancaButtonfinal" onClick={mudarSinais}>Home</button></Link>
        </div>
 
 
