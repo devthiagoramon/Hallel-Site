@@ -3,6 +3,7 @@ import {
   Alert,
   CircularProgress,
   IconButton,
+  Skeleton,
   Snackbar,
   TextField,
 } from "@mui/material";
@@ -156,7 +157,9 @@ const MetaEntradaComponentPainelFinanceiro = () => {
           variant="determinate"
           value={porcentagem}
         />
-        <label>{porcentagem}%</label>
+        <label>
+          <span style={{fontSize: "36px"}}>{porcentagem}</span>%
+        </label>
       </div>
       <div className="container_info_circular_progress">
         {!alterarMeta && (
@@ -197,6 +200,12 @@ const MetaEntradaComponentPainelFinanceiro = () => {
               </IconButton>
             </label>
           </>
+        )}
+        {metaValueDefault === "" && (
+          <Skeleton
+            sx={{ ml: 3, width: "100%", height: "30px" }}
+            variant="text"
+          />
         )}
       </div>
       <Snackbar
