@@ -37,12 +37,12 @@ const postDoacao = () => {
   }
   }).then(() => {
 
-    alert("enviou")
+    console.log("Doação enviada")
 
 
   }).catch((erro) => {
     
-    alert(erro)
+    console.log(erro)
   })
 }
   function testaForm1() {
