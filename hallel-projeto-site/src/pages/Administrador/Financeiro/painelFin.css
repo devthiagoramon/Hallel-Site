@@ -103,20 +103,13 @@
   width: 226px;
   height: 145px;
   background: linear-gradient(180deg, #1a0631 70%, rgb(26, 6, 49, 0.85));
-  row-gap: 12px;
+  row-gap: 30px;
   border-radius: 12px;
-}
-
-.container_info_fragmentos_one_painel_financeiro > label {
-  color: #faf4f4;
-  text-align: center;
-  font-size: 32px;
-  font-weight: 600;
 }
 .container_info_fragmentos_one_painel_financeiro > span {
   color: #faf4f4;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
 }
 .container_info_fragmentos_one_painel_financeiro > a {

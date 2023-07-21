@@ -6,63 +6,11 @@ import Chart from "react-google-charts";
 
 const FragmentoTwoPainelFinanceiro = () => {
   const [ultimasSaidas, setUltimasSaidas] = useState([]);
-  const [entradaMensaisValor, setEntradaMensaisValor] = useState(0);
-  const [saidaMensaisValor, setSaidaMensaisValor] = useState(0);
-  const [saldo, setsaldo] = useState("");
-
-  function loadEntradasMensais() {
-    let mesString = "0" + String(new Date().getMonth() + 1);
-    let anoString = String(new Date().getFullYear());
-
-    let url =
-      "http://localhost:8080/api/financeiro/entradasMes/valor" +
-      "?mes=" +
-      mesString +
-      "&ano=" +
-      anoString;
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setEntradaMensaisValor(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  // Load Saidas mensais valor
-
-  function loadSaidaMensais() {
-    let mesString = "0" + String(new Date().getMonth() + 1);
-    let anoString = String(new Date().getFullYear());
-    let url =
-      "http://localhost:8080/api/financeiro/saidaMes/valor" +
-      "?mes=" +
-      mesString +
-      "&ano=" +
-      anoString;
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setSaidaMensaisValor(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  const [faltam, setFaltam] = useState(0.0);
+  const [meta, setMeta] = useState(0.0);
+  const [entradasValue, SetreceitaValue] = useState();
 
   const optionsGraficoPizza = {
-    title: "Saldo Total",
     slices: {
       0: { color: "#58D68D" },
       1: { color: "#E74C3C" },
@@ -84,22 +32,59 @@ const FragmentoTwoPainelFinanceiro = () => {
   }, [ultimasSaidas]);
 
   useMemo(() => {
-    loadEntradasMensais();
-    loadSaidaMensais();
-    loadSaldo();
-  }, [entradaMensaisValor, saidaMensaisValor, saldo]);
+    let data = new Date();
+    let mesString =
+      data.getMonth() + 1 >= 10
+        ? String(data.getMonth() + 1)
+        : "0" + String(data.getMonth() + 1);
+    let anoString = String(new Date().getFullYear());
+    let urlListagem =
+      "http://localhost:8080/api/financeiro/meta/listar" +
+      "?mes=" +
+      mesString +
+      "&ano=" +
+      anoString;
+    axios
+      .get(urlListagem, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setMeta(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [setMeta]);
 
-  // Load saldo
-  function loadSaldo() {
-    let saldoCalc = parseFloat(entradaMensaisValor - saidaMensaisValor);
-
-    let saldoDTO = saldoCalc.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-
-    setsaldo(saldoDTO);
-  }
+  useMemo(() => {
+    let data = new Date();
+    let mesString =
+      data.getMonth() + 1 >= 10
+        ? String(data.getMonth() + 1)
+        : "0" + String(data.getMonth() + 1);
+    let anoString = String(new Date().getFullYear());
+    let url =
+      "http://localhost:8080/api/financeiro/entradasMes/valor" +
+      "?mes=" +
+      mesString +
+      "&ano=" +
+      anoString;
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        SetreceitaValue(res.data)
+        setFaltam(meta - res.data);
+      })
+      .catch((error) => {
+        console.log("Error requerindo o valor de entrada do mes: " + error);
+      });
+  }, [setFaltam, meta]);
 
   return (
     <div className="cont_frag_two_painel_financeiro">
@@ -147,8 +132,13 @@ const FragmentoTwoPainelFinanceiro = () => {
       </div>
       <div className="cont_direita_frag_two_painel_financeiro">
         <div className="cont_info_frag_two_painel">
-          <span>Saldo</span>
-          <label>{saldo}</label>
+          <span>Falta</span>
+          <label>
+            {faltam.toLocaleString("pt-br", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </label>
         </div>
         <div className="cont_grafico_pizza_frag_two_painel_financeiro">
           <Chart
@@ -156,8 +146,8 @@ const FragmentoTwoPainelFinanceiro = () => {
             options={optionsGraficoPizza}
             data={[
               ["Tipo", "Valor"],
-              ["Entrada", entradaMensaisValor],
-              ["Saída", saidaMensaisValor],
+              ["Entradas", entradasValue],
+              ["Meta", meta],
             ]}
             width={"400px"}
             height={"350px"}

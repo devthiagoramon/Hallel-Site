@@ -23,7 +23,9 @@ const MetaEntradaComponentPainelFinanceiro = () => {
   const [corSnackBar, setCorSnackBar] = useState("");
 
   useMemo(() => {
-    let mesString = "0" + String(new Date().getMonth() + 1);
+    let data = new Date();
+    let mesString =
+      data.getMonth()+1 >= 10 ? String(data.getMonth()+1) : "0" + String(data.getMonth()+1);
     let anoString = String(new Date().getFullYear());
 
     let urlPorcentagem =
@@ -47,7 +49,9 @@ const MetaEntradaComponentPainelFinanceiro = () => {
   }, [setporcentagem]);
 
   useMemo(() => {
-    let mesString = "0" + String(new Date().getMonth() + 1);
+    let data = new Date();
+    let mesString =
+      data.getMonth()+1 >= 10 ? String(data.getMonth()) : "0" + String(data.getMonth()+1);
     let anoString = String(new Date().getFullYear());
     let urlListagem =
       "http://localhost:8080/api/financeiro/meta/listar" +
@@ -98,7 +102,9 @@ const MetaEntradaComponentPainelFinanceiro = () => {
     setMetaValue(metaValueDefault);
     let metaValueProv = metaValueDefault;
 
-    let mesString = "0" + String(new Date().getMonth() + 1);
+    let data = new Date();
+    let mesString =
+      data.getMonth()+1 >= 10 ? String(data.getMonth()+1) : "0" + String(data.getMonth()+1);
     let anoString = String(new Date().getFullYear());
 
     let url =

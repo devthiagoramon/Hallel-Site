@@ -7,8 +7,6 @@ import { LinearProgress, Skeleton } from "@mui/material";
 
 const FragmentoOnePainelFinanceiro = () => {
   const [mesAtual, setmesAtual] = useState("");
-  const [entradaMensaisValor, setEntradaMensaisValor] = useState("");
-  const [saidaMensaisValor, setSaidaMensaisValor] = useState("");
   const [utlimasEntradas, setUtlimasEntradas] = useState([]);
 
   // Load atual mes
@@ -26,67 +24,6 @@ const FragmentoOnePainelFinanceiro = () => {
   }, [mesAtual]);
 
   // Load entradas mensais valor
-
-  useEffect(() => {
-    let mesString = "0" + String(new Date().getMonth() + 1);
-    let anoString = String(new Date().getFullYear());
-
-    let url =
-      "http://localhost:8080/api/financeiro/entradasMes/valor" +
-      "?mes=" +
-      mesString +
-      "&ano=" +
-      anoString;
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setEntradaMensaisValor(
-          res.data.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          })
-        );
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [entradaMensaisValor]);
-
-  // Load Saidas mensais valor
-
-  useEffect(() => {
-    let mesString = "0" + String(new Date().getMonth() + 1);
-    let anoString = String(new Date().getFullYear());
-    let url =
-      "http://localhost:8080/api/financeiro/saidaMes/valor" +
-      "?mes=" +
-      mesString +
-      "&ano=" +
-      anoString;
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setSaidaMensaisValor(
-          res.data.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          })
-        );
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [saidaMensaisValor]);
 
   useEffect(() => {
     let url = "http://localhost:8080/api/financeiro/ultimasEntradas";
@@ -114,30 +51,12 @@ const FragmentoOnePainelFinanceiro = () => {
       <div className="cont_direita_fragmento_one">
         <div className="cont_infos_fragmentos_one">
           <div className="container_info_fragmentos_one_painel_financeiro">
-            {entradaMensaisValor !== "" && <label>{entradaMensaisValor}</label>}
-            {entradaMensaisValor === "" && (
-              <label>
-                <Skeleton
-                  sx={{ ml: 3, width: "80%", backgroundColor: "#30184b" }}
-                  variant="text"
-                />
-              </label>
-            )}
             <span>Entrada Mensal</span>
             <a href="/administrador/painelFinanceiro/entradas">Saber mais</a>
           </div>
           <div className="container_info_fragmentos_one_painel_financeiro">
-            {saidaMensaisValor !== "" && <label>{saidaMensaisValor}</label>}
-            {saidaMensaisValor === "" && (
-              <label>
-                <Skeleton
-                  sx={{ ml: 3, width: "80%", backgroundColor: "#30184b" }}
-                  variant="text"
-                />
-              </label>
-            )}
             <span>Saida Mensal</span>
-            <a href="/administrador/painelFinanceiro/saidas">Saber mais</a>
+            <a href="/administrador/painelFinanceiro/saidas">Detalhar</a>
           </div>
         </div>
         <div className="cont_tabelas_ultimas_painel_financeiro">
@@ -156,7 +75,7 @@ const FragmentoOnePainelFinanceiro = () => {
                 <th>Descrição da entrada</th>
                 <th>Valor da entrada</th>
               </tr>
-            </thead>
+            </thead> 
             <tbody>
               {utlimasEntradas.length !== 0 ? (
                 <>
