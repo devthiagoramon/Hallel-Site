@@ -9,6 +9,7 @@ import { MoreVertRounded, SaveAlt } from "@mui/icons-material";
 import { Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
+import { entradasUltimasEntradasAPI, receitasListarAPI, receitasListarDiaAPI, receitasListarSemanaAPI } from "../../../../api/uris/FinanceiroURLS";
 
 const EntradasFinanceiroAdm = () => {
   const [entradas, setEntradas] = useState([]);
@@ -23,16 +24,16 @@ const EntradasFinanceiroAdm = () => {
     let url;
     switch (datasToBePushed) {
       case "todos":
-        url = "http://localhost:8080/api/financeiro/receita";
+        url = receitasListarAPI();
         break;
       case "dia":
-        url = "http://localhost:8080/api/financeiro/receita/thisDay";
+        url = receitasListarDiaAPI();
         break;
       case "semana":
-        url = "http://localhost:8080/api/financeiro/receita/thisWeek";
+        url = receitasListarSemanaAPI();
         break;
       default:
-        url = "http://localhost:8080/api/financeiro/receita";
+        url = receitasListarAPI();
         break;
     }
 
@@ -56,7 +57,7 @@ const EntradasFinanceiroAdm = () => {
   }, [datasToBePushed]);
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/financeiro/ultimasEntradas";
+    let url = entradasUltimasEntradasAPI();
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", localStorage.getItem("token"));

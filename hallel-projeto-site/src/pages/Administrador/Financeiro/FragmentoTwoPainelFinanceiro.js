@@ -3,6 +3,11 @@ import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { Table } from "react-bootstrap";
 import Chart from "react-google-charts";
+import {
+  entradasGetEntradasMesValor,
+  gastosUltimasSaidasAPI,
+  metaListarByMesAnoAPI,
+} from "../../../api/uris/FinanceiroURLS";
 
 const FragmentoTwoPainelFinanceiro = () => {
   const [ultimasSaidas, setUltimasSaidas] = useState([]);
@@ -18,7 +23,7 @@ const FragmentoTwoPainelFinanceiro = () => {
   };
 
   useEffect(() => {
-    let url = "http://localhost:8080/api/financeiro/ultimasSaida";
+    let url = gastosUltimasSaidasAPI();
 
     axios
       .get(url, {
@@ -38,12 +43,7 @@ const FragmentoTwoPainelFinanceiro = () => {
         ? String(data.getMonth() + 1)
         : "0" + String(data.getMonth() + 1);
     let anoString = String(new Date().getFullYear());
-    let urlListagem =
-      "http://localhost:8080/api/financeiro/meta/listar" +
-      "?mes=" +
-      mesString +
-      "&ano=" +
-      anoString;
+    let urlListagem = metaListarByMesAnoAPI(mesString, anoString);
     axios
       .get(urlListagem, {
         headers: {
@@ -65,12 +65,7 @@ const FragmentoTwoPainelFinanceiro = () => {
         ? String(data.getMonth() + 1)
         : "0" + String(data.getMonth() + 1);
     let anoString = String(new Date().getFullYear());
-    let url =
-      "http://localhost:8080/api/financeiro/entradasMes/valor" +
-      "?mes=" +
-      mesString +
-      "&ano=" +
-      anoString;
+    let url = entradasGetEntradasMesValor(mesString, anoString);
     axios
       .get(url, {
         headers: {
@@ -78,7 +73,7 @@ const FragmentoTwoPainelFinanceiro = () => {
         },
       })
       .then((res) => {
-        SetreceitaValue(res.data)
+        SetreceitaValue(res.data);
         setFaltam(meta - res.data);
       })
       .catch((error) => {

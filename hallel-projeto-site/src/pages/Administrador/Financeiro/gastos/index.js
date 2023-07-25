@@ -7,7 +7,12 @@ import { useMemo } from "react";
 import { useState } from "react";
 import ModalAddDespesa from "./addModal";
 import gastosPDF from "../../../../Reports/gastos/saidas";
-import { Delete, MoreVertRounded, SaveAlt, Visibility } from "@mui/icons-material";
+import {
+  Delete,
+  MoreVertRounded,
+  SaveAlt,
+  Visibility,
+} from "@mui/icons-material";
 import { Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -21,6 +26,13 @@ import MenuSpecCodigo from "./MenuSpecCodigo";
 import { Edit } from "lucide-react";
 import ModalDeleterSaida from "./ModalDeletar";
 import ModalMostrarImagemSaida from "./addModal/ModalMostrarImagemSaida";
+import {
+  gastosListarAPI,
+  gastosListarDiaAPI,
+  gastosListarSemanaAPI,
+  gastosUltimasSaidasAPI,
+} from "../../../../api/uris/FinanceiroURLS";
+import axios from "axios";
 
 const SaidasFinanceirasADM = () => {
   const [gastos, setgastos] = useState([]);
@@ -39,38 +51,32 @@ const SaidasFinanceirasADM = () => {
   const [openModalAddDespesas, setopenModalAddDespesas] = useState(false);
   const [openModalAnexoSaida, setopenModalAnexoSaida] = useState(false);
   const [imagemAnexoSelecionada, setimagemAnexoSelecionada] = useState("");
-  
 
   useEffect(() => {
     let url;
     switch (datasToBePushed) {
       case "todos":
-        url = "http://localhost:8080/api/financeiro/gastos";
+        url = gastosListarAPI();
         break;
       case "dia":
-        url = "http://localhost:8080/api/financeiro/gastos/thisDay";
+        url = gastosListarDiaAPI();
         break;
       case "semana":
-        url = "http://localhost:8080/api/financeiro/gastos/thisWeek";
+        url = gastosListarSemanaAPI();
         break;
       default:
-        url = "http://localhost:8080/api/financeiro/gastos";
+        url = gastosListarAPI();
         break;
     }
 
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
       })
-      .then((gastos) => {
-        setgastos(gastos);
+      .then((res) => {
+        setgastos(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -78,20 +84,16 @@ const SaidasFinanceirasADM = () => {
   }, [alterou, datasToBePushed]);
 
   useEffect(() => {
-    let url = "http://localhost:8080/api/financeiro/ultimasSaida";
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
+    let url = gastosUltimasSaidasAPI();
 
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
       })
-      .then((lastSaidas) => {
-        setLastSaidas(lastSaidas);
+      .then((res) => {
+        setLastSaidas(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -146,7 +148,7 @@ const SaidasFinanceirasADM = () => {
   function handleOpenModalMostrarImagem(imagem) {
     setopenModalAnexoSaida(true);
     setimagemAnexoSelecionada(imagem);
-  };
+  }
 
   return (
     <div className="containerGasto">
@@ -267,9 +269,14 @@ const SaidasFinanceirasADM = () => {
                         currency: "BRL",
                       })}
                     </td>
-                    <td style={{textAlign: "center"}}>
-                      <IconButton onClick={() => handleOpenModalMostrarImagem(item.imagemAnexo)} sx={{height: "20px", color: "#252525"}}>
-                        <Visibility/>
+                    <td style={{ textAlign: "center" }}>
+                      <IconButton
+                        onClick={() =>
+                          handleOpenModalMostrarImagem(item.imagemAnexo)
+                        }
+                        sx={{ height: "20px", color: "#252525" }}
+                      >
+                        <Visibility />
                       </IconButton>
                     </td>
                     <td>

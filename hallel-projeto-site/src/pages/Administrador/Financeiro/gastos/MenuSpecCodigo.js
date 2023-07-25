@@ -16,11 +16,8 @@ const MenuSpecCodigo = (props) => {
   const [codigoAux, setcodigoAux] = useState(0);
 
   useEffect(() => {
-    
-    setcodigoAux(codigoVisualizar)
-    
-  }, [codigoVisualizar])
-  
+    setcodigoAux(codigoVisualizar);
+  }, [codigoVisualizar]);
 
   const handleCloseMenuSpecCodigo = () => {
     setCodigoVisualizar(false);

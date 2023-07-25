@@ -1,12 +1,16 @@
 import React from "react";
 import "./doacoesAdm.css";
-import Arrow from "./../../../../images/arrow-icon.svg";
 import { useMemo } from "react";
 import { useState } from "react";
-import {Table} from "react-bootstrap";
-import { CircularProgress, IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
-import { MoreVert, MoreVertRounded } from "@mui/icons-material";
-import { CDBCard, CDBCardBody, CDBDataTable, CDBRow, CDBCol, CDBContainer } from 'cdbreact';
+import { CircularProgress, IconButton, Menu, MenuItem } from "@mui/material";
+import { MoreVertRounded } from "@mui/icons-material";
+import { CDBCard, CDBCardBody, CDBDataTable, CDBContainer } from "cdbreact";
+import {
+  doacaoListarDiaAPI,
+  doacaoListarSemanaAPI,
+  doacaoListarTodosAPI,
+} from "../../../../api/uris/FinanceiroURLS";
+import axios from "axios";
 
 const DoacoesDinheiroAdm = () => {
   const [doacoes, setdoacoes] = useState([]);
@@ -18,26 +22,21 @@ const DoacoesDinheiroAdm = () => {
   useMemo(() => {
     let url;
     if (datasToBePushed === "todos") {
-      url = "http://localhost:8080/api/doacao/list";
+      url = doacaoListarTodosAPI();
     } else if (datasToBePushed === "dia") {
-      url = "http://localhost:8080/api/doacao/list/thisDay";
+      url = doacaoListarDiaAPI();
     } else if (datasToBePushed === "semana") {
-      url = "http://localhost:8080/api/doacao/list/thisWeek";
+      url = doacaoListarSemanaAPI();
     }
 
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
       })
-      .then((doacoes) => {
-        setdoacoes(doacoes);
+      .then((res) => {
+        setdoacoes(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -62,37 +61,36 @@ const DoacoesDinheiroAdm = () => {
     }
   }
 
-
   const data = () => {
     return {
       columns: [
         {
-          label: 'E-mail',
-          field: 'email',
+          label: "E-mail",
+          field: "email",
           width: 50,
           attributes: {
-            'aria-controls': 'DataTable',
-            'aria-label': 'E-mail do Doador',
+            "aria-controls": "DataTable",
+            "aria-label": "E-mail do Doador",
           },
         },
         {
-          label: 'Descrição',
-          field: 'descricao',
+          label: "Descrição",
+          field: "descricao",
           width: 100,
         },
         {
-          label: 'Tipo',
-          field: 'tipo',
+          label: "Tipo",
+          field: "tipo",
           width: 150,
         },
         {
-          label: 'Data da Doacao',
-          field: 'dataDoacao',
+          label: "Data da Doacao",
+          field: "dataDoacao",
           width: 150,
         },
         {
-          label: 'Valor da doação',
-          field: 'dataDoacao',
+          label: "Valor da doação",
+          field: "dataDoacao",
           width: 150,
         },
       ],
@@ -104,14 +102,9 @@ const DoacoesDinheiroAdm = () => {
         tipo: item.tipo,
         dataDoacao: item.dataDoacao,
         valorDoacao: item.valorDoacao,
-
       })),
-      
     };
   };
-
-
-
 
   return (
     <div className="containerDoacoesAdm">
@@ -163,38 +156,35 @@ const DoacoesDinheiroAdm = () => {
           </div>
         </div>
 
-        
-        {doacoes.length == 0 ? 
-
-            <div className="Progressobar">
-
-                <CircularProgress/>
-            </div>
-         : 
-                <CDBContainer>
-                    <CDBCard>
-                      <CDBCardBody>
-                        <CDBDataTable 
-                        entriesLabel="Mostrar doações" 
-                        searchLabel="Pesquisar"
-                          paginationLabel={["Anterior", "Próximo"]}
-                          infoLabel={["Mostrando de", "até", "de", "doações"]}
-                          noRecordsFoundLabel="Nenhuma doação encontrada"
-                          hover
-                          materialSearch
-                          bordered
-                          entriesOptions={[10, 20, 30]}
-                          entries={15}
-                          pagesAmount={4}
-                          maxHeight = "10vh"
-                          fixed
-                        theadColor="#BF25E6"
-                          data={data()}
-                        />
-                      </CDBCardBody>
-                    </CDBCard>
+        {doacoes.length == 0 ? (
+          <div className="Progressobar">
+            <CircularProgress />
+          </div>
+        ) : (
+          <CDBContainer>
+            <CDBCard>
+              <CDBCardBody>
+                <CDBDataTable
+                  entriesLabel="Mostrar doações"
+                  searchLabel="Pesquisar"
+                  paginationLabel={["Anterior", "Próximo"]}
+                  infoLabel={["Mostrando de", "até", "de", "doações"]}
+                  noRecordsFoundLabel="Nenhuma doação encontrada"
+                  hover
+                  materialSearch
+                  bordered
+                  entriesOptions={[10, 20, 30]}
+                  entries={15}
+                  pagesAmount={4}
+                  maxHeight="10vh"
+                  fixed
+                  theadColor="#BF25E6"
+                  data={data()}
+                />
+              </CDBCardBody>
+            </CDBCard>
           </CDBContainer>
-        }
+        )}
       </div>
     </div>
   );

@@ -10,6 +10,11 @@ import {
 import React, { useEffect, useMemo, useState } from "react";
 import CloseIcon from "../../../images/CloseIcon";
 import axios from "axios";
+import {
+  metaAlterarByMesAnoAPI,
+  metaListarByMesAnoAPI,
+  metaLoadPorcentagemByMesAnoAPI,
+} from "../../../api/uris/FinanceiroURLS";
 
 const MetaEntradaComponentPainelFinanceiro = () => {
   const [porcentagem, setporcentagem] = useState(100);
@@ -25,15 +30,12 @@ const MetaEntradaComponentPainelFinanceiro = () => {
   useMemo(() => {
     let data = new Date();
     let mesString =
-      data.getMonth()+1 >= 10 ? String(data.getMonth()+1) : "0" + String(data.getMonth()+1);
+      data.getMonth() + 1 >= 10
+        ? String(data.getMonth() + 1)
+        : "0" + String(data.getMonth() + 1);
     let anoString = String(new Date().getFullYear());
 
-    let urlPorcentagem =
-      "http://localhost:8080/api/financeiro/meta/porcentagem" +
-      "?mes=" +
-      mesString +
-      "&ano=" +
-      anoString;
+    let urlPorcentagem = metaLoadPorcentagemByMesAnoAPI(mesString, anoString);
     axios
       .get(urlPorcentagem, {
         headers: {
@@ -51,14 +53,11 @@ const MetaEntradaComponentPainelFinanceiro = () => {
   useMemo(() => {
     let data = new Date();
     let mesString =
-      data.getMonth()+1 >= 10 ? String(data.getMonth()) : "0" + String(data.getMonth()+1);
+      data.getMonth() + 1 >= 10
+        ? String(data.getMonth())
+        : "0" + String(data.getMonth() + 1);
     let anoString = String(new Date().getFullYear());
-    let urlListagem =
-      "http://localhost:8080/api/financeiro/meta/listar" +
-      "?mes=" +
-      mesString +
-      "&ano=" +
-      anoString;
+    let urlListagem = metaListarByMesAnoAPI(mesString, anoString);
     axios
       .get(urlListagem, {
         headers: {
@@ -104,20 +103,12 @@ const MetaEntradaComponentPainelFinanceiro = () => {
 
     let data = new Date();
     let mesString =
-      data.getMonth()+1 >= 10 ? String(data.getMonth()+1) : "0" + String(data.getMonth()+1);
+      data.getMonth() + 1 >= 10
+        ? String(data.getMonth() + 1)
+        : "0" + String(data.getMonth() + 1);
     let anoString = String(new Date().getFullYear());
 
-    let url =
-      "http://localhost:8080/api/financeiro/meta/alterar" +
-      "?mes=" +
-      mesString +
-      "&ano=" +
-      anoString +
-      "&meta=" +
-      metaValueProv;
-
-      console.log(url)
-
+    let url = metaAlterarByMesAnoAPI(mesString, anoString, metaValueProv);
     axios
       .put(
         url,
@@ -164,7 +155,7 @@ const MetaEntradaComponentPainelFinanceiro = () => {
           value={porcentagem}
         />
         <label>
-          <span style={{fontSize: "36px"}}>{porcentagem}</span>%
+          <span style={{ fontSize: "36px" }}>{porcentagem}</span>%
         </label>
       </div>
       <div className="container_info_circular_progress">

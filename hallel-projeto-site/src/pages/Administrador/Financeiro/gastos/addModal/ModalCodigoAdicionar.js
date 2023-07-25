@@ -2,6 +2,7 @@ import { SaveRounded } from "@mui/icons-material";
 import { Box, Button, Modal, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
+import { saidaAdicionarCodigoSaidaAPI } from "../../../../../api/uris/FinanceiroURLS";
 
 const ModalCodigoAdicionar = (props) => {
   const styleInnerModal = {
@@ -43,7 +44,7 @@ const ModalCodigoAdicionar = (props) => {
         setErrorRequestNum(false);
       }, 3000);
     } else {
-      let url = "http://localhost:8080/api/financeiro/codigosSaida/adicionar";
+      let url = saidaAdicionarCodigoSaidaAPI();
       axios
         .post(
           url,

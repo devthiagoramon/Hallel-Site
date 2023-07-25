@@ -1,11 +1,8 @@
 import { Send } from "@mui/icons-material";
 import {
-    Alert,
+  Alert,
   Button,
-  Grid,
-  Input,
   Snackbar,
-  TextField,
   Tooltip,
 } from "@mui/material";
 import React, { useEffect } from "react";
@@ -14,15 +11,18 @@ import { useRef } from "react";
 import { FormControl } from "react-bootstrap";
 import addImageIcon from "./../../../../../images/addImage.svg";
 import "./add_doacao_obj.css";
+import { doacaoDoarObjetoAPI } from "../../../../../api/uris/FinanceiroURLS";
+import axios from "axios";
 
 const AddDoacaoObjetoAdm = () => {
+  
   const imagemDiv = useRef();
   const [imagemInput, setImagemInput] = useState("");
   const imagemLabelInformativoDiv = useRef();
   const imagemLabelInformativoLabel = useRef();
   const [btnHabilitado, setbtnHabilitado] = useState(false);
   const [enviadoSucesso, setenviadoSucesso] = useState(false);
-  const [enviadoErro, setEnviadoErro] = useState(false)
+  const [enviadoErro, setEnviadoErro] = useState(false);
 
   const doacaoTemplate = {
     email: "",
@@ -74,37 +74,37 @@ const AddDoacaoObjetoAdm = () => {
     reader.readAsDataURL(selectedFile);
   }
 
-  function fecharAviso(){
-    enviadoSucesso === true ? setenviadoSucesso(false) : setenviadoSucesso(false)
-    enviadoErro === true ? setEnviadoErro(false) : setEnviadoErro(false)
+  function fecharAviso() {
+    enviadoSucesso === true
+      ? setenviadoSucesso(false)
+      : setenviadoSucesso(false);
+    enviadoErro === true ? setEnviadoErro(false) : setEnviadoErro(false);
   }
 
   function enviarDoacaoObjeto() {
-    let url = "http://localhost:8080/api/doacao/doarObjeto";
+    let url = doacaoDoarObjetoAPI();
 
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-
-    fetch(url, {
-      headers: myHeaders,
-      method: "POST",
-      body: JSON.stringify({
-        emailDoador:doacaoObjeto.email,
-        descricao: doacaoObjeto.descricao,
-        dataDoacao: doacaoObjeto.dataDoacao,
-        imagem: imagemInput,
-        quantidade: doacaoObjeto.quantidade
-      })
-    })
-      .then((res) => {
-        return res.json();
-      })
+    axios
+      .post(
+        url,
+        {
+          emailDoador: doacaoObjeto.email,
+          descricao: doacaoObjeto.descricao,
+          dataDoacao: doacaoObjeto.dataDoacao,
+          imagem: imagemInput,
+          quantidade: doacaoObjeto.quantidade,
+        },
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
       .then(() => {
         setenviadoSucesso(true);
         setTimeout(() => {
-            window.location.href =
-              "http://localhost:3000/administrador/painelFinanceiro/doacoes/objeto";
+          window.location.href =
+            "http://localhost:3000/administrador/painelFinanceiro/doacoes/objeto";
         }, 4000);
       })
       .catch((error) => {

@@ -1,6 +1,7 @@
 import { Menu, MenuItem } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
+import { saidaListarCodigoSaidaAPI } from "../../../../../api/uris/FinanceiroURLS";
 
 const MenuCodigosSaida = (props) => {
   const { anchorMenu, setanchorMenu, setSaida } = props;
@@ -13,7 +14,7 @@ const MenuCodigosSaida = (props) => {
   };
 
   function loadCodigosSaidas() {
-    let url = "http://localhost:8080/api/financeiro/codigosSaida/list";
+    let url = saidaListarCodigoSaidaAPI();
     axios
       .get(url, {
         headers: {

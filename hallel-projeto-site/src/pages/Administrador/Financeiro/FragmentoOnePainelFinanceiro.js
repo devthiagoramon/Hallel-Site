@@ -4,6 +4,7 @@ import MetaEntradaComponentPainelFinanceiro from "./MetaEntradaComponentPainelFi
 import { Table } from "react-bootstrap";
 import axios from "axios";
 import { LinearProgress, Skeleton } from "@mui/material";
+import { entradasUltimasEntradasAPI } from "../../../api/uris/FinanceiroURLS";
 
 const FragmentoOnePainelFinanceiro = () => {
   const [mesAtual, setmesAtual] = useState("");
@@ -26,7 +27,7 @@ const FragmentoOnePainelFinanceiro = () => {
   // Load entradas mensais valor
 
   useEffect(() => {
-    let url = "http://localhost:8080/api/financeiro/ultimasEntradas";
+    let url = entradasUltimasEntradasAPI();
 
     axios
       .get(url, {

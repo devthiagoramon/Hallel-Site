@@ -12,6 +12,7 @@ import MenuCodigosSaida from "./MenuCodigosSaida";
 import axios from "axios";
 import { MuiFileInput } from "mui-file-input";
 import ModalMostrarImagemSaida from "./ModalMostrarImagemSaida";
+import { gastosCriarAPI } from "../../../../../api/uris/FinanceiroURLS";
 
 const ModalAddDespesa = (props) => {
   const styleInnerModal = {
@@ -59,7 +60,7 @@ const ModalAddDespesa = (props) => {
   };
 
   function addSaida() {
-    let url = "http://localhost:8080/api/financeiro/gasto/criar";
+    let url = gastosCriarAPI();
     axios
       .post(
         url,
