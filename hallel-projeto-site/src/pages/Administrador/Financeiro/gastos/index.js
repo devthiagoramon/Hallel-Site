@@ -31,7 +31,7 @@ const SaidasFinanceirasADM = () => {
   const [lastSaidas, setLastSaidas] = useState([]);
   const [alterou, setAlterou] = useState(false);
   const [anchorMenuSpec, setAnchorMenuSpec] = useState(null);
-  const [codigoVisualizar, setCodigoVisualizar] = useState(0);
+  const [codigoVisualizar, setCodigoVisualizar] = useState(null);
 
   const [idSaida, setIdSaida] = useState("");
   const [openModalDeletar, setOpenModalDeletar] = useState(false);
@@ -346,7 +346,7 @@ const SaidasFinanceirasADM = () => {
       <MenuSpecCodigo
         anchorMenuSpec={anchorMenuSpec}
         setAnchorMenuSpec={setAnchorMenuSpec}
-        codigoVisualizar={codigoVisualizar}
+        codigoVisualizar={codigoVisualizar != null ? codigoVisualizar : 0}
         setCodigoVisualizar={setCodigoVisualizar}
       />
       <ModalDeleterSaida

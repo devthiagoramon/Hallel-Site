@@ -1,6 +1,7 @@
 import { Box, Button, Modal } from "@mui/material";
 import axios from "axios";
 import React from "react";
+import { gastosDeletarGastosAPI } from "../../../../api/uris/FinanceiroURLS";
 
 const ModalDeleterSaida = (props) => {
   const {
@@ -24,8 +25,9 @@ const ModalDeleterSaida = (props) => {
   };
 
   const deletarSaida = () => {
+    let url = gastosDeletarGastosAPI(idSaida)
     axios
-      .get("http://localhost:8080/api/financeiro/gasto/deletar/" + idSaida, {
+      .get(url, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

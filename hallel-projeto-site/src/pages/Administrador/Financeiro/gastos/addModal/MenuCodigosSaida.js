@@ -1,6 +1,6 @@
 import { Menu, MenuItem } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const MenuCodigosSaida = (props) => {
   const { anchorMenu, setanchorMenu, setSaida } = props;
@@ -29,9 +29,9 @@ const MenuCodigosSaida = (props) => {
       });
   }
 
-  useEffect(() => {
+  useMemo(() => {
     loadCodigosSaidas();
-  }, [codigosSaida]);
+  }, []);
 
   function retornarCodigoSaida(id, numCodigo, nomeCodigo) {
     let obj = {
