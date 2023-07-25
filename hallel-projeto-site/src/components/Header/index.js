@@ -10,6 +10,7 @@ import { IconButton } from "@mui/material";
 import { AccountCircle, Login } from "@mui/icons-material";
 import ModalPerfilAdm from "./perfilAdm";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { homeVerificarToken } from "../../api/uris/HomeUris";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
@@ -28,9 +29,7 @@ function Header() {
   const [openAdm, setOpenAdm] = useState(false);
 
   function isTokenExpired() {
-    let url =
-      "http://localhost:8080/api/isTokenExpired/" +
-      String(localStorage.getItem("token"));
+    let url = homeVerificarToken(localStorage.getItem("token"));
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     fetch(url, {
@@ -116,9 +115,9 @@ function Header() {
           item2="Meus Cursos"
           link2="/meuscursos"
         />
-        {localStorage.getItem("R0l3s") !== null && <>
-          {
-            localStorage.getItem("R0l3s").includes("ROLE_USER") ? (
+        {localStorage.getItem("R0l3s") !== null && (
+          <>
+            {localStorage.getItem("R0l3s").includes("ROLE_USER") ? (
               <>
                 <Link id="item" to="/formularioDoacao">
                   Doações
@@ -130,10 +129,9 @@ function Header() {
                   Doações
                 </Link>
               </>
-            )
-          }
-        </>
-        }
+            )}
+          </>
+        )}
 
         <Link id="item" to="/loja">
           Loja
@@ -152,7 +150,10 @@ function Header() {
               className="perfilHomepage"
               onClick={() => showModalPerfil()}
             >
-              <AccountCircle sx={{ width: "55px", height: "55px" }} style={{ color: "#FAF4F4" }} />
+              <AccountCircle
+                sx={{ width: "55px", height: "55px" }}
+                style={{ color: "#FAF4F4" }}
+              />
             </IconButton>
           </div>
         )}
@@ -167,14 +168,14 @@ function Header() {
         ""
       )}
       {isModalPerfilVisible &&
-        (localStorage.getItem("R0l3s") === "ROLE_USER" ||
-          localStorage.getItem("R0l3s") === "ROLE_ASSOCIADO,ROLE_USER") ? (
+      (localStorage.getItem("R0l3s") === "ROLE_USER" ||
+        localStorage.getItem("R0l3s") === "ROLE_ASSOCIADO,ROLE_USER") ? (
         <ModalPerfil />
       ) : (
         ""
       )}
       {isModalPerfilVisible &&
-        localStorage.getItem("R0l3s") ===
+      localStorage.getItem("R0l3s") ===
         "ROLE_ADMIN,ROLE_ASSOCIADO,ROLE_USER" ? (
         <ModalPerfilAdm
           isOpen={openAdm}

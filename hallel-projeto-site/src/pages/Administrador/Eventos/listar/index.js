@@ -18,6 +18,7 @@ import { ArchiveRounded, LocationOn } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import ModalArquivarEvento from "./ModalArquivarEvento";
 import {VscKebabVertical} from "react-icons/vsc";
+import { eventoListar } from "../../../../api/uris/EventosURLS";
 
 function Evento() {
   const [eventos, setEventos] = useState([]);
@@ -35,7 +36,7 @@ function Evento() {
   const navigator = useNavigate();
 
   function renderizarEventos() {
-    let url = "http://localhost:8080/api/eventos";
+    let url = eventoListar();
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

@@ -4,6 +4,7 @@ import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Skeleton, TextField } from "@mui/material";
 import "./eventoUser.css";
 import { BsArrowReturnLeft } from "react-icons/bs";
+import { eventoListar } from "../../../api/uris/EventosURLS";
 
 function EventoUser() {
   const [eventos, setEventos] = useState([]);
@@ -35,7 +36,7 @@ function EventoUser() {
     }
   };
   useEffect(() => {
-    let url = "http://localhost:8080/api/eventos";
+    let url = eventoListar();
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { CDBCard, CDBCardBody, CDBDataTable, CDBRow, CDBCol, CDBContainer } from 'cdbreact';
 import { CircularProgress } from "@mui/material";
+import { membrosListar } from "../../../api/uris/MembroURLS";
 
 function Filtro() {
   return (
@@ -37,7 +38,7 @@ function MembrosAdministrador() {
   const [membro, setMembro] = useState([]);
 
   useEffect(() => {
-    let url = "http://localhost:8080/api/administrador/membros";
+    let url = membrosListar();
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

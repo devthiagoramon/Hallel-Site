@@ -3,6 +3,7 @@ import { Textarea } from '@mui/joy'
 import { Button, CircularProgress, MenuItem, Select, TextField } from '@mui/material'
 import axios from 'axios';
 import React, { useState } from 'react'
+import { despesasAddToEventoId } from '../../../../api/uris/EventosURLS';
 
 const InputsBodyDespesasEvento = (props) => {
     const [despesaEvento, setDespesaEvento] = useState({
@@ -28,7 +29,7 @@ const InputsBodyDespesasEvento = (props) => {
 
         setEnviando(true);
 
-        axios.post("http://localhost:8080/api/administrador/eventos/" + idEvento + "/despesa/add", {
+        axios.post(despesasAddToEventoId(idEvento), {
             ...despesaEvento
         }, {
             headers: {

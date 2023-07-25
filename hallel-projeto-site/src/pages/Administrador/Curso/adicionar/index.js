@@ -39,6 +39,7 @@ import { FloatingLabel, Form, FormControl } from "react-bootstrap";
 import "./addCurso.css";
 import addImageIcon from "./../../../../images/addImage.svg";
 import { useEffect } from "react";
+import { cursoCriar } from "../../../../api/uris/CursosURLS";
 
 const AdicionarCursoAdm = () => {
   const [requisitosInputs, setRequisitosInputs] = useState([]);
@@ -194,7 +195,7 @@ const AdicionarCursoAdm = () => {
     })
   
 
-    let url = "http://localhost:8080/api/cursos/create";
+    let url = cursoCriar();
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

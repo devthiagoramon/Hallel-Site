@@ -7,6 +7,7 @@ import { Alert, CircularProgress, Snackbar } from '@mui/material';
 import BodyDespesaEvento from './BodyDespesaEvento';
 import ModalEditDespesaEvento from './ModalEditDespesaEvento';
 import ModalDeleteEvento from './ModalDeleteEvento';
+import { eventoListarById } from '../../../../api/uris/EventosURLS';
 
 
 const DespesaEvento = () => {
@@ -21,7 +22,7 @@ const DespesaEvento = () => {
     const [openModalDelete, setopenModalDelete] = useState(false);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/administrador/evento/" + idEvento + "/list", {
+        axios.get(eventoListarById(idEvento), {
             headers: {
                 Authorization: localStorage.getItem("token")
             }

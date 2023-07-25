@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {Skeleton } from "@mui/material";
+import { eventoListar } from "../../../api/uris/EventosURLS";
 
 //  images controls
 const SlideArtesanato = (props) => {
@@ -16,7 +17,7 @@ const SlideArtesanato = (props) => {
   }, []);
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/eventos/listar";
+    let url = eventoListar();
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

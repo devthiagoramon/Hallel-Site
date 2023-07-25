@@ -3,6 +3,7 @@ import InputsBodyAdicionarLocais from "./InputsBodyAdicionarLocais";
 import ContainerImagemAdicionarLocais from "./ContainerImagemAdicionarLocais";
 import { useState } from "react";
 import axios from "axios";
+import { localEventoAdicionar } from "../../../../api/uris/EventosURLS";
 
 const EsquerdaBodyLocaisEventos = (props) => {
   const [imagemLocal, setImagemLocal] = useState(null);
@@ -12,7 +13,7 @@ const EsquerdaBodyLocaisEventos = (props) => {
 
   const enviarRequest = () => {
 
-    let url = "http://localhost:8080/api/locais/create";
+    let url = localEventoAdicionar();
 
     setEnviando(true);
 

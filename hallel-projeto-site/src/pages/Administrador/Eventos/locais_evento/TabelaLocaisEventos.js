@@ -4,6 +4,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Table } from 'react-bootstrap';
+import { localEventoListar } from '../../../../api/uris/EventosURLS';
 
 const TabelaLocaisEventos = (props) => {
 
@@ -16,7 +17,7 @@ const TabelaLocaisEventos = (props) => {
   }, [props.enviadoSucesso])
 
   function loadEventosLocais() {
-    axios.get("http://localhost:8080/api/locais/listLocalizacao", {
+    axios.get(localEventoListar(), {
       headers: {
         Authorization: localStorage.getItem("token")
       }

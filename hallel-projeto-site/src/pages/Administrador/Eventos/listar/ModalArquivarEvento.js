@@ -1,6 +1,7 @@
 import { Box, Button, Modal } from "@mui/material";
 import axios from "axios";
 import React from "react";
+import { eventoArquivar } from "../../../../api/uris/EventosURLS";
 
 const ModalArquivarEvento = (props) => {
   const {
@@ -25,7 +26,7 @@ const ModalArquivarEvento = (props) => {
 
   const arquivarEvento = () => {
     axios.get(
-      "http://localhost:8080/api/administrador/evento/"+idEvento+"/arquivar",{
+      eventoArquivar(idEvento),{
         headers:{
             Authorization: localStorage.getItem("token")
         }

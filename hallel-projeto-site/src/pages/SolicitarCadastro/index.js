@@ -3,6 +3,7 @@ import "./style.css";
 import Logo from "../../images/LogoHallel.png";
 import PopUpMensagem from "../../components/popUpMensagem";
 import { Alert, Snackbar } from "@mui/material";
+import { homeSolicitarCadastro } from "../../api/uris/HomeUris";
 
 const SolicitarCadastro = (props) => {
   const [nomeInput, setNome] = useState();
@@ -16,7 +17,7 @@ const SolicitarCadastro = (props) => {
 
   function solicitar() {
     if (senhaInput === senha2Input) {
-      let url = "http://localhost:8080/api/solicitarCadastro";
+      let url = homeSolicitarCadastro();
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       fetch(url, {

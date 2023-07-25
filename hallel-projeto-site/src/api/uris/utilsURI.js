@@ -9,3 +9,11 @@ export function doacaoPrefix() {
 export function financeiroPrefix() {
   return "/financeiro";
 }
+
+export function administradorPrefix(){
+  return "/administrador"
+}
+
+export function eventoPrefix(){
+  return "/eventos"
+}

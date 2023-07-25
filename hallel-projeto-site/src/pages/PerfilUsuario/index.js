@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import axios from "axios";
+import { membroLoadPerfilById } from "../../api/uris/MembroURLS";
 
 const PerfilRow = () => {
   return (
@@ -32,8 +33,7 @@ const Info = () => {
 
   useMemo(() => {
     let url =
-      "http://localhost:8080/api/membros/perfil/" +
-      localStorage.getItem("HallelId");
+     membroLoadPerfilById(localStorage.getItem("HallelId"));
     axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),

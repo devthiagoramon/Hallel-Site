@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useMemo, useRef } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { associadoListarMeusCursos } from "../../api/uris/AssociadosURLS";
 
 const AreaTopo = (props) => {
   return (
@@ -50,9 +51,7 @@ const AreaCurso = (props) => {
   const [meusCursos, SetmeusCursos] = useState([]);
 
   useMemo(() => {
-    let url =
-      "http://localhost:8080/api/associados/meusCursos/" +
-      localStorage.getItem("HallelId");
+    let url = associadoListarMeusCursos(localStorage.getItem("HallelId"));
     fetch(url, {
       headers: {
         Authorization: localStorage.getItem("token"),

@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Modal, Skeleton } from "@mui/material";
 import InnerModalMatricular from "./innerModalMatricular";
+import { homeListarDesCursoByIdCurso } from "../../api/uris/HomeUris";
 
 function DescCurso() {
   const [curso, setCurso] = useState({});
@@ -16,7 +17,7 @@ function DescCurso() {
   const [isModalMatricularOpen, setisModalMatricularOpen] = useState(false);
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/descCurso/" + idCurso;
+    let url = homeListarDesCursoByIdCurso(idCurso);
 
     axios
       .get(url, {
@@ -177,7 +178,7 @@ function DescCurso() {
             open={isModalMatricularOpen}
             onClose={handleCloseModalMatricular}
           >
-            <InnerModalMatricular curso={curso} id={idCurso}/>
+            <InnerModalMatricular curso={curso} id={idCurso} />
           </Modal>
 
           <div className="right">

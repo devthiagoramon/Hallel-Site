@@ -13,6 +13,7 @@ import axios from "axios";
 import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
 import { MuiFileInput } from "mui-file-input";
 import { kMaxLength } from "buffer";
+import { eventoAdicionar } from "../../../../api/uris/EventosURLS";
 
 const AdicionarEvento = () => {
   const tituloDiv = useRef();
@@ -100,7 +101,7 @@ const AdicionarEvento = () => {
   }
 
   const enviarEvento = () => {
-    let url = "http://localhost:8080/api/administrador/evento/create";
+    let url = eventoAdicionar();
 
     let palestranteDTO = [];
 

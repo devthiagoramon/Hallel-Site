@@ -22,6 +22,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Autocomplete, Card, CardCover, Input } from "@mui/joy";
 import { Box, height } from "@mui/system";
 import { Image } from "react-bootstrap";
+import { cursoListarById } from "../../../../api/uris/CursosURLS";
 
 const ListarCursosADM = () => {
   const [pesquisarNome, setpesquisarNome] = useState(false);
@@ -57,7 +58,7 @@ const ListarCursosADM = () => {
 
   function abrirDescricao(id) {
     setIsModalAberto(true);
-    let url = "http://localhost:8080/api/cursos/" + id;
+    let url = cursoListarById(id);
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

@@ -2,6 +2,7 @@ import { CircularProgress, Menu, MenuItem } from "@mui/material";
 import { CDBCard, CDBCardBody, CDBContainer, CDBDataTable } from "cdbreact";
 import React, { useMemo, useState } from "react";
 import ModalDesarquivarEvento from "./ModalDesarquivarEvento";
+import { eventoListarArquivado } from "../../../../api/uris/EventosURLS";
 
 const EventosArquivado = () => {
   const [eventos, setEventos] = useState([]);
@@ -70,7 +71,7 @@ const EventosArquivado = () => {
   };
 
   function renderizarEventos() {
-    let url = "http://localhost:8080/api/administrador/evento/arquivados";
+    let url = eventoListarArquivado();
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

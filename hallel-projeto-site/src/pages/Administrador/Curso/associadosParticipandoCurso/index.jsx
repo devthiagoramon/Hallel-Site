@@ -5,6 +5,7 @@ import { Form, Table } from "react-bootstrap";
 import { useState } from "react";
 import { useMemo } from "react";
 import axios from "axios";
+import { cursoGetParticipantes } from "../../../../api/uris/CursosURLS";
 
 const AssociadosListaCursosAdm = () => {
   const { idCurso } = useParams();
@@ -12,7 +13,7 @@ const AssociadosListaCursosAdm = () => {
   const [listaAssociado, setlistaAssociado] = useState([]);
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/cursos/getParticipantes/" + idCurso;
+    let url = cursoGetParticipantes(idCurso);
 
     axios
       .get(url, {

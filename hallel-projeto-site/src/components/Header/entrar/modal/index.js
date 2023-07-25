@@ -3,6 +3,7 @@ import ModalMensagem from "../../mensagem/modal";
 import { createRoot } from "react-dom/client";
 import "./entrarModal.css";
 import iconeGoogle from "../../../../images/google-icon.svg";
+import { homeLogin, homeSolicitarCadastro } from "../../../../api/uris/HomeUris";
 
 const container = createRoot(document.querySelector("#root"));
 
@@ -45,7 +46,7 @@ class Modal extends Component {
 
   solicitarCadastro() {
     if (this.state.solicitação.senha1 === this.state.solicitação.senha2) {
-      let url = "http://localhost:8080/api/solicitarCadastro";
+      let url = homeSolicitarCadastro();
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       fetch(url, {
@@ -85,7 +86,7 @@ class Modal extends Component {
 
   logar() {
     if (this.state.solicitação.senha1 === this.state.solicitação.senha2) {
-      let url = "http://localhost:8080/api/login";
+      let url = homeLogin();
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       fetch(url, {

@@ -39,6 +39,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useMemo } from "react";
 import axios from "axios";
+import { cursoEditarById, cursoGetModulo, cursoListarById } from "../../../../api/uris/CursosURLS";
 
 const EditarCursosAdm = () => {
   const [requisitosInputs, setRequisitosInputs] = useState([]);
@@ -150,7 +151,7 @@ const EditarCursosAdm = () => {
   }
 
   function loadModuloFromAPI(idCurso) {
-    let url = "http://localhost:8080/api/cursos/getModulo/" + idCurso;
+    let url = cursoGetModulo(idCurso);
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -178,7 +179,7 @@ const EditarCursosAdm = () => {
   useMemo(() => loadFromAPI(), []);
 
   function loadFromAPI() {
-    let url = "http://localhost:8080/api/cursos/" + idCurso;
+    let url = cursoListarById(idCurso);
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -340,7 +341,7 @@ const EditarCursosAdm = () => {
       arrayRequisitos.push(item.text);
     });
 
-    let url = "http://localhost:8080/api/cursos/update/" + idCurso;
+    let url = cursoEditarById(idCurso);
 
     axios
       .put(

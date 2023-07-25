@@ -9,13 +9,14 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
+import { homeListarCursos } from "../../api/uris/HomeUris";
 
 const Cursos = () => {
   const [cursos, setCursos] = useState([]);
   const [pesquisa, setPesquisa] = useState("");
 
   useMemo(() => {
-    let url = "http://localhost:8080/api/listarCurso";
+    let url = homeListarCursos();
     axios
       .get(url, {
         headers: {

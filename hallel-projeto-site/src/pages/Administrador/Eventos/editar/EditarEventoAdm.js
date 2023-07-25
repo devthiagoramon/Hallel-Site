@@ -13,6 +13,7 @@ import axios from "axios";
 import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
 import { MuiFileInput } from "mui-file-input";
 import { useParams } from "react-router-dom";
+import { eventoEditarById, eventoListarById } from "../../../../api/uris/EventosURLS";
 
 const EditarEventoAdm = () => {
   const tituloDiv = useRef();
@@ -43,7 +44,7 @@ const EditarEventoAdm = () => {
 
   useEffect(() => {
     let url =
-      "http://localhost:8080/api/administrador/evento/" + idEvento + "/list";
+      eventoListarById(idEvento);
     axios
       .get(url, {
         headers: {
@@ -156,7 +157,7 @@ const EditarEventoAdm = () => {
 
   const atualizarEvento = () => {
     let url =
-      "http://localhost:8080/api/administrador/evento/" + idEvento + "/edit";
+      eventoEditarById(idEvento);
 
     axios
       .post(

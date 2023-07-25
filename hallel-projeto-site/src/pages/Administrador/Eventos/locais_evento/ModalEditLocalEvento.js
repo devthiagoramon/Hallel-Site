@@ -17,6 +17,7 @@ import {
 import axios from "axios";
 import { MuiFileInput } from "mui-file-input";
 import React, { useEffect, useState } from "react";
+import { localEventoDeletarById, localEventoEditarById, localEventoListarById } from "../../../../api/uris/EventosURLS";
 
 const ModalEditLocalEvento = (props) => {
   const { idLocalEvento, setIdLocalEvento } = props;
@@ -74,7 +75,7 @@ const ModalEditLocalEvento = (props) => {
 
   function loadLocalEvento(id) {
     axios
-      .get("http://localhost:8080/api/locais/" + id + "/list", {
+      .get(localEventoListarById(id), {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -108,8 +109,7 @@ const ModalEditLocalEvento = (props) => {
   };
 
   const enviarRequestEdit = () => {
-    let url =
-      "http://localhost:8080/api/locais/" + idLocalEventoModal + "/edit";
+    let url = localEventoEditarById(idLocalEventoModal);
 
     setEnviando(true);
 
@@ -156,7 +156,7 @@ const ModalEditLocalEvento = (props) => {
 
     axios
       .delete(
-        "http://localhost:8080/api/locais/" + idLocalEventoModal + "/delete",
+        localEventoDeletarById(idLocalEventoModal),
         {
           headers: {
             Authorization: localStorage.getItem("token"),

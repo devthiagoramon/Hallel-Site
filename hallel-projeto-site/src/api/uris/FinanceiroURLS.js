@@ -52,6 +52,10 @@ export function doacaoDoarObjetoAPI() {
   return uriDefaultPrefix() + doacaoPrefix() + "/doarObjeto";
 }
 
+export function doacaoDoar() {
+  return uriDefaultPrefix() + doacaoPrefix() + "/doar";
+}
+
 /*
     Parte de gastos (Financeiro)
     !! DEPRECIADO !!

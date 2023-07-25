@@ -1,6 +1,7 @@
 import { CircularProgress, Menu, MenuItem } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { localEventoListar } from "../../../../../api/uris/EventosURLS";
 
 const ModalListarLocalEvento = (props) => {
   const openLocaisEvento = Boolean(props.anchorEl);
@@ -8,7 +9,7 @@ const ModalListarLocalEvento = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/locais/listLocalizacao", {
+      .get(localEventoListar(), {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
