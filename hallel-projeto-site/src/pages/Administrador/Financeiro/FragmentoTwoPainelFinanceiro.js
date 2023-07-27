@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Table } from "react-bootstrap";
 import Chart from "react-google-charts";
 import {
-  entradasGetEntradasMesValor,
+  entradasGetEntradasMesValorAPI,
   gastosUltimasSaidasAPI,
   metaListarByMesAnoAPI,
 } from "../../../api/uris/FinanceiroURLS";
@@ -65,7 +65,7 @@ const FragmentoTwoPainelFinanceiro = () => {
         ? String(data.getMonth() + 1)
         : "0" + String(data.getMonth() + 1);
     let anoString = String(new Date().getFullYear());
-    let url = entradasGetEntradasMesValor(mesString, anoString);
+    let url = entradasGetEntradasMesValorAPI(mesString, anoString);
     axios
       .get(url, {
         headers: {

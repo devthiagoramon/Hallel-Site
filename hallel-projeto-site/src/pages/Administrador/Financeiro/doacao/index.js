@@ -11,6 +11,7 @@ import {
   doacaoListarTodosAPI,
 } from "../../../../api/uris/FinanceiroURLS";
 import axios from "axios";
+import { getMesAndAnoAtual } from "../../../../utils/utilData";
 
 const DoacoesDinheiroAdm = () => {
   const [doacoes, setdoacoes] = useState([]);
@@ -20,9 +21,12 @@ const DoacoesDinheiroAdm = () => {
   const [datasToBePushed, setdatasToBePushed] = useState("todos");
 
   useMemo(() => {
+
+    const dataAux = getMesAndAnoAtual();
+
     let url;
     if (datasToBePushed === "todos") {
-      url = doacaoListarTodosAPI();
+      url = doacaoListarTodosAPI(dataAux.mes, dataAux.ano);
     } else if (datasToBePushed === "dia") {
       url = doacaoListarDiaAPI();
     } else if (datasToBePushed === "semana") {

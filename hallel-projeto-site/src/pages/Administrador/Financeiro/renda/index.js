@@ -10,6 +10,7 @@ import { Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
 import { entradasUltimasEntradasAPI, receitasListarAPI, receitasListarDiaAPI, receitasListarSemanaAPI } from "../../../../api/uris/FinanceiroURLS";
+import { getMesAndAnoAtual } from "../../../../utils/utilData";
 
 const EntradasFinanceiroAdm = () => {
   const [entradas, setEntradas] = useState([]);
@@ -21,10 +22,12 @@ const EntradasFinanceiroAdm = () => {
   const [lastEntradas, setlastEntradas] = useState([]);
 
   useMemo(() => {
+    let auxData = getMesAndAnoAtual();
+
     let url;
     switch (datasToBePushed) {
       case "todos":
-        url = receitasListarAPI();
+        url = receitasListarAPI(auxData.mes, auxData.ano);
         break;
       case "dia":
         url = receitasListarDiaAPI();
@@ -33,7 +36,7 @@ const EntradasFinanceiroAdm = () => {
         url = receitasListarSemanaAPI();
         break;
       default:
-        url = receitasListarAPI();
+        url = receitasListarAPI(auxData.mes, auxData.mes);
         break;
     }
 

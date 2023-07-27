@@ -16,16 +16,24 @@ export function associadosGetAllPagamentosAPI() {
     Parte de doações (Financeiro)
 */
 
-export function doacaoListarTodosAPI() {
-  return uriDefaultPrefix() + doacaoPrefix() + "/list";
+export function doacaoListarTodosAPI(mes, ano) {
+  return (
+    uriDefaultPrefix() +
+    doacaoPrefix() +
+    "/list" +
+    "?mes=" +
+    mes +
+    "&ano=" +
+    ano
+  );
 }
 
 export function doacaoListarDiaAPI() {
-  return uriDefaultPrefix() + doacaoPrefix() + "/list/thisDay";
+  return uriDefaultPrefix() + doacaoPrefix() + "/list/dia";
 }
 
 export function doacaoListarSemanaAPI() {
-  return uriDefaultPrefix() + doacaoPrefix() + "/list/thisWeek";
+  return uriDefaultPrefix() + doacaoPrefix() + "/list/semana";
 }
 
 export function doacaoListarObjetosAPI() {
@@ -61,14 +69,22 @@ export function doacaoDoar() {
     !! DEPRECIADO !!
 */
 
-export function gastosListarAPI() {
-  return uriDefaultPrefix() + financeiroPrefix() + "/gastos";
+export function gastosListarAPI(mes, ano) {
+  return (
+    uriDefaultPrefix() +
+    financeiroPrefix() +
+    "/gastos" +
+    "?mes=" +
+    mes +
+    "&ano=" +
+    ano
+  );
 }
 export function gastosListarDiaAPI() {
-  return uriDefaultPrefix() + financeiroPrefix() + "/gastos/thisDay";
+  return uriDefaultPrefix() + financeiroPrefix() + "/gastos/dia";
 }
 export function gastosListarSemanaAPI() {
-  return uriDefaultPrefix() + financeiroPrefix() + "/gastos/thisWeek";
+  return uriDefaultPrefix() + financeiroPrefix() + "/gastos/semana";
 }
 export function gastosUltimasSaidasAPI() {
   return uriDefaultPrefix() + financeiroPrefix() + "/ultimasSaida";
@@ -86,14 +102,22 @@ export function gastosCriarAPI() {
     !! DEPRECIADO !!
 */
 
-export function receitasListarAPI() {
-  return uriDefaultPrefix() + financeiroPrefix() + "/receita";
+export function receitasListarAPI(mes, ano) {
+  return (
+    uriDefaultPrefix() +
+    financeiroPrefix() +
+    "/receitas" +
+    "?mes=" +
+    mes +
+    "&ano=" +
+    ano
+  );
 }
 export function receitasListarDiaAPI() {
-  return uriDefaultPrefix() + financeiroPrefix() + "/receita/thisDay";
+  return uriDefaultPrefix() + financeiroPrefix() + "/receita/dia";
 }
 export function receitasListarSemanaAPI() {
-  return uriDefaultPrefix() + financeiroPrefix() + "/receita/thisWeek";
+  return uriDefaultPrefix() + financeiroPrefix() + "/receita/semana";
 }
 
 /*

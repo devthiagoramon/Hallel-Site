@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import PopUpMensagem from "../../components/popUpMensagem";
 import { Alert, CircularProgress, Snackbar } from "@mui/material";
+import { homeLogin } from "../../api/uris/HomeUris";
 
 function Entrar() {
   const [emailInput, setEmail] = useState();
@@ -16,7 +17,7 @@ function Entrar() {
 
   function entrar() {
     setisLoading(true);
-    let url = "http://localhost:8080/api/login";
+    let url = homeLogin();
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     fetch(url, {

@@ -33,6 +33,7 @@ import {
   gastosUltimasSaidasAPI,
 } from "../../../../api/uris/FinanceiroURLS";
 import axios from "axios";
+import { getMesAndAnoAtual } from "../../../../utils/utilData";
 
 const SaidasFinanceirasADM = () => {
   const [gastos, setgastos] = useState([]);
@@ -53,10 +54,12 @@ const SaidasFinanceirasADM = () => {
   const [imagemAnexoSelecionada, setimagemAnexoSelecionada] = useState("");
 
   useEffect(() => {
+    let dataAux = getMesAndAnoAtual();
+
     let url;
     switch (datasToBePushed) {
       case "todos":
-        url = gastosListarAPI();
+        url = gastosListarAPI(dataAux.mes, dataAux.ano);
         break;
       case "dia":
         url = gastosListarDiaAPI();
@@ -65,7 +68,7 @@ const SaidasFinanceirasADM = () => {
         url = gastosListarSemanaAPI();
         break;
       default:
-        url = gastosListarAPI();
+        url = gastosListarAPI(dataAux.mes, dataAux.ano);
         break;
     }
 
