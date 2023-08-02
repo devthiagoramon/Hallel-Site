@@ -42,7 +42,7 @@ import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/Adicionar
 import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaEvento";
 import EditarEventoAdm from "./pages/Administrador/Eventos/editar/EditarEventoAdm";
 import EventosArquivado from "./pages/Administrador/Eventos/listar/EventosArquivado";
-import HistoricoAssociado from "./pages/Administrador/Financeiro/associados/HistoricoAssociado/index.js"
+import HistoricoAssociado from "./pages/Administrador/Financeiro/associados/HistoricoAssociado/index.js";
 import FormEvento from "./pages/CadastroEvento/FormEvento";
 import PainelFinanceiroAdm from "./pages/Administrador/Financeiro/PainelFinanceiroAdm";
 import EntradasFinanceiroAdm from "./pages/Administrador/Financeiro/renda";
@@ -162,10 +162,7 @@ function RoutesApp() {
           path="/administrador/eventos/arquivados"
           element={<EventosArquivado />}
         />
-        <Route
-        path="/CadastroEvento/FormEvento"
-        element={<FormEvento/>}
-        />
+        <Route path="/CadastroEvento/FormEvento" element={<FormEvento />} />
       </Routes>
     </BrowserRouter>
   );
