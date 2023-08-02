@@ -5,11 +5,24 @@ import { doacaoPrefix, financeiroPrefix, uriDefaultPrefix } from "./utilsURI";
 */
 
 export function associadosListAPI() {
-  return uriDefaultPrefix() + "/associados";
+  return uriDefaultPrefix() + "/associados/listAll";
 }
 
 export function associadosGetAllPagamentosAPI() {
   return uriDefaultPrefix() + "/getAllPagamentos";
+}
+
+export function associadosListByMesAnoAPI(mes, ano, pagina) {
+  return (
+    uriDefaultPrefix() +
+    "/associados/listByMesAno" +
+    "?mes=" +
+    mes +
+    "&ano=" +
+    ano +
+    "&pagina=" +
+    pagina
+  );
 }
 
 /*

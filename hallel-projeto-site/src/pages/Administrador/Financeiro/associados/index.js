@@ -2,23 +2,27 @@ import React, { useMemo, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import "./associadosadm.css";
 import { CgProfile } from "react-icons/cg";
-import {
-  CDBCard,
-  CDBCardBody,
-  CDBDataTable,
-  CDBContainer,
-} from "cdbreact";
+import { CDBCard, CDBCardBody, CDBDataTable, CDBContainer } from "cdbreact";
 import { useNavigate } from "react-router-dom";
-import { associadosListAPI } from "../../../../api/uris/FinanceiroURLS";
+import {
+  associadosListByMesAnoAPI,
+} from "../../../../api/uris/FinanceiroURLS";
 import axios from "axios";
+import VisualizarPorMesAssociados from "./VisualizarPorMesAssociados";
+import dayjs from "dayjs";
+import { useEffect } from "react";
 
 const AssociadosADM = () => {
   const [associados, setassociados] = useState([]);
+  const [mesSelecionado, setMesSelecionado] = useState(dayjs(new Date()));
 
   const navigate = useNavigate();
 
-  useMemo(() => {
-    let url = associadosListAPI();
+  useEffect(() => {
+
+    let StringDate = String(mesSelecionado.format("MM/YYYY"))
+
+    let url = associadosListByMesAnoAPI(StringDate.substring(0,2), StringDate.substring(3));
 
     axios
       .get(url, {
@@ -32,7 +36,7 @@ const AssociadosADM = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [mesSelecionado]);
 
   const data = () => {
     return {
@@ -47,8 +51,8 @@ const AssociadosADM = () => {
           },
         },
         {
-          label: "Data de nascimento",
-          field: "dataNascimento",
+          label: "Data do Pagamento",
+          field: "dataPagamento",
           width: 150,
         },
         {
@@ -65,8 +69,11 @@ const AssociadosADM = () => {
 
       rows: associados.map((item) => ({
         nome: item.nome,
-        dataNascimento: item.dataNascimentoAssociado,
-        status: item.isPago == true ? "Quitado" : "Pendente",
+        dataPagamento:
+          item.dataPagamento !== null
+            ? dayjs(item.dataPagamento).format("DD/MM/YYYY")
+            : "Não pago",
+        status: item.status === "PAGO" ? "Quitado" : "Pendente",
         vizualizar: (
           <div style={{ display: "flex", justifyContent: "center" }}>
             <CgProfile
@@ -93,11 +100,18 @@ const AssociadosADM = () => {
         </div>
       ) : (
         <div className="containerTabelaPagamentos">
-          <div className="headContTabelaPagamentos">
+          <div
+            className="headContTabelaPagamentos"
+            style={{ marginBottom: "3rem" }}
+          >
             <div className="tituloHeadContTabelaPagamentos">
               <a>Tabela de Associados</a>
             </div>
           </div>
+          <VisualizarPorMesAssociados
+            mesSelecionado={mesSelecionado}
+            setMesSelecionado={setMesSelecionado}
+          />
           <CDBContainer>
             <CDBCard>
               <CDBCardBody>
@@ -111,8 +125,9 @@ const AssociadosADM = () => {
                   materialSearch
                   bordered
                   entriesOptions={[10, 20, 30]}
-                  entries={15}
+                  entries={10}
                   pagesAmount={4}
+                  onPageChange={(e) => {console.log(e)}}
                   maxHeight="10vh"
                   fixed
                   theadColor="#BF25E6"
