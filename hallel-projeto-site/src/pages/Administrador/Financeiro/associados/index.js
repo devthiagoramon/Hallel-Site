@@ -78,7 +78,7 @@ const AssociadosADM = () => {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <CgProfile
               onClick={() =>
-                navigate("/administrador/associado/historicoAssociado")
+                navigate("/administrador/associado/historicoAssociado/"+item.id)
               }
               style={{ width: "1.2em", height: "1.2em" }}
             />

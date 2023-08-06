@@ -128,7 +128,7 @@ function RoutesApp() {
         />
 
         <Route
-          path="/administrador/associado/historicoAssociado"
+          path="/administrador/associado/historicoAssociado/:idAssociado"
           element={<HistoricoAssociado />}
         />
 
