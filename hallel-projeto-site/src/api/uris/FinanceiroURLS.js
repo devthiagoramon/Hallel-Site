@@ -25,6 +25,10 @@ export function associadosListByMesAnoAPI(mes, ano, pagina) {
   );
 }
 
+export function getAssociadoById(id) {
+  return uriDefaultPrefix() + "/associados/" + id;
+}
+
 /*
     Parte de doações (Financeiro)
 */
