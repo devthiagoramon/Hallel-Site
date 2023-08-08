@@ -1,109 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 
-    font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .image-bg {
-
-    background-image: url("../../images/evento.jpg");
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 50vh;
+  background-image: url("../../images/evento.jpg");
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 50vh;
 }
 
-main.container{
-
-    min-height: calc(100vh - 87px - 35px);
-    display: block;
+main.container {
+  min-height: calc(100vh - 87px - 35px);
+  display: block;
 }
-.container{
-
-    padding: 3rem 0;
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 0px;
-    margin-right: auto;
-    margin-bottom: 0px;
-    margin-left: auto;
-    color: #354045;
+.container {
+  padding: 3rem 0;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  color: #354045;
 }
-.titulo{
-
-    padding: 50px;
-    font-weight: 800;
-    margin-top: 8%;
-    color: #354045;
+.titulo {
+  padding: 50px;
+  font-weight: 800;
+  margin-top: 8%;
+  color: #354045;
 }
 .container p {
-
-    font-weight: 500;
-    font-size: 1.125em;
-    
+  font-weight: 500;
+  font-size: 1.125em;
 }
-#titulo-desc{
-
-    margin-left: 1em;
-    font-size: 1.333em;
+#titulo-desc {
+  margin-left: 1em;
+  font-size: 1.333em;
 }
-.container-infos{
-
-    display: flex;
-    flex-direction: row;
+.container-infos {
+  display: flex;
+  flex-direction: row;
 }
 .infos-left {
-
-    display: inline-flex;
-    flex-direction: column;
+  display: inline-flex;
+  flex-direction: column;
 }
-.conteudoLeft{
-    
-    margin: 2%;
-    display: inline-block;
+.conteudoLeft {
+  margin: 2%;
+  display: inline-block;
 }
-.title{
-
-    font-weight: 600;
-    width: 37%;
-    font-size: 1.5em;
-    text-align: left;
+.title {
+  font-weight: 600;
+  width: 37%;
+  font-size: 1.5em;
+  text-align: left;
 }
-.cont{
-
-    text-align: left;
-    width: 63%;
+.cont {
+  text-align: left;
+  width: 63%;
 }
-label.cont{
-
-    margin-left: auto;
-    padding: 0;
+label.cont {
+  margin-left: auto;
+  padding: 0;
 }
-.infos-right{
-
-    flex-direction: column;
-    padding-left: 20%;
+.infos-right {
+  flex-direction: column;
+  padding-left: 20%;
 }
-#titulo-palestrantes{
-
-        text-align: center;
-        font-weight: 600;
+#titulo-palestrantes {
+  text-align: center;
+  font-weight: 600;
 }
-.infos-palestrantes{
-
-    text-align: center;
+.infos-palestrantes {
+  text-align: center;
 }
 /*o display inline deixa o elemeto na mesma linha*/
-.infos-palestrantes > label{
-    
-    text-align: left;
-    display: inline;
+.infos-palestrantes > label {
+  text-align: left;
+  display: inline;
 }
