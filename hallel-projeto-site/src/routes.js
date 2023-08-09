@@ -46,6 +46,7 @@ import HistoricoAssociado from "./pages/Administrador/Financeiro/associados/Hist
 import FormEvento from "./pages/CadastroEvento/FormEvento";
 import PainelFinanceiroAdm from "./pages/Administrador/Financeiro/PainelFinanceiroAdm";
 import EntradasFinanceiroAdm from "./pages/Administrador/Financeiro/renda";
+import VirarAssociado from "./pages/Associado/VirarAssociado/VirarAssociado";
 
 function RoutesApp() {
   return (
@@ -163,6 +164,7 @@ function RoutesApp() {
           element={<EventosArquivado />}
         />
         <Route path="/CadastroEvento/FormEvento" element={<FormEvento />} />
+        <Route path="/virarAssociado" element={<VirarAssociado/>}/>
       </Routes>
     </BrowserRouter>
   );

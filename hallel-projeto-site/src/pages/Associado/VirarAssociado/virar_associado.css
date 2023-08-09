@@ -1,0 +1,80 @@
+.container_principal_VA{
+    width: 100vw;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.header_cont_principal_VA{
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.header_cont_principal_VA>h1{
+    background: linear-gradient(to right, #6C3483 , #A569BD );
+    color: transparent;
+    background-clip: text;
+}
+
+.cont_first_part_VA{
+    width: 30%;
+}
+
+.headers_parts_VA{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headers_parts_VA>label{
+    color: #252525;
+}
+
+.body_parts_VA{
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.input_bodys_VA{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    row-gap: 8px;
+    margin-bottom: 10px;
+}
+
+.input_bodys_VA>label{
+    font-size: 18px;
+    font-weight: 600;
+    color: #252525;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.input_bodys_VA>input{
+    border-radius: 3px;
+    outline: rgba(0, 0, 0, 0.30) solid 0.5px;
+    width: 95%;
+    padding: 8px;
+    border: none;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.00938em;
+}
+
+.input_bodys_VA>input:focus{
+    outline: #3498DB solid 2px;
+    outline-offset: 3px;
+    border-spacing: 5px;
+}
+
+.footer_first_part_VA{
+    margin-top: 20px ;
+}
+
+.footer_first_part_VA>button{
+    background-color: #6C3483;
+}
