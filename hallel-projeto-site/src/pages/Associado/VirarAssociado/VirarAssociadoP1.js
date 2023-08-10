@@ -6,8 +6,13 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import dayjs from "dayjs";
 
-const VirarAssociadoP1 = ({ setIndexParte }) => {
+const VirarAssociadoP1 = ({
+  setIndexParte,
+  novoAssociado,
+  setNovoAssociado,
+}) => {
   const [openPicker, setOpenPicker] = useState(false);
   const calendarioPicker = useRef();
 
@@ -30,26 +35,75 @@ const VirarAssociadoP1 = ({ setIndexParte }) => {
       <div className="body_parts_VA">
         <div className="input_bodys_VA">
           <label>Nome</label>
-          <input id="nome_associado" />
+          <input
+            id="nome_associado"
+            type="text"
+            value={novoAssociado.nome}
+            onChange={(e) => {
+              setNovoAssociado((prev) => {
+                return { ...prev, nome: e.target.value };
+              });
+            }}
+          />
         </div>
         <div className="input_bodys_VA">
           <label>Email</label>
-          <input id="email_associado" />
+          <input
+            id="email_associado"
+            type="text"
+            value={novoAssociado.email}
+            onChange={(e) => {
+              setNovoAssociado((prev) => {
+                return { ...prev, email: e.target.value };
+              });
+            }}
+          />
+        </div>
+        <div className="input_bodys_VA">
+          <label>CPF</label>
+          <input
+            id="cpf_associado"
+            type="text"
+            value={novoAssociado.cpf}
+            onChange={(e) => {
+              setNovoAssociado((prev) => {
+                return { ...prev, cpf: e.target.value };
+              });
+            }}
+            placeholder="Somente números"
+          />
         </div>
         <div className="input_bodys_VA">
           <label>Telefone</label>
-          <input id="telefone_associado" />
+          <input
+            id="telefone_associado"
+            type="text"
+            placeholder="(92) 9111-1111"
+            value={novoAssociado.telefone}
+            onChange={(e) => {
+              setNovoAssociado((prev) => {
+                return { ...prev, telefone: e.target.value };
+              });
+            }}
+          />
         </div>
         <div className="input_bodys_VA">
           <label>Data de aniversário</label>
           <DatePicker
+            views={["year", "month", "day"]}
             format="DD/MM/YYYY"
             sx={{ height: "fit-content", width: "95%", padding: "0px" }}
             id="aniversario_associado"
+            value={novoAssociado.dataAniversario}
+            onChange={(e) => {
+              setNovoAssociado((prev) => {
+                return { ...prev, dataAniversario: e };
+              });
+            }}
           />
         </div>
       </div>
-      <div className="footer_first_part_VA">
+      <div className="footer_parts_VA">
         <Button
           variant="contained"
           onClick={() => {
