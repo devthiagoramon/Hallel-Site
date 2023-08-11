@@ -87,16 +87,16 @@ const VirarAssociadoP1 = ({
           />
         </div>
         <div className="input_bodys_VA">
-          <label>Data de aniversário</label>
+          <label>Data de nascimento</label>
           <DatePicker
             views={["year", "month", "day"]}
             format="DD/MM/YYYY"
             sx={{ height: "fit-content", width: "95%", padding: "0px" }}
             id="aniversario_associado"
-            value={novoAssociado.dataAniversario}
+            value={novoAssociado.dataNascimento}
             onChange={(e) => {
               setNovoAssociado((prev) => {
-                return { ...prev, dataAniversario: e };
+                return { ...prev, dataNascimento: e };
               });
             }}
           />
