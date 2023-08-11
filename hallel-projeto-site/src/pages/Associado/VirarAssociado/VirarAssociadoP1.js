@@ -14,7 +14,6 @@ const VirarAssociadoP1 = ({
   setNovoAssociado,
 }) => {
   const [openPicker, setOpenPicker] = useState(false);
-  const calendarioPicker = useRef();
 
   useEffect(() => {}, [openPicker]);
 
