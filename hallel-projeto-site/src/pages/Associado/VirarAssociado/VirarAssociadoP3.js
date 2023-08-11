@@ -1,12 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircleOutlineRounded } from "@mui/icons-material";
+import {
+  CheckCircleOutlineRounded,
+  CreditCard,
+  PermIdentityRounded,
+  SendRounded,
+} from "@mui/icons-material";
+import dayjs from "dayjs";
+import { Button } from "@mui/material";
 
-const VirarAssociadoP3 = ({
-  setIndexParte,
-  novoAssociado,
-  setNovoAssociado,
-}) => {
+const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
   return (
     <motion.div
       animate={{ x: 0 }}
@@ -21,7 +24,66 @@ const VirarAssociadoP3 = ({
         <h3>Confirmar Pagamento</h3>
         <CheckCircleOutlineRounded sx={{ ml: 2 }} />
       </div>
-      <div className="body_parts_VA"></div>
+      <div className="body_parts_VA">
+        <div className="info_pessoais_cont_VA">
+          <div className="header_info_confirmar_pagamento_VA">
+            <h4>Informações pessoais</h4>
+            <PermIdentityRounded sx={{ ml: 2 }} />
+          </div>
+          <div className="body_info_confirmar_pagamento_VA">
+            <label>Nome: {novoAssociado.nome}</label>
+            <label>Email: {novoAssociado.email}</label>
+            <label>CPF: {novoAssociado.cpf}</label>
+            <label>Telefone: {novoAssociado.telefone}</label>
+            <label>
+              Data de Aniversário:{" "}
+              {dayjs(novoAssociado.dataAniversario).format("DD/MM/YYYY")}
+            </label>
+          </div>
+        </div>
+        <div className="info_cartao_cont_VA">
+          <div className="body_info_confirmar_pagamento_VA">
+            <div className="header_info_confirmar_pagamento_VA">
+              <h4>Informações pagamento</h4>
+              <CreditCard sx={{ ml: 2 }} />
+            </div>
+            <div className="body_info_confirmar_pagamento_VA">
+              <label>Número do cartão: {novoAssociado.num_cartao}</label>
+              <label>
+                Data de Validade:{" "}
+                {dayjs(novoAssociado.data_validade_cartao).format("MM/YY")}
+              </label>
+              <label>CVC: {novoAssociado.cvc_cartao}</label>
+              <label>
+                Nome do titular: {novoAssociado.nome_titular_cartao}
+              </label>
+              <label>Endereço: {novoAssociado.endereco_cartao}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="footer2_parts_VA">
+        <h5>Assosiação Hallel - 1 mês</h5>
+        <div className="cont_valor_pagamento_VA">
+          <label>
+            Valor: <span>R$ 25,00</span>
+          </label>
+        </div>
+        <div className="cont_btn_footer2_parts_VA">
+          <Button
+            style={{ backgroundColor: "#6c3483" }}
+            variant="contained"
+            onClick={() => {
+              setIndexParte(1);
+            }}
+          >
+            Voltar
+          </Button>
+          <Button variant="contained" endIcon={<SendRounded />}>
+            Confirmar Pagamento
+          </Button>
+        </div>
+      </div>
     </motion.div>
   );
 };
