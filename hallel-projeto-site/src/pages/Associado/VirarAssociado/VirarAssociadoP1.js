@@ -17,7 +17,7 @@ const VirarAssociadoP1 = ({
   const [emailError, setEmailError] = useState(false);
   const [cpfError, setCpfError] = useState(false);
   const [telefoneError, setTelefoneError] = useState(false);
-  const [dataAniversarioError, setDataAniversarioError] = useState(false);
+  const [dataNascimentoError, setDataNascimentoError] = useState(false);
 
   useEffect(() => {}, [openPicker]);
 
@@ -51,10 +51,10 @@ const VirarAssociadoP1 = ({
       novoAssociado.dataAniversario.format("DD/MM/YYYY") ===
       dayjs().format("DD/MM/YYYY")
     ) {
-      setDataAniversarioError(true);
+      setDataNascimentoError(true);
       hasError = true;
     } else {
-      setDataAniversarioError(false);
+      setDataNascimentoError(false);
     }
     if (!hasError) {
       setIndexParte(1);
@@ -193,8 +193,8 @@ const VirarAssociadoP1 = ({
           )}
         </div>
         <div className="input_bodys_VA">
-          <label>Data de aniversário</label>
-          {dataAniversarioError ? (
+          <label>Data de nascimento</label>
+          {dataNascimentoError ? (
             <DatePicker
               views={["year", "month", "day"]}
               format="DD/MM/YYYY"
@@ -214,10 +214,10 @@ const VirarAssociadoP1 = ({
               format="DD/MM/YYYY"
               sx={{ height: "fit-content", width: "95%", padding: "0px" }}
               id="aniversario_associado"
-              value={novoAssociado.dataAniversario}
+              value={novoAssociado.dataNascimento}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, dataAniversario: e };
+                  return { ...prev, dataNascimento: e };
                 });
               }}
               className="input_VA"

@@ -16,7 +16,7 @@ const VirarAssociado = () => {
     email: "",
     cpf: "",
     telefone: "",
-    dataAniversario: dayjs(),
+    dataNascimento: dayjs(),
     num_cartao: "",
     data_validade_cartao: dayjs(),
     cvc_cartao: 0,
