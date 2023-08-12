@@ -8,8 +8,37 @@ import {
 } from "@mui/icons-material";
 import dayjs from "dayjs";
 import { Button } from "@mui/material";
+import { virarAssociadoAPI } from "../../../api/uris/MembroURLS";
+import axios from "axios";
 
 const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
+
+  const pagamentoModel = {
+    codigo: {
+      id: "",
+      numeroCodigo: 1.5,
+      nomeCodigo: "Virar associado"
+    },
+    metodoPagamento: "CARTAO_CREDITO",
+    para: []
+  }
+
+  const confirmarPagamento = () => {
+    let url = virarAssociadoAPI();
+    axios.post(
+      url,
+      {
+        associadoRequest: {...novoAssociado},
+        pagamentoAssociadoRequest: {...pagamentoModel}
+      },
+      {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+  };
+
   return (
     <motion.div
       animate={{ x: 0 }}
@@ -79,7 +108,7 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
           >
             Voltar
           </Button>
-          <Button variant="contained" endIcon={<SendRounded />}>
+          <Button variant="contained" onClick={confirmarPagamento} endIcon={<SendRounded />}>
             Confirmar Pagamento
           </Button>
         </div>

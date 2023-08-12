@@ -1,9 +1,8 @@
-import { PermIdentityRounded, Today, TodayRounded } from "@mui/icons-material";
-import { Button, IconButton } from "@mui/material";
+import { PermIdentityRounded } from "@mui/icons-material";
+import { Button } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import React from "react";
 import { useEffect } from "react";
-import { useRef } from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import dayjs from "dayjs";
@@ -14,8 +13,53 @@ const VirarAssociadoP1 = ({
   setNovoAssociado,
 }) => {
   const [openPicker, setOpenPicker] = useState(false);
+  const [nomeError, setNomeError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [cpfError, setCpfError] = useState(false);
+  const [telefoneError, setTelefoneError] = useState(false);
+  const [dataAniversarioError, setDataAniversarioError] = useState(false);
 
   useEffect(() => {}, [openPicker]);
+
+  const verificarDados = () => {
+    let hasError = false;
+    if (novoAssociado.nome === "") {
+      setNomeError(true);
+      hasError = true;
+    } else {
+      setNomeError(false);
+    }
+    if (novoAssociado.email === "") {
+      setEmailError(true);
+      hasError = true;
+    } else {
+      setEmailError(false);
+    }
+    if (novoAssociado.cpf === "") {
+      setCpfError(true);
+      hasError = true;
+    } else {
+      setCpfError(false);
+    }
+    if (novoAssociado.telefone === "") {
+      setTelefoneError(true);
+      hasError = true;
+    } else {
+      setTelefoneError(false);
+    }
+    if (
+      novoAssociado.dataAniversario.format("DD/MM/YYYY") ===
+      dayjs().format("DD/MM/YYYY")
+    ) {
+      setDataAniversarioError(true);
+      hasError = true;
+    } else {
+      setDataAniversarioError(false);
+    }
+    if (!hasError) {
+      setIndexParte(1);
+    }
+  };
 
   return (
     <motion.div
@@ -34,80 +78,157 @@ const VirarAssociadoP1 = ({
       <div className="body_parts_VA">
         <div className="input_bodys_VA">
           <label>Nome</label>
-          <input
-            id="nome_associado"
-            type="text"
-            value={novoAssociado.nome}
-            onChange={(e) => {
-              setNovoAssociado((prev) => {
-                return { ...prev, nome: e.target.value };
-              });
-            }}
-          />
+          {nomeError ? (
+            <input
+              id="nome_associado"
+              type="text"
+              value={novoAssociado.nome}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, nome: e.target.value };
+                });
+              }}
+              className="input_error_VA"
+            />
+          ) : (
+            <input
+              id="nome_associado"
+              type="text"
+              className="input_VA"
+              value={novoAssociado.nome}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, nome: e.target.value };
+                });
+              }}
+            />
+          )}
         </div>
         <div className="input_bodys_VA">
           <label>Email</label>
-          <input
-            id="email_associado"
-            type="text"
-            value={novoAssociado.email}
-            onChange={(e) => {
-              setNovoAssociado((prev) => {
-                return { ...prev, email: e.target.value };
-              });
-            }}
-          />
+          {emailError ? (
+            <input
+              id="email_associado"
+              type="text"
+              className="input_error_VA"
+              value={novoAssociado.email}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, email: e.target.value };
+                });
+              }}
+            />
+          ) : (
+            <input
+              id="email_associado"
+              type="text"
+              className="input_VA"
+              value={novoAssociado.email}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, email: e.target.value };
+                });
+              }}
+            />
+          )}
         </div>
         <div className="input_bodys_VA">
           <label>CPF</label>
-          <input
-            id="cpf_associado"
-            type="text"
-            value={novoAssociado.cpf}
-            onChange={(e) => {
-              setNovoAssociado((prev) => {
-                return { ...prev, cpf: e.target.value };
-              });
-            }}
-            placeholder="Somente números"
-          />
+          {cpfError ? (
+            <input
+              id="cpf_associado"
+              type="text"
+              className="input_error_VA"
+              value={novoAssociado.cpf}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, cpf: e.target.value };
+                });
+              }}
+              placeholder="Somente números"
+            />
+          ) : (
+            <input
+              id="cpf_associado"
+              type="text"
+              className="input_VA"
+              value={novoAssociado.cpf}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, cpf: e.target.value };
+                });
+              }}
+              placeholder="Somente números"
+            />
+          )}
         </div>
         <div className="input_bodys_VA">
           <label>Telefone</label>
-          <input
-            id="telefone_associado"
-            type="text"
-            placeholder="(92) 9111-1111"
-            value={novoAssociado.telefone}
-            onChange={(e) => {
-              setNovoAssociado((prev) => {
-                return { ...prev, telefone: e.target.value };
-              });
-            }}
-          />
+          {telefoneError ? (
+            <input
+              id="telefone_associado"
+              type="text"
+              className="input_error_VA"
+              placeholder="(92) 9111-1111"
+              value={novoAssociado.telefone}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, telefone: e.target.value };
+                });
+              }}
+            />
+          ) : (
+            <input
+              id="telefone_associado"
+              type="text"
+              className="input_VA"
+              placeholder="(92) 9111-1111"
+              value={novoAssociado.telefone}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, telefone: e.target.value };
+                });
+              }}
+            />
+          )}
         </div>
         <div className="input_bodys_VA">
           <label>Data de aniversário</label>
-          <DatePicker
-            views={["year", "month", "day"]}
-            format="DD/MM/YYYY"
-            sx={{ height: "fit-content", width: "95%", padding: "0px" }}
-            id="aniversario_associado"
-            value={novoAssociado.dataAniversario}
-            onChange={(e) => {
-              setNovoAssociado((prev) => {
-                return { ...prev, dataAniversario: e };
-              });
-            }}
-          />
+          {dataAniversarioError ? (
+            <DatePicker
+              views={["year", "month", "day"]}
+              format="DD/MM/YYYY"
+              sx={{ height: "fit-content", width: "95%", padding: "0px" }}
+              id="aniversario_associado"
+              value={novoAssociado.dataAniversario}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, dataAniversario: e };
+                });
+              }}
+              className="input_error_VA"
+            />
+          ) : (
+            <DatePicker
+              views={["year", "month", "day"]}
+              format="DD/MM/YYYY"
+              sx={{ height: "fit-content", width: "95%", padding: "0px" }}
+              id="aniversario_associado"
+              value={novoAssociado.dataAniversario}
+              onChange={(e) => {
+                setNovoAssociado((prev) => {
+                  return { ...prev, dataAniversario: e };
+                });
+              }}
+              className="input_VA"
+            />
+          )}
         </div>
       </div>
       <div className="footer_parts_VA">
         <Button
           variant="contained"
-          onClick={() => {
-            setIndexParte(1);
-          }}
+          onClick={verificarDados}
         >
           Próximo
         </Button>

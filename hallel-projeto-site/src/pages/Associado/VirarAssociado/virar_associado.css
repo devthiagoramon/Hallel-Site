@@ -54,7 +54,7 @@
   grid-column-start: 1;
   grid-column-end: 2;
 }
-.input_bodys_VA > input {
+.input_VA {
   border-radius: 3px;
   outline: rgba(0, 0, 0, 0.3) solid 0.5px;
   width: 95%;
@@ -65,7 +65,7 @@
   letter-spacing: 0.00938em;
 }
 
-.input_bodys_VA > input:focus {
+.input_VA:focus {
   outline: #3498db solid 2px;
   outline-offset: 3px;
   border-spacing: 5px;
@@ -178,4 +178,20 @@
 
 .cont_btn_footer2_parts_VA>button:nth-child(2):hover{
     background-color: #4aa879;
+}
+
+.input_error_VA{
+  outline: #F1948A solid 2px;
+  border-radius: 3px;
+  width: 95%;
+  padding: 8px;
+  border: none;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.00938em;
+}
+.input_error_VA:focus{
+  outline: #CB4335 solid 2px;
+  outline-offset: 3px;
+  border-spacing: 5px;
 }
