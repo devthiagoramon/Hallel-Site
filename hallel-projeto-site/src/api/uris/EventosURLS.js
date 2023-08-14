@@ -37,7 +37,7 @@ export function eventoEditarById(idEvento) {
 }
 
 export function eventoListar() {
-  return uriDefaultPrefix() + eventoPrefix();
+  return uriDefaultPrefix() + administradorPrefix() + eventoPrefix();
 }
 
 export function eventoListarArquivado() {
@@ -126,21 +126,21 @@ export function despesaEditarByEventoAndIdDespesa(idEvento, idDespesa) {
 */
 
 export function localEventoAdicionar() {
-  return uriDefaultPrefix() + "/locais/create";
+  return uriDefaultPrefix() + administradorPrefix()+"/locais/create";
 }
 
 export function localEventoListar() {
-  return uriDefaultPrefix() + "/locais/listLocalizacao";
+  return uriDefaultPrefix() + administradorPrefix()+ "/locais/listLocalizacao";
 }
 
 export function localEventoListarById(id) {
-  return uriDefaultPrefix() + "/locais/" + id + "/list";
+  return uriDefaultPrefix() + administradorPrefix()+ "/locais/" + id + "/list";
 }
 
 export function localEventoEditarById(idLocalEventoModal) {
-  return uriDefaultPrefix() + "/locais/" + idLocalEventoModal + "/edit";
+  return uriDefaultPrefix() + administradorPrefix()+ "/locais/" + idLocalEventoModal + "/edit";
 }
 
 export function localEventoDeletarById(idLocalEventoModal) {
-  return uriDefaultPrefix() + "/locais/" + idLocalEventoModal + "/delete";
+  return uriDefaultPrefix() + administradorPrefix()+ "/locais/" + idLocalEventoModal + "/delete";
 }
