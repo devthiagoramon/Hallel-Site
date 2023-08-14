@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "./virar_associado.css";
 import VirarAssociadoP1 from "./VirarAssociadoP1";
 import { useState } from "react";
@@ -24,9 +24,9 @@ const VirarAssociado = () => {
     endereco_cartao: "",
   };
   const [novoAssociado, setNovoAssociado] = useState(associadoModel);
-  const loaded = true;
-  useEffect(() => {
-    if (localStorage.getItem("R0les") === "ROLE_USER") {
+
+  useMemo(() => {
+    if (localStorage.getItem("R0l3s") === "ROLE_USER") {
       let url = membroLoadPerfilById(localStorage.getItem("HallelId"));
       axios
         .get(url, {
@@ -49,7 +49,7 @@ const VirarAssociado = () => {
           console.log("Error no fetching de membro: " + error);
         });
     }
-  }, [loaded]);
+  }, [setNovoAssociado]);
 
   return (
     <div className="container_principal_VA">

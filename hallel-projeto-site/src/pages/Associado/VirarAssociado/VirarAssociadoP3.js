@@ -13,23 +13,30 @@ import axios from "axios";
 
 const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
 
-  const pagamentoModel = {
-    codigo: {
-      id: "",
-      numeroCodigo: 1.5,
-      nomeCodigo: "Virar associado"
-    },
-    metodoPagamento: "CARTAO_CREDITO",
-    para: []
-  }
-
   const confirmarPagamento = () => {
     let url = virarAssociadoAPI();
+
+    let objToRequest = {
+      nome: novoAssociado.nome,
+      email: novoAssociado.email,
+      cpf: novoAssociado.cpf,
+      telefone: novoAssociado.telefone,
+      dataNascimento: novoAssociado.dataNascimento.toDate(),
+      num_cartao: novoAssociado.num_cartao,
+      data_validade_cartao: novoAssociado.data_validade_cartao.toDate(),
+      cvc_cartao: novoAssociado.cvc_cartao,
+      nome_titular_cartao: novoAssociado.nome_titular_cartao,
+      endereco_cartao: novoAssociado.endereco_cartao,
+    }
+
+    console.log(objToRequest)
+
     axios.post(
       url,
       {
-        associadoRequest: {...novoAssociado},
-        pagamentoAssociadoRequest: {...pagamentoModel}
+        associadoRequest: {...objToRequest},
+        para: [],
+        metodoPagamentoNum: 3,
       },
       {
         headers: {
@@ -37,6 +44,7 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
         },
       }
     );
+
   };
 
   return (
@@ -66,7 +74,7 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
             <label>Telefone: {novoAssociado.telefone}</label>
             <label>
               Data de Aniversário:{" "}
-              {dayjs(novoAssociado.dataAniversario).format("DD/MM/YYYY")}
+              {dayjs(novoAssociado.dataNascimento).format("DD/MM/YYYY")}
             </label>
           </div>
         </div>
