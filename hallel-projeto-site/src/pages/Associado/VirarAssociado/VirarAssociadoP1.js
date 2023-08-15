@@ -48,7 +48,7 @@ const VirarAssociadoP1 = ({
       setTelefoneError(false);
     }
     if (
-      novoAssociado.dataAniversario.format("DD/MM/YYYY") ===
+      dayjs(novoAssociado.dataAniversario).format("DD/MM/YYYY") ===
       dayjs().format("DD/MM/YYYY")
     ) {
       setDataNascimentoError(true);
@@ -203,7 +203,7 @@ const VirarAssociadoP1 = ({
               value={novoAssociado.dataAniversario}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, dataAniversario: e };
+                  return { ...prev, dataAniversario: e.toDate() };
                 });
               }}
               className="input_error_VA"
@@ -217,7 +217,7 @@ const VirarAssociadoP1 = ({
               value={novoAssociado.dataNascimento}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, dataNascimento: e };
+                  return { ...prev, dataNascimento: e.toDate() };
                 });
               }}
               className="input_VA"

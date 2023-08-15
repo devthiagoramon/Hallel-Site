@@ -16,34 +16,26 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
   const confirmarPagamento = () => {
     let url = virarAssociadoAPI();
 
-    let objToRequest = {
-      nome: novoAssociado.nome,
-      email: novoAssociado.email,
-      cpf: novoAssociado.cpf,
-      telefone: novoAssociado.telefone,
-      dataNascimento: novoAssociado.dataNascimento.toDate(),
-      num_cartao: novoAssociado.num_cartao,
-      data_validade_cartao: novoAssociado.data_validade_cartao.toDate(),
-      cvc_cartao: novoAssociado.cvc_cartao,
-      nome_titular_cartao: novoAssociado.nome_titular_cartao,
-      endereco_cartao: novoAssociado.endereco_cartao,
-    }
-
-    console.log(objToRequest)
+    console.log(novoAssociado)
 
     axios.post(
       url,
       {
-        associadoRequest: {...objToRequest},
+        ...novoAssociado,
         para: [],
         metodoPagamentoNum: 3,
       },
       {
         headers: {
           Authorization: localStorage.getItem("token"),
+          "Content-Type": "application/json",
         },
       }
-    );
+    ).then((res) => {
+      console.log(res.data)
+    }).catch((error)=> {
+      console.log(error)
+    });
 
   };
 

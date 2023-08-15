@@ -2,12 +2,12 @@ import { useParams } from "react-router-dom";
 import "./styleHistoricoAssociado.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { getAssociadoById } from "../../../../../api/uris/FinanceiroURLS";
+import { getAssociadoById, getPagamentoAssociadoByMesAndAno } from "../../../../../api/uris/FinanceiroURLS";
 import { Button, IconButton, Skeleton } from "@mui/material";
 import { Edit, TodayRounded } from "@mui/icons-material";
 import dayjs from "dayjs";
 
-const Parte2 = ({ associadoObj, setMesSelecionado }) => {
+const Parte2 = ({ associadoObj, setMesSelecionado, loadFromAPIinfoByPagamentoByMesAndAno }) => {
   return (
     <div className="container_infos_associado">
       <div className="inner_container_infos_associado">
@@ -20,7 +20,7 @@ const Parte2 = ({ associadoObj, setMesSelecionado }) => {
           {associadoObj !== null && (
             <>
               {associadoObj.imagem !== null &&
-              associadoObj.imagem !== undefined ? (
+                associadoObj.imagem !== undefined ? (
                 <img src={associadoObj.imagem} />
               ) : (
                 <div className="imagem_not_found_container_associado">
@@ -48,6 +48,7 @@ const Parte2 = ({ associadoObj, setMesSelecionado }) => {
                     variant="contained"
                     onClick={() => {
                       setMesSelecionado(dayjs(date).format("MM/YYYY"));
+                      loadFromAPIinfoByPagamentoByMesAndAno(dayjs(date).format("MM/YYYY"))
                     }}
                   >
                     {dayjs(date).format("MM/YYYY")}
@@ -76,13 +77,27 @@ const HistoricoAssociado = () => {
       })
       .then((res) => {
         setAssociadoObj(res.data);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
+  function loadFromAPIinfoByPagamentoByMesAndAno(date) {
+    let dateString = String(date);
+    let mes = dateString.substring(0, 2);
+    let ano = dateString.substring(3);
+
+    let url = getPagamentoAssociadoByMesAndAno(idAssociado, mes, ano);
+
+    axios.get(url, {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    }).then((res) => {
+      console.log(res.data);
+    })
+  }
   return (
     <div className="container_historico_associado">
       <div className="header_historico_associado">
@@ -91,6 +106,7 @@ const HistoricoAssociado = () => {
       <Parte2
         associadoObj={associadoObj}
         setMesSelecionado={setMesSelecionado}
+        loadFromAPIinfoByPagamentoByMesAndAno={loadFromAPIinfoByPagamentoByMesAndAno}
       />
       <div className="container_info_pagamento_mes">
         <div className="header_info_pagamento_mes">
@@ -101,11 +117,11 @@ const HistoricoAssociado = () => {
         </div>
         <div className="body_info_pagamento_mes">
           <div className="container_comprovante_pagamento_associado">
-            <Skeleton variant="rounded" width={"100%"} height={375}/>
+            <Skeleton variant="rounded" width={"100%"} height={375} />
           </div>
           <div className="container_info_pagamento_mes">
-            <label>{pagamentoMesSelecionado !== null ? "Método de pagamento: "+pagamentoMesSelecionado.metodoPagamento : ""}</label>
-            <label>{pagamentoMesSelecionado !== null ? "Data do pagamento: "+pagamentoMesSelecionado.date : ""}</label>
+            <label>{pagamentoMesSelecionado !== null ? "Método de pagamento: " + pagamentoMesSelecionado.metodoPagamento : ""}</label>
+            <label>{pagamentoMesSelecionado !== null ? "Data do pagamento: " + pagamentoMesSelecionado.date : ""}</label>
           </div>
         </div>
       </div>

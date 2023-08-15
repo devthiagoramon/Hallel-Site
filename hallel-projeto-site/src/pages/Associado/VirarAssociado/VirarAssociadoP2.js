@@ -25,7 +25,7 @@ const VirarAssociadoP2 = ({
       setnumCartaoError(false);
     }
     if (
-      novoAssociado.data_validade_cartao.format("DD/MM/YYYY") ===
+      dayjs(novoAssociado.data_validade_cartao).format("DD/MM/YYYY") ===
       dayjs().format("DD/MM/YYYY")
     ) {
       setdataValidadeCartaoError(true);
@@ -112,7 +112,7 @@ const VirarAssociadoP2 = ({
               value={novoAssociado.data_validade_cartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, data_validade_cartao: e };
+                  return { ...prev, data_validade_cartao: e.toDate() };
                 });
               }}
             />
@@ -126,7 +126,7 @@ const VirarAssociadoP2 = ({
               value={novoAssociado.data_validade_cartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, data_validade_cartao: e };
+                  return { ...prev, data_validade_cartao: e.toDate() };
                 });
               }}
             />
