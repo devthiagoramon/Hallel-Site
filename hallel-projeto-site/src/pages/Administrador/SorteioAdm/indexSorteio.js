@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
 import "./styleSorteio.css";
 import axios from "axios";
+import Table from "react-bootstrap/Table";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgress } from "@mui/material";
 

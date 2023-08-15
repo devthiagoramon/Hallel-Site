@@ -1,0 +1,37 @@
+/*configurações gerais do css desta página*/
+.financeiro-tabelas-principal{
+
+    display: flex;
+    flex-direction: column;
+    margin: 2em 0;
+}
+
+.financeiro-tabelas-principal  > label{
+    
+    font-weight: 700;
+    color: #35404b;
+    text-indent: 2em;
+    font-size: 1.3em;
+}
+
+.bt-avancar-financeiro{
+
+    border: none;
+    background: none;
+}
+
+/* configurações dos subcomponentes */
+
+.tabela-ultimas-rendas, .tabela-ultimas-saidas{
+
+    font-weight: 700;
+    color: #35404b;
+    text-indent: 2em;
+    font-size: 1em;
+    margin: 2em 15%;
+}
+
+.div-rendas > .financeiro-labels{
+
+    margin: 2em 1em;
+}

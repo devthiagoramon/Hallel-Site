@@ -47,6 +47,7 @@ import FormEvento from "./pages/CadastroEvento/FormEvento";
 import PainelFinanceiroAdm from "./pages/Administrador/Financeiro/PainelFinanceiroAdm";
 import EntradasFinanceiroAdm from "./pages/Administrador/Financeiro/renda";
 import VirarAssociado from "./pages/Associado/VirarAssociado/VirarAssociado";
+import TabelasFinanceiro from "./pages/Administrador/despesas_tables";
 
 function RoutesApp() {
   return (
@@ -72,7 +73,6 @@ function RoutesApp() {
         <Route path="/loja/produto" element={<LojaProduto />} />
         <Route path="/loja/pagamento" element={<LojaPagamento />} />
         <Route path="/administrador/membros" element={<MembrosAdm />} />
-
         <Route path="/administrador/eventos" element={<EventoListarAdm />} />
 
         <Route
@@ -89,6 +89,11 @@ function RoutesApp() {
 
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/maisInfo" element={<MaisInfo />} />
+
+        <Route
+          path="/administrador/tabelasFinanceiro"
+          element={<TabelasFinanceiro/>}
+        />
         <Route
           path="/administrador/painelFinanceiro"
           element={<PainelFinanceiroAdm />}

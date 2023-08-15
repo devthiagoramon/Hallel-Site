@@ -24,12 +24,13 @@ nav a {
 	margin: 0 1rem;
 	color: var(--textColor);
 	text-decoration: none;
+	transition: 0.5s;
 }
 
 nav > a:hover {
-	 background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.2);
    padding: 1em;
-   transition: 0.5s;
+   transition: 0.8s;
    border-radius: 0.4em;
    color: #ff5900;
 }
