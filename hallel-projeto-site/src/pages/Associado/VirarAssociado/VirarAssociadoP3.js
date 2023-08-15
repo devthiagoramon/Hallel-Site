@@ -8,8 +8,37 @@ import {
 } from "@mui/icons-material";
 import dayjs from "dayjs";
 import { Button } from "@mui/material";
+import { virarAssociadoAPI } from "../../../api/uris/MembroURLS";
+import axios from "axios";
 
 const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
+
+  const confirmarPagamento = () => {
+    let url = virarAssociadoAPI();
+
+    console.log(novoAssociado)
+
+    axios.post(
+      url,
+      {
+        ...novoAssociado,
+        para: [],
+        metodoPagamentoNum: 3,
+      },
+      {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((res) => {
+      console.log(res.data)
+    }).catch((error)=> {
+      console.log(error)
+    });
+
+  };
+
   return (
     <motion.div
       animate={{ x: 0 }}
@@ -37,7 +66,7 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
             <label>Telefone: {novoAssociado.telefone}</label>
             <label>
               Data de Aniversário:{" "}
-              {dayjs(novoAssociado.dataAniversario).format("DD/MM/YYYY")}
+              {dayjs(novoAssociado.dataNascimento).format("DD/MM/YYYY")}
             </label>
           </div>
         </div>
@@ -79,7 +108,7 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
           >
             Voltar
           </Button>
-          <Button variant="contained" endIcon={<SendRounded />}>
+          <Button variant="contained" onClick={confirmarPagamento} endIcon={<SendRounded />}>
             Confirmar Pagamento
           </Button>
         </div>

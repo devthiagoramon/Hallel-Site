@@ -41,7 +41,7 @@ function Header() {
       })
       .then((object) => {
         if (object === true) {
-          // Token expioru
+          // Token expirou
           localStorage.clear();
           setIsExpired(true);
         } else {

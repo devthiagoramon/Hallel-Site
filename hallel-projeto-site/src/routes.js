@@ -58,118 +58,145 @@ function RoutesApp() {
         <Route path="/fundadora" element={<Fundadora />} />
         <Route path="/pedido" element={<Pedido />} />
         <Route path="/associado" element={<Associado />} />
-        <Route path="/sorteioAssociado" element={<Sorteio />} />
         <Route path="/doacoes" element={<Doacoes />} />
+        <Route path="/virarAssociado" element={<VirarAssociado />} />
         <Route path="/formularioDoacao" element={<DoacaoFormulario />} />
         <Route path="/solicitarCadastro" element={<SolicitacaoCadastro />} />
         <Route path="/sobre" element={<Sobre />} />
-        <Route path="/cursos" element={<Cursos />} />
-        <Route path="/eventos" element={<EventoUser />} />
         <Route path="/descricao" element={<DescricaoEvento />} />
-        <Route path="/meusCursos" element={<MeusCursos />} />
-        <Route path="/descCurso/:idCurso" element={<DescCurso />} />
-        <Route path="/atividades" element={<CursoAtividade />} />
+        <Route path="/eventos" element={<EventoUser />} />
         <Route path="/loja" element={<LojaPrincipal />} />
         <Route path="/loja/produto" element={<LojaProduto />} />
         <Route path="/loja/pagamento" element={<LojaPagamento />} />
-        <Route path="/administrador/membros" element={<MembrosAdm />} />
-        <Route path="/administrador/eventos" element={<EventoListarAdm />} />
+        <Route path="/entrar" element={<Entrar />} />
+        {localStorage.getItem("token") !== null &&
+          localStorage.getItem("R0l3s") === "ROLE_USER" ? (
+          <>
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/meusCursos" element={<MeusCursos />} />
+            <Route path="/desempenhoUser" element={<DesempenhoUser />} />
+          </>
+        ) : (
+          ""
+        )}
+        {localStorage.getItem("token") !== null &&
+          localStorage.getItem("R0l3s") === "ROLE_ASSOCIADO,ROLE_USER" ? (
+          <>
+            <Route path="/cursos" element={<Cursos />} />
+            <Route path="/sorteioAssociado" element={<Sorteio />} />
+            <Route path="/descCurso/:idCurso" element={<DescCurso />} />
+            <Route path="/atividades" element={<CursoAtividade />} />{" "}
+          </>
+        ) : (
+          ""
+        )}
 
-        <Route
-          path="/administrador/eventos/criar"
-          element={<EventosCriarAdm />}
-        />
-
-        <Route
-          path="/administrador/cursos/historicoCurso"
-          element={<Historico />}
-        />
-
-        <Route path="/administrador/sorteio" element={<AdmSorteio />} />
-
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/maisInfo" element={<MaisInfo />} />
-
+        {localStorage.getItem("token") !== null &&
+          localStorage.getItem("R0l3s") ===
+          "ROLE_ADMIN,ROLE_ASSOCIADO,ROLE_USER" ? (
+          <>
+            <Route path="/cursos" element={<Cursos />} />
+            <Route path="/sorteioAssociado" element={<Sorteio />} />
+            <Route path="/descCurso/:idCurso" element={<DescCurso />} />
+            <Route path="/atividades" element={<CursoAtividade />} />{" "}
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/meusCursos" element={<MeusCursos />} />
+            <Route path="/desempenhoUser" element={<DesempenhoUser />} />
+    
         <Route
           path="/administrador/tabelasFinanceiro"
           element={<TabelasFinanceiro/>}
         />
         <Route
-          path="/administrador/painelFinanceiro"
-          element={<PainelFinanceiroAdm />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/entradas"
-          element={<EntradasFinanceiroAdm />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/saidas"
-          element={<SaidasFinanceirasADM />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/pagamentosAssociado"
-          element={<PagamentosAssociado />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/associados"
-          element={<AssociadosADM />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/doacoes/dinheiro"
-          element={<DoacoesDinheiroAdm />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/doacoes/objeto"
-          element={<DoacaoObjetoADM />}
-        />
+              path="/administrador/painelFinanceiro"
+              element={<PainelFinanceiroAdm />}
+            />
+            <Route
+              path="/administrador/painelFinanceiro/entradas"
+              element={<EntradasFinanceiroAdm />}
+            />
+            <Route
+              path="/administrador/painelFinanceiro/saidas"
+              element={<SaidasFinanceirasADM />}
+            />
+            <Route
+              path="/administrador/painelFinanceiro/pagamentosAssociado"
+              element={<PagamentosAssociado />}
+            />
+            <Route
+              path="/administrador/painelFinanceiro/associados"
+              element={<AssociadosADM />}
+            />
+            <Route
+              path="/administrador/painelFinanceiro/doacoes/dinheiro"
+              element={<DoacoesDinheiroAdm />}
+            />
+            <Route
+              path="/administrador/painelFinanceiro/doacoes/objeto"
+              element={<DoacaoObjetoADM />}
+            />
+            <Route
+              path="/administrador/painelFinanceiro/doacoes/objeto/add"
+              element={<AddDoacaoObjetoAdm />}
+            />
+            <Route
+              path="/administrador/cursos/add"
+              element={<AdicionarCursoAdm />}
+            />
+            <Route path="/administrador/membros" element={<MembrosAdm />} />
+            <Route
+              path="/administrador/eventos"
+              element={<EventoListarAdm />}
+            />
+            <Route
+              path="/administrador/eventos/criar"
+              element={<EventosCriarAdm />}
+            />
+            <Route
+              path="/administrador/cursos/historicoCurso"
+              element={<Historico />}
+            />
+            <Route path="/administrador/sorteio" element={<AdmSorteio />} />
+            <Route
+              path="/administrador/associado/historicoAssociado/:idAssociado"
+              element={<HistoricoAssociado />}
+            />
+            <Route path="/administrador/cursos" element={<ListarCursosADM />} />
 
-        <Route
-          path="/administrador/painelFinanceiro/doacoes/objeto/add"
-          element={<AddDoacaoObjetoAdm />}
-        />
+            <Route
+              path="/administrador/cursos/editar/:idCurso"
+              element={<EditarCursoAdm />}
+            />
 
-        <Route
-          path="/administrador/cursos/add"
-          element={<AdicionarCursoAdm />}
-        />
+            <Route
+              path="/administrador/cursos/associados/:idCurso"
+              element={<AssociadosListaCursosAdm />}
+            />
+            <Route
+              path="/administrador/locaisEvento"
+              element={<LocaisEventos />}
+            />
+            <Route
+              path="/administrador/eventos/:idEvento/despesas"
+              element={<DespesaEvento />}
+            />
 
-        <Route
-          path="/administrador/associado/historicoAssociado/:idAssociado"
-          element={<HistoricoAssociado />}
-        />
+            <Route
+              path="/administrador/eventos/:idEvento/editar"
+              element={<EditarEventoAdm />}
+            />
+            <Route
+              path="/administrador/eventos/arquivados"
+              element={<EventosArquivado />}
+            />
+          </>
+        ) : (
+          ""
+        )}
 
-        <Route path="/administrador/cursos" element={<ListarCursosADM />} />
-
-        <Route
-          path="/administrador/cursos/editar/:idCurso"
-          element={<EditarCursoAdm />}
-        />
-
-        <Route
-          path="/administrador/cursos/associados/:idCurso"
-          element={<AssociadosListaCursosAdm />}
-        />
-
-        <Route path="/desempenhoUser" element={<DesempenhoUser />} />
-        <Route path="/entrar" element={<Entrar />} />
-
+        <Route path="/evento/maisInfo" element={<MaisInfo />} />
         <Route path="/videoChamada" element={<VideoChamada />} />
-        <Route path="/administrador/locaisEvento" element={<LocaisEventos />} />
-        <Route
-          path="/administrador/eventos/:idEvento/despesas"
-          element={<DespesaEvento />}
-        />
-
-        <Route
-          path="/administrador/eventos/:idEvento/editar"
-          element={<EditarEventoAdm />}
-        />
-        <Route
-          path="/administrador/eventos/arquivados"
-          element={<EventosArquivado />}
-        />
         <Route path="/CadastroEvento/FormEvento" element={<FormEvento />} />
-        <Route path="/virarAssociado" element={<VirarAssociado/>}/>
       </Routes>
     </BrowserRouter>
   );

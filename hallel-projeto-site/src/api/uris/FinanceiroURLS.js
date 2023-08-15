@@ -1,21 +1,21 @@
-import { doacaoPrefix, financeiroPrefix, uriDefaultPrefix } from "./utilsURI";
+import { administradorPrefix, doacaoPrefix, financeiroPrefix, uriDefaultPrefix } from "./utilsURI";
 
 /*
     Associados (Financeiro)
 */
 
 export function associadosListAPI() {
-  return uriDefaultPrefix() + "/associados/listAll";
+  return uriDefaultPrefix() + administradorPrefix() + "/associado/listAll";
 }
 
 export function associadosGetAllPagamentosAPI() {
-  return uriDefaultPrefix() + "/getAllPagamentos";
+  return uriDefaultPrefix() + administradorPrefix() + "/associados/getAllPagamentos";
 }
 
 export function associadosListByMesAnoAPI(mes, ano, pagina) {
   return (
-    uriDefaultPrefix() +
-    "/associados/listByMesAno" +
+    uriDefaultPrefix() + administradorPrefix() +
+    "/associado/listByMesAno" +
     "?mes=" +
     mes +
     "&ano=" +
@@ -26,9 +26,19 @@ export function associadosListByMesAnoAPI(mes, ano, pagina) {
 }
 
 export function getAssociadoById(id) {
-  return uriDefaultPrefix() + "/associados/" + id;
+  return uriDefaultPrefix() + administradorPrefix() + "/associado/" + id;
 }
 
+export function getPagamentoAssociadoByMesAndAno(id, mes, ano) {
+  return (
+    uriDefaultPrefix() + administradorPrefix() +
+    "/associado/pagamento/"+id +
+    "?mes=" +
+    mes +
+    "&ano=" +
+    ano
+  );
+}
 /*
     Parte de doações (Financeiro)
 */

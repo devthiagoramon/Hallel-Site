@@ -7,3 +7,7 @@ export function membrosListar() {
 export function membroLoadPerfilById(idUser) {
   return uriDefaultPrefix() + "/membros/perfil/" + idUser;
 }
+
+export function virarAssociadoAPI(){
+  return uriDefaultPrefix()+"/membros/virarAssociado"
+}
