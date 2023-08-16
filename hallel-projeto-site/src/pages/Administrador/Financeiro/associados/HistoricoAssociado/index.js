@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { getAssociadoById, getPagamentoAssociadoByMesAndAno } from "../../../../../api/uris/FinanceiroURLS";
 import { Button, IconButton, Skeleton } from "@mui/material";
-import { Edit, TodayRounded } from "@mui/icons-material";
+import { ContentPaste, Edit, TodayRounded } from "@mui/icons-material";
 import dayjs from "dayjs";
 
 const Parte2 = ({ associadoObj, setMesSelecionado, loadFromAPIinfoByPagamentoByMesAndAno }) => {
@@ -13,8 +13,8 @@ const Parte2 = ({ associadoObj, setMesSelecionado, loadFromAPIinfoByPagamentoByM
       <div className="inner_container_infos_associado">
         <div className="infos_associado">
           <h3>Nome: {associadoObj !== null ? associadoObj.nome : ""}</h3>
-          <h3>Cpf: {associadoObj !== null ? associadoObj.cpf : ""}</h3>
-          <h3>Idade: {associadoObj !== null ? associadoObj.idade : ""}</h3>
+          <h3>CPF: {associadoObj !== null ? associadoObj.cpf : ""}</h3>
+          <h3>Idade: {associadoObj !== null ? associadoObj.idade : ""} anos</h3>
         </div>
         <div className="container_imagem_associado">
           {associadoObj !== null && (
@@ -96,6 +96,7 @@ const HistoricoAssociado = () => {
       }
     }).then((res) => {
       console.log(res.data);
+      setPagamentoMesSelecionado(res.data);
     })
   }
   return (
@@ -110,7 +111,7 @@ const HistoricoAssociado = () => {
       />
       <div className="container_info_pagamento_mes">
         <div className="header_info_pagamento_mes">
-          <h3 style={{ textAlign: "left" }}>Informação do pagamento do mês </h3>
+          <h3 style={{ textAlign: "left" }}>Informação do pagamento do mês <ContentPaste/> </h3>
           <label>
             {mesSelecionado !== "" ? "Mês selecionado: " + mesSelecionado : "Nenhum mês selecionado"}
           </label>
@@ -120,8 +121,15 @@ const HistoricoAssociado = () => {
             <Skeleton variant="rounded" width={"100%"} height={375} />
           </div>
           <div className="container_info_pagamento_mes">
-            <label>{pagamentoMesSelecionado !== null ? "Método de pagamento: " + pagamentoMesSelecionado.metodoPagamento : ""}</label>
-            <label>{pagamentoMesSelecionado !== null ? "Data do pagamento: " + pagamentoMesSelecionado.date : ""}</label>
+            <label >{pagamentoMesSelecionado !== null ? <span>
+              {"Método de pagamento: " + pagamentoMesSelecionado.metodoPagamento}</span> : ""}</label>
+            <label>{pagamentoMesSelecionado !== null ? <span>
+              {"Data do pagamento: " + dayjs(pagamentoMesSelecionado.data).format("DD/MM/YYYY")}</span> : ""}</label>
+            <label>{pagamentoMesSelecionado !== null ? <span>
+              {"Valor: " + pagamentoMesSelecionado.valor.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}</span> : ""}</label>
           </div>
         </div>
       </div>
