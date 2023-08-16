@@ -16,13 +16,11 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
   const confirmarPagamento = () => {
     let url = virarAssociadoAPI();
 
-    console.log(novoAssociado)
-
     axios.post(
       url,
       {
         ...novoAssociado,
-        para: [],
+        
         metodoPagamentoNum: 3,
       },
       {

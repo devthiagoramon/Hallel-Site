@@ -17,11 +17,11 @@ const VirarAssociado = () => {
     cpf: "",
     telefone: "",
     dataNascimento: dayjs(),
-    num_cartao: "",
-    data_validade_cartao: dayjs(),
-    cvc_cartao: 0,
-    nome_titular_cartao: "",
-    endereco_cartao: "",
+    numCartao: "",
+    dataValidadeCartao: dayjs(),
+    cvcCartao: 0,
+    nomeTitularCartao: "",
+    enderecoCartao: "",
   };
   const [novoAssociado, setNovoAssociado] = useState(associadoModel);
 
