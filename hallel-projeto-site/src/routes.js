@@ -80,8 +80,11 @@ function RoutesApp() {
           ""
         )}
         {localStorage.getItem("token") !== null &&
-          localStorage.getItem("R0l3s") === "ROLE_ASSOCIADO,ROLE_USER" ? (
+          localStorage.getItem("R0l3s") === "ROLE_USER,ROLE_ASSOCIADO" ? (
           <>
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/meusCursos" element={<MeusCursos />} />
+            <Route path="/desempenhoUser" element={<DesempenhoUser />} />
             <Route path="/cursos" element={<Cursos />} />
             <Route path="/sorteioAssociado" element={<Sorteio />} />
             <Route path="/descCurso/:idCurso" element={<DescCurso />} />
@@ -102,12 +105,12 @@ function RoutesApp() {
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/meusCursos" element={<MeusCursos />} />
             <Route path="/desempenhoUser" element={<DesempenhoUser />} />
-    
-        <Route
-          path="/administrador/tabelasFinanceiro"
-          element={<TabelasFinanceiro/>}
-        />
-        <Route
+
+            <Route
+              path="/administrador/tabelasFinanceiro"
+              element={<TabelasFinanceiro />}
+            />
+            <Route
               path="/administrador/painelFinanceiro"
               element={<PainelFinanceiroAdm />}
             />

@@ -19,8 +19,8 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
     axios.post(
       url,
       {
+        idMembro: localStorage.getItem("HallelId"),
         ...novoAssociado,
-        
         metodoPagamentoNum: 3,
       },
       {

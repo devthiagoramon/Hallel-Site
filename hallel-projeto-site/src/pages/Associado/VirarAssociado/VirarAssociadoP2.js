@@ -25,7 +25,7 @@ const VirarAssociadoP2 = ({
       setnumCartaoError(false);
     }
     if (
-      dayjs(novoAssociado.data_validade_cartao).format("DD/MM/YYYY") ===
+      dayjs(novoAssociado.dataValidadeCartao).format("DD/MM/YYYY") ===
       dayjs().format("DD/MM/YYYY")
     ) {
       setdataValidadeCartaoError(true);
@@ -33,19 +33,19 @@ const VirarAssociadoP2 = ({
     } else {
       setdataValidadeCartaoError(false);
     }
-    if (novoAssociado.cvc_cartao === 0) {
+    if (novoAssociado.cvcCartao === 0) {
       setCvcCartaoError(true);
       hasError = true;
     } else {
       setCvcCartaoError(false);
     }
-    if (novoAssociado.nome_titular_cartao === "") {
+    if (novoAssociado.nomeTitularCartao === "") {
       setNomeTitularCartaoError(true);
       hasError = true;
     } else {
       setNomeTitularCartaoError(false);
     }
-    if (novoAssociado.endereco_cartao === "") {
+    if (novoAssociado.enderecoCartao === "") {
       setEnderecoCartaoError(true);
       hasError = true;
     } else {
@@ -77,10 +77,10 @@ const VirarAssociadoP2 = ({
             <input
               id="num_cartao_associado"
               type="text"
-              value={novoAssociado.num_cartao}
+              value={novoAssociado.numCartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, num_cartao: e.target.value };
+                  return { ...prev, numCartao: e.target.value };
                 });
               }}
               className="input_error_VA"
@@ -92,7 +92,7 @@ const VirarAssociadoP2 = ({
               value={novoAssociado.num_cartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, num_cartao: e.target.value };
+                  return { ...prev, numCartao: e.target.value };
                 });
               }}
               className="input_VA"
@@ -109,10 +109,10 @@ const VirarAssociadoP2 = ({
               id="data_validade_associado"
               format="MM/YY"
               sx={{ width: "60%", height: "50px", padding: 0 }}
-              value={novoAssociado.data_validade_cartao}
+              value={novoAssociado.dataValidadeCartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, data_validade_cartao: e.toDate() };
+                  return { ...prev, dataValidadeCartao: e.toDate() };
                 });
               }}
             />
@@ -123,10 +123,10 @@ const VirarAssociadoP2 = ({
               id="data_validade_associado"
               format="MM/YY"
               sx={{ width: "60%", height: "50px", padding: 0 }}
-              value={novoAssociado.data_validade_cartao}
+              value={novoAssociado.dataValidadeCartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, data_validade_cartao: e.toDate() };
+                  return { ...prev, dataValidadeCartao: e.toDate() };
                 });
               }}
             />
@@ -137,10 +137,10 @@ const VirarAssociadoP2 = ({
                 id="cvc_associado"
                 type="number"
                 style={{ width: "90%" }}
-                value={novoAssociado.cvc_cartao}
+                value={novoAssociado.cvcCartao}
                 onChange={(e) => {
                   setNovoAssociado((prev) => {
-                    return { ...prev, cvc_cartao: e.target.value };
+                    return { ...prev, cvcCartao: e.target.value };
                   });
                 }}
                 className="input_error_VA"
@@ -152,10 +152,10 @@ const VirarAssociadoP2 = ({
                 id="cvc_associado"
                 type="number"
                 style={{ width: "90%" }}
-                value={novoAssociado.cvc_cartao}
+                value={novoAssociado.cvcCartao}
                 onChange={(e) => {
                   setNovoAssociado((prev) => {
-                    return { ...prev, cvc_cartao: e.target.value };
+                    return { ...prev, cvcCartao: e.target.value };
                   });
                 }}
                 className="input_VA"
@@ -170,10 +170,10 @@ const VirarAssociadoP2 = ({
               className="input_error_VA"
               id="nome_titular_associado"
               type="text"
-              value={novoAssociado.nome_titular_cartao}
+              value={novoAssociado.nomeTitularCartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, nome_titular_cartao: e.target.value };
+                  return { ...prev, nomeTitularCartao: e.target.value };
                 });
               }}
             />
@@ -182,10 +182,10 @@ const VirarAssociadoP2 = ({
               id="nome_titular_associado"
               type="text"
               className="input_VA"
-              value={novoAssociado.nome_titular_cartao}
+              value={novoAssociado.nomeTitularCartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, nome_titular_cartao: e.target.value };
+                  return { ...prev, nomeTitularCartao: e.target.value };
                 });
               }}
             />
@@ -197,10 +197,10 @@ const VirarAssociadoP2 = ({
             <input
               id="endereco_cartao_associado"
               type="text"
-              value={novoAssociado.endereco_cartao}
+              value={novoAssociado.enderecoCartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, endereco_cartao: e.target.value };
+                  return { ...prev, enderecoCartao: e.target.value };
                 });
               }}
               className="input_error_VA"
@@ -209,10 +209,10 @@ const VirarAssociadoP2 = ({
             <input
               id="endereco_cartao_associado"
               type="text"
-              value={novoAssociado.endereco_cartao}
+              value={novoAssociado.enderecoCartao}
               onChange={(e) => {
                 setNovoAssociado((prev) => {
-                  return { ...prev, endereco_cartao: e.target.value };
+                  return { ...prev, enderecoCartao: e.target.value };
                 });
               }}
               className="input_VA"

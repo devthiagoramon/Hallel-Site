@@ -7,3 +7,7 @@ export function associadoListarMeusCursos(idAssociado) {
 export function associadoMatricularCurso(idAssociado, idCurso) {
   return uriDefaultPrefix() + "/cursos/meusCursos/" + idAssociado+"/"+idCurso;
 }
+
+export function associadoListarPerfil(idAssociado){
+  return uriDefaultPrefix()+"/associados/perfil/"+idAssociado;
+}
