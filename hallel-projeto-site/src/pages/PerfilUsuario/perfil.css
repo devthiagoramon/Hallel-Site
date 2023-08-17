@@ -1,4 +1,10 @@
-.secao1{
+.container_perfil{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.secao1 {
 
   width: 100%;
   height: 20em;
@@ -11,10 +17,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  
+
 }
 
-.secao1 > div{
+.secao1>div {
 
   display: block;
   position: relative;
@@ -26,58 +32,100 @@
   margin-left: 5em;
 }
 
-.formularioPerfil{
+.formularioPerfil {
 
-  margin: 5em 0;
+  margin: 7em 0;
+  height: 100%;
 }
 
-.forms{
+.forms {
 
   justify-content: left;
   display: flex;
-  margin-left: 10em;
 }
 
-#btAlterar{
+#btAlterar {
 
   border: none;
-  font-size: 1.2em;
-  background-color: #FFC369;
-  color: #35404b;
-  border-radius: 0.6em;
-  padding: 0.4em 0.6em;
-  text-transform: uppercase;
-  font-weight: 700;
- 
+  font-size: 18px;
+  background-color: #094e49;
+  color: #f4f4f4;
+  border-radius: 12px;
+  padding: 6px 12px;
+  width: fit-content;
+  text-transform: capitalize;
+  font-weight: 400;
+
 }
 
 @keyframes fadeInAnimation {
   0% {
-      opacity: 0.8;
+    opacity: 0.8;
   }
+
   100% {
-      opacity: 1;
-   }
+    opacity: 1;
+  }
 }
 
-#btAlterar:hover{
+#btAlterar:hover {
 
-   background-color: #ecb158;
-   animation: fadeInAnimation ease 3s;
-   animation-iteration-count: 1;
-   animation-fill-mode: forwards;
+  background-color: #613191;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .tituloPerfil{
-
-  font-size: 2em;
-  margin: 1em 0;
-  font-weight: 900;
-  color: #35404b;
-
+  text-align: left;
 }
 
-.formGridSenha{
+.formGridSenha {
 
   background-color: #FFC369;
+}
+
+.cont_perfil_associado{
+  width: 50%;
+  margin-top: 7em;
+}
+.pago_associado{
+  font-size: 18px;
+  font-weight: 600;
+  color: #58D68D;
+}
+.pendente_associado{
+  font-size: 18px;
+  font-weight: 600;
+  color: #F4D03F;
+}
+.container_mp{
+  width: 100%;
+  padding: 6px;
+  margin-top: 1rem;
+  border-radius: 12px;
+  outline: #252525 solid 1px;
+  display: flex;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 10px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.container_mp>button{
+  padding: 0 15px 0 15px;
+  border: none;
+  background-color: inherit;
+  border-left: #252525 solid 2px;
+  border-right: #252525 solid 2px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.container_mp>button:hover{
+  background-color: rgba(0, 0, 0, 0.10);
+  font-weight: 600;
+}
+.btn_mes_selecionado{
+  color: #5DADE2;
 }
