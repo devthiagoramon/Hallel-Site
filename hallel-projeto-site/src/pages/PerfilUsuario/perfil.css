@@ -129,3 +129,22 @@
 .btn_mes_selecionado{
   color: #5DADE2;
 }
+.container_mesSelecionadoInfo{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.cont_card_pagamentoAssociado{
+  width: 50%;
+}
+
+.headerpagamentoassociado{
+  width: 100%;
+  background-color: #58D68D;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
