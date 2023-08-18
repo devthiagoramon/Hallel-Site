@@ -177,7 +177,7 @@ const Info = () => {
               )}
             </label>
             <SelecionarMesesPagoAssociadoPerfil mesesPagos={usuario.mesesPagos} mesSelecionado={mesSelecionado} setMesSelecionado={setMesSelecionado}/>
-            <CardMesSelecionado mesSelecionado={mesSelecionado}/>
+            <CardMesSelecionado mesSelecionado={mesSelecionado} pagamentosAssociado={usuario.pagamentosAssociado}/>
           </div>
         </div>
       )}
