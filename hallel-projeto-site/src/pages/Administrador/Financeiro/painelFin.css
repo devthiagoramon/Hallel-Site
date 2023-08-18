@@ -175,3 +175,28 @@
   width: 400px;
   justify-self: flex-end;
 }
+
+
+
+/*fragmento terceiro, painel dos graficos*/
+.fragmento-financeiro-grafico{
+
+  flex-direction: column;
+  display: flex;
+}
+
+
+.div-grafico-primeira, .div-grafico-segunda{
+
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+}
+
+.div-grafico-segunda{
+
+  display: block;
+  flex-direction: row;
+  justify-content: start;
+  width: 50%;
+}

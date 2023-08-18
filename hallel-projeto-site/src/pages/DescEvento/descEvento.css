@@ -40,7 +40,7 @@ main.container {
   margin-top: 8%;
   color: #354045;
 }
-.container p {
+.container .paragrafo {
   font-weight: 500;
   font-size: 1.125em;
 }

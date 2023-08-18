@@ -3,6 +3,7 @@ import "./painelFin.css"
 import HeaderPainelFinanceiroAdm from './HeaderPainelFinanceiroAdm'
 import FragmentoOnePainelFinanceiro from './FragmentoOnePainelFinanceiro'
 import FragmentoTwoPainelFinanceiro from './FragmentoTwoPainelFinanceiro'
+import FragmentoThreePainelFinanceiro from './FragmentoThreePainelFinanceiro'
 
 const PainelFinanceiroAdm = () => {
   return (
@@ -10,6 +11,7 @@ const PainelFinanceiroAdm = () => {
       <HeaderPainelFinanceiroAdm/>
       <FragmentoOnePainelFinanceiro/>
       <FragmentoTwoPainelFinanceiro/>
+      <FragmentoThreePainelFinanceiro/>
     </div>
   )
 }

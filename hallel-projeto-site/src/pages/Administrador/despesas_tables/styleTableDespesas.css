@@ -28,10 +28,16 @@
     color: #35404b;
     text-indent: 2em;
     font-size: 1em;
-    margin: 2em 15%;
+    margin: 2em
 }
 
 .div-rendas > .financeiro-labels{
 
     margin: 2em 1em;
+}
+
+.div-grafico-primeira{
+
+    display: flex;
+    flex-direction: row;
 }

@@ -41,7 +41,7 @@ const ModalPerfilAdm = (props) => {
     {
       text: "Financeiro - ADM",
       icon: "financeiro",
-      url: "/administrador/painelFinanceiro",
+      url: "/administrador/tabelasFinanceiro",
       action: "redirect",
     },
     {

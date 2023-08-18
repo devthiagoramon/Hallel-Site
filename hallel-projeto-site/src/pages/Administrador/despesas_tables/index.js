@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './styleTableDespesas.css';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,6 +9,63 @@ import TableRow from '@mui/material/TableRow';
 import { Paper } from "@mui/material";
 import East from  "@mui/icons-material/East";
 import Fab from "@mui/material/Fab";
+import { Navigate, useNavigate } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Box from "@mui/material/Box"
+import Typography from '@mui/material/Typography';
+import {useTheme} from "@mui/material/styles";
+import LineAxisIcon from '@mui/icons-material/LineAxis';
+import SvgIcon from "@mui/material/SvgIcon";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button"
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { purple } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
+
+const BootstrapButton = styled(Button)({
+  boxShadow: 'none',
+  textTransform: 'none',
+  fontSize: 16,
+  padding: '6px 12px',
+  border: '1px solid',
+  lineHeight: 1.5,
+  backgroundColor: '#0063cc',
+  borderColor: '#0063cc',
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+  '&:hover': {
+    backgroundColor: '#0069d9',
+    borderColor: '#0062cc',
+    boxShadow: 'none',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#0062cc',
+    borderColor: '#005cbf',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(purple[500]),
+  backgroundColor: purple[500],
+  '&:hover': {
+    backgroundColor: purple[700],
+  },
+}));
 
 function createDataRendas(id, data, valor, metodoPagamentod) {
   return { id, data, valor, metodoPagamentod};
@@ -27,11 +84,14 @@ const TabelasFinanceiro = () =>{
             <label className="financeiro-labels">Tabelas financeiro</label>
             <UltimasRendas/> 
             <UltimasSaidas/>
+            <CardDashboard/>
         </div>
     );
 }
 
 const UltimasRendas = () =>{
+
+  const navigate = useNavigate();
 
   const rows = [
     createDataRendas(1, "17/06/2023", "R$ "+ 20, "TED"),
@@ -44,18 +104,18 @@ const UltimasRendas = () =>{
 
       <div className="tabela-ultimas-rendas">
 
-
       <div className="div-rendas">
 
         <label className="financeiro-labels">Últimas rendas</label>
 
-          <Fab  color="white" aria-label="avançar">
+          <Fab size= "small" color="white" aria-label="avançar" onClick= {()=> navigate('/administrador/painelFinanceiro/entradas')}>
 
             <East/>
           </Fab>
-
       </div>
 
+
+          
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
@@ -88,6 +148,9 @@ const UltimasRendas = () =>{
 
 const UltimasSaidas = () =>{
 
+  const navigate = useNavigate();
+
+
   const rows = [
     createDataSaidas(1, "17/06/2023", "R$ "+ 10, "PIX"),
     createDataSaidas(2, "25/07/2023", "R$ "+ 30, "PIX"),
@@ -106,7 +169,7 @@ const UltimasSaidas = () =>{
 
           <label className="financeiro-labels">Últimas saídas</label>
 
-          <Fab color="white" aria-label="avançar">
+          <Fab size= "small" color="white" aria-label="avançar" onClick= {()=> navigate('/administrador/painelFinanceiro/saidas')}>
 
           <East/>
           </Fab>
@@ -143,4 +206,46 @@ const UltimasSaidas = () =>{
           </div>
     )
 }
+
+const CardDashboard = () =>{
+
+
+  const navigate = useNavigate();
+
+  const theme = useTheme();
+
+  return(
+
+      <div style={{justifyContent: "center", display:"flex"}}>
+        <Card sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <CardContent sx={{ flex: '1 0 auto' }}>
+            <Typography component="div" variant="h5">
+              DashBoard
+            </Typography>
+            <Typography variant="subtitle1" color="text.secondary" component="div">
+              Gráficos do financeiro
+            </Typography>
+          </CardContent>
+
+          <CardContent sx={{ flex: '1 0 auto' }}>
+
+          <div style = {{justifyContent: "center", display: "flex"}}>
+
+          <ColorButton onClick={() => navigate("/administrador/painelFinanceiro")} variant="contained" endIcon={<ArrowForwardIcon />}>
+        Acessar
+      </ColorButton>
+      
+          </div>
+          </CardContent>
+        </Box>
+        {/* <CardMedia
+        component="img"
+        sx={{ width: 151 }}
+        image= "https://img.icons8.com/?size=512&id=vFqlDrzMYOT0&format=png"
+        alt="Live from space album cover" */}
+      </Card>
+      </div>
+  )
+} 
 export default TabelasFinanceiro;
