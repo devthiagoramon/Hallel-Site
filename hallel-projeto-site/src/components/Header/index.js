@@ -168,8 +168,8 @@ function Header() {
         ""
       )}
       {isModalPerfilVisible &&
-      (localStorage.getItem("R0l3s") === "ROLE_USER" ||
-        localStorage.getItem("R0l3s") === "ROLE_USER,ROLE_ASSOCIADO") ? (
+      (String(localStorage.getItem("R0l3s")).includes("ROLE_USER") ||
+        (String(localStorage.getItem("R0l3s")).includes("ROLE_USER") && String(localStorage.getItem("R0l3s")).includes("ROLE_ASSOCIADO"))) ? (
         <ModalPerfil />
       ) : (
         ""

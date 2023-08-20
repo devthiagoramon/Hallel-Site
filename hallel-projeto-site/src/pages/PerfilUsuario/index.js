@@ -26,7 +26,9 @@ const Info = () => {
   const [passwordInput, setPasswordInput] = useState("");
   const [isAssociado, setisAssociado] = useState(false);
   const [isMembro, setIsMembro] = useState(false);
-  const [mesSelecionado, setMesSelecionado] = useState(dayjs().format("MM/YYYY"));
+  const [mesSelecionado, setMesSelecionado] = useState(
+    dayjs().format("MM/YYYY")
+  );
 
   const handlePasswordChange = (evnt) => {
     setPasswordInput(evnt.target.value);
@@ -40,12 +42,12 @@ const Info = () => {
   };
 
   useMemo(() => {
-    let roles = localStorage.getItem("R0l3s");
+    let roles = String(localStorage.getItem("R0l3s"));
     let url = "";
-    if (roles == "ROLE_USER,ROLE_ASSOCIADO") {
+    if (roles.includes("ROLE_USER") && roles.includes("ROLE_ASSOCIADO")) {
       url = associadoListarPerfil(localStorage.getItem("HallelId"));
       setisAssociado(true);
-    } else if (roles == "ROLE_USER") {
+    } else if (roles.includes("ROLE_USER")) {
       url = membroLoadPerfilById(localStorage.getItem("HallelId"));
       setIsMembro(true);
     }
@@ -58,8 +60,26 @@ const Info = () => {
         },
       })
       .then((object) => {
+
+        // Adiciona meses ao ultimo mês que o associado pagou
+        if (roles.includes("ROLE_ASSOCIADO")) {
+          let pagamentosAssociado = object.data.pagamentosAssociado;
+          let dataFinalArrayMesesPagos =
+            pagamentosAssociado[pagamentosAssociado.length - 1].dataPaga;
+          let dataFinalInDayJs = dayjs(dataFinalArrayMesesPagos);
+          let lastMes = dataFinalInDayJs;
+          for (let index = 0; index < 3; index++) {
+            let proximoMes = lastMes.add(1, "month");
+            let objAux = {
+              dataPaga: proximoMes.toDate()
+            }
+            pagamentosAssociado.push(objAux);
+            lastMes = proximoMes;
+          }
+          object.data.pagamentosAssociado = pagamentosAssociado;
+        }
+
         setUsuario(object.data);
-        console.log(object.data);
       })
       .catch((error) => console.warn(error));
   }, [setIsMembro, setisAssociado, setUsuario]);
@@ -176,8 +196,22 @@ const Info = () => {
                 ""
               )}
             </label>
-            <SelecionarMesesPagoAssociadoPerfil mesesPagos={usuario.mesesPagos} mesSelecionado={mesSelecionado} setMesSelecionado={setMesSelecionado}/>
-            <CardMesSelecionado mesSelecionado={mesSelecionado} pagamentosAssociado={usuario.pagamentosAssociado}/>
+            <br />
+            <label>
+              Expira em:{" "}
+              <span style={{ fontSize: "18px", fontWeight: 500 }}>
+                {dayjs(usuario.dataExpiroAssociado).format("DD/MM/YYYY")}
+              </span>
+            </label>
+            <SelecionarMesesPagoAssociadoPerfil
+              pagamentosAssociado={usuario.pagamentosAssociado}
+              mesSelecionado={mesSelecionado}
+              setMesSelecionado={setMesSelecionado}
+            />
+            <CardMesSelecionado
+              mesSelecionado={mesSelecionado}
+              pagamentosAssociado={usuario.pagamentosAssociado}
+            />
           </div>
         </div>
       )}
