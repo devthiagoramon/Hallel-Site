@@ -47,7 +47,7 @@ import FormEvento from "./pages/CadastroEvento/FormEvento";
 import PainelFinanceiroAdm from "./pages/Administrador/Financeiro/PainelFinanceiroAdm";
 import EntradasFinanceiroAdm from "./pages/Administrador/Financeiro/renda";
 import VirarAssociado from "./pages/Associado/VirarAssociado/VirarAssociado";
-import TabelasFinanceiro from "./pages/Administrador/despesas_tables";
+import TabelasFinanceiro from "./pages/Administrador/Financeiro/TelaPrincipal";
 
 function RoutesApp() {
 

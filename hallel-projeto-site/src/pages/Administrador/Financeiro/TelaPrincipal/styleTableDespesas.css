@@ -31,13 +31,27 @@
     margin: 2em
 }
 
-.div-rendas > .financeiro-labels{
+.div-header > .financeiro-labels{
 
     margin: 2em 1em;
+}
+
+.div-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .div-grafico-primeira{
 
     display: flex;
     flex-direction: row;
+}
+
+.cont-header-finaceiro{
+    width: fit-content;
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    align-items: center;
 }
