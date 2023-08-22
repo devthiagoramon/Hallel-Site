@@ -174,7 +174,7 @@ export function saidaAdicionarCodigoSaidaAPI() {
 */
 
 export function entradasUltimasEntradasAPI() {
-  return uriDefaultPrefix() + financeiroPrefix() + "/ultimasEntradas";
+  return uriDefaultPrefix() + "/financeiro/entradas/ultimasEntradas";
 }
 
 export function entradasGetEntradasMesValorAPI(mes, ano) {

@@ -1,0 +1,13 @@
+.container_gerar_pdf{
+    width: 100vw;
+    min-height: 100vh;
+}
+.header_gerar_pdf{
+    width: 100%;
+    padding: 2rem;
+}
+
+.header_gerar_pdf>h2{
+    text-align: left;
+
+}
