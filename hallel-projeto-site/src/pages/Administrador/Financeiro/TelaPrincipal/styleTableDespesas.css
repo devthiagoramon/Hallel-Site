@@ -10,7 +10,6 @@
     
     font-weight: 700;
     color: #35404b;
-    text-indent: 2em;
     font-size: 1.3em;
 }
 
@@ -26,20 +25,15 @@
 
     font-weight: 700;
     color: #35404b;
-    text-indent: 2em;
     font-size: 1em;
     margin: 2em
-}
-
-.div-header > .financeiro-labels{
-
-    margin: 2em 1em;
 }
 
 .div-header{
     width: 100%;
     display: flex;
     align-items: center;
+    column-gap: 20px;
 }
 
 .div-grafico-primeira{
@@ -50,8 +44,11 @@
 
 .cont-header-finaceiro{
     width: fit-content;
-    padding-left: 25px;
-    padding-right: 25px;
     display: flex;
     align-items: center;
+}
+
+.cont-header-finaceiro>h3{
+    padding: 20px;
+    text-align: left;
 }

@@ -169,12 +169,16 @@ export function saidaAdicionarCodigoSaidaAPI() {
   return uriDefaultPrefix() + financeiroPrefix() + "/codigosSaida/adicionar";
 }
 
+export function saidaUltimasSaidasAPI() {
+  return uriDefaultPrefix() + administradorPrefix() + "/financeiro/saidas/ultimasSaidas";
+}
+
 /*
     Parte de entradas (Financeiro)
 */
 
 export function entradasUltimasEntradasAPI() {
-  return uriDefaultPrefix() + "/financeiro/entradas/ultimasEntradas";
+  return uriDefaultPrefix() + administradorPrefix() + "/financeiro/entradas/ultimasEntradas";
 }
 
 export function entradasGetEntradasMesValorAPI(mes, ano) {
