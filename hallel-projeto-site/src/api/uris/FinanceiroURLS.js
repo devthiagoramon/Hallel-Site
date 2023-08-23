@@ -1,4 +1,9 @@
-import { administradorPrefix, doacaoPrefix, financeiroPrefix, uriDefaultPrefix } from "./utilsURI";
+import {
+  administradorPrefix,
+  doacaoPrefix,
+  financeiroPrefix,
+  uriDefaultPrefix,
+} from "./utilsURI";
 
 /*
     Associados (Financeiro)
@@ -9,12 +14,15 @@ export function associadosListAPI() {
 }
 
 export function associadosGetAllPagamentosAPI() {
-  return uriDefaultPrefix() + administradorPrefix() + "/associados/getAllPagamentos";
+  return (
+    uriDefaultPrefix() + administradorPrefix() + "/associados/getAllPagamentos"
+  );
 }
 
 export function associadosListByMesAnoAPI(mes, ano, pagina) {
   return (
-    uriDefaultPrefix() + administradorPrefix() +
+    uriDefaultPrefix() +
+    administradorPrefix() +
     "/associado/listByMesAno" +
     "?mes=" +
     mes +
@@ -31,8 +39,10 @@ export function getAssociadoById(id) {
 
 export function getPagamentoAssociadoByMesAndAno(id, mes, ano) {
   return (
-    uriDefaultPrefix() + administradorPrefix() +
-    "/associado/pagamento/"+id +
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    "/associado/pagamento/" +
+    id +
     "?mes=" +
     mes +
     "&ano=" +
@@ -170,7 +180,11 @@ export function saidaAdicionarCodigoSaidaAPI() {
 }
 
 export function saidaUltimasSaidasAPI() {
-  return uriDefaultPrefix() + administradorPrefix() + "/financeiro/saidas/ultimasSaidas";
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    "/financeiro/saidas/ultimasSaidas"
+  );
 }
 
 /*
@@ -178,7 +192,11 @@ export function saidaUltimasSaidasAPI() {
 */
 
 export function entradasUltimasEntradasAPI() {
-  return uriDefaultPrefix() + administradorPrefix() + "/financeiro/entradas/ultimasEntradas";
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    "/financeiro/entradas/ultimasEntradas"
+  );
 }
 
 export function entradasGetEntradasMesValorAPI(mes, ano) {
@@ -187,6 +205,32 @@ export function entradasGetEntradasMesValorAPI(mes, ano) {
     financeiroPrefix() +
     "/entradasMes/valor" +
     "?mes=" +
+    mes +
+    "&ano=" +
+    ano
+  );
+}
+
+export function entradasGetAllPaginas(mes, ano) {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    "/financeiro/entradas/totalPaginas" +
+    "?mes=" +
+    mes +
+    "&ano=" +
+    ano
+  );
+}
+
+export function entradasListEntradasByPageAndDate(numPage, mes, ano) {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    "/financeiro/entradas/list/data" +
+    "?page=" +
+    numPage +
+    "&mes=" +
     mes +
     "&ano=" +
     ano

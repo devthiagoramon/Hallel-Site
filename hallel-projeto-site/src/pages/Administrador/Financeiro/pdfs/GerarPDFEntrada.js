@@ -22,6 +22,12 @@ import MenuCalendarioSelecionar from "../associados/MenuCalendarioSelecionar";
 import { useState } from "react";
 import dayjs from "dayjs";
 import { Table } from "react-bootstrap";
+import { useEffect } from "react";
+import {
+  entradasGetAllPaginas,
+  entradasListEntradasByPageAndDate,
+} from "../../../../api/uris/FinanceiroURLS";
+import axios from "axios";
 
 const GerarPDFEntrada = () => {
   const [anchorMenuCalendario, setAnchorMenuCalendario] = useState(null);
@@ -31,6 +37,9 @@ const GerarPDFEntrada = () => {
   }
 
   const [mesSelecionado, setMesSelecionado] = useState(dayjs());
+  const [paginaSelecionado, setPaginaSelecionado] = useState(1);
+
+  const [totalPagina, settotalPagina] = useState(0);
 
   const [entradas, setentradas] = useState([]);
 
@@ -45,6 +54,65 @@ const GerarPDFEntrada = () => {
     createDataSaidas(4, "20/06/2023", "R$ " + 120, "TED"),
     createDataSaidas(5, "15/06/2023", "R$ " + 110, "TED"),
   ];
+
+  useEffect(() => {
+    let dataString = mesSelecionado.format("MM/YYYY").toString();
+    let mesString = dataString.substring(0, 2);
+    let anoString = dataString.substring(3);
+
+    let url = entradasGetAllPaginas(mesString, anoString);
+
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        settotalPagina(res.data);
+      })
+      .catch((error) => {
+        console.log("Error puxando o total de paginas: " + error);
+      });
+  }, [mesSelecionado]);
+
+  const handleNextPagina = () => {
+    let pagina = paginaSelecionado;
+    if (pagina < totalPagina) {
+      setPaginaSelecionado(pagina + 1);
+    }
+  };
+
+  const handlePreviousPagina = () => {
+    let pagina = paginaSelecionado;
+    if (pagina > 1) {
+      setPaginaSelecionado(pagina - 1);
+    }
+  };
+
+  useEffect(() => {
+    let dataString = mesSelecionado.format("MM/YYYY").toString();
+    let mesString = dataString.substring(0, 2);
+    let anoString = dataString.substring(3);
+    let url = entradasListEntradasByPageAndDate(
+      paginaSelecionado - 1,
+      mesString,
+      anoString
+    );
+
+    axios
+      .get(url, {
+        headers: { Authorization: localStorage.getItem("token") },
+      })
+      .then((res) => {
+        setentradas(res.data);
+      })
+      .catch((error) => {
+        console.log(
+          "Error pegando a lista de entradas por pagina e data: " + error
+        );
+      });
+  }, [paginaSelecionado, mesSelecionado]);
 
   return (
     <div className="container_gerar_pdf">
@@ -102,20 +170,30 @@ const GerarPDFEntrada = () => {
             <div className="header_tabela_gerar_pdf">
               <div className="buttons_header_tabela_gerar_pdf">
                 <Tooltip title="Pagina anterior">
-                  <IconButton>
+                  <IconButton
+                    onClick={() => {
+                      handlePreviousPagina();
+                    }}
+                  >
                     <NavigateBefore />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title="Pagina seguinte">
-                  <IconButton>
+                  <IconButton
+                    onClick={() => {
+                      handleNextPagina();
+                    }}
+                  >
                     <NavigateNext />
                   </IconButton>
                 </Tooltip>
               </div>
               <div className="text_header_tabela_gerar_pdf">
-                <Typography variant="body1">Pagina: </Typography>
+                <Typography variant="body1">
+                  Pagina: {paginaSelecionado}{" "}
+                </Typography>
                 <Typography variant="caption" sx={{ textAlign: "right" }}>
-                  De:
+                  De: {totalPagina}
                 </Typography>
               </div>
             </div>
@@ -134,37 +212,43 @@ const GerarPDFEntrada = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.map((rows) => (
+                  {entradas.map((entrada) => (
                     <TableRow
-                      key={rows.id}
+                      key={entrada.id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
-                        {rows.id}
+                        {entrada.codigo !== null && (
+                          <label>
+                            {" "}
+                            {entrada.codigo.numeroCodigo} |{" "}
+                            {entrada.codigo.nomeCodigo}{" "}
+                          </label>
+                        )}
                       </TableCell>
                       <TableCell>
                         <TextareaAutosize className="input_tabela_gerar_pdf" />
                       </TableCell>
                       <TableCell>
-                        {dayjs(rows.data).format("DD/MM/YYYY")}
+                        {dayjs(entrada.data).format("DD/MM/YYYY")}
                       </TableCell>
                       <TableCell>
-                        {rows.valor.toLocaleString("pt-BR", {
+                        {entrada.valor.toLocaleString("pt-BR", {
                           style: "currency",
                           currency: "BRL",
                         })}
                       </TableCell>
                       <TableCell>
-                        {rows.metodoPagamento === "CARTAO_CREDITO"
+                        {entrada.metodoPagamento === "CARTAO_CREDITO"
                           ? "Cartão de Crédito"
                           : ""}
-                        {rows.metodoPagamento === "CARTAO_DEBITO"
+                        {entrada.metodoPagamento === "CARTAO_DEBITO"
                           ? "Cartão de Débito"
                           : ""}
-                        {rows.metodoPagamento === "CARTAO_MAQUINA"
+                        {entrada.metodoPagamento === "CARTAO_MAQUINA"
                           ? "Cartão de Crédito"
                           : ""}
-                        {rows.metodoPagamento === "PIX" ? "PIX" : ""}
+                        {entrada.metodoPagamento === "PIX" ? "PIX" : ""}
                       </TableCell>
                     </TableRow>
                   ))}
