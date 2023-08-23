@@ -48,11 +48,11 @@ import PainelFinanceiroAdm from "./pages/Administrador/Financeiro/PainelFinancei
 import EntradasFinanceiroAdm from "./pages/Administrador/Financeiro/renda";
 import VirarAssociado from "./pages/Associado/VirarAssociado/VirarAssociado";
 import TabelasFinanceiro from "./pages/Administrador/Financeiro/TelaPrincipal";
+import GerarPDFEntrada from "./pages/Administrador/Financeiro/pdfs/GerarPDFEntrada";
+import GerarPDFSaida from "./pages/Administrador/Financeiro/pdfs/GerarPDFSaida";
 
 function RoutesApp() {
-
   var roles = localStorage.getItem("R0l3s");
-
 
   return (
     <BrowserRouter>
@@ -113,6 +113,14 @@ function RoutesApp() {
             <Route
               path="/administrador/tabelasFinanceiro"
               element={<TabelasFinanceiro />}
+            />
+            <Route
+              path="/administrador/financeiro/gerarPDFEntrada"
+              element={<GerarPDFEntrada />}
+            />
+            <Route
+              path="/administrador/financeiro/gerarPDFSaida"
+              element={<GerarPDFSaida />}
             />
             <Route
               path="/administrador/painelFinanceiro"
