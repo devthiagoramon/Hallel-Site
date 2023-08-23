@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styleTableDespesas.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -22,6 +22,12 @@ import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { purple } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
+import {
+  entradasUltimasEntradasAPI,
+  saidaUltimasSaidasAPI,
+} from "../../../../api/uris/FinanceiroURLS";
+import axios from "axios";
+import dayjs from "dayjs";
 
 const BootstrapButton = styled(Button)({
   boxShadow: "none",
@@ -78,7 +84,7 @@ function createDataSaidas(id, data, valor, metodoPagamentod) {
 const TabelasFinanceiro = () => {
   return (
     <div className="financeiro-tabelas-principal">
-      <h1 style={{marginLeft: "2rem"}}>Tabelas financeiro</h1>
+      <h1 style={{ marginLeft: "2rem" }}>Tabelas financeiro</h1>
       <CardDashboard />
       <UltimasRendas />
       <UltimasSaidas />
@@ -89,18 +95,32 @@ const TabelasFinanceiro = () => {
 const UltimasRendas = () => {
   const navigate = useNavigate();
 
-  const rows = [
-    createDataRendas(1, "17/06/2023", "R$ " + 20, "TED"),
-    createDataRendas(2, "25/07/2023", "R$ " + 40, "TED"),
-    createDataRendas(3, "05/06/2023", "R$ " + 60, "TED"),
-    createDataRendas(4, "20/06/2023", "R$ " + 100, "TED"),
-    createDataRendas(5, "15/06/2023", "R$ " + 150, "TED"),
-  ];
+  const [entradas, setEntradas] = useState([]);
+
+  
+
+  useEffect(() => {
+    let url = entradasUltimasEntradasAPI();
+
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setEntradas(res.data);
+      })
+      .catch((error) => {
+        console.log("Error requereindo as ultimas entradas: " + error);
+      });
+  }, []);
+
   return (
     <div className="tabela-ultimas-rendas">
       <div className="div-header">
         <div className="cont-header-finaceiro">
-          <label className="financeiro-labels">Últimas rendas</label>
+          <h3 className="financeiro-labels">Últimas Entradas</h3>
           <Fab
             size="small"
             color="white"
@@ -111,7 +131,13 @@ const UltimasRendas = () => {
           </Fab>
         </div>
         <div className="cont-header-financeiro">
-          <Button variant="contained" sx={{borderRadius: "24px"}}>Gerar PDF</Button>
+          <ColorButton
+            onClick={() => navigate("/administrador/financeiro/gerarPDFEntrada")}
+            variant="contained"
+            sx={{ borderRadius: "24px" }}
+          >
+            Gerar PDF
+          </ColorButton>
         </div>
       </div>
 
@@ -119,25 +145,48 @@ const UltimasRendas = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Id</TableCell>
+              <TableCell>Código</TableCell>
               <TableCell>Data</TableCell>
               <TableCell>Valor</TableCell>
-              <TableCell>Método de pagamento</TableCell>
+              <TableCell>Pago com</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {entradas.map((entrada) => (
               <TableRow
-                key={row.id}
+                key={entrada.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {" "}
-                  {row.id}
+                  {entrada.codigo !== null && (
+                    <label>
+                      {" "}
+                      {entrada.codigo.numeroCodigo} |{" "}
+                      {entrada.codigo.nomeCodigo}{" "}
+                    </label>
+                  )}
                 </TableCell>
-                <TableCell>{row.data}</TableCell>
-                <TableCell>{row.valor}</TableCell>
-                <TableCell>{row.metodoPagamentod}</TableCell>
+                <TableCell>
+                  {dayjs(entrada.data).format("DD/MM/YYYY")}
+                </TableCell>
+                <TableCell>
+                  {entrada.valor.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+                </TableCell>
+                <TableCell>
+                  {entrada.metodoPagamento === "CARTAO_CREDITO"
+                    ? "Cartão de Crédito"
+                    : ""}
+                  {entrada.metodoPagamento === "CARTAO_DEBITO"
+                    ? "Cartão de Débito"
+                    : ""}
+                  {entrada.metodoPagamento === "CARTAO_MAQUINA"
+                    ? "Cartão de Crédito"
+                    : ""}
+                  {entrada.metodoPagamento === "PIX" ? "PIX" : ""}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -150,19 +199,30 @@ const UltimasRendas = () => {
 const UltimasSaidas = () => {
   const navigate = useNavigate();
 
-  const rows = [
-    createDataSaidas(1, "17/06/2023", "R$ " + 10, "PIX"),
-    createDataSaidas(2, "25/07/2023", "R$ " + 30, "PIX"),
-    createDataSaidas(3, "05/06/2023", "R$ " + 60, "TED"),
-    createDataSaidas(4, "20/06/2023", "R$ " + 120, "TED"),
-    createDataSaidas(5, "15/06/2023", "R$ " + 110, "TED"),
-  ];
+  const [saidas, setSaidas] = useState([]);
+
+  useEffect(() => {
+    let url = saidaUltimasSaidasAPI();
+
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setSaidas(res.data);
+      })
+      .catch((error) => {
+        console.log("Error requereindo as ultimas entradas: " + error);
+      });
+  }, []);
 
   return (
     <div className="tabela-ultimas-saidas">
       <div className="div-header">
         <div className="cont-header-finaceiro">
-          <label className="financeiro-labels">Últimas saídas</label>
+          <h3 className="financeiro-labels">Últimas saídas</h3>
           <Fab
             size="small"
             color="white"
@@ -173,9 +233,13 @@ const UltimasSaidas = () => {
           </Fab>
         </div>
         <div className="cont-header-financeiro">
-          <Button variant="contained" sx={{ borderRadius: "24px" }}>
+          <ColorButton
+            onClick={() => navigate("/administrador/financeiro/gerarPDFSaida")}
+            variant="contained"
+            sx={{ borderRadius: "24px" }}
+          >
             Gerar PDF
-          </Button>
+          </ColorButton>
         </div>
       </div>
 
@@ -183,25 +247,45 @@ const UltimasSaidas = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Id</TableCell>
+              <TableCell>Código</TableCell>
               <TableCell>Data</TableCell>
               <TableCell>Valor</TableCell>
-              <TableCell>Método de pagamento</TableCell>
+              <TableCell>Pago com</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {saidas.map((saida) => (
               <TableRow
-                key={row.id}
+                key={saida.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {" "}
-                  {row.id}
+                  {saida.codigo !== null && (
+                    <label>
+                      {" "}
+                      {saida.codigo.numeroCodigo} | {saida.codigo.nomeCodigo}{" "}
+                    </label>
+                  )}
                 </TableCell>
-                <TableCell>{row.data}</TableCell>
-                <TableCell>{row.valor}</TableCell>
-                <TableCell>{row.metodoPagamentod}</TableCell>
+                <TableCell>{dayjs(saida.data).format("DD/MM/YYYY")}</TableCell>
+                <TableCell>
+                  {saida.valor.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+                </TableCell>
+                <TableCell>
+                  {saida.metodoPagamento === "CARTAO_CREDITO"
+                    ? "Cartão de Crédito"
+                    : ""}
+                  {saida.metodoPagamento === "CARTAO_DEBITO"
+                    ? "Cartão de Débito"
+                    : ""}
+                  {saida.metodoPagamento === "CARTAO_MAQUINA"
+                    ? "Cartão de Crédito"
+                    : ""}
+                  {saida.metodoPagamento === "PIX" ? "PIX" : ""}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -217,7 +301,14 @@ const CardDashboard = () => {
   const theme = useTheme();
 
   return (
-    <div style={{ justifyContent: "flex-start", display: "flex", marginLeft: "2rem", marginTop: "1.5rem" }}>
+    <div
+      style={{
+        justifyContent: "flex-start",
+        display: "flex",
+        marginLeft: "2rem",
+        marginTop: "1.5rem",
+      }}
+    >
       <Card sx={{ display: "flex" }}>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
