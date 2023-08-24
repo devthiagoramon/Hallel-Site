@@ -9,11 +9,11 @@ const PainelFinanceiroAdm = () => {
   return (
     <div className='container_painel_financeiro'>
       <HeaderPainelFinanceiroAdm/>
-      <FragmentoOnePainelFinanceiro/>
+
       <FragmentoTwoPainelFinanceiro/>
+      <FragmentoOnePainelFinanceiro/>
       <FragmentoThreePainelFinanceiro/>
     </div>
   )
 }
-
-export default PainelFinanceiroAdm
+export default PainelFinanceiroAdm;

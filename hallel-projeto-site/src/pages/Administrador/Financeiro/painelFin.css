@@ -155,9 +155,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-self: flex-end;
   width: 50%;
-  align-items: flex-end;
+  justify-content: center;
 }
 
 .cont_info_frag_two_painel > span {
