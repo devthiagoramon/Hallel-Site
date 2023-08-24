@@ -187,6 +187,32 @@ export function saidaUltimasSaidasAPI() {
   );
 }
 
+export function saidasGetAllPaginas(mes, ano) {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    "/financeiro/saidas/totalPaginas" +
+    "?mes=" +
+    mes +
+    "&ano=" +
+    ano
+  );
+}
+
+export function saidasListEntradasByPageAndDate(numPage, mes, ano) {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    "/financeiro/saidas/list/data" +
+    "?page=" +
+    numPage +
+    "&mes=" +
+    mes +
+    "&ano=" +
+    ano
+  );
+}
+
 /*
     Parte de entradas (Financeiro)
 */
