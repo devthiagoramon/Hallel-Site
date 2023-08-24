@@ -1,0 +1,121 @@
+.container_gerar_pdf {
+  width: 100vw;
+  min-height: 100vh;
+}
+.header_gerar_pdf {
+  width: 100%;
+  padding: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_gerar_pdf > h2 {
+  text-align: left;
+}
+
+.body_gerar_pdf {
+  width: 100%;
+  padding: 3rem;
+  padding-top: 1rem;
+  display: flex;
+}
+
+.informacoes_gerar_pdf {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: auto;
+  max-width: 90%;
+}
+
+.pre_visualizar_info_span {
+  color: blue;
+  text-decoration: underline;
+}
+
+.pre_visualizar_info_span:hover {
+  cursor: pointer;
+  color: #6565ff;
+}
+
+.selecionar_mes_gerar_pdf {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.cont_mes_header_selecionado > label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.tabela_gerar_pdf {
+  width: 100%;
+}
+
+.header_tabela_gerar_pdf {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.text_header_tabela_gerar_pdf {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.input_tabela_gerar_pdf {
+  border-radius: 3px;
+  width: 95%;
+  padding: 4px;
+  border: none;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.00938em;
+  resize: none;
+}
+
+.input_tabela_gerar_pdf:hover {
+  outline: #3498dba2 solid 2px;
+}
+
+.input_tabela_gerar_pdf:focus {
+  outline: #3498db solid 2px;
+  outline-offset: 3px;
+  border-spacing: 5px;
+}
+
+.esquerda_body_gerar_pdf{
+    width: 60%;
+}
+
+.direita_body_gerar_pdf{
+    width: 40%;
+    padding-left: 2rem;
+    display: grid;
+    place-items: end;
+}
+
+.header_preview_gerar_pdf{
+    width: 70%;
+    background-color: #06312E;
+    height: 70px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 2px 0px 5px;
+}
+
+.body_preview_gerar_pdf{
+    width: 70%;
+    height: 450px;
+    box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 5px;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -47,9 +47,13 @@ import FormEvento from "./pages/CadastroEvento/FormEvento";
 import PainelFinanceiroAdm from "./pages/Administrador/Financeiro/PainelFinanceiroAdm";
 import EntradasFinanceiroAdm from "./pages/Administrador/Financeiro/renda";
 import VirarAssociado from "./pages/Associado/VirarAssociado/VirarAssociado";
-import TabelasFinanceiro from "./pages/Administrador/despesas_tables";
+import TabelasFinanceiro from "./pages/Administrador/Financeiro/TelaPrincipal";
+import GerarPDFEntrada from "./pages/Administrador/Financeiro/pdfs/GerarPDFEntrada";
+import GerarPDFSaida from "./pages/Administrador/Financeiro/pdfs/GerarPDFSaida";
 
 function RoutesApp() {
+  var roles = localStorage.getItem("R0l3s");
+
   return (
     <BrowserRouter>
       <Header />
@@ -70,7 +74,7 @@ function RoutesApp() {
         <Route path="/loja/pagamento" element={<LojaPagamento />} />
         <Route path="/entrar" element={<Entrar />} />
         {localStorage.getItem("token") !== null &&
-          localStorage.getItem("R0l3s") === "ROLE_USER" ? (
+        roles.includes("ROLE_USER") ? (
           <>
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/meusCursos" element={<MeusCursos />} />
@@ -80,7 +84,8 @@ function RoutesApp() {
           ""
         )}
         {localStorage.getItem("token") !== null &&
-          localStorage.getItem("R0l3s") === "ROLE_USER,ROLE_ASSOCIADO" ? (
+        roles.includes("ROLE_USER") &&
+        roles.includes("ROLE_ASSOCIADO") ? (
           <>
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/meusCursos" element={<MeusCursos />} />
@@ -95,7 +100,7 @@ function RoutesApp() {
         )}
 
         {localStorage.getItem("token") !== null &&
-          localStorage.getItem("R0l3s") ===
+        localStorage.getItem("R0l3s") ===
           "ROLE_ADMIN,ROLE_ASSOCIADO,ROLE_USER" ? (
           <>
             <Route path="/cursos" element={<Cursos />} />
@@ -105,10 +110,17 @@ function RoutesApp() {
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/meusCursos" element={<MeusCursos />} />
             <Route path="/desempenhoUser" element={<DesempenhoUser />} />
-
             <Route
               path="/administrador/tabelasFinanceiro"
               element={<TabelasFinanceiro />}
+            />
+            <Route
+              path="/administrador/financeiro/gerarPDFEntrada"
+              element={<GerarPDFEntrada />}
+            />
+            <Route
+              path="/administrador/financeiro/gerarPDFSaida"
+              element={<GerarPDFSaida />}
             />
             <Route
               path="/administrador/painelFinanceiro"
@@ -165,12 +177,10 @@ function RoutesApp() {
               element={<HistoricoAssociado />}
             />
             <Route path="/administrador/cursos" element={<ListarCursosADM />} />
-
             <Route
               path="/administrador/cursos/editar/:idCurso"
               element={<EditarCursoAdm />}
             />
-
             <Route
               path="/administrador/cursos/associados/:idCurso"
               element={<AssociadosListaCursosAdm />}
@@ -183,7 +193,6 @@ function RoutesApp() {
               path="/administrador/eventos/:idEvento/despesas"
               element={<DespesaEvento />}
             />
-
             <Route
               path="/administrador/eventos/:idEvento/editar"
               element={<EditarEventoAdm />}

@@ -104,25 +104,43 @@
   padding: 6px;
   margin-top: 1rem;
   border-radius: 12px;
-  outline: #252525 solid 1px;
-  display: flex;
   justify-content: center;
+  outline: #252525 solid 1px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 10px;
-  overflow-y: hidden;
-  overflow-x: auto;
 }
 
-.container_mp>button{
+.container_mp>.carrosel_mp{
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.container_mp>.carrosel_mp::-webkit-scrollbar{
+  height: 5px;
+  
+}
+
+.container_mp>.carrosel_mp::-webkit-scrollbar-thumb{
+  background-color: #5DADE2;
+  border-radius: 24px;
+}
+.container_mp>.carrosel_mp::-webkit-scrollbar-thumb:hover{
+  background-color: #436780;
+  cursor: pointer;
+}
+
+.container_mp>.carrosel_mp>button{
   padding: 0 15px 0 15px;
   border: none;
   background-color: inherit;
-  border-left: #252525 solid 2px;
-  border-right: #252525 solid 2px;
   font-weight: 400;
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
-.container_mp>button:hover{
+.container_mp>.carrosel_mp>button:hover{
   background-color: rgba(0, 0, 0, 0.10);
   font-weight: 600;
 }
@@ -139,12 +157,61 @@
   width: 50%;
 }
 
+.cont_headerpagamentoassociado{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
 .headerpagamentoassociado{
   width: 100%;
   background-color: #58D68D;
-  height: 100px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
+}
+
+.textInfoCard_PA{
+  color: #252525;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.pagamentoassociado_nao_pago{
+  background-color: #EC7063;
+}
+
+.nao_pago_associado{
+  font-size: 18px;
+  font-weight: 600;
+  color: #E74C3C;
+}
+
+.footer_card_btn_ap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.footer_card_btn_ap>button:hover{
+  background-color: #58D68D;
+}
+
+.body_modal_pagar_associacao{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  row-gap: 10px;
+  grid-template-rows: auto;
+}
+
+.footer_modal_pag_assoc{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
