@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import {
   CalendarMonth,
+  Close,
   NavigateBefore,
   NavigateNext,
 } from "@mui/icons-material";
@@ -28,6 +29,8 @@ import {
   entradasListEntradasByPageAndDate,
 } from "../../../../api/uris/FinanceiroURLS";
 import axios from "axios";
+import { PDFViewer } from "@react-pdf/renderer";
+import PDFEntrada from "./PDFEntrada";
 
 const GerarPDFEntrada = () => {
   const [anchorMenuCalendario, setAnchorMenuCalendario] = useState(null);
@@ -43,17 +46,7 @@ const GerarPDFEntrada = () => {
 
   const [entradas, setentradas] = useState([]);
 
-  function createDataSaidas(id, data, valor, metodoPagamentod) {
-    return { id, data, valor, metodoPagamentod };
-  }
-
-  const rows = [
-    createDataSaidas(1, "17/06/2023", "R$ " + 10, "PIX"),
-    createDataSaidas(2, "25/07/2023", "R$ " + 30, "PIX"),
-    createDataSaidas(3, "05/06/2023", "R$ " + 60, "TED"),
-    createDataSaidas(4, "20/06/2023", "R$ " + 120, "TED"),
-    createDataSaidas(5, "15/06/2023", "R$ " + 110, "TED"),
-  ];
+  const [mostrarPDF, setMostrarPDF] = useState(false);
 
   useEffect(() => {
     let dataString = mesSelecionado.format("MM/YYYY").toString();
@@ -262,9 +255,32 @@ const GerarPDFEntrada = () => {
             <Typography variant="h5" sx={{ color: "#F4F4F4" }}>
               Pré-visualização
             </Typography>
+            {mostrarPDF && (
+              <IconButton
+                onClick={() => {
+                  setMostrarPDF(false);
+                }}
+              >
+                <Close sx={{color: "#F4F4F4"}} />
+              </IconButton>
+            )}
           </div>
           <div className="body_preview_gerar_pdf">
-            <Button variant="contained">Pré-Visualizar</Button>
+            {mostrarPDF && (
+              <PDFViewer style={{ width: "100%", height: "100%" }}>
+                <PDFEntrada mesSelcionado={mesSelecionado} entradas={entradas}/>
+              </PDFViewer>
+            )}
+            {!mostrarPDF && (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setMostrarPDF(true);
+                }}
+              >
+                Pré-Visualizar
+              </Button>
+            )}
           </div>
         </div>
       </div>
