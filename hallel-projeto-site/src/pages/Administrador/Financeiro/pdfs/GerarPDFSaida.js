@@ -1,5 +1,6 @@
 import {
   CalendarMonth,
+  Close,
   NavigateBefore,
   NavigateNext,
 } from "@mui/icons-material";
@@ -23,6 +24,8 @@ import dayjs from "dayjs";
 import { useState } from "react";
 import axios from "axios";
 import { saidasGetAllPaginas, saidasListEntradasByPageAndDate } from "../../../../api/uris/FinanceiroURLS";
+import PDFSaida from "./PDFSaida";
+import { PDFViewer } from "@react-pdf/renderer";
 
 const GerarPDFSaida = () => {
   const [anchorMenuCalendario, setAnchorMenuCalendario] = useState(null);
@@ -33,6 +36,7 @@ const GerarPDFSaida = () => {
 
   const [mesSelecionado, setMesSelecionado] = useState(dayjs());
   const [paginaSelecionado, setPaginaSelecionado] = useState(1);
+  const [mostrarPDF, setMostrarPDF] = useState(false);
 
   const [totalPagina, settotalPagina] = useState(0);
 
@@ -245,9 +249,32 @@ const GerarPDFSaida = () => {
             <Typography variant="h5" sx={{ color: "#F4F4F4" }}>
               Pré-visualização
             </Typography>
+            {mostrarPDF && (
+              <IconButton
+                onClick={() => {
+                  setMostrarPDF(false);
+                }}
+              >
+                <Close sx={{ color: "#F4F4F4" }} />
+              </IconButton>
+            )}
           </div>
           <div className="body_preview_gerar_pdf">
-            <Button variant="contained">Pré-Visualizar</Button>
+            {mostrarPDF && (
+              <PDFViewer style={{ width: "100%", height: "100%" }}>
+                <PDFSaida mesSelecionado={mesSelecionado} saidas={saidas} />
+              </PDFViewer>
+            )}
+            {!mostrarPDF && (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setMostrarPDF(true);
+                }}
+              >
+                Pré-Visualizar
+              </Button>
+            )}
           </div>
         </div>
       </div>

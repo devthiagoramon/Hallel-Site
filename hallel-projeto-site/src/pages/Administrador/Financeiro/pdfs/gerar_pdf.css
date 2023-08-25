@@ -93,10 +93,10 @@
 }
 
 .direita_body_gerar_pdf{
-    width: 40%;
-    padding-left: 2rem;
+    width: 45%;
     display: grid;
     place-items: end;
+    max-height: 650px;
 }
 
 .header_preview_gerar_pdf{
@@ -112,7 +112,7 @@
 
 .body_preview_gerar_pdf{
     width: 70%;
-    height: 450px;
+    height: 580px;
     box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 5px;
     border-radius: 0 0 8px 8px;
     display: flex;

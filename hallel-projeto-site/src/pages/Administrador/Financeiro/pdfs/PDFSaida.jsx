@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const PDFEntrada = ({ mesSelecionado, entradas }) => {
+const PDFSaida = ({ mesSelecionado, saidas }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -109,7 +109,7 @@ const PDFEntrada = ({ mesSelecionado, entradas }) => {
           <View style={styles.contInfo}>
             <View style={styles.contInfoLeft}>
               <Text style={styles.textInfoStrong}>
-                Todas as entradas (Mês:{" "}
+                Todas as saidas (Mês:{" "}
                 {dayjs(mesSelecionado).format("MM/YYYY")})
               </Text>
             </View>
@@ -138,50 +138,54 @@ const PDFEntrada = ({ mesSelecionado, entradas }) => {
                 <Text style={styles.textHeadTable}>Pago com</Text>
               </View>
             </View>
-            {entradas.map((entrada) => {
-              return (
-                <View style={styles.tableRow}>
-                  <View style={styles.tableCell}>
-                    <Text style={styles.textBodyTable}>
-                      {entrada.codigo.numeroCodigo} |{" "}
-                      {entrada.codigo.nomeCodigo}
-                    </Text>
-                  </View>
-                  <View style={styles.tableCell}>
-                    <Text style={styles.textBodyTable}>
-                      {entrada.descricao != null && entrada.descricao}
-                    </Text>
-                  </View>
-                  <View style={styles.tableCell}>
-                    <Text style={styles.textBodyTable}>
-                      {dayjs(entrada.data).format("DD/MM/YYYY")}
-                    </Text>
-                  </View>
-                  <View style={styles.tableCell}>
-                    <Text style={styles.textBodyTable}>
-                      {entrada.valor.toLocaleString("pt-BR", {
-                        style: "currency",
-                        currency: "BRL",
-                      })}
-                    </Text>
-                  </View>
-                  <View style={styles.tableCell}>
-                    <Text style={styles.textBodyTable}>
-                      {entrada.metodoPagamento === "CARTAO_CREDITO"
-                        ? "Cartão de Crédito"
-                        : ""}
-                      {entrada.metodoPagamento === "CARTAO_DEBITO"
-                        ? "Cartão de Débito"
-                        : ""}
-                      {entrada.metodoPagamento === "CARTAO_MAQUINA"
-                        ? "Cartão de Crédito"
-                        : ""}
-                      {entrada.metodoPagamento === "PIX" ? "PIX" : ""}
-                    </Text>
-                  </View>
-                </View>
-              );
-            })}
+            {saidas.lenght > 0 && (
+              <>
+                {saidas.map((saida) => {
+                  return (
+                    <View style={styles.tableRow}>
+                      <View style={styles.tableCell}>
+                        <Text style={styles.textBodyTable}>
+                          {saida.codigo.numeroCodigo} |{" "}
+                          {saida.codigo.nomeCodigo}
+                        </Text>
+                      </View>
+                      <View style={styles.tableCell}>
+                        <Text style={styles.textBodyTable}>
+                          {saida.descricao != null && saida.descricao}
+                        </Text>
+                      </View>
+                      <View style={styles.tableCell}>
+                        <Text style={styles.textBodyTable}>
+                          {dayjs(saida.data).format("DD/MM/YYYY")}
+                        </Text>
+                      </View>
+                      <View style={styles.tableCell}>
+                        <Text style={styles.textBodyTable}>
+                          {saida.valor.toLocaleString("pt-BR", {
+                            style: "currency",
+                            currency: "BRL",
+                          })}
+                        </Text>
+                      </View>
+                      <View style={styles.tableCell}>
+                        <Text style={styles.textBodyTable}>
+                          {saida.metodoPagamento === "CARTAO_CREDITO"
+                            ? "Cartão de Crédito"
+                            : ""}
+                          {saida.metodoPagamento === "CARTAO_DEBITO"
+                            ? "Cartão de Débito"
+                            : ""}
+                          {saida.metodoPagamento === "CARTAO_MAQUINA"
+                            ? "Cartão de Crédito"
+                            : ""}
+                          {saida.metodoPagamento === "PIX" ? "PIX" : ""}
+                        </Text>
+                      </View>
+                    </View>
+                  );
+                })}
+              </>
+            )}
           </View>
         </View>
       </Page>
@@ -189,4 +193,4 @@ const PDFEntrada = ({ mesSelecionado, entradas }) => {
   );
 };
 
-export default PDFEntrada;
+export default PDFSaida;

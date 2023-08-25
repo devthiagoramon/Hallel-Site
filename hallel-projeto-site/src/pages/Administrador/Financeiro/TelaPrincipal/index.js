@@ -73,24 +73,6 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-function createDataRendas(id, data, valor, metodoPagamentod) {
-  return { id, data, valor, metodoPagamentod };
-}
-
-function createDataSaidas(id, data, valor, metodoPagamentod) {
-  return { id, data, valor, metodoPagamentod };
-}
-
-const TabelasFinanceiro = () => {
-  return (
-    <div className="financeiro-tabelas-principal">
-      <h1 style={{ marginLeft: "2rem" }}>Tabelas financeiro</h1>
-      <CardDashboard />
-      <UltimasRendas />
-      <UltimasSaidas />
-    </div>
-  );
-};
 
 const UltimasRendas = () => {
   const navigate = useNavigate();
@@ -126,7 +108,7 @@ const UltimasRendas = () => {
             color="white"
             aria-label="avançar"
             onClick={() => navigate("/administrador/painelFinanceiro/entradas")}
-          >
+            >
             <East />
           </Fab>
         </div>
@@ -345,4 +327,71 @@ const CardDashboard = () => {
     </div>
   );
 };
-export default TabelasFinanceiro;
+
+const CardEntradasFinanceiro = () => {
+  const navigate = useNavigate();
+
+  const theme = useTheme();
+
+  return (
+    <div
+      style={{
+        justifyContent: "flex-start",
+        display: "flex",
+        marginLeft: "2rem",
+        marginTop: "1.5rem",
+      }}
+    >
+      <Card sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" variant="h5">
+              Códigos de Entrada
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              component="div"
+            >
+              Código para as entradas
+            </Typography>
+          </CardContent>
+
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <div style={{ justifyContent: "flex-start", display: "flex" }}>
+              <ColorButton
+                onClick={() =>
+                  navigate("/administrador/financeiro/codigoEntrada")
+                }
+                variant="contained"
+                endIcon={<ArrowForwardIcon />}
+              >
+                Acessar
+              </ColorButton>
+            </div>
+          </CardContent>
+        </Box>
+        {/* <CardMedia
+        component="img"
+        sx={{ width: 151 }}
+        image= "https://img.icons8.com/?size=512&id=vFqlDrzMYOT0&format=png"
+        alt="Live from space album cover" */}
+      </Card>
+    </div>
+  );
+}
+
+const Financeiro = () => {
+  return (
+    <div className="financeiro-tabelas-principal">
+      <h1 style={{ marginLeft: "2rem" }}>Financeiro</h1>
+      <div className="header_cont_cards_financeiro">
+        <CardDashboard />
+        <CardEntradasFinanceiro />
+      </div>
+      <UltimasRendas />
+      <UltimasSaidas />
+    </div>
+  );
+};
+export default Financeiro;

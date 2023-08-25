@@ -1,54 +1,55 @@
-/*configurações gerais do css desta página*/
-.financeiro-tabelas-principal{
 
+.header_cont_cards_financeiro{
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    margin: 2em 0;
+}
+/*configurações gerais do css desta página*/
+.financeiro-tabelas-principal {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 0;
 }
 
-.financeiro-tabelas-principal  > label{
-    
-    font-weight: 700;
-    color: #35404b;
-    font-size: 1.3em;
+.financeiro-tabelas-principal > label {
+  font-weight: 700;
+  color: #35404b;
+  font-size: 1.3em;
 }
 
-.bt-avancar-financeiro{
-
-    border: none;
-    background: none;
+.bt-avancar-financeiro {
+  border: none;
+  background: none;
 }
 
 /* configurações dos subcomponentes */
 
-.tabela-ultimas-rendas, .tabela-ultimas-saidas{
-
-    font-weight: 700;
-    color: #35404b;
-    font-size: 1em;
-    margin: 2em
+.tabela-ultimas-rendas,
+.tabela-ultimas-saidas {
+  font-weight: 700;
+  color: #35404b;
+  font-size: 1em;
+  margin: 2em;
 }
 
-.div-header{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    column-gap: 20px;
+.div-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
 }
 
-.div-grafico-primeira{
-
-    display: flex;
-    flex-direction: row;
+.div-grafico-primeira {
+  display: flex;
+  flex-direction: row;
 }
 
-.cont-header-finaceiro{
-    width: fit-content;
-    display: flex;
-    align-items: center;
+.cont-header-finaceiro {
+  width: fit-content;
+  display: flex;
+  align-items: center;
 }
 
-.cont-header-finaceiro>h3{
-    padding: 20px;
-    text-align: left;
+.cont-header-finaceiro > h3 {
+  padding: 20px;
+  text-align: left;
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { FacebookProvider, Page } from 'react-facebook';
 
 const Feed = React.memo((props) => {
     React.useEffect(() => {

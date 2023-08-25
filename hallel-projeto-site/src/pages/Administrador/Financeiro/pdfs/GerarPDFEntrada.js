@@ -261,14 +261,17 @@ const GerarPDFEntrada = () => {
                   setMostrarPDF(false);
                 }}
               >
-                <Close sx={{color: "#F4F4F4"}} />
+                <Close sx={{ color: "#F4F4F4" }} />
               </IconButton>
             )}
           </div>
           <div className="body_preview_gerar_pdf">
             {mostrarPDF && (
               <PDFViewer style={{ width: "100%", height: "100%" }}>
-                <PDFEntrada mesSelcionado={mesSelecionado} entradas={entradas}/>
+                <PDFEntrada
+                  mesSelecionado={mesSelecionado}
+                  entradas={entradas}
+                />
               </PDFViewer>
             )}
             {!mostrarPDF && (

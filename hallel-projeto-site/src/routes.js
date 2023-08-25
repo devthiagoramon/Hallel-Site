@@ -50,6 +50,7 @@ import VirarAssociado from "./pages/Associado/VirarAssociado/VirarAssociado";
 import TabelasFinanceiro from "./pages/Administrador/Financeiro/TelaPrincipal";
 import GerarPDFEntrada from "./pages/Administrador/Financeiro/pdfs/GerarPDFEntrada";
 import GerarPDFSaida from "./pages/Administrador/Financeiro/pdfs/GerarPDFSaida";
+import CodigoEntradaFinanceiro from "./pages/Administrador/Financeiro/codigo_entrada/CodigoEntradaFinanceiro";
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
@@ -121,6 +122,10 @@ function RoutesApp() {
             <Route
               path="/administrador/financeiro/gerarPDFSaida"
               element={<GerarPDFSaida />}
+            />
+            <Route
+              path="/administrador/financeiro/codigoEntrada"
+              element={<CodigoEntradaFinanceiro />}
             />
             <Route
               path="/administrador/painelFinanceiro"
