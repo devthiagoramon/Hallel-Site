@@ -1,0 +1,29 @@
+.container_cod_financeiro{
+    width: 100vw;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.header_cf{
+    width: 100%;
+}
+
+.header_esquerda_cf{
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.body_cf{
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+}
+
+.esquerda_body_cf{
+    width: 40%;
+}
+
+.direita_body_cf{
+    width: 35%;
+}

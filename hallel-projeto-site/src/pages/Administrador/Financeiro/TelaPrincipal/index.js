@@ -346,14 +346,14 @@ const CardEntradasFinanceiro = () => {
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
             <Typography component="div" variant="h5">
-              Códigos de Entrada
+              Códigos Financeiro
             </Typography>
             <Typography
               variant="subtitle1"
               color="text.secondary"
               component="div"
             >
-              Código para as entradas
+              Códigos dos Financeiro
             </Typography>
           </CardContent>
 
@@ -361,7 +361,7 @@ const CardEntradasFinanceiro = () => {
             <div style={{ justifyContent: "flex-start", display: "flex" }}>
               <ColorButton
                 onClick={() =>
-                  navigate("/administrador/financeiro/codigoEntrada")
+                  navigate("/administrador/financeiro/codigosFinanceiro")
                 }
                 variant="contained"
                 endIcon={<ArrowForwardIcon />}
