@@ -32,7 +32,7 @@ const Feed = React.memo((props) => {
             cite="https://www.facebook.com/comunidadehallelam/"
             class="fb-xfbml-parse-ignore"
           >
-            <a href="https://www.facebook.com/comunidadehallelam/">Your Page</a>
+            <a href="https://www.facebook.com/comunidadehallelam/">Comunidade Católica Hallel</a>
           </blockquote>
         </div>
       </React.Fragment>

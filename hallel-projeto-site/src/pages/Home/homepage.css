@@ -8,10 +8,9 @@
 .containerCapa{
     background-color: #fafafa;
     width: 100%;
-    height: 45em;
+    height: 30em;
     padding: 0em 0;
-    margin-top: 0em;
-    
+    margin-top: 0em;    
 }
 
 .sectionCapa{
@@ -21,7 +20,6 @@
     background-attachment: fixed;
     position: relative;
     background-position-y: bottom 4em;
-   
     background-repeat: no-repeat;
 }
 
@@ -40,5 +38,32 @@
 .containerCapa label p{
 
    color: #FFFFFF;
- 
+}
+
+.area-middle{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.facebook-area{
+
+    width: 30em;
+    height: 40em;
+    margin: 3em 0;
+}
+
+.facebook-area > label{
+
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #35404b;
+    margin: 1em 0;
+}
+
+.area-cartoes-home{
+
+    display: flex;
+    flex-direction: column;
 }
