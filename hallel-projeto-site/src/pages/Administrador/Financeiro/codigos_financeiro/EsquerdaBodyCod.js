@@ -7,11 +7,11 @@ const EsquerdaBodyCodFinanceiro = () => {
     <div className="esquerda_body_cf">
       <div className="header_esquerda_cf">
         <h3>Lista de Códigos</h3>
-        <ListRounded sx={{ width: "30px", height: "30px" }} />
+        <ListRounded sx={{ width: "30px", height: "30px", color: "#252525" }} />
       </div>
       <div className="body_esquerda_cf">
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 300 }} aria-label="simple table">
+        <TableContainer sx={{maxWidth: "100%"}} component={Paper}>
+          <Table sx={{width: "100%"}} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>Número do código</TableCell>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./codigo_entrada.css";
-import EsquerdaBodyCodFinanceiro from "./EsquerdaBodyCodEntrada";
-import DireitaBodyCodFinanceiro from "./DireitaBodyCodEntrada";
+import EsquerdaBodyCodFinanceiro from "./EsquerdaBodyCod";
+import DireitaBodyCodFinanceiro from "./DireitaBodyCod";
 
 const CodigosFinanceiro = () => {
   return (
@@ -9,7 +9,7 @@ const CodigosFinanceiro = () => {
       <div className="header_cef">
         <h1>Códigos de Entradas</h1>
       </div>
-      <div className="body_cef">
+      <div className="body_cf">
         <EsquerdaBodyCodFinanceiro />
         <DireitaBodyCodFinanceiro />
       </div>
