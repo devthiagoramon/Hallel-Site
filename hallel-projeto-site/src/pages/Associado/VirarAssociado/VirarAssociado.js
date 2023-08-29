@@ -5,7 +5,6 @@ import { useState } from "react";
 import VirarAssociadoP2 from "./VirarAssociadoP2";
 import VirarAssociadoP3 from "./VirarAssociadoP3";
 import dayjs from "dayjs";
-import { useEffect } from "react";
 import { membroLoadPerfilById } from "../../../api/uris/MembroURLS";
 import axios from "axios";
 
