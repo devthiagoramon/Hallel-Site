@@ -4,18 +4,17 @@
   flex-direction: row;
   background: linear-gradient(55deg,#d24646,#f16633);
   padding: 2em;
-  margin: 0 25%;
+  margin: 2em auto;
+  width: 35em;
   border-radius: 2em;
   justify-content: space-around;
   transition: 0.5s;
 }
 
-
 .pedido-container:hover{
 
-  padding: 2.5em;
   transition: 0.5s;
-  margin: 0 24%;
+  width:38em;
 }
 
 .pedido-container .container-imagem > img{

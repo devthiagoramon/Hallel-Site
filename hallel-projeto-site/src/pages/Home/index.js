@@ -4,6 +4,7 @@ import Programacao from "../../components/SlideProg";
 import Eventos from "../../components/SlideEventos";
 import FacebookPlugin from "../../components/FacebookPlugin/indexFacebook.js";
 import "./homepage.css";
+import Carrosel from "../../components/Carousel/indexCarousel";
 
 function Home() {
   return (
@@ -13,10 +14,29 @@ function Home() {
           <label>Seja bem-vindo(a) à Comunidade Católica Hallel</label>
         </section>
       </div>
-      <Programacao />
-      <PanelAssociado />
-      <PanelPedido />
 
+      <div style={{display:"flex", justifyContent: "center"}}>
+      <Carrosel/>
+      </div>
+      <Programacao />
+
+      <div className="area-middle">
+
+        <div className="area-cartoes-home">
+
+            <PanelAssociado />
+            <PanelPedido />
+        </div>
+
+
+        <div className="facebook-area">
+
+          <label>Siga-nos no facebook</label>
+
+          <FacebookPlugin/>
+        </div>
+                
+      </div>
     </div>
   );
 }
