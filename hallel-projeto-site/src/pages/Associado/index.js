@@ -1,3 +1,4 @@
+import { CardGiftcardRounded } from "@mui/icons-material";
 import "./associado.css";
 import { SlPresent } from "react-icons/sl";
 import { Link } from "react-router-dom";
@@ -80,6 +81,25 @@ function OfertasCards() {
         </ul>
         <Link className="link" to="/virarAssociado">
           <button>Apoiar</button>
+        </Link>
+      </div>
+      <div className="divCard" id="divcard1">
+        <label id="tituloazul">
+          Presentear associação <CardGiftcardRounded />
+        </label>
+        <label>25,00/mês</label>
+        <hr />
+
+        <ul>
+          <li>Navegue no site com alguns anúncios</li>
+          <li>Nosso mais sincero agradecimento</li>
+          <li>
+            Acesso à nossa Área de Recompensas, com vídeos no formato vlog
+            exclusivos
+          </li>
+        </ul>
+        <Link className="link" to="/pagarOutroAssociado">
+          <button>Presentear</button>
         </Link>
       </div>
     </section>

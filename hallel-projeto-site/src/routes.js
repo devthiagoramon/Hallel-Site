@@ -51,6 +51,7 @@ import TabelasFinanceiro from "./pages/Administrador/Financeiro/TelaPrincipal";
 import GerarPDFEntrada from "./pages/Administrador/Financeiro/pdfs/GerarPDFEntrada";
 import GerarPDFSaida from "./pages/Administrador/Financeiro/pdfs/GerarPDFSaida";
 import CodigosFinanceiro from "./pages/Administrador/Financeiro/codigos_financeiro/CodigoFinanceiro";
+import PagarOutroAssociado from "./pages/Associado/PagarOutroAssociado/PagarOutroAssociado";
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
@@ -74,6 +75,7 @@ function RoutesApp() {
         <Route path="/loja/produto" element={<LojaProduto />} />
         <Route path="/loja/pagamento" element={<LojaPagamento />} />
         <Route path="/entrar" element={<Entrar />} />
+        <Route path="/pagarOutroAssociado" element={<PagarOutroAssociado />} />
         {localStorage.getItem("token") !== null &&
         roles.includes("ROLE_USER") ? (
           <>

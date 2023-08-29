@@ -1,42 +1,16 @@
-import React from "react";
-import { motion } from "framer-motion";
 import {
   CheckCircleOutlineRounded,
   CreditCard,
   PermIdentityRounded,
   SendRounded,
 } from "@mui/icons-material";
-import dayjs from "dayjs";
 import { Button } from "@mui/material";
-import { virarAssociadoAPI } from "../../../api/uris/MembroURLS";
-import axios from "axios";
+import React from "react";
+import { motion } from "framer-motion";
+import dayjs from "dayjs";
 
-const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
-
-  const confirmarPagamento = () => {
-    let url = virarAssociadoAPI();
-
-    axios.post(
-      url,
-      {
-        idMembro: localStorage.getItem("HallelId"),
-        ...novoAssociado,
-        metodoPagamentoNum: 3,
-      },
-      {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-          "Content-Type": "application/json",
-        },
-      }
-    ).then((res) => {
-      console.log(res.data)
-    }).catch((error)=> {
-      console.log(error)
-    });
-
-  };
-
+const PagOutroAssociadoP3 = ({ setParte, presentearAssoc }) => {
+  const confirmarPagamento = () => {};
   return (
     <motion.div
       animate={{ x: 0 }}
@@ -45,7 +19,7 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
       className="cont_first_part_VA"
     >
       <div className="header_cont_principal_VA">
-        <h1>Virar associado</h1>
+        <h1>Presentear associação</h1>
       </div>
       <div className="headers_parts_VA">
         <h3>Confirmar Pagamento</h3>
@@ -54,18 +28,11 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
       <div className="body_parts_VA">
         <div className="info_pessoais_cont_VA">
           <div className="header_info_confirmar_pagamento_VA">
-            <h4>Informações pessoais</h4>
+            <h4>Informação</h4>
             <PermIdentityRounded sx={{ ml: 2 }} />
           </div>
           <div className="body_info_confirmar_pagamento_VA">
-            <label>Nome: {novoAssociado.nome}</label>
-            <label>Email: {novoAssociado.email}</label>
-            <label>CPF: {novoAssociado.cpf}</label>
-            <label>Telefone: {novoAssociado.telefone}</label>
-            <label>
-              Data de Aniversário:{" "}
-              {dayjs(novoAssociado.dataNascimento).format("DD/MM/YYYY")}
-            </label>
+            <label>Email: {presentearAssoc.email}</label>
           </div>
         </div>
         <div className="info_cartao_cont_VA">
@@ -75,14 +42,16 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
               <CreditCard sx={{ ml: 2 }} />
             </div>
             <div className="body_info_confirmar_pagamento_VA">
-              <label>Número do cartão: {novoAssociado.numCartao}</label>
+              <label>Número do cartão: {presentearAssoc.numCartao}</label>
               <label>
                 Data de Validade:{" "}
-                {dayjs(novoAssociado.dataValidadeCartao).format("MM/YY")}
+                {dayjs(presentearAssoc.dataValidadeCartao).format("MM/YY")}
               </label>
-              <label>CVC: {novoAssociado.cvcCartao}</label>
-              <label>Nome do titular: {novoAssociado.nomeTitularCartao}</label>
-              <label>Endereço: {novoAssociado.enderecoCartao}</label>
+              <label>CVC: {presentearAssoc.cvcCartao}</label>
+              <label>
+                Nome do titular: {presentearAssoc.nomeTitularCartao}
+              </label>
+              <label>Endereço: {presentearAssoc.enderecoCartao}</label>
             </div>
           </div>
         </div>
@@ -99,7 +68,7 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
             style={{ backgroundColor: "#6c3483" }}
             variant="contained"
             onClick={() => {
-              setIndexParte(1);
+              setParte(1);
             }}
           >
             Voltar
@@ -117,4 +86,4 @@ const VirarAssociadoP3 = ({ setIndexParte, novoAssociado }) => {
   );
 };
 
-export default VirarAssociadoP3;
+export default PagOutroAssociadoP3;

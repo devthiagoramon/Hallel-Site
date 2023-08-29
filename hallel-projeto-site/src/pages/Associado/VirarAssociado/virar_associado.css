@@ -12,12 +12,14 @@
   margin-bottom: 2rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .header_cont_principal_VA > h1 {
   background: linear-gradient(to right, #6c3483, #a569bd);
   color: transparent;
   background-clip: text;
+  text-align: center;
 }
 
 .cont_first_part_VA {
