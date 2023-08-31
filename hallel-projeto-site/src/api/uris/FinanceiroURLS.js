@@ -302,3 +302,86 @@ export function metaAlterarByMesAnoAPI(mes, ano, metaAtualizada) {
     metaAtualizada
   );
 }
+
+/*
+  Parte de codigos dos financeiro, tanto de entradas
+  quanto de saidas
+*/
+
+// Entradas
+export function codigoEntradaCriarAPI(){
+  return (
+    uriDefaultPrefix()+
+    administradorPrefix()+
+    financeiroPrefix()+
+    "/codigo/entradas/criar"
+  )
+}
+
+export function codigoEntradaListarAPI() {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    financeiroPrefix() +
+    "/codigo/entradas/list"
+  );
+}
+
+export function codigoEntradaEditarAPI(id) {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    financeiroPrefix() +
+    "/codigo/entradas/editar/"+id
+  );
+}
+
+export function codigoEntradaDeletarAPI(id) {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    financeiroPrefix() +
+    "/codigo/entradas/deletar/" +
+    id
+  );
+}
+
+// Saidas
+
+export function codigoSaidaCriarAPI() {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    financeiroPrefix() +
+    "/codigo/saidas/criar"
+  );
+}
+
+export function codigoSaidaListarAPI() {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    financeiroPrefix() +
+    "/codigo/saidas/list"
+  );
+}
+
+export function codigoSaidaEditarAPI(id) {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    financeiroPrefix() +
+    "/codigo/saidas/editar/" +
+    id
+  );
+}
+
+export function codigoSaidaDeletarAPI(id) {
+  return (
+    uriDefaultPrefix() +
+    administradorPrefix() +
+    financeiroPrefix() +
+    "/codigo/saidas/deletar/" +
+    id
+  );
+}
