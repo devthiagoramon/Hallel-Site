@@ -7,7 +7,7 @@ import addCircle from "./../../../../images/addCircle.svg";
 import deleteIcon from "./../../../../images/deleteIcon.svg";
 import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
-import { Button, IconButton } from "@mui/material";
+import { Button, IconButton, Switch } from "@mui/material";
 import { AddLocationRounded } from "@mui/icons-material";
 import axios from "axios";
 import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
@@ -38,6 +38,7 @@ const EditarEventoAdm = () => {
     localEventoRequest: null,
     imagem: "",
     palestrantes: [],
+    destaque: false,
   };
   const [evento, setevento] = useState(eventoTemplate);
   const [eventoAntigo, seteventoAntigo] = useState(eventoTemplate);
@@ -61,6 +62,7 @@ const EditarEventoAdm = () => {
           horario: eventoTemp.horario,
           localEventoRequest: eventoTemp.localEvento,
           imagem: eventoTemp.imagem,
+          destaque: eventoTemp.destaque,
         });
         if (eventoTemp.palestrantes !== null && isRequest === false) {
           loadInputsArray(eventoTemp.palestrantes);
@@ -338,7 +340,18 @@ const EditarEventoAdm = () => {
         </div>
         <hr className="divisao" />
         <div className="contDetalhes">
-          <div className="contDetalhesEsquerda">
+          <div className="contDetalhesEsquerda"><label>Destacar Evento:</label>
+            <Tooltip title="Destacar o evento para todos">
+              <Switch
+                checked={evento.destaque}
+                onChange={() => {
+                  setevento((prev) => {
+                    return { ...prev, destaque: !evento.destaque };
+                  });
+                }}  
+                color="secondary"
+              />
+            </Tooltip>
             <label>
               Data <span className="obrigatorio">*</span>:
             </label>

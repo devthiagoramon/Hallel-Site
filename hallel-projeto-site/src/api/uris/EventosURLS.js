@@ -37,7 +37,7 @@ export function eventoEditarById(idEvento) {
 }
 
 export function eventoListar() {
-  return uriDefaultPrefix() + administradorPrefix() + eventoPrefix();
+  return uriDefaultPrefix() + eventoPrefix();
 }
 
 export function eventoListarArquivado() {
