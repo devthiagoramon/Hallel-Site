@@ -60,7 +60,7 @@ function EventoUser() {
   return (
     <div className="painelEventosUser">
       {showInfos ? (
-        <InfoEventos evento={eventoEspc} hide={() => setshowInfos(false)} />
+        <InfoEventos evento={eventoEspc} setEvento={setEventoEspc} hide={() => setshowInfos(false)} />
       ) : (
         <div>
           <h1 className="TituloEventoUser">Eventos</h1>

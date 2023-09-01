@@ -47,6 +47,12 @@ body {
 
 /*INFORMAÇÕES*/
 
+.infos{
+
+  display: flex;
+  flex-direction: column;
+}
+
 .voltar button {
   width: 3em;
   height: 3em;
