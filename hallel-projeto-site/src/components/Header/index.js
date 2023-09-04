@@ -175,8 +175,7 @@ function Header() {
         ""
       )}
       {isModalPerfilVisible &&
-      localStorage.getItem("R0l3s") ===
-        "ROLE_ADMIN,ROLE_ASSOCIADO,ROLE_USER" ? (
+        (String(localStorage.getItem("R0l3s")).includes("ROLE_ADMIN")) ? (
         <ModalPerfilAdm
           isOpen={openAdm}
           fecharModal={() => {
