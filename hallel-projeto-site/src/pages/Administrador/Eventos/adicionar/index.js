@@ -7,14 +7,20 @@ import addCircle from "./../../../../images/addCircle.svg";
 import deleteIcon from "./../../../../images/deleteIcon.svg";
 import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
-import { Button, IconButton, TextareaAutosize } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  Switch,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material";
 import { AddLocationRounded, Save } from "@mui/icons-material";
 import axios from "axios";
 import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
 import { MuiFileInput } from "mui-file-input";
 import { kMaxLength } from "buffer";
 import { eventoAdicionar } from "../../../../api/uris/EventosURLS";
-
+import { purple } from "@mui/material/colors";
 const AdicionarEvento = () => {
   const tituloDiv = useRef();
   const imagemDiv = useRef();
@@ -34,6 +40,7 @@ const AdicionarEvento = () => {
     localEventoRequest: null,
     imagem: null,
     palestrantes: [],
+    destaque: false,
   };
 
   const [evento, setevento] = useState(eventoTemplate);
@@ -84,8 +91,8 @@ const AdicionarEvento = () => {
   }
 
   function addNovoPalestrante() {
-    setinputsArray((state) => [...state, {id: lastIdArrayInputs, nome: "" }]);
-    setLastIdArrayInputs(lastIdArrayInputs+1)
+    setinputsArray((state) => [...state, { id: lastIdArrayInputs, nome: "" }]);
+    setLastIdArrayInputs(lastIdArrayInputs + 1);
   }
 
   function removerInput(e) {
@@ -197,7 +204,7 @@ const AdicionarEvento = () => {
 
   const getImagem = () => {
     return evento.imagem;
-  }
+  };
 
   return (
     <div>
@@ -295,6 +302,18 @@ const AdicionarEvento = () => {
         <hr className="divisao" />
         <div className="contDetalhes">
           <div className="contDetalhesEsquerda">
+            <label>Destacar Evento:</label>
+            <Tooltip title="Destacar o evento para todos">
+              <Switch
+                checked={evento.destaque}
+                onChange={() => {
+                  setevento((prev) => {
+                    return { ...prev, destaque: !evento.destaque };
+                  });
+                }}  
+                color="secondary"
+              />
+            </Tooltip>
             <label>
               Data <span className="obrigatorio">*</span>:
             </label>

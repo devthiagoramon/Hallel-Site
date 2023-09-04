@@ -2,6 +2,10 @@ body {
   overflow-x: hidden;
 }
 
+.grupo-evento {
+  margin-top: 5em;
+}
+
 .painelEventosUser {
   display: flex;
   flex-direction: column;
@@ -46,6 +50,19 @@ body {
   margin: 0 2em;
 }
 
-.grupo-evento {
-  margin-top: 5em;
+/* referente ao botao roxo */
+
+
+.container_participar_evento{
+
+  display: flex;
+  align-items: end;
+}
+
+
+/*referentea imagem da capa central*/
+.imagemCp1_evento_user{
+
+  max-height: 20em;
+  margin-right: 3em;
 }

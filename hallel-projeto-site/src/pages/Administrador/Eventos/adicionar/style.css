@@ -189,13 +189,14 @@
   width: 95vw;
   margin-top: 3rem;
   margin-left: 3rem;
+  height: auto;
   display: flex;
   justify-content: center;
 }
 
 .contDetalhesEsquerda {
   width: 46%;
-  height: 25vh;
+  height: auto;
   margin-left: 2rem;
   display: grid;
   grid-template-columns: 50% 50%;
@@ -317,14 +318,14 @@
   color: #e40000;
 }
 
-.submitContainer {
-  margin-top: 9rem;
+.submitContainer{
+  margin-top: 3rem;
   width: 100vw;
   height: 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .submitContainer Button {
