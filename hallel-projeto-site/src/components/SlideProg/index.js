@@ -22,45 +22,40 @@ const SlideProg = (props) => {
   }, []);
 
   return (
-    
-    <div className = "body-programacao">
-    
-     
-    <h1 id = "title">Programação Semanal</h1>
-    <div className="containerCarroseulProg">
-   
-      <motion.div
-        ref={carrosel}
-        className="carrousel"
-        initial={{x:100}}
-        animate={{x:0}}
-        transition={{duration: 0.8}}
-        whileTap={{ cursor: "grabbing" }}
-      >
+    <div className="body-programacao">
+      <h1 id="title">Programação Semanal</h1>
+      <div className="containerCarroseulProg">
         <motion.div
-          className="inner"
-          drag="x"
-          dragConstraints={{ right: 0, left: -width }}
+          ref={carrosel}
+          className="carrousel"
+          initial={{ x: 100 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.8 }}
+          whileTap={{ cursor: "grabbing" }}
         >
-          {images.map((imagem2) => {
-            return (
-              <motion.div
-                className="imagem2"
-                key={imagem2}
-                whileHover={{ scale: "1.02" }}
-              >
-                <img src={imagem2} alt="img" />
-                
-                <div className="legenda2">
-                  <a href="">Saiba mais</a>
-                </div>
-               
-              </motion.div>
-            );
-          })}
+          <motion.div
+            className="inner"
+            drag="x"
+            dragConstraints={{ right: 0, left: -width }}
+          >
+            {images.map((imagem2) => {
+              return (
+                <motion.div
+                  className="imagem2"
+                  key={imagem2}
+                  whileHover={{ scale: "1.02" }}
+                >
+                  <img src={imagem2} alt="img" />
+
+                  <div className="legenda2">
+                    <a href="">Saiba mais</a>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
     </div>
   );
 };

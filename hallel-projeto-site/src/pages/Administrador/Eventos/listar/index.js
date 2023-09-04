@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import {
-  CDBCard,
-  CDBCardBody,
-  CDBDataTable,
-  CDBContainer,
-} from "cdbreact";
+import { CDBCard, CDBCardBody, CDBDataTable, CDBContainer } from "cdbreact";
 import "./listar_adm_eventos.css";
 import {
   Button,
@@ -17,13 +12,14 @@ import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { ArchiveRounded, LocationOn } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import ModalArquivarEvento from "./ModalArquivarEvento";
-import {VscKebabVertical} from "react-icons/vsc";
+import { VscKebabVertical } from "react-icons/vsc";
 import { eventoListar } from "../../../../api/uris/EventosURLS";
 
 function Evento() {
   const [eventos, setEventos] = useState([]);
 
   const [eventoIdClick, setEventoIdClick] = useState("");
+  const [eventoIsDestaque, setEventoIsDestaque] = useState(false);
   const [anchorEl, setanchorEl] = useState(null);
 
   const openMenu = Boolean(anchorEl);
@@ -93,10 +89,12 @@ function Evento() {
 
       rows: eventos?.map((item) => ({
         titulo: (
-
-          <div style = {{display: "flex", justifyContent: "space-around"}}>
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
             <label>{item.titulo}</label>
-            <VscKebabVertical  id= "icKebab" onClick={(e) => abrirMenuEvento(e, item?.id)}/>
+            <VscKebabVertical
+              id="icKebab"
+              onClick={(e) => abrirMenuEvento(e, item?.id, item?.destaque)}
+            />
           </div>
         ),
         date: item.date,
@@ -109,9 +107,10 @@ function Evento() {
     };
   };
 
-  function abrirMenuEvento(e, id) {
+  function abrirMenuEvento(e, id, destaque) {
     setanchorEl(e.currentTarget);
     setEventoIdClick(id);
+    setEventoIsDestaque(destaque);
   }
 
   const handleClickLocaisEvento = () => {
@@ -244,6 +243,11 @@ function Evento() {
         >
           Despesas
         </MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigator("/administrador/eventos/addDestaque" + eventoIdClick);
+          }}
+        >Destacar Evento</MenuItem>
       </Menu>
       <ModalArquivarEvento
         setAtualizarTabela={setAtualizarTabela}

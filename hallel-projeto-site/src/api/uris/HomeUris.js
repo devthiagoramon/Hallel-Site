@@ -38,3 +38,16 @@ export function homeMatricularParticipanteInCursoByIdUserAndIdCurso(
 export function homeVerificarToken(token) {
   return uriDefaultPrefix() + "/isTokenExpired/" + String(token);
 }
+
+/*
+  Listar eventos
+*/
+
+export function listarEventosSemDestaqueHomeAPI(){
+  return uriDefaultPrefix()+"/home/eventos/semDestaque";
+}
+
+export function listarEventosDestacadosHomeAPI(){
+  return uriDefaultPrefix()+"/home/eventos/destacados"
+}
+

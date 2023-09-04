@@ -4,8 +4,8 @@ import Programacao from "../../components/SlideProg";
 import Eventos from "../../components/SlideEventos";
 import FacebookPlugin from "../../components/FacebookPlugin/indexFacebook.js";
 import "./homepage.css";
-import Carrosel from "../../components/Carousel/indexCarousel";
-
+import CarouselNaoDestacados from "../../components/CarouselNaoDestacados/indexCarousel";
+import CarroselDestacados from "../../components/CarouselDestacados/CarroselDestacados";
 function Home() {
   return (
     <div className="homepage">
@@ -15,27 +15,31 @@ function Home() {
         </section>
       </div>
 
-      <div style={{display:"flex", justifyContent: "center"}}>
-      <Carrosel/>
+      <h3 style={{marginTop: '2rem', marginLeft: "2rem"}}>Eventos</h3>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
+        }}
+      >
+        <CarroselDestacados />
+        <CarouselNaoDestacados />
       </div>
       <Programacao />
 
       <div className="area-middle">
-
         <div className="area-cartoes-home">
-
-            <PanelAssociado />
-            <PanelPedido />
+          <PanelAssociado />
+          <PanelPedido />
         </div>
-
 
         <div className="facebook-area">
-
           <label>Siga-nos no facebook</label>
 
-          <FacebookPlugin/>
+          <FacebookPlugin />
         </div>
-                
       </div>
     </div>
   );

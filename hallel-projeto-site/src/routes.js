@@ -103,8 +103,7 @@ function RoutesApp() {
         )}
 
         {localStorage.getItem("token") !== null &&
-        localStorage.getItem("R0l3s") ===
-          "ROLE_ADMIN,ROLE_ASSOCIADO,ROLE_USER" ? (
+        roles.includes("ROLE_ADMIN") ? (
           <>
             <Route path="/cursos" element={<Cursos />} />
             <Route path="/sorteioAssociado" element={<Sorteio />} />

@@ -347,7 +347,6 @@ export function codigoEntradaDeletarAPI(id) {
 }
 
 // Saidas
-
 export function codigoSaidaCriarAPI() {
   return (
     uriDefaultPrefix() +

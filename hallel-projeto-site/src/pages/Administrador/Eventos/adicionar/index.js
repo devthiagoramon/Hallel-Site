@@ -152,14 +152,12 @@ const AdicionarEvento = () => {
 
     if (file) {
       const reader = new FileReader();
-
       reader.onload = (e) => {
         const dataURL = e.target.result;
         setevento((prev) => {
           return { ...prev, imagem: dataURL };
         });
       };
-
       reader.readAsDataURL(file);
     }
   };
