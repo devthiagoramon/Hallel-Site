@@ -34,18 +34,10 @@ import PDFEntrada from "./PDFEntrada";
 
 const GerarPDFEntrada = () => {
   const [anchorMenuCalendario, setAnchorMenuCalendario] = useState(null);
-
-  function handleClickAbrirMenuCalendario(e) {
-    setAnchorMenuCalendario(e.currentTarget);
-  }
-
   const [mesSelecionado, setMesSelecionado] = useState(dayjs());
   const [paginaSelecionado, setPaginaSelecionado] = useState(1);
-
   const [totalPagina, settotalPagina] = useState(0);
-
   const [entradas, setentradas] = useState([]);
-
   const [mostrarPDF, setMostrarPDF] = useState(false);
 
   useEffect(() => {
@@ -69,6 +61,9 @@ const GerarPDFEntrada = () => {
       });
   }, [mesSelecionado]);
 
+  function handleClickAbrirMenuCalendario(e) {
+    setAnchorMenuCalendario(e.currentTarget);
+  }
   const handleNextPagina = () => {
     let pagina = paginaSelecionado;
     if (pagina < totalPagina) {

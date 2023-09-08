@@ -3,124 +3,58 @@ import "./styleSorteio.css";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, IconButton, Tooltip, Typography } from "@mui/material";
+import EsquerdaBodySortAdm from "./EsquerdaBodySortAdm";
+import DireitaBodySortAdm from "./DireitaBodySortAdm";
+import dayjs from "dayjs";
+import { CalendarMonth } from "@mui/icons-material";
+import MenuCalendarioSelecionar from "../Financeiro/associados/MenuCalendarioSelecionar";
 
 const SorteioAdm = () => {
-  return (
-    <section className="sorteioAdm">
-      <label>Sorteio de Associados</label>
 
-      <MeioConteudo />
-      <Tabela />
-    </section>
-  );
-};
+  const [mesSelecionado, setMesSelecionado] = useState(dayjs());
+  const [anchorMenuCalendario, setAnchorMenuCalendario] = useState(null);
 
-function Tabela() {
-  const [sorteio, setSorteio] = useState([]);
-
-  const addSorteio = (data) =>
-    axios
-      .sorteio("http://localhost:8080/api/sorteio", data)
-      .then(() => {
-        alert("deu certo");
-      })
-      .catch(() => {
-        alert("deu errado ");
-      });
-
-  useEffect(() => {
-    let url = "http://localhost:8080/api/sorteio";
-
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
-      .then((r) => r.json())
-      .then((object) => {
-        setSorteio(object);
-        console.log(sorteio);
-      })
-      .catch((r) => {
-        console.log("Erro");
-      });
-  }, []);
-
-  return (
-    <section className="table-sorteados">
-      <div className="head-table">
-        <label>Ganhadores</label>
-      </div>
-
-      {sorteio.length == 0 ? (
-        <div className="circuloProgresso">
-          <CircularProgress />
-        </div>
-      ) : (
-        <>
-          <Table
-            style={{ backgroundColor: "#FCFBF8" }}
-            bordered
-            striped
-            hover
-            size="sm"
-            border={2}
-          >
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Prêmio</th>
-                <th>Nome do sorteado</th>
-                <th>Data do Sorteio</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {sorteio.map((item) => {
-                return (
-                  <tr key={item.id}>
-                    <td>{item.titulo}</td>
-                    <td>{item.sorteioAssociados?.nome}</td>
-                    <td>{item.data}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
-        </>
-      )}
-    </section>
-  );
-}
-
-function MeioConteudo() {
-  const [show, setShow] = useState(false);
-
-  function invertBoolean() {
-    setShow(true);
-    <CircularProgress />;
+  function handleClickAbrirMenuCalendario(e) {
+    setAnchorMenuCalendario(e.currentTarget);
   }
 
   return (
-    <div className="label-area">
-      <div className="painelSort-bt">
-        <label>Sortear associado</label>
-        <button onClick={() => invertBoolean()}>Sortear</button>
-      </div>
-
-      {/*pegar os dados da api, falta*/}
-      {show && (
-        <div className="painelSort-bt" id="ganhador">
-          <label>Ganhador(a)</label>
-          <label className="associado-sorteado">Nome do associado</label>
+    <div className="sorteioAdm">
+      <div className="sortAdm_header">
+        <h1>Sorteio de Associados</h1>
+        <div className="selecionar_mes_header">
+          <div className="cont_mes_header_selecionado">
+            <Typography variant="subtitle1">Mês selecionado</Typography>
+            <label>{mesSelecionado.format("MM/YYYY")}</label>
+          </div>
+          <Tooltip title="Selecionar o mês">
+            <IconButton
+              id="btn_abrir_calendario"
+              onClick={(e) => {
+                handleClickAbrirMenuCalendario(e);
+              }}
+            >
+              <CalendarMonth
+                sx={{ color: "blue", height: "35px", width: "35px" }}
+              />
+            </IconButton>
+          </Tooltip>
+          <MenuCalendarioSelecionar
+            anchorMenuCalendario={anchorMenuCalendario}
+            setAnchorMenuCalendario={setAnchorMenuCalendario}
+            mesSelecionado={mesSelecionado}
+            setMesSelecionado={setMesSelecionado}
+          />
         </div>
-      )}
+      </div>
+      <div className="sortAdm_body">
+        <EsquerdaBodySortAdm />
+        <DireitaBodySortAdm mesSelecionado={mesSelecionado} />
+      </div>
     </div>
   );
-}
+};
+
 
 export default SorteioAdm;

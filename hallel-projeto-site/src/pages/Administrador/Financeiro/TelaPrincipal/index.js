@@ -73,13 +73,10 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-
 const UltimasRendas = () => {
   const navigate = useNavigate();
 
   const [entradas, setEntradas] = useState([]);
-
-  
 
   useEffect(() => {
     let url = entradasUltimasEntradasAPI();
@@ -108,13 +105,15 @@ const UltimasRendas = () => {
             color="white"
             aria-label="avançar"
             onClick={() => navigate("/administrador/painelFinanceiro/entradas")}
-            >
+          >
             <East />
           </Fab>
         </div>
         <div className="cont-header-financeiro">
           <ColorButton
-            onClick={() => navigate("/administrador/financeiro/gerarPDFEntrada")}
+            onClick={() =>
+              navigate("/administrador/financeiro/gerarPDFEntrada")
+            }
             variant="contained"
             sx={{ borderRadius: "24px" }}
           >
@@ -379,7 +378,7 @@ const CardEntradasFinanceiro = () => {
       </Card>
     </div>
   );
-}
+};
 
 const Financeiro = () => {
   return (

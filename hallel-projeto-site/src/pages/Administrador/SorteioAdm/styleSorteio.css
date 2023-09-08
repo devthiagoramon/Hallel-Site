@@ -1,88 +1,80 @@
-.sorteioAdm{
-
-    display: flex;
-    flex-direction: column;
-    color: #35404b;
+.sorteioAdm {
+  color: #35404b;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 2rem;
 }
 
-.sorteioAdm > label {
-
-    font-size: 1.8em;
-    font-weight: 700;
-    text-indent: 2em;
-    margin: 2em 0;
+.sortAdm_header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-/*meio - tela de sorteio*/
-.painelSort-bt{
-
-        display: flex;
-        flex-direction: column;
-        margin: 2em 10em;
-}
-.painelSort-bt > label{
-
-    font-size: 1.5em;
-    color: #35404b;
-    font-weight: 700;
+.sortAdm_body {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-
-.painelSort-bt > label:first-child{
-
-    text-indent: 2em;
+.left_sortAdm_cont {
+  width: 45%;
 }
 
-.painelSort-bt > button{
-
-    align-self: flex-start;
-    margin-left: 4em;
-    margin-top: 0.6em;
-    padding: 0.2em 0.8em;
-    border: none;
-    border-radius: 0.8em;
-    background-color: #80D88E;
-    color: #35404b;
-    font-weight: 700;
-    font-size: 1.1em;
+.header_itens_sort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
 }
 
-.painelSort-bt > button:hover{
-
-    background-color: #7bc687;
+.body_itens_sort {
+  margin-top: 2rem;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 10px;
 }
 
-
-#ganhador .associado-sorteado{
-
-    background-color: #D9D9D9;
-    border-radius: 1em;
-    width: 15em;
-    text-align: center;
-    margin: 1em 0 0 3em;
-    font-size: 1.1em;
+.img_itens_sort {
+  object-fit: contain;
+  aspect-ratio: 1/6;
+  width: 200px;
+  height: 150px;
 }
 
-/*tabela css*/
-.table-sorteados{
-
-    margin: 2em 20%;
+.btn_sortear_itens_cont {
+  margin-top: 2rem;
 }
 
-.head-table > label{
-
-    font-size: 1.5em;
-    font-weight: 700;
-    text-indent: 2em;
-    margin: 0.6em 0;
+.right_sortAdm_cont {
+  width: 50%;
 }
 
+.cards_infos_sorts {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  row-gap: 10px;
+}
 
+.card_info_sort {
+  max-width: 350px;
+  max-height: 500px;
+  width: fit-content;
+}
 
-.circuloProgresso{
+.img_card_info_sort {
+  width: 250px;
+  height: 150px;
+  aspect-ratio: 1/6;
+  object-fit: contain;
+}
 
-    position: relative;
-    display: flex;
-    justify-content: space-evenly;
+.selecionar_mes_header{
+  display: flex;
+  align-items: center;
 }
