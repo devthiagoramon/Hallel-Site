@@ -6,9 +6,11 @@ import {
   CardContent,
   CardHeader,
   IconButton,
+  TextareaAutosize,
   Tooltip,
   Typography,
 } from "@mui/material";
+import InputHallel from "../../../components/InputHallel/InputHallel";
 
 const EsquerdaBodySortAdm = () => {
   return (
@@ -36,6 +38,12 @@ const EsquerdaBodySortAdm = () => {
             </CardContent>
           </Card>
         </div>
+      </div>
+      <div className="inputs_sortear_cont">
+        <Typography variant="h6">Titulo</Typography>
+        <InputHallel style={{width: "100%"}}/>
+        <Typography variant="h6">Descrição</Typography>
+        <TextareaAutosize className="textarea_inputs_sort"/>
       </div>
       <div className="btn_sortear_itens_cont">
         <BtnHallel primario>Sortear</BtnHallel>

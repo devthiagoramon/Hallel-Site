@@ -1,11 +1,37 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { ListRounded } from "@mui/icons-material";
+import { Card, CardContent, IconButton, Typography } from "@mui/material";
 import React from "react";
+import { useState } from "react";
+import ModalListarSorteios from "./ModalListarSorteios";
 
-const DireitaBodySortAdm = ({
-  mesSelecionado
+export const DireitaBodySortAdm = ({
+  mesSelecionado,
+  sorteioSelec,
+  setSorteioSelec,
 }) => {
+  const [openModalWithSorteios, setOpenModalWithSorteios] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModalWithSorteios(!openModalWithSorteios);
+  };
+
   return (
     <div className="right_sortAdm_cont">
+      <div className="cont_selec_sort">
+        <h4>Selecionar sorteio</h4>
+        {sorteioSelec === null ? (
+          <div className="inner_selec_sort_cont" id="no_selected">
+            <Typography variant="body1" href="list_sorteos">
+              Selecionar
+            </Typography>
+            <IconButton id="list_sorteos" onClick={handleOpenModal}>
+              <ListRounded />
+            </IconButton>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
       <div className="cards_infos_sorts">
         <Card className="card_info_sort" id="card_ultimo_sorteado">
           <CardContent>
@@ -31,7 +57,7 @@ const DireitaBodySortAdm = ({
             <Typography>Mês: 08/2023</Typography>
           </CardContent>
         </Card>
-        {}
+
         <Card className="card_info_sort" id="card_sorteado_mes">
           <CardContent>
             <Typography variant="body1">Sorteado do mês</Typography>
@@ -53,14 +79,14 @@ const DireitaBodySortAdm = ({
             <Typography variant="body2" component="h6">
               Email: eduarda@gmail.com
             </Typography>
-            <Typography>
-                Mês: {mesSelecionado.format("MM/YYYY")}
-            </Typography>
+            <Typography>Mês: {mesSelecionado.format("MM/YYYY")}</Typography>
           </CardContent>
         </Card>
       </div>
+      <ModalListarSorteios
+        openModal={openModalWithSorteios}
+        setOpenModal={setOpenModalWithSorteios}
+      />
     </div>
   );
 };
-
-export default DireitaBodySortAdm;
