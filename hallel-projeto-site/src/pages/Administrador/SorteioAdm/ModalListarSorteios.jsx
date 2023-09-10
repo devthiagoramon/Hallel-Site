@@ -17,8 +17,9 @@ import { useMemo } from "react";
 import { useState } from "react";
 import { sorteioListarAllAPI } from "../../../api/uris/SorteioURIs";
 import axios from "axios";
+import dayjs from "dayjs";
 
-const ModalListarSorteios = ({ openModal, setOpenModal }) => {
+const ModalListarSorteios = ({ openModal, setOpenModal, setSorteioSelec }) => {
   const [sorteios, setSorteios] = useState([]);
 
   const styleInnerModal = {
@@ -26,7 +27,7 @@ const ModalListarSorteios = ({ openModal, setOpenModal }) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 450,
+    width: 600,
     bgcolor: "#F2F2F8",
     borderRadius: "12px",
     boxShadow: 24,
@@ -35,18 +36,28 @@ const ModalListarSorteios = ({ openModal, setOpenModal }) => {
 
   const handleCloseModal = () => {
     setOpenModal(!openModal);
+    setSorteios([]);
   };
+
+  function handleSelectSorteio(sorteio) {
+    setSorteioSelec(sorteio);
+    setOpenModal(!openModal);
+    setSorteios([]);
+  }
 
   useMemo(() => {
     let url = sorteioListarAllAPI();
 
-    axios.get(url, {
-      headers: { Authorization: localStorage.getItem("token") },
-    }).then((res) => {
-        setSorteios(res.data)
-    }).catch((error)=> {
-        console.log("Error getting sorteios from API: "+error);
-    });
+    axios
+      .get(url, {
+        headers: { Authorization: localStorage.getItem("token") },
+      })
+      .then((res) => {
+        setSorteios(res.data);
+      })
+      .catch((error) => {
+        console.log("Error getting sorteios from API: " + error);
+      });
   }, [setSorteios]);
 
   return (
@@ -70,12 +81,14 @@ const ModalListarSorteios = ({ openModal, setOpenModal }) => {
                   <>
                     <TableCell>{sorteio.titulo}</TableCell>
                     <TableCell>{sorteio.descricao}</TableCell>
-                    <TableCell>{sorteio.data}</TableCell>
+                    <TableCell>
+                      {dayjs(sorteio.data).format("DD/MM/YYYY")}
+                    </TableCell>
                     <TableCell
                       component="div"
                       className="selec_this_sorteio_cont"
                     >
-                      <IconButton>
+                      <IconButton onClick={() => {handleSelectSorteio(sorteio)}}>
                         <CheckCircleOutlined />
                       </IconButton>
                     </TableCell>

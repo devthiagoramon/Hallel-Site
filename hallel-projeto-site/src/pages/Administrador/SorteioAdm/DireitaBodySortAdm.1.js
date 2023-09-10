@@ -86,6 +86,7 @@ export const DireitaBodySortAdm = ({
       <ModalListarSorteios
         openModal={openModalWithSorteios}
         setOpenModal={setOpenModalWithSorteios}
+        setSorteioSelec={setSorteioSelec}
       />
     </div>
   );

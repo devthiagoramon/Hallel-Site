@@ -45,6 +45,23 @@
   height: 150px;
 }
 
+.cont_error_itens_sort{
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont_nenhuma_imagem_itens_sort{
+  width: 200px;
+  height: 150px;
+  background-color: #D5D8DC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .inputs_sortear_cont {
   display: grid;
   width: 50%;
@@ -70,6 +87,25 @@
   outline: #3498db solid 2px;
   outline-offset: 3px;
   border-spacing: 5px;
+}
+
+.textarea_inputs_sort_error {
+  outline: #F1948A solid 2px;
+  border-radius: 3px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.00938em;
+  resize: none;
+}
+
+.textarea_inputs_sort_error:focus{
+  outline: #CB4335 solid 2px;
+  outline-offset: 3px;
+  border-spacing: 5px;
+  resize: none;
 }
 
 .btn_sortear_itens_cont {
@@ -113,4 +149,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.cont_add_item_sort_modal{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  row-gap: 20px;
+}
+
+.cont_add_item_sort_modal>img{
+  width: 100%;
+  height: 250px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.cont_btn_add_item_sort_modal{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 }
