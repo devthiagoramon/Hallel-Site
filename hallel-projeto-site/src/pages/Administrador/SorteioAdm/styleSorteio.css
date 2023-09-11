@@ -29,6 +29,28 @@
   width: 50%;
 }
 
+.card_itens_sort{
+  max-width: 250px;
+  max-height: 300px;
+  opacity: 0;
+  transform: scale(0);
+  animation: zoomAnimationCards 400ms ease-out forwards;
+}
+
+.cont_icon_deletar_card_itens_sort {
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.card_itens_sort:hover > .cont_icon_deletar_card_itens_sort > button {
+  display: block;
+  opacity: 0;
+  transform: scale(0);
+  animation: zoomAnimation 350ms ease-out forwards;
+}
+
 .body_itens_sort {
   margin-top: 2rem;
   display: flex;
@@ -45,7 +67,7 @@
   height: 150px;
 }
 
-.cont_error_itens_sort{
+.cont_error_itens_sort {
   width: 100%;
   height: 250px;
   display: flex;
@@ -53,10 +75,10 @@
   align-items: center;
 }
 
-.cont_nenhuma_imagem_itens_sort{
+.cont_nenhuma_imagem_itens_sort {
   width: 200px;
   height: 150px;
-  background-color: #D5D8DC;
+  background-color: #d5d8dc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,7 +93,7 @@
   row-gap: 5px;
 }
 
-.textarea_inputs_sort{
+.textarea_inputs_sort {
   border-radius: 3px;
   width: 100%;
   padding: 8px;
@@ -83,14 +105,14 @@
   resize: none;
 }
 
-.textarea_inputs_sort:focus{
+.textarea_inputs_sort:focus {
   outline: #3498db solid 2px;
   outline-offset: 3px;
   border-spacing: 5px;
 }
 
 .textarea_inputs_sort_error {
-  outline: #F1948A solid 2px;
+  outline: #f1948a solid 2px;
   border-radius: 3px;
   width: 100%;
   padding: 8px;
@@ -101,8 +123,8 @@
   resize: none;
 }
 
-.textarea_inputs_sort_error:focus{
-  outline: #CB4335 solid 2px;
+.textarea_inputs_sort_error:focus {
+  outline: #cb4335 solid 2px;
   outline-offset: 3px;
   border-spacing: 5px;
   resize: none;
@@ -123,6 +145,7 @@
   justify-content: space-around;
   row-gap: 10px;
 }
+
 
 .card_info_sort {
   max-width: 350px;
@@ -151,7 +174,7 @@
   align-items: center;
 }
 
-.cont_add_item_sort_modal{
+.cont_add_item_sort_modal {
   width: 100%;
   display: grid;
   grid-template-columns: 100%;
@@ -159,7 +182,7 @@
   row-gap: 20px;
 }
 
-.cont_add_item_sort_modal>img{
+.cont_add_item_sort_modal > img {
   width: 100%;
   height: 250px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
@@ -167,10 +190,55 @@
   object-fit: contain;
 }
 
-.cont_btn_add_item_sort_modal{
+.cont_btn_add_item_sort_modal {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+}
+
+@keyframes zoomAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  75% {
+    transform: scale(1.4);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomAnimationCards {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes deletarAnimationCards {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
 }

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
-import { AddCircleOutlineRounded } from "@mui/icons-material";
+import { AddCircleOutlineRounded, DeleteRounded } from "@mui/icons-material";
 import {
   Card,
   CardContent,
@@ -20,6 +20,7 @@ import { useEffect } from "react";
 
 const EsquerdaBodySortAdm = () => {
   const [itens, setItens] = useState([]);
+  const [refsItens, setRefsItens] = useState([]);
   const [openModalAddItens, setOpenModalAddItens] = useState(false);
   const sorteioTemplate = {
     titulo: "",
@@ -74,13 +75,28 @@ const EsquerdaBodySortAdm = () => {
       return { ...prev, [e.target.name]: [e.target.value] };
     });
   };
-  
+
   useEffect(() => {
-    if(itens.length > 0){
+    if (itens.length > 0) {
       setErrorItens(false);
+      let itensProv = itens;
+      itensProv.forEach((item, index) => {
+        refsItens[index] = React.createRef();
+      });
     }
-  }, [])
-  
+  }, []);
+
+  function deleteItemFromItens(id, refId) {
+    let refsItensProv = [...refsItens];
+    console.log(refsItensProv[refId]);
+    refsItensProv[refId].current.style.animation =
+      "deletarAnimationCards 400ms ease-out forwards";
+    setTimeout(() => {
+      let itensProv = [...itens];
+      itensProv.splice(itensProv.indexOf((item) => item.id === id));
+      setItens(itensProv);
+    }, 400);
+  }
 
   return (
     <div className="left_sortAdm_cont">
@@ -102,9 +118,21 @@ const EsquerdaBodySortAdm = () => {
             </div>
           ) : (
             <>
-              {itens.map((item) => {
+              {itens.map((item, index) => {
                 return (
-                  <Card className="card_itens_sort">
+                  <Card
+                    key={item.id}
+                    ref={refsItens[index]}
+                    className="card_itens_sort"
+                  >
+                    <div className="cont_icon_deletar_card_itens_sort">
+                      <IconButton
+                        onClick={() => deleteItemFromItens(item.id, index)}
+                        sx={{ display: "none", position: "absolute", right: 0 }}
+                      >
+                        <DeleteRounded />
+                      </IconButton>
+                    </div>
                     <CardContent>
                       <Typography variant="body1">{item.nome}</Typography>
                     </CardContent>
@@ -177,6 +205,7 @@ const EsquerdaBodySortAdm = () => {
         setOpenModal={setOpenModalAddItens}
         errorItens={errorItens}
         setErrorItens={setErrorItens}
+        setRefsItens={setRefsItens}
       />
     </div>
   );

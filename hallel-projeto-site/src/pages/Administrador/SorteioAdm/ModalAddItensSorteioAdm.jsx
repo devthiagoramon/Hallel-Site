@@ -12,6 +12,7 @@ const ModalAddItensSorteioAdm = ({
   setItens,
   errorItens,
   setErrorItens,
+  setRefsItens,
 }) => {
   const styleInnerModal = {
     position: "absolute",
@@ -70,6 +71,8 @@ const ModalAddItensSorteioAdm = ({
     if(errorItens){
       setErrorItens(false);
     }
+    let ref = React.createRef();
+    setRefsItens((prev) => [...prev, ref]);
   }
   
   return (
