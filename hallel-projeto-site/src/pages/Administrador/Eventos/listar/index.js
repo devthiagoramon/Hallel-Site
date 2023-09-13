@@ -247,6 +247,12 @@ function Evento() {
             navigator("/administrador/eventos/addDestaque" + eventoIdClick);
           }}
         >Destacar Evento</MenuItem>
+
+          <MenuItem
+          onClick={() => {
+            navigator("/administrador/eventos/"+ eventoIdClick+ "/participantes");
+          }}
+        >Participantes</MenuItem>
       </Menu>
       <ModalArquivarEvento
         setAtualizarTabela={setAtualizarTabela}

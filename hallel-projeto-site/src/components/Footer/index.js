@@ -22,8 +22,8 @@ function Footer(){
         <h4>Comunidade Hallel</h4>
         <hr class = "linha"/>
           <ul className = "list-unstyled">
-          <li>Aparecida, Manaus - AM <br/>222, Rua Leornado Malcher <FiMapPin/></li>
-            <li>(92) 3085-1787 <FiPhone/></li>
+          <li className='item-line-footer'>Aparecida, Manaus - AM <br/>222, Rua Leornado Malcher <FiMapPin/></li>
+            <li className='item-line-footer'>(92) 3085-1787 <FiPhone/></li>
           </ul>
       </div>
       {/*coluna 2*/}
@@ -31,12 +31,12 @@ function Footer(){
       <h4>Mídias Sociais</h4>
       <hr class = "linha" />
           <ul className = "list-unstyled">
-            <li><a href = "https://youtube.com/@comunidadehallel">Youtube</a> <AiFillYoutube/></li>
-            <li><a href = "https://twitter.com/hallelmanaus?s=20&t=2-TK1zPnVoCOCylv9Py7QQ">Twitter</a> <FiTwitter/></li>
+            <li className='item-line-footer'><a href = "https://youtube.com/@comunidadehallel">Youtube</a> <AiFillYoutube/></li>
+            <li className='item-line-footer'><a href = "https://twitter.com/hallelmanaus?s=20&t=2-TK1zPnVoCOCylv9Py7QQ">Twitter</a> <FiTwitter/></li>
 
             
-            <li><a href = "https://instagram.com/comunidadehallel?igshid=YmMyMTA2M2Y=">Instagram</a> <AiOutlineInstagram/></li>
-            <li><a href = "https://m.facebook.com/375394805846479/">Facebook</a> <AiFillFacebook/></li>
+            <li className='item-line-footer'><a href = "https://instagram.com/comunidadehallel?igshid=YmMyMTA2M2Y=">Instagram</a> <AiOutlineInstagram/></li>
+            <li className='item-line-footer'><a href = "https://m.facebook.com/375394805846479/">Facebook</a> <AiFillFacebook/></li>
           </ul>
     </div>
     </div>

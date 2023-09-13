@@ -1,7 +1,6 @@
 import PanelPedido from "../../components/Panels/Pedido_oracao_panel";
 import PanelAssociado from "../../components/Panels/Associado_panel";
 import Programacao from "../../components/SlideProg";
-import Eventos from "../../components/SlideEventos";
 import FacebookPlugin from "../../components/FacebookPlugin/indexFacebook.js";
 import "./homepage.css";
 import CarouselNaoDestacados from "../../components/CarouselNaoDestacados/indexCarousel";

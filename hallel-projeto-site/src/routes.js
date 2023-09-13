@@ -52,6 +52,7 @@ import GerarPDFEntrada from "./pages/Administrador/Financeiro/pdfs/GerarPDFEntra
 import GerarPDFSaida from "./pages/Administrador/Financeiro/pdfs/GerarPDFSaida";
 import CodigosFinanceiro from "./pages/Administrador/Financeiro/codigos_financeiro/CodigoFinanceiro";
 import PagarOutroAssociado from "./pages/Associado/PagarOutroAssociado/PagarOutroAssociado";
+import ParticipanteEvento from "./pages/Administrador/Eventos/participantes_evento/indexParticipantes"
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
@@ -195,6 +196,12 @@ function RoutesApp() {
               path="/administrador/locaisEvento"
               element={<LocaisEventos />}
             />
+
+            <Route
+              path="/administrador/eventos/:idEvento/participantes"
+              element={<ParticipanteEvento />}
+            />
+
             <Route
               path="/administrador/eventos/:idEvento/despesas"
               element={<DespesaEvento />}
