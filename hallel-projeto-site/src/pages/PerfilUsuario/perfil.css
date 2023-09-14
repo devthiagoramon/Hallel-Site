@@ -215,3 +215,22 @@
   display: flex;
   justify-content: center;
 }
+
+.sorteio_perfil_associado{
+
+  width: 100%;
+  margin-top: 2rem;
+
+}
+
+.header_sort_perfil_assoc{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#selecionar_mes_assoc_perfil_sorteios{
+  display: flex;
+  align-items: center;
+  
+}
