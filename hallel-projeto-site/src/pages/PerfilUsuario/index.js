@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./perfil.css";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -10,7 +10,13 @@ import { associadoListarPerfil } from "../../api/uris/AssociadosURLS";
 import SelecionarMesesPagoAssociadoPerfil from "./SelecionarMesesPagoAssociadoPerfil";
 import dayjs from "dayjs";
 import CardMesSelecionado from "./CardMesSelecionado";
-import { IconButton, Tooltip, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { CalendarMonth } from "@mui/icons-material";
 import MenuCalendarioSelecionar from "../Administrador/Financeiro/associados/MenuCalendarioSelecionar";
 import { motion } from "framer-motion";
@@ -34,8 +40,11 @@ const Info = () => {
   const [mesSelecionado, setMesSelecionado] = useState(
     dayjs().format("MM/YYYY")
   );
-
   const [mesSelecionadoSorteio, setMesSelecionadoSorteio] = useState(dayjs());
+  const [sorteiosGanhos, setSorteiosGanhos] = useState([]);
+
+  const carousel = useRef();
+  const [widthCarousel, setWidthCarousel] = useState(0);
 
   const handlePasswordChange = (evnt) => {
     setPasswordInput(evnt.target.value);
@@ -93,6 +102,10 @@ const Info = () => {
       })
       .catch((error) => console.warn(error));
   }, [setIsMembro, setisAssociado, setUsuario]);
+
+  useEffect(() => {
+    setWidthCarousel(carousel.current?.scrollWidth-carousel.current?.offsetWidth);
+  }, [])
 
   return (
     <div className="container_perfil">
@@ -252,8 +265,26 @@ const Info = () => {
               />
             </div>
             <div className="body_sort_perfil_assoc">
-              <motion.div className="carousel">
-                  
+              <motion.div className="carousel" whileTap={{cursor: "grabbing"}}>
+                <motion.div className="inner_carousel" drag="x" dragConstraints={{right: 0, left: -widthCarousel}}>
+                  {sorteiosGanhos.length === 0 ? (
+                    <div></div>
+                  ) : (
+                    <>
+                      {sorteiosGanhos.map((sorteio) => {
+                        return (
+                          <motion.div className="item_carousel" >
+                            <Card className="card_carousel_item">
+                              <CardContent>
+                                <h3>{sorteio.titulo}</h3>
+                              </CardContent>
+                            </Card>
+                          </motion.div>
+                        );
+                      })}
+                    </>
+                  )}
+                </motion.div>
               </motion.div>
             </div>
           </div>

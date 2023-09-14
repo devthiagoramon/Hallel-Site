@@ -87,6 +87,7 @@
 
 .cont_perfil_associado{
   width: 50%;
+  min-height: 100vh;
   margin-top: 7em;
 }
 .pago_associado{
@@ -233,4 +234,22 @@
   display: flex;
   align-items: center;
   
+}
+
+.carousel{
+  cursor: grab;
+  overflow: hidden;
+}
+
+.inner_carousel{
+  display: flex;
+}
+
+.item_carousel{
+  max-height: 300px;
+}
+
+.card_carousel_item{
+  width: 300px;
+  height: auto;
 }
