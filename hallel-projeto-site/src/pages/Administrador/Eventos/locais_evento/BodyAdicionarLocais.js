@@ -3,7 +3,6 @@ import EsquerdaBodyLocaisEventos from "./EsquerdaBodyAdicionarLocais";
 import DireitaBodyLocaisEventos from "./DireitaBodyLcoaisEventos";
 import { useState } from "react";
 import ModalEditLocalEvento from "./ModalEditLocalEvento";
-import { useEffect } from "react";
 import { Alert, Snackbar } from "@mui/material";
 
 const BodyLocaisEventos = () => {

@@ -13,6 +13,7 @@
     font-size: 1.8em;
     text-indent: 3em;
     font-weight: 700;
+    z-index: 0;
     margin: 1em 0;
 }
 
@@ -27,8 +28,8 @@
 
 .painelBanner{
 
-    margin: 2em 20%;
-    margin-bottom: 20em;
+    margin: 1em 20%;
+    margin-bottom: 2em;
     min-height: 15em;
     display: flex;
     justify-content: center;
@@ -36,15 +37,15 @@
 
 .painelBanner > div{
 
-    padding-top: 0.5em;
+    padding-top: 2em;
     color: #35404b;
 }
 
 .painelBanner div{
 
-    position: absolute;
-    height: 18em;
-    width: 18em;
+    position: relative;
+    height: 12em;
+    width: 12em;
     border-radius: 1.5em;
     font-size: 1.5em;
 }
@@ -74,8 +75,8 @@
 
     background-color: #FFF48F;
     margin-left: 10em;
-    height: 16em;
-    width: 16em;
+    height: 10em;
+    width: 10em;
     bottom: 10em;
     box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
 }
@@ -84,13 +85,16 @@
 
     position: relative;
     right: 3em;
-    bottom: 2em;
+    top: 2em;
+    size: 2em;
+    height: 8em;
+    width: 8em;
     z-index: 4;
 }
 
 .painelBanner .amarelo-quadro img:nth-child(2){
     position: relative;
-    bottom: 10em;
+    bottom: 9em;
     left: 2em;
 }
 

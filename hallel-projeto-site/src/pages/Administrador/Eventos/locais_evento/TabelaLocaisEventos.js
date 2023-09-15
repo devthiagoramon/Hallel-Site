@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import { localEventoListar } from '../../../../api/uris/EventosURLS';
 
+
 const TabelaLocaisEventos = (props) => {
 
   const [eventosLocais, seteventosLocais] = useState([]);

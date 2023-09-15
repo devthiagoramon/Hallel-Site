@@ -30,7 +30,6 @@ function AreaTopo() {
   return (
     <div className="painelBanner">
       <div className="verde-quadro">
-        <label>Hallel Sorteios</label>
       </div>
       <div className="amarelo-quadro">
         <img src={Logo} alt="logo hallel" />
@@ -49,7 +48,7 @@ function TableArea() {
 
   // post
   const addSorteado = async (id, titulo, sorteioAssociados, data) => {
-    let url = "http://localhost:8080/api/sorteio";
+    let url = "http://localhost:8080/api/administrador/sorteios";
     let response = await url.post("", {
       id: id,
       titulo: titulo,
@@ -62,7 +61,7 @@ function TableArea() {
 
   // get
   useEffect(() => {
-    let url = "http://localhost:8080/api/sorteio";
+    let url = "http://localhost:8080/api/administrador/sorteios";
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -103,16 +102,19 @@ function TableArea() {
             <thead>
               <tr>
                 <th>Prêmio</th>
-                <th>Nome do sorteado</th>
+                <th>Sorteado</th>
+                <th>Descrição</th>
                 <th>Data do Sorteio</th>
               </tr>
             </thead>
 
             <tbody>
               {sorteio.map((item) => {
+                console.log(item)
                 return (
                   <tr key={item.id}>
                     <td>{item.titulo}</td>
+                    <td>{item.sorteioAssociados?.nome}</td>
                     <td>{item.descricao}</td>
                     <td>{item.data}</td>
                   </tr>

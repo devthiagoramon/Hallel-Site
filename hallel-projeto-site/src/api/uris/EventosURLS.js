@@ -14,6 +14,20 @@ export function eventoAdicionar() {
   );
 }
 
+
+export function eventoListarParticipantes(idEvento){
+
+  return(
+
+    uriDefaultPrefix()+ 
+    administradorPrefix() + 
+    eventoPrefix() +
+     "/" + 
+     idEvento + 
+     "/get/participantes"
+  );
+}
+
 export function eventoListarById(idEvento) {
   return (
     uriDefaultPrefix() +
