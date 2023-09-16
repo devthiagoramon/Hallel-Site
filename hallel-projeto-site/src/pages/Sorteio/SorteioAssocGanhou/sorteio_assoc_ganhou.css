@@ -1,0 +1,48 @@
+.cont_sort_assoc_ganhou{
+    width: 100vw;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.body_sort_assoc_ganhou{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: auto;
+    margin-top: 3rem;
+    column-gap: 5%;
+}
+
+.cont_esquerda_body_sort_assoc{
+    width: 100%;
+}
+
+.cont_info_sort_assoc{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 2fr;
+    row-gap: 35px;
+    text-align: left;
+}
+
+.cont_assoc_ganhadores_sort_assoc_ganhou{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 2fr;
+    margin-top: 3rem;
+    row-gap: 15px;
+}
+
+.cont_assoc_ganhadores_sort_assoc_ganhou>div{
+    width: 100%;
+    justify-self: center;
+}
+
+.cont_direita_body_sort_assoc{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}

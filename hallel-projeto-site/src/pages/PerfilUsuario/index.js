@@ -265,15 +265,34 @@ const Info = () => {
               />
             </div>
             <div className="body_sort_perfil_assoc">
-              <motion.div className="carousel" whileTap={{cursor: "grabbing"}}>
-                <motion.div className="inner_carousel" drag="x" dragConstraints={{right: 0, left: -widthCarousel}}>
+              <motion.div
+                className="carousel"
+                whileTap={{ cursor: "grabbing" }}
+              >
+                <motion.div
+                  className="inner_carousel"
+                  drag="x"
+                  dragConstraints={{ right: 0, left: -widthCarousel }}
+                >
                   {sorteiosGanhos.length === 0 ? (
-                    <div></div>
+                    <div className="sort_not_found__perfil_assoc">
+                      <img
+                        width="100"
+                        height="100"
+                        src="https://img.icons8.com/ios/100/nothing-found.png"
+                        alt="nothing-found"
+                      />
+                      <br/>
+                      <Typography variant="overline">
+                        Não ocorreu nenhum sorteio ou você não participou de
+                        nenhum
+                      </Typography>
+                    </div>
                   ) : (
                     <>
                       {sorteiosGanhos.map((sorteio) => {
                         return (
-                          <motion.div className="item_carousel" >
+                          <motion.div className="item_carousel">
                             <Card className="card_carousel_item">
                               <CardContent>
                                 <h3>{sorteio.titulo}</h3>

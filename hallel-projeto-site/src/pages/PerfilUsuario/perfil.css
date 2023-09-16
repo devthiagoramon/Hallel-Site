@@ -243,6 +243,14 @@
 
 .inner_carousel{
   display: flex;
+  gap: 20px;
+}
+
+.sort_not_found__perfil_assoc{
+  width: 100%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 100%;
 }
 
 .item_carousel{
@@ -251,5 +259,12 @@
 
 .card_carousel_item{
   width: 300px;
-  height: auto;
+  height: 250px;
+}
+
+.card_carousel_item>div>img{
+  height: 100%;
+  object-fit: contain;
+  aspect-ratio: 6/4;
+
 }
