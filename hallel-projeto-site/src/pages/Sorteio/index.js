@@ -118,7 +118,6 @@ function ComoFunciona() {
       <div className="conteudo-funciona">
         <div id="passo1" className="passos">
           <div className="circle">1º</div>
-
           <label>Torne-se associado</label>
         </div>
 
