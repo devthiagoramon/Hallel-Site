@@ -9,6 +9,8 @@ import Roupas from "../../images/roupas.png";
 import Devocao from "../../images/obj_devocao.png";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { CircularProgress } from "@mui/material";
+import axios from "axios";
+import { sorteioListarAllAPI } from "../../api/uris/SorteioURIs";
 
 const Sorteio = () => {
   return (
@@ -42,31 +44,12 @@ function AreaTopo() {
 function TableArea() {
   const [sorteio, setSorteio] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
-  // post
-  const addSorteado = async (id, titulo, sorteioAssociados, data) => {
-    let url = "http://localhost:8080/api/administrador/sorteios";
-    let response = await url.post("", {
-      id: id,
-      titulo: titulo,
-      sorteioAssociados: sorteioAssociados,
-      data: data,
-    });
-    setSorteio([response.data, ...sorteio]);
-    setSorteio("");
-  };
-
-  // get
   useEffect(() => {
-    let url = "http://localhost:8080/api/administrador/sorteios";
-
+    let url = sorteioListarAllAPI();
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", localStorage.getItem("token"));
-
+    
     fetch(url, {
       headers: myHeaders,
       method: "GET",
@@ -74,10 +57,9 @@ function TableArea() {
       .then((r) => r.json())
       .then((object) => {
         setSorteio(object);
-        console.log(sorteio);
       })
       .catch((r) => {
-        console.log("Erro");
+        console.log("Erro na hora de puxar os membros da API. Erro: "+ r);
       });
   }, []);
 

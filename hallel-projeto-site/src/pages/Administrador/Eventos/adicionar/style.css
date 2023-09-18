@@ -5,7 +5,7 @@
 }
 
 .containerPrincipal > label {
-  font-size: 2.2em;
+  font-size: 2em;
   font-weight: 700;
   color: #35404b;
   text-indent: 1.5em;
@@ -32,8 +32,9 @@
 .tituloEvento {
   width: 100%;
   height: 24px;
-  font-size: 1.4em;
+  font-size: 1.2em;
   padding: 1em;
+  font-weight: 700;
   border: 2px solid rgb(217, 72, 20, 0.7);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 1px 1px 10px;
@@ -145,15 +146,17 @@
 }
 
 .lblTituloEvento {
-  font-size: 2em;
+  font-size: 1.2em;
   margin-bottom: 1.5rem;
+    font-weight: 700;
   width: 100%;
   text-align: left;
 }
 
 .lblDescEvento {
   font-weight: 500;
-  font-size: 2em;
+  font-size: 1.2em;
+  font-weight: 700;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
   width: 100%;
@@ -205,8 +208,9 @@
 
 .contDetalhesEsquerda label {
   width: 100%;
-  font-size: 1.6em;
+  font-size: 1.2em;
   text-align: left;
+  font-weight: 600;
 }
 
 .contDetalhesEsquerda input {
@@ -245,7 +249,7 @@
 .contDetalhesDireita {
   width: 40%;
   height: auto;
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 
 .headPalestrantes {
@@ -256,7 +260,8 @@
 
 .headPalestrantes label {
   width: auto;
-  font-size: 1.6em;
+  font-size: 1.2em;
+  font-weight: 600;
 }
 
 .headPalestrantes img {

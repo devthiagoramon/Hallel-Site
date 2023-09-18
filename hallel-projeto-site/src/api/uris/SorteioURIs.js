@@ -4,6 +4,10 @@ export function sorteioListarAllAPI() {
   return uriDefaultPrefix()+administradorPrefix()+"/sorteios";
 }
 
+export function sorteioMesAtual(){
+
+  return uriDefaultPrefix()+administradorPrefix()+"/sorteios/mesAtual";
+}
+
 export function sorteioSortearAPI(){
-  return uriDefaultPrefix()+administradorPrefix()+"/sorteios/create"
 }

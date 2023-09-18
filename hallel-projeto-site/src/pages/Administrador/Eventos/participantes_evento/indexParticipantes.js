@@ -20,7 +20,7 @@ const ParticipantesEvento = () =>{
           Authorization: localStorage.getItem("token")
         }
       }).then((res) => {
-        console.log("Teste::" +eventosParticipantes);
+        console.log("Teste:" +eventosParticipantes);
         setEventosParticipantes(res.data);
       
         

@@ -132,19 +132,21 @@ function Evento() {
         <div className="esquerda_options">
           <div>
             <LocationOn sx={{ marginRight: "10px" }} />
-            <Button style={{ width: "15em" }} onClick={handleClickLocaisEvento}>
+            <Button color="secondary" variant="contained" style={{ width: "15em" }} onClick={handleClickLocaisEvento}>
               Locais de Evento
             </Button>
           </div>
           <div>
             <ArchiveRounded sx={{ marginRight: "10px" }} />
-            <Button style={{ width: "15em" }} onClick={handleClickArquivados}>
+            <Button  color="secondary" variant="contained" tyle={{ width: "15em" }} onClick={handleClickArquivados}>
               Eventos arquivados
             </Button>
           </div>
         </div>
         <div className="direita_options">
-          <button
+          <Button
+          color="secondary"
+          variant="contained"
             className="btnAdicionar"
             onClick={() => {
               window.location.href =
@@ -152,7 +154,7 @@ function Evento() {
             }}
           >
             Adicionar Evento
-          </button>
+          </Button>
         </div>
       </div>
       <div className="container-tb">

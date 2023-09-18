@@ -121,7 +121,7 @@ a {
   column-gap: 15px;
 }
 
-.options button {
+/* .options button {
   width: 9em;
   height: 2.2em;
   border-radius: 2em;
@@ -136,7 +136,7 @@ a {
 .options button:hover {
   background-color: rgb(169, 201, 201);
   transition: 0.5s;
-}
+} */
 
 .tabela-eventos {
 
