@@ -1,0 +1,21 @@
+.cont_agenda{
+    width: 100vw;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.header_agenda{
+    width: 100%;
+}
+
+.body_agenda{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: 1fr;
+    margin-top: 3rem;
+}
+
+.esquerda_agenda{
+    width: 100%;
+}

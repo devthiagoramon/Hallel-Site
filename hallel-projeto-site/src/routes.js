@@ -54,6 +54,7 @@ import CodigosFinanceiro from "./pages/Administrador/Financeiro/codigos_financei
 import PagarOutroAssociado from "./pages/Associado/PagarOutroAssociado/PagarOutroAssociado";
 import ParticipanteEvento from "./pages/Administrador/Eventos/participantes_evento/indexParticipantes"
 import SorteioAssocGanhou from "./pages/Sorteio/SorteioAssocGanhou/SorteioAssocGanhou";
+import { Agenda } from "./pages/Agenda/Agenda";
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
@@ -78,6 +79,7 @@ function RoutesApp() {
         <Route path="/loja/pagamento" element={<LojaPagamento />} />
         <Route path="/entrar" element={<Entrar />} />
         <Route path="/pagarOutroAssociado" element={<PagarOutroAssociado />} />
+        <Route path="/agenda" element={<Agenda/>}/>
         {localStorage.getItem("token") !== null &&
         roles.includes("ROLE_USER") ? (
           <>

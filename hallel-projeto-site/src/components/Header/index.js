@@ -103,7 +103,7 @@ function Header() {
           Ministérios
         </Link>
 
-        <Link id="item" to="/">
+        <Link id="item" to="/agenda">
           Agenda
         </Link>
 
