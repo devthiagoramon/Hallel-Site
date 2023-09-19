@@ -1,7 +1,12 @@
-import { DateCalendar, LocalizationProvider, PickersDay } from "@mui/x-date-pickers";
 import React from "react";
 import dayjs from "dayjs";
 import { Badge } from "@mui/material";
+import {
+  DateCalendar,
+  LocalizationProvider,
+  PickersDay,
+  ptBR,
+} from "@mui/x-date-pickers";
 
 const EsquerdaAgenda = () => {
   const initialValue = dayjs();
@@ -35,7 +40,6 @@ const EsquerdaAgenda = () => {
         defaultValue={initialValue}
         slots={{
           day: ServerDay,
-          
         }}
         slotProps={{
           day: diasEmDestaque,

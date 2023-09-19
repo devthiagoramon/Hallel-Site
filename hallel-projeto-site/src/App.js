@@ -9,7 +9,12 @@ function App() {
   return (
     <div className="page-container">
       <div className="content-wrap">
-        <LocalizationProvider dateAdapter={AdapterDayjs} localeText={ptBR.components.MuiLocalizationProvider.defaultProps.localeText}>
+        <LocalizationProvider
+          dateAdapter={AdapterDayjs}
+          localeText={
+            ptBR.components.MuiLocalizationProvider.defaultProps.localeText
+          }
+        >
           <RoutesApp />
           <Footer />
         </LocalizationProvider>
