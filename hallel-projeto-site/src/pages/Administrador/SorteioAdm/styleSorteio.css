@@ -166,6 +166,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .selec_this_sorteio_cont {
@@ -196,6 +197,28 @@
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+}
+
+.card_sorteio_info {
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  border-radius: 12px;
+  align-items: center;
+  height: 200px;
+}
+
+.card_esquerda_sorteio_info {
+  width: 100%;
+  height: 100%;
+}
+
+.card_direita_sorteio_info {
+  width: 40%;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
 }
 
 @keyframes zoomAnimation {

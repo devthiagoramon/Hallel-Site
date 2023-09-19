@@ -5,6 +5,8 @@ import { Skeleton, TextField } from "@mui/material";
 import "./eventoUser.css";
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { eventoListar } from "../../../api/uris/EventosURLS";
+import { PDFViewer } from "@react-pdf/renderer";
+import PDFAssinaturaDeMenor from "../MaisInformacoes/PDFAssinaturaDeMenor";
 
 function EventoUser() {
   const [eventos, setEventos] = useState([]);
@@ -60,7 +62,11 @@ function EventoUser() {
   return (
     <div className="painelEventosUser">
       {showInfos ? (
-        <InfoEventos evento={eventoEspc} setEvento={setEventoEspc} hide={() => setshowInfos(false)} />
+        <InfoEventos
+          evento={eventoEspc}
+          setEvento={setEventoEspc}
+          hide={() => setshowInfos(false)}
+        />
       ) : (
         <div>
           <h1 className="TituloEventoUser">Eventos</h1>
@@ -121,6 +127,7 @@ function EventoUser() {
               })
             )}
           </div>
+          
         </div>
       )}
     </div>

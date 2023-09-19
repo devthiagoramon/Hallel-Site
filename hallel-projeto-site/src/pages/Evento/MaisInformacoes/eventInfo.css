@@ -1,11 +1,12 @@
 body {
   overflow-x: hidden;
 }
-.titulo_evento {
-  display: flex;
-  flex-direction: column;
-  color: #252525;
-  margin-left: 3rem;
+
+.containerEvents{
+  width: 100vw;
+  margin: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .cont_titulo_desc_evento_user {
@@ -15,6 +16,13 @@ body {
   width: 100%;
 }
 
+.titulo_evento {
+  display: flex;
+  flex-direction: column;
+  color: #252525;
+}
+
+
 .containerEvents .voltar {
   display: flex;
   justify-content: right;
@@ -23,7 +31,6 @@ body {
 
 .corpo_evento {
   display: flex;
-  justify-content: center;
 }
 
 .corpo_evento > container_imagem_evento_user {
@@ -39,16 +46,12 @@ body {
 
 .descricao_evento_user {
   display: flex;
-  width: 100%;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-top: 5rem;
+  width: 40%;
 }
 
 /*INFORMAÇÕES*/
 
 .infos{
-
   display: flex;
   flex-direction: column;
 }
@@ -64,7 +67,6 @@ body {
   font-size: 1.1em;
   font-weight: 700;
   color: #35404b;
-  margin-right: 3rem;
 }
 
 .voltar button:hover {
@@ -75,7 +77,6 @@ body {
 }
 
 .subtopicos {
-  margin-left: 2rem;
 }
 
 .topicosInfo > li {
@@ -85,28 +86,25 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   text-decoration: none;
-  text-indent: 1em;
-  margin-top: 1.5rem;
 }
 
 .participantes {
   flex-direction: column;
   display: flex;
-  margin-left: 3rem;
+  
 }
 
 .participantes > label {
   font-size: 24px;
   font-weight: 600;
   color: #252525;
-  margin-bottom: 1.25rem;
 }
 
 .descricao_evento_user {
   display: flex;
-  margin-left: 3rem;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .descricao_evento_user label {
@@ -118,20 +116,19 @@ body {
 .container_infos_desc_evento {
   width: 100%;
   display: flex;
+  column-gap: 4rem;
 }
 
 .subtopicos > label {
   font-size: 24px;
   font-weight: 600;
   color: #252525;
-  margin-bottom: 1.25rem;
 }
 
 .container_participar_evento{
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 10rem;
 }
 
 .container_participar_evento>button{

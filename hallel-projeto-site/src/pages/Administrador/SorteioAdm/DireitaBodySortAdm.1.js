@@ -3,6 +3,7 @@ import { Card, CardContent, IconButton, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import ModalListarSorteios from "./ModalListarSorteios";
+import dayjs from "dayjs";
 
 export const DireitaBodySortAdm = ({
   mesSelecionado,
@@ -18,18 +19,34 @@ export const DireitaBodySortAdm = ({
   return (
     <div className="right_sortAdm_cont">
       <div className="cont_selec_sort">
-        <h4>Selecionar sorteio</h4>
         {sorteioSelec === null ? (
-          <div className="inner_selec_sort_cont" id="no_selected">
-            <Typography variant="body1" href="list_sorteos">
-              Selecionar
-            </Typography>
-            <IconButton id="list_sorteos" onClick={handleOpenModal}>
-              <ListRounded />
-            </IconButton>
-          </div>
+          <>
+            <h4>Selecionar sorteio</h4>
+            <div className="inner_selec_sort_cont" id="no_selected">
+              <Typography variant="body1" href="list_sorteos">
+                Selecionar
+              </Typography>
+              <IconButton id="list_sorteos" onClick={handleOpenModal}>
+                <ListRounded />
+              </IconButton>
+            </div>
+          </>
         ) : (
-          <></>
+          <div className="card_sorteio_info">
+            <div className="card_esquerda_sorteio_info">
+              <Typography variant="h4" color={"#252525"}>
+                {sorteioSelec.titulo}
+              </Typography>
+              <Typography variant="subtitle1" color={"#252525"}>
+                {sorteioSelec.descricao}
+              </Typography>
+            </div>
+            <div className="card_direita_sorteio_info">
+              <Typography variant="subtitle1" color={"#252525"}>
+                <label style={{fontSize:"18px", fontWeight: "700"}}>Data:</label> {dayjs(sorteioSelec.data).format("DD/MM/YYYY")}
+              </Typography>
+            </div>
+          </div>
         )}
       </div>
       <div className="cards_infos_sorts">

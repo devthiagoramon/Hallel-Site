@@ -11,7 +11,7 @@ import logoHallel from "./../../../../images/LogoHallel.png";
 import dayjs from "dayjs";
 
 /*
-- Para sabem como alterar e como funciona o pdf pesquise
+- Para saberem como alterar e como funciona o pdf pesquise
 no site https://react-pdf.org/ que mostrará todas as informações
 sobre como funciona para gerar um pdf
 */

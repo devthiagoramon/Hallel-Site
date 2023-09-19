@@ -21,7 +21,7 @@ const BtnHallel = styled.button`
   border-radius: 12px;
   border-width: 0;
   width: fit-content;
-  width: 125px;
+  padding: 7px;
   font-size: 18px;
   font-weight: 500;
   text-align: center;
