@@ -7,6 +7,7 @@ import { BsArrowReturnLeft } from "react-icons/bs";
 import { eventoListar } from "../../../api/uris/EventosURLS";
 import { PDFViewer } from "@react-pdf/renderer";
 import PDFAssinaturaDeMenor from "../MaisInformacoes/PDFAssinaturaDeMenor";
+import { useNavigate } from "react-router-dom";
 
 function EventoUser() {
   const [eventos, setEventos] = useState([]);
@@ -133,5 +134,4 @@ function EventoUser() {
     </div>
   );
 }
-
 export default EventoUser;

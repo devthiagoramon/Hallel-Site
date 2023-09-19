@@ -8,9 +8,9 @@ import Alimento from "../../images/alimentos.png";
 import Roupas from "../../images/roupas.png";
 import Devocao from "../../images/obj_devocao.png";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { CircularProgress } from "@mui/material";
+import { Alert, CircularProgress } from "@mui/material";
 import axios from "axios";
-import { sorteioListarAllAPI } from "../../api/uris/SorteioURIs";
+import { sorteioMesAtual } from "../../api/uris/SorteioURIs";
 
 const Sorteio = () => {
   return (
@@ -39,39 +39,42 @@ function AreaTopo() {
       </div>
     </div>
   );
+
 }
 
 function TableArea() {
   const [sorteio, setSorteio] = useState([]);
 
-  useEffect(() => {
-    let url = sorteioListarAllAPI();
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-    
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
+  useEffect(()=>{
+
+    let url = sorteioMesAtual();
+    axios.get(url, {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    }).then((res) => {
+
+    console.log(res)
+      setSorteio(res.data);
+    }).catch((error) => {
+      console.error("Erro na requisição de listar os sortedos mes: " + error);
     })
-      .then((r) => r.json())
-      .then((object) => {
-        setSorteio(object);
-      })
-      .catch((r) => {
-        console.log("Erro na hora de puxar os membros da API. Erro: "+ r);
-      });
-  }, []);
+  })
 
   return (
     <section className="tabelaSorteio">
       <label>Últimos ganhadores</label>
 
-      {sorteio.length === 0 ? (
-        <div className="circuloProgresso">
+      {sorteio.length == 0 ? (
+
+        <Aviso/>
+
+      ) : sorteio.length == null  ?(
+        <div className="loading-sorteio-ultimos">
           <CircularProgress />
         </div>
-      ) : (
+
+      ) :(
         <>
           <Table
             style={{ backgroundColor: "#FCFBF8" }}
@@ -91,6 +94,7 @@ function TableArea() {
             </thead>
 
             <tbody>
+              
               {sorteio.map((item) => {
                 console.log(item)
                 return (
@@ -177,6 +181,22 @@ function ListaPremios() {
       </div>
     </section>
   );
+}
+
+
+{/* componentes usados*/}
+
+
+const Aviso = () =>{
+
+  return(
+
+
+    <Alert severity="info">
+
+      <strong>Nenhum sorteio realizado esse mês.</strong>
+    </Alert>
+  )
 }
 
 export default Sorteio;

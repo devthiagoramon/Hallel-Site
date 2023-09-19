@@ -28,10 +28,8 @@ const ParticipantesEvento = () =>{
         console.error("Erro na requisição de listar participantes: " + error);
       })
 
-
     },[]);
 
-  //falta apenas a listagem
     return(
 
       <div className="participantes-container">
@@ -41,7 +39,6 @@ const ParticipantesEvento = () =>{
         <div style={{width: "100%",
         marginTop: '40px', display: 'flex', justifyContent: 'center'}}>
           
-
         {eventosParticipantes.length == 0 ?(
 
           <CircularProgress className="evento-loading-partipantes"/>
@@ -71,10 +68,6 @@ const ParticipantesEvento = () =>{
         <tbody>
 
          {eventosParticipantes.map((participante)=>{
-
-
-
-
             return(
 
             //teste, se está buscando  

@@ -16,14 +16,20 @@ import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
 import ModalParticiparEvento from "./ModalParticiparEvento";
 import { PDFViewer } from "@react-pdf/renderer";
 import PDFAssinaturaDeMenor from "./PDFAssinaturaDeMenor";
+import { useNavigate } from "react-router-dom";
 
 const InfoEventos2 = ({ evento, hide }) => {
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
     useState(false);
 
+  const navigate = useNavigate();
+
   return (
     <section className="containerEvents">
       <div className="area-infos">
+
+        <button style={{fontWeight:"600", color: "#35404b", margin: "10em 0"}} onClick={()=> navigate(0)}>Voltar</button>
+        
         <Corpo2
           evento={evento}
           openModal={openModalParticiparEvento}
