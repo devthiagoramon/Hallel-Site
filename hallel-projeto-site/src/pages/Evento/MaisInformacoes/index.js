@@ -18,6 +18,8 @@ import { PDFViewer } from "@react-pdf/renderer";
 import PDFAssinaturaDeMenor from "./PDFAssinaturaDeMenor";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
+import Fab from "@mui/material/Fab";
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 const InfoEventos2 = ({ evento, hide }) => {
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
@@ -29,7 +31,11 @@ const InfoEventos2 = ({ evento, hide }) => {
     <section className="containerEvents">
       <div className="area-infos">
 
-        <button style={{fontWeight:"600", color: "#35404b", marginBottom: "1rem"}} onClick={()=> navigate(0)}>Voltar</button>
+        <Fab style={{fontWeight:"600", color: "#35404b", background: "#FFA218", marginBottom: "1rem"}} onClick={()=> navigate(0)}>
+
+            <KeyboardReturnIcon/>
+
+        </Fab>
         
         <Corpo2
           evento={evento}

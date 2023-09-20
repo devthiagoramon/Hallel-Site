@@ -6,6 +6,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import { eventoListarParticipantes } from  '../../../../api/uris/EventosURLS';
+import Alert from "@mui/material/Alert";
 
 const ParticipantesEvento = () =>{
 
@@ -39,12 +40,12 @@ const ParticipantesEvento = () =>{
         <div style={{width: "100%",
         marginTop: '40px', display: 'flex', justifyContent: 'center'}}>
           
-        {eventosParticipantes.length == 0 ?(
+        {eventosParticipantes.length ==0 ?(
 
           <CircularProgress className="evento-loading-partipantes"/>
         ): eventosParticipantes.length == null ?(
 
-          <h2>Nenhum participante encontrado</h2>
+          <Alert style={{margin: "5em 0"}} severity="info">Nenhum participante encontrado.</Alert>
         ):(
 
         <Table
