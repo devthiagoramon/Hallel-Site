@@ -1,19 +1,35 @@
-import { Box, Grid, Modal, TextField } from "@mui/material";
+import {
+  Box,
+  Grid,
+  IconButton,
+  Modal,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
 import InputHallel from "../../../components/InputHallel/InputHallel";
 import { useState } from "react";
 import ReactPDF, { PDFViewer } from "@react-pdf/renderer";
 import PDFAssinaturaDeMenor from "./PDFAssinaturaDeMenor";
+import { AddRounded, PaymentRounded } from "@mui/icons-material";
+import ModalAdicionarCartaoPE from "./ModalAdicionarCartaoPE";
+import dayjs from "dayjs";
 
 const ModalParticiparEvento = ({ evento, open, setOpen }) => {
   const [usuarioEvento, setUsuarioEvento] = useState({
     nome: "",
+    email: "",
     cpf: "",
     idade: 0,
+    cartaoCredito: null,
   });
 
   const [isMenorIdade, setIsMenorIdade] = useState(false);
+  const [openAdicionarCartao, SetopenAdicionarCartao] = useState(false);
+
+  const [isCadastrado, setIsCadastrado] = useState(false);
 
   const styleInnerModal = {
     position: "absolute",
@@ -63,6 +79,8 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
             </label>
           </Grid>
 
+          
+
           <Grid item xs={6} columnGap={2} md={8}>
             <label style={{ fontSize: "1.2em", fontWeight: "600" }}>Nome</label>
             <InputHallel
@@ -97,6 +115,52 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
             />
           </Grid>
 
+          <Grid item xs={6} direction={"column"} columnGap={2} md={8}>
+            <div className="header_cartao_participar_evento">
+              <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+                Adicionar Cartão
+              </label>
+              <Tooltip title="Adicionar Cartão">
+                <IconButton
+                  onClick={() => {
+                    SetopenAdicionarCartao(true);
+                  }}
+                >
+                  <AddRounded />
+                </IconButton>
+              </Tooltip>
+            </div>
+            <div className="body_cartao_participar_evento">
+              {usuarioEvento.cartaoCredito != null ? (
+                <div className="cont_cartao_participar_evento">
+                  <Typography variant="h5">Cartão</Typography>
+                  <Typography variant="subtitle1">
+                    Número do cartão:{" "}
+                    {usuarioEvento.cartaoCredito.numeroCartao}{" "}
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    Nome do Titular:{" "}
+                    {usuarioEvento.cartaoCredito.nomeTitularCartao}{" "}
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    CVC:{" "}
+                    {usuarioEvento.cartaoCredito.cvcCartao}{" "}
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    Data de Validade:{" "}
+                    {dayjs(usuarioEvento.cartaoCredito.dataValidadeCartao).format("MM/YY")}{" "}
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    Endereço:{" "}
+                    {usuarioEvento.cartaoCredito.enderecoCartao}{" "}
+                  </Typography>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </Grid>
+
           {isMenorIdade ? (
             <Grid item xs={6} md={8}>
               <hr />
@@ -113,9 +177,15 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
           )}
 
           <Grid item xs={6} md={8}>
-            <BtnHallel sucesso> Confirmar</BtnHallel>
+            <BtnHallel sucesso>Participar</BtnHallel>
           </Grid>
         </Grid>
+        <ModalAdicionarCartaoPE
+          open={openAdicionarCartao}
+          setOpen={SetopenAdicionarCartao}
+          usuario={usuarioEvento}
+          setUsuario={setUsuarioEvento}
+        />
       </Box>
     </Modal>
   );

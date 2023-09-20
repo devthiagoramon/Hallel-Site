@@ -17,6 +17,7 @@ import ModalParticiparEvento from "./ModalParticiparEvento";
 import { PDFViewer } from "@react-pdf/renderer";
 import PDFAssinaturaDeMenor from "./PDFAssinaturaDeMenor";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 
 const InfoEventos2 = ({ evento, hide }) => {
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
@@ -28,7 +29,7 @@ const InfoEventos2 = ({ evento, hide }) => {
     <section className="containerEvents">
       <div className="area-infos">
 
-        <button style={{fontWeight:"600", color: "#35404b", margin: "10em 0"}} onClick={()=> navigate(0)}>Voltar</button>
+        <button style={{fontWeight:"600", color: "#35404b", marginBottom: "1rem"}} onClick={()=> navigate(0)}>Voltar</button>
         
         <Corpo2
           evento={evento}
@@ -103,7 +104,7 @@ const Info2 = ({ estado, setEstado, evento }) => {
           <h4>Informações</h4>
           <ul className="topicosInfo">
             <li>Endereço: {evento.localEvento.localizacao}</li>
-            <li>Data: {evento.date}</li>
+            <li>Data: {dayjs(evento.date).format("DD/MM/YYYY")}</li>
             <li>Horário: {evento.horario}</li>
           </ul>
         </div>

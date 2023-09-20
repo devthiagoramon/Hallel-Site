@@ -8,6 +8,7 @@ import { eventoListar } from "../../../api/uris/EventosURLS";
 import { PDFViewer } from "@react-pdf/renderer";
 import PDFAssinaturaDeMenor from "../MaisInformacoes/PDFAssinaturaDeMenor";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 
 function EventoUser() {
   const [eventos, setEventos] = useState([]);
@@ -113,7 +114,7 @@ function EventoUser() {
                         <h5 className="card-title">{evento.titulo}</h5>
                         <p className="card-text">{evento.descricao}</p>
                         <br />
-                        <p className="card-text">Data: {evento.date}</p>
+                        <p className="card-text">Data: {dayjs(evento.date).format("DD/MM/YYYY")}</p>
                         <br />
                         <button
                           className="btn btn-primary"

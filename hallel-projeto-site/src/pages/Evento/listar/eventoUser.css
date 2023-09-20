@@ -9,17 +9,11 @@ body {
 .painelEventosUser {
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-
-.TituloEventoUser {
-  margin-left: 40px;
-  padding-bottom: 50px;
+  padding: 2rem;
 }
 
 .contPesquisaEventoUser {
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -30,7 +24,7 @@ body {
 }
 
 .CorpoEventoUser {
-  margin-left: 40px;
+ 
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -40,14 +34,13 @@ body {
 .loaderEventoCarroseulEventos {
   width: 100%;
   display: flex;
-  margin-left: 1rem;
+ 
   flex-wrap: wrap;
 }
 
 .loaderEventoCarroseulEventos > span {
   width: 10em;
   height: 10em;
-  margin: 0 2em;
 }
 
 /* referente ao botao roxo */

@@ -5,8 +5,7 @@ body {
 .containerEvents{
   width: 100vw;
   margin: 0;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-right: 3rem;
 }
 
 .cont_titulo_desc_evento_user {
@@ -137,4 +136,54 @@ body {
 
 .container_participar_evento>button:hover{
   background-color: #613191;
+}
+
+.header_cartao_participar_evento{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.body_cartao_participar_evento{
+
+}
+
+.cont_modal_adicionar_cartao_pe{
+  width: 100%;
+}
+.header_modal_adicionar_cartao_pe{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.body_modal_adicionar_cartao_pe{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  row-gap: 10px;
+  margin-top: 1rem;
+}
+
+.inputs2_modal_adicionar_cartao_pe{
+  width: 100%;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.footer_modal_adicionar_cartao_pe{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  column-gap: 15px;
+}
+
+.cont_cartao_participar_evento{
+  width: 100%;
+  border-radius: 6px;
+  background-color: #613191;
+  padding: 2rem;
+  color: #f4f4f4;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 4px;
 }
