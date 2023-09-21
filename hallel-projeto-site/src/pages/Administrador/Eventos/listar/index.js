@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import ModalArquivarEvento from "./ModalArquivarEvento";
 import { VscKebabVertical } from "react-icons/vsc";
 import { eventoListar } from "../../../../api/uris/EventosURLS";
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 
 function Evento() {
   const [eventos, setEventos] = useState([]);
@@ -84,6 +86,12 @@ function Evento() {
           field: "localizacao",
           width: "auto",
         },
+        
+        {
+          label: "Destaque",
+          field: "destaque",
+          width: "auto",
+        },
       ],
 
       rows: eventos?.map((item) => ({
@@ -102,6 +110,12 @@ function Evento() {
           item.localEvento === null
             ? "Nenhuma localização adicionada"
             : item.localEvento.localizacao,
+
+        destaque:
+        item.destaque == true 
+        ?  (<CheckOutlinedIcon style={{display: "block", margin: "1.2em auto"}}/>)
+        :  (<ClearOutlinedIcon style={{display: "block", margin: "1.2em auto"}}/>),
+
       })),
     };
   };

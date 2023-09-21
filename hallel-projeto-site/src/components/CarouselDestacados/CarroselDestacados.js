@@ -83,7 +83,13 @@ const CarroselDestacados = () => {
           showIndicators
         >
           {eventos.map((evento) => {
-            return (
+
+            evento.destacado == false?(
+
+              <></>
+            ):(
+
+              
               <Carousel.Item interval={4000}>
                 <div
                   style={{
@@ -121,7 +127,7 @@ const CarroselDestacados = () => {
                   <h5>{evento.titulo}</h5>
                 </div>
               </Carousel.Item>
-            );
+            )
           })}
         </Carousel>
       )}
