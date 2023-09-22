@@ -5,7 +5,17 @@ import {
 } from "./utilsURI";
 
 /*
-    Eventos
+  Eventos (Usuários)
+
+*/
+
+export function eventoListarTodosEventosUsuarios(){
+  return uriDefaultPrefix()+eventoPrefix()
+}
+
+
+/*
+    Eventos (Administrador)
 */
 
 export function eventoAdicionar() {

@@ -12,6 +12,6 @@ export function virarAssociadoAPI(){
   return uriDefaultPrefix()+"/membros/virarAssociado"
 }
 
-export function verifyEmailParticiparEvento(email){
-  return uriDefaultPrefix()+"/eventos/verificarEmail/"+email;
+export function verifyMembroParticiparEvento(idUser){
+  return uriDefaultPrefix()+"/eventos/verificarUsuario/"+idUser;
 }

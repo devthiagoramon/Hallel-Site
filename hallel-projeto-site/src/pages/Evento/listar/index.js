@@ -3,11 +3,7 @@ import InfoEventos from "../MaisInformacoes";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Skeleton, TextField } from "@mui/material";
 import "./eventoUser.css";
-import { BsArrowReturnLeft } from "react-icons/bs";
-import { eventoListar } from "../../../api/uris/EventosURLS";
-import { PDFViewer } from "@react-pdf/renderer";
-import PDFAssinaturaDeMenor from "../MaisInformacoes/PDFAssinaturaDeMenor";
-import { useNavigate } from "react-router-dom";
+import { eventoListarTodosEventosUsuarios } from "../../../api/uris/EventosURLS";
 import dayjs from "dayjs";
 
 function EventoUser() {
@@ -40,7 +36,7 @@ function EventoUser() {
     }
   };
   useEffect(() => {
-    let url = eventoListar();
+    let url = eventoListarTodosEventosUsuarios();
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -114,7 +110,9 @@ function EventoUser() {
                         <h5 className="card-title">{evento.titulo}</h5>
                         <p className="card-text">{evento.descricao}</p>
                         <br />
-                        <p className="card-text">Data: {dayjs(evento.date).format("DD/MM/YYYY")}</p>
+                        <p className="card-text">
+                          Data: {dayjs(evento.date).format("DD/MM/YYYY")}
+                        </p>
                         <br />
                         <button
                           className="btn btn-primary"
@@ -129,7 +127,6 @@ function EventoUser() {
               })
             )}
           </div>
-          
         </div>
       )}
     </div>

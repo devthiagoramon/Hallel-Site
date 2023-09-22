@@ -22,10 +22,10 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
   };
 
   const [cartaoCredito, setCartaoCredito] = useState({
-    nomeTitularCartao: "",
-    cvcCartao: "",
+    nomeTitular: "",
+    cvc: "",
     dataValidadeCartao: null,
-    enderecoCartao: "",
+    endereco: "",
     numeroCartao: "",
   });
 
@@ -49,7 +49,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
 
   function verifyInputs() {
     let hasError = false;
-    if (cartaoCredito.nomeTitularCartao !== "") {
+    if (cartaoCredito.nomeTitular !== "") {
       setErrorsInputs((prev) => {
         return { ...prev, nomeTitular: false };
       });
@@ -59,7 +59,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
       });
       hasError = true;
     }
-    if (cartaoCredito.cvcCartao.length === 3) {
+    if (cartaoCredito.cvc.length === 3) {
       setErrorsInputs((prev) => {
         return { ...prev, cvc: false };
       });
@@ -79,7 +79,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
       });
       hasError = true;
     }
-    if (cartaoCredito.enderecoCartao !== "") {
+    if (cartaoCredito.endereco !== "") {
       setErrorsInputs((prev) => {
         return { ...prev, endereco: false };
       });
@@ -112,10 +112,10 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
         return { ...prev, cartaoCredito: {...cartaoCredito} };
       }); 
       setCartaoCredito({
-        nomeTitularCartao: "",
-        cvcCartao: "",
+        nomeTitular: "",
+        cvc: "",
         dataValidadeCartao: null,
-        enderecoCartao: "",
+        endereco: "",
         numeroCartao: "",
       });
       setOpen(false);
@@ -146,13 +146,13 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
             </label>
             {errorsInputs.nomeTitular ? (
               <InputHallel
-                name="nomeTitularCartao"
+                name="nomeTitular"
                 onChange={handleChangeInputs}
                 error
               />
             ) : (
               <InputHallel
-                name="nomeTitularCartao"
+                name="nomeTitular"
                 onChange={handleChangeInputs}
               />
             )}
@@ -194,12 +194,12 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
               )}
               {errorsInputs.cvc ? (
                 <InputHallel
-                  name="cvcCartao"
+                  name="cvc"
                   onChange={handleChangeInputs}
                   error
                 />
               ) : (
-                <InputHallel name="cvcCartao" onChange={handleChangeInputs} />
+                <InputHallel name="cvc" onChange={handleChangeInputs} />
               )}
             </div>
             <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
@@ -207,13 +207,13 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
             </label>
             {errorsInputs.endereco ? (
               <InputHallel
-                name="enderecoCartao"
+                name="endereco"
                 onChange={handleChangeInputs}
                 error
               />
             ) : (
               <InputHallel
-                name="enderecoCartao"
+                name="endereco"
                 onChange={handleChangeInputs}
               />
             )}
