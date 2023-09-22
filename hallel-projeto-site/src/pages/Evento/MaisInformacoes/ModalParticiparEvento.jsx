@@ -1,13 +1,15 @@
 import {
+  Alert,
   Box,
   Grid,
   IconButton,
   Modal,
+  Snackbar,
   TextField,
   Tooltip,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
 import InputHallel from "../../../components/InputHallel/InputHallel";
 import { useState } from "react";
@@ -16,6 +18,8 @@ import PDFAssinaturaDeMenor from "./PDFAssinaturaDeMenor";
 import { AddRounded, PaymentRounded } from "@mui/icons-material";
 import ModalAdicionarCartaoPE from "./ModalAdicionarCartaoPE";
 import dayjs from "dayjs";
+import { verifyEmailParticiparEvento } from "../../../api/uris/MembroURLS";
+import axios from "axios";
 
 const ModalParticiparEvento = ({ evento, open, setOpen }) => {
   const [usuarioEvento, setUsuarioEvento] = useState({
@@ -28,8 +32,11 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
 
   const [isMenorIdade, setIsMenorIdade] = useState(false);
   const [openAdicionarCartao, SetopenAdicionarCartao] = useState(false);
+  const [openIsCadastrado, setOpenIsCadastrado] = useState(false);
+  const [openIsNotCadastro, setOpenIsNotCadastro] = useState(false);
 
   const [isCadastrado, setIsCadastrado] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
 
   const styleInnerModal = {
     position: "absolute",
@@ -46,7 +53,15 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
   };
   const handleCloseModal = () => {
     setOpen(false);
-    setUsuarioEvento({ nome: "", cpf: "", idade: 0 });
+    setUsuarioEvento({
+      nome: "",
+      email: "",
+      cpf: "",
+      idade: 0,
+      cartaoCredito: null,
+    });
+    setIsVerified(false);
+    setIsCadastrado(false);
   };
 
   const handleAlterarTexto = (e) => {
@@ -62,130 +77,181 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
     });
   };
 
+  useEffect(() => {
+    if (!isVerified) {
+      if (usuarioEvento.email.includes(".com")) {
+        let url = verifyEmailParticiparEvento(usuarioEvento.email);
+        axios
+          .get(url, {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          })
+          .then((res) => {
+            setIsCadastrado(res.data);
+            if (res.data) {
+              setOpenIsCadastrado(true);
+            } else {
+              setOpenIsNotCadastro(true);
+            }
+            setIsVerified(true);
+          })
+          .catch((error) => {
+            console.log("Error verificando email: " + error);
+          });
+      }
+    }
+  }, [usuarioEvento, isVerified]);
+
+  const handleCloseSnackBar = () => {
+    setOpenIsCadastrado(false);
+    setOpenIsNotCadastro(false);
+  };
+
   return (
     <Modal open={open} onClose={handleCloseModal}>
       <Box sx={styleInnerModal}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          spacing={2}
-          padding={2}
-        >
-          <Grid item xs={6} md={8}>
+        <div className="cont_form_part_evento">
+          <div className="header_form_part_evento">
             <label style={{ fontSize: "1.5em", fontWeight: "700" }}>
               Formulário de inscrição
             </label>
-          </Grid>
-
-          
-
-          <Grid item xs={6} columnGap={2} md={8}>
-            <label style={{ fontSize: "1.2em", fontWeight: "600" }}>Nome</label>
-            <InputHallel
-              name="nome"
-              style={{ width: 350 }}
-              type="text"
-              value={usuarioEvento.nome}
-              onChange={handleAlterarTexto}
-            />
-          </Grid>
-
-          <Grid item xs={6} columnGap={2} md={8}>
-            <label style={{ fontSize: "1.2em", fontWeight: "600" }}>CPF</label>
-            <InputHallel
-              name="cpf"
-              style={{ width: 350 }}
-              type="text"
-              value={usuarioEvento.cpf}
-              onChange={handleAlterarTexto}
-            />
-          </Grid>
-          <Grid item xs={6} direction={"column"} columnGap={2} md={8}>
+          </div>
+          <div className="body_form_part_evento">
             <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
-              Idade:
+              Email
             </label>
             <InputHallel
-              name="idade"
-              value={usuarioEvento.idade}
-              style={{ marginLeft: "1rem", width: 100 }}
-              type="number"
+              name="email"
+              style={{ width: 350 }}
+              type="text"
+              value={usuarioEvento.email}
               onChange={handleAlterarTexto}
             />
-          </Grid>
-
-          <Grid item xs={6} direction={"column"} columnGap={2} md={8}>
-            <div className="header_cartao_participar_evento">
-              <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
-                Adicionar Cartão
-              </label>
-              <Tooltip title="Adicionar Cartão">
-                <IconButton
-                  onClick={() => {
-                    SetopenAdicionarCartao(true);
-                  }}
-                >
-                  <AddRounded />
-                </IconButton>
-              </Tooltip>
-            </div>
-            <div className="body_cartao_participar_evento">
-              {usuarioEvento.cartaoCredito != null ? (
-                <div className="cont_cartao_participar_evento">
-                  <Typography variant="h5">Cartão</Typography>
-                  <Typography variant="subtitle1">
-                    Número do cartão:{" "}
-                    {usuarioEvento.cartaoCredito.numeroCartao}{" "}
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    Nome do Titular:{" "}
-                    {usuarioEvento.cartaoCredito.nomeTitularCartao}{" "}
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    CVC:{" "}
-                    {usuarioEvento.cartaoCredito.cvcCartao}{" "}
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    Data de Validade:{" "}
-                    {dayjs(usuarioEvento.cartaoCredito.dataValidadeCartao).format("MM/YY")}{" "}
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    Endereço:{" "}
-                    {usuarioEvento.cartaoCredito.enderecoCartao}{" "}
-                  </Typography>
+          </div>
+        </div>
+        {isVerified && (
+          <>
+            {!isCadastrado ? (
+              <div className="body_form_part_evento2">
+                <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+                  Nome
+                </label>
+                <InputHallel
+                  name="nome"
+                  style={{ width: 350 }}
+                  type="text"
+                  value={usuarioEvento.nome}
+                  onChange={handleAlterarTexto}
+                />
+                <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+                  CPF
+                </label>
+                <InputHallel
+                  name="cpf"
+                  style={{ width: 350 }}
+                  type="text"
+                  value={usuarioEvento.cpf}
+                  onChange={handleAlterarTexto}
+                />
+                <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+                  Idade:
+                </label>
+                <InputHallel
+                  name="idade"
+                  value={usuarioEvento.idade}
+                  style={{ marginLeft: "1rem", width: 100 }}
+                  type="number"
+                  onChange={handleAlterarTexto}
+                />
+                <div className="header_cartao_participar_evento">
+                  <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+                    Adicionar Cartão
+                  </label>
+                  <Tooltip title="Adicionar Cartão">
+                    <IconButton
+                      onClick={() => {
+                        SetopenAdicionarCartao(true);
+                      }}
+                    >
+                      <AddRounded />
+                    </IconButton>
+                  </Tooltip>
                 </div>
-              ) : (
-                ""
-              )}
-            </div>
-          </Grid>
-
-          {isMenorIdade ? (
-            <Grid item xs={6} md={8}>
-              <hr />
-              <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
-                Baixar PDF (Obrigatorio)
-              </label>
-              <PDFViewer style={{ width: "100%", height: 300 }}>
-                <PDFAssinaturaDeMenor nomeEvento={evento.titulo} />
-              </PDFViewer>
-              <hr />
-            </Grid>
-          ) : (
-            <></>
-          )}
-
-          <Grid item xs={6} md={8}>
-            <BtnHallel sucesso>Participar</BtnHallel>
-          </Grid>
-        </Grid>
+                <div className="body_cartao_participar_evento">
+                  {usuarioEvento.cartaoCredito != null ? (
+                    <div className="cont_cartao_participar_evento">
+                      <Typography variant="h5">Cartão</Typography>
+                      <Typography variant="subtitle1">
+                        Número do cartão:{" "}
+                        {usuarioEvento.cartaoCredito.numeroCartao}{" "}
+                      </Typography>
+                      <Typography variant="subtitle1">
+                        Nome do Titular:{" "}
+                        {usuarioEvento.cartaoCredito.nomeTitularCartao}{" "}
+                      </Typography>
+                      <Typography variant="subtitle1">
+                        CVC: {usuarioEvento.cartaoCredito.cvcCartao}{" "}
+                      </Typography>
+                      <Typography variant="subtitle1">
+                        Data de Validade:{" "}
+                        {dayjs(
+                          usuarioEvento.cartaoCredito.dataValidadeCartao
+                        ).format("MM/YY")}{" "}
+                      </Typography>
+                      <Typography variant="subtitle1">
+                        Endereço: {usuarioEvento.cartaoCredito.enderecoCartao}{" "}
+                      </Typography>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                {isMenorIdade ? (
+                  <div>
+                    <hr />
+                    <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+                      Baixar PDF (Obrigatorio)
+                    </label>
+                    <PDFViewer style={{ width: "100%", height: 300 }}>
+                      <PDFAssinaturaDeMenor nomeEvento={evento.titulo} />
+                    </PDFViewer>
+                    <hr />
+                  </div>
+                ) : (
+                  <></>
+                )}
+                <BtnHallel sucesso>Participar</BtnHallel>
+              </div>
+            ) : (
+              <div className="footer_form_part_evento">
+                <BtnHallel sucesso>Participar</BtnHallel>
+              </div>
+            )}
+          </>
+        )}
         <ModalAdicionarCartaoPE
           open={openAdicionarCartao}
           setOpen={SetopenAdicionarCartao}
           usuario={usuarioEvento}
           setUsuario={setUsuarioEvento}
         />
+        <Snackbar
+          open={openIsCadastrado}
+          autoHideDuration={3000}
+          onClose={handleCloseSnackBar}
+        >
+          <Alert severity="info">
+            Email encontrado, usuário encontrado com este email.
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={openIsNotCadastro}
+          autoHideDuration={3000}
+          onClose={handleCloseSnackBar}
+        >
+          <Alert severity="info">Email não encontrado.</Alert>
+        </Snackbar>
       </Box>
     </Modal>
   );

@@ -130,6 +130,37 @@ body {
   justify-content: center;
 }
 
+.cont_form_part_evento{
+  width: 100%;
+}
+
+.header_form_part_evento{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.body_form_part_evento{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  margin-top: 2rem;
+  row-gap: 10px;
+}
+
+.body_form_part_evento2{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  row-gap: 10px;
+}
+
+.footer_form_part_evento{
+  margin-top: 2rem;
+}
+
 .container_participar_evento>button{
   border-radius: 12px;
 }
@@ -187,3 +218,4 @@ body {
   color: #f4f4f4;
   box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 4px;
 }
+

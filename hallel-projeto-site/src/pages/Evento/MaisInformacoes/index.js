@@ -19,7 +19,7 @@ import PDFAssinaturaDeMenor from "./PDFAssinaturaDeMenor";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import Fab from "@mui/material/Fab";
-import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
+import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 
 const InfoEventos2 = ({ evento, hide }) => {
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
@@ -30,13 +30,18 @@ const InfoEventos2 = ({ evento, hide }) => {
   return (
     <section className="containerEvents">
       <div className="area-infos">
-
-        <Fab style={{fontWeight:"600", color: "#35404b", background: "#FFA218", marginBottom: "1rem"}} onClick={()=> navigate(0)}>
-
-            <KeyboardReturnIcon/>
-
+        <Fab
+          style={{
+            fontWeight: "600",
+            color: "#35404b",
+            background: "#FFA218",
+            marginBottom: "1rem",
+          }}
+          onClick={() => navigate(0)}
+        >
+          <KeyboardReturnIcon />
         </Fab>
-        
+
         <Corpo2
           evento={evento}
           openModal={openModalParticiparEvento}
