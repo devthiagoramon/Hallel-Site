@@ -1,30 +1,25 @@
-import {
-  Alert,
-  Box,
-  Grid,
-  IconButton,
-  Modal,
-  Snackbar,
-  TextField,
-  Tooltip,
-  Typography,
-} from "@mui/material";
-import React, { useEffect, useMemo } from "react";
-import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
-import InputHallel from "../../../components/InputHallel/InputHallel";
+import { Alert, Box, Modal, Snackbar } from "@mui/material";
+import React, { useMemo } from "react";
+import { createRoot } from "react-dom/client";
+
 import { useState } from "react";
-import ReactPDF, { PDFViewer } from "@react-pdf/renderer";
-import PDFAssinaturaDeMenor from "./PDFAssinaturaDeMenor";
-import { AddRounded, PaymentRounded } from "@mui/icons-material";
+
 import ModalAdicionarCartaoPE from "./ModalAdicionarCartaoPE";
-import dayjs from "dayjs";
+
 import { verifyMembroParticiparEvento } from "../../../api/uris/MembroURLS";
 import axios from "axios";
 import FormularioNaoUsuarioHallel from "./FormularioNaoUsuarioHallel";
 import FormularioMembroHallel from "./FormularioMembroHallel";
 import FormularioAssociadoHallel from "./FormularioAssociadoHallel";
+import { eventoParticiparEventoAPI } from "../../../api/uris/EventosURLS";
+import {
+  ErrorParticiparEvento,
+  SucessoParticiparEvento,
+} from "../../../components/Feedback/FeedbackParticiparEvento.jsx";
+import { notification } from "../../..";
 
 const ModalParticiparEvento = ({ evento, open, setOpen }) => {
+
   const [usuarioEvento, setUsuarioEvento] = useState({
     id: "",
     nome: "",
@@ -49,7 +44,7 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
     idade: false,
     cpf: false,
     cartaoCredito: false,
-  })
+  });
 
   const styleInnerModal = {
     position: "absolute",
@@ -91,54 +86,54 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
     });
   };
 
-  function verifyErrorInputs(){
+  function verifyErrorInputs() {
     let hasError;
-    if(usuarioEvento.nome === ""){
-      setErrorInputs((prev)=> {
-        return {...prev, nome: true}
-      })
+    if (usuarioEvento.nome === "") {
+      setErrorInputs((prev) => {
+        return { ...prev, nome: true };
+      });
       hasError = true;
-    }else{
+    } else {
       setErrorInputs((prev) => {
         return { ...prev, nome: false };
       });
     }
-    if(usuarioEvento.email === ""){
-      setErrorInputs((prev)=> {
-        return {...prev, email: true}
-      })
+    if (usuarioEvento.email === "") {
+      setErrorInputs((prev) => {
+        return { ...prev, email: true };
+      });
       hasError = true;
-    }else{
+    } else {
       setErrorInputs((prev) => {
         return { ...prev, email: false };
       });
     }
-    if(usuarioEvento.cpf === "" || usuarioEvento.cpf.length !== 11 ){
-      setErrorInputs((prev)=> {
-        return {...prev, cpf: true}
-      })
+    if (usuarioEvento.cpf === "" || usuarioEvento.cpf.length !== 11) {
+      setErrorInputs((prev) => {
+        return { ...prev, cpf: true };
+      });
       hasError = true;
-    }else{
+    } else {
       setErrorInputs((prev) => {
         return { ...prev, cpf: false };
       });
     }
-    if(usuarioEvento.idade <= 0){
-      setErrorInputs((prev)=> {
-        return {...prev, idade: true}
-      })
+    if (usuarioEvento.idade <= 0) {
+      setErrorInputs((prev) => {
+        return { ...prev, idade: true };
+      });
       hasError = true;
-    }else{
+    } else {
       setErrorInputs((prev) => {
         return { ...prev, idade: false };
       });
     }
-    if(usuarioEvento.cartaoCredito == null){
-      setErrorInputs((prev)=> {
-        return {...prev, cartaoCredito: true}
-      })
+    if (usuarioEvento.cartaoCredito == null) {
+      setErrorInputs((prev) => {
+        return { ...prev, cartaoCredito: true };
+      });
       hasError = true;
-    }else{
+    } else {
       setErrorInputs((prev) => {
         return { ...prev, cartaoCredito: false };
       });
@@ -148,12 +143,60 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
   }
 
   const handleParticiparEvento = () => {
-    let hasError = verifyErrorInputs();
+    if (usuarioEvento.associado) {
+      // Associado não passa pela verificação de inputs
+      let url = eventoParticiparEventoAPI();
+      let usuarioEventoRequest = {
+        idEvento: evento.id,
+        ...usuarioEvento,
+      };
+      axios
+        .post(url, {
+          ...usuarioEventoRequest,
+        })
+        .then((res) => {
+          if (res.data) {
+            notification.render(<SucessoParticiparEvento />);
+          } else {
+            notification.render(<ErrorParticiparEvento />);
+          }
+          setOpen(false);
+        })
+        .catch((error) => {
+          console.log("Error participando evento: " + error);
+          notification.render(<ErrorParticiparEvento />);
+          setOpen(false);
+        });
+    } else {
+      // Já membro e não membro passam pela verificação
 
-    if(!hasError){
-
+      let hasError = verifyErrorInputs();
+      if (!hasError) {
+        let url = eventoParticiparEventoAPI();
+        let usuarioEventoRequest = {
+          idEvento: evento.id,
+          ...usuarioEvento,
+        };
+        axios
+          .post(url, {
+            ...usuarioEventoRequest,
+          })
+          .then((res) => {
+            if (res.data) {
+              notification.render(<SucessoParticiparEvento />);
+            } else {
+              notification.render(<ErrorParticiparEvento />);
+            }
+            setOpen(false);
+          })
+          .catch((error) => {
+            console.log("Error participando evento: " + error);
+            notification.render(<ErrorParticiparEvento />);
+            setOpen(false);
+          });
+      }
     }
-  }
+  };
 
   useMemo(() => {
     let url = verifyMembroParticiparEvento(localStorage.getItem("HallelId"));
@@ -186,7 +229,6 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
   return (
     <Modal open={open} onClose={handleCloseModal}>
       <Box sx={styleInnerModal}>
-
         {/* 
           Aqui funciona da seguinte maneira)
           - Verificamos se o usuário é cadastrado:
@@ -220,7 +262,10 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
                   />
                 )}
                 {usuarioEvento.associado && (
-                  <FormularioAssociadoHallel usuarioEvento={usuarioEvento} />
+                  <FormularioAssociadoHallel
+                    usuarioEvento={usuarioEvento}
+                    handleParticiparEvento={handleParticiparEvento}
+                  />
                 )}
               </>
             )}

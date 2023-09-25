@@ -49,6 +49,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
 
   function verifyInputs() {
     let hasError = false;
+    
     if (cartaoCredito.nomeTitular !== "") {
       setErrorsInputs((prev) => {
         return { ...prev, nomeTitular: false };
@@ -106,7 +107,6 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
     let hasError = false;
 
     hasError = verifyInputs();
-    console.log(cartaoCredito)
     if (!hasError) {
       setUsuario((prev) => {
         return { ...prev, cartaoCredito: {...cartaoCredito} };

@@ -13,6 +13,9 @@ export function eventoListarTodosEventosUsuarios(){
   return uriDefaultPrefix()+eventoPrefix()
 }
 
+export function eventoParticiparEventoAPI(){
+  return uriDefaultPrefix() + "/home" + eventoPrefix() + "/participarEvento";
+}
 
 /*
     Eventos (Administrador)
