@@ -36,7 +36,8 @@ export function homeMatricularParticipanteInCursoByIdUserAndIdCurso(
 */
 
 export function homeVerificarToken(token) {
-  return uriDefaultPrefix() + "/isTokenExpired/" + String(token);
+  let tokenArrumado = String(token).replace(" ", "+");
+  return uriDefaultPrefix() + "/home/isTokenExpired?token=" + tokenArrumado;
 }
 
 /*

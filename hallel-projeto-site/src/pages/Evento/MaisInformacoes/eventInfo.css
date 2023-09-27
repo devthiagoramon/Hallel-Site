@@ -112,6 +112,26 @@ body {
   color: #252525;
 }
 
+.cont_loading_is_inscrito{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.status_evento_participando{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.label_status_evento_participando{
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #28a745;
+}
+
 .container_infos_desc_evento {
   width: 100%;
   display: flex;

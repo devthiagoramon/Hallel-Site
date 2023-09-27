@@ -21,7 +21,7 @@ function EventoUser() {
   const filterEventos = (event) => {
     const query = event.target.value;
 
-    if (query == "") {
+    if (query === "") {
       setEventos(eventos2);
     } else {
       var updateList = [...eventos];
@@ -40,7 +40,6 @@ function EventoUser() {
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
 
     fetch(url, {
       headers: myHeaders,
@@ -50,7 +49,6 @@ function EventoUser() {
       .then((object) => {
         setEventos(object);
         setEventos2(object);
-        console.log(eventos);
       })
       .catch((r) => {
         console.log("Erro");

@@ -1,11 +1,11 @@
 import React from "react";
 import PDFAssinaturaDeMenor from "./PDFAssinaturaDeMenor";
-import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
 import { PDFViewer } from "@react-pdf/renderer";
-import InputHallel from "../../../components/InputHallel/InputHallel";
 import { IconButton, Tooltip, Typography } from "@mui/material";
 import { AddRounded } from "@mui/icons-material";
 import dayjs from "dayjs";
+import InputHallel from "../../../../components/InputHallel/InputHallel";
+import BtnHallel from "../../../../components/BtnHallel/ButtonHallel";
 
 const FormularioNaoUsuarioHallel = ({
   usuarioEvento,

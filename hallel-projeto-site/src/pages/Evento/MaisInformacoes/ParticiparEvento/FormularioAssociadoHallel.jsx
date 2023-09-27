@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import dayjs from "dayjs";
 import React from "react";
-import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
+import BtnHallel from "../../../../components/BtnHallel/ButtonHallel";
 
 const FormularioAssociadoHallel = ({
   usuarioEvento,

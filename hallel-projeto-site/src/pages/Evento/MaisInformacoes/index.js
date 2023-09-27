@@ -1,31 +1,76 @@
-import React, { Component } from "react";
+import React from "react";
 import "./eventInfo.css";
 import {} from "react-icons/bs";
-import {
-  AltRouteRounded,
-  ConnectWithoutContactRounded,
-  OpenInFullOutlined,
-  Padding,
-} from "@mui/icons-material";
-import { Button } from "@mui/material";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import { useState } from "react";
-import Grid from "@mui/material/Grid";
 import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
-import ModalParticiparEvento from "./ModalParticiparEvento";
-import { PDFViewer } from "@react-pdf/renderer";
-import PDFAssinaturaDeMenor from "./PDFAssinaturaDeMenor";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import Fab from "@mui/material/Fab";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
+import ModalParticiparEvento from "./ParticiparEvento/ModalParticiparEvento";
+import { useEffect } from "react";
+import { useMemo } from "react";
+import {
+  eventoUsuarioIsInscrito,
+  eventoVerifyStatusPagamentoUser,
+} from "../../../api/uris/EventosURLS";
+import axios from "axios";
+import { notification } from "../../..";
+import { ErrorLoadingIsParticipando } from "../../../components/Feedback/FeedbackParticiparEvento";
+import { CircularProgress } from "@mui/material";
 
 const InfoEventos2 = ({ evento, hide }) => {
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
     useState(false);
+  const [isInscrito, setIsInscrito] = useState(false);
+  const [loadingIsInscrito, setLoadingIsInscrito] = useState(true);
+  const [statusPagamento, setStatusPagamento] = useState("");
 
   const navigate = useNavigate();
+
+  useMemo(() => {
+    let url = eventoUsuarioIsInscrito(
+      evento.id,
+      localStorage.getItem("HallelId")
+    );
+
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setIsInscrito(res.data);
+        setLoadingIsInscrito(false);
+        if (res.data) {
+          let url = eventoVerifyStatusPagamentoUser(
+            evento.id,
+            localStorage.getItem("HallelEmail")
+          );
+          axios
+            .get(url, {
+              headers: {
+                Authorization: localStorage.getItem("token"),
+              },
+            })
+            .then((res) => {
+              setStatusPagamento(res.data);
+              console.log(res.data);
+            })
+            .then((error) => {
+              console.log("Error verificando status pagamento: " + error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.log(
+          "Error verificando se user estar participando de evento: " + error
+        );
+        notification.render(<ErrorLoadingIsParticipando />);
+        setLoadingIsInscrito(false);
+      });
+  }, []);
 
   return (
     <section className="containerEvents">
@@ -47,6 +92,9 @@ const InfoEventos2 = ({ evento, hide }) => {
           openModal={openModalParticiparEvento}
           hide={hide}
           setOpenModal={setOpenModalParticiparEvento}
+          isInscrito={isInscrito}
+          loadingIsInscrito={loadingIsInscrito}
+          situacaoPagamento={statusPagamento}
         />
         <hr style={{ marginTop: "30px" }} />
         <Info2
@@ -55,16 +103,25 @@ const InfoEventos2 = ({ evento, hide }) => {
           setEstado={setOpenModalParticiparEvento}
         />
       </div>
-      <ModalParticiparEvento
-        open={openModalParticiparEvento}
-        setOpen={setOpenModalParticiparEvento}
-        evento={evento}
-      />
+      {!isInscrito && (
+        <ModalParticiparEvento
+          open={openModalParticiparEvento}
+          setOpen={setOpenModalParticiparEvento}
+          evento={evento}
+        />
+      )}
     </section>
   );
 };
 
-const Corpo2 = ({ evento, openModal, setOpenModal }) => {
+const Corpo2 = ({
+  isInscrito,
+  evento,
+  openModal,
+  setOpenModal,
+  loadingIsInscrito,
+  situacaoPagamento,
+}) => {
   const abrirModal = () => {
     setOpenModal(!openModal);
   };
@@ -94,13 +151,29 @@ const Corpo2 = ({ evento, openModal, setOpenModal }) => {
           src={evento.imagem}
           alt="imagem"
         />
-
-        <div className="container_participar_evento">
-          <BtnHallel secundario onClick={abrirModal}>
-            {" "}
-            Participar do evento
-          </BtnHallel>
-        </div>
+        {!loadingIsInscrito ? (
+          <>
+            {!isInscrito ? (
+              <div className="container_participar_evento">
+                <BtnHallel secundario onClick={abrirModal}>
+                  {" "}
+                  Participar do evento
+                </BtnHallel>
+              </div>
+            ) : (
+              <div className="status_evento_participando">
+                <label className="label_status_evento_participando">
+                  Inscrito
+                </label>
+                <label>Situação do Pagamento: {situacaoPagamento}</label>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="cont_loading_is_inscrito">
+            <CircularProgress />
+          </div>
+        )}
       </div>
       <hr style={{ marginTop: "30px", marginBottom: "30px" }} />
     </div>

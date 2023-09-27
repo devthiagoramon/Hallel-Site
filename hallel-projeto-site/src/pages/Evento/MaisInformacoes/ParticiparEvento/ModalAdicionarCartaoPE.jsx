@@ -1,9 +1,9 @@
 import { Box, Modal } from "@mui/material";
 import React from "react";
 import { useState } from "react";
-import InputHallel from "../../../components/InputHallel/InputHallel";
+import InputHallel from "../../../../components/InputHallel/InputHallel";
 import { DatePicker } from "@mui/x-date-pickers";
-import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
+import BtnHallel from "../../../../components/BtnHallel/ButtonHallel";
 import dayjs from "dayjs";
 
 const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {

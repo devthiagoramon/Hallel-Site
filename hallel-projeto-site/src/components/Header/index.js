@@ -11,6 +11,7 @@ import { AccountCircle, Login } from "@mui/icons-material";
 import ModalPerfilAdm from "./perfilAdm";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { homeVerificarToken } from "../../api/uris/HomeUris";
+import axios from "axios";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
@@ -30,17 +31,9 @@ function Header() {
 
   function isTokenExpired() {
     let url = homeVerificarToken(localStorage.getItem("token"));
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
+    axios.get(url)
       .then((res) => {
-        return res.json();
-      })
-      .then((object) => {
-        if (object === true) {
+        if (res.data === true) {
           // Token expirou
           localStorage.clear();
           setIsExpired(true);

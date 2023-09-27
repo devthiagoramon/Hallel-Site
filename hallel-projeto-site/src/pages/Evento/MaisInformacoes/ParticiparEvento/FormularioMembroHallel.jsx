@@ -1,9 +1,9 @@
 import React from "react";
-import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
 import { IconButton, Tooltip, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { AddRounded } from "@mui/icons-material";
-import InputHallel from "../../../components/InputHallel/InputHallel";
+import InputHallel from "../../../../components/InputHallel/InputHallel";
+import BtnHallel from "../../../../components/BtnHallel/ButtonHallel";
 
 const FormularioMembroHallel = ({
   usuarioEvento,

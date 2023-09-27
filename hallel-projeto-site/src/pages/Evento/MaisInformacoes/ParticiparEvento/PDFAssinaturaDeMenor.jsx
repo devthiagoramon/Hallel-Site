@@ -7,7 +7,7 @@ import {
   View,
 } from "@react-pdf/renderer";
 import React from "react";
-import logoHallel from "./../../../images/LogoHallel.png";
+import logoHallel from "./../../../../images/LogoHallel.png";
 import dayjs from "dayjs";
 
 const style = StyleSheet.create({

@@ -6,17 +6,14 @@ import { useState } from "react";
 
 import ModalAdicionarCartaoPE from "./ModalAdicionarCartaoPE";
 
-import { verifyMembroParticiparEvento } from "../../../api/uris/MembroURLS";
 import axios from "axios";
 import FormularioNaoUsuarioHallel from "./FormularioNaoUsuarioHallel";
 import FormularioMembroHallel from "./FormularioMembroHallel";
 import FormularioAssociadoHallel from "./FormularioAssociadoHallel";
-import { eventoParticiparEventoAPI } from "../../../api/uris/EventosURLS";
-import {
-  ErrorParticiparEvento,
-  SucessoParticiparEvento,
-} from "../../../components/Feedback/FeedbackParticiparEvento.jsx";
-import { notification } from "../../..";
+import { eventoParticiparEventoAPI } from "../../../../api/uris/EventosURLS";
+import { verifyMembroParticiparEvento } from "../../../../api/uris/MembroURLS";
+import { notification } from "../../../..";
+import { ErrorParticiparEvento, SucessoParticiparEvento } from "../../../../components/Feedback/FeedbackParticiparEvento";
 
 const ModalParticiparEvento = ({ evento, open, setOpen }) => {
 
@@ -199,6 +196,7 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
   };
 
   useMemo(() => {
+    if(localStorage.getItem("HallelId") != null){
     let url = verifyMembroParticiparEvento(localStorage.getItem("HallelId"));
     axios
       .get(url, {
@@ -220,6 +218,10 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
       .catch((error) => {
         console.log("Error verificando membro: " + error);
       });
+    }else{
+      setIsVerified(true);
+      setIsCadastrado(false);
+    }
   }, []);
 
   const handleCloseSnackBar = () => {

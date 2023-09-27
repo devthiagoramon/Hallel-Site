@@ -25,4 +25,17 @@ const SucessoParticiparEvento = () => {
     );
 }
 
-export {ErrorParticiparEvento, SucessoParticiparEvento};
+
+const ErrorLoadingIsParticipando = () => {
+  const [open, setOpen] = useState(true);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <Snackbar open={open} onClose={handleClose} autoHideDuration={3000}>
+      <Alert severity="error">Error na verificação de participação de evento</Alert>
+    </Snackbar>
+  );
+}
+
+export {ErrorParticiparEvento, SucessoParticiparEvento, ErrorLoadingIsParticipando};
