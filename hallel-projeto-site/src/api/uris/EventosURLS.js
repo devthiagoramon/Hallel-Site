@@ -1,7 +1,7 @@
 import {
-  administradorPrefix,
-  eventoPrefix,
-  uriDefaultPrefix,
+    administradorPrefix,
+    eventoPrefix,
+    uriDefaultPrefix,
 } from "./utilsURI";
 
 /*
@@ -10,27 +10,31 @@ import {
 */
 
 export function eventoListarTodosEventosUsuarios() {
-  return uriDefaultPrefix() + "/home" + eventoPrefix() + "/listar";
+    return uriDefaultPrefix() + "/home" + eventoPrefix() + "/listar";
 }
 
 export function eventoParticiparEventoAPI() {
-  return uriDefaultPrefix() + "/home" + eventoPrefix() + "/participarEvento";
+    return uriDefaultPrefix() + "/home" + eventoPrefix() + "/participarEvento";
 }
 
 export function eventoUsuarioIsInscrito(idEvento, idUser) {
-  return (
-    uriDefaultPrefix() +
-    eventoPrefix() +
-    "/verificarInscrito?idEvento=" +
-    idEvento +
-    "&idUser=" +
-    idUser
-  );
+    return (
+        uriDefaultPrefix() +
+        eventoPrefix() +
+        "/verificarInscrito?idEvento=" +
+        idEvento +
+        "&idUser=" +
+        idUser
+    );
 }
 
-export function eventoVerifyStatusPagamentoUser(idEvento, emailUser){
-  return uriDefaultPrefix()+
-  eventoPrefix()+"/verificarSituacaoEmEvento?idEvento="+idEvento+"&email="+emailUser
+export function eventoVerifyStatusPagamentoUser(idEvento, emailUser) {
+    return uriDefaultPrefix() +
+        eventoPrefix() + "/verificarSituacaoEmEvento?idEvento=" + idEvento + "&email=" + emailUser
+}
+
+export function eventoListarEventosInscritos(idUser) {
+    return uriDefaultPrefix() + eventoPrefix() + "/eventosInscritos?idUser=" + idUser;
 }
 
 /*
@@ -38,125 +42,125 @@ export function eventoVerifyStatusPagamentoUser(idEvento, emailUser){
 */
 
 export function eventoAdicionar() {
-  return (
-    uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/create"
-  );
+    return (
+        uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/create"
+    );
 }
 
 export function eventoListarParticipantes(idEvento) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    eventoPrefix() +
-    "/" +
-    idEvento +
-    "/get/participantes"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        eventoPrefix() +
+        "/" +
+        idEvento +
+        "/get/participantes"
+    );
 }
 
 export function eventoListarById(idEvento) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    eventoPrefix() +
-    "/" +
-    idEvento +
-    "/list"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        eventoPrefix() +
+        "/" +
+        idEvento +
+        "/list"
+    );
 }
 
 export function eventoEditarById(idEvento) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    eventoPrefix() +
-    "/" +
-    idEvento +
-    "/edit"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        eventoPrefix() +
+        "/" +
+        idEvento +
+        "/edit"
+    );
 }
 
 export function eventoListar() {
-  return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/asc";
+    return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/asc";
 }
 
 export function eventoListarArquivado() {
-  return (
-    uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/arquivados"
-  );
+    return (
+        uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/arquivados"
+    );
 }
 
 export function eventoArquivar(idEvento) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    eventoPrefix() +
-    "/" +
-    idEvento +
-    "/arquivar"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        eventoPrefix() +
+        "/" +
+        idEvento +
+        "/arquivar"
+    );
 }
 
 export function eventoDesarquivar(idEvento) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    eventoPrefix() +
-    "/" +
-    idEvento +
-    "/desarquivar"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        eventoPrefix() +
+        "/" +
+        idEvento +
+        "/desarquivar"
+    );
 }
 
 /*
     Despesas (Evento)
 */
 export function despesasListarByEventoId(id) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    eventoPrefix() +
-    "/" +
-    id +
-    "/despesa/listAll"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        eventoPrefix() +
+        "/" +
+        id +
+        "/despesa/listAll"
+    );
 }
 
 export function despesasAddToEventoId(id) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    eventoPrefix() +
-    "/" +
-    id +
-    "/despesa/add"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        eventoPrefix() +
+        "/" +
+        id +
+        "/despesa/add"
+    );
 }
 
 export function despesaDeletarByEventoAndIdDespesa(idEvento, idDespesa) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    eventoPrefix() +
-    "/" +
-    idEvento +
-    "/despesa/" +
-    idDespesa +
-    "/delete"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        eventoPrefix() +
+        "/" +
+        idEvento +
+        "/despesa/" +
+        idDespesa +
+        "/delete"
+    );
 }
 
 export function despesaEditarByEventoAndIdDespesa(idEvento, idDespesa) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    eventoPrefix() +
-    "/" +
-    idEvento +
-    "/despesa/" +
-    parseInt(idDespesa) +
-    "/edit"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        eventoPrefix() +
+        "/" +
+        idEvento +
+        "/despesa/" +
+        parseInt(idDespesa) +
+        "/edit"
+    );
 }
 
 /*
@@ -164,33 +168,33 @@ export function despesaEditarByEventoAndIdDespesa(idEvento, idDespesa) {
 */
 
 export function localEventoAdicionar() {
-  return uriDefaultPrefix() + administradorPrefix() + "/locais/create";
+    return uriDefaultPrefix() + administradorPrefix() + "/locais/create";
 }
 
 export function localEventoListar() {
-  return uriDefaultPrefix() + administradorPrefix() + "/locais/listLocalizacao";
+    return uriDefaultPrefix() + administradorPrefix() + "/locais/listLocalizacao";
 }
 
 export function localEventoListarById(id) {
-  return uriDefaultPrefix() + administradorPrefix() + "/locais/" + id + "/list";
+    return uriDefaultPrefix() + administradorPrefix() + "/locais/" + id + "/list";
 }
 
 export function localEventoEditarById(idLocalEventoModal) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    "/locais/" +
-    idLocalEventoModal +
-    "/edit"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        "/locais/" +
+        idLocalEventoModal +
+        "/edit"
+    );
 }
 
 export function localEventoDeletarById(idLocalEventoModal) {
-  return (
-    uriDefaultPrefix() +
-    administradorPrefix() +
-    "/locais/" +
-    idLocalEventoModal +
-    "/delete"
-  );
+    return (
+        uriDefaultPrefix() +
+        administradorPrefix() +
+        "/locais/" +
+        idLocalEventoModal +
+        "/delete"
+    );
 }
