@@ -80,7 +80,7 @@ export function eventoEditarById(idEvento) {
     );
 }
 
-export function eventoListar() {
+export function eventoListarAdm() {
     return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/asc";
 }
 

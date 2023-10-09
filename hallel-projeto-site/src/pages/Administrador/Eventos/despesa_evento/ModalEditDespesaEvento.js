@@ -17,6 +17,7 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { despesaEditarByEventoAndIdDespesa } from "../../../../api/uris/EventosURLS";
+import {eventoEditarDespesaPorIdEIdEventoService} from "../../../../service/EventoService";
 
 const ModalEditDespesaEvento = (props) => {
   const {
@@ -83,30 +84,18 @@ const ModalEditDespesaEvento = (props) => {
 
   const editarDespesaEvento = () => {
     setEnviando(true);
-    axios
-      .put(
-        despesaEditarByEventoAndIdDespesa(idEvento, despesaSelected.id),
-        {
-          ...despesaEvento,
-        },
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      )
-      .then(() => {
+    let response = eventoEditarDespesaPorIdEIdEventoService(idEvento, despesaSelected.id);
+    if(response){
         setEditarPopUp(true);
         setOpenModal(false);
         setOpenPopUp(true);
         setEnviando(false);
         setChangedTabela(changedTabela);
-      })
-      .catch(() => {
+    }else{
         setEditarPopUp(false);
         setOpenPopUp(true);
         setEnviando(false);
-      });
+    }
   };
 
   const handleChangeSelect = (e) => {

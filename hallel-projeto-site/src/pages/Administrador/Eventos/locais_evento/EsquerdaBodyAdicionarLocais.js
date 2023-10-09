@@ -1,57 +1,52 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import InputsBodyAdicionarLocais from "./InputsBodyAdicionarLocais";
 import ContainerImagemAdicionarLocais from "./ContainerImagemAdicionarLocais";
-import { useState } from "react";
+import {useState} from "react";
 import axios from "axios";
-import { localEventoAdicionar } from "../../../../api/uris/EventosURLS";
+import {localEventoAdicionar} from "../../../../api/uris/EventosURLS";
+import {eventoAdicionarLocalEventoService} from "../../../../service/EventoService";
 
 const EsquerdaBodyLocaisEventos = (props) => {
-  const [imagemLocal, setImagemLocal] = useState(null);
-  const [localizacao, setLocalizacao] = useState("");
-  const [isRequestSucessFull, setIsRequestSucessFull] = useState(null);
-  const [enviando, setEnviando] = useState(false);
+    const [imagemLocal, setImagemLocal] = useState(null);
+    const [localizacao, setLocalizacao] = useState("");
+    const [isRequestSucessFull, setIsRequestSucessFull] = useState(null);
+    const [enviando, setEnviando] = useState(false);
 
-  const enviarRequest = () => {
+    const enviarRequest = () => {
+        setEnviando(true);
+        let localEvento = {
+            imagem: imagemLocal,
+            localizacao: localizacao
+        }
+        let response = eventoAdicionarLocalEventoService(localEvento);
+        if (response) {
+            setIsRequestSucessFull(true);
+            setEnviando(false)
+            props.setEnviadoSucesso(!props.enviadoSucesso);
+        } else {
+            setIsRequestSucessFull(false);
+            setEnviando(false);
+        }
+    }
 
-    let url = localEventoAdicionar();
+    useEffect(() => {
+        setTimeout(() => {
+            setIsRequestSucessFull(null);
+        }, 5000);
+    }, [isRequestSucessFull])
 
-    setEnviando(true);
 
-    axios.post(url, {
-      imagem: imagemLocal,
-      localizacao: localizacao
-    },{
-      headers:{
-        Authorization: localStorage.getItem("token"),
-      }
-    }).then(() => {
-      setIsRequestSucessFull(true);
-      setEnviando(false)
-      props.setEnviadoSucesso(!props.enviadoSucesso);
-    }).catch((error) => {
-      console.log(error);
-      setIsRequestSucessFull(false);
-      setEnviando(false);
-    })
-
-  }
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsRequestSucessFull(null);
-    }, 5000);
-  }, [isRequestSucessFull])
-  
-
-  return (
-    <div className="esquerdaAdicionarLocais">
-      <ContainerImagemAdicionarLocais
-        imagemLocal={imagemLocal}
-        setImagemLocal={setImagemLocal}
-      />
-      <InputsBodyAdicionarLocais localizacao={localizacao} setLocalizacao={setLocalizacao} enviarRequest={enviarRequest} isRequestSucessFull={isRequestSucessFull} enviando={enviando} />
-    </div>
-  );
+    return (
+        <div className="esquerdaAdicionarLocais">
+            <ContainerImagemAdicionarLocais
+                imagemLocal={imagemLocal}
+                setImagemLocal={setImagemLocal}
+            />
+            <InputsBodyAdicionarLocais localizacao={localizacao} setLocalizacao={setLocalizacao}
+                                       enviarRequest={enviarRequest} isRequestSucessFull={isRequestSucessFull}
+                                       enviando={enviando}/>
+        </div>
+    );
 };
 
 export default EsquerdaBodyLocaisEventos;

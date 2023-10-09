@@ -1,9 +1,10 @@
-import { AddRounded, DoneRounded, ErrorRounded } from '@mui/icons-material';
-import { Textarea } from '@mui/joy'
-import { Button, CircularProgress, MenuItem, Select, TextField } from '@mui/material'
+import {AddRounded, DoneRounded, ErrorRounded} from '@mui/icons-material';
+import {Textarea} from '@mui/joy'
+import {Button, CircularProgress, MenuItem, Select, TextField} from '@mui/material'
 import axios from 'axios';
-import React, { useState } from 'react'
-import { despesasAddToEventoId } from '../../../../api/uris/EventosURLS';
+import React, {useState} from 'react'
+import {despesasAddToEventoId} from '../../../../api/uris/EventosURLS';
+import {eventoAddDespesasParaEventoPorIdService} from "../../../../service/EventoService";
 
 const InputsBodyDespesasEvento = (props) => {
     const [despesaEvento, setDespesaEvento] = useState({
@@ -21,35 +22,27 @@ const InputsBodyDespesasEvento = (props) => {
 
     const handleChangeSelect = (e) => {
         setDespesaEvento(prevState => {
-            return { ...prevState, num_tipoDespesa: e.target.value }
+            return {...prevState, num_tipoDespesa: e.target.value}
         })
     }
 
     const adicionarDespesaEmEvento = () => {
-
         setEnviando(true);
-
-        axios.post(despesasAddToEventoId(idEvento), {
-            ...despesaEvento
-        }, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        }).then(() => {
+        let response = eventoAddDespesasParaEventoPorIdService(idEvento, despesaEvento);
+        if (response) {
             setEnviando(false);
             setenviado(true);
             props.setChangedTabela(!props.changedTabela)
             setTimeout(() => {
                 setenviado(null);
             }, 3000);
-
-        }).catch(() => {
+        } else {
             setenviado(false);
             setEnviando(false);
             setTimeout(() => {
                 setenviado(null);
             }, 3000);
-        })
+        }
     }
 
     return (
@@ -59,15 +52,15 @@ const InputsBodyDespesasEvento = (props) => {
                 <label>Nome da despesa <span className='obrigatorio'>*</span></label>
                 <TextField size='small' value={despesaEvento.nome} onChange={(e) => {
                     setDespesaEvento(prevState => {
-                        return { ...prevState, nome: e.target.value }
+                        return {...prevState, nome: e.target.value}
                     })
-                }} />
+                }}/>
                 <label>Descrição <span className='obrigatorio'>*</span></label>
                 <Textarea variant='outlined' value={despesaEvento.descricao} maxRows={5} onChange={(e) => {
                     setDespesaEvento(prevState => {
-                        return { ...prevState, descricao: e.target.value }
+                        return {...prevState, descricao: e.target.value}
                     })
-                }} />
+                }}/>
                 <label>Tipo da despesa <span className='obrigatorio'>*</span></label>
                 <Select size='small' value={despesaEvento.num_tipoDespesa} onChange={handleChangeSelect}>
                     <MenuItem value={1}>Dinheiro</MenuItem>
@@ -83,21 +76,21 @@ const InputsBodyDespesasEvento = (props) => {
                             <>
                                 <label>Quantidade</label>
                                 <TextField value={despesaEvento.quantidade}
-                                    onChange={(e) => {
-                                        setDespesaEvento(prevState => {
-                                            return { ...prevState, quantidade: e.target.value }
-                                        })
-                                    }} type='number' size='small' sx={{ maxWidth: "30%" }} />
+                                           onChange={(e) => {
+                                               setDespesaEvento(prevState => {
+                                                   return {...prevState, quantidade: e.target.value}
+                                               })
+                                           }} type='number' size='small' sx={{maxWidth: "30%"}}/>
                             </>
                             :
                             <>
                                 <label>Valor</label>
                                 <TextField value={despesaEvento.valor}
-                                    onChange={(e) => {
-                                        setDespesaEvento(prevState => {
-                                            return { ...prevState, valor: e.target.value }
-                                        })
-                                    }} size='small' type='number' sx={{ maxWidth: "30%" }} />
+                                           onChange={(e) => {
+                                               setDespesaEvento(prevState => {
+                                                   return {...prevState, valor: e.target.value}
+                                               })
+                                           }} size='small' type='number' sx={{maxWidth: "30%"}}/>
                             </>}
                     </>
                 }
@@ -105,15 +98,17 @@ const InputsBodyDespesasEvento = (props) => {
                 <div className='btn_despesas_evento'>
                     {enviado === null &&
                         <>
-                            {enviando === false ? 
-                            <Button variant='contained' endIcon={<AddRounded />} onClick={adicionarDespesaEmEvento}>Adicionar</Button> : 
-                            <Button variant='contained'>Enviando <CircularProgress sx={{color:"#FAF4F4"}}/></Button>}
+                            {enviando === false ?
+                                <Button variant='contained' endIcon={<AddRounded/>}
+                                        onClick={adicionarDespesaEmEvento}>Adicionar</Button> :
+                                <Button variant='contained'>Enviando <CircularProgress
+                                    sx={{color: "#FAF4F4"}}/></Button>}
                         </>
                     }
                     {enviado === false &&
                         <Button variant='contained' endIcon={<ErrorRounded/>} color='error'>Error</Button>
                     }
-                    {enviado === true && 
+                    {enviado === true &&
                         <Button variant='contained' endIcon={<DoneRounded/>} color='success'>Adicionado!</Button>
                     }
                 </div>

@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useRef } from "react";
-import { eventoListar } from "../../api/uris/EventosURLS";
+import { eventoListarAdm } from "../../api/uris/EventosURLS";
 import "bootstrap/dist/css/bootstrap.css";
 import Carousel from "react-bootstrap/Carousel";
 import { useEffect } from "react";

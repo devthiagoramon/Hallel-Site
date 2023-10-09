@@ -18,6 +18,7 @@ import axios from "axios";
 import { notification } from "../../..";
 import { ErrorLoadingIsParticipando } from "../../../components/Feedback/FeedbackParticiparEvento";
 import { CircularProgress } from "@mui/material";
+import {eventoIsInscritoService, eventoVerifyStatusPagamentoService} from "../../../service/EventoService";
 
 const InfoEventos2 = ({ evento, hide }) => {
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
@@ -29,47 +30,13 @@ const InfoEventos2 = ({ evento, hide }) => {
   const navigate = useNavigate();
 
   useMemo(() => {
-    let url = eventoUsuarioIsInscrito(
-      evento.id,
-      localStorage.getItem("HallelId")
-    );
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setIsInscrito(res.data);
-        setLoadingIsInscrito(false);
-        if (res.data) {
-          let url = eventoVerifyStatusPagamentoUser(
-            evento.id,
-            localStorage.getItem("HallelEmail")
-          );
-          axios
-            .get(url, {
-              headers: {
-                Authorization: localStorage.getItem("token"),
-              },
-            })
-            .then((res) => {
-              setStatusPagamento(res.data);
-              console.log(res.data);
-            })
-            .then((error) => {
-              console.log("Error verificando status pagamento: " + error);
-            });
-        }
-      })
-      .catch((error) => {
-        console.log(
-          "Error verificando se user estar participando de evento: " + error
-        );
-        notification.render(<ErrorLoadingIsParticipando />);
-        setLoadingIsInscrito(false);
-      });
+    let responseInscrito = eventoIsInscritoService(evento.id, localStorage.getItem("HallelId"));
+    if(responseInscrito){
+      setIsInscrito(responseInscrito);
+      setLoadingIsInscrito(false);
+      let responsePagamento = eventoVerifyStatusPagamentoService(evento.id);
+      setStatusPagamento(responsePagamento);
+    }
   }, []);
 
   return (

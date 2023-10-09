@@ -2,6 +2,7 @@ import { Box, Button, Modal } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { eventoDesarquivar } from "../../../../api/uris/EventosURLS";
+import {desarquivarArquivoService} from "../../../../service/EventoService";
 
 const ModalDesarquivarEvento = (props) => {
   const {
@@ -25,22 +26,9 @@ const ModalDesarquivarEvento = (props) => {
   };
 
   const desarquivarEvento = () => {
-    axios
-      .get(
-        eventoDesarquivar(idEvento),
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      )
-      .then(() => {
-        setAtualizarTabela(!atualizarTabela);
-        setOpenModalDesarquivar(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    desarquivarArquivoService(idEvento);
+    setAtualizarTabela(!atualizarTabela);
+    setOpenModalDesarquivar(false);
   };
 
   const handleCloseModal = () => {

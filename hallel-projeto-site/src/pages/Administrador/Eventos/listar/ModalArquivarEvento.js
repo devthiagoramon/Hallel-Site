@@ -1,7 +1,6 @@
-import { Box, Button, Modal } from "@mui/material";
-import axios from "axios";
+import {Box, Button, Modal} from "@mui/material";
 import React from "react";
-import { eventoArquivar } from "../../../../api/uris/EventosURLS";
+import {arquivarEventoService} from "../../../../service/EventoService";
 
 const ModalArquivarEvento = (props) => {
   const {
@@ -25,18 +24,9 @@ const ModalArquivarEvento = (props) => {
   };
 
   const arquivarEvento = () => {
-    axios.get(
-      eventoArquivar(idEvento),{
-        headers:{
-            Authorization: localStorage.getItem("token")
-        }
-      }
-    ).then(() => {
-        setAtualizarTabela(!atualizarTabela)
-        setOpenModalArquivar(false);
-    }).catch((error) => {
-        console.log(error);
-    });
+    arquivarEventoService(idEvento);
+    setOpenModalArquivar(false);
+    setAtualizarTabela(!atualizarTabela);
   }
 
   const handleCloseModal = () => {

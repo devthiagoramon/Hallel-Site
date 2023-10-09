@@ -1,35 +1,15 @@
-import React, { useEffect } from "react";
-import { Table } from "react-bootstrap";
-import { BsPencilFill } from "react-icons/bs";
-import { AiFillDelete } from "react-icons/ai";
-import { useState } from "react";
-import axios from "axios";
-import { IconButton } from "@mui/material";
-import { CircularProgress } from "@mui/joy";
-import { despesasListarByEventoId } from "../../../../api/uris/EventosURLS";
+import React, {useMemo} from "react";
+import {Table} from "react-bootstrap";
+import {BsPencilFill} from "react-icons/bs";
+import {AiFillDelete} from "react-icons/ai";
+import {IconButton} from "@mui/material";
+import {CircularProgress} from "@mui/joy";
+import {eventoListarDespesasPorIdEventoService} from "../../../../service/EventoService";
 
 const ListaDespesasEvento = (props) => {
-  const [despesas, setDespesas] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(
-        despesasListarByEventoId(props.evento.id),
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      )
-      .then((res) => {
-        if (res.data !== null) {
-          setDespesas(res.data);
-        }
-      })
-      .catch((error) => {
-        console.log("Error requerindo da url de despesas: " + error);
-      });
-  }, [props.changedTabela]);
+  const despesas = useMemo(() => {
+    return eventoListarDespesasPorIdEventoService();
+  }, [])
 
   function abrirModalEdit(despesa) {
     props.setDespesaSelected(despesa);

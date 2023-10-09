@@ -1,26 +1,16 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useRef } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./style.css";
 import addImageIcon from "./../../../../images/addImage.svg";
 import addCircle from "./../../../../images/addCircle.svg";
 import deleteIcon from "./../../../../images/deleteIcon.svg";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
-import {
-  Button,
-  IconButton,
-  Switch,
-  ThemeProvider,
-  createTheme,
-} from "@mui/material";
-import { AddLocationRounded, Save } from "@mui/icons-material";
-import axios from "axios";
+import {Button, IconButton, Switch,} from "@mui/material";
+import {AddLocationRounded} from "@mui/icons-material";
 import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
-import { MuiFileInput } from "mui-file-input";
-import { kMaxLength } from "buffer";
-import { eventoAdicionar } from "../../../../api/uris/EventosURLS";
-import { purple } from "@mui/material/colors";
+import {MuiFileInput} from "mui-file-input";
+import {eventoAdicionarEventoService} from "../../../../service/EventoService";
+
 const AdicionarEvento = () => {
   const tituloDiv = useRef();
   const imagemDiv = useRef();
@@ -108,36 +98,15 @@ const AdicionarEvento = () => {
   }
 
   const enviarEvento = () => {
-    let url = eventoAdicionar();
-
     let palestranteDTO = [];
-
     let inputsProv = [...inputsArray];
-
     inputsProv.forEach((item) => {
       palestranteDTO.push(item.nome);
     });
-
     setevento((prev) => {
       return { ...prev, palestrantes: palestranteDTO };
     });
-
-    axios
-      .post(
-        url,
-        {
-          ...evento,
-        },
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      )
-      .then(() => {})
-      .catch((error) => {
-        console.log("Error enviando evento para a API: " + error);
-      });
+    eventoAdicionarEventoService(evento);
   };
 
   const abrirModalLocalizacao = (e) => {

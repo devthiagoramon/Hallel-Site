@@ -1,16 +1,13 @@
 import Img from "../../images/fundoCardTeste.jpg";
 import "./styleEventos.css";
-import Card from "react-bootstrap/Card";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { Skeleton } from "@mui/material";
-import { Link } from "react-router-dom";
-import { eventoListar } from "../../api/uris/EventosURLS";
+import React, {useEffect, useMemo, useRef, useState} from "react";
+import {motion} from "framer-motion";
+import {Skeleton} from "@mui/material";
+import {Link} from "react-router-dom";
+import {listarTodosEventosUsuarioService} from "../../service/EventoService";
 
 //  images controls
 const SlideEventos = (props) => {
-
-
 
   function alterarEventoEspc(item) {
     setEventoEspc("");
@@ -19,7 +16,6 @@ const SlideEventos = (props) => {
   }
 
   const carrosel = useRef();
-  const [eventos, setEventos] = useState([]);
   const [showInfos, setshowInfos] = useState(false);
   const [eventoEspc, setEventoEspc] = useState();
   const [width, setWidht] = useState(0);
@@ -29,28 +25,11 @@ const SlideEventos = (props) => {
   }, []);
 
 
-  useMemo(() => {
-    let url = eventoListar();
 
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((evento) => {
-        setEventos(evento);
-
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const eventos = useMemo(() => {
+    let data = listarTodosEventosUsuarioService();
+    return data;
+  }, [])
 
 
   return (

@@ -1,34 +1,18 @@
 import { Button, LinearProgress } from '@mui/material';
 import axios from 'axios';
-import React from 'react'
+import React, {useMemo} from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import { localEventoListar } from '../../../../api/uris/EventosURLS';
+import {eventoListarLocalEventosService} from "../../../../service/EventoService";
 
 
 const TabelaLocaisEventos = (props) => {
 
-  const [eventosLocais, seteventosLocais] = useState([]);
-
-  useEffect(() => {
-    loadEventosLocais();
-
-
+  const eventosLocais = useMemo(() => {
+    return eventoListarLocalEventosService();
   }, [props.enviadoSucesso])
-
-  function loadEventosLocais() {
-    axios.get(localEventoListar(), {
-      headers: {
-        Authorization: localStorage.getItem("token")
-      }
-    }).then((res) => {
-      seteventosLocais(res.data);
-    }).catch((error) => {
-      console.error("Erro na requisição de listar localização: " + error);
-    })
-  }
-
   function handleEditarLocal(id){
     props.setIdLocalEvento(id)
   }

@@ -2,6 +2,7 @@ import { Box, Button, Modal } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { despesaDeletarByEventoAndIdDespesa } from "../../../../api/uris/EventosURLS";
+import {eventoDeletarDespesaPorIdEIdEventoService} from "../../../../service/EventoService";
 
 const ModalDeleteEvento = (props) => {
   const styleInnerModal = {
@@ -22,26 +23,12 @@ const ModalDeleteEvento = (props) => {
   };
 
   const deletarDespesaEvento = () => {
-    axios
-      .delete(
-        despesaDeletarByEventoAndIdDespesa(
-          props.idEvento,
-          props.despesaSelected.id
-        ),
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      )
-      .then(() => {
-        props.setopenModalDelete(false);
-        props.setDespesaSelected(null);
-        props.setChangedTabela(!props.changedTabela);
-      })
-      .catch((error) => {
-        console.log("Error deletando a despesa");
-      });
+    let response = eventoDeletarDespesaPorIdEIdEventoService(props.idEvento, props.despesaSelected.id);
+    if(response){
+      props.setopenModalDelete(false);
+      props.setDespesaSelected(null);
+      props.setChangedTabela(!props.changedTabela);
+    }
   };
 
   return (

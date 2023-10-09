@@ -1,92 +1,82 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { Table } from "react-bootstrap";
+import React, {useEffect, useMemo} from "react";
+import {useState} from "react";
+import {Table} from "react-bootstrap";
 import './participantes_evento.css'
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
-import { eventoListarParticipantes } from  '../../../../api/uris/EventosURLS';
+import {useParams} from "react-router-dom";
+import {CircularProgress} from "@mui/material";
+import {eventoListarParticipantes} from '../../../../api/uris/EventosURLS';
 import Alert from "@mui/material/Alert";
+import {eventoListarParticipantesService} from "../../../../service/EventoService";
 
-const ParticipantesEvento = () =>{
+const ParticipantesEvento = () => {
 
-  const id = useParams();
+    const id = useParams();
 
-  const [eventosParticipantes, setEventosParticipantes] = useState([]);
+    const eventosParticipantes = useMemo(() => {
+        let promise = eventoListarParticipantesService(id);
+        return promise !== undefined ? promise.data : []
+    }, []);
 
-  useEffect(() => {
 
-      axios.get(eventoListarParticipantes(id.idEvento), {
-        headers: {
-          Authorization: localStorage.getItem("token")
-        }
-      }).then((res) => {
-        console.log("Teste:" +eventosParticipantes);
-        setEventosParticipantes(res.data);
-      
-        
-      }).catch((error) => {
-        console.error("Erro na requisição de listar participantes: " + error);
-      })
+    return (
 
-    },[]);
+        <div className="participantes-container">
 
-    return(
+            <label className="titulo-evento">Participantes do Evento</label>
 
-      <div className="participantes-container">
+            <div style={{
+                width: "100%",
+                marginTop: '40px', display: 'flex', justifyContent: 'center'
+            }}>
 
-        <label className="titulo-evento">Participantes do Evento</label>
+                {eventosParticipantes.length === 0 ? (
 
-        <div style={{width: "100%",
-        marginTop: '40px', display: 'flex', justifyContent: 'center'}}>
-          
-        {eventosParticipantes.length ==0 ?(
+                    <CircularProgress className="evento-loading-partipantes"/>
+                ) : eventosParticipantes.length == null ? (
 
-          <CircularProgress className="evento-loading-partipantes"/>
-        ): eventosParticipantes.length == null ?(
+                    <Alert style={{margin: "5em 0"}} severity="info">Nenhum participante encontrado.</Alert>
+                ) : (
 
-          <Alert style={{margin: "5em 0"}} severity="info">Nenhum participante encontrado.</Alert>
-        ):(
+                    <Table
+                        hover
+                        style={{
+                            width: "100%",
+                            maxWidth: "70%",
+                            marginTop: "1.5rem",
+                            marginBottom: "1.5rem",
+                        }}
+                    >
 
-        <Table
-        hover
-        style={{
-          width: "100%",
-          maxWidth: "70%",
-          marginTop: "1.5rem",
-          marginBottom: "1.5rem",
-        }}
-      >
+                        {/* <TabelaArea/> */}
 
-    {/* <TabelaArea/> */} 
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
+                        {eventosParticipantes.map((participante) => {
+                            return (
 
-         {eventosParticipantes.map((participante)=>{
-            return(
+                                //teste, se está buscando
+                                <tr>
+                                    <td>{participante.nome}</td>
+                                    <td>{participante.email}</td>
+                                    <td>{participante.idade}</td>
+                                    <td>{participante.telefone}</td>
+                                </tr>
+                            )
+                        })}
+                        </tbody>
+                    </Table>
+                )
+                }
 
-            //teste, se está buscando  
-              <tr> 
-              <td>{participante.nome}</td>
-              <td>{participante.email}</td>
-              <td>{participante.idade}</td>
-              <td>{participante.telefone}</td>
-            </tr>
-            )
-            })} 
-        </tbody>
-    </Table>
-        )
-      }
-
+            </div>
         </div>
-      </div>
     )
 }
 export default ParticipantesEvento;

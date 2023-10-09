@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {Skeleton } from "@mui/material";
-import { eventoListar } from "../../../api/uris/EventosURLS";
+import { eventoListarAdm } from "../../../api/uris/EventosURLS";
 
 //  images controls
 const SlideArtesanato = (props) => {
@@ -16,27 +16,27 @@ const SlideArtesanato = (props) => {
     setWidht(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth);
   }, []);
 
-  useMemo(() => {
-    let url = eventoListar();
-
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", localStorage.getItem("token"));
-
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((produto) => {
-        setProduto(produto);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // useMemo(() => {
+  //   let url = eventoListar();
+  //
+  //   let myHeaders = new Headers();
+  //   myHeaders.append("Content-Type", "application/json");
+  //   myHeaders.append("Authorization", localStorage.getItem("token"));
+  //
+  //   fetch(url, {
+  //     headers: myHeaders,
+  //     method: "GET",
+  //   })
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((produto) => {
+  //       setProduto(produto);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
 
   return (
