@@ -11,6 +11,7 @@ import axios from "axios";
 import VisualizarPorMesAssociados from "./VisualizarPorMesAssociados";
 import dayjs from "dayjs";
 import { useEffect } from "react";
+import {associadoListByMesAnoService} from "../../../../service/FinanceiroService";
 
 const AssociadosADM = () => {
   const [associados, setassociados] = useState([]);
@@ -19,23 +20,9 @@ const AssociadosADM = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-
     let StringDate = String(mesSelecionado.format("MM/YYYY"))
-
-    let url = associadosListByMesAnoAPI(StringDate.substring(0,2), StringDate.substring(3));
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setassociados(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    let response = associadoListByMesAnoService(StringDate.substring(0,2), StringDate.substring(3));
+    setassociados(response);
   }, [mesSelecionado]);
 
   const data = () => {

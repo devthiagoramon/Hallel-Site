@@ -1,37 +1,14 @@
-import React, { useMemo, useState } from "react";
+import React, {useMemo, useState} from "react";
 import "./cursosComunidade.css";
-import { Card, Form } from "react-bootstrap";
-import {
-  Box,
-  CardActionArea,
-  CardContent,
-  CircularProgress,
-  Typography,
-} from "@mui/material";
-import axios from "axios";
-import { homeListarCursos } from "../../api/uris/HomeUris";
+import {Card, Form} from "react-bootstrap";
+import {Box, CardActionArea, CardContent, CircularProgress, Typography,} from "@mui/material";
+import {listarCursosService} from "../../service/HomeService";
 
 const Cursos = () => {
-  const [cursos, setCursos] = useState([]);
+  const [cursos, setCursos] = useState(useMemo(() => {
+      return listarCursosService();
+  }, []));
   const [pesquisa, setPesquisa] = useState("");
-
-  useMemo(() => {
-    let url = homeListarCursos();
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-          "Content-Type": "application/json"
-        },
-        withCredentials: false
-      })
-      .then((response) => {
-        setCursos(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
   const cursosFiltrados = useMemo(() => {
     let pesquisaLowerCase = pesquisa.toLowerCase();

@@ -4,10 +4,13 @@ import iconCertificado from "../../images/icon4.png";
 import "./../../components/BtnHallel/btnHallel.css";
 import axios from "axios";
 import { homeMatricularParticipanteInCursoByIdUserAndIdCurso } from "../../api/uris/HomeUris";
+import {matricularParticipanteCursoService} from "../../service/HomeService";
+import {useNavigate} from "react-router-dom";
 
 const InnerModalMatricular = (props) => {
   const [enviado, setEnviado] = useState(false);
   const [errorEnvio, setErrorEnvio] = useState(false);
+  let navigate = useNavigate();
 
   const handleClose = () => {
     setEnviado(false);
@@ -35,22 +38,16 @@ const InnerModalMatricular = (props) => {
       localStorage.getItem("HallelId"),
       props.id
     );
+    let response = matricularParticipanteCursoService(localStorage.getItem("HallelId"), props.id);
 
-    axios
-      .post(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then(() => {
-        setEnviado(true);
-        setTimeout(() => {
-          window.location.href = "/meusCursos";
-        }, 3000);
-      })
-      .catch((error) => {
+    if(response){
+      setEnviado(true);
+      setTimeout(() => {
+        navigate("/meusCursos");
+      }, 3000);
+    }else{
         setErrorEnvio(true);
-      });
+    }
   }
 
   return (

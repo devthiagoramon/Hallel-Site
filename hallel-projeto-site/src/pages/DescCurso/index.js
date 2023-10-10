@@ -10,30 +10,14 @@ import axios from "axios";
 import { Modal, Skeleton } from "@mui/material";
 import InnerModalMatricular from "./innerModalMatricular";
 import { homeListarDesCursoByIdCurso } from "../../api/uris/HomeUris";
+import {listarCursosById} from "../../service/HomeService";
 
 function DescCurso() {
-  const [curso, setCurso] = useState({});
   const { idCurso } = useParams();
+  const [curso, setCurso] = useState(useMemo(() => {
+      return listarCursosById(idCurso);
+  }, []));
   const [isModalMatricularOpen, setisModalMatricularOpen] = useState(false);
-
-  useMemo(() => {
-    let url = homeListarDesCursoByIdCurso(idCurso);
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((curso) => {
-        setCurso(curso.data);
-        console.log(curso.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
   function openModalMatricular() {
     setisModalMatricularOpen(true);
   }

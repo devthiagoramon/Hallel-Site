@@ -12,6 +12,7 @@ import {
 } from "../../../../api/uris/FinanceiroURLS";
 import axios from "axios";
 import { getMesAndAnoAtual } from "../../../../utils/utilData";
+import {listDoacoesService} from "../../../../service/FinanceiroService";
 
 const DoacoesDinheiroAdm = () => {
   const [doacoes, setdoacoes] = useState([]);
@@ -21,30 +22,9 @@ const DoacoesDinheiroAdm = () => {
   const [datasToBePushed, setdatasToBePushed] = useState("todos");
 
   useMemo(() => {
-
     const dataAux = getMesAndAnoAtual();
-
-    let url;
-    if (datasToBePushed === "todos") {
-      url = doacaoListarTodosAPI(dataAux.mes, dataAux.ano);
-    } else if (datasToBePushed === "dia") {
-      url = doacaoListarDiaAPI();
-    } else if (datasToBePushed === "semana") {
-      url = doacaoListarSemanaAPI();
-    }
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setdoacoes(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    let response = listDoacoesService(dataAux, datasToBePushed);
+    setdoacoes(response);
   }, [datasToBePushed]);
 
   function abrirMenuDate(event) {

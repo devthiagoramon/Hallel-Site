@@ -1,34 +1,15 @@
-import React from "react";
+import React, {useMemo, useState} from "react";
 import "./pagamentos.css";
-import { useMemo } from "react";
-import { useState } from "react";
-import { Form, Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { CircularProgress } from "@mui/material";
-import { CDBCard, CDBCardBody, CDBDataTable, CDBContainer } from "cdbreact";
-import { associadosGetAllPagamentosAPI } from "../../../../api/uris/FinanceiroURLS";
-import axios from "axios";
+import {CircularProgress} from "@mui/material";
+import {CDBCard, CDBCardBody, CDBContainer, CDBDataTable} from "cdbreact";
+import {allPagamentoAssociadoService} from "../../../../service/FinanceiroService";
 
 const PagamentosAssociado = () => {
-  const [pagamentosAssociados, setpagamentosAssociados] = useState([]);
+  const [pagamentosAssociados, setpagamentosAssociados] = useState(useMemo(() => {
+      return allPagamentoAssociadoService();
+  }, []));
   const [pesquisa, setPesquisa] = useState("");
-
-  useMemo(() => {
-    let url = associadosGetAllPagamentosAPI();
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setpagamentosAssociados(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   const pagamentosAssociadosFiltrado = useMemo(() => {
     let lowerPesquisa = pesquisa.toLowerCase();

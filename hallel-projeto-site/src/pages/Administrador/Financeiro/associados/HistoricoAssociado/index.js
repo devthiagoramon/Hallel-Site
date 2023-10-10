@@ -1,11 +1,15 @@
 import { useParams } from "react-router-dom";
 import "./styleHistoricoAssociado.css";
-import { useEffect, useState } from "react";
+import {useEffect, useMemo, useState} from "react";
 import axios from "axios";
 import { getAssociadoById, getPagamentoAssociadoByMesAndAno } from "../../../../../api/uris/FinanceiroURLS";
 import { Button, IconButton, Skeleton } from "@mui/material";
 import { ContentPaste, Edit, TodayRounded } from "@mui/icons-material";
 import dayjs from "dayjs";
+import {
+  getPagamentoAssociadoByMesAnoAdmService,
+  listAssociadoByIdAdmService
+} from "../../../../../service/FinanceiroService";
 
 const Parte2 = ({ associadoObj, setMesSelecionado, loadFromAPIinfoByPagamentoByMesAndAno }) => {
   return (
@@ -65,39 +69,17 @@ const Parte2 = ({ associadoObj, setMesSelecionado, loadFromAPIinfoByPagamentoByM
 
 const HistoricoAssociado = () => {
   const { idAssociado } = useParams();
-  const [associadoObj, setAssociadoObj] = useState(null);
+  const associadoObj = useMemo(() => {
+      return listAssociadoByIdAdmService(idAssociado);
+  }, []);
   const [mesSelecionado, setMesSelecionado] = useState("");
   const [pagamentoMesSelecionado, setPagamentoMesSelecionado] = useState(null);
-
-  useEffect(() => {
-    let url = getAssociadoById(idAssociado);
-    axios
-      .get(url, {
-        headers: { Authorization: localStorage.getItem("token") },
-      })
-      .then((res) => {
-        setAssociadoObj(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   function loadFromAPIinfoByPagamentoByMesAndAno(date) {
     let dateString = String(date);
     let mes = dateString.substring(0, 2);
     let ano = dateString.substring(3);
-
-    let url = getPagamentoAssociadoByMesAndAno(idAssociado, mes, ano);
-
-    axios.get(url, {
-      headers: {
-        Authorization: localStorage.getItem("token")
-      }
-    }).then((res) => {
-      console.log(res.data);
-      setPagamentoMesSelecionado(res.data);
-    })
+    let response = getPagamentoAssociadoByMesAnoAdmService(idAssociado, mes, ano);
+    setPagamentoMesSelecionado(response);
   }
   return (
     <div className="container_historico_associado">

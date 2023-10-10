@@ -25,9 +25,16 @@ import {
   doacaoObjetoRecebidoAPI,
 } from "../../../../api/uris/FinanceiroURLS";
 import axios from "axios";
+import {
+  listDoacaoObjetoPorIdService,
+  listDoacoesObjetosService,
+  recebiObjetoDoacaoService
+} from "../../../../service/FinanceiroService";
 
 const DoacaoObjetoADM = () => {
-  const [doacoesObjeto, setdoacoesObjeto] = useState([]);
+  const doacoesObjeto = useMemo(() => {
+      return listDoacoesObjetosService();
+  }, []);
   const [atualizando, setAtualizando] = useState(false);
 
   const templateDadoDoacaoModal = {
@@ -57,50 +64,18 @@ const DoacaoObjetoADM = () => {
   );
   const [isModalAberto, setIsModalAberto] = useState(false);
 
-  useMemo(() => {
-    let url = doacaoListarObjetosAPI();
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        return res.json();
-      })
-      .then((doacoesObjeto) => {
-        setdoacoesObjeto(doacoesObjeto);
-      })
-      .catch((error) => {
-        console.warn(error);
-      });
-  }, []);
-
   function abrirDescricao(id) {
-    let url = doacaoListarObjetoIdAPI(id);
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((doacaoObjeto) => {
-        let modelo = {
-          descricao: doacaoObjeto.descricao,
-          recebido: doacaoObjeto.isRecebido,
-          dataDoacao: doacaoObjeto.dataDoacao,
-          imagem: doacaoObjeto.imagem,
-          quantidade: doacaoObjeto.quantidade,
-          dataRecebida: doacaoObjeto.dataRecebida,
-          email: doacaoObjeto.emailDoador,
-        };
-        setDadoDoacaoModal(modelo);
-      })
-      .catch((error) => {
-        console.warn(error);
-      });
+    let response = listDoacaoObjetoPorIdService(id);
+    let modelo = {
+      descricao: response.descricao,
+      recebido: response.isRecebido,
+      dataDoacao: response.dataDoacao,
+      imagem: response.imagem,
+      quantidade: response.quantidade,
+      dataRecebida: response.dataRecebida,
+      email: response.emailDoador,
+    };
+    setDadoDoacaoModal(modelo);
     setIsModalAberto(true);
   }
 
@@ -110,41 +85,16 @@ const DoacaoObjetoADM = () => {
   }
 
   function recebido(id, isRecebido) {
-    if (isRecebido) {
-      let url = doacaoObjetoNaoRecebidoAPI(id);
+    let response = recebiObjetoDoacaoService(id, isRecebido);
 
-      axios
-        .post(url, {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        })
-        .then(() => {
-          setAtualizando(true);
-          setTimeout(() => {
-            window.location.href =
-              "http://localhost:3000/administrador/painelFinanceiro/doacoes/objeto";
-          }, 3000);
-        })
-        .catch((e) => console.warn(e));
-    } else {
-      let url = doacaoObjetoRecebidoAPI(id);
-
-      axios
-        .post(url, {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        })
-        .then(() => {
-          setAtualizando(true);
-          setTimeout(() => {
-            window.location.href =
-              "http://localhost:3000/administrador/painelFinanceiro/doacoes/objeto";
-          }, 3000);
-        })
-        .catch((e) => console.warn(e));
+    if(response) {
+      setAtualizando(true);
+      setTimeout(() => {
+        window.location.href =
+            "http://localhost:3000/administrador/painelFinanceiro/doacoes/objeto";
+      }, 3000);
     }
+
   }
 
   return (

@@ -1,37 +1,14 @@
-import React from "react";
-import { useRef } from "react";
-import { useState } from "react";
-import { useMemo } from "react";
-import { listarEventosDestacadosHomeAPI } from "../../api/uris/HomeUris";
-import { CircularProgress, Typography } from "@mui/material";
-import { Carousel } from "react-bootstrap";
+import React, {useMemo, useRef, useState} from "react";
+import {CircularProgress, Typography} from "@mui/material";
+import {Carousel} from "react-bootstrap";
 import "../CarouselNaoDestacados/styleCarousel.css"
+import {listarEventoComDestaqueService} from "../../service/HomeService";
 
 const CarroselDestacados = () => {
   const carrosel = useRef();
-  const [eventos, setEventos] = useState([]);
   const [timer, setTimer] = useState(false);
-
-  useMemo(() => {
-    let url = listarEventosDestacadosHomeAPI();
-
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    // myHeaders.append("Authorization", localStorage.getItem("token"));
-
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((evento) => {
-        setEventos(evento);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const eventos = useMemo(() => {
+      return listarEventoComDestaqueService();
   }, []);
 
   useMemo(() => {

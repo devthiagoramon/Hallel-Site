@@ -1,11 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import logo from "./../../images/LogoHallel.png";
 import "./entrar.css";
-import { motion } from "framer-motion";
-import { useState } from "react";
-import PopUpMensagem from "../../components/popUpMensagem";
-import { Alert, CircularProgress, Snackbar } from "@mui/material";
-import { homeLogin } from "../../api/uris/HomeUris";
+import {Alert, CircularProgress, Snackbar} from "@mui/material";
+import {loginService} from "../../service/HomeService";
 
 function Entrar() {
   const [emailInput, setEmail] = useState();
@@ -17,46 +14,32 @@ function Entrar() {
 
   function entrar() {
     setisLoading(true);
-    let url = homeLogin();
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    fetch(url, {
-      headers: myHeaders,
-      method: "POST",
-      body: JSON.stringify({
-        email: emailInput,
-        senha: senhaInput,
-      }),
-    })
-      .then((res) => {
-        console.log(res);
-        return res.json();
-      })
-      .then((object) => {
-        let rolesName = [];
-
-        console.log(object);
-
-        localStorage.setItem("token", object.token);
-        localStorage.setItem("HallelId", object.objeto.id);
-        localStorage.setItem("HallelEmail", object.objeto.email);
-        object.objeto.roles.map((role) => {
-          rolesName.push(role.name);
-        });
-        localStorage.setItem("R0l3s", rolesName);
-        setisValid(true);
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 3000);
-      })
-      .catch((e) => {
-        console.log(e);
-        setisValid(false);
-        setisValidError(true);
-        setTimeout(() => {
-          setisLoading(false);
-        }, 3000);
-      });
+    let login = {
+      email: emailInput,
+      senha: senhaInput
+    }
+    let response = loginService(login);
+    // Verfica se há erro
+    if(!response){
+      setisValid(false);
+      setisValidError(true);
+      setTimeout(() => {
+        setisLoading(false);
+      }, 3000);
+      return;
+    }
+    let rolesName = [];
+    localStorage.setItem("token", response.token);
+    localStorage.setItem("HallelId", response.objeto.id);
+    localStorage.setItem("HallelEmail", response.objeto.email);
+    response.objeto.roles.map((role) => {
+      rolesName.push(role.name);
+    });
+    localStorage.setItem("R0l3s", rolesName);
+    setisValid(true);
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 3000);
   }
 
   const handleClose = () => {

@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import "./topbar.css";
 import Logo from "../../images/LogoHallel.png";
-import {useMemo, useState, useRef} from "react";
+import {useMemo, useRef, useState} from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Down from "./DropDown.js";
 import Modal from "./entrar/modal";
@@ -10,9 +10,8 @@ import {IconButton} from "@mui/material";
 import {AccountCircle, Login} from "@mui/icons-material";
 import ModalPerfilAdm from "./perfilAdm";
 import {FaBars, FaTimes} from "react-icons/fa";
-import {homeVerificarToken} from "../../api/uris/HomeUris";
-import axios from "axios";
 import ButtonOpenNotifify from "./ButtonOpenNotifify";
+import {verificarTokenService} from "../../service/HomeService";
 
 function Header() {
     const [isModalVisible, setisModalVisible] = useState();
@@ -31,21 +30,13 @@ function Header() {
     const [openAdm, setOpenAdm] = useState(false);
 
     function isTokenExpired() {
-        let url = homeVerificarToken(localStorage.getItem("token"));
-        axios.get(url)
-            .then((res) => {
-                if (res.data === true) {
-                    // Token expirou
-                    localStorage.clear();
-                    setIsExpired(true);
-                } else {
-                    setIsExpired(false);
-                }
-            })
-            .catch((error) => {
-                console.warn(error);
-                setIsExpired(true);
-            });
+        let response = verificarTokenService(localStorage.getItem("token"));
+        if (response) {
+            localStorage.clear();
+            setIsExpired(true);
+        } else {
+            setIsExpired(false);
+        }
     }
 
     function isNotUsuario() {
