@@ -2,6 +2,7 @@ import { CircularProgress, Menu, MenuItem } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { saidaListarCodigoSaidaAPI } from "../../../../api/uris/FinanceiroURLS";
+import {listarSaidaCodigoPorCodigoService} from "../../../../service/FinanceiroService";
 
 const MenuSpecCodigo = (props) => {
   const {
@@ -26,19 +27,8 @@ const MenuSpecCodigo = (props) => {
   };
 
   useEffect(() => {
-    let url = saidaListarCodigoSaidaAPI(codigoAux);
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setcodigoSaida(res.data);
-      })
-      .catch((error) => {
-        console.log("Error fetching the codigoSaida: " + error);
-      });
+    let response = listarSaidaCodigoPorCodigoService(codigoAux);
+    setcodigoSaida(response);
   }, [codigoAux, setcodigoSaida]);
 
   return (

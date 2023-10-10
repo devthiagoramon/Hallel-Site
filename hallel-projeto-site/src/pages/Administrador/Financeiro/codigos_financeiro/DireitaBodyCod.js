@@ -9,6 +9,7 @@ import {
   codigoSaidaCriarAPI,
 } from "../../../../api/uris/FinanceiroURLS";
 import axios from "axios";
+import {codigoEntradaCriarService, codigoSaidaCriarService} from "../../../../service/FinanceiroService";
 
 const DireitaBodyCodFinanceiro = ({ entradaSelecionada, saidaSelecionada }) => {
   const codigoTemplate = {
@@ -38,30 +39,19 @@ const DireitaBodyCodFinanceiro = ({ entradaSelecionada, saidaSelecionada }) => {
 
     
     if (!hasError) {
-      let url = "";
+      let response;
       if (entradaSelecionada) {
-        url = codigoEntradaCriarAPI();
+        response = codigoEntradaCriarService(...codigoEnviar);
       } else if (saidaSelecionada) {
-        url = codigoSaidaCriarAPI();
+        response = codigoSaidaCriarService(...codigoEnviar);
       }
-
-      axios.post(
-        url,
-        {
-          ...codigoEnviar,
-        },
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      ).then(() => {
-        setCodigoEnviar(codigoTemplate)
-      }).catch((error) => {
+      if(response) {
+        setCodigoEnviar(codigoTemplate);
+      }else {
         seterrorRequest(true);
-      });
+      }
     }
-  };
+  }
 
   return (
     <div className="direita_body_cf">

@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import IconeCalendario from "../../../images/IconeCalendario";
 import MetaEntradaComponentPainelFinanceiro from "./MetaEntradaComponentPainelFinanceiro";
-import { Table } from "react-bootstrap";
-import axios from "axios";
-import { LinearProgress, Skeleton } from "@mui/material";
-import { entradasUltimasEntradasAPI } from "../../../api/uris/FinanceiroURLS";
+import {Table} from "react-bootstrap";
+import {LinearProgress} from "@mui/material";
+import {entradaUltimasEntradasService} from "../../../service/FinanceiroService";
 
 const FragmentoOnePainelFinanceiro = () => {
   const [mesAtual, setmesAtual] = useState("");
-  const [utlimasEntradas, setUtlimasEntradas] = useState([]);
+  const utlimasEntradas = useMemo(() => {
+      return entradaUltimasEntradasService();
+  }, []);
 
   // Load atual mes
 
@@ -24,21 +25,6 @@ const FragmentoOnePainelFinanceiro = () => {
     setmesAtual(stringResultado);
   }, [mesAtual]);
 
-  // Load entradas mensais valor
-
-  useEffect(() => {
-    let url = entradasUltimasEntradasAPI();
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setUtlimasEntradas(res.data);
-      });
-  }, []);
 
   return (
     <div className="cont_fragmento_one_painel_financeiro">

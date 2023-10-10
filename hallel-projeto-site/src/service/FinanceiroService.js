@@ -1,12 +1,34 @@
 import {
     associadosGetAllPagamentosAPI,
     associadosListByMesAnoAPI,
-    doacaoListarDiaAPI, doacaoListarObjetoIdAPI,
+    codigoEntradaCriarAPI,
+    codigoEntradaDeletarAPI,
+    codigoEntradaEditarAPI,
+    codigoEntradaListarAPI, codigoSaidaCriarAPI,
+    codigoSaidaDeletarAPI, codigoSaidaEditarAPI, codigoSaidaListarAPI,
+    doacaoDoar,
+    doacaoDoarObjetoAPI,
+    doacaoListarDiaAPI,
+    doacaoListarObjetoIdAPI,
     doacaoListarObjetosAPI,
     doacaoListarSemanaAPI,
-    doacaoListarTodosAPI, doacaoObjetoNaoRecebidoAPI,
+    doacaoListarTodosAPI,
+    doacaoObjetoNaoRecebidoAPI,
+    entradasGetAllPaginas,
+    entradasGetEntradasMesValorAPI,
+    entradasListEntradasByPageAndDate,
+    entradasUltimasEntradasAPI,
     getAssociadoById,
-    getPagamentoAssociadoByMesAndAno
+    getPagamentoAssociadoByMesAndAno,
+    metaAlterarByMesAnoAPI,
+    metaListarByMesAnoAPI,
+    metaLoadPorcentagemByMesAnoAPI,
+    saidaAdicionarCodigoSaidaAPI,
+    saidaListarCodigoSaidaAPI,
+    saidaListarCodigosSaidasAPI,
+    saidasGetAllPaginas,
+    saidasListEntradasByPageAndDate,
+    saidaUltimasSaidasAPI
 } from "../api/uris/FinanceiroURLS";
 import axios from "axios";
 
@@ -123,20 +145,361 @@ export async function listDoacaoObjetoPorIdService(id) {
     }
 }
 
-export async function recebiObjetoDoacaoService(id, isRecebido){
+export async function recebiObjetoDoacaoService(id, isRecebido) {
     let url;
-    if(isRecebido) {
+    if (isRecebido) {
         url = doacaoObjetoNaoRecebidoAPI(id);
-    }else{
+    } else {
         url = doacaoListarObjetoIdAPI(id);
     }
-    try{
+    try {
         let axiosResponse = await axios
-                  .post(url,
-                                {headers:{Authorization: localStorage.getItem("token")}}
-                            );
+            .post(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
         return axiosResponse === 200;
-    }catch(e){
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+export async function doarObjetoService(doacaoObjeto) {
+    let url = doacaoDoarObjetoAPI();
+    try {
+        let axiosResponse = await axios
+            .post(url, {...doacaoObjeto},
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+export async function doarDinheiroService(doacao) {
+    let url = doacaoDoar();
+    try {
+        let axiosResponse = await axios
+            .post(url, {...doacao},
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+/*
+    Parte de saidas (Financeiro)
+*/
+
+export async function listarSaidaCodigoPorCodigoService(codigo) {
+    let url = saidaListarCodigoSaidaAPI(codigo)
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return undefined;
+    }
+}
+
+export async function listarSaidaCodigosService() {
+    let url = saidaListarCodigosSaidasAPI();
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return [];
+    }
+}
+
+export async function adicionarCodigoSaidaService(codigoSaida) {
+    let url = saidaAdicionarCodigoSaidaAPI()
+    try {
+        let axiosResponse = await axios
+            .post(url, {codigoSaida},
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+export async function saidaUltimasSaidaService() {
+    let url = saidaUltimasSaidasAPI();
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return [];
+    }
+}
+
+export async function saidaGetAllPaginasService(mes, ano) {
+    let url = saidasGetAllPaginas(mes, ano)
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return 0;
+    }
+}
+
+export async function saidaListarByPageAndDateService(numPage, mes, ano) {
+    let url = saidasListEntradasByPageAndDate(numPage, mes, ano)
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return [];
+    }
+}
+
+/*
+    Parte de entradas (Financeiro)
+*/
+
+export async function entradaUltimasEntradasService() {
+    let url = entradasUltimasEntradasAPI();
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return [];
+    }
+}
+
+export async function entradaGetAllPaginasService(mes, ano) {
+    let url = entradasGetAllPaginas(mes, ano)
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return 0;
+    }
+}
+
+export async function entradaListarByPageAndDateService(numPage, mes, ano) {
+    let url = entradasListEntradasByPageAndDate(numPage, mes, ano)
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return [];
+    }
+}
+
+export async function entradaGetByMesValorService(mes, ano) {
+    let url = entradasGetEntradasMesValorAPI(mes, ano);
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return 0;
+    }
+}
+
+/*
+    Parte de meta mensal (Financeiro)
+*/
+
+export async function metaGetPorcentagemPorMesEAnoService(mes, ano) {
+    let url = metaLoadPorcentagemByMesAnoAPI(mes, ano)
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e);
+        return 0.0;
+    }
+}
+
+export async function metaListarPorMesAnoService(mes, ano) {
+    let url = metaListarByMesAnoAPI(mes, ano);
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e);
+        return 0.0;
+    }
+}
+
+export async function metaAlterarPorMesAnoService(mes, ano, novaMeta) {
+    let url = metaAlterarByMesAnoAPI(mes, ano, novaMeta);
+    try {
+        let axiosResponse = await axios
+            .put(url, {},
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+/*
+  Parte de codigos dos financeiro, tanto de entradas
+  quanto de saidas
+*/
+
+// Entradas
+export async function codigoEntradaCriarService(codigoEntrada) {
+    let url = codigoEntradaCriarAPI()
+    try {
+        let axiosResponse = await axios
+            .post(url, {...codigoEntrada},
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+export async function codigoEntradaListarService() {
+    let url = codigoEntradaListarAPI();
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return [];
+    }
+}
+
+export async function codigoEntradaEditarService(id, novoCodigo) {
+    let url = codigoEntradaEditarAPI(id);
+    try {
+        let axiosResponse = await axios
+            .put(url, {...novoCodigo},
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+export async function codigoEntradaDeletarService(id) {
+    let url = codigoEntradaDeletarAPI(id)
+    try {
+        let axiosResponse = await axios
+            .delete(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+// Saida
+
+export async function codigoSaidaCriarService(codigoEntrada) {
+    let url = codigoSaidaCriarAPI()
+    try {
+        let axiosResponse = await axios
+            .post(url, {...codigoEntrada},
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+export async function codigoSaidaListarService() {
+    let url = codigoSaidaListarAPI();
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return [];
+    }
+}
+
+export async function codigoSaidaEditarService(id, novoCodigo) {
+    let url = codigoSaidaEditarAPI(id);
+    try {
+        let axiosResponse = await axios
+            .put(url, {...novoCodigo},
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+export async function codigoSaidaDeletarService(id) {
+    let url = codigoSaidaDeletarAPI(id)
+    try {
+        let axiosResponse = await axios
+            .delete(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
         console.error(e)
         return false;
     }
