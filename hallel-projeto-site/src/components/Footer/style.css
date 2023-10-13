@@ -1,7 +1,7 @@
 .main-footer {
   display: flex;
   color: #f1f1f1;
-  background: #094e49;
+  background: #003015;
   background-size: 100% 100%;
   padding-top: 3em;
   margin-top: 0rem;
@@ -9,7 +9,8 @@
   position: relative;
   bottom: 0;
   width: 100%;
-  max-height: 15em;
+  max-height: 16em;
+  margin-top: 50px;
 }
 
 #logo{
@@ -18,7 +19,9 @@
 }
 
 .col{
-  margin: 10px 10px;
+  margin-top: -30px;
+  margin-left: -100px;
+  margin-bottom: 20px;
 }
 
 .col h4{
@@ -62,15 +65,33 @@
   margin: auto;
   background-color: #f1f1f1;
   color: #f1f1f1;
+  margin-bottom: -50px;
+}
+
+.linha1{
+  margin-right: 10px;
+  max-width: 25em;
+  
+  background-color: #f1f1f1;
+  color: #f1f1f1;
+  margin-bottom: 10px;
+}
+
+.linha2{
+  margin-right: 10px;
+  max-width: 25em;
+  
+  background-color: #f1f1f1;
+  color: #f1f1f1;
   margin-bottom: 10px;
 }
 
 .col-sm{
-
+  margin-top: 80px;
   font-size: 1em;
   text-align: center;
   color: #f1f1f1;
-  margin-bottom: 2em;
+  
 }
 
 
@@ -78,4 +99,27 @@
 
   display: flex;
 
+}
+
+.location{
+  margin-left: -13px;
+  margin-top: 2px;
+}
+
+.phone{
+  margin-left: 7px;
+  margin-top: 4px;
+}
+
+.row{
+  margin-left: 10px;
+}
+
+.row2{
+  margin-bottom: -300px;
+}
+
+.midia{
+  margin-left: 6px;
+  margin-top: 4px;
 }
