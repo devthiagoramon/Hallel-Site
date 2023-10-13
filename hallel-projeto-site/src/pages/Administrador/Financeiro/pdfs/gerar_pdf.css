@@ -2,6 +2,16 @@
   width: 100vw;
   min-height: 100vh;
 }
+
+.titulo{
+  font-size: 50px;
+  margin-top: 60px;
+  font-weight: normal;
+  margin-left: -60px;
+}
+.cont_header_gerar_pdf-selecionar_mes_gerar_pdf{
+  margin-top: -100px;
+}
 .header_gerar_pdf {
   width: 100%;
   padding: 3rem;
@@ -118,4 +128,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.informacoes_gerar_pdf{
+  background-color: #003015;
+  width: 900px;
+  height: 190px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  border-radius: 15px;
 }

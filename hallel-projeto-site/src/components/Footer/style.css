@@ -9,8 +9,8 @@
   position: relative;
   bottom: 0;
   width: 100%;
-  max-height: 16em;
-  margin-top: 50px;
+  max-height: 160em;
+  margin-top: 5px;
 }
 
 #logo{
@@ -19,9 +19,9 @@
 }
 
 .col{
-  margin-top: -30px;
+  margin-top: -80px;
   margin-left: -100px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .col h4{
@@ -65,7 +65,7 @@
   margin: auto;
   background-color: #f1f1f1;
   color: #f1f1f1;
-  margin-bottom: -50px;
+  margin-bottom: -150px;
 }
 
 .linha1{
@@ -74,7 +74,7 @@
   
   background-color: #f1f1f1;
   color: #f1f1f1;
-  margin-bottom: 10px;
+  margin-bottom: 100px;
 }
 
 .linha2{
