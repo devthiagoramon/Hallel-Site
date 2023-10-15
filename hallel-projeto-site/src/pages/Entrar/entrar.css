@@ -1,153 +1,136 @@
-
-.containerlogin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 3rem;
+.img{
+  width: 530px;
+  transform: translatey(0px);
+  margin-left: 120px;
+  margin-top: 210px;
+  animation: float 4s ease-in-out infinite;
+  overflow: hidden;
 }
 
-.containerlogin img {
-  display: flex;
-  margin-top: 7rem;
-  margin-left: 70px;
-  margin-bottom: 5px;
-  max-width: 9.375rem;
-  max-height: 9.375rem;
-  left: 654px;
-  top: 86px;
-  padding: 1px;
+@keyframes float {
+  0%{
+      transform: translatey(0px);
+  }
+  50%{
+      transform: translatey(-50px);
+  }
+  100%{
+      transform: translatey(0px);
+  }
+  
 }
 
-.containerlogin .log {
-  width: 171px;
-  height: 114px;
-  left: 581px;
-  top: 194px;
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 94px;
-  line-height: 114px;
-  color: #038c33;
+.quadrado{
+  background-color: #003617;
+  width: 550px;
+  height: 730px;
+  margin-left: 860px;
+  margin-top: -580px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  
 }
 
-.containerlogin .in {
-  width: 85px;
-  height: 114px;
-  left: 753px;
-  top: 194px;
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 94px;
-  line-height: 114px;
-  color: #d94214;
+.login-text{
+  margin-left: 1060px;
+  margin-top: -690px;
+  color: white;
+  font-size: 65px;
+  font-weight: lighter;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.containerlogin .formulario {
-  margin-top: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.email-input{
+  
+  border-radius: 5px;
+  box-sizing: bo+rder-box;
+  margin-top: 70px;
+  overflow: hidden;
+
 }
 
-.containerlogin .formulario input {
-  align-items: flex-start;
-  padding: 10px;
-  font-size: 15px;
-}
-
-.containerlogin .formulario .inputContainerEmail input {
-  box-sizing: border-box;
-
+.email-camp{
   width: 400px;
-  height: 45px;
-  left: 486px;
-  top: 350px;
-
-  border: 2px solid #d94814;
-  border-radius: 6px;
+  height: 30px;
+  margin-left: 940px;
+  border: 0;
+  margin-top: 10px;
+  border-bottom: 2px solid white;
+  background-color: transparent;
+  outline: none;
+  font-size: larger;
+  color: white;
 }
 
-.containerlogin .formulario .inputContainerSenha input {
-  margin-top: 20px;
-  position: flex;
-  width: 400px;
-  height: 45px;
-  left: 486px;
-  top: 400px;
-
-  border: 2px solid #d94814;
-  border-radius: 6px;
-}
-
-/* Esqueceu sua senha? */
-.containerlogin .formulario a {
-  align-items: center;
-  padding-top: 20px;
-  padding-bottom: 12px;
-
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 24px;
-  text-decoration-line: underline;
-
-  color: #758b9f;
-}
-
-/* botão entrar */
-.containerlogin .formulario .buttonEntrar {
-  border: none;
-  width: 300px;
-  height: 40px;
-  left: 486px;
-  top: 574px;
-
-  color: #ffff;
-  background: #038c33;
-  border-radius: 24px;
+.email-text{
   font-size: 16px;
-  font-weight: 600;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-left: 940px;
+  color: white;
+  font-family: 'Inter', sans-serif;
 }
 
-.containerlogin .formulario .buttonEntrar:hover {
+.remember{
+  margin-left: 940px;
+  color: white;
+  font-family: 'Inter', sans-serif;
   cursor: pointer;
-  opacity: 0.8;
 }
 
-.containerlogin .formulario .footerEntrar {
-  display: flex;
-  width: 300px;
-  justify-content: space-between;
+.forget-password{
+  margin-left: 1180px;
+  color: #B4FFD4;
+  text-decoration: none;
+  margin-top: 0;
 }
 
-/* Não tem uma conta? */
-.containerlogin .formulario .footerEntrar p {
-  margin: 0;
-  padding: 0;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 24px;
-  color: #35404b;
-  padding-top: 1.25rem;
+.button-continue{
+  width: 400px;
+  height: 50px;
+  margin-left: 940px;
+  margin-top: 40px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+  border: 0;
+  background-color: #A8FFC7;
+  font-size: 25px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  color: #003617;
+  cursor: pointer;
 }
 
-/* Solicite seu cadastro */
-.containerlogin .formulario .footerEntrar a {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 23px;
-  /* identical to box height */
-  text-decoration-line: underline;
+.register-div{
+  margin-left: 940px;
+  margin-top: 30px;
+}
+
+.text-register{
+  color: white;
+}
+
+.register{
+  margin-left: 4px;
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.terms-div{
+  margin-left: 750px;
+  margin-top: 90px;
+  font-size: 10px;
+  text-align: center;
+  color: #D6FDE7;
+  margin-bottom: 20px;
+}
+
+.register-terms{
+  color: #D6FDE7;
+}
+
+.register-privace{
+  color: #D6FDE7;
 }

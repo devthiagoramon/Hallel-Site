@@ -4,11 +4,17 @@ import ImgQuemSomos from "../../images/quem-somos.png";
 function QuemSomos() {
   return (
     <div className="global">
-      <label id="titulo"> Quem somos </label>
+      
       <br />
       <img id="imgquemsomos" src={ImgQuemSomos} />
-      <br /> <br /> <br />
-      <p>
+      <br />
+      <div className="container-text">
+      <p className="who-text">
+        {" "}
+        Quem somos
+      </p>
+      <hr className="line"/>
+      <p className="paragrafo1">
         {" "}
         Nossa história começou a partir do Ministério de Música Hallel, e estava
         a serviço da RCC desde 1988. Na coordenação do Ministério, Clenir Viana
@@ -16,7 +22,7 @@ function QuemSomos() {
         início a um grupo de oração e mais tarde no desejo de ir além, nascia a
         Comunidade Católica Hallel.
       </p>
-      <p>
+      <p className="paragrafo2">
         Em um mundo de guerra, ódio, violência, somos chamados a ser
         anunciadores do amor incondicional de Deus pela humanidade através de
         nossas vidas e do acolhimento daqueles que necessitam, resgatando o ser
@@ -24,7 +30,7 @@ function QuemSomos() {
         auto-estima) e principalmente no relacionamento com Deus (amá-Lo sobre
         todas as coisas), pois quem se sente amado é capaz de amar.
       </p>
-      <p>
+      <p className="paragrafo3">
         A dimensão do resgate é na totalidade daquilo que o ser humano é corpo e
         espírito, isso envolve o seu ser social, psíquico e espiritual.
         Acreditamos que a partir do conhecimento e da amizade com Deus, o ser
@@ -32,12 +38,14 @@ function QuemSomos() {
         resgatador de outras almas. Assim ajudaremos na educação humana e
         espiritual transformando o mundo em lugar de amor.
       </p>
+      
       <br />
       <span>
         <p className="frasefinal">
           Conheça mais sobre nossa Comunidade acessando as demais páginas.
         </p>
       </span>
+      </div>
     </div>
   );
 }

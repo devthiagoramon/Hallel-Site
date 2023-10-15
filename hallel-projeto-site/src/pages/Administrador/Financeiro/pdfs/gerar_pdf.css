@@ -2,6 +2,21 @@
   width: 100vw;
   min-height: 100vh;
 }
+
+.titulo{
+  font-size: 50px;
+  margin-top: 60px;
+  font-weight: normal;
+  margin-left: -50px;
+}
+.cont_header_gerar_pdf-selecionar_mes_gerar_pdf{
+  margin-top: 40px;
+}
+
+.text-mes{
+  margin-top: -100px;
+}
+
 .header_gerar_pdf {
   width: 100%;
   padding: 3rem;
@@ -10,6 +25,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .header_gerar_pdf > h2 {
@@ -31,7 +47,7 @@
 }
 
 .pre_visualizar_info_span {
-  color: blue;
+  color: green;
   text-decoration: underline;
 }
 
@@ -50,6 +66,12 @@
 .cont_mes_header_selecionado > label {
   font-size: 18px;
   font-weight: 500;
+  margin-top: 100px;
+}
+
+.cont_mes_header_selecionado{
+  margin-top: 100px;
+  margin-right: 10px;
 }
 
 .tabela_gerar_pdf {
@@ -97,11 +119,12 @@
     display: grid;
     place-items: end;
     max-height: 650px;
+    margin-top: 60px;
 }
 
 .header_preview_gerar_pdf{
     width: 70%;
-    background-color: #06312E;
+    background-color: #003015;
     height: 70px;
     border-radius: 8px 8px 0 0;
     display: flex;
@@ -118,4 +141,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.informacoes_gerar_pdf{
+  background-color: #003015;
+  width: 900px;
+  height: 190px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  margin-top: 60px;
+  margin-bottom: 50px;
+  border-radius: 15px;
+}
+
+.btn-view:hover {
+  background-color: orange; /* ou qualquer outro estilo que deseja aplicar no hover */
 }

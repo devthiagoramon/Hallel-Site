@@ -52,7 +52,7 @@ import GerarPDFEntrada from "./pages/Administrador/Financeiro/pdfs/GerarPDFEntra
 import GerarPDFSaida from "./pages/Administrador/Financeiro/pdfs/GerarPDFSaida";
 import CodigosFinanceiro from "./pages/Administrador/Financeiro/codigos_financeiro/CodigoFinanceiro";
 import PagarOutroAssociado from "./pages/Associado/PagarOutroAssociado/PagarOutroAssociado";
-import ParticipanteEvento from "./pages/Administrador/Eventos/participantes_evento/indexParticipantes";
+import ParticipanteEvento from "./pages/Administrador/Eventos/participantes_evento/indexParticipantes"
 import SorteioAssocGanhou from "./pages/Sorteio/SorteioAssocGanhou/SorteioAssocGanhou";
 import { Agenda } from "./pages/Agenda/Agenda";
 
@@ -61,7 +61,8 @@ function RoutesApp() {
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header/>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/fundadora" element={<Fundadora />} />
@@ -79,40 +80,37 @@ function RoutesApp() {
         <Route path="/loja/pagamento" element={<LojaPagamento />} />
         <Route path="/entrar" element={<Entrar />} />
         <Route path="/pagarOutroAssociado" element={<PagarOutroAssociado />} />
-        <Route path="/agenda" element={<Agenda />} />
-        {localStorage.getItem("token") !== null &&
+        <Route path="/agenda" element={<Agenda/>}/>
+        {/*localStorage.getItem("token") !== null &&
         roles.includes("ROLE_USER") ? (
-          <>
+        <>*/}
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/meusCursos" element={<MeusCursos />} />
             <Route path="/desempenhoUser" element={<DesempenhoUser />} />
-          </>
+          {/*</>
         ) : (
           ""
-        )}
-        {localStorage.getItem("token") !== null &&
+        )}*/}
+        {/*localStorage.getItem("token") !== null &&
         roles.includes("ROLE_USER") &&
         roles.includes("ROLE_ASSOCIADO") ? (
-          <>
+          <>*/}
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/meusCursos" element={<MeusCursos />} />
             <Route path="/desempenhoUser" element={<DesempenhoUser />} />
             <Route path="/cursos" element={<Cursos />} />
             <Route path="/sorteioAssociado" element={<Sorteio />} />
-            <Route
-              path="/sorteioAssociado/:idAssoc/:idSorteio"
-              element={<SorteioAssocGanhou />}
-            />
+            <Route path="/sorteioAssociado/:idAssoc/:idSorteio" element={<SorteioAssocGanhou/>}/>
             <Route path="/descCurso/:idCurso" element={<DescCurso />} />
             <Route path="/atividades" element={<CursoAtividade />} />{" "}
-          </>
+          {/*</>
         ) : (
           ""
-        )}
+        )}*/}
 
-        {localStorage.getItem("token") !== null &&
+        {/*localStorage.getItem("token") !== null &&
         roles.includes("ROLE_ADMIN") ? (
-          <>
+          <>*/}
             <Route path="/cursos" element={<Cursos />} />
             <Route path="/sorteioAssociado" element={<Sorteio />} />
             <Route path="/descCurso/:idCurso" element={<DescCurso />} />
@@ -203,10 +201,12 @@ function RoutesApp() {
               path="/administrador/locaisEvento"
               element={<LocaisEventos />}
             />
+
             <Route
               path="/administrador/eventos/:idEvento/participantes"
               element={<ParticipanteEvento />}
             />
+
             <Route
               path="/administrador/eventos/:idEvento/despesas"
               element={<DespesaEvento />}
@@ -219,10 +219,10 @@ function RoutesApp() {
               path="/administrador/eventos/arquivados"
               element={<EventosArquivado />}
             />
-          </>
+          {/*</>
         ) : (
           ""
-        )}
+        )}*/}
 
         <Route path="/evento/maisInfo" element={<MaisInfo />} />
         <Route path="/videoChamada" element={<VideoChamada />} />
