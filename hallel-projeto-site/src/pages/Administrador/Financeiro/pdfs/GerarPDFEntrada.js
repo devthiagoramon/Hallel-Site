@@ -78,6 +78,7 @@ const GerarPDFEntrada = () => {
     }
   };
 
+  
   useEffect(() => {
     let dataString = mesSelecionado.format("MM/YYYY").toString();
     let mesString = dataString.substring(0, 2);
@@ -103,34 +104,10 @@ const GerarPDFEntrada = () => {
   }, [paginaSelecionado, mesSelecionado]);
 
   return (
-    <div className="container_gerar_pdf">
+    <div >
       <div className="header_gerar_pdf">
         <div className="cont_header_gerar_pdf">
           <h2 className="titulo">Gerar PDF (Entrada)</h2>
-        </div>
-        <div className="cont_header_gerar_pdf-selecionar_mes_gerar_pdf">
-          <div className="cont_mes_header_selecionado">
-            <Typography variant="subtitle1">Mês selecionado</Typography>
-            <label>{mesSelecionado.format("MM/YYYY")}</label>
-          </div>
-          <Tooltip title="Selecionar o mês">
-            <IconButton
-              id="btn_abrir_calendario"
-              onClick={(e) => {
-                handleClickAbrirMenuCalendario(e);
-              }}
-            >
-              <CalendarMonth
-                sx={{ color: "blue", height: "35px", width: "35px" }}
-              />
-            </IconButton>
-          </Tooltip>
-          <MenuCalendarioSelecionar
-            anchorMenuCalendario={anchorMenuCalendario}
-            setAnchorMenuCalendario={setAnchorMenuCalendario}
-            mesSelecionado={mesSelecionado}
-            setMesSelecionado={setMesSelecionado}
-          />
         </div>
       </div>
       <div className="body_gerar_pdf">
@@ -140,9 +117,9 @@ const GerarPDFEntrada = () => {
               Informações de como funciona para gerar o PDF:
             </Typography>
             <ul>
-              <li>Você poderá verificar todos os dados.</li>
+              <li>Você pode verificar todos os dados.</li>
               <li>
-                Você poderá adicionar uma descrição a cada linha da tabela.
+                Você pode adicionar uma descrição a cada linha da tabela.
               </li>
               <li>
                 Selecione um mês para visualizar informações referente ao mesmo.
@@ -246,6 +223,29 @@ const GerarPDFEntrada = () => {
             <Typography variant="h5" sx={{ color: "#F4F4F4" }}>
               Pré-visualização
             </Typography>
+            <label style={{marginTop:"3px",color: "white", marginRight:"-20px"}}>{mesSelecionado.format("MM/YYYY")}</label> 
+          <div className="cont_header_gerar_pdf-selecionar_mes_gerar_pdf"> 
+          
+          <Tooltip title="Selecionar o mês">
+            <IconButton
+              id="btn_abrir_calendario"
+              onClick={(e) => {
+                handleClickAbrirMenuCalendario(e);
+              }}
+            >
+              <CalendarMonth
+                sx={{ color: "white", height: "35px", width: "35px",marginTop:"-40px", marginRight:"30px" }}
+              />
+            </IconButton>
+          </Tooltip>
+          <MenuCalendarioSelecionar
+            anchorMenuCalendario={anchorMenuCalendario}
+            setAnchorMenuCalendario={setAnchorMenuCalendario}
+            mesSelecionado={mesSelecionado}
+            setMesSelecionado={setMesSelecionado}
+          />
+          
+        </div>
             {mostrarPDF && (
               <IconButton
                 onClick={() => {
@@ -266,12 +266,13 @@ const GerarPDFEntrada = () => {
               </PDFViewer>
             )}
             {!mostrarPDF && (
-              <Button
+              <Button className="btn-view" style={{backgroundColor: 'green'}}
                 variant="contained"
                 onClick={() => {
                   setMostrarPDF(true);
                 }}
               >
+              
                 Pré-Visualizar
               </Button>
             )}
