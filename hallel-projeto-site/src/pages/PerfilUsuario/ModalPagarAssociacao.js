@@ -1,13 +1,8 @@
-import { Box, Button, MenuItem, Modal, Select } from "@mui/material";
-import axios from "axios";
-import React, { useEffect } from "react";
-import {
-  associadoCartaoAssociadoAPI,
-  associadoPagarAssociacaoAPI,
-} from "../../api/uris/AssociadosURLS";
-import { useState } from "react";
+import {Box, Button, MenuItem, Modal, Select} from "@mui/material";
+import React, {useEffect, useState} from "react";
 import InputsPagamentoByCartao from "./InputsPagamentoByCartao";
-import { SendRounded } from "@mui/icons-material";
+import {SendRounded} from "@mui/icons-material";
+import {associadoGetCartaoCreditoService, associadoPagarAssociacaoService} from "../../service/AssociadoService";
 
 const ModalPagarAssociacaoPerfil = ({
   mesSelecionado,
@@ -49,36 +44,20 @@ const ModalPagarAssociacaoPerfil = ({
       mes: mesString,
       ano: anoString,
     };
+    let response = associadoPagarAssociacaoService(bodyRequest);
+    if(response){
+      // Deu certo
+    }else{
+      // Deu errado
+    }
 
-    axios
-      .post(
-        associadoPagarAssociacaoAPI(),
-        { ...bodyRequest },
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      )
-      .then(() => {})
-      .catch((error) => {
-        console.log("Error pagando a associacao: " + error);
-      });
   };
 
   // Pegar o cartão do associado quando for pra debito e credito
   useEffect(() => {
     if (numMetodoPagamento === 3 || numMetodoPagamento === 4) {
-      let url = associadoCartaoAssociadoAPI(localStorage.getItem("HallelId"));
-      axios
-        .get(url, {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        })
-        .then((res) => {
-          setInfoBancariaAssociado(res.data);
-        });
+      let response = associadoGetCartaoCreditoService(localStorage.getItem("HallelId"));
+      setInfoBancariaAssociado(response)
     }
   }, [numMetodoPagamento]);
 

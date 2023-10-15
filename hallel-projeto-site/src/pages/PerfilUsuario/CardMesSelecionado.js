@@ -1,17 +1,10 @@
-import {
-  CheckCircleOutlineRounded,
-  Clear,
-  SendRounded,
-} from "@mui/icons-material";
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import {CheckCircleOutlineRounded, Clear, SendRounded,} from "@mui/icons-material";
+import {Button, Card, CardContent, Typography} from "@mui/material";
 import dayjs from "dayjs";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { associadoListarPagamentoPerfilAssociado } from "../../api/uris/AssociadosURLS";
-import axios from "axios";
+import React, {useEffect, useState} from "react";
+import {motion} from "framer-motion";
 import ModalPagarAssociacaoPerfil from "./ModalPagarAssociacao";
+import {associadoListarPagamentoPerfilAssociadoService} from "../../service/AssociadoService";
 
 const CardMesSelecionado = ({ mesSelecionado}) => {
   const [pagamentoAssociadoSelecionado, setpagamentoAssociadoSelecionado] =
@@ -25,28 +18,17 @@ const CardMesSelecionado = ({ mesSelecionado}) => {
     let mesString = dateString.substring(0, 2);
     let anoString = dateString.substring(3);
 
-    let url = associadoListarPagamentoPerfilAssociado(
-      localStorage.getItem("HallelId"),
-      mesString,
-      anoString
-    );
+    let response = associadoListarPagamentoPerfilAssociadoService(localStorage.getItem("HallelId"), mesString, anoString);
 
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        if (res.data !== "") {
-          setpagamentoAssociadoSelecionado(res.data);
-        } else {
-          setpagamentoAssociadoSelecionado(null);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if(response === undefined){
+      return;
+    }
+    if (response !== "") {
+      setpagamentoAssociadoSelecionado(response);
+    } else {
+      setpagamentoAssociadoSelecionado(null);
+    }
+
   }, [mesSelecionado]);
   return (
     <div className="container_mesSelecionadoInfo">

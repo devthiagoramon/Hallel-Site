@@ -23,6 +23,7 @@ import { Autocomplete, Card, CardCover, Input } from "@mui/joy";
 import { Box, height } from "@mui/system";
 import { Image } from "react-bootstrap";
 import { cursoListarById } from "../../../../api/uris/CursosURLS";
+import {cursoListarPorIdService} from "../../../../service/CursoService";
 
 const ListarCursosADM = () => {
   const [pesquisarNome, setpesquisarNome] = useState(false);
@@ -59,6 +60,8 @@ const ListarCursosADM = () => {
   function abrirDescricao(id) {
     setIsModalAberto(true);
     let url = cursoListarById(id);
+
+    cursoListarPorIdService()
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

@@ -27,19 +27,20 @@ import axios from "axios";
     Eventos
 */
 
-export async function listarTodosEventosUsuarioService() {
+export function listarTodosEventosUsuarioService() {
     let url = eventoListarTodosEventosUsuarios();
-    try {
-        let axiosResponse = await axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
+    let response = null;
+    axios.get(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res;
+    }).catch((error) => {
+        console.error(error)
+        response = [];
+    });
+    return response;
 }
 
 export async function listarTodosEventosAdmService() {
@@ -299,10 +300,10 @@ export async function eventoListarLocalEventoPorId(idLocalEvento) {
     try {
         let axiosResponse = await axios.get(url,
             {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            });
         return axiosResponse.data;
     } catch (e) {
         console.error(e)
@@ -316,10 +317,10 @@ export async function eventoEditarLocalEventoPorIdService(idLocalEvento, localEv
         let axiosResponse = await axios.put(url,
             {...localEventoNew},
             {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            });
         return axiosResponse.status === 200;
     } catch (e) {
         console.error(e);

@@ -18,6 +18,7 @@ import { useState } from "react";
 import { sorteioListarAllAPI } from "../../../api/uris/SorteioURIs";
 import axios from "axios";
 import dayjs from "dayjs";
+import {sorteioListarService} from "../../../service/SorteioService";
 
 const ModalListarSorteios = ({ openModal, setOpenModal, setSorteioSelec }) => {
   const [sorteios, setSorteios] = useState([]);
@@ -46,18 +47,8 @@ const ModalListarSorteios = ({ openModal, setOpenModal, setSorteioSelec }) => {
   }
 
   useMemo(() => {
-    let url = sorteioListarAllAPI();
-
-    axios
-      .get(url, {
-        headers: { Authorization: localStorage.getItem("token") },
-      })
-      .then((res) => {
-        setSorteios(res.data);
-      })
-      .catch((error) => {
-        console.log("Error getting sorteios from API: " + error);
-      });
+   let response = sorteioListarService();
+   setSorteios(response);
   }, [setSorteios]);
 
   return (

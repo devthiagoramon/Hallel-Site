@@ -26,7 +26,11 @@ import axios from "axios";
 import {saidasGetAllPaginas, saidasListEntradasByPageAndDate} from "../../../../api/uris/FinanceiroURLS";
 import PDFSaida from "./PDFSaida";
 import {PDFViewer} from "@react-pdf/renderer";
-import {saidaGetAllPaginasService, saidaListarByPageAndDate} from "../../../../service/FinanceiroService";
+import {
+    saidaGetAllPaginasService,
+    saidaListarByPageAndDate,
+    saidaListarByPageAndDateService
+} from "../../../../service/FinanceiroService";
 
 const GerarPDFSaida = () => {
     const [anchorMenuCalendario, setAnchorMenuCalendario] = useState(null);

@@ -27,8 +27,7 @@ const SlideEventos = (props) => {
 
 
   const eventos = useMemo(() => {
-    let data = listarTodosEventosUsuarioService();
-    return data;
+    return listarTodosEventosUsuarioService();
   }, [])
 
 

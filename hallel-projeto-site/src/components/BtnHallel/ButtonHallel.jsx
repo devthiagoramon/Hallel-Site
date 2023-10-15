@@ -13,7 +13,7 @@ const BtnHallel = styled.button`
     } else if (props.deletar) {
       return "#dc3545";
     } else {
-      return "white";
+        return "white";
     }
   }};
   color: #f4f4fa;
