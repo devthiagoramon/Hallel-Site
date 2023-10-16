@@ -29,316 +29,354 @@ import axios from "axios";
 
 export function listarTodosEventosUsuarioService() {
     let url = eventoListarTodosEventosUsuarios();
-    let response = null;
+    let response = [];
     axios.get(url, {
         headers: {
             Authorization: localStorage.getItem("token")
         }
     }).then((res) => {
-        response = res;
+        response = res.data;
+        return response;
     }).catch((error) => {
         console.error(error)
-        response = [];
     });
     return response;
 }
 
-export async function listarTodosEventosAdmService() {
+export function listarTodosEventosAdmService() {
     let url = eventoListarAdm();
-    try {
-        let axiosResponse = await axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
+    let response = [];
+
+    axios.get(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.data;
+        return response;
+    }).catch((error) => {
+        console.error(error);
+    });
+
+    return response;
 }
 
-export async function listarTodosEventosArquivadosService() {
+export function listarTodosEventosArquivadosService() {
     let url = eventoListarArquivado();
-    try {
-        let axiosResponse = await axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
+    let response = [];
+    axios.get(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.data;
+        return response;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
 }
 
 
-export async function participarEventoService(usuarioEventoRequest) {
+export function participarEventoService(usuarioEventoRequest) {
     let url = eventoParticiparEventoAPI();
-    try {
-        let axiosResponse = await axios.post(url, {
-            ...usuarioEventoRequest
-        });
-        return axiosResponse.data;
-    } catch (e) {
-        return false;
-    }
+    let response = [];
+
+    axios.post(url, {
+        ...usuarioEventoRequest
+    }).then((res) => {
+        response = res.status;
+        return response === 200;
+    }).catch((error) => {
+        console.error(error);
+    });
+
+    return response;
 }
 
-export async function eventoIsInscritoService(idEvento) {
+export function eventoIsInscritoService(idEvento) {
     let url = eventoUsuarioIsInscrito(idEvento, localStorage.getItem("HallelId"));
-    try {
-        let axiosResponse = await axios
-            .get(url, {headers: {Authorization: localStorage.getItem("token")}});
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e);
-        return false;
-    }
-}
-
-export async function eventoVerifyStatusPagamentoService(idEvento) {
-    let url = eventoVerifyStatusPagamentoUser(idEvento, localStorage.getItem("HallelId"));
-    try {
-        let axiosResponse = await axios
-            .get(url, {headers: {Authorization: localStorage.getItem("token")}});
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e);
-        return false;
-    }
-}
-
-export async function eventoAdicionarEventoService(eventos) {
-    let url = eventoAdicionar();
-    try {
-        await axios.post(url, {
-            ...eventos
-        }, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
+    let response = false;
+    axios
+        .get(url, {headers: {Authorization: localStorage.getItem("token")}})
+        .then((res) => {
+            response = res.data;
+            return response;
         })
-    } catch (e) {
-        console.error(e);
-    }
+        .catch((error) => {
+            console.error(error);
+        });
+    return response;
 }
 
-export async function eventoListarParticipantesService(idEvento) {
+export function eventoVerifyStatusPagamentoService(idEvento) {
+    let url = eventoVerifyStatusPagamentoUser(idEvento, localStorage.getItem("HallelId"));
+    let response = false;
+    axios
+        .get(url, {headers: {Authorization: localStorage.getItem("token")}})
+        .then((res) => {
+            response = res.data;
+            return response;
+        }).catch((error) => {
+        console.error(error);
+    });
+    return response;
+}
+
+export function eventoAdicionarEventoService(eventos) {
+    let url = eventoAdicionar();
+    let response = false;
+    axios.post(url, {
+        ...eventos
+    }, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.status;
+        return response === 200;
+    }).catch((error) => {
+        console.error(error);
+    })
+    return response;
+}
+
+export function eventoListarParticipantesService(idEvento) {
     let url = eventoListarParticipantes(idEvento);
-    try {
-        let axiosResponse = await axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e)
-        return undefined;
-    }
+    let response = undefined;
+    axios.get(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.data;
+        return response;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
 }
 
-export async function eventoListarPorIdService(idEvento) {
+export function eventoListarPorIdService(idEvento) {
     let url = eventoListarById(idEvento);
-    try {
-        let axiosResponse = await axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e)
-    }
+    let response = undefined;
+    axios.get(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.data;
+        return response;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
 }
 
-export async function eventoAtualizarService(idEvento, eventoNew) {
+export function eventoAtualizarService(idEvento, eventoNew) {
     let url = eventoEditarById(idEvento);
-    try {
-        await axios.post(url, {
-            ...eventoNew
-        }, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-    } catch (e) {
-        console.error(e)
-    }
+    let response = false;
+    axios.post(url, {
+        ...eventoNew
+    }, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.status;
+        return response === 200;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
 }
 
-export async function arquivarEventoService(idEvento) {
+export function arquivarEventoService(idEvento) {
     let url = eventoArquivar(idEvento);
-    try {
-        await axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-    } catch (e) {
-        console.error(e)
-    }
+    let response = false;
+    axios.get(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.status;
+        return response === 200;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
 }
 
-export async function desarquivarArquivoService(idEvento) {
+export function desarquivarArquivoService(idEvento) {
     let url = eventoDesarquivar(idEvento);
-    try {
-        await axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-    } catch (e) {
-        console.error(e)
-    }
+    let response = false;
+    axios.get(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.data;
+        return response;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
 }
 
 /*
     Despesas de Eventos
  */
 
-export async function eventoListarDespesasPorIdEventoService(idEvento) {
+export function eventoListarDespesasPorIdEventoService(idEvento) {
     let url = despesasListarByEventoId(idEvento);
-    try {
-        let axiosResponse = await axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e)
-        return undefined;
-    }
+    let response = undefined;
+    axios.get(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.data;
+        return response;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
 }
 
-export async function eventoAddDespesasParaEventoPorIdService(idEvento, despesaEvento) {
+export function eventoAddDespesasParaEventoPorIdService(idEvento, despesaEvento) {
     let url = despesasAddToEventoId(idEvento);
-    try {
-        let axiosResponse = await axios.post(url, {
-            ...despesaEvento
-        }, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.status === 200;
-    } catch (e) {
-        console.error(e)
-        return false;
-    }
+    let response = false;
+    axios.post(url, {
+        ...despesaEvento
+    }, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.data;
+        return response;
+    }).catch((error) => {
+        console.error(error)
+    });
+    return response;
 }
 
-export async function eventoDeletarDespesaPorIdEIdEventoService(idEvento, idDespesa) {
+export function eventoDeletarDespesaPorIdEIdEventoService(idEvento, idDespesa) {
     let url = despesaDeletarByEventoAndIdDespesa(idEvento, idDespesa);
-    try {
-        let axiosResponse = await axios.delete(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.status === 200;
-    } catch (e) {
-        console.error(e)
-        return false;
-    }
+    let response = false;
+    axios.delete(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.status;
+        return response === 200;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
 }
 
-export async function eventoEditarDespesaPorIdEIdEventoService(idEvento, idDespesa, despesaNew) {
+export function eventoEditarDespesaPorIdEIdEventoService(idEvento, idDespesa, despesaNew) {
     let url = despesaEditarByEventoAndIdDespesa(idEvento, idDespesa);
-    try {
-        let axiosResponse = await axios.put(url, {...despesaNew}, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.status === 200;
-    } catch (e) {
-        console.error(e)
-        return false;
-    }
+    let response = false;
+    axios.put(url, {...despesaNew}, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.status;
+        return response === 200;
+    }).catch((error) => {
+        console.error(error)
+    });
+    return response;
 }
 
 /*
     Local de Eventos
  */
 
-export async function eventoAdicionarLocalEventoService(localEvento) {
+export function eventoAdicionarLocalEventoService(localEvento) {
     let url = localEventoAdicionar();
-    try {
-        let axiosResponse = await axios.post(url, {...localEvento}, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.status === 200;
-    } catch (e) {
-        console.error(e);
-        return false;
-    }
+    let response = false;
+    axios.post(url, {...localEvento}, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.status;
+        return response === 200;
+    }).catch((error) => {
+        console.error(error)
+    });
+    return response;
 }
 
-export async function eventoListarLocalEventosService() {
+export function eventoListarLocalEventosService() {
     let url = localEventoListar();
-    try {
-        let axiosResponse = await axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
+    let response = [];
+    axios.get(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.data;
+        return response;
+    }).catch((error) => {
+        console.error(error)
+    });
+    return response;
 }
 
-export async function eventoListarLocalEventoPorId(idLocalEvento) {
+export function eventoListarLocalEventoPorId(idLocalEvento) {
     let url = localEventoListarById(idLocalEvento);
-    try {
-        let axiosResponse = await axios.get(url,
-            {
-                headers: {
-                    Authorization: localStorage.getItem("token")
-                }
-            });
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e)
-        return undefined;
-    }
-}
-
-export async function eventoEditarLocalEventoPorIdService(idLocalEvento, localEventoNew) {
-    let url = localEventoEditarById(idLocalEvento);
-    try {
-        let axiosResponse = await axios.put(url,
-            {...localEventoNew},
-            {
-                headers: {
-                    Authorization: localStorage.getItem("token")
-                }
-            });
-        return axiosResponse.status === 200;
-    } catch (e) {
-        console.error(e);
-        return false;
-    }
-}
-
-export async function eventoDeletarLocalEventoPorId(idLocalEvento) {
-    let url = localEventoDeletarById(idLocalEvento);
-    try {
-        let axiosResponse = await axios.delete(url, {
+    let response = undefined;
+    axios.get(url,
+        {
             headers: {
                 Authorization: localStorage.getItem("token")
             }
-        });
-        return axiosResponse.status === 200;
-    } catch (e) {
-        console.error(e)
-        return false;
-    }
+        })
+        .then((res) => {
+            response = res.data;
+            return response;
+        }).catch((error) => {
+        console.error(error);
+    });
+    return response;
+}
+
+export function eventoEditarLocalEventoPorIdService(idLocalEvento, localEventoNew) {
+    let url = localEventoEditarById(idLocalEvento);
+    let response = false;
+    axios.put(url,
+        {...localEventoNew},
+        {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        }).then((res) => {
+        response = res.status;
+        return response === 200;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
+}
+
+export function eventoDeletarLocalEventoPorId(idLocalEvento) {
+    let url = localEventoDeletarById(idLocalEvento);
+    let response = false;
+    axios.delete(url, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then((res) => {
+        response = res.status;
+        return response === 200;
+    }).catch((error) => {
+        console.error(error);
+    });
+    return response;
 }
