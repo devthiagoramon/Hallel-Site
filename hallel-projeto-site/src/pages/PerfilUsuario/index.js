@@ -13,7 +13,7 @@ import {CalendarMonth} from "@mui/icons-material";
 import MenuCalendarioSelecionar from "../Administrador/Financeiro/associados/MenuCalendarioSelecionar";
 import {motion} from "framer-motion";
 import {eventoListarEventosInscritos} from "../../api/uris/EventosURLS";
-import {loadPerfil} from "../../service/HomeService";
+import {loadPerfilService} from "../../service/HomeService";
 
 const PerfilRow = () => {
     return (<div className="secao1">
@@ -57,30 +57,31 @@ const Info = () => {
     useMemo(() => {
         let roles = String(localStorage.getItem("R0l3s"));
         let idUser = localStorage.getItem("HallelId");
-        let response = loadPerfil(idUser, roles);
-        if(response === undefined){
-            return;
-        }
-        let data = response.data;
-        if (response.isMembro) {
-            setIsMembro(true)
-        } else if (response.isAssociado) {
-            setisAssociado(true);
-            let pagamentosAssociado = data.pagamentosAssociado;
-            let dataFinalArrayMesesPagos = pagamentosAssociado[pagamentosAssociado.length - 1].dataPaga;
-            let dataFinalInDayJs = dayjs(dataFinalArrayMesesPagos);
-            let lastMes = dataFinalInDayJs;
-            for (let index = 0; index < 3; index++) {
-                let proximoMes = lastMes.add(1, "month");
-                let objAux = {
-                    dataPaga: proximoMes.toDate(),
-                };
-                pagamentosAssociado.push(objAux);
-                lastMes = proximoMes;
+        loadPerfilService(idUser, roles).then((response) => {
+            if(response === undefined){
+                return;
             }
-            data.pagamentosAssociado = pagamentosAssociado;
-        }
-        setUsuario(data);
+            let data = response.data;
+            if (response.isMembro) {
+                setIsMembro(true)
+            } else if (response.isAssociado) {
+                setisAssociado(true);
+                let pagamentosAssociado = data.pagamentosAssociado;
+                let dataFinalArrayMesesPagos = pagamentosAssociado[pagamentosAssociado.length - 1].dataPaga;
+                let dataFinalInDayJs = dayjs(dataFinalArrayMesesPagos);
+                let lastMes = dataFinalInDayJs;
+                for (let index = 0; index < 3; index++) {
+                    let proximoMes = lastMes.add(1, "month");
+                    let objAux = {
+                        dataPaga: proximoMes.toDate(),
+                    };
+                    pagamentosAssociado.push(objAux);
+                    lastMes = proximoMes;
+                }
+                data.pagamentosAssociado = pagamentosAssociado;
+            }
+            setUsuario(data);
+        })
     }, [setIsMembro, setisAssociado, setUsuario]);
 
     useEffect(() => {

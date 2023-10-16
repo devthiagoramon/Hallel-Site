@@ -12,150 +12,122 @@ import axios from "axios";
 import {membroLoadPerfilById} from "../api/uris/MembroURLS";
 import {associadoListarPerfil} from "../api/uris/AssociadosURLS";
 
-export function solicitarCadastroService(cadastro) {
+export async function solicitarCadastroService(cadastro) {
     let url = homeSolicitarCadastro();
-    let response = false
-    axios.post
-    (url,
+    return await axios.post
+    (url, {cadastro},
         {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
-            response = res.status
-            return response === 200;
+            return res.status === 200;
         })
         .catch((e) => {
             console.error(e)
+            return false;
         })
-    return response;
 }
 
 export async function loginService(login) {
     let url = homeLogin()
-    try {
-        let response = (await axios.post
-        (url, {...login})).data;
-        let rolesName = [];
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("HallelId", response.objeto.id);
-        response.objeto.roles.map((role) => {
-            rolesName.push(role.name);
-        });
-        localStorage.setItem("R0l3s", rolesName);
-        return true;
-    } catch (e) {
-        console.error(e);
-        return false;
-    }
-    // .then((res) => {
-    //     let rolesName = [];
-    //     localStorage.setItem("token", res.data.token);
-    //     localStorage.setItem("HallelId", res.data.objeto.id);
-    //     res.data.objeto.roles.map((role) => {
-    //         rolesName.push(role.name);
-    //     });
-    //     localStorage.setItem("R0l3s", rolesName);
-    //     return true;
-    // })
-    // .catch((e) => {
-    //     console.error(e)
-    //     return false;
-    // })
-
+    return await axios.post
+    (url, {...login})
+        .then((res) => {
+            let rolesName = [];
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("HallelId", res.data.objeto.id);
+            res.data.objeto.roles.map((role) => {
+                rolesName.push(role.name);
+            });
+            localStorage.setItem("R0l3s", rolesName);
+            return true;
+        })
+        .catch((e) => {
+            console.error(e)
+            return false;
+        })
 }
 
-export function listarCursosService() {
+export async function listarCursosService() {
     let url = homeListarCursos()
-    let response = []
-    axios.get
+    return await axios.get
     (url,
         {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
-            response = res.data
-            return response;
+            return res.data;
         })
         .catch((e) => {
             console.error(e)
+            return []
         })
-    return response;
 }
 
-export function listarCursosById(idCurso) {
+export async function listarCursosById(idCurso) {
     let url = homeListarDesCursoByIdCurso(idCurso)
-    let response = undefined
-    axios.get
+    return await axios.get
     (url,
         {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
-            response = res.data
-            return response;
+            return res.data;
         })
         .catch((e) => {
             console.error(e)
+            return undefined;
         })
-    return response;
 }
 
-export function matricularParticipanteCursoService(idHallel, idCurso) {
+export async function matricularParticipanteCursoService(idHallel, idCurso) {
     let url = homeMatricularParticipanteInCursoByIdUserAndIdCurso(idHallel, idCurso);
-    let response = false
-    axios.post
+    return await axios.post
     (url,
         {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
-            response = res.status
-            return response === 200;
+            return res.status === 200;
         })
         .catch((e) => {
             console.error(e)
+            return false;
         })
-    return response;
 }
 
-export function verificarTokenService(token) {
+export async function verificarTokenService(token) {
     let url = homeVerificarToken(token);
-    let response = false
-    axios.get
-    (url,
+    return await axios.get(url,
         {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
-            response = res.data
-            return response;
+            return res.data;
         })
         .catch((e) => {
             console.error(e)
+            return false
         })
-    return response;
 }
 
-export function listarEventoSemDestaqueService() {
+export async function listarEventoSemDestaqueService() {
     let url = listarEventosSemDestaqueHomeAPI()
-    let response = [];
-    axios
+    return await axios
         .get(url,
             {headers: {Authorization: localStorage.getItem("token")}}
         ).then((res) => {
-        response = res.data;
-    }).catch((error) => {
-        console.log(error)
-        response = [];
-    });
-    return response;
+            return res.data;
+        }).catch((error) => {
+            console.log(error)
+            return [];
+        });
 }
 
-export function listarEventoComDestaqueService() {
-    let url = listarEventosDestacadosHomeAPI()
-    let response = [];
-    axios
-        .get(url,
-            {headers: {Authorization: localStorage.getItem("token")}}
-        ).then((res) => {
-        response = res.data
-    }).catch((error) => {
-        console.error(error);
-    });
-    return response;
+export async function listarEventoComDestaqueService() {
+    let url = listarEventosDestacadosHomeAPI();
+    return await axios.get(url,
+            {headers: {Authorization: localStorage.getItem("token")}})
+        .then((res) => {
+            return res.data;
+        })
+        .catch((error) => {
+            console.error(error);
+            return [];
+        });
 }
 
-export function loadPerfil(idUser, roles) {
+export async function loadPerfilService(idUser, roles) {
     let url = "";
     let isMembro = false;
     let isAssociado = false;
@@ -166,7 +138,7 @@ export function loadPerfil(idUser, roles) {
         url = membroLoadPerfilById(localStorage.getItem("HallelId"));
         isMembro = true;
     }
-    axios.get
+    return await axios.get
     (url,
         {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
@@ -178,6 +150,6 @@ export function loadPerfil(idUser, roles) {
         })
         .catch((e) => {
             console.error(e)
+            return undefined
         })
-    return undefined;
 }

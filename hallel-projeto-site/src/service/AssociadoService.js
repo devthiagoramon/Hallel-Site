@@ -9,52 +9,52 @@ import axios from "axios";
 export async function associadoListarMeusCursosService(idAssociado) {
     let url = associadoListarMeusCursos(idAssociado)
     let response = [];
-    axios
+    return axios
         .get(url,
             {headers: {Authorization: localStorage.getItem("token")}}
         ).then((res) => {
-        response = res.data;
-        return response;
-    }).catch((error) => {
-        console.error(error)
-    });
-    return response;
+            response = res.data;
+            return response;
+        }).catch((error) => {
+            console.error(error)
+            return response
+        });
 }
 
 export async function associadoMatricularCursoService(idAssociado, idCurso) {
     let url = associadoMatricularCurso(idAssociado, idCurso)
     let response = false;
-    axios
+    return axios
         .get(url,
             {headers: {Authorization: localStorage.getItem("token")}}
         ).then((res) => {
-        response = res.status;
-        return response === 200;
-    }).catch((e) => {
-        console.error(e);
-    });
-    return response;
+            response = res.status;
+            return response === 200;
+        }).catch((e) => {
+            console.error(e);
+            return response
+        });
 }
 
 export async function associadoListarPagamentoPerfilAssociadoService(idAssociado, mes, ano) {
     let url = associadoListarPagamentoPerfilAssociado(idAssociado, mes, ano)
     let response = undefined;
-    axios
+    return axios
         .get(url,
             {headers: {Authorization: localStorage.getItem("token")}}
         ).then((res) => {
-        response = res.data;
-        return response;
-    }).catch((e) => {
-        console.error(e);
-    });
-    return response;
+            response = res.data;
+            return response;
+        }).catch((e) => {
+            console.error(e);
+            return response;
+        });
 }
 
 export async function associadoPagarAssociacaoService(pagamentoAssociacao) {
     let url = associadoPagarAssociacaoAPI();
     let response = false;
-    axios.post
+    return axios.post
     (url, {...pagamentoAssociacao},
         {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
@@ -63,14 +63,14 @@ export async function associadoPagarAssociacaoService(pagamentoAssociacao) {
         })
         .catch((e) => {
             console.error(e)
+            return response;
         })
-    return response;
 }
 
 export async function associadoGetCartaoCreditoService(idAssociado) {
     let url = associadoCartaoAssociadoAPI(idAssociado)
     let response = undefined
-    axios.get
+    return axios.get
     (url,
         {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
@@ -79,6 +79,6 @@ export async function associadoGetCartaoCreditoService(idAssociado) {
         })
         .catch((e) => {
             console.error(e)
+            return response
         })
-    return response;
 }

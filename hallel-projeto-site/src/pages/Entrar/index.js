@@ -42,16 +42,17 @@ function Entrar() {
     }
 
     const entrar = () => {
-        let response = loginService(login);
-        console.log(response);
-        if (response) {
-            // loadFeedBackHallel("Sucesso ao entrar", TypesFBHallel.sucesso, 2000);
-            setTimeout(() => {
-                navigator("/");
-            }, 3000);
-        } else {
-            // loadFeedBackHallel("Erro ao entrar", TypesFBHallel.error, 2000);
-        }
+        loginService(login).then((response) => {
+            console.log(response);
+            if (response) {
+                // loadFeedBackHallel("Sucesso ao entrar", TypesFBHallel.sucesso, 2000);
+                setTimeout(() => {
+                    navigator("/");
+                }, 3000);
+            } else {
+                // loadFeedBackHallel("Erro ao entrar", TypesFBHallel.error, 2000);
+            }
+        })
     }
 
     return (

@@ -1,20 +1,20 @@
 import {cursoCriar, cursoEditarById, cursoGetParticipantes, cursoListarById} from "../api/uris/CursosURLS";
 import axios from "axios";
 
-export function cursoCriarService(cursoNew) {
+export async function cursoCriarService(cursoNew) {
     let url = cursoCriar()
     let response = false
-    axios.post
+    return await axios.post
     (url,
-        {headers:{Authorization:localStorage.getItem("token")}})
+        {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
             response = res.status;
             return response === 200;
         })
         .catch((e) => {
             console.error(e)
+            return response;
         })
-    return response;
 }
 
 export function cursoGetParticipantesService(idCurso) {
@@ -22,7 +22,7 @@ export function cursoGetParticipantesService(idCurso) {
     let response = []
     axios.get
     (url,
-        {headers:{Authorization:localStorage.getItem("token")}})
+        {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
             response = res.data;
             return response;
@@ -33,12 +33,12 @@ export function cursoGetParticipantesService(idCurso) {
     return response;
 }
 
-export function cursoListarPorIdService(idCurso){
+export function cursoListarPorIdService(idCurso) {
     let url = cursoListarById(idCurso);
     let response = undefined
     axios.get
     (url,
-        {headers:{Authorization:localStorage.getItem("token")}})
+        {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
             response = res.data;
             return response;
@@ -49,12 +49,12 @@ export function cursoListarPorIdService(idCurso){
     return response;
 }
 
-export function cursoEditarPorIdService(idCurso, cursoNew){
+export function cursoEditarPorIdService(idCurso, cursoNew) {
     let url = cursoEditarById(idCurso)
     let response = false
     axios.put
     (url,
-        {headers:{Authorization:localStorage.getItem("token")}})
+        {headers: {Authorization: localStorage.getItem("token")}})
         .then((res) => {
             response = res.status
             return response === 200;

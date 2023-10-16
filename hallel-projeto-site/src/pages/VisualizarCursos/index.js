@@ -3,7 +3,7 @@ import Img from "../../images/fundoCardTeste.jpg";
 import Card from "react-bootstrap/Card";
 import {AiOutlineSearch} from "react-icons/ai";
 import {Link} from "react-router-dom";
-import {useMemo, useRef} from "react";
+import {useMemo, useRef, useState} from "react";
 import {useState} from "react";
 import axios from "axios";
 import {associadoListarMeusCursos} from "../../api/uris/AssociadosURLS";
@@ -49,10 +49,12 @@ const AreaTopo = (props) => {
 };
 
 const AreaCurso = (props) => {
-    const meusCursos = useMemo(() => {
-        return associadoListarMeusCursosService(localStorage.getItem("HallelId"));
+    const [meusCursos, setMeusCursos] = useState()
+    useMemo(() => {
+        associadoListarMeusCursosService(localStorage.getItem("HallelId")).then((response) => {
+            setMeusCursos(response);
+        });
     }, []);
-
     return (
         <div className="containerCursos">
             {meusCursos.map((curso) => {
