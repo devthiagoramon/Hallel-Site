@@ -5,6 +5,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { StrictMode } from "react";
+import FeedBackHallel from "./components/FeedBackHallel";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const notification = ReactDOM.createRoot(
@@ -21,6 +22,7 @@ root.render(
 
 notification.render(
   <StrictMode>
+      {/*<FeedBackHallel/>*/}
   </StrictMode>
 )
 

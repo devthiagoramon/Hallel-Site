@@ -41,6 +41,7 @@
     "react-icons": "^4.8.0",
     "react-imask": "^6.4.3",
     "react-modal": "^3.16.1",
+    "react-recollect": "^5.2.3",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.6.1",
     "react-script": "^2.0.5",

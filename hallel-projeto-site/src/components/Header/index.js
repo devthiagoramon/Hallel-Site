@@ -11,6 +11,7 @@ import { AccountCircle, Login } from "@mui/icons-material";
 import ModalPerfilAdm from "./perfilAdm";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { homeVerificarToken } from "../../api/uris/HomeUris";
+import {verificarTokenService} from "../../service/HomeService";
 
 function Header() {
   const [isModalVisible, setisModalVisible] = useState();
@@ -29,29 +30,13 @@ function Header() {
   const [openAdm, setOpenAdm] = useState(false);
 
   function isTokenExpired() {
-    let url = homeVerificarToken(localStorage.getItem("token"));
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    fetch(url, {
-      headers: myHeaders,
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((object) => {
-        if (object === true) {
-          // Token expirou
-          localStorage.clear();
-          setIsExpired(true);
-        } else {
-          setIsExpired(false);
-        }
-      })
-      .catch((error) => {
-        console.warn(error);
-        setIsExpired(true);
-      });
+    let response = verificarTokenService(localStorage.getItem("token"));
+    if(response){
+      localStorage.clear();
+      setIsExpired(true);
+    } else {
+      setIsExpired(false);
+    }
   }
   function isNotUsuario() {
     if (localStorage.getItem("token") === null) {

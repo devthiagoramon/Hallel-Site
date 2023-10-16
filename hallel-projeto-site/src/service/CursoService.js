@@ -1,58 +1,66 @@
 import {cursoCriar, cursoEditarById, cursoGetParticipantes, cursoListarById} from "../api/uris/CursosURLS";
 import axios from "axios";
 
-export async function cursoCriarService(cursoNew) {
+export function cursoCriarService(cursoNew) {
     let url = cursoCriar()
-    try {
-        let axiosResponse = await axios
-            .post(url, {cursoNew},
-                {headers: {Authorization: localStorage.getItem("token")}}
-            );
-        return axiosResponse.status === 200;
-    } catch (e) {
-        console.error(e)
-        return false;
-    }
+    let response = false
+    axios.post
+    (url,
+        {headers:{Authorization:localStorage.getItem("token")}})
+        .then((res) => {
+            response = res.status;
+            return response === 200;
+        })
+        .catch((e) => {
+            console.error(e)
+        })
+    return response;
 }
 
-export async function cursoGetParticipantesService(idCurso) {
+export function cursoGetParticipantesService(idCurso) {
     let url = cursoGetParticipantes(idCurso);
-    try {
-        let axiosResponse = await axios
-            .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
-            );
-        return axiosResponse.data;
-    } catch (e) {
-        console.error(e)
-        return [];
-    }
+    let response = []
+    axios.get
+    (url,
+        {headers:{Authorization:localStorage.getItem("token")}})
+        .then((res) => {
+            response = res.data;
+            return response;
+        })
+        .catch((e) => {
+            console.error(e)
+        })
+    return response;
 }
 
-export async function cursoListarPorIdService(idCurso){
-    let url = cursoListarById(idCurso)
-    try{
-        let axiosResponse = await axios
-                  .get(url ,
-                                {headers:{Authorization: localStorage.getItem("token")}}
-                            );
-        return axiosResponse.data;
-    }catch(e){
-        console.error(e);
-        return undefined;
-    }
+export function cursoListarPorIdService(idCurso){
+    let url = cursoListarById(idCurso);
+    let response = undefined
+    axios.get
+    (url,
+        {headers:{Authorization:localStorage.getItem("token")}})
+        .then((res) => {
+            response = res.data;
+            return response;
+        })
+        .catch((e) => {
+            console.error(e)
+        })
+    return response;
 }
 
-export async function cursoEditarPorIdService(idCurso, cursoNew){
+export function cursoEditarPorIdService(idCurso, cursoNew){
     let url = cursoEditarById(idCurso)
-    try{
-        let axiosResponse = await axios
-                  .put(url, {cursoNew} ,
-                                {headers:{Authorization: localStorage.getItem("token")}}
-                            );
-        return axiosResponse.status === 200;
-    }catch(e){
-        console.error(e);
-        return false;
-    }
+    let response = false
+    axios.put
+    (url,
+        {headers:{Authorization:localStorage.getItem("token")}})
+        .then((res) => {
+            response = res.status
+            return response === 200;
+        })
+        .catch((e) => {
+            console.error(e)
+        })
+    return response;
 }
