@@ -47,11 +47,12 @@ function TableArea() {
   const [sorteio, setSorteio] = useState([]);
 
   useEffect(()=>{
-    let response = sorteioMesAtualService();
-    if(response===undefined){
-        return;
-    }
-    setSorteio(response);
+    sorteioMesAtualService().then((response) => {
+        if (response === undefined) {
+            return;
+        }
+        setSorteio(response);
+    });
   })
 
   return (

@@ -18,8 +18,11 @@ const DespesaEvento = () => {
     const [openPopUp, setopenPopUp] = useState(false);
     const [changedTabela, setChangedTabela] = useState(false);
     const [openModalDelete, setopenModalDelete] = useState(false);
-    const evento = useMemo(() => {
-        return eventoListarPorIdService(idEvento).data;
+    const [evento, setEvento] = useState()
+    useMemo(() => {
+        return eventoListarPorIdService(idEvento).then((response) => {
+            setEvento(response)
+        });
     }, [])
 
     const handleClosePopUp = () => {

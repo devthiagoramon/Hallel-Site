@@ -14,120 +14,108 @@ import {associadoListarPerfil} from "../api/uris/AssociadosURLS";
 
 export async function solicitarCadastroService(cadastro) {
     let url = homeSolicitarCadastro();
-    return await axios.post
-    (url, {cadastro},
-        {headers: {Authorization: localStorage.getItem("token")}})
-        .then((res) => {
-            return res.status === 200;
-        })
-        .catch((e) => {
-            console.error(e)
-            return false;
-        })
+    try {
+        let axiosResponse = await axios.post(url, {...cadastro});
+        return axiosResponse.status === 200
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
 }
 
 export async function loginService(login) {
     let url = homeLogin()
-    return await axios.post
-    (url, {...login})
-        .then((res) => {
-            let rolesName = [];
-            localStorage.setItem("token", res.data.token);
-            localStorage.setItem("HallelId", res.data.objeto.id);
-            res.data.objeto.roles.map((role) => {
-                rolesName.push(role.name);
-            });
-            localStorage.setItem("R0l3s", rolesName);
-            return true;
-        })
-        .catch((e) => {
-            console.error(e)
-            return false;
-        })
+    try {
+        let axiosResponse = await axios
+            .post(url, {...login}, {headers: {Authorization: localStorage.getItem("token")}});
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e);
+        return false;
+    }
 }
 
 export async function listarCursosService() {
     let url = homeListarCursos()
-    return await axios.get
-    (url,
-        {headers: {Authorization: localStorage.getItem("token")}})
-        .then((res) => {
-            return res.data;
-        })
-        .catch((e) => {
-            console.error(e)
-            return []
-        })
+    try {
+        let axiosResponse = await axios
+            .get(url, {headers: {Authorization: localStorage.getItem("token")}});
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return [];
+    }
 }
 
 export async function listarCursosById(idCurso) {
     let url = homeListarDesCursoByIdCurso(idCurso)
-    return await axios.get
-    (url,
-        {headers: {Authorization: localStorage.getItem("token")}})
-        .then((res) => {
-            return res.data;
-        })
-        .catch((e) => {
-            console.error(e)
-            return undefined;
-        })
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return undefined;
+    }
 }
 
 export async function matricularParticipanteCursoService(idHallel, idCurso) {
     let url = homeMatricularParticipanteInCursoByIdUserAndIdCurso(idHallel, idCurso);
-    return await axios.post
-    (url,
-        {headers: {Authorization: localStorage.getItem("token")}})
-        .then((res) => {
-            return res.status === 200;
-        })
-        .catch((e) => {
-            console.error(e)
-            return false;
-        })
+    try {
+        let axiosResponse = await axios
+            .post(url, {},
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
 }
 
 export async function verificarTokenService(token) {
     let url = homeVerificarToken(token);
-    return await axios.get(url,
-        {headers: {Authorization: localStorage.getItem("token")}})
-        .then((res) => {
-            return res.data;
-        })
-        .catch((e) => {
-            console.error(e)
-            return false
-        })
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return axiosResponse.data;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
 }
 
-export async function listarEventoSemDestaqueService() {
+export async function listarEventoSemDestaqueService(){
     let url = listarEventosSemDestaqueHomeAPI()
-    return await axios
-        .get(url,
-            {headers: {Authorization: localStorage.getItem("token")}}
-        ).then((res) => {
-            return res.data;
-        }).catch((error) => {
-            console.log(error)
-            return [];
-        });
+    try{
+        return (await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            )).data;
+    }catch(e){
+        console.error(e)
+        return []
+    }
 }
 
 export async function listarEventoComDestaqueService() {
-    let url = listarEventosDestacadosHomeAPI();
-    return await axios.get(url,
-            {headers: {Authorization: localStorage.getItem("token")}})
-        .then((res) => {
-            return res.data;
-        })
-        .catch((error) => {
-            console.error(error);
-            return [];
-        });
+    let url = listarEventosDestacadosHomeAPI()
+    try{
+        return (await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            )).data;
+    }catch(e){
+        console.error(e)
+        return []
+    }
 }
 
-export async function loadPerfilService(idUser, roles) {
+export async function loadPerfil(idUser, roles) {
     let url = "";
     let isMembro = false;
     let isAssociado = false;
@@ -138,18 +126,18 @@ export async function loadPerfilService(idUser, roles) {
         url = membroLoadPerfilById(localStorage.getItem("HallelId"));
         isMembro = true;
     }
-    return await axios.get
-    (url,
-        {headers: {Authorization: localStorage.getItem("token")}})
-        .then((res) => {
-            return {
-                isMembro: isMembro,
-                isAssociado: isAssociado,
-                data: res.data
-            };
-        })
-        .catch((e) => {
-            console.error(e)
-            return undefined
-        })
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: localStorage.getItem("token")}}
+            );
+        return {
+            isMembro: isMembro,
+            isAssociado: isAssociado,
+            data: axiosResponse.data,
+        };
+    } catch (e) {
+        console.error(e)
+        return undefined;
+    }
 }

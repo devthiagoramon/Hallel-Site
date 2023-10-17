@@ -36,6 +36,7 @@ const ModalPagarAssociacaoPerfil = ({
         let dateString = mesSelecionado.toString();
         let mesString = dateString.substring(0, 2);
         let anoString = dateString.substring(3);
+
         let bodyRequest = {
             idAssociado: localStorage.getItem("HallelId"),
             numMetodoPagamento: numMetodoPagamento,
@@ -49,7 +50,7 @@ const ModalPagarAssociacaoPerfil = ({
             } else {
                 // Deu errado
             }
-        })
+        });
 
     };
 
@@ -58,7 +59,7 @@ const ModalPagarAssociacaoPerfil = ({
         if (numMetodoPagamento === 3 || numMetodoPagamento === 4) {
             associadoGetCartaoCreditoService(localStorage.getItem("HallelId")).then((response) => {
                 setInfoBancariaAssociado(response)
-            })
+            });
         }
     }, [numMetodoPagamento]);
 

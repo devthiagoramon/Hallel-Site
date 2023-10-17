@@ -16,14 +16,15 @@ const EventosArquivado = () => {
 
     const [OpenModalDesarquivar, setOpenModalDesarquivar] = useState(false);
     const [atualizarTabela, setAtualizarTabela] = useState(false);
-
-    const eventos = useMemo(() => {
-        let data = listarTodosEventosArquivadosService();
-        if (data.length !== 0) {
-            setTabelaVazia(false)
-        }
-        setTimer(true);
-        return data;
+    const [eventos, setEventos] = useState()
+    useMemo(() => {
+        listarTodosEventosArquivadosService().then((response) => {
+            if (data.length !== 0) {
+                setTabelaVazia(false)
+            }
+            setTimer(true);
+            setEventos(response)
+        });
     }, [atualizarTabela])
     const handleCloseMenuEvento = () => {
         setanchorEl(null);

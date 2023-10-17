@@ -146,7 +146,13 @@ const EditarEventoAdm = () => {
     }, [inputsArray])
 
     const atualizarEvento = () => {
-        eventoAtualizarService(idEvento, evento);
+        eventoAtualizarService(idEvento, evento).then((response) => {
+            if (response){
+                // deu certo
+            }else{
+                // deu errado
+            }
+        });
     };
 
     const abrirModalLocalizacao = (e) => {

@@ -197,14 +197,15 @@ const AdicionarCursoAdm = () => {
             aprendizado: arrayAprendizado,
             modulos: modulosProv
         };
-        let response = cursoCriarService(cursoNew);
-        if (response) {
-            navigator("/administrador/cursos")
-            setenviadoSucesso(true);
-        } else {
-            setEnviadoErro(true);
+        cursoCriarService(cursoNew).then((response) => {
+            if (response) {
+                navigator("/administrador/cursos")
+                setenviadoSucesso(true);
+            } else {
+                setEnviadoErro(true);
+            }
+        });
 
-        }
     }
 
     function cadastrarCurso() {

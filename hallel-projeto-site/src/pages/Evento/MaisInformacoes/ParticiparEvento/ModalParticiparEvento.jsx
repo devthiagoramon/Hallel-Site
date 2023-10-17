@@ -141,12 +141,14 @@ const ModalParticiparEvento = ({evento, open, setOpen}) => {
                 idEvento: evento.id,
                 ...usuarioEvento,
             };
-            let response = participarEventoService(usuarioEventoRequest);
-            if (response) {
-                notification.render(<SucessoParticiparEvento/>);
-            } else {
-                notification.render(<ErrorParticiparEvento/>);
-            }
+            participarEventoService(usuarioEventoRequest).then((response) => {
+                if (response) {
+                    notification.render(<SucessoParticiparEvento/>);
+                } else {
+                    notification.render(<ErrorParticiparEvento/>);
+                }
+            });
+
 
         } else {
             // Já membro e não membro passam pela verificação
@@ -156,12 +158,13 @@ const ModalParticiparEvento = ({evento, open, setOpen}) => {
                     idEvento: evento.id,
                     ...usuarioEvento,
                 };
-                let response = participarEventoService(usuarioEventoRequest);
-                if (response) {
-                    notification.render(<SucessoParticiparEvento/>);
-                } else {
-                    notification.render(<ErrorParticiparEvento/>);
-                }
+                participarEventoService(usuarioEventoRequest).then((response) => {
+                    if (response) {
+                        notification.render(<SucessoParticiparEvento/>);
+                    } else {
+                        notification.render(<ErrorParticiparEvento/>);
+                    }
+                });
             }
         }
     };
@@ -169,20 +172,21 @@ const ModalParticiparEvento = ({evento, open, setOpen}) => {
     useMemo(() => {
         let idUser = localStorage.getItem("HallelId");
         if (idUser != null) {
-            let response = verifyMembroParticiparEventoService(idUser);
-            if(!response){
-                // Error
-                return;
-            }
-            setIsVerified(true);
-            if (response == null) {
-                setIsCadastrado(false);
-            } else {
-                setIsCadastrado(true);
-                setOpenIsCadastrado(true);
-                let userProv = {...response};
-                setUsuarioEvento(userProv);
-            }
+            verifyMembroParticiparEventoService(idUser).then((response) => {
+                if (!response) {
+                    // Error
+                    return;
+                }
+                setIsVerified(true);
+                if (response == null) {
+                    setIsCadastrado(false);
+                } else {
+                    setIsCadastrado(true);
+                    setOpenIsCadastrado(true);
+                    let userProv = {...response};
+                    setUsuarioEvento(userProv);
+                }
+            });
         } else {
             setIsVerified(true);
             setIsCadastrado(false);

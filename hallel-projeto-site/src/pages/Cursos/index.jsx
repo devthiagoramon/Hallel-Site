@@ -10,7 +10,7 @@ const Cursos = () => {
         listarCursosService().then((response) => {
             setCursos(response)
         });
-    }, []);
+    }, [])
     const [pesquisa, setPesquisa] = useState("");
 
     const cursosFiltrados = useMemo(() => {

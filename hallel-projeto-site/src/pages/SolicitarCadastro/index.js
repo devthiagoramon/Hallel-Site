@@ -34,7 +34,8 @@ const SolicitarCadastro = (props) => {
                         setMostrarPopUp(false);
                     }, 3000);
                 }
-            })
+            });
+
         }
     }
 

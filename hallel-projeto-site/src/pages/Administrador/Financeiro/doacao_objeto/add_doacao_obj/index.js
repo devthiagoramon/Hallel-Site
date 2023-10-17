@@ -82,16 +82,17 @@ const AddDoacaoObjetoAdm = () => {
             imagem: imagemInput,
             quantidade: doacaoObjeto.quantidade,
         }
-        let response = doarObjetoService(doacaoObjeto);
-        if (response) {
-            setenviadoSucesso(true);
-            setTimeout(() => {
-                window.location.href =
-                    "http://localhost:3000/administrador/painelFinanceiro/doacoes/objeto";
-            }, 4000);
-        } else {
-            setEnviadoErro(true);
-        }
+        doarObjetoService(doacaoObjeto).then((response) => {
+            if (response) {
+                setenviadoSucesso(true);
+                setTimeout(() => {
+                    window.location.href =
+                        "http://localhost:3000/administrador/painelFinanceiro/doacoes/objeto";
+                }, 4000);
+            } else {
+                setEnviadoErro(true);
+            }
+        });
     }
 
     return (

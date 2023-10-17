@@ -1,5 +1,5 @@
 import "./style.css";
-import {useMemo} from "react";
+import {useMemo, useState} from "react";
 import Select from "react-bootstrap/FormSelect";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {CDBCard, CDBCardBody, CDBContainer, CDBDataTable} from 'cdbreact';
@@ -31,8 +31,11 @@ function Filtro() {
 }
 
 function MembrosAdministrador() {
-    const membro = useMemo(() => {
-        return membroListarAdmService();
+    const [membro, setMembro] = useState()
+    useMemo(() => {
+         membroListarAdmService().then((response) => {
+            setMembro(response);
+        });
     }, []);
 
 

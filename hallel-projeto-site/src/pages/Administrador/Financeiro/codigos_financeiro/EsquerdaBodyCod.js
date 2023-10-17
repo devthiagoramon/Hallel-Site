@@ -31,9 +31,14 @@ const EsquerdaBodyCodFinanceiro = ({
     useEffect(() => {
         let response;
         if (entradaSelecionada) {
-            response = codigoEntradaListarService();
+            codigoEntradaListarService().then((resListCodEntrada) => {
+                response = resListCodEntrada;
+            });
         } else if (saidaSelecionada) {
-            response = codigoSaidaCriarService();
+
+            codigoSaidaCriarService().then((resListCodSaida) => {
+                response = resListCodSaida;
+            });
         }
         setCodigos(response);
     }, [

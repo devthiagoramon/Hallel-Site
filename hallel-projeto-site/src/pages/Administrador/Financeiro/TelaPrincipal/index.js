@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, {useMemo, useState} from "react";
 import "./styleTableDespesas.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -156,9 +156,11 @@ const UltimasRendas = () => {
 
 const UltimasSaidas = () => {
     const navigate = useNavigate();
-
-    const saidas = useMemo(() => {
-        return saidaUltimasSaidaService();
+    const [saidas, setSaidas] = useState([]);
+    useMemo(() => {
+        saidaUltimasSaidaService().then((response) => {
+            setSaidas(response);
+        });
     }, []);
 
     return (

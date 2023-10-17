@@ -7,8 +7,12 @@ import {cursoGetParticipantesService} from "../../../../service/CursoService";
 const AssociadosListaCursosAdm = () => {
     const {idCurso} = useParams();
     const [pesquisa, setPesquisa] = useState("");
-    const listaAssociado = useMemo(() => {
-        return cursoGetParticipantesService(idCurso)
+    const [listaAssociado, setListaAssociado] = useState();
+
+    useMemo(() => {
+        cursoGetParticipantesService(idCurso).then((response) => {
+            setListaAssociado(response);
+        })
     }, []);
 
 

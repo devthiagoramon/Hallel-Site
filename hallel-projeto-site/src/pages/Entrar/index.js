@@ -1,124 +1,134 @@
 import React, {useState} from "react";
-import Logo from "./../../images/logoHallel2.png";
+import logo from "./../../images/LogoHallel.png";
 import "./entrar.css";
-import {IconButton, InputAdornment} from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import {Alert, CircularProgress, Snackbar} from "@mui/material";
 import {loginService} from "../../service/HomeService";
-import {useNavigate} from "react-router-dom";
-import {loadFeedBackHallel, TypesFBHallel} from "../../components/FeedBackHallel";
-
 
 function Entrar() {
-    const [login, setLogin] = useState({
-        email: "",
-        senha: ""
+  const [emailInput, setEmail] = useState();
+  const [senhaInput, setSenha] = useState();
+
+  const [isValid, setisValid] = useState(null);
+  const [isValidError, setisValidError] = useState(true);
+  const [isLoading, setisLoading] = useState(false);
+
+  function entrar() {
+    setisLoading(true);
+    let login = {
+      email: emailInput,
+      senha: senhaInput
+    }
+    loginService(login).then((response) => {
+      // Verfica se há erro
+      if (!response) {
+        setisValid(false);
+        setisValidError(true);
+        setTimeout(() => {
+          setisLoading(false);
+        }, 3000);
+        return;
+      }
+      let rolesName = [];
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("HallelId", response.objeto.id);
+      localStorage.setItem("HallelEmail", response.objeto.email);
+      response.objeto.roles.map((role) => {
+        rolesName.push(role.name);
+      });
+      localStorage.setItem("R0l3s", rolesName);
+      setisValid(true);
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 3000);
     })
+  }
 
-    let navigator = useNavigate();
+  const handleClose = () => {
+    setisValid(null);
+    setisValidError(false);
+  };
 
-    const [showPassword, setShowPassword] = useState(false);
-    const [rememberMe, setRememberMe] = useState(false);
+  return (
+    <div className="containerlogin">
+      <header>
+        <img src={logo} alt="Workflow" />
+        <p> </p>
+        <span className="log"> Log </span>
+        <span className="in"> in </span>
+      </header>
 
-    const handleTogglePassword = () => {
-        setShowPassword(!showPassword);
-    };
-
-    const handleRememberMe = (event) => {
-        setRememberMe(event.target.checked);
-    };
-
-    const [showCadastro, setShowCadastro] = useState(false);
-
-    const handleShowCadastro = () => {
-        setShowCadastro(true);
-    };
-
-    const handleChangeInputLogin = (e) => {
-        // console.log(""+[e.target.name]+":"+ e.target.value+";")
-        setLogin((prev) => {
-            return {...prev, [e.target.name]: e.target.value}
-        })
-    }
-
-    const entrar = () => {
-        loginService(login).then((response) => {
-            console.log(response);
-            if (response) {
-                // loadFeedBackHallel("Sucesso ao entrar", TypesFBHallel.sucesso, 2000);
-                setTimeout(() => {
-                    navigator("/");
-                }, 3000);
-            } else {
-                // loadFeedBackHallel("Erro ao entrar", TypesFBHallel.error, 2000);
-            }
-        })
-    }
-
-    return (
-        <div className='login-master'>
-            <div className='logo'>
-                <img src={Logo} className='img' alt='logo'/>
-            </div>
-            <div className='container-login'>
-                <div className='quadrado'/>
-                <div className='div-login'>
-                    <h1 className='login-text'>Login</h1>
-                </div>
-                <div className='email-input'>
-                    <div className='email-text-div'>
-                        <span className='email-text'>E-mail:</span>
-                    </div>
-                    <input type='text' placeholder='' name="email" className='email-camp'
-                           onChange={handleChangeInputLogin}/>
-                </div>
-                <div className='email-input'>
-                    <div className='email-text-div'>
-                        <span className='email-text'>Senha:</span>
-                    </div>
-                    <input type={showPassword ? 'text' : 'password'} placeholder='' className='email-camp' name="senha"
-                           onChange={handleChangeInputLogin}/>
-                    <InputAdornment>
-                        <IconButton onClick={handleTogglePassword} className='button-password'
-                                    style={{marginLeft: '1310px', marginTop: '-35px', color: 'white'}}>
-                            {showPassword ? <VisibilityIcon/> : <VisibilityOffIcon/>}
-                        </IconButton>
-                    </InputAdornment>
-                </div>
-                <div className='remember-div'>
-                    <label className='remember'>
-                        <input type="checkbox" checked={rememberMe} onChange={handleRememberMe}
-                               style={{marginTop: '19px'}}/> Lembre-me</label>
-                </div>
-
-                <div>
-                    <a href="#" className='forget-password' style={{marginTop: '-22px', display: 'block'}}> Esqueceu sua
-                        senha?</a>
-                </div>
-
-                <div>
-                    <button className='button-continue' onClick={entrar}>Continuar</button>
-                </div>
-
-
-                <div className='register-div'>
-                    <p className='text-register'>Não tem uma conta?
-                        <a className='register' href="/solicitarCadastro">Solicite seu cadastro </a>
-                    </p>
-
-                </div>
-
-                <div className='terms-div'>
-                    <p className='terms'>Ao continuar, você aceita nossos
-                        <br/>
-                        <a href="#" className='register-terms'> Termos de condições </a> e
-
-                        <a href="#" className='register-privace'> Política de privacidade</a>
-                    </p>
-                </div>
-            </div>
+      <div className="formulario">
+        <div className="inputContainerEmail">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Endereço de e-mail"
+            value={emailInput}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
         </div>
-    );
+
+        <div className="inputContainerSenha">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Senha"
+            value={senhaInput}
+            onChange={(e) => {
+              setSenha(e.target.value);
+            }}
+          />
+        </div>
+
+        <a href=""> Esqueceu sua senha?</a>
+
+        {isLoading === true ? (
+          <div>
+            <CircularProgress />
+          </div>
+        ) : (
+          <div>
+            <button className="buttonEntrar" onClick={entrar}>
+              {" "}
+              Entrar
+            </button>
+          </div>
+        )}
+        <div className="footerEntrar">
+          <p>Não tem uma conta? </p>
+          <a href="/solicitarCadastro"> Solicite seu cadastro </a>
+        </div>
+      </div>
+      {isValid !== null && (
+        <>
+          {isValid === false && (
+            <Snackbar
+              open={isValidError}
+              onClose={handleClose}
+              autoHideDuration={3000}
+            >
+              <Alert severity="error">Error no login</Alert>
+            </Snackbar>
+          )}
+          {isValid === true && (
+            <Snackbar
+              open={isValid}
+              onClose={handleClose}
+              autoHideDuration={3000}
+            >
+              <Alert severity="success">
+                Logado com sucesso, redirecionando...
+              </Alert>
+            </Snackbar>
+          )}
+        </>
+      )}
+    </div>
+  );
 }
 
 export default Entrar;

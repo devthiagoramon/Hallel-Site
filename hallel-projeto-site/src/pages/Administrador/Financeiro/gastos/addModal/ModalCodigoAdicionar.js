@@ -43,19 +43,20 @@ const ModalCodigoAdicionar = (props) => {
                 setErrorRequestNum(false);
             }, 3000);
         } else {
-            let response = adicionarCodigoSaidaService(codigosSaida);
-            if (response) {
-                props.setOpenAdicionarCodigo(false);
-                setCodigosSaida({
-                    numCodigo: null,
-                    nomeCodigo: null,
-                });
-                setErrorRequestNome(false);
-                setErrorRequestNum(false);
-                seterrorRequestNum2(false);
-            } else {
-                seterrorRequestNum2(true);
-            }
+            adicionarCodigoSaidaService(codigosSaida).then((response) => {
+                if (response) {
+                    props.setOpenAdicionarCodigo(false);
+                    setCodigosSaida({
+                        numCodigo: null,
+                        nomeCodigo: null,
+                    });
+                    setErrorRequestNome(false);
+                    setErrorRequestNum(false);
+                    seterrorRequestNum2(false);
+                } else {
+                    seterrorRequestNum2(true);
+                }
+            });
         }
     };
 

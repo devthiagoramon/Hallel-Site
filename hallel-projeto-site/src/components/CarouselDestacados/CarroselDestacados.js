@@ -7,14 +7,12 @@ import {listarEventoComDestaqueService} from "../../service/HomeService";
 const CarroselDestacados = () => {
     const carrosel = useRef();
     const [timer, setTimer] = useState(false);
-    const [eventos, setEventos] = useState([])
-
+    const [eventos, setEventos] = useState([]);
     useMemo(() => {
-        listarEventoComDestaqueService().then((res) => {
-            setEventos(res)
+        listarEventoComDestaqueService().then((response)=>{
+            setEventos(response)
         });
-    }, [])
-
+    }, []);
 
     useMemo(() => {
         setTimeout(() => {

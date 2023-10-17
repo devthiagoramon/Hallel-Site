@@ -16,8 +16,8 @@ function DescCurso() {
     const {idCurso} = useParams();
     const [curso, setCurso] = useState();
     useMemo(() => {
-        listarCursosById(idCurso).then((res) => {
-            setCurso(res)
+        listarCursosById(idCurso).then((response) => {
+            setCurso(response)
         });
     }, [])
     const [isModalMatricularOpen, setisModalMatricularOpen] = useState(false);

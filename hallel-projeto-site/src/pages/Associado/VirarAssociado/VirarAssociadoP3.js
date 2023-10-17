@@ -8,16 +8,17 @@ import {virarAssociadoService} from "../../../service/MembroService";
 const VirarAssociadoP3 = ({setIndexParte, novoAssociado}) => {
 
     const confirmarPagamento = () => {
-        let response = virarAssociadoService({
+        virarAssociadoService({
             idMembro: localStorage.getItem("HallelId"),
             ...novoAssociado,
             metodoPagamentoNum: 3,
+        }).then((response) => {
+            if (response) {
+                // Deu certo
+            } else {
+                // Deu errado
+            }
         });
-        if(response){
-            // Deu certo
-        }else{
-            // Deu errado
-        }
     };
 
     return (

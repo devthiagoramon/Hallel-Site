@@ -145,28 +145,29 @@ const EditarCursosAdm = () => {
     useMemo(() => loadFromAPI(), []);
 
     function loadFromAPI() {
-        let response = cursoListarPorIdService(idCurso);
-        if (response === undefined) {
-            return;
-        }
-        let loadingObject = {
-            nome: response.nome,
-            image: response.image,
-            descricao: response.descricao,
-        };
-        setoldCurso(loadingObject);
-        setnewCurso(loadingObject);
-        setdescInput(response.descricao !== null ? response.descricao : "");
-        let requisitosLoaded = loadRequisitosFromAPI(response.requisitos);
-        let aprendizadoLoaded = loadAprendizadoFromAPI(response.aprendizado);
-        let modulosLoaded = loadModulosFromAPI(response.modulos);
-        setLastIdAprendizado(response.aprendizado.length)
-        setRequisitosInputs(requisitosLoaded);
-        setAprendizadoInputs(aprendizadoLoaded);
-        setModulos(modulosLoaded);
-        setoldLenghtArray(response.requisitos.length);
-        setoldLenghtArrayModulos(response.modulos.length);
-        setOldLenghtArrayAprendizado(response.aprendizado.length)
+        cursoListarPorIdService(idCurso).then((response) => {
+            if (response === undefined) {
+                return;
+            }
+            let loadingObject = {
+                nome: response.nome,
+                image: response.image,
+                descricao: response.descricao,
+            };
+            setoldCurso(loadingObject);
+            setnewCurso(loadingObject);
+            setdescInput(response.descricao !== null ? response.descricao : "");
+            let requisitosLoaded = loadRequisitosFromAPI(response.requisitos);
+            let aprendizadoLoaded = loadAprendizadoFromAPI(response.aprendizado);
+            let modulosLoaded = loadModulosFromAPI(response.modulos);
+            setLastIdAprendizado(response.aprendizado.length)
+            setRequisitosInputs(requisitosLoaded);
+            setAprendizadoInputs(aprendizadoLoaded);
+            setModulos(modulosLoaded);
+            setoldLenghtArray(response.requisitos.length);
+            setoldLenghtArrayModulos(response.modulos.length);
+            setOldLenghtArrayAprendizado(response.aprendizado.length)
+        });
     }
 
     function loadRequisitosFromAPI(requisitos) {
@@ -295,13 +296,15 @@ const EditarCursosAdm = () => {
             aprendizado: arrayAprendizado,
             modulos: modulosProv
         };
-        let response = cursoEditarPorIdService(idCurso, cursoNew);
-        if (response) {
-            navigator("/administrador/curso")
-            setenviadoSucesso(true);
-        } else {
-            setEnviadoErro(true);
-        }
+        cursoEditarPorIdService(idCurso, cursoNew).then((response) => {
+            if (response) {
+                navigator("/administrador/curso")
+                setenviadoSucesso(true);
+            } else {
+                setEnviadoErro(true);
+            }
+        });
+
     }
 
     function cadastrarCurso() {

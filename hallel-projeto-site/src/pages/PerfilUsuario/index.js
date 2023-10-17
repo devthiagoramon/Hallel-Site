@@ -13,7 +13,7 @@ import {CalendarMonth} from "@mui/icons-material";
 import MenuCalendarioSelecionar from "../Administrador/Financeiro/associados/MenuCalendarioSelecionar";
 import {motion} from "framer-motion";
 import {eventoListarEventosInscritos} from "../../api/uris/EventosURLS";
-import {loadPerfilService} from "../../service/HomeService";
+import {loadPerfil} from "../../service/HomeService";
 
 const PerfilRow = () => {
     return (<div className="secao1">
@@ -57,8 +57,8 @@ const Info = () => {
     useMemo(() => {
         let roles = String(localStorage.getItem("R0l3s"));
         let idUser = localStorage.getItem("HallelId");
-        loadPerfilService(idUser, roles).then((response) => {
-            if(response === undefined){
+        loadPerfil(idUser, roles).then((response) => {
+            if (response === undefined) {
                 return;
             }
             let data = response.data;
@@ -81,7 +81,7 @@ const Info = () => {
                 data.pagamentosAssociado = pagamentosAssociado;
             }
             setUsuario(data);
-        })
+        });
     }, [setIsMembro, setisAssociado, setUsuario]);
 
     useEffect(() => {
