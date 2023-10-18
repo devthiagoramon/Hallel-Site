@@ -68,9 +68,7 @@ const ColorButton = styled(Button)(({theme}) => ({
 const UltimasRendas = () => {
     const navigate = useNavigate();
 
-    const entradas = useMemo(() => {
-        return entradaUltimasEntradasService();
-    }, []);
+
 
     return (
         <div className="tabela-ultimas-rendas">
@@ -110,43 +108,7 @@ const UltimasRendas = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {entradas.map((entrada) => (
-                            <TableRow
-                                key={entrada.id}
-                                sx={{"&:last-child td, &:last-child th": {border: 0}}}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {entrada.codigo !== null && (
-                                        <label>
-                                            {" "}
-                                            {entrada.codigo.numeroCodigo} |{" "}
-                                            {entrada.codigo.nomeCodigo}{" "}
-                                        </label>
-                                    )}
-                                </TableCell>
-                                <TableCell>
-                                    {dayjs(entrada.data).format("DD/MM/YYYY")}
-                                </TableCell>
-                                <TableCell>
-                                    {entrada.valor.toLocaleString("pt-BR", {
-                                        style: "currency",
-                                        currency: "BRL",
-                                    })}
-                                </TableCell>
-                                <TableCell>
-                                    {entrada.metodoPagamento === "CARTAO_CREDITO"
-                                        ? "Cartão de Crédito"
-                                        : ""}
-                                    {entrada.metodoPagamento === "CARTAO_DEBITO"
-                                        ? "Cartão de Débito"
-                                        : ""}
-                                    {entrada.metodoPagamento === "CARTAO_MAQUINA"
-                                        ? "Cartão de Crédito"
-                                        : ""}
-                                    {entrada.metodoPagamento === "PIX" ? "PIX" : ""}
-                                </TableCell>
-                            </TableRow>
-                        ))}
+
                     </TableBody>
                 </Table>
             </TableContainer>
@@ -157,9 +119,7 @@ const UltimasRendas = () => {
 const UltimasSaidas = () => {
     const navigate = useNavigate();
 
-    const saidas = useMemo(() => {
-        return saidaUltimasSaidaService();
-    }, []);
+   
 
     return (
         <div className="tabela-ultimas-saidas">
@@ -197,40 +157,7 @@ const UltimasSaidas = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {saidas.map((saida) => (
-                            <TableRow
-                                key={saida.id}
-                                sx={{"&:last-child td, &:last-child th": {border: 0}}}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {saida.codigo !== null && (
-                                        <label>
-                                            {" "}
-                                            {saida.codigo.numeroCodigo} | {saida.codigo.nomeCodigo}{" "}
-                                        </label>
-                                    )}
-                                </TableCell>
-                                <TableCell>{dayjs(saida.data).format("DD/MM/YYYY")}</TableCell>
-                                <TableCell>
-                                    {saida.valor.toLocaleString("pt-BR", {
-                                        style: "currency",
-                                        currency: "BRL",
-                                    })}
-                                </TableCell>
-                                <TableCell>
-                                    {saida.metodoPagamento === "CARTAO_CREDITO"
-                                        ? "Cartão de Crédito"
-                                        : ""}
-                                    {saida.metodoPagamento === "CARTAO_DEBITO"
-                                        ? "Cartão de Débito"
-                                        : ""}
-                                    {saida.metodoPagamento === "CARTAO_MAQUINA"
-                                        ? "Cartão de Crédito"
-                                        : ""}
-                                    {saida.metodoPagamento === "PIX" ? "PIX" : ""}
-                                </TableCell>
-                            </TableRow>
-                        ))}
+                        
                     </TableBody>
                 </Table>
             </TableContainer>

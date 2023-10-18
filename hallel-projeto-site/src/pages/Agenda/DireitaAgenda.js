@@ -4,17 +4,17 @@ import { useEffect } from "react";
 
 const arrayBackground = [
   {
-    cor1: "#5614B0",
-    cor2: "#DBD65C",
+    cor1: "#006029",
+    cor2: "#006029",
   },
   {
-    cor1: "#aa4b6b",
-    cor2: "#3b8d99",
+    cor1: "#006029",
+    cor2: "#006029",
   },
-  { cor1: "#FDC830", cor2: "#F37335" },
-  { cor1: "#a8c0ff", cor2: "#3f2b96" },
-  { cor1: "#800080", cor2: "#ffc0cb" },
-  { cor1: "#ff9966", cor2: "#ff5e62" },
+  { cor1: "#006029", cor2: "#006029" },
+  { cor1: "#006029", cor2: "#006029" },
+  { cor1: "#006029", cor2: "#006029" },
+  { cor1: "#006029", cor2: "#006029" },
 ];
 
 const DireitaAgenda = () => {
@@ -32,8 +32,10 @@ const DireitaAgenda = () => {
   }, [cardRef]);
 
   return (
+    
     <div className="direita_agenda">
       <div ref={cardRef} className="card_evento_agenda">
+        
         <div className="card_esquerda_evento_agenda">
           <Typography variant="h6" color={"#f4f4f4"}>
             Titulo
@@ -50,8 +52,14 @@ const DireitaAgenda = () => {
             Saiba mais
           </a>
         </div>
-      </div>
+        </div>
+
     </div>
+      
+   
+      
+    
+    
   );
 };
 

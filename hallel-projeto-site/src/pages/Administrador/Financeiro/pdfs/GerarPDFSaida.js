@@ -69,10 +69,7 @@ const GerarPDFSaida = () => {
         let dataString = mesSelecionado.format("MM/YYYY").toString();
         let mesString = dataString.substring(0, 2);
         let anoString = dataString.substring(3);
-        let response = saidaListarByPageAndDateService(paginaSelecionado - 1,
-            mesString,
-            anoString);
-        setsaidas(response);
+       
     }, [paginaSelecionado, mesSelecionado]);
 
     return (
