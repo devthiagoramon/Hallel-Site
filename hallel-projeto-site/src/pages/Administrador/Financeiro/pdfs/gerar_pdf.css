@@ -7,10 +7,16 @@
   font-size: 50px;
   margin-top: 60px;
   font-weight: normal;
-  margin-left: -50px;
+  margin-left: 430px;
+  color: #003015;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 .cont_header_gerar_pdf-selecionar_mes_gerar_pdf{
   margin-top: 40px;
+}
+
+.text-infos{
+  text-align: justify;
 }
 
 .text-mes{

@@ -113,10 +113,10 @@ const GerarPDFEntrada = () => {
       <div className="body_gerar_pdf">
         <div className="esquerda_body_gerar_pdf">
           <div className="informacoes_gerar_pdf">
-            <Typography variant="h6" style={{fontWeight:'bold', marginTop:'10px',fontSize:'25px',marginBottom:'-15px'}}>
+            <Typography variant="h6" style={{fontWeight:'bold', marginTop:'10px',fontSize:'25px',marginBottom:'-15px',marginLeft:"-110px"}}>
               Informações de como funciona para gerar o PDF:
             </Typography>
-            <ul>
+            <ul className="text-infos">
               <li>Você pode verificar todos os dados.</li>
               <li>
                 Você pode adicionar uma descrição a cada linha da tabela.
@@ -220,10 +220,10 @@ const GerarPDFEntrada = () => {
         </div>
         <div className="direita_body_gerar_pdf">
           <div className="header_preview_gerar_pdf">
-            <Typography variant="h5" sx={{ color: "#F4F4F4" }}>
-              Pré-visualização
+            <Typography variant="h5" sx={{ color: "#F4F4F4",marginLeft:"-40px" }}>
+              PDF
             </Typography>
-            <label style={{marginTop:"3px",color: "white", marginRight:"-20px"}}>{mesSelecionado.format("MM/YYYY")}</label> 
+            <label style={{marginTop:"3px",color: "white", marginRight:"-130px"}}>{mesSelecionado.format("MM/YYYY")}</label> 
           <div className="cont_header_gerar_pdf-selecionar_mes_gerar_pdf"> 
           
           <Tooltip title="Selecionar o mês">
@@ -234,7 +234,7 @@ const GerarPDFEntrada = () => {
               }}
             >
               <CalendarMonth
-                sx={{ color: "white", height: "35px", width: "35px",marginTop:"-40px", marginRight:"30px" }}
+                sx={{ color: "white", height: "35px", width: "35px",marginTop:"-40px", marginRight:"-65px" }}
               />
             </IconButton>
           </Tooltip>
@@ -252,7 +252,7 @@ const GerarPDFEntrada = () => {
                   setMostrarPDF(false);
                 }}
               >
-                <Close sx={{ color: "#F4F4F4" }} />
+                <Close sx={{ color: "#F4F4F4",marginRight:"-40px" }} />
               </IconButton>
             )}
           </div>
@@ -266,7 +266,7 @@ const GerarPDFEntrada = () => {
               </PDFViewer>
             )}
             {!mostrarPDF && (
-              <Button className="btn-view" style={{backgroundColor: 'green'}}
+              <Button className="btn-view" style={{backgroundColor: '#4caf50'}}
                 variant="contained"
                 onClick={() => {
                   setMostrarPDF(true);
