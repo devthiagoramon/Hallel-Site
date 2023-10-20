@@ -2,26 +2,16 @@
   display: flex;
   color: #f1f1f1;
   background: #003015;
-  background-size: 100% 100%;
-  padding-top: 3em;
-  margin-top: 0rem;
   align-items: center;
-  position: relative;
-  bottom: 0;
   width: 100%;
-  max-height: 160em;
+  height: 300px;
   margin-top: 5px;
 }
 
-#logo{
-  width: 100px;
-  height: 70px;
-}
-
 .col{
-  margin-top: -80px;
+  margin-top: -600px;
   margin-left: -100px;
-  margin-bottom: 0px;
+  margin-bottom: 290px;
 }
 
 .col h4{
@@ -39,6 +29,7 @@
   
   text-align: center;
   text-decoration: none;
+  
 }
 
 .col ul li{
@@ -65,16 +56,15 @@
   margin: auto;
   background-color: #f1f1f1;
   color: #f1f1f1;
-  margin-bottom: -150px;
+  margin-bottom: -100px;
 }
 
 .linha1{
   margin-right: 10px;
-  max-width: 25em;
-  
+  max-width: 25em;  
   background-color: #f1f1f1;
   color: #f1f1f1;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
 }
 
 .linha2{
