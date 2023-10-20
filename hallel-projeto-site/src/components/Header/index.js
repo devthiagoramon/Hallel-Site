@@ -80,14 +80,16 @@ function Header() {
       </div>
 
       <nav id="topbar" ref={navRef}>
-        <Link id="item" to="/">
+        <Link id="item" to="/" className="inicio">
           Início
         </Link>
 
-        <Link id="item" to="/eventos">
+        
+
+        <Link id="item" to="/eventos" className="inicio">
           Eventos
         </Link>
-
+        
         <Down
           id="item"
           titulo="Igreja"

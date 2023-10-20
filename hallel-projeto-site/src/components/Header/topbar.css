@@ -12,16 +12,16 @@
 	justify-content: space-between;
 	height: 5em;
 	padding: 0 2rem;
-  position: relative;
-  z-index: 1;
+  	position: relative;
+  	z-index: 1;
 	background: #003015;
 	color: #f1f1f1;
-  font-weight: 700;
-  font-size: 1.2em;
+  	font-weight: 700;
+  	font-size: 1.2em;
 }
 
 nav a {
-	margin: 0 1rem;
+	margin: 20px;
 	color: var(--textColor);
 	text-decoration: none;
 	transition: 0.5s;
@@ -33,6 +33,11 @@ nav > a:hover {
    transition: 0.8s;
    border-radius: 0.4em;
    color: #ff5900;
+}
+
+#item{
+	margin-right: 10px;
+	justify-content: space-between;
 }
 
 header .nav-btn {
@@ -51,7 +56,7 @@ header .nav-btn {
 header div,
 nav {
   display: flex;
-	align-items: center;
+	align-items: first baseline;
 }
 
 
@@ -82,7 +87,7 @@ nav {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		gap: 1.5rem;
 		background: #005123;
 		transition: 1s;

@@ -5,16 +5,18 @@ import FacebookPlugin from "../../components/FacebookPlugin/indexFacebook.js";
 import "./homepage.css";
 import CarouselNaoDestacados from "../../components/CarouselNaoDestacados/indexCarousel";
 import CarroselDestacados from "../../components/CarouselDestacados/CarroselDestacados";
+import SlideHome from '../../components/SlideHome/slide.js'
 function Home() {
   return (
     <div className="homepage">
+      <SlideHome/>
       <div className="containerCapa">
         <section className="sectionCapa">
           <label>Seja bem-vindo(a) à Comunidade Católica Hallel</label>
         </section>
       </div>
 
-      <h3 style={{marginTop: '2rem', marginLeft: "2rem"}}>Eventos</h3>
+      <h3 style={{marginTop: '90px', marginLeft: "2rem"}}>Eventos</h3>
       <div
         style={{
           display: "flex",
@@ -30,8 +32,8 @@ function Home() {
 
       <div className="area-middle">
         <div className="area-cartoes-home">
-          <PanelAssociado />
-          <PanelPedido />
+          {/*<PanelAssociado /> 
+          <PanelPedido />*/}
         </div>
 
         <div className="facebook-area">

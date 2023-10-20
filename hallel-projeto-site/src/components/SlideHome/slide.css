@@ -1,0 +1,29 @@
+.slider {
+    position: relative;
+    max-width: 2500px;
+    margin: 70px;
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .slick-dots {
+    bottom: 1px;
+  }
+  
