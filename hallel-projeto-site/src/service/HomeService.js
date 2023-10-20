@@ -27,7 +27,7 @@ export async function loginService(login) {
     let url = homeLogin()
     try {
         let axiosResponse = await axios
-            .post(url, {...login}, {headers: {Authorization: localStorage.getItem("token")}});
+            .post(url, {...login});
         return axiosResponse.data;
     } catch (e) {
         console.error(e);
@@ -39,8 +39,10 @@ export async function listarCursosService() {
     let url = homeListarCursos()
     try {
         let axiosResponse = await axios
-            .get(url, {headers: {Authorization: localStorage.getItem("token")}});
-        return axiosResponse.data;
+            .get(url);
+        let data = axiosResponse.data;
+        console.log(data);
+        return data != null ? data : [];
     } catch (e) {
         console.error(e)
         return [];
@@ -51,8 +53,7 @@ export async function listarCursosById(idCurso) {
     let url = homeListarDesCursoByIdCurso(idCurso)
     try {
         let axiosResponse = await axios
-            .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+            .get(url
             );
         return axiosResponse.data;
     } catch (e) {
@@ -65,8 +66,7 @@ export async function matricularParticipanteCursoService(idHallel, idCurso) {
     let url = homeMatricularParticipanteInCursoByIdUserAndIdCurso(idHallel, idCurso);
     try {
         let axiosResponse = await axios
-            .post(url, {},
-                {headers: {Authorization: localStorage.getItem("token")}}
+            .post(url
             );
         return axiosResponse.status === 200;
     } catch (e) {
@@ -79,9 +79,7 @@ export async function verificarTokenService(token) {
     let url = homeVerificarToken(token);
     try {
         let axiosResponse = await axios
-            .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
-            );
+            .get(url);
         return axiosResponse.data;
     } catch (e) {
         console.error(e)
@@ -89,14 +87,13 @@ export async function verificarTokenService(token) {
     }
 }
 
-export async function listarEventoSemDestaqueService(){
+export async function listarEventoSemDestaqueService() {
     let url = listarEventosSemDestaqueHomeAPI()
-    try{
+    try {
         return (await axios
-            .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+            .get(url
             )).data;
-    }catch(e){
+    } catch (e) {
         console.error(e)
         return []
     }
@@ -104,12 +101,12 @@ export async function listarEventoSemDestaqueService(){
 
 export async function listarEventoComDestaqueService() {
     let url = listarEventosDestacadosHomeAPI()
-    try{
+    try {
         return (await axios
             .get(url,
                 {headers: {Authorization: localStorage.getItem("token")}}
             )).data;
-    }catch(e){
+    } catch (e) {
         console.error(e)
         return []
     }

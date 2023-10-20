@@ -5,7 +5,7 @@ import {Box, CardActionArea, CardContent, CircularProgress, Typography,} from "@
 import {listarCursosService} from "../../service/HomeService";
 
 const Cursos = () => {
-    const [cursos, setCursos] = useState();
+    const [cursos, setCursos] = useState([]);
     useMemo(() => {
         listarCursosService().then((response) => {
             setCursos(response)
