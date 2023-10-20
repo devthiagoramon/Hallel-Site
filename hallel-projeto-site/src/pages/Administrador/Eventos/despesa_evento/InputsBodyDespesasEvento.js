@@ -28,21 +28,22 @@ const InputsBodyDespesasEvento = (props) => {
 
     const adicionarDespesaEmEvento = () => {
         setEnviando(true);
-        let response = eventoAddDespesasParaEventoPorIdService(idEvento, despesaEvento);
-        if (response) {
-            setEnviando(false);
-            setenviado(true);
-            props.setChangedTabela(!props.changedTabela)
-            setTimeout(() => {
-                setenviado(null);
-            }, 3000);
-        } else {
-            setenviado(false);
-            setEnviando(false);
-            setTimeout(() => {
-                setenviado(null);
-            }, 3000);
-        }
+        eventoAddDespesasParaEventoPorIdService(idEvento, despesaEvento).then((response) => {
+            if (response) {
+                setEnviando(false);
+                setenviado(true);
+                props.setChangedTabela(!props.changedTabela)
+                setTimeout(() => {
+                    setenviado(null);
+                }, 3000);
+            } else {
+                setenviado(false);
+                setEnviando(false);
+                setTimeout(() => {
+                    setenviado(null);
+                }, 3000);
+            }
+        });
     }
 
     return (

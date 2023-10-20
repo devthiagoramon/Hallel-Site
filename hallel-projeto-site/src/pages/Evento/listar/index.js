@@ -9,12 +9,12 @@ import {listarTodosEventosUsuarioService} from "../../../service/EventoService";
 function EventoUser() {
     const [showInfos, setshowInfos] = useState(false);
     const [eventoEspc, setEventoEspc] = useState();
-    const [eventos, setEventos] = useState(
-        useMemo(() => {
-            let data = listarTodosEventosUsuarioService().data;
-            return data !== undefined ? data : [];
-        }, [])
-    );
+    const [eventos, setEventos] = useState();
+    useMemo(() => {
+         listarTodosEventosUsuarioService().then((response) => {
+            setEventos(response)
+        });
+    }, [])
 
     function alterarEventoEspc(item) {
         setEventoEspc("");

@@ -18,15 +18,16 @@ const EsquerdaBodyLocaisEventos = (props) => {
             imagem: imagemLocal,
             localizacao: localizacao
         }
-        let response = eventoAdicionarLocalEventoService(localEvento);
-        if (response) {
-            setIsRequestSucessFull(true);
-            setEnviando(false)
-            props.setEnviadoSucesso(!props.enviadoSucesso);
-        } else {
-            setIsRequestSucessFull(false);
-            setEnviando(false);
-        }
+        eventoAdicionarLocalEventoService(localEvento).then((response) => {
+            if (response) {
+                setIsRequestSucessFull(true);
+                setEnviando(false)
+                props.setEnviadoSucesso(!props.enviadoSucesso);
+            } else {
+                setIsRequestSucessFull(false);
+                setEnviando(false);
+            }
+        });
     }
 
     useEffect(() => {

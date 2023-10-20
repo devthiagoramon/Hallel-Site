@@ -36,8 +36,8 @@ export async function listarTodosEventosUsuarioService() {
             }
         });
         return axiosResponse.data;
-    } catch (e) {
-        console.error(e);
+    }catch (e) {
+        console.error(e)
         return [];
     }
 }
@@ -156,41 +156,47 @@ export async function eventoListarPorIdService(idEvento) {
 export async function eventoAtualizarService(idEvento, eventoNew) {
     let url = eventoEditarById(idEvento);
     try {
-        await axios.post(url, {
+        let axiosResponse = await axios.post(url, {
             ...eventoNew
         }, {
             headers: {
                 Authorization: localStorage.getItem("token")
             }
         });
+        return axiosResponse.status === 200;
     } catch (e) {
         console.error(e)
+        return false;
     }
 }
 
 export async function arquivarEventoService(idEvento) {
     let url = eventoArquivar(idEvento);
     try {
-        await axios.get(url, {
+        let axiosResponse = await axios.get(url, {
             headers: {
                 Authorization: localStorage.getItem("token")
             }
         });
+        return axiosResponse === 200;
     } catch (e) {
         console.error(e)
+        return false;
     }
 }
 
 export async function desarquivarArquivoService(idEvento) {
     let url = eventoDesarquivar(idEvento);
     try {
-        await axios.get(url, {
+        let axiosResponse = await axios.get(url, {
             headers: {
                 Authorization: localStorage.getItem("token")
             }
         });
+        return axiosResponse.status === 200;
     } catch (e) {
         console.error(e)
+        return false;
     }
 }
 
@@ -299,10 +305,10 @@ export async function eventoListarLocalEventoPorId(idLocalEvento) {
     try {
         let axiosResponse = await axios.get(url,
             {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            });
         return axiosResponse.data;
     } catch (e) {
         console.error(e)
@@ -316,10 +322,10 @@ export async function eventoEditarLocalEventoPorIdService(idLocalEvento, localEv
         let axiosResponse = await axios.put(url,
             {...localEventoNew},
             {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        });
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            });
         return axiosResponse.status === 200;
     } catch (e) {
         console.error(e);

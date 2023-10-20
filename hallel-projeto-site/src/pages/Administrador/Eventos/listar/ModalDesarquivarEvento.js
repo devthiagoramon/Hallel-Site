@@ -26,7 +26,13 @@ const ModalDesarquivarEvento = (props) => {
   };
 
   const desarquivarEvento = () => {
-    desarquivarArquivoService(idEvento);
+    desarquivarArquivoService(idEvento).then((response) => {
+      if(response){
+        // Deu certo
+      }else{
+        // Deu errado
+      }
+    });
     setAtualizarTabela(!atualizarTabela);
     setOpenModalDesarquivar(false);
   };

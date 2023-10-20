@@ -21,19 +21,21 @@ const SolicitarCadastro = (props) => {
                 email: emailInput,
                 senha: senhaInput
             };
-            let response = solicitarCadastroService(cadastro);
-            if (response) {
-                setMostrarPopUp(true);
-                setisValid(true);
-                setTimeout(() => {
-                    window.location.href = "/";
-                }, 3000);
-            } else {
-                setIsValidError(true);
-                setTimeout(() => {
-                    setMostrarPopUp(false);
-                }, 3000);
-            }
+            solicitarCadastroService(cadastro).then((response) => {
+                if (response) {
+                    setMostrarPopUp(true);
+                    setisValid(true);
+                    setTimeout(() => {
+                        window.location.href = "/";
+                    }, 3000);
+                } else {
+                    setIsValidError(true);
+                    setTimeout(() => {
+                        setMostrarPopUp(false);
+                    }, 3000);
+                }
+            });
+
         }
     }
 

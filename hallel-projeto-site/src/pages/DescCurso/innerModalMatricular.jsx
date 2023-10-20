@@ -38,16 +38,17 @@ const InnerModalMatricular = (props) => {
       localStorage.getItem("HallelId"),
       props.id
     );
-    let response = matricularParticipanteCursoService(localStorage.getItem("HallelId"), props.id);
-
-    if(response){
-      setEnviado(true);
-      setTimeout(() => {
-        navigate("/meusCursos");
-      }, 3000);
-    }else{
+    matricularParticipanteCursoService(localStorage.getItem("HallelId"), props.id).then((response) => {
+      if (response) {
+        setEnviado(true);
+        setTimeout(() => {
+          navigate("/meusCursos");
+        }, 3000);
+      } else {
         setErrorEnvio(true);
-    }
+      }
+    });
+
   }
 
   return (

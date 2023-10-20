@@ -26,14 +26,15 @@ function Evento() {
     const [timer, setTimer] = useState(false);
     const navigator = useNavigate();
 
-
-    const eventos = useMemo(() => {
-        let data = listarTodosEventosAdmService();
-        if (data.length !== 0) {
-            setTabelaVazia(false)
-        }
-        setTimer(true);
-        return data;
+    const [eventos, setEventos] = useState()
+    useMemo(() => {
+        listarTodosEventosAdmService().then((response) => {
+            if (response.length !== 0) {
+                setTabelaVazia(false)
+            }
+            setTimer(true);
+            setEventos(response);
+        });
     }, [atualizarTabela])
 
     const data = () => {
@@ -89,7 +90,7 @@ function Evento() {
                         : item.localEvento.localizacao,
 
                 destaque:
-                    item.destaque == true
+                    item.destaque === true
                         ? (<CheckOutlinedIcon style={{display: "block", margin: "1.2em auto"}}/>)
                         : (<ClearOutlinedIcon style={{display: "block", margin: "1.2em auto"}}/>),
 

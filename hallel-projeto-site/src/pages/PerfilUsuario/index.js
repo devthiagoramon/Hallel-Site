@@ -3,20 +3,17 @@ import "./perfil.css";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {AiOutlineEyeInvisible, AiOutlineEye} from "react-icons/ai";
+import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
 import axios from "axios";
-import {membroLoadPerfilById} from "../../api/uris/MembroURLS";
-import {associadoListarPerfil} from "../../api/uris/AssociadosURLS";
 import SelecionarMesesPagoAssociadoPerfil from "./SelecionarMesesPagoAssociadoPerfil";
 import dayjs from "dayjs";
 import CardMesSelecionado from "./CardMesSelecionado";
-import {
-    Card, CardContent, IconButton, Tooltip, Typography,
-} from "@mui/material";
+import {Card, CardContent, IconButton, Tooltip, Typography,} from "@mui/material";
 import {CalendarMonth} from "@mui/icons-material";
 import MenuCalendarioSelecionar from "../Administrador/Financeiro/associados/MenuCalendarioSelecionar";
 import {motion} from "framer-motion";
 import {eventoListarEventosInscritos} from "../../api/uris/EventosURLS";
+import {loadPerfil} from "../../service/HomeService";
 
 const PerfilRow = () => {
     return (<div className="secao1">
@@ -59,41 +56,32 @@ const Info = () => {
 
     useMemo(() => {
         let roles = String(localStorage.getItem("R0l3s"));
-        let url = "";
-        if (roles.includes("ROLE_USER") && roles.includes("ROLE_ASSOCIADO")) {
-            url = associadoListarPerfil(localStorage.getItem("HallelId"));
-            setisAssociado(true);
-        } else if (roles.includes("ROLE_USER")) {
-            url = membroLoadPerfilById(localStorage.getItem("HallelId"));
-            setIsMembro(true);
-        }
-        axios
-            .get(url, {
-                headers: {
-                    Authorization: localStorage.getItem("token"), "Content-Type": "application/json",
-                },
-            })
-            .then((object) => {
-                // Adiciona meses ao ultimo mês que o associado pagou
-                if (roles.includes("ROLE_ASSOCIADO")) {
-                    let pagamentosAssociado = object.data.pagamentosAssociado;
-                    let dataFinalArrayMesesPagos = pagamentosAssociado[pagamentosAssociado.length - 1].dataPaga;
-                    let dataFinalInDayJs = dayjs(dataFinalArrayMesesPagos);
-                    let lastMes = dataFinalInDayJs;
-                    for (let index = 0; index < 3; index++) {
-                        let proximoMes = lastMes.add(1, "month");
-                        let objAux = {
-                            dataPaga: proximoMes.toDate(),
-                        };
-                        pagamentosAssociado.push(objAux);
-                        lastMes = proximoMes;
-                    }
-                    object.data.pagamentosAssociado = pagamentosAssociado;
+        let idUser = localStorage.getItem("HallelId");
+        loadPerfil(idUser, roles).then((response) => {
+            if (response === undefined) {
+                return;
+            }
+            let data = response.data;
+            if (response.isMembro) {
+                setIsMembro(true)
+            } else if (response.isAssociado) {
+                setisAssociado(true);
+                let pagamentosAssociado = data.pagamentosAssociado;
+                let dataFinalArrayMesesPagos = pagamentosAssociado[pagamentosAssociado.length - 1].dataPaga;
+                let dataFinalInDayJs = dayjs(dataFinalArrayMesesPagos);
+                let lastMes = dataFinalInDayJs;
+                for (let index = 0; index < 3; index++) {
+                    let proximoMes = lastMes.add(1, "month");
+                    let objAux = {
+                        dataPaga: proximoMes.toDate(),
+                    };
+                    pagamentosAssociado.push(objAux);
+                    lastMes = proximoMes;
                 }
-
-                setUsuario(object.data);
-            })
-            .catch((error) => console.warn(error));
+                data.pagamentosAssociado = pagamentosAssociado;
+            }
+            setUsuario(data);
+        });
     }, [setIsMembro, setisAssociado, setUsuario]);
 
     useEffect(() => {

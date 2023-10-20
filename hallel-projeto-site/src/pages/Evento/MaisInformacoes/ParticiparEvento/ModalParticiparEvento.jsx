@@ -1,18 +1,14 @@
 import {Alert, Box, Modal, Snackbar} from "@mui/material";
-import React, {useMemo} from "react";
-
-import {useState} from "react";
+import React, {useMemo, useState} from "react";
 
 import ModalAdicionarCartaoPE from "./ModalAdicionarCartaoPE";
-
-import axios from "axios";
 import FormularioNaoUsuarioHallel from "./FormularioNaoUsuarioHallel";
 import FormularioMembroHallel from "./FormularioMembroHallel";
 import FormularioAssociadoHallel from "./FormularioAssociadoHallel";
-import {verifyMembroParticiparEvento} from "../../../../api/uris/MembroURLS";
 import {notification} from "../../../..";
 import {ErrorParticiparEvento, SucessoParticiparEvento} from "../../../../components/Feedback/FeedbackParticiparEvento";
 import {participarEventoService} from "../../../../service/EventoService";
+import {verifyMembroParticiparEventoService} from "../../../../service/MembroService";
 
 const ModalParticiparEvento = ({evento, open, setOpen}) => {
 
@@ -145,12 +141,14 @@ const ModalParticiparEvento = ({evento, open, setOpen}) => {
                 idEvento: evento.id,
                 ...usuarioEvento,
             };
-            let response = participarEventoService(usuarioEventoRequest);
-            if (response) {
-                notification.render(<SucessoParticiparEvento/>);
-            } else {
-                notification.render(<ErrorParticiparEvento/>);
-            }
+            participarEventoService(usuarioEventoRequest).then((response) => {
+                if (response) {
+                    notification.render(<SucessoParticiparEvento/>);
+                } else {
+                    notification.render(<ErrorParticiparEvento/>);
+                }
+            });
+
 
         } else {
             // Já membro e não membro passam pela verificação
@@ -160,39 +158,35 @@ const ModalParticiparEvento = ({evento, open, setOpen}) => {
                     idEvento: evento.id,
                     ...usuarioEvento,
                 };
-                let response = participarEventoService(usuarioEventoRequest);
-                if (response) {
-                    notification.render(<SucessoParticiparEvento/>);
-                } else {
-                    notification.render(<ErrorParticiparEvento/>);
-                }
+                participarEventoService(usuarioEventoRequest).then((response) => {
+                    if (response) {
+                        notification.render(<SucessoParticiparEvento/>);
+                    } else {
+                        notification.render(<ErrorParticiparEvento/>);
+                    }
+                });
             }
         }
     };
 
     useMemo(() => {
-        if (localStorage.getItem("HallelId") != null) {
-            let url = verifyMembroParticiparEvento(localStorage.getItem("HallelId"));
-            axios
-                .get(url, {
-                    headers: {
-                        Authorization: localStorage.getItem("token"),
-                    },
-                })
-                .then((res) => {
-                    setIsVerified(true);
-                    if (res.data == null) {
-                        setIsCadastrado(false);
-                    } else {
-                        setIsCadastrado(true);
-                        setOpenIsCadastrado(true);
-                        let userProv = {...res.data};
-                        setUsuarioEvento(userProv);
-                    }
-                })
-                .catch((error) => {
-                    console.log("Error verificando membro: " + error);
-                });
+        let idUser = localStorage.getItem("HallelId");
+        if (idUser != null) {
+            verifyMembroParticiparEventoService(idUser).then((response) => {
+                if (!response) {
+                    // Error
+                    return;
+                }
+                setIsVerified(true);
+                if (response == null) {
+                    setIsCadastrado(false);
+                } else {
+                    setIsCadastrado(true);
+                    setOpenIsCadastrado(true);
+                    let userProv = {...response};
+                    setUsuarioEvento(userProv);
+                }
+            });
         } else {
             setIsVerified(true);
             setIsCadastrado(false);

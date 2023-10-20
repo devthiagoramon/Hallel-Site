@@ -1,5 +1,4 @@
-import React, {useEffect, useMemo} from "react";
-import {useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {Table} from "react-bootstrap";
 import './participantes_evento.css'
 import axios from "axios";
@@ -13,9 +12,11 @@ const ParticipantesEvento = () => {
 
     const id = useParams();
 
-    const eventosParticipantes = useMemo(() => {
-        let promise = eventoListarParticipantesService(id);
-        return promise !== undefined ? promise.data : []
+    const [eventosParticipantes, setEventosParticipantes] = useState()
+    useMemo(() => {
+        eventoListarParticipantesService(id).then((response) => {
+            setEventosParticipantes(response);
+        });
     }, []);
 
 
