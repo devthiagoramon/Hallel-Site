@@ -1,107 +1,69 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./gerar_pdf.css";
 import {
-  Button,
-  IconButton,
-  Paper,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TextareaAutosize,
-  Tooltip,
-  Typography,
+    Button,
+    IconButton,
+    Paper,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TextareaAutosize,
+    Tooltip,
+    Typography,
 } from "@mui/material";
-import {
-  CalendarMonth,
-  Close,
-  NavigateBefore,
-  NavigateNext,
-} from "@mui/icons-material";
+import {CalendarMonth, Close, NavigateBefore, NavigateNext,} from "@mui/icons-material";
 import MenuCalendarioSelecionar from "../associados/MenuCalendarioSelecionar";
-import { useState } from "react";
 import dayjs from "dayjs";
-import { Table } from "react-bootstrap";
-import { useEffect } from "react";
-import {
-  entradasGetAllPaginas,
-  entradasListEntradasByPageAndDate,
-} from "../../../../api/uris/FinanceiroURLS";
-import axios from "axios";
-import { PDFViewer } from "@react-pdf/renderer";
+import {Table} from "react-bootstrap";
+import {PDFViewer} from "@react-pdf/renderer";
 import PDFEntrada from "./PDFEntrada";
+import {entradaGetAllPaginasService, entradaListarByPageAndDateService} from "../../../../service/FinanceiroService";
 
 const GerarPDFEntrada = () => {
-  const [anchorMenuCalendario, setAnchorMenuCalendario] = useState(null);
-  const [mesSelecionado, setMesSelecionado] = useState(dayjs());
-  const [paginaSelecionado, setPaginaSelecionado] = useState(1);
-  const [totalPagina, settotalPagina] = useState(0);
-  const [entradas, setentradas] = useState([]);
-  const [mostrarPDF, setMostrarPDF] = useState(false);
+    const [anchorMenuCalendario, setAnchorMenuCalendario] = useState(null);
+    const [mesSelecionado, setMesSelecionado] = useState(dayjs());
+    const [paginaSelecionado, setPaginaSelecionado] = useState(1);
+    const [totalPagina, settotalPagina] = useState(0);
+    const [entradas, setentradas] = useState([]);
+    const [mostrarPDF, setMostrarPDF] = useState(false);
 
-  useEffect(() => {
-    let dataString = mesSelecionado.format("MM/YYYY").toString();
-    let mesString = dataString.substring(0, 2);
-    let anoString = dataString.substring(3);
+    useEffect(() => {
+        let dataString = mesSelecionado.format("MM/YYYY").toString();
+        let mesString = dataString.substring(0, 2);
+        let anoString = dataString.substring(3);
+        entradaGetAllPaginasService(mesString, anoString).then((response) => {
+            settotalPagina(response);
+        });
+    }, [mesSelecionado]);
 
-    let url = entradasGetAllPaginas(mesString, anoString);
-
-    axios
-      .get(url, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        settotalPagina(res.data);
-      })
-      .catch((error) => {
-        console.log("Error puxando o total de paginas: " + error);
-      });
-  }, [mesSelecionado]);
-
-  function handleClickAbrirMenuCalendario(e) {
-    setAnchorMenuCalendario(e.currentTarget);
-  }
-  const handleNextPagina = () => {
-    let pagina = paginaSelecionado;
-    if (pagina < totalPagina) {
-      setPaginaSelecionado(pagina + 1);
+    function handleClickAbrirMenuCalendario(e) {
+        setAnchorMenuCalendario(e.currentTarget);
     }
-  };
 
-  const handlePreviousPagina = () => {
-    let pagina = paginaSelecionado;
-    if (pagina > 1) {
-      setPaginaSelecionado(pagina - 1);
-    }
-  };
+    const handleNextPagina = () => {
+        let pagina = paginaSelecionado;
+        if (pagina < totalPagina) {
+            setPaginaSelecionado(pagina + 1);
+        }
+    };
 
-  
-  useEffect(() => {
-    let dataString = mesSelecionado.format("MM/YYYY").toString();
-    let mesString = dataString.substring(0, 2);
-    let anoString = dataString.substring(3);
-    let url = entradasListEntradasByPageAndDate(
-      paginaSelecionado - 1,
-      mesString,
-      anoString
-    );
+    const handlePreviousPagina = () => {
+        let pagina = paginaSelecionado;
+        if (pagina > 1) {
+            setPaginaSelecionado(pagina - 1);
+        }
+    };
 
-    axios
-      .get(url, {
-        headers: { Authorization: localStorage.getItem("token") },
-      })
-      .then((res) => {
-        setentradas(res.data);
-      })
-      .catch((error) => {
-        console.log(
-          "Error pegando a lista de entradas por pagina e data: " + error
-        );
-      });
-  }, [paginaSelecionado, mesSelecionado]);
+    useEffect(() => {
+        let dataString = mesSelecionado.format("MM/YYYY").toString();
+        let mesString = dataString.substring(0, 2);
+        let anoString = dataString.substring(3);
+        entradaListarByPageAndDateService(paginaSelecionado - 1, mesString, anoString).then((response) => {
+            setentradas(response)
+        });
+    }, [paginaSelecionado, mesSelecionado]);
 
   return (
     <div >
@@ -113,10 +75,10 @@ const GerarPDFEntrada = () => {
       <div className="body_gerar_pdf">
         <div className="esquerda_body_gerar_pdf">
           <div className="informacoes_gerar_pdf">
-            <Typography variant="h6" style={{fontWeight:'bold', marginTop:'10px',fontSize:'25px',marginBottom:'-15px',marginLeft:"-110px"}}>
+            <Typography variant="h6" style={{fontWeight:'bold', marginTop:'10px',fontSize:'25px',marginBottom:'-15px'}}>
               Informações de como funciona para gerar o PDF:
             </Typography>
-            <ul className="text-infos">
+            <ul>
               <li>Você pode verificar todos os dados.</li>
               <li>
                 Você pode adicionar uma descrição a cada linha da tabela.
@@ -220,10 +182,10 @@ const GerarPDFEntrada = () => {
         </div>
         <div className="direita_body_gerar_pdf">
           <div className="header_preview_gerar_pdf">
-            <Typography variant="h5" sx={{ color: "#F4F4F4",marginLeft:"-40px" }}>
-              PDF
+            <Typography variant="h5" sx={{ color: "#F4F4F4" }}>
+              Pré-visualização
             </Typography>
-            <label style={{marginTop:"3px",color: "white", marginRight:"-130px"}}>{mesSelecionado.format("MM/YYYY")}</label> 
+            <label style={{marginTop:"3px",color: "white", marginRight:"-20px"}}>{mesSelecionado.format("MM/YYYY")}</label> 
           <div className="cont_header_gerar_pdf-selecionar_mes_gerar_pdf"> 
           
           <Tooltip title="Selecionar o mês">
@@ -234,7 +196,7 @@ const GerarPDFEntrada = () => {
               }}
             >
               <CalendarMonth
-                sx={{ color: "white", height: "35px", width: "35px",marginTop:"-40px", marginRight:"-65px" }}
+                sx={{ color: "white", height: "35px", width: "35px",marginTop:"-40px", marginRight:"30px" }}
               />
             </IconButton>
           </Tooltip>
@@ -252,7 +214,7 @@ const GerarPDFEntrada = () => {
                   setMostrarPDF(false);
                 }}
               >
-                <Close sx={{ color: "#F4F4F4",marginRight:"-40px" }} />
+                <Close sx={{ color: "#F4F4F4" }} />
               </IconButton>
             )}
           </div>
@@ -266,7 +228,7 @@ const GerarPDFEntrada = () => {
               </PDFViewer>
             )}
             {!mostrarPDF && (
-              <Button className="btn-view" style={{backgroundColor: '#4caf50'}}
+              <Button className="btn-view" style={{backgroundColor: 'green'}}
                 variant="contained"
                 onClick={() => {
                   setMostrarPDF(true);

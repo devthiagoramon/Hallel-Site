@@ -26,6 +26,7 @@
   height: 730px;
   margin-left: 860px;
   margin-top: -580px;
+  margin-bottom: 150px;
   border-radius: 30px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -34,7 +35,7 @@
 
 .login-text{
   margin-left: 1060px;
-  margin-top: -690px;
+  margin-top: -790px;
   color: white;
   font-size: 65px;
   font-weight: lighter;
@@ -90,7 +91,7 @@
   width: 400px;
   height: 50px;
   margin-left: 940px;
-  margin-top: 40px;
+  margin-top: 240px;
   border-radius: 5px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
   border: 0;
@@ -104,7 +105,7 @@
 
 .register-div{
   margin-left: 940px;
-  margin-top: 30px;
+  margin-top: 75px;
 }
 
 .text-register{
@@ -124,7 +125,7 @@
   font-size: 10px;
   text-align: center;
   color: #D6FDE7;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
 
 .register-terms{
