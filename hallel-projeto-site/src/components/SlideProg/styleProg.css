@@ -4,13 +4,40 @@
     display: block;
     color: #35404B;
     font-family: 'Inter';
+    margin-top: -40px;
 }
+
+.imagem2 {
+    position: relative;
+    display: inline-block; /* Isso faz com que a sobreposição fique dentro do contêiner da imagem */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor semi-transparente (aqui é preto com 50% de opacidade) */
+  }
+  
+  .texto-sobreposto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
 
 .body-programacao #title{
  
     display:block;
     text-align: center;
-    font-weight: 700;
+    font-size: 40px;
+    color: #003015;
 }
 .containerCarroseulProg {
   

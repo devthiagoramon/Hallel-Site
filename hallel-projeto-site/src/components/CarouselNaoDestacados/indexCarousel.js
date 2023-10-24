@@ -27,10 +27,13 @@ export default function CarouselNaoDestacados() {
                 height: 500,
                 width: 500,
                 padding: 30,
-                background: "#ffffff",
+                marginTop: "100px",
+                marginRight: '100px',
+                borderRadius: '10px',
+                background: "#003015",
             }}
         >
-            <h4 style={{textAlign: "left"}}>Eventos</h4>
+            <h4 style={{textAlign: "left", color:'white'}}>Principais</h4>
 
             {eventos.length === 0 ? (
                 <div className="CircleProgress" style={{top: "10em"}}>

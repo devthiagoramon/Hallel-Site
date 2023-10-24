@@ -3,6 +3,7 @@ import {CircularProgress, Typography} from "@mui/material";
 import {Carousel} from "react-bootstrap";
 import "../CarouselNaoDestacados/styleCarousel.css"
 import {listarEventoComDestaqueService} from "../../service/HomeService";
+import Img from '../../images/not-found.png';
 
 const CarroselDestacados = () => {
     const carrosel = useRef();
@@ -28,27 +29,32 @@ const CarroselDestacados = () => {
                 height: 500,
                 width: 500,
                 padding: 30,
-                background: "#ffffff",
+                marginTop: "100px",
+                marginBottom: '90px',
+                marginRight: '100px',
+                borderRadius: '10px',
+                background: "#003015",
             }}
         >
-            <h4 style={{textAlign: "left"}}>Em destaque</h4>
+            <h4 style={{textAlign: "left", color:"white"}}>Em destaque</h4>
 
             {eventos.length === 0 ? (
                 <>
                     {!timer ? (
-                        <div className="CircleProgress" style={{top: "10em"}}>
+                        <div className="CircleProgress" style={{top: "10em", color:'white'}}>
                             <CircularProgress/>
                         </div>
                     ) : (
                         <div className="nenhum-evento-encontrado-cont">
                             <img
+                                color="white"
                                 width="100"
                                 height="100"
-                                src="https://img.icons8.com/ios/100/nothing-found.png"
+                                src={Img}
                                 alt="nothing-found"
                             />
                             <br/>
-                            <Typography variant="overline">Nenhum evento em destaque encontrado</Typography>
+                            <Typography variant="overline" style={{color:'white'}}>Nenhum evento em destaque encontrado</Typography>
                         </div>
                     )}
                 </>

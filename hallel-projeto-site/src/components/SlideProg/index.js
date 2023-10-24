@@ -1,4 +1,4 @@
-import Img1 from "../../images/segundafeira.jpg";
+import Img1 from "../../images/progSanta.jpg";
 import Img2 from "../../images/terca.jpg";
 import Img3 from "../../images/quarta.jpg";
 import Img4 from "../../images/quinta.jpg";
@@ -28,7 +28,7 @@ const SlideProg = (props) => {
         <motion.div
           ref={carrosel}
           className="carrousel"
-          initial={{ x: 100 }}
+          initial={{ x: 10 }}
           animate={{ x: 0 }}
           transition={{ duration: 0.8 }}
           whileTap={{ cursor: "grabbing" }}

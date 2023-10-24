@@ -14,17 +14,21 @@ function Home() {
         <section className="sectionCapa">
           <label>Seja bem-vindo(a) à Comunidade Católica Hallel</label>
         </section>
+        <hr style={{color:"black",marginTop:'170px'}}/>
       </div>
 
-      <h3 style={{marginTop: '90px', marginLeft: "2rem"}}>Eventos</h3>
+      <h3 className="h3-text" style={{fontSize:'40px',marginTop: '20px', marginLeft: "2rem",textAlign:'center',color: '#003015'}}>Eventos</h3>
       <div
         style={{
           display: "flex",
           justifyContent: "space-evenly",
-          paddingLeft: "2rem",
+          paddingLeft: "10rem",
           paddingRight: "2rem",
+          marginTop: '-70px'
         }}
       >
+      
+        
         <CarroselDestacados />
         <CarouselNaoDestacados />
       </div>

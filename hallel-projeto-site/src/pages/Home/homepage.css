@@ -5,29 +5,36 @@
     font-family: "Inter", sans-serif;
 }
 
-
-
 .sectionCapa{
     height: 0px;  
     position: relative;
     margin-top: -150px;
 }
 
+.h3{
+    margin-top: '190px';
+    margin-left: "2rem";
+    
+}
+
+.body-evento{
+    margin-left: 40px;
+}
+
+.hr{
+    max-width: 100%;
+    color: #35404b;
+}
 
 .containerCapa label{
     background-color:white;
     width: 100%;
     align-self: center;
     color: #003015;
-    padding: 1em 0 1em 2em;
     font-weight: 700;
     font-size: 2.5em;
     text-align: center;
-}
-
-.containerCapa label p{
-
-   color: #FFFFFF;
+    margin-top: 100px;
 }
 
 .area-middle{
