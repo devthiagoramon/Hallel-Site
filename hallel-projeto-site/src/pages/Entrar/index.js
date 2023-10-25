@@ -53,7 +53,7 @@ function Entrar() {
     }
 
     return (
-        <div className='login-master'>
+        <div className='login-master' style={{position:'relative'}}>
             <div className='logo'>
                 <img src={Logo} className='img' alt='logo'/>
             </div>

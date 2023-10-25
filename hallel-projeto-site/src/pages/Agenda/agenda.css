@@ -1,48 +1,79 @@
 .cont_agenda {
   width: 100vw;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 7px;
 }
 
-.header_agenda {
-  width: 100%;
+
+.header-agenda {
+  text-align: center;
+  font-size: 35px;
+  margin-top: 7px;
+  color: #013819;
+  margin-bottom: 30px;
 }
+
 
 .body_agenda {
   width: 100%;
   display: grid;
-  grid-template-columns: 45% 45%;
-  grid-template-rows: 1fr;
-  margin-top: 3rem;
+  grid-template-rows: 50% 47%;
+  grid-template-columns: 1fr;
   align-items: center;
   min-height: 70vh;
 }
 
+
 .esquerda_agenda {
   width: 100%;
+  margin-top: 10px;
+  align-content: center;
 }
 
+
 .card_evento_agenda {
-  width: 80%;
+  width: 52%;
   display: flex;
   padding: 1rem;
   justify-content: space-between;
   border-radius: 12px;
   align-items: center;
+  margin-left: 350px;
+
+
 }
+
 
 .card_esquerda_evento_agenda {
   width: 40%;
 }
 
+
 .card_direita_evento_agenda {
-  width: 40%;
+  width: 22%;
+  
 }
+
 
 .card_direita_evento_agenda>a {
-  color: #f4f4f4;
+  color: #ffffff;
 }
 
+
 .card_direita_evento_agenda > a:hover {
-  color: blue;
+  color: #A8FFC7;
+}
+
+
+.quadd{
+  background-color: #E6FFD3;
+  width: 700px;
+  margin-left: 400px;
+  margin-top: 45px;
+  border-radius: 10px;
+  overflow: hidden;
+  stroke: #002E14;
+  border: 1px solid #8bbb97;
+  height: 320px;
+ 
 }
