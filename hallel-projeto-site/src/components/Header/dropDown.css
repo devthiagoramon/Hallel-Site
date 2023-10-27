@@ -22,6 +22,10 @@
   font-weight: 700;
 }
 
+.itensdrop > * {
+  margin: 10rem; 
+}
+
 .itensdrop a:hover {
 
   color: #ff5900;

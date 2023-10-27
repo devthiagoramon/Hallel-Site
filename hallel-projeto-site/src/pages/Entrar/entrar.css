@@ -1,137 +1,166 @@
-.img{
-  width: 530px;
-  transform: translatey(0px);
-  margin-left: 120px;
-  margin-top: 210px;
+.img {
+  width: 33.125rem;
+  transform: translateY(0);
+  margin-left: 7.5rem;
+  margin-top: 13.125rem;
   animation: float 4s ease-in-out infinite;
   overflow: hidden;
+  display: inline-block; 
 }
 
 @keyframes float {
-  0%{
-      transform: translatey(0px);
+  0% {
+    transform: translateY(0);
   }
-  50%{
-      transform: translatey(-50px);
+  50% {
+    transform: translateY(-3.125rem);
   }
-  100%{
-      transform: translatey(0px);
+  100% {
+    transform: translateY(0);
   }
-  
 }
 
-.quadrado{
+.quadrado {
   background-color: #003617;
-  width: 550px;
-  height: 730px;
-  margin-left: 860px;
-  margin-top: -580px;
-  margin-bottom: 150px;
-  border-radius: 30px;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  
+  width: 34.375rem;
+  height: 46rem;
+  margin-left: 53.75rem;
+  margin-top: -36.5rem;
+  margin-bottom: 2rem;
+  border-radius: 1.875rem;
+  box-shadow: 0 0 4.6875rem rgba(0, 0, 0, 0.3);
+  padding-top: 1.5rem;
 }
 
-.login-text{
-  margin-left: 1060px;
-  margin-top: -790px;
+
+.login-text {
+  text-align: center;
   color: white;
-  font-size: 65px;
+  font-size: 4.0625rem;
   font-weight: lighter;
   font-family: 'Inter', sans-serif;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
 }
 
-.email-input{
-  
-  border-radius: 5px;
+.email-input {
+  border-radius: 0.3125rem;
   box-sizing: border-box;
-  margin-top: 70px;
   overflow: hidden;
-
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.email-camp{
-  width: 400px;
-  height: 30px;
-  margin-left: 940px;
-  border: 0;
-  margin-top: 10px;
-  border-bottom: 2px solid white;
-  background-color: transparent;
-  outline: none;
-  font-size: larger;
-  color: white;
+.email-text-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3%;
+  margin-top: 1%;
 }
 
-.email-text{
-  font-size: 16px;
-  margin-left: 940px;
+.email-text {
+  font-size: 1rem;
   color: white;
   font-family: 'Inter', sans-serif;
+  text-align: center;
+  margin-left: 10.5%;
 }
 
-.remember{
-  margin-left: 940px;
+.email-camp {
+  width: 27rem;
+  height: 1.875rem;
+  border: 0;
+  border-bottom: 0.125rem solid white;
+  background-color: transparent;
+  outline: none;
+  font-size: 1rem;
+  color: white;
+  margin: 0 auto;
+  text-align: start;
+  margin-top: 1%;
+}
+
+.email-label{
+  align-self: flex-start;
+}
+
+.remember {
   color: white;
   font-family: 'Inter', sans-serif;
   cursor: pointer;
+  display: block; 
+  margin-left: 10.5%;
 }
 
-.forget-password{
-  margin-left: 1180px;
-  color: #B4FFD4;
+.forget-password {
+  text-align: end;
+  margin-right: 9%;
+  color: #b4ffd4;
   text-decoration: none;
   margin-top: 0;
+  display: inline-block; 
 }
 
-.button-continue{
-  width: 400px;
-  height: 50px;
-  margin-left: 940px;
-  margin-top: 60px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+.div-button{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.button-continue {
+  width: 27%;
+  height: 3rem;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0 4.6875rem rgba(0, 0, 0, 0.3);
   border: 0;
-  background-color: #A8FFC7;
-  font-size: 25px;
+  background-color: #a8ffc7;
+  font-size: 2rem;
   font-family: 'Inter', sans-serif;
   font-weight: bold;
   color: #003617;
   cursor: pointer;
+  margin: 0 auto;
+  margin-top: 2rem;
+  text-align: center;
+  line-height: 1rem;
 }
 
-.register-div{
-  margin-left: 940px;
-  margin-top: 75px;
+.register-div {
+  margin-left: 10.5%;
+  margin-top: 5rem;
+  display: block; 
 }
 
-.text-register{
+.text-register {
   color: white;
+  display: inline-block; 
 }
 
-.register{
-  margin-left: 4px;
+.register {
+  margin-left: 0.25rem;
   color: white;
   text-decoration: underline;
   font-weight: bold;
+  display: inline-block; 
 }
 
-.terms-div{
-  margin-left: 750px;
-  margin-top: 90px;
-  font-size: 10px;
+.terms-div {
+  margin-top: 13rem;
+  font-size: 0.625rem;
   text-align: center;
-  color: #D6FDE7;
-  margin-bottom: 100px;
+  color: #d6fde7;
+  margin-bottom: 6.25rem;
+  display: block; 
 }
 
-.register-terms{
-  color: #D6FDE7;
+.register-terms {
+  color: #d6fde7;
+  display: inline-block;
 }
 
-.register-privace{
-  color: #D6FDE7;
+.register-privace {
+  color: #d6fde7;
+  display: inline-block;
 }
