@@ -1,11 +1,13 @@
 .img {
-  width: 33.125rem;
+  width: 90%;
+  max-width: 500px;
+  margin: 2rem 0;
   transform: translateY(0);
   margin-left: 7.5rem;
   margin-top: 13.125rem;
   animation: float 4s ease-in-out infinite;
   overflow: hidden;
-  display: inline-block; 
+  display: block; 
 }
 
 @keyframes float {
@@ -22,7 +24,9 @@
 
 .quadrado {
   background-color: #003617;
-  width: 34.375rem;
+  width: 80%;
+  max-width: 550px;
+  margin: 2rem auto;
   height: 46rem;
   margin-left: 53.75rem;
   margin-top: -36.5rem;
@@ -30,6 +34,7 @@
   border-radius: 1.875rem;
   box-shadow: 0 0 4.6875rem rgba(0, 0, 0, 0.3);
   padding-top: 1.5rem;
+  position: relative;
 }
 
 
@@ -121,16 +126,17 @@
   font-weight: bold;
   color: #003617;
   cursor: pointer;
-  margin: 0 auto;
-  margin-top: 2rem;
+  margin: 2rem auto;
   text-align: center;
   line-height: 1rem;
+  margin-top: -4.5rem;
 }
 
 .register-div {
   margin-left: 10.5%;
   margin-top: 5rem;
   display: block; 
+  margin: 2rem 3;
 }
 
 .text-register {
@@ -163,4 +169,40 @@
 .register-privace {
   color: #d6fde7;
   display: inline-block;
+}
+
+@media screen and (max-width: 1388px) {
+
+  .quadrado {
+    margin-left: 50rem;
+  }
+
+  .button-continue{
+    margin-top: -1rem;
+  }
+}
+
+@media screen and (max-width: 1356px) {
+
+  .quadrado {
+    margin-left: 45rem; 
+  }
+
+  .div-button{
+    margin-top: 100rem;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+
+  .img{
+    display: none;
+  }
+  .quadrado {
+    margin: 2rem auto;
+    width: 80%;
+  }
+  .div-button{
+    margin-bottom: 100rem;
+  }
 }
