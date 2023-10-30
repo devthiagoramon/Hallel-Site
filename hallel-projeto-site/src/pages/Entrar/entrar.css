@@ -115,7 +115,7 @@
 }
 
 .button-continue {
-  width: 27%;
+  width: 80%;
   height: 3rem;
   border-radius: 0.3125rem;
   box-shadow: 0 0 4.6875rem rgba(0, 0, 0, 0.3);
@@ -126,10 +126,10 @@
   font-weight: bold;
   color: #003617;
   cursor: pointer;
-  margin: 2rem auto;
+  margin: 1rem auto;
   text-align: center;
   line-height: 1rem;
-  margin-top: -4.5rem;
+ 
 }
 
 .register-div {
@@ -178,7 +178,7 @@
   }
 
   .button-continue{
-    margin-top: -1rem;
+    margin-top: 1rem 0;
   }
 }
 
@@ -190,6 +190,10 @@
 
   .div-button{
     margin-top: 100rem;
+  }
+
+  .terms-div{
+    margin-top: 1rem;
   }
 }
 
@@ -203,6 +207,10 @@
     width: 80%;
   }
   .div-button{
+    margin-bottom: 100rem;
+  }
+  .terms-div{
+    margin-top: 1rem 0;
     margin-bottom: 100rem;
   }
 }
