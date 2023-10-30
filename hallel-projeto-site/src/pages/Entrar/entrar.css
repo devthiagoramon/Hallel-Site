@@ -171,6 +171,17 @@
   display: inline-block;
 }
 
+@media screen and (min-width: 1700px) {
+
+  .quadrado {
+    margin-left: 80rem;
+  }
+  .img{
+    margin-left: 15rem;
+  }
+
+}
+
 @media screen and (max-width: 1388px) {
 
   .quadrado {
@@ -193,7 +204,7 @@
   }
 
   .terms-div{
-    margin-top: 1rem;
+    margin: 1rem auto;
   }
 }
 
@@ -210,7 +221,6 @@
     margin-bottom: 100rem;
   }
   .terms-div{
-    margin-top: 1rem 0;
     margin-bottom: 100rem;
   }
 }

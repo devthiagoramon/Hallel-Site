@@ -3,7 +3,7 @@
     max-width: 2500px;
     margin: 70px;
     margin-top: 50px;
-    text-align: center;
+    
   }
   
   img {
@@ -27,3 +27,44 @@
     bottom: 1px;
   }
   
+
+
+
+  @media screen and (max-width: 1388px) {
+
+    .slider{
+      align-self: center;
+    }
+  }
+  
+  @media screen and (max-width: 1356px) {
+  
+    .quadrado {
+      margin-left: 45rem; 
+    }
+  
+    .div-button{
+      margin-top: 100rem;
+    }
+  
+    .terms-div{
+      margin: 1rem auto;
+    }
+  }
+  
+  @media screen and (max-width: 1300px) {
+  
+    .img{
+      display: none;
+    }
+    .quadrado {
+      margin: 2rem auto;
+      width: 80%;
+    }
+    .div-button{
+      margin-bottom: 100rem;
+    }
+    .terms-div{
+      margin-bottom: 100rem;
+    }
+  }
