@@ -50,7 +50,7 @@ const PagamentosAssociado = () => {
                 },
             ],
 
-            rows: pagamentosAssociados.map((item) => ({
+            rows: pagamentosAssociados?.map((item) => ({
                 nome: item.nome,
                 valor:
                     item.transacao == null || item.transacao.mensalidade == null

@@ -52,7 +52,7 @@ const ListaDespesasEvento = (props) => {
                     </thead>
                     <tbody>
                     <>
-                        {despesas.map((item) => {
+                        {despesas?.map((item) => {
                             return (
                                 <tr>
                                     <td>{item.nome}</td>

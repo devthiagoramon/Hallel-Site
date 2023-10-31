@@ -3,8 +3,11 @@ import React from "react";
 import { useState } from "react";
 import InputHallel from "../../../../components/InputHallel/InputHallel";
 import { DatePicker } from "@mui/x-date-pickers";
-import BtnHallel from "../../../../components/BtnHallel/ButtonHallel";
 import dayjs from "dayjs";
+import {
+  OutlinedButtonHallel,
+  OutlinedEmptyButtonHallel,
+} from "../../../../components/BtnHallel";
 
 const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
   const styleInnerModal = {
@@ -49,7 +52,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
 
   function verifyInputs() {
     let hasError = false;
-    
+
     if (cartaoCredito.nomeTitular !== "") {
       setErrorsInputs((prev) => {
         return { ...prev, nomeTitular: false };
@@ -109,8 +112,8 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
     hasError = verifyInputs();
     if (!hasError) {
       setUsuario((prev) => {
-        return { ...prev, cartaoCredito: {...cartaoCredito} };
-      }); 
+        return { ...prev, cartaoCredito: { ...cartaoCredito } };
+      });
       setCartaoCredito({
         nomeTitular: "",
         cvc: "",
@@ -151,10 +154,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
                 error
               />
             ) : (
-              <InputHallel
-                name="nomeTitular"
-                onChange={handleChangeInputs}
-              />
+              <InputHallel name="nomeTitular" onChange={handleChangeInputs} />
             )}
             <div className="inputs2_modal_adicionar_cartao_pe">
               <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
@@ -173,8 +173,8 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
                   name="dataValidadeCartao"
                   onChange={(e) => {
                     setCartaoCredito((prev) => {
-                      return { ...prev, dataValidadeCartao: e}
-                    })
+                      return { ...prev, dataValidadeCartao: e };
+                    });
                   }}
                 />
               ) : (
@@ -187,17 +187,13 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
                   name="dataValidadeCartao"
                   onChange={(e) => {
                     setCartaoCredito((prev) => {
-                      return { ...prev, dataValidadeCartao: e}
-                    })
+                      return { ...prev, dataValidadeCartao: e };
+                    });
                   }}
                 />
               )}
               {errorsInputs.cvc ? (
-                <InputHallel
-                  name="cvc"
-                  onChange={handleChangeInputs}
-                  error
-                />
+                <InputHallel name="cvc" onChange={handleChangeInputs} error />
               ) : (
                 <InputHallel name="cvc" onChange={handleChangeInputs} />
               )}
@@ -212,24 +208,24 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
                 error
               />
             ) : (
-              <InputHallel
-                name="endereco"
-                onChange={handleChangeInputs}
-              />
+              <InputHallel name="endereco" onChange={handleChangeInputs} />
             )}
           </div>
           <div className="footer_modal_adicionar_cartao_pe">
-            <BtnHallel
-              secundario
+            <OutlinedEmptyButtonHallel
+              style={{ width: 100, padding: "0.7rem", fontSize: "24px" }}
               onClick={() => {
                 setOpen(false);
               }}
             >
               Voltar
-            </BtnHallel>
-            <BtnHallel sucesso onClick={handleAdicionarCartao}>
+            </OutlinedEmptyButtonHallel>
+            <OutlinedButtonHallel
+              style={{ width: 100, padding: "0.7rem", fontSize: "24px" }}
+              onClick={handleAdicionarCartao}
+            >
               Adicionar Cartão
-            </BtnHallel>
+            </OutlinedButtonHallel>
           </div>
         </div>
       </Box>

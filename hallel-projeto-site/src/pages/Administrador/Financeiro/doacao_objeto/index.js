@@ -159,7 +159,7 @@ const DoacaoObjetoADM = () => {
                             </div>
                         ) : (
                             <div className="bodyCardsDoacaoObj">
-                                {doacoesObjeto.map((objeto) => {
+                                {doacoesObjeto?.map((objeto) => {
                                     return (
                                         <Card
                                             key={objeto.id}

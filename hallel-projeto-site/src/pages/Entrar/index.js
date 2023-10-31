@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { loginService } from "../../service/HomeService";
+import { useDispatch } from "react-redux";
+import { loginSave } from "./loginSlice";
 
 function Entrar() {
   const [login, setLogin] = useState({
@@ -13,6 +15,7 @@ function Entrar() {
     senha: ""
   });
   let navigator = useNavigate();
+  const dispacher = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -30,13 +33,18 @@ function Entrar() {
         return;
       }
       let rolesName = [];
-      localStorage.setItem("token", response.token);
-      localStorage.setItem("HallelId", response.objeto.id);
-      localStorage.setItem("HallelEmail", response.objeto.email);
       response.objeto.roles.map((role) => {
         rolesName.push(role.name);
       });
-      localStorage.setItem("R0l3s", rolesName);
+      let payloadRedux = {
+        id: response.objeto.id,
+        nome: response.objeto.nome,  
+        email: response.objeto.email,
+        roles: [...rolesName],
+        token: response.token,
+        imagem: response.objeto.imagem,
+      }
+      dispacher(loginSave(payloadRedux));
       setTimeout(() => {
         navigator("/");
       }, 3000);

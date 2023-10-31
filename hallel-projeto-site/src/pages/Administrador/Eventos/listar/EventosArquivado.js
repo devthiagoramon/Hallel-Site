@@ -65,7 +65,7 @@ const EventosArquivado = () => {
                 },
             ],
 
-            rows: eventos.map((item) => ({
+            rows: eventos?.map((item) => ({
                 titulo: item.titulo,
                 date: item.date,
                 horario: item.horario,

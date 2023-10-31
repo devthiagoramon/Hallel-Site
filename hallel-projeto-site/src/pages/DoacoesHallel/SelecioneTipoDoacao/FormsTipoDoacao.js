@@ -197,16 +197,15 @@ const FormsTipoDoacao = () => {
         <OutlinedButtonHallel
           style={{
             padding: "1rem",
-            marginTop: "3.125rem",
             width: "50%",
             fontSize: "30px",
-            alignSelf: "center",
+            justifySelf: "center",
           }}
           type="submit"
         >
           Continuar
         </OutlinedButtonHallel>
-      </form>
+      </form> 
     </div>
   );
 };

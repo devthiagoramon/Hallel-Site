@@ -81,7 +81,7 @@ const FragmentoTwoPainelFinanceiro = () => {
                         <tbody>
                         {ultimasSaidas.length !== 0 ? (
                             <>
-                                {ultimasSaidas.map((saida) => {
+                                {ultimasSaidas?.map((saida) => {
                                     return (
                                         <tr>
                                             <td>{saida.descricaoSaida}</td>

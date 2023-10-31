@@ -80,7 +80,7 @@ const DoacoesDinheiroAdm = () => {
                 },
             ],
 
-            rows: doacoes.map((item) => ({
+            rows: doacoes?.map((item) => ({
                 email: item.emailDoador,
                 descricao: item.descricao,
                 status: item.localidade,

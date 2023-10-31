@@ -30,7 +30,7 @@ const TabelaLocaisEventos = (props) => {
             </tr>
           </thead>
           <tbody>
-            {eventosLocais.map((local) => {
+            {eventosLocais?.map((local) => {
               return(
               <tr key={local.localizacao}> 
                 <td>{local.localizacao}</td>

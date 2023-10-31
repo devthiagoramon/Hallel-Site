@@ -3,7 +3,7 @@ import { IconButton, Tooltip, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { AddRounded } from "@mui/icons-material";
 import InputHallel from "../../../../components/InputHallel/InputHallel";
-import BtnHallel from "../../../../components/BtnHallel/ButtonHallel";
+import { OutlinedButtonHallel } from "../../../../components/BtnHallel";
 
 const FormularioMembroHallel = ({
   usuarioEvento,
@@ -110,7 +110,12 @@ const FormularioMembroHallel = ({
         </div>
       </div>
       <div className="footer_form_part_evento">
-        <BtnHallel sucesso onClick={handleParticiparEvento}>Participar</BtnHallel>
+        <OutlinedButtonHallel
+          style={{ width: 200, padding: "0.7rem", fontSize: "24px" }}
+          onClick={handleParticiparEvento}
+        >
+          Participar
+        </OutlinedButtonHallel>
       </div>
     </div>
   );

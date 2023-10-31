@@ -69,7 +69,7 @@ const FragmentoOnePainelFinanceiro = () => {
             <tbody>
               {utlimasEntradas.length !== 0 ? (
                 <>
-                  {utlimasEntradas.map((entrada) => {
+                  {utlimasEntradas?.map((entrada) => {
                     return (
                       <tr>
                         <td>{entrada.descricaoEntrada}</td>

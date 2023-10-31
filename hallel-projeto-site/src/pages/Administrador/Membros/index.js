@@ -64,7 +64,7 @@ function MembrosAdministrador() {
 
             ],
 
-            rows: membro.map((item) => ({
+            rows: membro?.map((item) => ({
                 nome: item.nome,
                 email: item.email,
                 status: item.status,

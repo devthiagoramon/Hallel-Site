@@ -30,7 +30,7 @@ const Slider = () => {
     <div className="slider">
       <img src={images[currentImage]} alt={`Imagem ${currentImage + 1}`} />
       <div className="dots">
-        {images.map((_, index) => (
+        {images?.map((_, index) => (
           <div
             key={index}
             className={`dot ${index === currentImage ? 'active' : ''}`}
