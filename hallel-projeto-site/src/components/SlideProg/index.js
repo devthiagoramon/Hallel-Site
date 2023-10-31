@@ -38,7 +38,7 @@ const SlideProg = (props) => {
             drag="x"
             dragConstraints={{ right: 0, left: -width }}
           >
-            {images.map((imagem2) => {
+            {images?.map((imagem2) => {
               return (
                 <motion.div
                   className="imagem2"

@@ -140,7 +140,7 @@ const PDFSaida = ({ mesSelecionado, saidas }) => {
             </View>
             {saidas.lenght > 0 && (
               <>
-                {saidas.map((saida) => {
+                {saidas?.map((saida) => {
                   return (
                     <View style={styles.tableRow}>
                       <View style={styles.tableCell}>

@@ -59,7 +59,7 @@ const ParticipantesEvento = () => {
                         </thead>
                         <tbody>
 
-                        {eventosParticipantes.map((participante) => {
+                        {eventosParticipantes?.map((participante) => {
                             return (
 
                                 //teste, se está buscando

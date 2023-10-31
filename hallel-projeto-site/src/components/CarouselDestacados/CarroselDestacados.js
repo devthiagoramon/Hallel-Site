@@ -68,7 +68,7 @@ const CarroselDestacados = () => {
                     touch
                     showIndicators
                 >
-                    {eventos.map((evento) => {
+                    {eventos?.map((evento) => {
 
                         evento.destacado == false ? (
 

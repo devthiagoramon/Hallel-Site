@@ -163,7 +163,7 @@ const EntradasFinanceiroAdm = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {entradas.map((item) => {
+                        {entradas?.map((item) => {
                             return (
                                 <tr>
                                     <td>{item.descricaoReceita}</td>
@@ -209,7 +209,7 @@ const EntradasFinanceiroAdm = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {lastEntradas.map((item) => {
+                            {lastEntradas?.map((item) => {
                                 return (
                                     <tr>
                                         <td>{item.descricaoEntrada}</td>

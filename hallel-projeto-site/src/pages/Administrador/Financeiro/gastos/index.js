@@ -249,7 +249,7 @@ const SaidasFinanceirasADM = () => {
               </tr>
             </thead>
             <tbody>
-              {gastos.map((item) => {
+              {gastos?.map((item) => {
                 return (
                   <tr key={item.id}>
                     <Tooltip title="Clique para ver mais sobre o código">
@@ -328,7 +328,7 @@ const SaidasFinanceirasADM = () => {
                 </tr>
               </thead>
               <tbody>
-                {lastSaidas.map((item) => {
+                {lastSaidas?.map((item) => {
                   return (
                     <tr>
                       <td>{item.descricaoSaida}</td>

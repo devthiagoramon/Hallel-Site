@@ -179,7 +179,7 @@ const GerarPDFSaida = () => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {saidas.map((saida) => (
+                                    {saidas?.map((saida) => (
                                         <TableRow
                                             key={saida.id}
                                             sx={{"&:last-child td, &:last-child th": {border: 0}}}

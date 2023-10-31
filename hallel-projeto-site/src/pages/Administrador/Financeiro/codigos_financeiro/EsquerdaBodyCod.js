@@ -70,7 +70,7 @@ const EsquerdaBodyCodFinanceiro = ({
                         </TableHead>
                         {codigos.length !== 0 ? (
                             <>
-                                {codigos.map((codigo) => {
+                                {codigos?.map((codigo) => {
                                     return (
                                         <TableBody>
                                             <TableCell>{codigo.numeroCodigo}</TableCell>

@@ -49,7 +49,7 @@ export default function CarouselNaoDestacados() {
                     touch
                     showIndicators
                 >
-                    {eventos.map((evento) => {
+                    {eventos?.map((evento) => {
                         return (
                             <Carousel.Item interval={5000}>
                                 <div

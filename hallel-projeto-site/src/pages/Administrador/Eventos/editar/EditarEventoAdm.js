@@ -407,7 +407,7 @@ const EditarEventoAdm = () => {
                                 ""
                             ) : (
                                 <div>
-                                    {inputsArray.map((item) => {
+                                    {inputsArray?.map((item) => {
                                         return (
                                             <motion.div
                                                 className="inputPalestrante"

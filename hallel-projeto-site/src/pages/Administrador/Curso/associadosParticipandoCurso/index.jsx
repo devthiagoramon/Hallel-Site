@@ -49,7 +49,7 @@ const AssociadosListaCursosAdm = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {listaAssociadoFiltrado.map((item) => {
+                    {listaAssociadoFiltrado?.map((item) => {
                         return (
                             <tr>
                                 <td>{item.nome}</td>

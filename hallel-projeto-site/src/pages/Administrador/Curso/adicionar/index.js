@@ -182,11 +182,11 @@ const AdicionarCursoAdm = () => {
 
         let modulosProv = modulosInput;
 
-        requisitosInputs.map((item) => {
+        requisitosInputs?.map((item) => {
             arrayRequisitos.push(item.text);
         });
 
-        aprendizadoInputs.map((item) => {
+        aprendizadoInputs?.map((item) => {
             arrayAprendizado.push(item.text);
         })
         let cursoNew = {
@@ -478,7 +478,7 @@ const AdicionarCursoAdm = () => {
                                     <AddCircleOutline/>
                                 </IconButton>
                             </label>
-                            {requisitosInputs.map((item) => {
+                            {requisitosInputs?.map((item) => {
                                 return (
                                     <div
                                         style={{
@@ -538,7 +538,7 @@ const AdicionarCursoAdm = () => {
                                     <AddCircleOutline/>
                                 </IconButton>
                             </label>
-                            {aprendizadoInputs.map((item) => {
+                            {aprendizadoInputs?.map((item) => {
                                 return (
                                     <div
                                         style={{
@@ -613,7 +613,7 @@ const AdicionarCursoAdm = () => {
                     <div className="bodyModulosAddCursoAdm">
                         <List component="nav" sx={{width: "99.50%", maxWidth: "100%"}}>
                             <Divider/>
-                            {modulosInput.map((item) => {
+                            {modulosInput?.map((item) => {
                                 return (
                                     <div className="containerModuloAddCursoAdm">
                                         <div
@@ -725,7 +725,7 @@ const AdicionarCursoAdm = () => {
                                                 </div>
                                                 <List component="div" disablePadding>
                                                     <Typography variant="h6">Videos</Typography>
-                                                    {item.videosModulo.map((video) => {
+                                                    {item.videosModulo?.map((video) => {
                                                         return (
                                                             <div style={{display: "flex"}}
                                                                  className="contVideosModulosAddCurso">
@@ -822,7 +822,7 @@ const AdicionarCursoAdm = () => {
                                                         );
                                                     })}
                                                     <Typography variant="h6">Atividades</Typography>
-                                                    {item.atividadesModulo.map((atividade) => {
+                                                    {item.atividadesModulo?.map((atividade) => {
                                                         return (
                                                             <div className="contAtividadesCursoAdd">
                                                                 <div className="contListItemCursoAdd">

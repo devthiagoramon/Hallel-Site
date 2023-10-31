@@ -56,7 +56,7 @@ const AssociadosADM = () => {
                 },
             ],
 
-            rows: associados.map((item) => ({
+            rows: associados?.map((item) => ({
                 nome: item.nome,
                 dataPagamento:
                     item.dataPagamento !== null
