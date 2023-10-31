@@ -5,8 +5,6 @@ import Pedido from "./pages/PedidoOracao";
 import Associado from "./pages/Associado";
 import SolicitacaoCadastro from "./pages/SolicitarCadastro";
 import VideoChamada from "./pages/VideoChamada/indexVideo";
-import Doacoes from "./pages/Doacoes/Doacoes.js";
-import Header from "./components/Header";
 import Sobre from "./pages/Sobre";
 import MembrosAdm from "./pages/Administrador/Membros";
 import EventosCriarAdm from "./pages/Administrador/Eventos/adicionar";
@@ -14,7 +12,6 @@ import EventoListarAdm from "./pages/Administrador/Eventos/listar";
 import DescricaoEvento from "./pages/DescEvento";
 import MeusCursos from "./pages/VisualizarCursos";
 import EventoUser from "./pages/Evento/listar";
-import DoacaoFormulario from "./pages/DoacaoForm/indexForms";
 import Perfil from "./pages/PerfilUsuario";
 import MaisInfo from "./pages/Evento/MaisInformacoes";
 import Entrar from "./pages/Entrar";
@@ -73,7 +70,6 @@ function RoutesApp() {
         <Route path="/associado" element={<Associado />} />
         {/* <Route path="/doacoes" element={<Doacoes />} /> */}
         <Route path="/virarAssociado" element={<VirarAssociado />} />
-        <Route path="/formularioDoacao" element={<DoacaoFormulario />} />
         <Route path="/solicitarCadastro" element={<SolicitacaoCadastro />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/descricao" element={<DescricaoEvento />} />

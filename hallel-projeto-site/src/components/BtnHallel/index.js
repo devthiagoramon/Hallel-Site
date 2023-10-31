@@ -18,7 +18,6 @@ const ButtonTemplate = styled.button`
     styled(ButtonTemplate)`
       box-shadow: rgba(0, 0, 0, 0.25) 0 2px 2px;
       background-color: #FAFAFA;
-      position: relative;
     `
  const OutlinedButtonHallel =
     styled(ButtonTemplate)`

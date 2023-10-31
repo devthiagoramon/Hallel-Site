@@ -7,9 +7,9 @@ import PagamentoDoacao from './PagamentoDoacao'
 const DoacoesHallel = () => {
   return (
     <div className='container-doacoes'>
-      {/* <FormularioDoador/> */}
+      <FormularioDoador/>
       {/* <SelecioneTipoDoacao/> */}
-      <PagamentoDoacao />
+      {/* <PagamentoDoacao /> */}
     </div>
   )
 }

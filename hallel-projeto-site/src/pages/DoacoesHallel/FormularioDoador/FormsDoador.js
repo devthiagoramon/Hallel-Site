@@ -6,13 +6,11 @@ import LabelInputHallel from "../../../components/LabelInputHallel";
 import {
   ContainerInputHallelError,
   InputHallelNormal,
-  TextFieldHallelNormal,
 } from "../../../components/TextFieldHallel/TextFieldsHallel";
 import ContainerRadioButtonsHallel from "../../../components/ContainerRadioButtonsHallel";
 import RadioButtonHallel from "../../../components/RadioButtonHallel";
 import { OutlinedButtonHallel } from "../../../components/BtnHallel";
 import CheckBoxHallel from "../../../components/CheckBoxHallel";
-import dayjs from "dayjs";
 
 const yupErrors = Yup.object().shape({
   nome: Yup.string().min(3, "Ao menos 3 letras").required("Nome é obrigatório"),
