@@ -1,0 +1,23 @@
+.cont-alert-hallel {
+  background-color: #d7dfdb;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #003617;
+  padding: 1rem;
+  column-gap: 6px;
+}
+
+.cont-alert-hallel > label {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .cont-alert-hallel > label {
+    font-size: 18px;
+  }
+}

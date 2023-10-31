@@ -1,0 +1,30 @@
+.radio-buttons-hallel-cont {
+  width: 100%;
+  display: flex;
+}
+
+.radio-buttons-hallel > input {
+  stroke: #004f22 2px;
+}
+
+.radio-buttons-hallel > label {
+  font-size: 18px;
+  color: #004f22;
+}
+
+@media screen and (max-width: 768px) {
+  /* Estilos para telas com largura máxima de 768px (tipicamente, smartphones) */
+
+  .radio-buttons-hallel-cont{
+    flex-direction: column;
+  }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Estilos para tablets (largura de tela entre 769px e 1024px) */
+}
+
+@media screen and (min-width: 1025px) {
+  /* Estilos para telas maiores (desktops) com largura mínima de 1025px */
+}
