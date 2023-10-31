@@ -1,17 +1,19 @@
-import React from 'react'
-import "./doacoesHallel.css"
-import FormularioDoador from './FormularioDoador'
-import SelecioneTipoDoacao from './SelecioneTipoDoacao'
-import PagamentoDoacao from './PagamentoDoacao'
+import React, { useState } from "react";
+import "./doacoesHallel.css";
+import FormularioDoador from "./FormularioDoador";
+import SelecioneTipoDoacao from "./SelecioneTipoDoacao";
+import PagamentoDoacao from "./PagamentoDoacao";
 
 const DoacoesHallel = () => {
-  return (
-    <div className='container-doacoes'>
-      {/* <FormularioDoador/> */}
-      {/* <SelecioneTipoDoacao/> */}
-      <PagamentoDoacao />
-    </div>
-  )
-}
+  const [etapa, setEtapa] = useState(1);
 
-export default DoacoesHallel
+  return (
+    <div className="container-doacoes">
+      {etapa === 1 && <FormularioDoador setEtapa={setEtapa} />}
+      {etapa === 2 && <SelecioneTipoDoacao setEtapa={setEtapa} /> }
+      {etapa === 3 && <PagamentoDoacao setEtapa={setEtapa} />}
+    </div>
+  );
+};
+
+export default DoacoesHallel;

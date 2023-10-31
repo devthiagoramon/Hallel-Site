@@ -2,11 +2,11 @@ import React from 'react'
 import HeaderDoacoes from '../HeaderDoacoes'
 import FormsDoador from './FormsDoador'
 
-const FormularioDoador = () => {
+const FormularioDoador = ({setEtapa}) => {
   return (
     <div>
       <HeaderDoacoes text={"Preencha o formulário e seja um doador"} />
-      <FormsDoador />
+      <FormsDoador setEtapa={setEtapa} />
     </div>
   )
 }
