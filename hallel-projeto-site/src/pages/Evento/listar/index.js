@@ -12,7 +12,7 @@ function EventoUser() {
     const [eventos, setEventos] = useState();
     useMemo(() => {
          listarTodosEventosUsuarioService().then((response) => {
-            setEventos(response)
+            setEventos(response.data)
         });
     }, [])
 
@@ -59,7 +59,7 @@ function EventoUser() {
                     </div>
 
                     <div className="CorpoEventoUser">
-                        {eventos.length === 0 ? (
+                        {eventos?.length === 0 ? (
                             <div className="loaderEventoCarroseulEventos">
                                 <Skeleton width={250} height={500}/>{" "}
                                 <Skeleton width={250} height={500}/>{" "}
@@ -71,7 +71,7 @@ function EventoUser() {
                                 <Skeleton width={250} height={500}/>
                             </div>
                         ) : (
-                            eventos.map((evento) => {
+                            eventos?.map((evento) => {
                                 return (
                                     <div className="grupo-evento">
                                         <div
