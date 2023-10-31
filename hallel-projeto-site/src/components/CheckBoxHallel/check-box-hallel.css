@@ -1,0 +1,13 @@
+.check-box-hallel{
+    width: 100%;
+}
+
+.check-box-hallel>input{
+    stroke: #004F22 2px;
+}
+
+.check-box-hallel>label{
+    font-size: 20px;
+    color: #004F22;
+    margin-left: 0.5rem;
+}
