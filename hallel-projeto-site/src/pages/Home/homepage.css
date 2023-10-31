@@ -11,12 +11,6 @@
     margin-top: -150px;
 }
 
-.h3{
-    margin-top: '190px';
-    margin-left: "2rem";
-    
-}
-
 .body-evento{
     margin-left: 40px;
 }
@@ -67,41 +61,49 @@
 
 
 
-@media screen and (max-width: 1388px) {
+@media screen and (max-width: 940px) {
 
-    .hr{
-        margin-top: auto;
+    .div-event{
+        margin-top: 15rem;
     }
+    .containerCapa label{
+      background-color:white;
+      width: 100%;
+      align-self: center;
+      color: #003015;
+      font-weight: 700;
+      font-size: 2.5em;
+      text-align: center;
+      margin-top: 100px;
+      margin-bottom: 100px;
   }
-  
-  @media screen and (max-width: 1356px) {
-  
-    .quadrado {
-      margin-left: 45rem; 
-    }
-  
-    .div-button{
-      margin-top: 100rem;
-    }
-  
-    .terms-div{
-      margin: 1rem auto;
-    }
   }
-  
-  @media screen and (max-width: 1300px) {
-  
-    .img{
-      display: none;
+  @media screen and (max-width: 540px) {
+
+    .homepage{
+        width: 10px;
     }
-    .quadrado {
-      margin: 2rem auto;
-      width: 80%;
+    .div-event{
+      margin-top: 15rem;
+  }
+
+    .div-event-master {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      width: 50px;
+      margin-left: 10rem;
     }
-    .div-button{
-      margin-bottom: 100rem;
+
+    .containerCapa label{
+        margin-top: 2rem;
     }
-    .terms-div{
-      margin-bottom: 100rem;
+
+    .div-carousel{
+        width: 10px;
+        margin: 0 auto;
     }
+    
   }

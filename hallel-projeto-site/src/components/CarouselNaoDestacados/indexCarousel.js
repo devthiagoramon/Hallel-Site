@@ -21,7 +21,7 @@ export default function CarouselNaoDestacados() {
     }, []);
 
     return (
-        <div
+        <div className="master"
             style={{
                 display: "block",
                 height: 500,
@@ -31,6 +31,21 @@ export default function CarouselNaoDestacados() {
                 marginRight: '100px',
                 borderRadius: '10px',
                 background: "#003015",
+                '@media screen and (max-width: 940px)': {
+                width: '100%',
+                height: 'auto',
+                maxWidth: '600px',
+                margin: '0 auto',
+                    
+                  },
+
+                  '@media screen and (max-width: 540px)': {
+                    width: '10%',
+                    height: 'auto',
+                    maxWidth: '600px',
+                    margin: '0 auto',
+                        
+                      },
             }}
         >
             <h4 style={{textAlign: "left", color:'white'}}>Principais</h4>
