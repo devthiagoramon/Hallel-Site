@@ -46,3 +46,12 @@
   font-size: 17px;
   color: aliceblue;
 }
+
+@media screen and (max-width:1400){
+  .square-fundadora{
+    width: 1000px;
+  }
+  .fundadora-img{
+    margin-left: 880px;
+  }
+}

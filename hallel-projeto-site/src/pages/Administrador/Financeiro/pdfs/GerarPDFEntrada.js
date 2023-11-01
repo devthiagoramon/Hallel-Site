@@ -186,7 +186,7 @@ const GerarPDFEntrada = () => {
               Pré-visualização
             </Typography>
             <label style={{marginTop:"3px",color: "white", marginRight:"-20px"}}>{mesSelecionado.format("MM/YYYY")}</label> 
-          <div className="cont_header_gerar_pdf-selecionar_mes_gerar_pdf"> 
+          <div className="cont_header_gerar_pdf-selecionar_mes_gerar_pdf" style={{alignItems:'center',justifyContent:'center'}}> 
           
           <Tooltip title="Selecionar o mês">
             <IconButton
@@ -196,7 +196,7 @@ const GerarPDFEntrada = () => {
               }}
             >
               <CalendarMonth
-                sx={{ color: "white", height: "35px", width: "35px",marginTop:"-40px", marginRight:"30px" }}
+                sx={{ color: "white", height: "35px", width: "35px",marginTop:"-35px", marginRight:"28px" }}
               />
             </IconButton>
           </Tooltip>
@@ -218,7 +218,7 @@ const GerarPDFEntrada = () => {
               </IconButton>
             )}
           </div>
-          <div className="body_preview_gerar_pdf">
+          <div className="body_preview_gerar_pdf" style={{alignItems:'center',lineHeight: '-10rem'}}>
             {mostrarPDF && (
               <PDFViewer style={{ width: "100%", height: "100%" }}>
                 <PDFEntrada
@@ -228,11 +228,12 @@ const GerarPDFEntrada = () => {
               </PDFViewer>
             )}
             {!mostrarPDF && (
-              <Button className="btn-view" style={{backgroundColor: 'green'}}
+              <Button className="btn-view" style={{backgroundColor: '#003015',marginBottom:'35rem'}}
                 variant="contained"
                 onClick={() => {
                   setMostrarPDF(true);
                 }}
+                
               >
               
                 Pré-Visualizar

@@ -52,6 +52,7 @@
   border-radius: 10px;
   margin-bottom: 130px;
   margin-top: 16px;
+  margin: 0 auto;
 }
 
 .paragrafo1{
@@ -106,3 +107,11 @@
   border: none;
   margin-top: -40px;
 }
+
+@media screen and (max-width: 1400px) {
+
+    .container-text{
+        
+    }
+    
+  }
