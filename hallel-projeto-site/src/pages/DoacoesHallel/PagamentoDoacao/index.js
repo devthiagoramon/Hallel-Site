@@ -4,12 +4,12 @@ import { OutlinedButtonHallel } from "../../../components/BtnHallel";
 import InfoUserDoacao from "./InfoUserDoacao";
 import FormaPagamentoDoacao from "./FormaPagamentoDoacao";
 
-const PagamentoDoacao = () => {
+const PagamentoDoacao = ({setEtapa}) => {
   return (
     <div>
       <HeaderDoacoes text={"Pagamento"} />
       <InfoUserDoacao />
-      <FormaPagamentoDoacao/>
+      <FormaPagamentoDoacao setEtapa={setEtapa}/>
     </div>
   );
 };
