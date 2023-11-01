@@ -173,7 +173,7 @@ const EditarCursosAdm = () => {
     function loadRequisitosFromAPI(requisitos) {
         let requisitosArray = [];
 
-        requisitos.map((item) => {
+        requisitos?.map((item) => {
             requisitosArray.push({id: requisitosArray.length, text: item});
         });
 
@@ -182,7 +182,7 @@ const EditarCursosAdm = () => {
 
     function loadAprendizadoFromAPI(aprendizado) {
         let aprendizadoArray = [];
-        aprendizado.map((item) => {
+        aprendizado?.map((item) => {
             aprendizadoArray.push({id: aprendizadoArray.length, text: item});
         });
         return aprendizadoArray;
@@ -191,7 +191,7 @@ const EditarCursosAdm = () => {
     function loadModulosFromAPI(modulos) {
         let modulosArray = [];
 
-        modulos.map((item) => {
+        modulos?.map((item) => {
             modulosArray.push({
                 numModulo: item.numModulo,
                 tituloModulo: item.tituloModulo,
@@ -282,10 +282,10 @@ const EditarCursosAdm = () => {
         let arrayRequisitos = [];
         let modulosProv = modulosInput;
         let arrayAprendizado = [];
-        aprendizadoInputs.map((item) => {
+        aprendizadoInputs?.map((item) => {
             arrayAprendizado.push(item.text);
         });
-        requisitosInputs.map((item) => {
+        requisitosInputs?.map((item) => {
             arrayRequisitos.push(item.text);
         });
         let cursoNew = {
@@ -577,7 +577,7 @@ const EditarCursosAdm = () => {
                                             <AddCircleOutline/>
                                         </IconButton>
                                     </label>
-                                    {requisitosInputs.map((item) => {
+                                    {requisitosInputs?.map((item) => {
                                         return (
                                             <div
                                                 style={{
@@ -633,7 +633,7 @@ const EditarCursosAdm = () => {
                                             <AddCircleOutline/>
                                         </IconButton>
                                     </label>
-                                    {aprendizadoInputs.map((item) => {
+                                    {aprendizadoInputs?.map((item) => {
                                         return (
                                             <div
                                                 style={{
@@ -708,7 +708,7 @@ const EditarCursosAdm = () => {
                                     sx={{width: "99.50%", maxWidth: "100%"}}
                                 >
                                     <Divider/>
-                                    {modulosInput.map((item) => {
+                                    {modulosInput?.map((item) => {
                                         return (
                                             <div>
                                                 <div style={{display: "flex", alignItems: "center"}}>
@@ -814,7 +814,7 @@ const EditarCursosAdm = () => {
                                                             </Tooltip>
                                                         </div>
                                                         <List component="div" disablePadding>
-                                                            {item.videosModulo.map((video) => {
+                                                            {item.videosModulo?.map((video) => {
                                                                 return (
                                                                     <div
                                                                         style={{
@@ -916,7 +916,7 @@ const EditarCursosAdm = () => {
                                                                     </div>
                                                                 );
                                                             })}
-                                                            {item.atividadesModulo.map((atividade) => {
+                                                            {item.atividadesModulo?.map((atividade) => {
                                                                 return (
                                                                     <div className="contAtividadesCursoAdd">
                                                                         <div className="contListItemCursoAdd">

@@ -38,7 +38,7 @@ const ModalListarLocalEvento = (props) => {
       anchorEl={props.anchorEl}
       sx={{ maxWidth: "400px", maxHeight: "400px" }}
     >
-      {LocaisEventos.map((locais) => {
+      {LocaisEventos?.map((locais) => {
         return (
           <MenuItem
             key={locais.id}

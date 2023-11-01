@@ -2,7 +2,6 @@ import React from "react";
 import "./eventInfo.css";
 import {} from "react-icons/bs";
 import {useState} from "react";
-import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
 import {useNavigate} from "react-router-dom";
 import dayjs from "dayjs";
 import Fab from "@mui/material/Fab";
@@ -19,6 +18,7 @@ import {notification} from "../../..";
 import {ErrorLoadingIsParticipando} from "../../../components/Feedback/FeedbackParticiparEvento";
 import {CircularProgress} from "@mui/material";
 import {eventoIsInscritoService, eventoVerifyStatusPagamentoService} from "../../../service/EventoService";
+import { OutlinedEmptyButtonHallel } from "../../../components/BtnHallel";
 
 const InfoEventos2 = ({evento, hide}) => {
     const [openModalParticiparEvento, setOpenModalParticiparEvento] =
@@ -125,10 +125,10 @@ const Corpo2 = ({
                     <>
                         {!isInscrito ? (
                             <div className="container_participar_evento">
-                                <BtnHallel secundario onClick={abrirModal}>
+                                <OutlinedEmptyButtonHallel style={{width: 200, padding: "0.7rem", fontSize: "24px"}} onClick={abrirModal}>
                                     {" "}
                                     Participar do evento
-                                </BtnHallel>
+                                </OutlinedEmptyButtonHallel>
                             </div>
                         ) : (
                             <div className="status_evento_participando">

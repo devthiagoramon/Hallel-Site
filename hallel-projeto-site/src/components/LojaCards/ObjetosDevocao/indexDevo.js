@@ -54,7 +54,7 @@ const SlideProdutos = (props) => {
               drag="x"
               dragConstraints={{ right: 0, left: -width }}
             >
-              {produto.map((produtos) => {
+              {produto?.map((produtos) => {
                 return (
                   <motion.div
                     className="CardObjetoDevocao"

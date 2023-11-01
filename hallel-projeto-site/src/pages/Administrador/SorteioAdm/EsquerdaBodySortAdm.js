@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
 import { AddCircleOutlineRounded, DeleteRounded } from "@mui/icons-material";
 import {
   Card,
@@ -17,6 +16,7 @@ import dayjs from "dayjs";
 import { sorteioSortearAPI } from "../../../api/uris/SorteioURIs";
 import axios from "axios";
 import { useEffect } from "react";
+import { OutlinedButtonHallel } from "../../../components/BtnHallel";
 
 const EsquerdaBodySortAdm = () => {
   const [itens, setItens] = useState([]);
@@ -194,9 +194,9 @@ const EsquerdaBodySortAdm = () => {
         )}
       </div>
       <div className="btn_sortear_itens_cont">
-        <BtnHallel primario onClick={handleSortear}>
+        <OutlinedButtonHallel style={{width: 200, padding: "0.7rem", fontSize: "24px"}} onClick={handleSortear}>
           Sortear
-        </BtnHallel>
+        </OutlinedButtonHallel>
       </div>
       <ModalAddItensSorteioAdm
         itens={itens}

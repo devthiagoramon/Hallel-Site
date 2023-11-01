@@ -3,7 +3,7 @@ import { MuiFileInput } from "mui-file-input";
 import React from "react";
 import { useState } from "react";
 import InputHallel from "../../../components/InputHallel/InputHallel";
-import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
+import { OutlinedButtonHallel } from "../../../components/BtnHallel";
 
 const ModalAddItensSorteioAdm = ({
   openModal,
@@ -98,9 +98,9 @@ const ModalAddItensSorteioAdm = ({
             onChange={handleChangeInputs}
           />
           <div className="cont_btn_add_item_sort_modal">
-            <BtnHallel style={{ width: "200px" }} onClick={handleAddItem} sucesso>
+            <OutlinedButtonHallel style={{width: 200, padding: "0.7rem", fontSize: "24px"}} onClick={handleAddItem}>
               Adicionar Item
-            </BtnHallel>
+            </OutlinedButtonHallel>
           </div>
         </div>
       </Box>

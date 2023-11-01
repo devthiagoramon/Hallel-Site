@@ -46,7 +46,7 @@ const Parte2 = ({associadoObj, setMesSelecionado, loadFromAPIinfoByPagamentoByMe
                 <div className="container_meses_pagos">
                     {associadoObj !== null && (
                         <>
-                            {associadoObj.mesesPagos.map((date) => {
+                            {associadoObj.mesesPagos?.map((date) => {
                                 return (
                                     <Button
                                         variant="contained"

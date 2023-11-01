@@ -1,11 +1,11 @@
 import { Alert, Box, Snackbar, Typography } from "@mui/material";
 import React, { useState } from "react";
 import iconCertificado from "../../images/icon4.png";
-import "./../../components/BtnHallel/btnHallel.css";
 import axios from "axios";
 import { homeMatricularParticipanteInCursoByIdUserAndIdCurso } from "../../api/uris/HomeUris";
 import {matricularParticipanteCursoService} from "../../service/HomeService";
 import {useNavigate} from "react-router-dom";
+import { OutlinedButtonHallel } from "../../components/BtnHallel";
 
 const InnerModalMatricular = (props) => {
   const [enviado, setEnviado] = useState(false);
@@ -85,13 +85,12 @@ const InnerModalMatricular = (props) => {
           </ul>
         </Box>
         <Box sx={{ mt: 3, display: "flex", justifyContent: "center" }}>
-          <button
+          <OutlinedButtonHallel
             onClick={() => matricular()}
-            style={{ backgroundColor: "#028c33", color: "#FAFAFA" }}
-            className="btnHallel"
+            style={{width: 200, padding: "0.7rem", fontSize: "24px"}}
           >
             Matricular-se
-          </button>
+          </OutlinedButtonHallel>
         </Box>
         {errorEnvio ? (
           <Box sx={{ ml: 2, mt: 2 }}>

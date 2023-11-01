@@ -55,7 +55,7 @@ const SlideEventos = (props) => {
                             drag="x"
                             dragConstraints={{right: 10, left: -width}}
                         >
-                            {eventos.map((evento) => {
+                            {eventos?.map((evento) => {
                                 return (
 
                                     <motion.div

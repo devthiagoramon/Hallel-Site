@@ -52,7 +52,7 @@ const MenuCodigosSaida = (props) => {
         <label>Nenhum Código adicionado</label>
       ) : (
         <div>
-          {codigosSaida.map((codigo) => {
+          {codigosSaida?.map((codigo) => {
             return (
               <MenuItem
                 onClick={() =>

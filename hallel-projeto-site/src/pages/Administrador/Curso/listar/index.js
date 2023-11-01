@@ -193,7 +193,7 @@ const ListarCursosADM = () => {
             <div className="bodyListCursosAdm">
                 {cursos.length === 0 ? (
                     <div className="bodyListCursosAdm">
-                        {skeletonArray.map((item) => {
+                        {skeletonArray?.map((item) => {
                             return (
                                 <div>
                                     <Skeleton variant="text"/>
@@ -204,7 +204,7 @@ const ListarCursosADM = () => {
                     </div>
                 ) : (
                     <div className="bodyListCursosAdm">
-                        {cursosFiltrados.map((item) => (
+                        {cursosFiltrados?.map((item) => (
                             <div>
                                 <FormLabel
                                     style={{
@@ -297,7 +297,7 @@ const ListarCursosADM = () => {
                                 <b>Requisitos: </b>
                             </Typography>
                             <div>
-                                {descCurso.requisitos.map((item) => {
+                                {descCurso.requisitos?.map((item) => {
                                     return (
                                         <Chip
                                             style={{margin: "3px"}}

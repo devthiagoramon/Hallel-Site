@@ -150,7 +150,7 @@ const ModalPerfilAdm = (props) => {
                 <ExitToAppRounded />
               </ListItemIcon>
             </ListItem>
-            {listaAdministrador.map((item) => (
+            {listaAdministrador?.map((item) => (
               <ListItem key={item.text} disablePadding>
                 <ListItemIcon sx={{ pl: 4 }}>
                   {getImage(item.icon)}

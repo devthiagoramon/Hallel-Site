@@ -7,7 +7,7 @@
     border-radius: 8px;
     background-color: #F5F5F5;
     min-width: 20%;
-    padding: 1rem;
+    padding: 1.5rem;
     box-shadow: rgba(0,0,0,0.10) 0 0 10px;
     flex-direction: column;
     right: 20px;
@@ -35,8 +35,8 @@
 
 .x_icon_modal_perfil{
     position: absolute;
-    right: 24px;
-    top: 24px;
+    right: 10px;
+    top: 10px;
     color: #252525;
 }
 
