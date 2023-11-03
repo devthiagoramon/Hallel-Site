@@ -2,6 +2,7 @@ import React, {useMemo, useRef, useState} from "react";
 import {CircularProgress, Typography} from "@mui/material";
 import {Carousel} from "react-bootstrap";
 import "../CarouselNaoDestacados/styleCarousel.css"
+import "../CarouselDestacados/CarroselDestacados.css"
 import {listarEventoComDestaqueService} from "../../service/HomeService";
 import Img from '../../images/not-found.png';
 
@@ -23,7 +24,7 @@ const CarroselDestacados = () => {
         }, 4000);
     }, [setTimer, eventos]);
     return (
-        <div
+        <div className="master"
             style={{
                 display: "block",
                 height: 500,
@@ -34,6 +35,8 @@ const CarroselDestacados = () => {
                 marginRight: '100px',
                 borderRadius: '10px',
                 background: "#003015",
+
+                
             }}
         >
             <h4 style={{textAlign: "left", color:"white"}}>Em destaque</h4>

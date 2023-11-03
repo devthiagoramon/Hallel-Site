@@ -1,15 +1,18 @@
 .slider {
-    position: relative;
     max-width: 2500px;
     margin: 70px;
     margin-top: 50px;
-    
+    align-items: center;
+    justify-content: center;
+    display: block;
   }
   
   img {
     max-width: 100%;
     height: auto;
     cursor: pointer;
+    margin: 0 auto;
+    display: block;
   }
   
   button {
@@ -27,44 +30,17 @@
     bottom: 1px;
   }
   
-
-
-
-  @media screen and (max-width: 1388px) {
+  @media screen and (max-width: 3000px) {
 
     .slider{
       align-self: center;
     }
   }
-  
-  @media screen and (max-width: 1356px) {
-  
-    .quadrado {
-      margin-left: 45rem; 
-    }
-  
-    .div-button{
-      margin-top: 100rem;
-    }
-  
-    .terms-div{
-      margin: 1rem auto;
-    }
-  }
-  
-  @media screen and (max-width: 1300px) {
-  
-    .img{
+
+  @media screen and (max-width: 540px) {
+
+    img{
       display: none;
-    }
-    .quadrado {
-      margin: 2rem auto;
-      width: 80%;
-    }
-    .div-button{
-      margin-bottom: 100rem;
-    }
-    .terms-div{
-      margin-bottom: 100rem;
-    }
+  }
+    
   }

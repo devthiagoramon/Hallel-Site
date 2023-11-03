@@ -25,34 +25,34 @@ export default function Cadastro(){
             </div>
             <div className='container-Cadastro'>
                 <div className='square'>
-                <div className='div-Cadastro'>
+                    <div className='div-Cadastro'>
                     <h1 className='Cadastro-text'>Cadastro</h1>
-                </div>
-                <div className='txt-input'>
+                    </div>
+                    <div className='txt-input'>
                     <div className='txt-text-div'>
                         <span className='txt-text'>Nome completo:</span>
                     </div>
                     <input type='text' placeholder='' className='txt-camp'  />
-                </div>
+                    </div>
 
-                <div className='txt-input'>
+                    <div className='txt-input'>
                     <div className='txt-text-div'>
                         <span className='txt-text'>E-mail:</span>
                     </div>
                     <input type='email' placeholder='' className='txt-camp'  />
-                </div>
+                    </div>
 
-                <div className='txt-input'>
+                    <div className='txt-input'>
                     <div className='txt-text-div'>
                         <span className='txt-text' >Senha:</span>
                     </div>
                     <input type='password' placeholder='' className='txt-camp'/>
                    
-                </div>
+                    </div>
 
 
 
-                <div className='txt-input'>
+                    <div className='txt-input'>
                     <div className='txt-text-div'>
                         <span className='txt-text' >Confirmar senha:</span>
                     </div>

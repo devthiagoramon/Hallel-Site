@@ -1,17 +1,17 @@
 .square{
   background-color: #003617;
   width: 550px;
-  margin-left: 857px;
+  margin-left: 780px;
   margin-top: -580px;
   border-radius: 30px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   height: 700px;
   margin-bottom: 2rem;
+  display: block;
 }
 
 .Cadastro-text{
-  
   margin-left: 150px;
   margin-top: 30px;
   color: white;
@@ -30,8 +30,6 @@
   overflow: hidden;
 
 }
-
-
 
 .txt-camp{
   width: 400px;
@@ -54,12 +52,11 @@
   
 }
 
-
 .button-continueC{
   width: 400px;
   height: 50px;
   margin-left: 75px;
-  margin-top: 270px;
+  margin-top: 125px;
   border-radius: 5px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
   border: 0;
@@ -109,41 +106,14 @@
   animation-fill-mode: both;
 }
 
-@media screen and (max-width: 1388px) {
+@media screen and (max-width:1400){
 
-  .container-Cadastro {
-    margin-left: 750px;
-  }
-}
-
-@media screen and (max-width: 1356px) {
-
-  .quadrado {
-    margin-left: 750px; 
+  .container-Cadastro{
+    margin-left: 100px;
   }
 
-  .div-button{
-    margin-top: 100rem;
+  .button-continueC{
+    margin-top: -100px;
   }
-
-  .terms-div{
-    margin: 1rem auto;
-  }
-}
-
-@media screen and (max-width: 1300px) {
-
-  .img{
-    display: none;
-  }
-  .quadrado {
-    margin: 2rem auto;
-    width: 80%;
-  }
-  .div-button{
-    margin-bottom: 100rem;
-  }
-  .terms-div{
-    margin-bottom: 100rem;
-  }
+  
 }

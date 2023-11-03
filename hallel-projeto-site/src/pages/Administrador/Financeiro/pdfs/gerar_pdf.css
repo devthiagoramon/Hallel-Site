@@ -1,15 +1,16 @@
 .container_gerar_pdf {
   width: 100vw;
   min-height: 100vh;
+  display: flex;
 }
 
 .titulo{
   font-size: 50px;
   margin-top: 60px;
   font-weight: normal;
-  margin-left: 430px;
   color: #003015;
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  text-align: justify;
+  margin-left: -2rem;
 }
 .cont_header_gerar_pdf-selecionar_mes_gerar_pdf{
   margin-top: 40px;
@@ -161,6 +162,4 @@
   border-radius: 15px;
 }
 
-.btn-view:hover {
-  background-color: orange; /* ou qualquer outro estilo que deseja aplicar no hover */
-}
+

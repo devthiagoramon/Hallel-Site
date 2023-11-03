@@ -99,6 +99,7 @@ function Entrar() {
           <div className="div-button">
             <button className='button-continue' onClick={entrar} style={{textAlign:'center'}}>Continuar</button>
           </div>
+          
           <div className='register-div'>
             <p className='text-register'>Não tem uma conta?
               <a className='register' href="/solicitarCadastro">Solicite seu cadastro </a>

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styleTableDespesas.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,20 +9,25 @@ import TableRow from "@mui/material/TableRow";
 import { Paper } from "@mui/material";
 import East from "@mui/icons-material/East";
 import Fab from "@mui/material/Fab";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
+import LineAxisIcon from "@mui/icons-material/LineAxis";
+import SvgIcon from "@mui/material/SvgIcon";
+import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { purple } from "@mui/material/colors";
-import dayjs from "dayjs";
+import { styled } from "@mui/material/styles";
 import {
-  entradaUltimasEntradasService,
-  saidaUltimasSaidaService,
-} from "../../../../service/FinanceiroService";
+  entradasUltimasEntradasAPI,
+  saidaUltimasSaidasAPI,
+} from "../../../../api/uris/FinanceiroURLS";
+import axios from "axios";
+import dayjs from "dayjs";
 
 const BootstrapButton = styled(Button)({
   boxShadow: "none",
@@ -31,7 +36,7 @@ const BootstrapButton = styled(Button)({
   padding: "6px 12px",
   border: "1px solid",
   lineHeight: 1.5,
-  backgroundColor: "#0063cc",
+  backgroundColor: "white",
   borderColor: "#0063cc",
   fontFamily: [
     "-apple-system",
@@ -61,28 +66,42 @@ const BootstrapButton = styled(Button)({
 });
 
 const ColorButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText(purple[500]),
-  backgroundColor: purple[500],
+  color: theme.palette.getContrastText('#4caf50'),
+  backgroundColor: '#4caf50',
   "&:hover": {
-    backgroundColor: purple[700],
+    backgroundColor: '#ef6c00',
   },
 }));
 
 const UltimasRendas = () => {
   const navigate = useNavigate();
+
   const [entradas, setEntradas] = useState([]);
 
-  useMemo(() => {
-    entradaUltimasEntradasService().then((res) => {
-      setEntradas(res);
-    });
+  useEffect(() => {
+    let url = entradasUltimasEntradasAPI();
+
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setEntradas(res.data);
+      })
+      .catch((error) => {
+        console.log("Error requereindo as ultimas entradas: " + error);
+      });
   }, []);
 
   return (
     <div className="tabela-ultimas-rendas">
       <div className="div-header">
         <div className="cont-header-finaceiro">
-          <h3 className="financeiro-labels">Últimas Entradas</h3>
+        <div className="text-and-buttons">
+          <h3 className="financeiro-labels" style={{marginRight:'0.5rem'}}>Últimas Entradas</h3>
+          <div className="buttons">
           <Fab
             size="small"
             color="white"
@@ -91,8 +110,11 @@ const UltimasRendas = () => {
           >
             <East />
           </Fab>
+          </div>
+          </div>
         </div>
         <div className="cont-header-financeiro">
+        <div className="buttons">
           <ColorButton
             onClick={() =>
               navigate("/administrador/financeiro/gerarPDFEntrada")
@@ -101,12 +123,14 @@ const UltimasRendas = () => {
             sx={{ borderRadius: "24px" }}
           >
             Gerar PDF
+            
           </ColorButton>
+          </div>
         </div>
       </div>
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Código</TableCell>
@@ -116,7 +140,7 @@ const UltimasRendas = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {entradas?.map((entrada) => (
+            {entradas.map((entrada) => (
               <TableRow
                 key={entrada.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -162,18 +186,33 @@ const UltimasRendas = () => {
 
 const UltimasSaidas = () => {
   const navigate = useNavigate();
+
   const [saidas, setSaidas] = useState([]);
-  useMemo(() => {
-    saidaUltimasSaidaService().then((response) => {
-      setSaidas(response);
-    });
+
+  useEffect(() => {
+    let url = saidaUltimasSaidasAPI();
+
+    axios
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setSaidas(res.data);
+      })
+      .catch((error) => {
+        console.log("Error requereindo as ultimas entradas: " + error);
+      });
   }, []);
 
   return (
     <div className="tabela-ultimas-saidas">
       <div className="div-header">
         <div className="cont-header-finaceiro">
-          <h3 className="financeiro-labels">Últimas saídas</h3>
+        <div className="text-and-buttons">
+          <h3 className="financeiro-labels" style={{marginRight:'1rem'}}>Últimas saídas</h3>
+          <div className="buttons">
           <Fab
             size="small"
             color="white"
@@ -182,20 +221,27 @@ const UltimasSaidas = () => {
           >
             <East />
           </Fab>
+          </div>
+          </div>
         </div>
         <div className="cont-header-financeiro">
+        <div className="buttons">
           <ColorButton
-            onClick={() => navigate("/administrador/financeiro/gerarPDFSaida")}
+            onClick={() =>
+              navigate("/administrador/financeiro/gerarPDFSaida")
+            }
             variant="contained"
             sx={{ borderRadius: "24px" }}
           >
             Gerar PDF
+            
           </ColorButton>
-        </div>
+          </div>
+          </div>
       </div>
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Código</TableCell>
@@ -205,7 +251,7 @@ const UltimasSaidas = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {saidas?.map((saida) => (
+            {saidas.map((saida) => (
               <TableRow
                 key={saida.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -259,9 +305,9 @@ const CardDashboard = () => {
         marginLeft: "2rem",
         marginTop: "1.5rem",
       }}
-    >
-      <Card sx={{ display: "flex" }}>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+    className="div-cards">
+      <Card sx={{ display: "inline" }}>
+        <Box sx={{ display: "flex", flexDirection: "line" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
             <Typography component="div" variant="h5">
               DashBoard
@@ -276,7 +322,7 @@ const CardDashboard = () => {
           </CardContent>
 
           <CardContent sx={{ flex: "1 0 auto" }}>
-            <div style={{ justifyContent: "flex-start", display: "flex" }}>
+            <div style={{ justifyContent: "flex-start", display: "flex",marginTop:'1rem' }}>
               <ColorButton
                 onClick={() => navigate("/administrador/painelFinanceiro")}
                 variant="contained"
@@ -303,16 +349,16 @@ const CardEntradasFinanceiro = () => {
   const theme = useTheme();
 
   return (
-    <div
+    <div className="div-cards"
       style={{
-        justifyContent: "flex-start",
+        justifyContent: "flex",
         display: "flex",
-        marginLeft: "2rem",
-        marginTop: "1.5rem",
+        marginLeft: "43.6rem",
+        marginTop: "-5.6rem",
       }}
     >
       <Card sx={{ display: "flex" }}>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Box sx={{ display: "flex", flexDirection: "flex" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
             <Typography component="div" variant="h5">
               Códigos Financeiro
@@ -327,7 +373,7 @@ const CardEntradasFinanceiro = () => {
           </CardContent>
 
           <CardContent sx={{ flex: "1 0 auto" }}>
-            <div style={{ justifyContent: "flex-start", display: "flex" }}>
+            <div style={{ justifyContent: "flex-start", display: "flex",marginTop:'1rem' }}>
               <ColorButton
                 onClick={() =>
                   navigate("/administrador/financeiro/codigosFinanceiro")
@@ -355,11 +401,12 @@ const Financeiro = () => {
     <div className="financeiro-tabelas-principal">
       <h1 style={{ marginLeft: "2rem" }}>Financeiro</h1>
       <div className="header_cont_cards_financeiro">
+        <UltimasRendas />
+        <UltimasSaidas />
+      </div>
         <CardDashboard />
         <CardEntradasFinanceiro />
-      </div>
-      <UltimasRendas />
-      <UltimasSaidas />
+      
     </div>
   );
 };
