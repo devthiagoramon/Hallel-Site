@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import {membroLoadPerfilById} from "../api/uris/MembroURLS";
 import {associadoListarPerfil} from "../api/uris/AssociadosURLS";
+import { getToken } from "../utils/utilToken";
 
 export async function solicitarCadastroService(cadastro) {
     let url = homeSolicitarCadastro();
@@ -104,7 +105,7 @@ export async function listarEventoComDestaqueService() {
     try {
         return (await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             )).data;
     } catch (e) {
         console.error(e)
@@ -126,7 +127,7 @@ export async function loadPerfil(idUser, roles) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return {
             isMembro: isMembro,

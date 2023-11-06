@@ -31,13 +31,14 @@ import {
     saidaUltimasSaidasAPI
 } from "../api/uris/FinanceiroURLS";
 import axios from "axios";
+import { getToken } from "../utils/utilToken";
 
 export async function allPagamentoAssociadoService() {
     let url = associadosGetAllPagamentosAPI();
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -51,7 +52,7 @@ export async function associadoListByMesAnoService(mes, ano) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -65,7 +66,7 @@ export async function listAssociadoByIdAdmService(idAssociado) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -79,7 +80,7 @@ export async function getPagamentoAssociadoByMesAnoAdmService(idAssociado, mes, 
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -100,7 +101,7 @@ export async function listDoacoesService(dataAux, require) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -114,7 +115,7 @@ export async function listDoacoesObjetosService() {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -128,7 +129,7 @@ export async function listDoacaoObjetoPorIdService(id) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -155,7 +156,7 @@ export async function recebiObjetoDoacaoService(id, isRecebido) {
     try {
         let axiosResponse = await axios
             .post(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse === 200;
     } catch (e) {
@@ -169,7 +170,7 @@ export async function doarObjetoService(doacaoObjeto) {
     try {
         let axiosResponse = await axios
             .post(url, {...doacaoObjeto},
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.status === 200;
     } catch (e) {
@@ -183,7 +184,7 @@ export async function doarDinheiroService(doacao) {
     try {
         let axiosResponse = await axios
             .post(url, {...doacao},
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse === 200;
     } catch (e) {
@@ -201,7 +202,7 @@ export async function listarSaidaCodigoPorCodigoService(codigo) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -215,7 +216,7 @@ export async function listarSaidaCodigosService() {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -229,7 +230,7 @@ export async function adicionarCodigoSaidaService(codigoSaida) {
     try {
         let axiosResponse = await axios
             .post(url, {codigoSaida},
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -242,7 +243,7 @@ export async function saidaUltimasSaidaService() {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -256,7 +257,7 @@ export async function saidaGetAllPaginasService(mes, ano) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -270,7 +271,7 @@ export async function saidaListarByPageAndDateService(numPage, mes, ano) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -288,7 +289,7 @@ export async function entradaUltimasEntradasService() {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -302,7 +303,7 @@ export async function entradaGetAllPaginasService(mes, ano) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -316,7 +317,7 @@ export async function entradaListarByPageAndDateService(numPage, mes, ano) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -330,7 +331,7 @@ export async function entradaGetByMesValorService(mes, ano) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -348,7 +349,7 @@ export async function metaGetPorcentagemPorMesEAnoService(mes, ano) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -362,7 +363,7 @@ export async function metaListarPorMesAnoService(mes, ano) {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -376,7 +377,7 @@ export async function metaAlterarPorMesAnoService(mes, ano, novaMeta) {
     try {
         let axiosResponse = await axios
             .put(url, {},
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.status === 200;
     } catch (e) {
@@ -396,7 +397,7 @@ export async function codigoEntradaCriarService(codigoEntrada) {
     try {
         let axiosResponse = await axios
             .post(url, {...codigoEntrada},
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.status === 200;
     } catch (e) {
@@ -410,7 +411,7 @@ export async function codigoEntradaListarService() {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -424,7 +425,7 @@ export async function codigoEntradaEditarService(id, novoCodigo) {
     try {
         let axiosResponse = await axios
             .put(url, {...novoCodigo},
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.status === 200;
     } catch (e) {
@@ -438,7 +439,7 @@ export async function codigoEntradaDeletarService(id) {
     try {
         let axiosResponse = await axios
             .delete(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.status === 200;
     } catch (e) {
@@ -454,7 +455,7 @@ export async function codigoSaidaCriarService(codigoEntrada) {
     try {
         let axiosResponse = await axios
             .post(url, {...codigoEntrada},
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.status === 200;
     } catch (e) {
@@ -468,7 +469,7 @@ export async function codigoSaidaListarService() {
     try {
         let axiosResponse = await axios
             .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.data;
     } catch (e) {
@@ -482,7 +483,7 @@ export async function codigoSaidaEditarService(id, novoCodigo) {
     try {
         let axiosResponse = await axios
             .put(url, {...novoCodigo},
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.status === 200;
     } catch (e) {
@@ -496,7 +497,7 @@ export async function codigoSaidaDeletarService(id) {
     try {
         let axiosResponse = await axios
             .delete(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+                {headers: {Authorization: getToken()}}
             );
         return axiosResponse.status === 200;
     } catch (e) {

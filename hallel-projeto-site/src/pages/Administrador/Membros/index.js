@@ -32,6 +32,9 @@ function Filtro() {
 
 function MembrosAdministrador() {
     const [membro, setMembro] = useState()
+
+
+    
     useMemo(() => {
          membroListarAdmService().then((response) => {
             setMembro(response);
@@ -93,7 +96,7 @@ function MembrosAdministrador() {
         </Search>
       </div> */}
             <label>Membros</label>
-            {membro.length == 0 ?
+            {membro?.length === 0 ?
                 <div className="progressCircle" style={{marginBottom: "10em"}}>
                     <CircularProgress/>
                 </div>

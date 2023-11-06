@@ -1,12 +1,13 @@
 import {cursoCriar, cursoEditarById, cursoGetParticipantes, cursoListarById} from "../api/uris/CursosURLS";
 import axios from "axios";
+import { getToken } from "../utils/utilToken";
 
 export async function cursoCriarService(cursoNew) {
     let url = cursoCriar()
     let response = false
     return await axios.post
     (url,
-        {headers: {Authorization: localStorage.getItem("token")}})
+        {headers: {Authorization: getToken()}})
         .then((res) => {
             response = res.status;
             return response === 200;
@@ -22,7 +23,7 @@ export function cursoGetParticipantesService(idCurso) {
     let response = []
     axios.get
     (url,
-        {headers: {Authorization: localStorage.getItem("token")}})
+        {headers: {Authorization: getToken()}})
         .then((res) => {
             response = res.data;
             return response;
@@ -38,7 +39,7 @@ export function cursoListarPorIdService(idCurso) {
     let response = undefined
     axios.get
     (url,
-        {headers: {Authorization: localStorage.getItem("token")}})
+        {headers: {Authorization: getToken()}})
         .then((res) => {
             response = res.data;
             return response;
@@ -54,7 +55,7 @@ export function cursoEditarPorIdService(idCurso, cursoNew) {
     let response = false
     axios.put
     (url,
-        {headers: {Authorization: localStorage.getItem("token")}})
+        {headers: {Authorization: getToken()}})
         .then((res) => {
             response = res.status
             return response === 200;
