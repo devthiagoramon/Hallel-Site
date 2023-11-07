@@ -21,6 +21,7 @@ import {
     localEventoListarById
 } from "../api/uris/EventosURLS";
 import axios from "axios";
+import { getToken } from "../utils/utilToken";
 
 
 /*
@@ -32,7 +33,7 @@ export async function listarTodosEventosUsuarioService() {
     try {
         let axiosResponse = await axios.get(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.data;
@@ -47,7 +48,7 @@ export async function listarTodosEventosAdmService() {
     try {
         let axiosResponse = await axios.get(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.data;
@@ -62,7 +63,7 @@ export async function listarTodosEventosArquivadosService() {
     try {
         let axiosResponse = await axios.get(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.data;
@@ -89,7 +90,7 @@ export async function eventoIsInscritoService(idEvento) {
     let url = eventoUsuarioIsInscrito(idEvento, localStorage.getItem("HallelId"));
     try {
         let axiosResponse = await axios
-            .get(url, {headers: {Authorization: localStorage.getItem("token")}});
+            .get(url, {headers: {Authorization: getToken()}});
         return axiosResponse.data;
     } catch (e) {
         console.error(e);
@@ -101,7 +102,7 @@ export async function eventoVerifyStatusPagamentoService(idEvento) {
     let url = eventoVerifyStatusPagamentoUser(idEvento, localStorage.getItem("HallelId"));
     try {
         let axiosResponse = await axios
-            .get(url, {headers: {Authorization: localStorage.getItem("token")}});
+            .get(url, {headers: {Authorization: getToken()}});
         return axiosResponse.data;
     } catch (e) {
         console.error(e);
@@ -116,7 +117,7 @@ export async function eventoAdicionarEventoService(eventos) {
             ...eventos
         }, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         })
     } catch (e) {
@@ -129,7 +130,7 @@ export async function eventoListarParticipantesService(idEvento) {
     try {
         let axiosResponse = await axios.get(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.data;
@@ -144,7 +145,7 @@ export async function eventoListarPorIdService(idEvento) {
     try {
         let axiosResponse = await axios.get(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.data;
@@ -160,7 +161,7 @@ export async function eventoAtualizarService(idEvento, eventoNew) {
             ...eventoNew
         }, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.status === 200;
@@ -175,7 +176,7 @@ export async function arquivarEventoService(idEvento) {
     try {
         let axiosResponse = await axios.get(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse === 200;
@@ -190,7 +191,7 @@ export async function desarquivarArquivoService(idEvento) {
     try {
         let axiosResponse = await axios.get(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.status === 200;
@@ -209,7 +210,7 @@ export async function eventoListarDespesasPorIdEventoService(idEvento) {
     try {
         let axiosResponse = await axios.get(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.data;
@@ -226,7 +227,7 @@ export async function eventoAddDespesasParaEventoPorIdService(idEvento, despesaE
             ...despesaEvento
         }, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.status === 200;
@@ -241,7 +242,7 @@ export async function eventoDeletarDespesaPorIdEIdEventoService(idEvento, idDesp
     try {
         let axiosResponse = await axios.delete(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.status === 200;
@@ -256,7 +257,7 @@ export async function eventoEditarDespesaPorIdEIdEventoService(idEvento, idDespe
     try {
         let axiosResponse = await axios.put(url, {...despesaNew}, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.status === 200;
@@ -275,7 +276,7 @@ export async function eventoAdicionarLocalEventoService(localEvento) {
     try {
         let axiosResponse = await axios.post(url, {...localEvento}, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.status === 200;
@@ -290,7 +291,7 @@ export async function eventoListarLocalEventosService() {
     try {
         let axiosResponse = await axios.get(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.data;
@@ -306,7 +307,7 @@ export async function eventoListarLocalEventoPorId(idLocalEvento) {
         let axiosResponse = await axios.get(url,
             {
                 headers: {
-                    Authorization: localStorage.getItem("token")
+                    Authorization: getToken()
                 }
             });
         return axiosResponse.data;
@@ -323,7 +324,7 @@ export async function eventoEditarLocalEventoPorIdService(idLocalEvento, localEv
             {...localEventoNew},
             {
                 headers: {
-                    Authorization: localStorage.getItem("token")
+                    Authorization: getToken()
                 }
             });
         return axiosResponse.status === 200;
@@ -338,7 +339,7 @@ export async function eventoDeletarLocalEventoPorId(idLocalEvento) {
     try {
         let axiosResponse = await axios.delete(url, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: getToken()
             }
         });
         return axiosResponse.status === 200;
