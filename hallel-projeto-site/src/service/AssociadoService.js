@@ -5,6 +5,7 @@ import {
     associadoMatricularCurso, associadoPagarAssociacaoAPI
 } from "../api/uris/AssociadosURLS";
 import axios from "axios";
+import { getToken } from "../utils/utilToken";
 
 
 export async function associadoListarMeusCursosService(idAssociado) {
@@ -12,7 +13,7 @@ export async function associadoListarMeusCursosService(idAssociado) {
     let response = [];
     return axios
         .get(url,
-            {headers: {Authorization: localStorage.getItem("token")}}
+            {headers: {Authorization: getToken()}}
         ).then((res) => {
             response = res.data;
             return response;
@@ -27,7 +28,7 @@ export async function associadoMatricularCursoService(idAssociado, idCurso) {
     let response = false;
     return axios
         .get(url,
-            {headers: {Authorization: localStorage.getItem("token")}}
+            {headers: {Authorization: getToken()}}
         ).then((res) => {
             response = res.status;
             return response === 200;
@@ -42,7 +43,7 @@ export async function associadoListarPagamentoPerfilAssociadoService(idAssociado
     let response = undefined;
     return axios
         .get(url,
-            {headers: {Authorization: localStorage.getItem("token")}}
+            {headers: {Authorization: getToken()}}
         ).then((res) => {
             response = res.data;
             return response;
@@ -57,7 +58,7 @@ export async function associadoPagarAssociacaoService(pagamentoAssociacao) {
     let response = false;
     return axios.post
     (url, {...pagamentoAssociacao},
-        {headers: {Authorization: localStorage.getItem("token")}})
+        {headers: {Authorization: getToken()}})
         .then((res) => {
             response = res.status
             return response === 200;
@@ -73,7 +74,7 @@ export async function associadoGetCartaoCreditoService(idAssociado) {
     let response = undefined
     return axios.get
     (url,
-        {headers: {Authorization: localStorage.getItem("token")}})
+        {headers: {Authorization: getToken()}})
         .then((res) => {
             response = res.data
             return response;

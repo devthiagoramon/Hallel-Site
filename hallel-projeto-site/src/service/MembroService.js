@@ -5,18 +5,18 @@ import {
     virarAssociadoAPI
 } from "../api/uris/MembroURLS";
 import axios from "axios";
+import { getToken } from "../utils/utilToken";
 
 export async function membroListarAdmService(){
     let url = membrosListar()
     try{
         let axiosResponse = await axios
                   .get(url,
-                                {headers:{Authorization: localStorage.getItem("token")}}
+                                {headers:{Authorization: getToken()}}
                             );
         return axiosResponse.data;
     }catch(e){
-        console.error(e)
-        return [];
+        throw new Error("Can not list Members.")
     }
 }
 
@@ -25,12 +25,11 @@ export async function virarAssociadoService(virarAssociado){
     try{
         let axiosResponse = await axios
                   .post(url, {...virarAssociado},
-                                {headers:{Authorization: localStorage.getItem("token")}}
+                                {headers:{Authorization: getToken()}}
                             );
         return axiosResponse.status === 200;
     }catch(e){
-        console.error(e)
-        return false;
+        throw new Error("Can not make the user a member.")
     }
 }
 
@@ -39,7 +38,7 @@ export async function verifyMembroParticiparEventoService(iduser){
     try{
         let axiosResponse = await axios
                   .get(url,
-                                {headers:{Authorization: localStorage.getItem("token")}}
+                                {headers:{Authorization: getToken()}}
                             );
         return axiosResponse.data;
     }catch(e){
