@@ -103,7 +103,7 @@ const HeaderHallel = () => {
                 <Link to={"/"}>Ministérios</Link>
               </li>
               <li>
-                <Link to={"/"}>Doações</Link>
+                <Link to={"/doacoes"}>Doações</Link>
               </li>
               <li>
                 <LabelForDropDown
@@ -141,8 +141,8 @@ const HeaderHallel = () => {
         openDropDown={openInfoIgreja}
         titulo={"Igreja"}
       >
-        <LinkForDropDown to={"/"} titulo={"Fundadora"} />
-        <LinkForDropDown to={"/"} titulo={"Quem somos"} />
+        <LinkForDropDown to={"/fundadora"} titulo={"Fundadora"} />
+        <LinkForDropDown to={"/sobre"} titulo={"Quem somos"} />
         <LinkForDropDown to={"/"} titulo={"Sorteio"} />
       </DropDownHeaderHallel>
       <DropDownHeaderHallel

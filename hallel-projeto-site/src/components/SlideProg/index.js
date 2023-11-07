@@ -1,3 +1,5 @@
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import Img1 from "../../images/progSanta.jpg";
 import Img2 from "../../images/terca.jpg";
 import Img3 from "../../images/quarta.jpg";
@@ -7,46 +9,49 @@ import Img6 from "../../images/sabado.jpg";
 import Img7 from "../../images/domingo.jpg";
 import "./styleProg.css";
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-
-//  images controls
 const SlideProg = (props) => {
   const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7];
 
   const carrosel = useRef();
-  const [width, setWidht] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
-    setWidht(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth);
-  }, []);
+    setWidth(carrosel.current?.offsetWidth);
+
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const handleDotClick = (index) => {
+    setCurrentImage(index);
+  };
 
   return (
     <div className="body-programacao">
       <h1 id="title">Programação Semanal</h1>
       <div className="containerCarroseulProg">
-        <motion.div
-          ref={carrosel}
-          className="carrousel"
-          initial={{ x: 10 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.8 }}
-          whileTap={{ cursor: "grabbing" }}
-        >
+        <div className="carrousel" ref={carrosel}>
           <motion.div
             className="inner"
-            drag="x"
-            dragConstraints={{ right: 0, left: -width }}
+            style={{
+              display: 'flex',
+              transition: 'transform 0.5s ease-in-out',
+              transform: `translateX(${-currentImage * (100 / images.length)}%)`
+            }}
           >
-            {images?.map((imagem2) => {
+            {images?.map((imagem2, index) => {
               return (
                 <motion.div
                   className="imagem2"
-                  key={imagem2}
+                  key={index}
                   whileHover={{ scale: "1.02" }}
+                  style={{ flex: `0 0 ${100 / images.length}%` }}
                 >
                   <img src={imagem2} alt="img" />
-
                   <div className="legenda2">
                     <a href="">Saiba mais</a>
                   </div>
@@ -54,10 +59,19 @@ const SlideProg = (props) => {
               );
             })}
           </motion.div>
-        </motion.div>
+        </div>
+        <div className="dots">
+          {images.map((_, index) => (
+            <div
+              key={index}
+              className={`dot ${index === currentImage ? 'active' : ''}`}
+              onClick={() => handleDotClick(index)}
+            ></div>
+          ))}
+        </div>
       </div>
     </div>
-  );
+  );  
 };
 
 export default SlideProg;

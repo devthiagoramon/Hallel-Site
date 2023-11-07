@@ -75,16 +75,16 @@ const GerarPDFEntrada = () => {
       <div className="body_gerar_pdf">
         <div className="esquerda_body_gerar_pdf">
           <div className="informacoes_gerar_pdf">
-            <Typography variant="h6" style={{fontWeight:'bold', marginTop:'10px',fontSize:'25px',marginBottom:'-15px'}}>
-              Informações de como funciona para gerar o PDF:
+            <Typography variant="h6" style={{fontWeight:'bold', marginTop:'10px',fontSize:'20px',marginBottom:'-15px'}}>
+            Instruções sobre a geração do PDF:
             </Typography>
             <ul>
-              <li>Você pode verificar todos os dados.</li>
+              <li>1. Examine cuidadosamente todos os dados disponíveis;</li>
               <li>
-                Você pode adicionar uma descrição a cada linha da tabela.
+                2. Acrescente uma descrição apropriada a cada entrada na tabela;
               </li>
               <li>
-                Selecione um mês para visualizar informações referente ao mesmo.
+                3. Escolha um mês para visualizar informações específicas correspondentes ao período selecionado.
               </li>
               
             </ul>
@@ -236,7 +236,7 @@ const GerarPDFEntrada = () => {
                 
               >
               
-                Pré-Visualizar
+                Veja o PDF
               </Button>
             )}
           </div>

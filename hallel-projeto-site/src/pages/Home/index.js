@@ -26,7 +26,7 @@ function Home() {
           justifyContent: "space-evenly",
           paddingLeft: "10rem",
           paddingRight: "2rem",
-          marginTop: '-40px',
+          marginTop: '-80px',
           
         }}
       >
@@ -43,11 +43,7 @@ function Home() {
           <PanelPedido />*/}
         </div>
 
-        <div className="facebook-area">
-          <label>Siga-nos no facebook</label>
-
-          <FacebookPlugin />
-        </div>
+        
       </div>
     </div>
   );

@@ -108,7 +108,7 @@ function Entrar() {
           <div className='terms-div'>
             <p className='terms'>Ao continuar, você aceita nossos
               <br />
-              <a href="#" className='register-terms'> Termos de condições </a> e
+              <a href="#" className='register-terms'> Termos de condições </a> e <br/>
               <a href="#" className='register-privace'> Política de privacidade</a>
             </p>
           </div>

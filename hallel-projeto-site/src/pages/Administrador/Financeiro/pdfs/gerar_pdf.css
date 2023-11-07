@@ -5,13 +5,14 @@
 }
 
 .titulo{
-  font-size: 50px;
-  margin-top: 60px;
+  font-size: 40px;
+  margin-top: 80px;
   font-weight: normal;
   color: #003015;
   text-align: justify;
-  margin-left: -2rem;
+  margin-left: -3.5rem;
 }
+
 .cont_header_gerar_pdf-selecionar_mes_gerar_pdf{
   margin-top: 40px;
 }
@@ -151,15 +152,52 @@
 }
 
 .informacoes_gerar_pdf{
-  background-color: #003015;
+  background-color: none;
   width: 900px;
   height: 190px;
-  text-align: center;
-  color: white;
+  text-align: flex-start;
+  color: #003015;
   font-size: 20px;
   margin-top: 60px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   border-radius: 15px;
 }
 
+@media screen and (max-width: 768px) {
 
+  .titulo{
+    margin-top: auto;
+  }
+
+  .esquerda_body_gerar_pdf{
+    
+  }
+  .body_gerar_pdf {
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .informacoes_gerar_pdf{
+    width: 100%;
+    margin-bottom: 100rem;
+  }
+
+  .tabela_gerar_pdf,
+  .body_preview_gerar_pdf {
+    width: 100%;
+  }
+
+  .body_preview_gerar_pdf {
+    height: auto;
+  }
+
+  .body_preview_gerar_pdf > div {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Estilos para tablets (largura de tela entre 769px e 1024px) */
+  
+}

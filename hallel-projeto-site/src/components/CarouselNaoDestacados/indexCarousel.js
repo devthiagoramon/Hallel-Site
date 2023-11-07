@@ -44,7 +44,7 @@ export default function CarouselNaoDestacados() {
                     height: 'auto',
                     maxWidth: '600px',
                     margin: '0 auto',
-                        
+                    
                       },
             }}
         >
@@ -64,7 +64,7 @@ export default function CarouselNaoDestacados() {
                     touch
                     showIndicators
                 >
-                    {eventos?.map((evento) => {
+                    {eventos.map((evento) => {
                         return (
                             <Carousel.Item interval={5000}>
                                 <div

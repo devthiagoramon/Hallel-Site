@@ -184,7 +184,10 @@ const FormsTipoDoacao = () => {
             </>
           ) : (
             <OutlinedEmptyButtonHallel
-              style={{ padding: "1rem" }}
+              style={{ padding: "1rem",
+                        margin: '0 auto',
+                        marginBottom: '-100rem'
+            }}
               type="button"
               onClick={() => {
                 setValorDoacao(0);
@@ -197,9 +200,15 @@ const FormsTipoDoacao = () => {
         <OutlinedButtonHallel
           style={{
             padding: "1rem",
-            width: "50%",
+            width: "30%",
+            height:'4.5rem',
             fontSize: "30px",
-            justifySelf: "center",
+            margin: '0 auto',
+            position: 'absolute',
+            alignSelf:'center',
+            marginTop: '14rem',
+            
+
           }}
           type="submit"
         >

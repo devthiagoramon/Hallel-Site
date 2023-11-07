@@ -56,6 +56,10 @@ import HeaderHallel from "./components/HeaderHallel";
 import React from "react";
 import Footer from "./components/Footer";
 import DoacoesHallel from "./pages/DoacoesHallel";
+import TipoDoacao from "./pages/DoacoesHallel/SelecioneTipoDoacao";
+import PagamentoDoacao from "./pages/DoacoesHallel/PagamentoDoacao";
+
+
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
@@ -106,6 +110,8 @@ function RoutesApp() {
         <Route path="/descCurso/:idCurso" element={<DescCurso />} />
         <Route path="/atividades" element={<CursoAtividade />} />{" "}
         <Route path="/doacoes" element={<DoacoesHallel />} />
+        <Route path="/tipodoacao" element = {<TipoDoacao/>} />
+        <Route path="/pagamentoDoacao" element = {<PagamentoDoacao/>} />
         {/*</>
         ) : (
           ""

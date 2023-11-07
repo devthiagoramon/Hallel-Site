@@ -1,5 +1,4 @@
 .homepage{
-
     background-color: rgb(255, 255, 255);
     margin-bottom: 5%;
     font-family: "Inter", sans-serif;
@@ -80,9 +79,6 @@
   }
   @media screen and (max-width: 540px) {
 
-    .homepage{
-        width: 10px;
-    }
     .div-event{
       margin-top: 15rem;
   }

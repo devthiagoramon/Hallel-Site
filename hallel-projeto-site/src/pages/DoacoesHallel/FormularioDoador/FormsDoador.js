@@ -139,10 +139,11 @@ const FormsDoador = () => {
           isChecked={concordoInput}
           setIsChecked={setConcordoInput}
         />
+        
         <OutlinedButtonHallel
           style={{
             padding: "0.6rem 0",
-            marginTop: "50px",
+            marginTop: "-140px",
             width: "50%",
             alignSelf: "center",
             fontSize: "30px",

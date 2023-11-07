@@ -1,12 +1,13 @@
 .square-fundadora{
   background-color: #003617;
-  width: 1300px;
-  margin-left: -100px;
+  width: 1465px;
+  margin-left: -125px;
   margin-top: -22px;
   border-radius: 17px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  height: 700px;
+  height: 600px;
+
 }
 
 .fundadora-text{
@@ -17,12 +18,10 @@
   margin-top: 37px;
   text-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
 }
-
 .conteudo-fundadora{
   margin-top: 25px;
   
 }
-
 .conteudo-fundadora p {
   color: aliceblue;
   margin-left: 50px;
@@ -35,12 +34,12 @@
 
 .fundadora-img {
   width: 42%;
-  margin-left: 850px;
+  margin-left: 930px;
   margin-top: -550px; /* Valor negativo para subir o texto */
 }
 
 .nome-fundadora{
-  margin-left: 1000px;
+  margin-left: 1112px;
   margin-top: -35px;
   font-size: 17px;
   color: aliceblue;
@@ -48,10 +47,9 @@
 
 @media screen and (max-width:1400){
   .square-fundadora{
-    width: 10px;
-    margin-left: 0px;
+    width: 1000px;
   }
   .fundadora-img{
-    margin-left: 0px;
+    margin-left: 880px;
   }
 }
