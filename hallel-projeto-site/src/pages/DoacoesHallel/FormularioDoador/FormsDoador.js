@@ -25,7 +25,7 @@ const yupErrors = Yup.object().shape({
   concordo: Yup.boolean().required("Recusa das políticas de privacidade"),
 });
 
-const FormsDoador = () => {
+const FormsDoador = (props) => {
   const { handleSubmit, register, formState, getValues } = useForm({
     mode: "all",
     resolver: yupResolver(yupErrors),
@@ -43,6 +43,8 @@ const FormsDoador = () => {
 
   const handleSubmitData = (data) => {
     console.log("submit", data);
+    props.setEtapa(2)
+
   };
 
   return (

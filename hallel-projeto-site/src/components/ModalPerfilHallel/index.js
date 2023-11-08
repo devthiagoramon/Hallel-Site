@@ -1,6 +1,6 @@
 import React from "react";
 import "./modal_perfil.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 import { BsPersonFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
@@ -8,6 +8,8 @@ import { selectInfosModalUser } from "../../pages/Entrar/loginSlice";
 
 const ModalPerfilHallel = ({ openModal, setOpenModal }) => {
   const { nome, imagem } = useSelector(selectInfosModalUser);
+  const navigator = useNavigate()
+
   return (
     <>
       {openModal && (
@@ -52,6 +54,7 @@ const ModalPerfilHallel = ({ openModal, setOpenModal }) => {
               onClick={()=>{
                 localStorage.clear()
                 window.location.reload()
+                navigator('/')
               }}
             >
               Sair da conta

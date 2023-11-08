@@ -12,7 +12,7 @@ function EventoUser() {
     const [eventos, setEventos] = useState();
     useMemo(() => {
          listarTodosEventosUsuarioService().then((response) => {
-            setEventos(response.data)
+            setEventos(response)
         });
     }, [])
 

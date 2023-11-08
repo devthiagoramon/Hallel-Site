@@ -1,0 +1,28 @@
+.div-main-doacao-obj{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+#titleDoacao{
+    color: #165336;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.container-doacoes-form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 10vh;
+    border: 3px dashed #165336;
+}
+
+.btnAddDoacao{
+    border: none;
+    background: none;
+}
+

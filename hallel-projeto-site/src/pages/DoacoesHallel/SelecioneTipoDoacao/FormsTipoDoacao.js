@@ -24,7 +24,7 @@ const yupErrors = Yup.object().shape({
     .required("Especifique outro valor"),
 });
 
-const FormsTipoDoacao = () => {
+const FormsTipoDoacao = (props) => {
   const { register, handleSubmit, formState, getValues } = useForm({
     mode: "all",
     resolver: yupResolver(yupErrors),
@@ -104,6 +104,11 @@ const FormsTipoDoacao = () => {
               isChecked={doarObjeto}
               setIsChecked={() => setDoarObjeto(!doarObjeto)}
             />
+            {doarObjeto === true ? (
+              (props.setEtapa(2.2), setDoarObjeto(false))
+            ) : (
+              <></>
+            )}
           </div>
         </div>
         {periodo === "mensalmente" && (
@@ -184,10 +189,11 @@ const FormsTipoDoacao = () => {
             </>
           ) : (
             <OutlinedEmptyButtonHallel
-              style={{ padding: "1rem",
-                        margin: '0 auto',
-                        marginBottom: '-100rem'
-            }}
+              style={{
+                padding: "1rem",
+                margin: "0 auto",
+                marginBottom: "-100rem",
+              }}
               type="button"
               onClick={() => {
                 setValorDoacao(0);
@@ -201,20 +207,18 @@ const FormsTipoDoacao = () => {
           style={{
             padding: "1rem",
             width: "30%",
-            height:'4.5rem',
+            height: "4.5rem",
             fontSize: "30px",
-            margin: '0 auto',
-            position: 'absolute',
-            alignSelf:'center',
-            marginTop: '14rem',
-            
-
+            margin: "0 auto",
+            position: "absolute",
+            alignSelf: "center",
+            marginTop: "14rem",
           }}
           type="submit"
         >
           Continuar
         </OutlinedButtonHallel>
-      </form> 
+      </form>
     </div>
   );
 };
