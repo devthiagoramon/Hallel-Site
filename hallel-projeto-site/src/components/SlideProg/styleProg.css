@@ -2,7 +2,9 @@
 
 .body-programacao {
     display: block;
-    color: #35404B;
+    color: #003617;
+    height: 10rem;
+    margin-bottom: 15rem;
     font-family: 'Inter';
     text-align: center; /* Centraliza o texto */
 }
@@ -57,11 +59,10 @@
 }
 
 .legenda2 {
-    background: linear-gradient(180deg, rgba(0,0,0,0) 9.75%, rgba(0,0,0,0.75) 80%);
+    background-color: #003617;
     display: flex;
     position: absolute;
     bottom: 13.5%;
-    visibility: hidden;
     border-radius: 10px;
     align-items: flex-end;
     width: 92.5%;
@@ -74,7 +75,7 @@
     margin-bottom: 1.10rem;
     margin-left: 1.10rem;
     padding: 5px;
-    background: none;
+    background-color: #003617;
     border-radius: 5px;
     font-size: 36px;
     color: #fafafa;

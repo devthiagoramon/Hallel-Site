@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import Img1 from "../../images/progSanta.jpg";
-import Img2 from "../../images/terca.jpg";
-import Img3 from "../../images/quarta.jpg";
-import Img4 from "../../images/quinta.jpg";
-import Img5 from "../../images/sexta.jpg";
-import Img6 from "../../images/sabado.jpg";
-import Img7 from "../../images/domingo.jpg";
+import Img1 from "../../images/Segunda.png";
+import Img2 from "../../images/Terça.png";
+import Img3 from "../../images/Quarta.png";
+import Img4 from "../../images/Quinta.png";
+import Img5 from "../../images/Sexta.png";
+import Img6 from "../../images/Sabado.png";
+import Img7 from "../../images/Domingo.png";
 import "./styleProg.css";
 
 const SlideProg = (props) => {
