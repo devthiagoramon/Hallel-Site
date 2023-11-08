@@ -9,8 +9,9 @@ import {Button, IconButton, Switch} from "@mui/material";
 import {AddLocationRounded} from "@mui/icons-material";
 import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
 import {MuiFileInput} from "mui-file-input";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {eventoAtualizarService, eventoListarPorIdService} from "../../../../service/EventoService";
+import formatarData from "../../../../utils/Functions"
 
 const EditarEventoAdm = () => {
     const tituloDiv = useRef();
@@ -23,9 +24,14 @@ const EditarEventoAdm = () => {
     const [btnHabilitado, setbtnHabilitado] = useState(false);
     const [isRequest, setisRequest] = useState(false);
 
+    const navigator = useNavigate()
+
     const [anchorEl, setAnchorEl] = useState(null);
 
     const {idEvento} = useParams();
+
+    
+    
 
     const eventoTemplate = {
         titulo: "",
@@ -41,22 +47,25 @@ const EditarEventoAdm = () => {
     const [eventoAntigo, seteventoAntigo] = useState(eventoTemplate);
 
     useEffect(() => {
-        let promise = eventoListarPorIdService();
-        let eventoTemp = promise.data;
-        seteventoAntigo(eventoTemp);
-        setevento({
-            titulo: eventoTemp.titulo,
-            descricao: eventoTemp.descricao,
-            date: eventoTemp.date,
-            horario: eventoTemp.horario,
-            localEventoRequest: eventoTemp.localEvento,
-            imagem: eventoTemp.imagem,
-            destaque: eventoTemp.destaque,
-        });
-        if (eventoTemp.palestrantes !== null && isRequest === false) {
-            loadInputsArray(eventoTemp.palestrantes);
-            setisRequest(true);
-        }
+
+        eventoListarPorIdService(idEvento).then((response)=>{
+            console.log(response)    
+            seteventoAntigo(response);
+            setevento({
+                titulo: response.titulo,
+                descricao: response.descricao,
+                date: response.date,
+                horario: response.horario,
+                localEventoRequest: response.localEvento,
+                imagem: response.imagem,
+                destaque: response.destaque,
+            });
+            if (response.palestrantes !== null && isRequest === false) {
+                loadInputsArray(response.palestrantes);
+                setisRequest(true);
+            }
+
+        }) 
     }, []);
 
     function loadInputsArray(arrayPalestrantes) {
@@ -148,7 +157,8 @@ const EditarEventoAdm = () => {
     const atualizarEvento = () => {
         eventoAtualizarService(idEvento, evento).then((response) => {
             if (response){
-                // deu certo
+                alert("Evento alterado")
+                navigator('/administrador/eventos')
             }else{
                 // deu errado
             }
@@ -223,7 +233,9 @@ const EditarEventoAdm = () => {
         <div>
             <div className="containerPrincipal">
                 <label>Editar evento</label>
-
+                <label id="btnCancelarEditarEvento" onClick={()=>
+                    navigator('/administrador/eventos')
+                }>Cancelar</label>
                 <div className="headCont">
                     <div className="head_cont_inputs">
                         <div className="head_cont_inputs_texts">
@@ -334,7 +346,7 @@ const EditarEventoAdm = () => {
                         <Tooltip title="Obrigatório" placement="right-start">
                             <input
                                 placeholder="11/11/2011"
-                                value={evento.date}
+                                value={formatarData(evento.date)}
                                 onChange={(e) =>
                                     setevento((prevState) => {
                                         return {...prevState, date: e.target.value};

@@ -49,6 +49,10 @@ const ModalPerfilHallel = ({ openModal, setOpenModal }) => {
               to={"/"}
               className={"links_perfil_modal"}
               style={{ color: "red" }}
+              onClick={()=>{
+                localStorage.clear()
+                window.location.reload()
+              }}
             >
               Sair da conta
             </Link>

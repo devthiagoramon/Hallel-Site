@@ -15,6 +15,7 @@ const ParticipantesEvento = () => {
     const [eventosParticipantes, setEventosParticipantes] = useState()
     useMemo(() => {
         eventoListarParticipantesService(id).then((response) => {
+            console.log(response)
             setEventosParticipantes(response);
         });
     }, []);
@@ -31,10 +32,7 @@ const ParticipantesEvento = () => {
                 marginTop: '40px', display: 'flex', justifyContent: 'center'
             }}>
 
-                {eventosParticipantes.length === 0 ? (
-
-                    <CircularProgress className="evento-loading-partipantes"/>
-                ) : eventosParticipantes.length == null ? (
+                {eventosParticipantes.length === null ? (
 
                     <Alert style={{margin: "5em 0"}} severity="info">Nenhum participante encontrado.</Alert>
                 ) : (

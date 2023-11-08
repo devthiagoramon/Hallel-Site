@@ -10,6 +10,7 @@ import {VscKebabVertical} from "react-icons/vsc";
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import {listarTodosEventosAdmService} from "../../../../service/EventoService";
+import formatarData from "../../../../utils/Functions";
 
 function Evento() {
 
@@ -25,6 +26,10 @@ function Evento() {
     const [tabelaVazia, setTabelaVazia] = useState(true);
     const [timer, setTimer] = useState(false);
     const navigator = useNavigate();
+
+
+
+   
 
     const [eventos, setEventos] = useState()
     useMemo(() => {
@@ -82,7 +87,7 @@ function Evento() {
                         />
                     </div>
                 ),
-                date: item.date,
+                date: formatarData(item.date),
                 horario: item.horario,
                 localizacao:
                     item.localEvento === null

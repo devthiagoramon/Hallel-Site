@@ -12,6 +12,18 @@
   margin: 1em 0;
 }
 
+.containerPrincipal > #btnCancelarEditarEvento{
+  font-size: 2em;
+  font-weight: 700;
+  color: red;
+  text-indent: 1.5em;
+  margin: 1em 0;
+  
+}
+.containerPrincipal > #btnCancelarEditarEvento:hover{
+  transform: scale(1.1);
+}
+
 .head_cont_inputs {
   width: 100%;
   display: flex;
