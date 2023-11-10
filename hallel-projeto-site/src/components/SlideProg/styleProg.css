@@ -1,98 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
-
-.body-programacao {
-    display: block;
-    color: #003617;
-    height: 10rem;
-    margin-bottom: 15rem;
-    font-family: 'Inter';
-    text-align: center; /* Centraliza o texto */
-}
-
-.containerCarroseulProg {
-    text-align: center;
-}
-
-.carrousel {
-    overflow: hidden;
-    position: relative;
-    max-width: 100%; /* Ajusta a largura máxima do carrossel */
-    margin: 0 auto; /* Centraliza o carrossel */
-}
-
-.inner {
+.produto {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.imagem2 {
-    box-sizing: border-box;
-    padding: 10px;
-    max-width: 1%; /* Ajusta a largura máxima da imagem */
-    margin: 0 auto; /* Centraliza a imagem */
-}
-
-.imagem2 img {
-    max-width: 100%;
-    max-height: 100%; /* Adicionado para garantir que a altura não ultrapasse */
-    width: auto;
-    height: auto;
-}
-
-.dots {
-    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin-top: 10px;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.dot.active {
-    background-color: #555;
-}
-
-.legenda2 {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(0.8);
+    transition: transform 0.3s;
     background-color: #003617;
-    display: flex;
-    position: absolute;
-    bottom: 13.5%;
-    border-radius: 10px;
-    align-items: flex-end;
-    width: 92.5%;
-    height: 25%;
-    left: 50%; /* Centraliza a legenda horizontalmente */
-    transform: translateX(-50%); /* Centraliza a legenda horizontalmente */
-} 
+  }
 
-.legenda2>a {
-    margin-bottom: 1.10rem;
-    margin-left: 1.10rem;
-    padding: 5px;
-    background-color: #003617;
-    border-radius: 5px;
-    font-size: 36px;
-    color: #fafafa;
-    border-width: 1px;
-    font-weight: 500;
-    font-family: 'Archivo', sans-serif;
-}
+  
+  
+  .produto img {
+    width: 100%;
+    max-height: 100%;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  
+  
+  .nome-produto {
+    font-weight: normal;
+    font-size: 28px;
+    text-align: start;
+    color: white;
+  }
+  
+  .valorPromocao {
+    font-style: bold;
+    font-size: 19px;
+    font-weight: bold;
+    color: #C1F4D3;
+    text-align: start;
+    text-decoration: underline;
+  }
+  
+  .linha-separadora {
+    border: none;
+    border-top: 2px solid #ccc; 
+    margin: 5px 0; 
+    color: transparent;
+  }
+  
+  .destaque{
+  
+    margin-left: 20px;
+    margin-top: 25px;
+    color: #081F39;
+    
+  }
 
-.imagem2:hover .legenda2 {
-    visibility: visible;
-}
-
-.legenda2:hover {
-    color: #fafafa;
-} 
-
-.imagem2:hover {
-    border-width: 2px;
-    scale: 1.009;
-}
+  
+.slick-prev, .slick-next {
+    color: #081F39; 
+    background-color: transparent; 
+    width: 40px; 
+    height: 40px;
+  }
+  
+  .slick-prev:before, .slick-next:before {
+    font-size: 40px; 
+  }
+  
+  .slick-prev {
+    left: 0; 
+  }
+  
+  .slick-next {
+    right: 1; 
+  }
+  
