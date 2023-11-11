@@ -44,4 +44,4 @@ const ButtonTemplate = styled.button`
     `
 
 export {TextOnlyButtonHallel, OutlinedEmptyButtonHallel, OutlinedBlurButtonHallel,
-    OutlinedButtonHallel, ElevatedButtonHallel}
+    OutlinedButtonHallel, ElevatedButtonHallel, ButtonTemplate}

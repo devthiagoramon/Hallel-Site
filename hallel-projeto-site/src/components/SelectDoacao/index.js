@@ -15,6 +15,8 @@ const SelectDoacao = (props) =>{
                     color: '#165336',
                     marginLeft: '10px'
                 }}
+                value={props.value}
+                onChange={props.onChange}
             >
                 {props.children}
             </select>

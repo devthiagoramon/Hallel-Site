@@ -10,6 +10,8 @@ const InputDoacao = (props) => {
             }} >{props.label}</label>
             <input 
                 type="text"
+                value={props.valie}
+                onChange={props.onChange}
                 style={{
                     borderBottom: '1px solid #165336',
                     width: '100px',

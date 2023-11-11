@@ -2,10 +2,35 @@ import React from "react";
 
 import "./doacoesObjAlimentos.css";
 import SelectDoacao from "../../../components/SelectDoacao";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiFillPlusCircle, AiOutlinePlus } from "react-icons/ai";
 import InputDoacao from "../../../components/InputDoacao";
+import AddComponentDoacao from "./AddComponent";
+import { useState } from "react";
+
+import { GiConfirmed } from 'react-icons/gi'
 
 export default function DoacoesObjAlimentos(props) {
+
+
+  const [isRegistred, setIsRegistred] = useState(false);
+  const [quantidade, setQuantidade] = useState(0);
+
+  const replicarComponente = () => {
+    if (quantidade <= 5) {
+      setQuantidade(quantidade + 1);
+    } else {
+      alert('você só pode doar até 5 itens.')
+    }
+  };
+
+  const apagarComponente = () => {
+    if (quantidade === 0) {
+      alert("você não pode apagar este componente")
+    }else{
+      setQuantidade(quantidade - 1)
+    }
+  }
+
   return (
     <div className="div-main-doacao-obj">
       <div
@@ -24,18 +49,60 @@ export default function DoacoesObjAlimentos(props) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          width: "80%",
-          flexDirection: "row",
+          width: "100%",
+          height: "20vh",
+          flexDirection: 'column',
+          marginTop: '10px',
         }}
       >
-        <div className="container-doacoes-form">
-          <SelectDoacao label="Informe o item para doação: ">
-            <option>Brinquedos</option>
-          </SelectDoacao>
-          <InputDoacao label="Quantidade: "/>
-        </div>
+        <AddComponentDoacao
+          onClick={replicarComponente}
+          onCancel={apagarComponente}
+        />
+      </div>
 
-        <AiOutlinePlus color="#165336" size={45} style={{marginLeft: '25px'}}/>
+      {[...Array(quantidade)].map((_, index) => (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "20vh",
+            flexDirection: 'column',
+            marginTop: '10px',
+            marginLeft: '20px'
+          }}
+        >
+          <AddComponentDoacao
+            key={index}
+            onClick={replicarComponente}
+            onCancel={apagarComponente}
+          />
+        </div>
+      ))}
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "20vh",
+      }}>
+        <div className="div-button-registrar-doacao">
+          <div className="button-registrar-doacao" onClick={() => setIsRegistred(!isRegistred)}>
+            <label>
+              Registrar
+            </label>
+          </div>
+          {isRegistred ?
+            <GiConfirmed
+              style={{ margin: '10px' }}
+              size={30}
+            />
+            :
+            <></>
+          }
+        </div>
       </div>
     </div>
   );
