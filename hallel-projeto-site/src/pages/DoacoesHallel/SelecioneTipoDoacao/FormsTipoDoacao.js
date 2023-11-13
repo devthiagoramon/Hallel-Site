@@ -215,6 +215,7 @@ const FormsTipoDoacao = (props) => {
             marginTop: "14rem",
           }}
           type="submit"
+          onClick={props.setEtapa(3)}
         >
           Continuar
         </OutlinedButtonHallel>

@@ -97,10 +97,10 @@ const HeaderHallel = () => {
                 <Link to={"/"}>Inicio</Link>
               </li>
               <li>
-                <Link to={"/"}>Eventos</Link>
+                <Link to={"/eventos"}>Eventos</Link>
               </li>
               <li>
-                <Link to={"/"}>Ministérios</Link>
+                <Link to={"/ministerios"}>Ministérios</Link>
               </li>
               <li>
                 <Link to={"/doacoes"}>Doações</Link>

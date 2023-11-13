@@ -10,11 +10,11 @@ import {eventoListarParticipantesService} from "../../../../service/EventoServic
 
 const ParticipantesEvento = () => {
 
-    const id = useParams();
+    const {idEvento} = useParams();
 
-    const [eventosParticipantes, setEventosParticipantes] = useState()
+    const [eventosParticipantes, setEventosParticipantes] = useState([{}])
     useMemo(() => {
-        eventoListarParticipantesService(id).then((response) => {
+        eventoListarParticipantesService(idEvento).then((response) => {
             console.log(response)
             setEventosParticipantes(response);
         });

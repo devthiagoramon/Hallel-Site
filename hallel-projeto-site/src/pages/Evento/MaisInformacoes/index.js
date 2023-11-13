@@ -30,7 +30,7 @@ const InfoEventos2 = ({evento, hide}) => {
     const navigate = useNavigate();
 
     useMemo(() => {
-        eventoIsInscritoService(evento.id, localStorage.getItem("HallelId")).then((responseInscrito) => {
+        eventoIsInscritoService(evento.id, localStorage.getItem("idHallel")).then((responseInscrito) => {
             if (responseInscrito) {
                 setIsInscrito(responseInscrito);
                 setLoadingIsInscrito(false);
@@ -163,7 +163,7 @@ const Info2 = ({estado, setEstado, evento}) => {
                     </ul>
                 </div>
                 <div className="participantes">
-                    <h4>Participantes:</h4>
+                    <h4>Palestrantes:</h4>
                     <ul className="topicosInfo">
                         {evento.palestrantes?.map((palestrante) => {
                             return <li>{palestrante}</li>;
