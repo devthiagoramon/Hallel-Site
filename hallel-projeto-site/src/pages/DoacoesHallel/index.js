@@ -6,7 +6,7 @@ import PagamentoDoacao from "./PagamentoDoacao";
 import DoacoesObjAlimentos from "./DoaçãoObjAlimentos";
 
 const DoacoesHallel = () => {
-  const [etapa, setEtapa] = useState(1  );
+  const [etapa, setEtapa] = useState(2);
 
   return (
     <div className="container-doacoes">
