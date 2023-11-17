@@ -10,6 +10,7 @@
     transform: scale(0.8);
     transition: transform 0.3s;
     background-color: #003617;
+    margin-bottom: 3rem;
   }
 
   
@@ -30,6 +31,7 @@
     font-size: 28px;
     text-align: start;
     color: white;
+    
   }
   
   .valorPromocao {
@@ -40,20 +42,14 @@
     text-align: start;
     text-decoration: underline;
   }
-  
-  .linha-separadora {
-    border: none;
-    border-top: 2px solid #ccc; 
-    margin: 5px 0; 
-    color: transparent;
-  }
+
   
   .destaque{
   
-    margin-left: 20px;
-    margin-top: 25px;
+    align-items: center;
+    margin-top: -50px;
     color: #081F39;
-    
+    margin-bottom: 3rem;
   }
 
   
@@ -62,6 +58,7 @@
     background-color: transparent; 
     width: 40px; 
     height: 40px;
+  
   }
   
   .slick-prev:before, .slick-next:before {

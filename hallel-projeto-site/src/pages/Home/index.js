@@ -6,6 +6,7 @@ import "./homepage.css";
 import CarouselNaoDestacados from "../../components/CarouselNaoDestacados/indexCarousel";
 import CarroselDestacados from "../../components/CarouselDestacados/CarroselDestacados";
 import SlideHome from '../../components/SlideHome/slide.js'
+import SejaAssociado from '../../components/SejaAssociadoHome/associado.js'
 function Home() {
   return (
     <div className="homepage">
@@ -36,15 +37,14 @@ function Home() {
       </div>
       </div>
       <Programacao />
-
+      
       <div className="area-middle">
         <div className="area-cartoes-home">
           {/*<PanelAssociado /> 
           <PanelPedido />*/}
         </div>
-
-        
       </div>
+      <SejaAssociado />
     </div>
   );
 }

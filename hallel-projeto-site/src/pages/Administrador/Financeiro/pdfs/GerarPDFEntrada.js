@@ -67,6 +67,7 @@ const GerarPDFEntrada = () => {
 
   return (
     <div >
+    <div>
       <div className="header_gerar_pdf">
         <div className="cont_header_gerar_pdf">
           <h2 className="titulo">Gerar PDF (Entrada)</h2>
@@ -242,6 +243,7 @@ const GerarPDFEntrada = () => {
           </div>
         </div>
       </div>
+      </div>  
     </div>
   );
 };

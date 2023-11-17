@@ -40,7 +40,7 @@ const SlideProg = (props) => {
   return (
 
     <div className="destaque">
-      <h3 style={{textAlign:'center',fontSize:'40px', color:'#003015'}}>Programação Semanal</h3>
+      <h3 style={{textAlign:'center',fontSize:'40px', color:'#003015',marginTop:'2rem',marginBottom:'-0.5rem'}}>Programação Semanal</h3>
       <Slider {...configuracoes}>
       
       <div className="produto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -48,7 +48,7 @@ const SlideProg = (props) => {
           <img src={Img1} alt="Produto 1" />
           <div className="texto-promocao">
             <span className="nome-produto">Segunda</span>
-            <hr className="linha-separadora" /> 
+            
             <div className="promocao">
               
               <a href="#" className="valorPromocao">Saiba mais</a>
@@ -64,7 +64,7 @@ const SlideProg = (props) => {
           
           <div className="texto-promocao">
             <span className="nome-produto">Terça</span>
-            <hr className="linha-separadora" />
+            
             <div className="promocao">
               
             <a href="#" className="valorPromocao">Saiba mais</a>
@@ -79,7 +79,7 @@ const SlideProg = (props) => {
           
           <div className="texto-promocao">
             <span className="nome-produto">Quarta</span>
-            <hr className="linha-separadora" />
+            
             <div className="promocao">
               
             <a href="#" className="valorPromocao">Saiba mais</a>
@@ -94,7 +94,7 @@ const SlideProg = (props) => {
          
           <div className="texto-promocao">
             <span className="nome-produto">Quinta</span>
-            <hr className="linha-separadora" />
+           
             <div className="promocao">
               
             <a href="#" className="valorPromocao">Saiba mais</a>
@@ -109,7 +109,7 @@ const SlideProg = (props) => {
           
           <div className="texto-promocao">
             <span className="nome-produto">Sexta</span>
-            <hr className="linha-separadora" />
+            
             <div className="promocao">
              
             <a href="#" className="valorPromocao">Saiba mais</a>
@@ -124,7 +124,7 @@ const SlideProg = (props) => {
           
           <div className="texto-promocao">
             <span className="nome-produto">Sábado</span>
-            <hr className="linha-separadora" />
+            
             <div className="promocao">
              
             <a href="#" className="valorPromocao">Saiba mais</a>
@@ -139,7 +139,7 @@ const SlideProg = (props) => {
           
           <div className="texto-promocao">
             <span className="nome-produto">Domingo</span>
-            <hr className="linha-separadora" />
+            
             <div className="promocao">
               
             <a href="#" className="valorPromocao">Saiba mais</a>
