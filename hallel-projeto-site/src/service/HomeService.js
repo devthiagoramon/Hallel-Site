@@ -3,7 +3,7 @@ import {
     homeListarDesCursoByIdCurso,
     homeLogin,
     homeMatricularParticipanteInCursoByIdUserAndIdCurso,
-    homeSolicitarCadastro,
+    homeCadastrar,
     homeVerificarToken,
     listarEventosDestacadosHomeAPI,
     listarEventosSemDestaqueHomeAPI
@@ -13,8 +13,8 @@ import {membroLoadPerfilById} from "../api/uris/MembroURLS";
 import {associadoListarPerfil} from "../api/uris/AssociadosURLS";
 import { getToken } from "../utils/utilToken";
 
-export async function solicitarCadastroService(cadastro) {
-    let url = homeSolicitarCadastro();
+export async function cadastrarService(cadastro) {
+    let url = homeCadastrar();
     try {
         let axiosResponse = await axios.post(url, {...cadastro});
         return axiosResponse.status === 200

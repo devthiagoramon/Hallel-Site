@@ -11,6 +11,7 @@ import LinkForDropDown from "./LinkForDropDown";
 import ModalPerfilHallel from "../ModalPerfilHallel";
 import { atualizarToken, selectToken } from "../../pages/Entrar/loginSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getToken } from "../../utils/utilToken";
 
 const HeaderHallel = () => {
   const [openMenu, setOpenMenu] = useState(true);
@@ -58,13 +59,18 @@ const HeaderHallel = () => {
 
   useEffect(() => {
     // verifica se o token ja expirou
-    console.log(token)
-    verificarTokenService(token).then((response) => {
-      if (response) {
-        localStorage.clear();
-        atualizarToken("");
-      }
-    });
+    let token = getToken();
+    if (token !== "" && token !== null) {
+      verificarTokenService(getToken()).then((response) => {
+        if (response) {
+          localStorage.clear();
+          dispacher(atualizarToken(""));
+        }
+      });
+    }else{
+      localStorage.clear()
+      dispacher(atualizarToken(""));
+    }
   }, []);
 
   const handleClickPerfil = () => {

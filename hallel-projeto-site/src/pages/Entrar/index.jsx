@@ -9,8 +9,7 @@ import { loginService } from "../../service/HomeService";
 import { useDispatch } from "react-redux";
 import { loginSave } from "./loginSlice";
 import { useForm } from "react-hook-form";
-import {notification} from './../../';
-import NotificationHallel from "../../components/NotificationHallel";
+import { exibirNotificacao } from "../../utils/utilNotification.tsx";
 
 function Entrar() {
   const { register, handleSubmit } = useForm({ mode: "onSubmit" });
@@ -23,7 +22,7 @@ function Entrar() {
     loginService(data).then((response) => {
       if (!response) {
         setTimeout(() => {}, 3000);
-        notification.render(<NotificationHallel text={"Error ao entrar"} tipo="error"/>)
+        exibirNotificacao("Error ao entrar", "error")
         return;
       }
       let rolesName = [];
@@ -39,7 +38,7 @@ function Entrar() {
         imagem: response.objeto.imagem,
       };
       dispacher(loginSave(payloadRedux));
-      notification.render(<NotificationHallel text={"Logado com sucesso"} tipo="success"/>)
+      exibirNotificacao("Entrou com sucesso", "success")
       setTimeout(() => {
         navigator("/");
       }, 3000);
@@ -141,7 +140,7 @@ function Entrar() {
             <div className="register-div">
               <p className="text-register">
                 Não tem uma conta?
-                <a className="register" href="/solicitarCadastro">
+                <a className="register" href="/cadastro">
                   Solicite seu cadastro{" "}
                 </a>
               </p>

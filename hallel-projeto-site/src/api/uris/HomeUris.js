@@ -3,8 +3,8 @@ import { uriDefaultPrefix } from "./utilsURI";
 /*
 Login e solicitar cadastro
 */
-export function homeSolicitarCadastro() {
-  return uriDefaultPrefix() + "/solicitarCadastro";
+export function homeCadastrar() {
+  return uriDefaultPrefix() + "/cadastrar";
 }
 
 export function homeLogin() {
