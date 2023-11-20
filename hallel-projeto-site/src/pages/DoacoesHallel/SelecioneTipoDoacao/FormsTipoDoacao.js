@@ -182,7 +182,6 @@ const FormsTipoDoacao = (props) => {
               ) : (
                 <InputHallelNormal
                   style={{ width: "50%" }}
-                  type="number"
                   {...register("outroValor")}
                 />
               )}
@@ -192,7 +191,7 @@ const FormsTipoDoacao = (props) => {
               style={{
                 padding: "1rem",
                 margin: "0 auto",
-                marginBottom: "-100rem",
+              
               }}
               type="button"
               onClick={() => {
@@ -212,10 +211,10 @@ const FormsTipoDoacao = (props) => {
             margin: "0 auto",
             position: "absolute",
             alignSelf: "center",
-            marginTop: "14rem",
+            marginTop: "16rem",
           }}
           type="submit"
-          onClick={props.setEtapa(3)}
+          onClick={() => props.setEtapa(3)}
         >
           Continuar
         </OutlinedButtonHallel>

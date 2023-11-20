@@ -30,9 +30,9 @@ const FormsDoador = (props) => {
     mode: "all",
     resolver: yupResolver(yupErrors),
     defaultValues: {
-      nome: "",
-      email: "",
-      numeroTelefone: "",
+      nome: props.userDoacao.nome,
+      email: props.userDoacao.email,
+      numeroTelefone: props.userDoacao.numeroTelefone,
       dataNascimento: new Date(),
       concordo: false,
     },

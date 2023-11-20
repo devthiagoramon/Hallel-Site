@@ -42,6 +42,7 @@
     width: 100%;
     height: 90%;
     border-radius: 15px;
+    column-gap: 40px;
 }
 .div-button-registrar-doacao  :hover{
     transform: scale(1.06);
@@ -56,6 +57,7 @@
     width: 20%;
     height: 35%;
     border-radius: 15px;
+
 }
 .button-registrar-doacao label{
     color: white;
@@ -63,3 +65,18 @@
     font-weight: bold;
 }
 
+.button-voltar-doacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #165334ac;
+    width: 10%;
+    height: 35%;
+    border-radius: 15px;
+}
+
+.button-voltar-doacao>label{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}

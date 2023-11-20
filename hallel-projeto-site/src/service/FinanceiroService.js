@@ -165,11 +165,11 @@ export async function recebiObjetoDoacaoService(id, isRecebido) {
     }
 }
 
-export async function doarObjetoService(doacaoObjeto) {
+export async function doarObjetoService(doacoesObjeto) {
     let url = doacaoDoarObjetoAPI();
     try {
         let axiosResponse = await axios
-            .post(url, {...doacaoObjeto},
+            .post(url, doacoesObjeto,
                 {headers: {Authorization: getToken()}}
             );
         return axiosResponse.status === 200;
