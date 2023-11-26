@@ -5,3 +5,7 @@ export function getEmail(){
 export function getNome(){
     return localStorage.getItem('nomeHallel');
 }
+
+export function getRoles(){
+    return localStorage.getItem("rolesHallel");
+}

@@ -58,177 +58,634 @@ import DoacoesHallel from "./pages/DoacoesHallel/index.js";
 import TipoDoacao from "./pages/DoacoesHallel/SelecioneTipoDoacao/index.js";
 import PagamentoDoacao from "./pages/DoacoesHallel/PagamentoDoacao/index.js";
 import Cadastro from "./pages/Cadastro/index.jsx";
-
-
+import NotFound from "./pages/NotFound/index.js";
+import { getRoles } from "./utils/utilLocalStorage.js";
+import HomeAdm from "./pages/Administrador/HomeAdm/index.js";
+import FormularioAdm from "./pages/Administrador/FormularioAdm/index.js";
+import AdmRouter from "./AdmRouter.js";
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
 
   return (
-    <BrowserRouter>
-      <HeaderHallel />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/fundadora" element={<Fundadora />} />
-        <Route path="/pedido" element={<Pedido />} />
-        <Route path="/associado" element={<Associado />} />
-        {/* <Route path="/doacoes" element={<Doacoes />} /> */}
-        <Route path="/virarAssociado" element={<VirarAssociado />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/descricao" element={<DescricaoEvento />} />
-        <Route path="/eventos" element={<EventoUser />} />
-        <Route path="/loja" element={<LojaPrincipal />} />
-        <Route path="/loja/produto" element={<LojaProduto />} />
-        <Route path="/loja/pagamento" element={<LojaPagamento />} />
-        <Route path="/entrar" element={<Entrar />} />
-        <Route path="/pagarOutroAssociado" element={<PagarOutroAssociado />} />
-        <Route path="/agenda" element={<Agenda />} />
-        {/*localStorage.getItem("token") !== null &&
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <HeaderHallel />
+            <Home />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/fundadora"
+        element={
+          <>
+            <HeaderHallel />
+            <Fundadora />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/pedido"
+        element={
+          <>
+            <HeaderHallel />
+            <Pedido />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/associado"
+        element={
+          <>
+            <HeaderHallel />
+            <Associado />
+            <Footer />
+          </>
+        }
+      />
+      {/* <Route path="/doacoes" element={<Doacoes />} /> */}
+      <Route
+        path="/virarAssociado"
+        element={
+          <>
+            <HeaderHallel />
+            <VirarAssociado />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/cadastro"
+        element={
+          <>
+            <HeaderHallel />
+            <Cadastro />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/sobre"
+        element={
+          <>
+            <HeaderHallel />
+            <Sobre />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/descricao"
+        element={
+          <>
+            <HeaderHallel />
+            <DescricaoEvento />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/eventos"
+        element={
+          <>
+            <HeaderHallel />
+            <EventoUser />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/loja"
+        element={
+          <>
+            <HeaderHallel />
+            <LojaPrincipal />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/loja/produto"
+        element={
+          <>
+            <HeaderHallel />
+            <LojaProduto />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/loja/pagamento"
+        element={
+          <>
+            <HeaderHallel />
+            <LojaPagamento />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/entrar"
+        element={
+          <>
+            <HeaderHallel />
+            <Entrar />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/pagarOutroAssociado"
+        element={
+          <>
+            <HeaderHallel />
+            <PagarOutroAssociado />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/agenda"
+        element={
+          <>
+            <HeaderHallel />
+            <Agenda />
+            <Footer />
+          </>
+        }
+      />
+      {/*localStorage.getItem("token") !== null &&
         roles.includes("ROLE_USER") ? (
         <>*/}
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/meusCursos" element={<MeusCursos />} />
-        <Route path="/desempenhoUser" element={<DesempenhoUser />} />
-        {/*</>
+      <Route
+        path="/perfil"
+        element={
+          <>
+            <HeaderHallel />
+            <Perfil />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/meusCursos"
+        element={
+          <>
+            <HeaderHallel />
+            <MeusCursos />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/desempenhoUser"
+        element={
+          <>
+            <HeaderHallel />
+            <DesempenhoUser />
+            <Footer />
+          </>
+        }
+      />
+      {/*</>
         ) : (
           ""
         )}*/}
-        {/*localStorage.getItem("token") !== null &&
+      {/*localStorage.getItem("token") !== null &&
         roles.includes("ROLE_USER") &&
         roles.includes("ROLE_ASSOCIADO") ? (
           <>*/}
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/meusCursos" element={<MeusCursos />} />
-        <Route path="/desempenhoUser" element={<DesempenhoUser />} />
-        <Route path="/cursos" element={<Cursos />} />
-        <Route path="/sorteioAssociado" element={<Sorteio />} />
-        <Route
-          path="/sorteioAssociado/:idAssoc/:idSorteio"
-          element={<SorteioAssocGanhou />}
-        />
-        <Route path="/descCurso/:idCurso" element={<DescCurso />} />
-        <Route path="/atividades" element={<CursoAtividade />} />{" "}
-        <Route path="/doacoes" element={<DoacoesHallel />} />
-        <Route path="/tipodoacao" element = {<TipoDoacao/>} />
-        <Route path="/pagamentoDoacao" element = {<PagamentoDoacao/>} />
-        {/*</>
+      <Route
+        path="/perfil"
+        element={
+          <>
+            <HeaderHallel />
+            <Perfil />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/meusCursos"
+        element={
+          <>
+            <HeaderHallel />
+            <MeusCursos />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/desempenhoUser"
+        element={
+          <>
+            <HeaderHallel />
+            <DesempenhoUser />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/cursos"
+        element={
+          <>
+            <HeaderHallel />
+            <Cursos />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/sorteioAssociado"
+        element={
+          <>
+            <HeaderHallel />
+            <Sorteio />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/sorteioAssociado/:idAssoc/:idSorteio"
+        element={
+          <>
+            <HeaderHallel />
+            <SorteioAssocGanhou />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/descCurso/:idCurso"
+        element={
+          <>
+            <HeaderHallel />
+            <DescCurso />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/atividades"
+        element={
+          <>
+            <HeaderHallel />
+            <CursoAtividade />
+            <Footer />
+          </>
+        }
+      />{" "}
+      <Route
+        path="/doacoes"
+        element={
+          <>
+            <HeaderHallel />
+            <DoacoesHallel />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/tipodoacao"
+        element={
+          <>
+            <HeaderHallel />
+            <TipoDoacao />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/pagamentoDoacao"
+        element={
+          <>
+            <HeaderHallel />
+            <PagamentoDoacao />
+            <Footer />
+          </>
+        }
+      />
+      {/*</>
         ) : (
           ""
         )}*/}
-        {/*localStorage.getItem("token") !== null &&
+      {/*localStorage.getItem("token") !== null &&
         roles.includes("ROLE_ADMIN") ? (
           <>*/}
-        <Route path="/cursos" element={<Cursos />} />
-        <Route path="/sorteioAssociado" element={<Sorteio />} />
-        <Route path="/descCurso/:idCurso" element={<DescCurso />} />
-        <Route path="/atividades" element={<CursoAtividade />} />{" "}
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/meusCursos" element={<MeusCursos />} />
-        <Route path="/desempenhoUser" element={<DesempenhoUser />} />
-        <Route
-          path="/administrador/tabelasFinanceiro"
-          element={<TabelasFinanceiro />}
-        />
-        <Route
-          path="/administrador/financeiro/gerarPDFEntrada"
-          element={<GerarPDFEntrada />}
-        />
-        <Route
-          path="/administrador/financeiro/gerarPDFSaida"
-          element={<GerarPDFSaida />}
-        />
-        <Route
-          path="/administrador/financeiro/codigosFinanceiro"
-          element={<CodigosFinanceiro />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro"
-          element={<PainelFinanceiroAdm />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/entradas"
-          element={<EntradasFinanceiroAdm />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/saidas"
-          element={<SaidasFinanceirasADM />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/pagamentosAssociado"
-          element={<PagamentosAssociado />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/associados"
-          element={<AssociadosADM />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/doacoes/dinheiro"
-          element={<DoacoesDinheiroAdm />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/doacoes/objeto"
-          element={<DoacaoObjetoADM />}
-        />
-        <Route
-          path="/administrador/painelFinanceiro/doacoes/objeto/add"
-          element={<AddDoacaoObjetoAdm />}
-        />
-        <Route
-          path="/administrador/cursos/add"
-          element={<AdicionarCursoAdm />}
-        />
-        <Route path="/administrador/membros" element={<MembrosAdm />} />
-        <Route path="/administrador/eventos" element={<EventoListarAdm />} />
-        <Route
-          path="/administrador/eventos/criar"
-          element={<EventosCriarAdm />}
-        />
-        <Route
-          path="/administrador/cursos/historicoCurso"
-          element={<Historico />}
-        />
-        <Route path="/administrador/sorteio" element={<AdmSorteio />} />
-        <Route
-          path="/administrador/associado/historicoAssociado/:idAssociado"
-          element={<HistoricoAssociado />}
-        />
-        <Route path="/administrador/cursos" element={<ListarCursosADM />} />
-        <Route
-          path="/administrador/cursos/editar/:idCurso"
-          element={<EditarCursoAdm />}
-        />
-        <Route
-          path="/administrador/cursos/associados/:idCurso"
-          element={<AssociadosListaCursosAdm />}
-        />
-        <Route path="/administrador/locaisEvento" element={<LocaisEventos />} />
-        <Route
-          path="/administrador/eventos/:idEvento/participantes"
-          element={<ParticipanteEvento />}
-        />
-        <Route
-          path="/administrador/eventos/:idEvento/despesas"
-          element={<DespesaEvento />}
-        />
-        <Route
-          path="/administrador/eventos/:idEvento/editar"
-          element={<EditarEventoAdm />}
-        />
-        <Route
-          path="/administrador/eventos/arquivados"
-          element={<EventosArquivado />}
-        />
-        {/*</>
+      <Route
+        path="/administrador/tabelasFinanceiro"
+        element={
+          <>
+            <HeaderHallel />
+            <TabelasFinanceiro />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/financeiro/gerarPDFEntrada"
+        element={
+          <>
+            <HeaderHallel />
+            <GerarPDFEntrada />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/financeiro/gerarPDFSaida"
+        element={
+          <>
+            <HeaderHallel />
+            <GerarPDFSaida />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/financeiro/codigosFinanceiro"
+        element={
+          <>
+            <HeaderHallel />
+            <CodigosFinanceiro />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/painelFinanceiro"
+        element={
+          <>
+            <HeaderHallel />
+            <PainelFinanceiroAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/painelFinanceiro/entradas"
+        element={
+          <>
+            <HeaderHallel />
+            <EntradasFinanceiroAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/painelFinanceiro/saidas"
+        element={
+          <>
+            <HeaderHallel />
+            <SaidasFinanceirasADM />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/painelFinanceiro/pagamentosAssociado"
+        element={
+          <>
+            <HeaderHallel />
+            <PagamentosAssociado />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/painelFinanceiro/associados"
+        element={
+          <>
+            <HeaderHallel />
+            <AssociadosADM />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/painelFinanceiro/doacoes/dinheiro"
+        element={
+          <>
+            <HeaderHallel />
+            <DoacoesDinheiroAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/painelFinanceiro/doacoes/objeto"
+        element={
+          <>
+            <HeaderHallel />
+            <DoacaoObjetoADM />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/painelFinanceiro/doacoes/objeto/add"
+        element={
+          <>
+            <HeaderHallel />
+            <AddDoacaoObjetoAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/cursos/add"
+        element={
+          <>
+            <HeaderHallel />
+            <AdicionarCursoAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/membros"
+        element={
+          <>
+            <HeaderHallel />
+            <MembrosAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/eventos"
+        element={
+          <>
+            <HeaderHallel />
+            <EventoListarAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/eventos/criar"
+        element={
+          <>
+            <HeaderHallel />
+            <EventosCriarAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/cursos/historicoCurso"
+        element={
+          <>
+            <HeaderHallel />
+            <Historico />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/sorteio"
+        element={
+          <>
+            <HeaderHallel />
+            <AdmSorteio />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/associado/historicoAssociado/:idAssociado"
+        element={
+          <>
+            <HeaderHallel />
+            <HistoricoAssociado />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/cursos"
+        element={
+          <>
+            <HeaderHallel />
+            <ListarCursosADM />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/cursos/editar/:idCurso"
+        element={
+          <>
+            <HeaderHallel />
+            <EditarCursoAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/cursos/associados/:idCurso"
+        element={
+          <>
+            <HeaderHallel />
+            <AssociadosListaCursosAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/locaisEvento"
+        element={
+          <>
+            <HeaderHallel />
+            <LocaisEventos />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/eventos/:idEvento/participantes"
+        element={
+          <>
+            <HeaderHallel />
+            <ParticipanteEvento />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/eventos/:idEvento/despesas"
+        element={
+          <>
+            <HeaderHallel />
+            <DespesaEvento />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/eventos/:idEvento/editar"
+        element={
+          <>
+            <HeaderHallel />
+            <EditarEventoAdm />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/administrador/eventos/arquivados"
+        element={
+          <>
+            <HeaderHallel />
+            <EventosArquivado />
+            <Footer />
+          </>
+        }
+      />
+      {/*</>
         ) : (
           ""
         )}*/}
-        <Route path="/evento/maisInfo" element={<MaisInfo />} />
-        <Route path="/videoChamada" element={<VideoChamada />} />
-        <Route path="/CadastroEvento/FormEvento" element={<FormEvento />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+      <Route
+        path="/evento/maisInfo"
+        element={
+          <>
+            <HeaderHallel />
+            <MaisInfo />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/videoChamada"
+        element={
+          <>
+            <HeaderHallel />
+            <VideoChamada />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/CadastroEvento/FormEvento"
+        element={
+          <>
+            <HeaderHallel />
+            <FormEvento />
+            <Footer />
+          </>
+        }
+      />
+      <Route path="/administrador/*" element={<AdmRouter/>}/>
+      {/* Manter essa pagina por ultimo! */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
