@@ -7,7 +7,7 @@ import DoacoesObjAlimentos from "./DoaçãoObjAlimentos";
 import { getEmail, getNome } from "../../utils/utilLocalStorage";
 
 const DoacoesHallel = () => {
-  const [etapa, setEtapa] = useState(2.2);
+  const [etapa, setEtapa] = useState(1);
 
   const userDoacaoTemplate = {
     nome: getNome() || '',

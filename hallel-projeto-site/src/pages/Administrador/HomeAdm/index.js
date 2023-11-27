@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { atualizarToken } from "../../Entrar/loginSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HomeComponent from "./HomeComponent";
 
 const HomeAdm = () => {
   const dispacher = useDispatch();
@@ -45,7 +46,7 @@ const HomeAdm = () => {
           Carregando informações...
         </div>
       ) : (
-        <div className="container_home_adm">HomeAdm</div>
+        <HomeComponent/>
       )}
     </>
   );
