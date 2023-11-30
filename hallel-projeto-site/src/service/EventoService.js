@@ -66,7 +66,7 @@ export async function listarTodosEventosArquivadosService() {
                 Authorization: getToken()
             }
         });
-        return axiosResponse.data;
+        return axiosResponse.data || [];
     } catch (e) {
         console.error(e);
         return [];

@@ -1,15 +1,16 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 import addImageIcon from "./../../../../images/addImage.svg";
 import addCircle from "./../../../../images/addCircle.svg";
 import deleteIcon from "./../../../../images/deleteIcon.svg";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
-import {Button, IconButton, Switch,} from "@mui/material";
-import {AddLocationRounded} from "@mui/icons-material";
+import { Button, IconButton, Switch } from "@mui/material";
+import { AddLocationRounded } from "@mui/icons-material";
 import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
-import {MuiFileInput} from "mui-file-input";
-import {eventoAdicionarEventoService} from "../../../../service/EventoService";
+import { MuiFileInput } from "mui-file-input";
+import { eventoAdicionarEventoService } from "../../../../service/EventoService";
+import GuiaAdm from "../../../../components/GuiaAdm";
 
 const AdicionarEvento = () => {
   const tituloDiv = useRef();
@@ -176,10 +177,8 @@ const AdicionarEvento = () => {
   };
 
   return (
-    <div>
+    <GuiaAdm title={"Adicionar evento"}>
       <div className="containerPrincipal">
-        <label>Adicionar eventos</label>
-
         <div className="headCont">
           <div className="head_cont_inputs">
             <div className="head_cont_inputs_texts">
@@ -279,7 +278,7 @@ const AdicionarEvento = () => {
                   setevento((prev) => {
                     return { ...prev, destaque: !evento.destaque };
                   });
-                }}  
+                }}
                 color="secondary"
               />
             </Tooltip>
@@ -412,7 +411,7 @@ const AdicionarEvento = () => {
           setLocalEvento={setLocalEvento}
         />
       </div>
-    </div>
+    </GuiaAdm>
   );
 };
 

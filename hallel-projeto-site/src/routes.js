@@ -518,7 +518,7 @@ function RoutesApp() {
           </>
         }
       />
-      <Route
+      {/* <Route
         path="/administrador/eventos"
         element={
           <>
@@ -527,8 +527,8 @@ function RoutesApp() {
             <Footer />
           </>
         }
-      />
-      <Route
+      /> */}
+      {/* <Route
         path="/administrador/eventos/criar"
         element={
           <>
@@ -537,7 +537,7 @@ function RoutesApp() {
             <Footer />
           </>
         }
-      />
+      /> */}
       <Route
         path="/administrador/cursos/historicoCurso"
         element={
@@ -638,7 +638,7 @@ function RoutesApp() {
           </>
         }
       />
-      <Route
+      {/* <Route
         path="/administrador/eventos/arquivados"
         element={
           <>
@@ -647,7 +647,7 @@ function RoutesApp() {
             <Footer />
           </>
         }
-      />
+      /> */}
       {/*</>
         ) : (
           ""

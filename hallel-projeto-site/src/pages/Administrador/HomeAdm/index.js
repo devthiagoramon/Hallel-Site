@@ -15,22 +15,23 @@ const HomeAdm = () => {
 
   useEffect(() => {
     // verifica se o token ja expirou
-    let token = getToken();
-    if (token !== "" && token !== null) {
-      verificarTokenService(getToken()).then((response) => {
-        if (response) {
+    async function validateTokenAdm(){
+      try {
+        let response = await verificarTokenService(getToken());
+        if(response){
           localStorage.clear();
           dispacher(atualizarToken(""));
           navigator("/administrador/formulario")
-        } else {
-          setLoading(false);
+        }else{
+          setLoading(false)
         }
-      });
-    } else {
-      localStorage.clear();
-      dispacher(atualizarToken(""));
-      navigator("/administrador/formulario")
+      } catch (error) {
+        localStorage.clear();
+        dispacher(atualizarToken(''));
+        navigator('/administrador/formulario')
+      }
     }
+    validateTokenAdm();
   });
 
   return (
