@@ -618,7 +618,7 @@ function RoutesApp() {
           </>
         }
       /> */}
-      <Route
+      {/* <Route
         path="/administrador/eventos/:idEvento/despesas"
         element={
           <>
@@ -627,7 +627,7 @@ function RoutesApp() {
             <Footer />
           </>
         }
-      />
+      /> */}
       {/* <Route
         path="/administrador/eventos/:idEvento/editar"
         element={

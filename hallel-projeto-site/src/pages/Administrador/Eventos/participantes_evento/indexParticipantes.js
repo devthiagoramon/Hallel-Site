@@ -7,14 +7,13 @@ import { eventoListarParticipantesService } from "../../../../service/EventoServ
 import GuiaAdm from "../../../../components/GuiaAdm";
 
 const ParticipantesEvento = () => {
-  const teste = useParams();
+  const { idEvento } = useParams();
 
   const [eventosParticipantes, setEventosParticipantes] = useState([{}]);
   useEffect(() => {
-    console.log(teste)
     async function listarParticipantesEventos() {
       try {
-        let response = await eventoListarParticipantesService("idEvento");
+        let response = await eventoListarParticipantesService(idEvento);
         setEventosParticipantes(response || []);
       } catch (error) {
         console.error(error);

@@ -84,7 +84,6 @@ export async function verificarTokenService(token) {
         return axiosResponse.data;
     } catch (e) {
         throw new Error("Can't verify the token")
-        
     }
 }
 
