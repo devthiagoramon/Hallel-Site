@@ -36,6 +36,9 @@ const BarraLateralAdm = () => {
       case "eventos_arquivados":
         navigator("/administrador/eventos/arquivados");
         break;
+      case "locais_eventos":
+        navigator("/administrador/eventos/locais");
+        break;
       default:
         break;
     }
@@ -65,7 +68,7 @@ const BarraLateralAdm = () => {
         text={"Eventos"}
         icon={<CiCalendar size={24} color="#FFF" />}
         isToShowInnerTabs
-        showInnerTabs={expandRouteName === "show_inner_eventos"}
+        showInnerTabs={!(expandRouteName === "show_inner_eventos")}
         handleExpandMore={() => expandMoreFunction("show_inner_eventos")}
       />
       {expandRouteName && (
@@ -90,6 +93,14 @@ const BarraLateralAdm = () => {
             text={"Eventos arquivados"}
             selected={routeName === "eventos_arquivados"}
             to={"eventos_arquivados"}
+            handleClickButtonLateral={handleClickButtonLateral}
+          />
+          <LeftLineInnerTabs />
+          <ButtonInnerTabs
+            style={{ grid: 6 }}
+            text={"Locais de evento"}
+            selected={routeName === "locais_eventos"}
+            to={"locais_eventos"}
             handleClickButtonLateral={handleClickButtonLateral}
           />
         </div>

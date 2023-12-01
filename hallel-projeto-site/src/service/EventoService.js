@@ -150,7 +150,7 @@ export async function eventoListarPorIdService(idEvento) {
         });
         return axiosResponse.data;
     } catch (e) {
-        console.error(e)
+        throw new Error("Cant list by id a event")
     }
 }
 

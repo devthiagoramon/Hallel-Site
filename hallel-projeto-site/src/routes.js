@@ -598,7 +598,7 @@ function RoutesApp() {
           </>
         }
       />
-      <Route
+      {/* <Route
         path="/administrador/locaisEvento"
         element={
           <>
@@ -607,8 +607,8 @@ function RoutesApp() {
             <Footer />
           </>
         }
-      />
-      <Route
+      /> */}
+      {/* <Route
         path="/administrador/eventos/:idEvento/participantes"
         element={
           <>
@@ -617,7 +617,7 @@ function RoutesApp() {
             <Footer />
           </>
         }
-      />
+      /> */}
       <Route
         path="/administrador/eventos/:idEvento/despesas"
         element={
@@ -628,7 +628,7 @@ function RoutesApp() {
           </>
         }
       />
-      <Route
+      {/* <Route
         path="/administrador/eventos/:idEvento/editar"
         element={
           <>
@@ -637,7 +637,7 @@ function RoutesApp() {
             <Footer />
           </>
         }
-      />
+      /> */}
       {/* <Route
         path="/administrador/eventos/arquivados"
         element={

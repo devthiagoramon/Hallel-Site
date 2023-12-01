@@ -84,7 +84,7 @@ const ModalEditDespesaEvento = (props) => {
 
   const editarDespesaEvento = () => {
     setEnviando(true);
-    eventoEditarDespesaPorIdEIdEventoService(idEvento, despesaSelected.id).then((response) => {
+    eventoEditarDespesaPorIdEIdEventoService(idEvento, despesaSelected?.id).then((response) => {
       if (response) {
         setEditarPopUp(true);
         setOpenModal(false);

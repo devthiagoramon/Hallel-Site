@@ -126,31 +126,6 @@ function Evento() {
   return (
     <GuiaAdm title={"Eventos da comunidade"}>
       <div className="painelEventos">
-        <div className="options">
-          <div className="esquerda_options">
-            <div>
-              <LocationOn sx={{ marginRight: "10px" }} />
-              <Button
-                color="secondary"
-                variant="contained"
-                onClick={handleClickLocaisEvento}
-              >
-                Locais de Evento
-              </Button>
-            </div>
-            <div>
-              <ArchiveRounded sx={{ marginRight: "10px" }} />
-              <Button
-                color="secondary"
-                variant="contained"
-                tyle={{ width: "15em" }}
-                onClick={handleClickArquivados}
-              >
-                Eventos arquivados
-              </Button>
-            </div>
-          </div>
-        </div>
         <div className="container-tb">
           {tabelaVazia ? (
             <>
@@ -242,7 +217,7 @@ function Evento() {
           </MenuItem>
           <MenuItem
             onClick={() => {
-              navigator("/administrador/eventos/addDestaque" + eventoIdClick);
+              navigator("/administrador/eventos/addDestaque/" + eventoIdClick);
             }}
           >
             Destacar Evento
