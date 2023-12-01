@@ -66,7 +66,7 @@ export async function listarTodosEventosArquivadosService() {
                 Authorization: getToken()
             }
         });
-        return axiosResponse.data;
+        return axiosResponse.data || [];
     } catch (e) {
         console.error(e);
         return [];
@@ -133,10 +133,10 @@ export async function eventoListarParticipantesService(idEvento) {
                 Authorization: getToken()
             }
         });
+        console.log(axiosResponse.data)
         return axiosResponse.data;
     } catch (e) {
-        console.error(e)
-        return undefined;
+        throw new Error("Can not list participantes")
     }
 }
 
@@ -150,7 +150,7 @@ export async function eventoListarPorIdService(idEvento) {
         });
         return axiosResponse.data;
     } catch (e) {
-        console.error(e)
+        throw new Error("Cant list by id a event")
     }
 }
 

@@ -24,7 +24,6 @@ const ButtonTemplate = styled.button`
       color: #FFFFFF;
       font-weight: 600;
       background-color: #002811;
-      position: relative;
     `
  const OutlinedBlurButtonHallel =
     styled(ButtonTemplate)`
@@ -44,4 +43,4 @@ const ButtonTemplate = styled.button`
     `
 
 export {TextOnlyButtonHallel, OutlinedEmptyButtonHallel, OutlinedBlurButtonHallel,
-    OutlinedButtonHallel, ElevatedButtonHallel}
+    OutlinedButtonHallel, ElevatedButtonHallel, ButtonTemplate}

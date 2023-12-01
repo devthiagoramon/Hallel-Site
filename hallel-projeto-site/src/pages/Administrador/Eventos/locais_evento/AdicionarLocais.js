@@ -1,14 +1,15 @@
 import React from "react";
 import BodyLocaisEventos from "./BodyAdicionarLocais";
-import HeaderLocaisEventos from "./HeaderAdicionarLocais";
 import "./adicionar_local.css";
+import GuiaAdm from "../../../../components/GuiaAdm";
 
 const LocaisEventos = () => {
   return (
-    <div className="containerAdicionarLocais">
-      <HeaderLocaisEventos />
-      <BodyLocaisEventos />
-    </div>
+    <GuiaAdm title={"Locais de Eventos"}>
+      <div className="containerAdicionarLocais">
+        <BodyLocaisEventos />
+      </div>
+    </GuiaAdm>
   );
 };
 

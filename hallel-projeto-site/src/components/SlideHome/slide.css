@@ -7,7 +7,7 @@
     display: block;
   }
   
-  img {
+  .slider>img {
     max-width: 100%;
     height: auto;
     cursor: pointer;
@@ -15,7 +15,7 @@
     display: block;
   }
   
-  button {
+  /* button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -24,7 +24,7 @@
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-  }
+  } */
   
   .slick-dots {
     bottom: 1px;
@@ -39,7 +39,7 @@
 
   @media screen and (max-width: 540px) {
 
-    img{
+    .slider>img{
       display: none;
   }
     

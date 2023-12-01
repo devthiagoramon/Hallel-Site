@@ -25,11 +25,11 @@ const TextFieldTemplate = styled.input`
 `
 
 export const InputHallelNormal = styled(TextFieldTemplate)`
-  border-bottom: ${(props) => (props.error ? "#E74C3C 4px solid" : "4px solid #007B34")};
+  border-bottom: ${(props) => (props.error ? "#06312E 4px solid" : "4px solid #007B34")};
 `
 
 export const InputHallelOutlined = styled(TextFieldTemplate)`
-  border: ${(props) => (props.error ? "#E74C3C 2px solid" : "#007B34 2px solid")};
+  border: ${(props) => (props.error ? "#06312E 2px solid" : "#007B34 2px solid")};
 `
 
 export const ContainerInputHallelError = ({style, errorMessage, children}) => {

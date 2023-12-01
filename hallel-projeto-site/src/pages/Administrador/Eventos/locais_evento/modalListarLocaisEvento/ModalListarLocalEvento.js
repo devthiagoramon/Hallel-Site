@@ -2,6 +2,7 @@ import { CircularProgress, Menu, MenuItem } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { localEventoListar } from "../../../../../api/uris/EventosURLS";
+import { getToken } from "../../../../../utils/utilToken";
 
 const ModalListarLocalEvento = (props) => {
   const openLocaisEvento = Boolean(props.anchorEl);
@@ -11,7 +12,7 @@ const ModalListarLocalEvento = (props) => {
     axios
       .get(localEventoListar(), {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: getToken(),
         },
       })
       .then((res) => {
@@ -36,7 +37,7 @@ const ModalListarLocalEvento = (props) => {
       open={openLocaisEvento}
       onClose={props.handleCloseLocaisEvento}
       anchorEl={props.anchorEl}
-      sx={{ maxWidth: "400px", maxHeight: "400px" }}
+      sx={{ maxWidth: "500px", maxHeight: "400px" }}
     >
       {LocaisEventos?.map((locais) => {
         return (

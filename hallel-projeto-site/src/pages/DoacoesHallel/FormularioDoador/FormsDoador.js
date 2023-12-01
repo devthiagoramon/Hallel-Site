@@ -25,14 +25,14 @@ const yupErrors = Yup.object().shape({
   concordo: Yup.boolean().required("Recusa das políticas de privacidade"),
 });
 
-const FormsDoador = () => {
+const FormsDoador = (props) => {
   const { handleSubmit, register, formState, getValues } = useForm({
     mode: "all",
     resolver: yupResolver(yupErrors),
     defaultValues: {
-      nome: "",
-      email: "",
-      numeroTelefone: "",
+      nome: props.userDoacao.nome,
+      email: props.userDoacao.email,
+      numeroTelefone: props.userDoacao.numeroTelefone,
       dataNascimento: new Date(),
       concordo: false,
     },
@@ -43,6 +43,8 @@ const FormsDoador = () => {
 
   const handleSubmitData = (data) => {
     console.log("submit", data);
+    props.setEtapa(2)
+
   };
 
   return (
