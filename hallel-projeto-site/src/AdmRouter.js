@@ -11,6 +11,7 @@ import ParticipantesEvento from "./pages/Administrador/Eventos/participantes_eve
 import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaEvento";
 import Financeiro from "./pages/Administrador/Financeiro/TelaPrincipal";
 import PDFEntrada from "./pages/Administrador/Financeiro/pdfs/PDFEntrada";
+import MembrosAdministrador from "./pages/Administrador/Membros";
 
 const AdmRouter = () => {
   return (
@@ -22,6 +23,7 @@ const AdmRouter = () => {
       <Route path="/eventos/arquivados" element={<EventosArquivado />} />
       <Route path="/eventos/:idEvento/editar" element={<EditarEventoAdm />} />
       <Route path="/eventos/locais" element={<LocaisEventos />} />
+      <Route path="/membros" element={<MembrosAdministrador/>}/>
       <Route
         path="/eventos/:idEvento/participantes"
         element={<ParticipantesEvento />}

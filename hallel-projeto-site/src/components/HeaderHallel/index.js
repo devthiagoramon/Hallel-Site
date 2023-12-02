@@ -61,14 +61,18 @@ const HeaderHallel = () => {
     // verifica se o token ja expirou
     let token = getToken();
     if (token !== "" && token !== null) {
-      verificarTokenService(getToken()).then((response) => {
-        if (response) {
-          localStorage.clear();
-          dispacher(atualizarToken(""));
-        }
-      });
-    }else{
-      localStorage.clear()
+      verificarTokenService(getToken())
+        .then((response) => {
+          if (response) {
+            localStorage.clear();
+            dispacher(atualizarToken(""));
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      localStorage.clear();
       dispacher(atualizarToken(""));
     }
   }, []);

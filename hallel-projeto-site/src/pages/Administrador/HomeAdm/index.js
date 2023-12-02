@@ -10,29 +10,29 @@ import HomeComponent from "./HomeComponent";
 
 const HomeAdm = () => {
   const dispacher = useDispatch();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigator = useNavigate();
 
-  /*useEffect(() => {
+  useEffect(() => {
     // verifica se o token ja expirou
-    async function validateTokenAdm(){
+    async function validateTokenAdm() {
       try {
         let response = await verificarTokenService(getToken());
-        if(response){
+        if (response) {
           localStorage.clear();
           dispacher(atualizarToken(""));
-          navigator("/administrador/formulario")
-        }else{
-          setLoading(false)
+          navigator("/administrador/formulario");
+        } else {
+          setLoading(false);
         }
       } catch (error) {
         localStorage.clear();
-        dispacher(atualizarToken(''));
-        navigator('/administrador/formulario')
+        dispacher(atualizarToken(""));
+        navigator("/administrador/formulario");
       }
     }
     validateTokenAdm();
-  }); */
+  });
 
   return (
     <>
@@ -47,7 +47,7 @@ const HomeAdm = () => {
           Carregando informações...
         </div>
       ) : (
-        <HomeComponent/>
+        <HomeComponent />
       )}
     </>
   );

@@ -15,6 +15,7 @@ import {
 } from "./barraLateralSlice";
 import ButtonInnerTabs from "./ButtonOtherTabs";
 import LeftLineInnerTabs from "./LeftLineInnerTabs";
+import { Group } from "@mui/icons-material";
 
 const BarraLateralAdm = () => {
   const routeName = useSelector(selectRouteName);
@@ -27,6 +28,9 @@ const BarraLateralAdm = () => {
     switch (text) {
       case "inicio":
         navigator("/administrador");
+        break;
+      case "membros":
+        navigator("/administrador/membros");
         break;
       case "eventos":
         navigator("/administrador/eventos");
@@ -43,9 +47,9 @@ const BarraLateralAdm = () => {
       case "painel_financeiro":
         navigator("/administrador/painelfinanceiro");
         break;
-        case "pdf_saida":
-          navigator("/financeiro/gerarPDFEntrada");
-          break;
+      case "pdf_saida":
+        navigator("/financeiro/gerarPDFEntrada");
+        break;
       default:
         break;
     }
@@ -68,17 +72,27 @@ const BarraLateralAdm = () => {
         text={"Inicio"}
         icon={<CiHome color="#FFF" size={24} />}
       />
+
       <ButtonBarraLateral
+        selected={routeName === "membros"}
+        to={"membros"}
+        handleClickButtonLateral={handleClickButtonLateral}
+        text={"Membros"}
+        icon={<Group sx={{ color: "#FFF" }} size={24} />}
+      />
+
+      <ButtonBarraLateral
+        key={"eventos"}
         selected={routeName === "eventos"}
         to={"eventos"}
         handleClickButtonLateral={handleClickButtonLateral}
         text={"Eventos"}
         icon={<CiCalendar size={24} color="#FFF" />}
         isToShowInnerTabs
-        showInnerTabs={!(expandRouteName === "show_inner_eventos")}
+        showInnerTabs={expandRouteName === "show_inner_eventos"}
         handleExpandMore={() => expandMoreFunction("show_inner_eventos")}
       />
-      {expandRouteName && (
+      {expandRouteName === "show_inner_eventos" && (
         <div
           style={{
             display: "grid",
@@ -113,51 +127,52 @@ const BarraLateralAdm = () => {
         </div>
       )}
 
-<ButtonBarraLateral
-  selected={routeName === "financeiro"}
-  to={"painel_financeiro"}
-  handleClickButtonLateral={handleClickButtonLateral}
-  text={"Financeiro"}
-  icon={<PiMoneyThin size={24} color="#FFF" />}
-  isToShowInnerTabs
-  showInnerTabs={!(expandRouteName === "show_inner_financeiro")}
-  handleExpandMore={() => expandMoreFunction("show_inner_financeiro")}
-/>
+      <ButtonBarraLateral
+        key={"painel_finc"}
+        selected={routeName === "painel_financeiro"}
+        to={"painel_financeiro"}
+        handleClickButtonLateral={handleClickButtonLateral}
+        text={"Financeiro"}
+        icon={<PiMoneyThin size={24} color="#FFF" />}
+        isToShowInnerTabs
+        showInnerTabs={expandRouteName === "show_inner_financeiro"}
+        handleExpandMore={() => expandMoreFunction("show_inner_financeiro")}
+      />
 
-{expandRouteName === "show_inner_financeiro" && (
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "10% 90%",
-      gridTemplateRows: "1fr 1fr 1fr",
-    }}
-  >
-    <LeftLineInnerTabs />
-    <ButtonInnerTabs
-      style={{ grid: 2 }}
-      text={"Gerar PDF saída"}
-      selected={routeName === "pdf_saida"}
-      to={"pdf_saida"}
-      handleClickButtonLateral={handleClickButtonLateral}
-    />
-    <LeftLineInnerTabs />
-    <ButtonInnerTabs
-      style={{ grid: 4 }}
-      text={"Eventos arquivados"}
-      selected={routeName === "eventos_arquivados"}
-      to={"eventos_arquivados"}
-      handleClickButtonLateral={handleClickButtonLateral}
-    />
-    <LeftLineInnerTabs />
-    <ButtonInnerTabs
-      style={{ grid: 6 }}
-      text={"Locais de evento"}
-      selected={routeName === "locais_eventos"}
-      to={"locais_eventos"}
-      handleClickButtonLateral={handleClickButtonLateral}
-    />
-  </div>
-)}
+      {expandRouteName === "show_inner_financeiro" && (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "10% 90%",
+            gridTemplateRows: "1fr 1fr 1fr",
+          }}
+        >
+          <LeftLineInnerTabs />
+          <ButtonInnerTabs
+            style={{ grid: 2 }}
+            text={"Gerar PDF saída"}
+            selected={routeName === "pdf_saida"}
+            to={"pdf_saida"}
+            handleClickButtonLateral={handleClickButtonLateral}
+          />
+          <LeftLineInnerTabs />
+          <ButtonInnerTabs
+            style={{ grid: 4 }}
+            text={"Eventos arquivados"}
+            selected={routeName === "eventos_arquivados"}
+            to={"eventos_arquivados"}
+            handleClickButtonLateral={handleClickButtonLateral}
+          />
+          <LeftLineInnerTabs />
+          <ButtonInnerTabs
+            style={{ grid: 6 }}
+            text={"Locais de evento"}
+            selected={routeName === "locais_eventos"}
+            to={"locais_eventos"}
+            handleClickButtonLateral={handleClickButtonLateral}
+          />
+        </div>
+      )}
     </div>
   );
 };

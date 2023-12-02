@@ -488,7 +488,7 @@ function RoutesApp() {
           </>
         }
       />
-      <Route
+      {/* <Route
         path="/administrador/membros"
         element={
           <>
@@ -497,7 +497,7 @@ function RoutesApp() {
             <Footer />
           </>
         }
-      />
+      /> */}
       {/* <Route
         path="/administrador/eventos"
         element={
