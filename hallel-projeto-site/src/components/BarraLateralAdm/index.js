@@ -3,6 +3,7 @@ import "./barra_lateral_adm.css";
 import Logo from "../../images/LogoHallel.png";
 import ButtonBarraLateral from "./ButtonBarraLateral";
 import { CiCalendar, CiHome } from "react-icons/ci";
+import { PiMoneyThin } from "react-icons/pi";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,6 +40,12 @@ const BarraLateralAdm = () => {
       case "locais_eventos":
         navigator("/administrador/eventos/locais");
         break;
+      case "painel_financeiro":
+        navigator("/administrador/painelfinanceiro");
+        break;
+        case "pdf_saida":
+          navigator("/financeiro/gerarPDFEntrada");
+          break;
       default:
         break;
     }
@@ -105,6 +112,52 @@ const BarraLateralAdm = () => {
           />
         </div>
       )}
+
+<ButtonBarraLateral
+  selected={routeName === "financeiro"}
+  to={"painel_financeiro"}
+  handleClickButtonLateral={handleClickButtonLateral}
+  text={"Financeiro"}
+  icon={<PiMoneyThin size={24} color="#FFF" />}
+  isToShowInnerTabs
+  showInnerTabs={!(expandRouteName === "show_inner_financeiro")}
+  handleExpandMore={() => expandMoreFunction("show_inner_financeiro")}
+/>
+
+{expandRouteName === "show_inner_financeiro" && (
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "10% 90%",
+      gridTemplateRows: "1fr 1fr 1fr",
+    }}
+  >
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 2 }}
+      text={"Gerar PDF saída"}
+      selected={routeName === "pdf_saida"}
+      to={"pdf_saida"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 4 }}
+      text={"Eventos arquivados"}
+      selected={routeName === "eventos_arquivados"}
+      to={"eventos_arquivados"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 6 }}
+      text={"Locais de evento"}
+      selected={routeName === "locais_eventos"}
+      to={"locais_eventos"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+  </div>
+)}
     </div>
   );
 };

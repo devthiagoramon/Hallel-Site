@@ -13,7 +13,7 @@ const HomeAdm = () => {
   const [loading, setLoading] = useState(true);
   const navigator = useNavigate();
 
-  useEffect(() => {
+  /*useEffect(() => {
     // verifica se o token ja expirou
     async function validateTokenAdm(){
       try {
@@ -32,7 +32,7 @@ const HomeAdm = () => {
       }
     }
     validateTokenAdm();
-  });
+  }); */
 
   return (
     <>

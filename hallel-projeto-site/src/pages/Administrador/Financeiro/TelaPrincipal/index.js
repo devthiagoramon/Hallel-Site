@@ -28,6 +28,7 @@ import {
 } from "../../../../api/uris/FinanceiroURLS";
 import axios from "axios";
 import dayjs from "dayjs";
+import GuiaAdm from "../../../../components/GuiaAdm";
 
 const BootstrapButton = styled(Button)({
   boxShadow: "none",
@@ -96,6 +97,7 @@ const UltimasRendas = () => {
   }, []);
 
   return (
+    
     <div className="tabela-ultimas-rendas">
       <div className="div-header">
         <div className="cont-header-finaceiro">
@@ -181,6 +183,7 @@ const UltimasRendas = () => {
         </Table>
       </TableContainer>
     </div>
+    
   );
 };
 
@@ -295,49 +298,27 @@ const UltimasSaidas = () => {
 const CardDashboard = () => {
   const navigate = useNavigate();
 
-  const theme = useTheme();
-
   return (
-    <div
-      style={{
-        justifyContent: "flex-start",
-        display: "flex",
-        marginLeft: "2rem",
-        marginTop: "1.5rem",
-      }}
-    className="div-cards">
-      <Card sx={{ display: "inline" }}>
-        <Box sx={{ display: "flex", flexDirection: "line" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography component="div" variant="h5">
-              DashBoard
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
-            >
-              Gráficos do financeiro
-            </Typography>
-          </CardContent>
+    <div className="div-cards">
+      <Card sx={{ maxWidth: 500, marginLeft:'2rem' }}>
+        <CardContent>
+          <Typography variant="h5">DashBoard</Typography>
+          <Typography variant="subtitle1" color="text.secondary">
+            Gráficos do financeiro
+          </Typography>
+        </CardContent>
 
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <div style={{ justifyContent: "flex-start", display: "flex",marginTop:'1rem' }}>
-              <ColorButton
-                onClick={() => navigate("/administrador/painelFinanceiro")}
-                variant="contained"
-                endIcon={<ArrowForwardIcon />}
-              >
-                Acessar
-              </ColorButton>
-            </div>
-          </CardContent>
-        </Box>
-        {/* <CardMedia
-        component="img"
-        sx={{ width: 151 }}
-        image= "https://img.icons8.com/?size=512&id=vFqlDrzMYOT0&format=png"
-        alt="Live from space album cover" */}
+        <CardContent>
+          <div style={{ justifyContent: "flex-start", marginTop: '1rem' }}>
+            <ColorButton
+              onClick={() => navigate("/administrador/painelFinanceiro")}
+              variant="contained"
+              endIcon={<ArrowForwardIcon />}
+            >
+              Acessar
+            </ColorButton>
+          </div>
+        </CardContent>
       </Card>
     </div>
   );
@@ -346,51 +327,27 @@ const CardDashboard = () => {
 const CardEntradasFinanceiro = () => {
   const navigate = useNavigate();
 
-  const theme = useTheme();
-
   return (
-    <div className="div-cards"
-      style={{
-        justifyContent: "flex",
-        display: "flex",
-        marginLeft: "43.6rem",
-        marginTop: "-5.6rem",
-      }}
-    >
-      <Card sx={{ display: "flex" }}>
-        <Box sx={{ display: "flex", flexDirection: "flex" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography component="div" variant="h5">
-              Códigos Financeiro
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
-            >
-              Códigos dos Financeiro
-            </Typography>
-          </CardContent>
+    <div className="div-cards">
+      <Card sx={{ maxWidth: 500, marginLeft:'2rem', marginTop:'2rem' }}>
+        <CardContent>
+          <Typography variant="h5">Códigos Financeiro</Typography>
+          <Typography variant="subtitle1" color="text.secondary">
+            Códigos dos Financeiro
+          </Typography>
+        </CardContent>
 
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <div style={{ justifyContent: "flex-start", display: "flex",marginTop:'1rem' }}>
-              <ColorButton
-                onClick={() =>
-                  navigate("/administrador/financeiro/codigosFinanceiro")
-                }
-                variant="contained"
-                endIcon={<ArrowForwardIcon />}
-              >
-                Acessar
-              </ColorButton>
-            </div>
-          </CardContent>
-        </Box>
-        {/* <CardMedia
-        component="img"
-        sx={{ width: 151 }}
-        image= "https://img.icons8.com/?size=512&id=vFqlDrzMYOT0&format=png"
-        alt="Live from space album cover" */}
+        <CardContent>
+          <div style={{ justifyContent: "flex-start", marginTop: '1rem' }}>
+            <ColorButton
+              onClick={() => navigate("/administrador/financeiro/codigosFinanceiro")}
+              variant="contained"
+              endIcon={<ArrowForwardIcon />}
+            >
+              Acessar
+            </ColorButton>
+          </div>
+        </CardContent>
       </Card>
     </div>
   );
@@ -398,16 +355,19 @@ const CardEntradasFinanceiro = () => {
 
 const Financeiro = () => {
   return (
-    <div className="financeiro-tabelas-principal">
-      <h1 style={{ marginLeft: "2rem" }}>Financeiro</h1>
-      <div className="header_cont_cards_financeiro">
-        <UltimasRendas />
-        <UltimasSaidas />
-      </div>
+    <GuiaAdm title={"Financeiro"}>
+      <div className="financeiro-tabelas-principal">
+        <div className="header_cont_cards_financeiro">
+          <div>
+            <UltimasRendas />
+            <UltimasSaidas />
+          </div>
+        </div>
         <CardDashboard />
         <CardEntradasFinanceiro />
-      
-    </div>
+      </div>
+    </GuiaAdm>
   );
 };
+
 export default Financeiro;

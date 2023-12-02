@@ -9,6 +9,8 @@ import EditarEventoAdm from "./pages/Administrador/Eventos/editar/EditarEventoAd
 import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/AdicionarLocais";
 import ParticipantesEvento from "./pages/Administrador/Eventos/participantes_evento/indexParticipantes";
 import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaEvento";
+import Financeiro from "./pages/Administrador/Financeiro/TelaPrincipal";
+import PDFEntrada from "./pages/Administrador/Financeiro/pdfs/PDFEntrada";
 
 const AdmRouter = () => {
   return (
@@ -25,6 +27,8 @@ const AdmRouter = () => {
         element={<ParticipantesEvento />}
       />
       <Route path="/eventos/:idEvento/despesas" element={<DespesaEvento />}/>
+      <Route path="/painelfinanceiro" element={<Financeiro />} />
+      <Route path="/financeiro/gerarPDFEntrada" element={<PDFEntrada />} />
     </Routes>
   );
 };

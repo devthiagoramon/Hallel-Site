@@ -389,16 +389,6 @@ function RoutesApp() {
         }
       />
       <Route
-        path="/administrador/financeiro/gerarPDFEntrada"
-        element={
-          <>
-            <HeaderHallel />
-            <GerarPDFEntrada />
-            <Footer />
-          </>
-        }
-      />
-      <Route
         path="/administrador/financeiro/gerarPDFSaida"
         element={
           <>
@@ -414,16 +404,6 @@ function RoutesApp() {
           <>
             <HeaderHallel />
             <CodigosFinanceiro />
-            <Footer />
-          </>
-        }
-      />
-      <Route
-        path="/administrador/painelFinanceiro"
-        element={
-          <>
-            <HeaderHallel />
-            <PainelFinanceiroAdm />
             <Footer />
           </>
         }
