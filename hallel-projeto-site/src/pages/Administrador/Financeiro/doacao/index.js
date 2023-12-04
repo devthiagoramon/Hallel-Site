@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import {getMesAndAnoAtual} from "../../../../utils/utilData";
 import {listDoacoesService} from "../../../../service/FinanceiroService";
+import GuiaAdm from "../../../../components/GuiaAdm";
 
 const DoacoesDinheiroAdm = () => {
     const [doacoes, setdoacoes] = useState([]);
@@ -92,10 +93,8 @@ const DoacoesDinheiroAdm = () => {
     };
 
     return (
+        <GuiaAdm title={"Doações"}>
         <div className="containerDoacoesAdm">
-            <div className="cabecalhoDoacoesAdm">
-                <a>Doações</a>
-            </div>
             <div className="containerTabelaDoacoesAdm">
                 <div className="headContTabelaDoacoesAdm">
                     <div className="tituloHeadContTabelaDoacoesAdm">
@@ -172,6 +171,7 @@ const DoacoesDinheiroAdm = () => {
                 )}
             </div>
         </div>
+        </GuiaAdm>
     );
 };
 

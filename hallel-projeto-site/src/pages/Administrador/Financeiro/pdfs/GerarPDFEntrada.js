@@ -20,6 +20,7 @@ import {Table} from "react-bootstrap";
 import {PDFViewer} from "@react-pdf/renderer";
 import PDFEntrada from "./PDFEntrada";
 import {entradaGetAllPaginasService, entradaListarByPageAndDateService} from "../../../../service/FinanceiroService";
+import GuiaAdm from "../../../../components/GuiaAdm";
 
 const GerarPDFEntrada = () => {
     const [anchorMenuCalendario, setAnchorMenuCalendario] = useState(null);
@@ -66,17 +67,13 @@ const GerarPDFEntrada = () => {
     }, [paginaSelecionado, mesSelecionado]);
 
   return (
-    <div >
-    <div>
-      <div className="header_gerar_pdf">
-        <div className="cont_header_gerar_pdf">
-          <h2 className="titulo">Gerar PDF (Entrada)</h2>
-        </div>
-      </div>
+    <GuiaAdm title={"Pdf entradas"}>
+      <div >
+      <div>
       <div className="body_gerar_pdf">
         <div className="esquerda_body_gerar_pdf">
           <div className="informacoes_gerar_pdf">
-            <Typography variant="h6" style={{fontWeight:'bold', marginTop:'10px',fontSize:'20px',marginBottom:'-15px'}}>
+            <Typography variant="h6" style={{fontWeight:'bold',fontSize:'20px'}}>
             Instruções sobre a geração do PDF:
             </Typography>
             <ul>
@@ -197,7 +194,7 @@ const GerarPDFEntrada = () => {
               }}
             >
               <CalendarMonth
-                sx={{ color: "white", height: "35px", width: "35px",marginTop:"-35px", marginRight:"28px" }}
+                sx={{ color: "white", height: "35px", width: "35px",marginTop:"-35px" }}
               />
             </IconButton>
           </Tooltip>
@@ -229,7 +226,7 @@ const GerarPDFEntrada = () => {
               </PDFViewer>
             )}
             {!mostrarPDF && (
-              <Button className="btn-view" style={{backgroundColor: '#003015',marginBottom:'35rem'}}
+              <Button className="btn-view" style={{backgroundColor: '#003015'}}
                 variant="contained"
                 onClick={() => {
                   setMostrarPDF(true);
@@ -244,7 +241,8 @@ const GerarPDFEntrada = () => {
         </div>
       </div>
       </div>  
-    </div>
+      </div>
+    </GuiaAdm>
   );
 };
 

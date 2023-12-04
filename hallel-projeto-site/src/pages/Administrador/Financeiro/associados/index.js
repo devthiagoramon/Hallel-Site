@@ -12,6 +12,7 @@ import VisualizarPorMesAssociados from "./VisualizarPorMesAssociados";
 import dayjs from "dayjs";
 import {useEffect} from "react";
 import {associadoListByMesAnoService} from "../../../../service/FinanceiroService";
+import GuiaAdm from "../../../../components/GuiaAdm";
 
 const AssociadosADM = () => {
     const [associados, setassociados] = useState([]);
@@ -29,6 +30,7 @@ const AssociadosADM = () => {
 
     const data = () => {
         return {
+            
             columns: [
                 {
                     label: "Nome",
@@ -78,11 +80,9 @@ const AssociadosADM = () => {
     };
 
     return (
+        <GuiaAdm title={"Associados"}>
         <div className="containerViewAssociados">
-            <div className="cabecalhoPagamentos">
-                <a>Associados</a>
-            </div>
-
+            
             {associados.length == 0 ? (
                 <div className="CircleProgress" style={{top: "10em"}}>
                     <CircularProgress/>
@@ -130,6 +130,7 @@ const AssociadosADM = () => {
                 </div>
             )}
         </div>
+        </GuiaAdm>
     );
 };
 export default AssociadosADM;

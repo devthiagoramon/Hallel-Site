@@ -16,7 +16,9 @@
   margin-left: 16px;
 }
 
-.container_button_brl:hover {
+.container_button_brl:hover,
+.container_button_brl.selected {
   background: rgba(24, 75, 72, 0.76);
   border-radius: 6;
 }
+

@@ -43,9 +43,30 @@ const BarraLateralAdm = () => {
       case "painel_financeiro":
         navigator("/administrador/painelfinanceiro");
         break;
-        case "pdf_saida":
-          navigator("/financeiro/gerarPDFEntrada");
+        case "pdf_entrada":
+          navigator("/administrador/financeiro/gerarPDFEntrada");
           break;
+          case "pdf_saida":
+            navigator("/administrador/financeiro/gerarPDFSaida");
+            break;
+            case "cod_financeiro":
+            navigator("/administrador/financeiro/codigosFinanceiro");
+            break;
+            case "associados":
+            navigator("/administrador/financeiro/associados");
+            break;
+            case "pag_associados":
+              navigator("/administrador/financeiro/pagamentosAssociados");
+              break;
+              case "doacoes_dinheiro":
+              navigator("/administrador/financeiro/doacoesDinheiro");
+              break;
+              case "doacoes_objetos":
+              navigator("/administrador/financeiro/doacoesObjetos");
+              break;
+              case "add_doacoes":
+              navigator("/administrador/financeiro/addDoacoesObjetos");
+              break;
       default:
         break;
     }
@@ -84,7 +105,7 @@ const BarraLateralAdm = () => {
             display: "grid",
             gridTemplateColumns: "10% 90%",
             gridTemplateRows: "1fr 1fr 1fr",
-          }}
+          }}  
         >
           <LeftLineInnerTabs />
           <ButtonInnerTabs
@@ -135,25 +156,65 @@ const BarraLateralAdm = () => {
     <LeftLineInnerTabs />
     <ButtonInnerTabs
       style={{ grid: 2 }}
-      text={"Gerar PDF saída"}
+      text={"PDF entradas"}
+      selected={routeName === "pdf_entrada"}
+      to={"pdf_entrada"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 4 }}
+      text={"PDF saídas"}
       selected={routeName === "pdf_saida"}
       to={"pdf_saida"}
       handleClickButtonLateral={handleClickButtonLateral}
     />
     <LeftLineInnerTabs />
     <ButtonInnerTabs
-      style={{ grid: 4 }}
-      text={"Eventos arquivados"}
-      selected={routeName === "eventos_arquivados"}
-      to={"eventos_arquivados"}
+      style={{ grid: 6 }}
+      text={"Códigos"}
+      selected={routeName === "cod_financeiro"}
+      to={"cod_financeiro"}
       handleClickButtonLateral={handleClickButtonLateral}
     />
     <LeftLineInnerTabs />
     <ButtonInnerTabs
-      style={{ grid: 6 }}
-      text={"Locais de evento"}
-      selected={routeName === "locais_eventos"}
-      to={"locais_eventos"}
+      style={{ grid: 8 }}
+      text={"Associados"}
+      selected={routeName === "associados"}
+      to={"associados"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 10 }}
+      text={"Pagamentos associados"}
+      selected={routeName === "pag_associados"}
+      to={"pag_associados"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 12 }}
+      text={"Doações dinheiro"}
+      selected={routeName === "doacoes_dinheiro"}
+      to={"doacoes_dinheiro"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 14 }}
+      text={"Doações objetos"}
+      selected={routeName === "doacoes_objetos"}
+      to={"doacoes_objetos"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 16 }}
+      text={"Adicionar doações"}
+      selected={routeName === "add_doacoes"}
+      to={"add_doacoes"}
       handleClickButtonLateral={handleClickButtonLateral}
     />
   </div>

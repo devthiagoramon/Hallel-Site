@@ -4,6 +4,7 @@ import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {CircularProgress} from "@mui/material";
 import {CDBCard, CDBCardBody, CDBContainer, CDBDataTable} from "cdbreact";
 import {allPagamentoAssociadoService} from "../../../../service/FinanceiroService";
+import GuiaAdm from "../../../../components/GuiaAdm";
 
 const PagamentosAssociado = () => {
     const [pagamentosAssociados, setpagamentosAssociados] = useState();
@@ -71,6 +72,7 @@ const PagamentosAssociado = () => {
     };
 
     return (
+        <GuiaAdm title={"Pagamentos associados"}>
         <div className="containerPagamentos">
             <div className="cabecalhoPagamentos">
                 <a>Pagamentos de Associados</a>
@@ -124,6 +126,7 @@ const PagamentosAssociado = () => {
                 )}
             </div>
         </div>
+        </GuiaAdm>
     );
 };
 
