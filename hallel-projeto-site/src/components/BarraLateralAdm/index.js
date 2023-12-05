@@ -47,9 +47,30 @@ const BarraLateralAdm = () => {
       case "painel_financeiro":
         navigator("/administrador/painelfinanceiro");
         break;
-      case "pdf_saida":
-        navigator("/financeiro/gerarPDFEntrada");
-        break;
+        case "pdf_entrada":
+          navigator("/administrador/financeiro/gerarPDFEntrada");
+          break;
+          case "pdf_saida":
+            navigator("/administrador/financeiro/gerarPDFSaida");
+            break;
+            case "cod_financeiro":
+            navigator("/administrador/financeiro/codigosFinanceiro");
+            break;
+            case "associados":
+            navigator("/administrador/financeiro/associados");
+            break;
+            case "pag_associados":
+              navigator("/administrador/financeiro/pagamentosAssociados");
+              break;
+              case "doacoes_dinheiro":
+              navigator("/administrador/financeiro/doacoesDinheiro");
+              break;
+              case "doacoes_objetos":
+              navigator("/administrador/financeiro/doacoesObjetos");
+              break;
+              case "add_doacoes":
+              navigator("/administrador/financeiro/addDoacoesObjetos");
+              break;
       default:
         break;
     }
@@ -98,7 +119,7 @@ const BarraLateralAdm = () => {
             display: "grid",
             gridTemplateColumns: "10% 90%",
             gridTemplateRows: "1fr 1fr 1fr",
-          }}
+          }}  
         >
           <LeftLineInnerTabs />
           <ButtonInnerTabs
@@ -139,40 +160,40 @@ const BarraLateralAdm = () => {
         handleExpandMore={() => expandMoreFunction("show_inner_financeiro")}
       />
 
-      {expandRouteName === "show_inner_financeiro" && (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "10% 90%",
-            gridTemplateRows: "1fr 1fr 1fr",
-          }}
-        >
-          <LeftLineInnerTabs />
-          <ButtonInnerTabs
-            style={{ grid: 2 }}
-            text={"Gerar PDF saída"}
-            selected={routeName === "pdf_saida"}
-            to={"pdf_saida"}
-            handleClickButtonLateral={handleClickButtonLateral}
-          />
-          <LeftLineInnerTabs />
-          <ButtonInnerTabs
-            style={{ grid: 4 }}
-            text={"Eventos arquivados"}
-            selected={routeName === "eventos_arquivados"}
-            to={"eventos_arquivados"}
-            handleClickButtonLateral={handleClickButtonLateral}
-          />
-          <LeftLineInnerTabs />
-          <ButtonInnerTabs
-            style={{ grid: 6 }}
-            text={"Locais de evento"}
-            selected={routeName === "locais_eventos"}
-            to={"locais_eventos"}
-            handleClickButtonLateral={handleClickButtonLateral}
-          />
-        </div>
-      )}
+{expandRouteName === "show_inner_financeiro" && (
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "10% 90%",
+      gridTemplateRows: "1fr 1fr 1fr",
+    }}
+  >
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 2 }}
+      text={"Gerar PDF saída"}
+      selected={routeName === "pdf_saida"}
+      to={"pdf_saida"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 4 }}
+      text={"Eventos arquivados"}
+      selected={routeName === "eventos_arquivados"}
+      to={"eventos_arquivados"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+    <LeftLineInnerTabs />
+    <ButtonInnerTabs
+      style={{ grid: 6 }}
+      text={"Locais de evento"}
+      selected={routeName === "locais_eventos"}
+      to={"locais_eventos"}
+      handleClickButtonLateral={handleClickButtonLateral}
+    />
+  </div>
+)}
     </div>
   );
 };

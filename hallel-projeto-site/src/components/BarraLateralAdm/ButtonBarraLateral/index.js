@@ -15,12 +15,8 @@ const ButtonBarraLateral = ({
 }) => {
   return (
     <div
-      style={{
-        background: selected ? "rgba(24, 75, 72, 0.76)" : "transparent",
-        borderRadius: 6,
-      }}
+      className={`container_button_brl ${selected ? "selected" : ""}`}
       onClick={() => handleClickButtonLateral(to)}
-      className="container_button_brl"
     >
       {icon}
       <label>{text}</label>

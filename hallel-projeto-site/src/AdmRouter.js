@@ -10,8 +10,16 @@ import LocaisEventos from "./pages/Administrador/Eventos/locais_evento/Adicionar
 import ParticipantesEvento from "./pages/Administrador/Eventos/participantes_evento/indexParticipantes";
 import DespesaEvento from "./pages/Administrador/Eventos/despesa_evento/DespesaEvento";
 import Financeiro from "./pages/Administrador/Financeiro/TelaPrincipal";
-import PDFEntrada from "./pages/Administrador/Financeiro/pdfs/PDFEntrada";
-import MembrosAdministrador from "./pages/Administrador/Membros";
+import PDFEntrada from "./pages/Administrador/Financeiro/pdfs/GerarPDFEntrada";
+import PDFSaida from "./pages/Administrador/Financeiro/pdfs/GerarPDFSaida";
+import CodigosFinanceiro from "./pages/Administrador/Financeiro/codigos_financeiro/CodigoFinanceiro";
+import EntradasFinanceiro from "./pages/Administrador/Financeiro/pdfs/PDFEntrada";
+import SaidasFinanceiro from "./pages/Administrador/Financeiro/pdfs/PDFSaida";
+import Associados from "./pages/Administrador/Financeiro/associados/index.js";
+import PagamentosAssociados from "./pages/Administrador/Financeiro/pagamentos/index.js";
+import DoacoesDinheiro from "./pages/Administrador/Financeiro/doacao/index.js";
+import DoacaoObjeto from "./pages/Administrador/Financeiro/doacao_objeto/index.js";
+import AddDoacaoObjeto from "./pages/Administrador/Financeiro/doacao_objeto/add_doacao_obj/index.js";
 
 const AdmRouter = () => {
   return (
@@ -31,6 +39,15 @@ const AdmRouter = () => {
       <Route path="/eventos/:idEvento/despesas" element={<DespesaEvento />}/>
       <Route path="/painelfinanceiro" element={<Financeiro />} />
       <Route path="/financeiro/gerarPDFEntrada" element={<PDFEntrada />} />
+      <Route path="/financeiro/gerarPDFSaida" element={<PDFSaida />} />
+      <Route path="/financeiro/codigosFinanceiro" element={<CodigosFinanceiro />} />
+      <Route path="/financeiro/pdfs/PDFEntrada" element={<EntradasFinanceiro />} />
+      <Route path="/financeiro/pdfs/PDFSaida" element={<SaidasFinanceiro />} />
+      <Route path="/financeiro/associados" element={<Associados />} />
+      <Route path="/financeiro/pagamentosAssociados" element={<PagamentosAssociados />} />
+      <Route path="/financeiro/doacoesDinheiro" element={<DoacoesDinheiro />} />
+      <Route path="/financeiro/doacoesObjetos" element={<DoacaoObjeto />} />
+      <Route path="/financeiro/addDoacoesObjetos" element={<AddDoacaoObjeto />} />
     </Routes>
   );
 };

@@ -15,10 +15,7 @@ import Perfil from "./pages/PerfilUsuario/index.js";
 import MaisInfo from "./pages/Evento/MaisInformacoes/index.js";
 import Entrar from "./pages/Entrar/index.jsx";
 import SaidasFinanceirasADM from "./pages/Administrador/Financeiro/gastos/index.js";
-import PagamentosAssociado from "./pages/Administrador/Financeiro/pagamentos/index.js";
-import DoacoesDinheiroAdm from "./pages/Administrador/Financeiro/doacao/index.js";
 import DoacaoObjetoADM from "./pages/Administrador/Financeiro/doacao_objeto/index.js";
-import AddDoacaoObjetoAdm from "./pages/Administrador/Financeiro/doacao_objeto/add_doacao_obj/index.js";
 import AssociadosADM from "./pages/Administrador/Financeiro/associados/index.js";
 import AdicionarCursoAdm from "./pages/Administrador/Curso/adicionar/index.js";
 import ListarCursosADM from "./pages/Administrador/Curso/listar/index.js";
@@ -378,36 +375,7 @@ function RoutesApp() {
       {/*localStorage.getItem("token") !== null &&
         roles.includes("ROLE_ADMIN") ? (
           <>*/}
-      <Route
-        path="/administrador/tabelasFinanceiro"
-        element={
-          <>
-            <HeaderHallel />
-            <TabelasFinanceiro />
-            <Footer />
-          </>
-        }
-      />
-      <Route
-        path="/administrador/financeiro/gerarPDFSaida"
-        element={
-          <>
-            <HeaderHallel />
-            <GerarPDFSaida />
-            <Footer />
-          </>
-        }
-      />
-      <Route
-        path="/administrador/financeiro/codigosFinanceiro"
-        element={
-          <>
-            <HeaderHallel />
-            <CodigosFinanceiro />
-            <Footer />
-          </>
-        }
-      />
+
       <Route
         path="/administrador/painelFinanceiro/entradas"
         element={
@@ -424,56 +392,6 @@ function RoutesApp() {
           <>
             <HeaderHallel />
             <SaidasFinanceirasADM />
-            <Footer />
-          </>
-        }
-      />
-      <Route
-        path="/administrador/painelFinanceiro/pagamentosAssociado"
-        element={
-          <>
-            <HeaderHallel />
-            <PagamentosAssociado />
-            <Footer />
-          </>
-        }
-      />
-      <Route
-        path="/administrador/painelFinanceiro/associados"
-        element={
-          <>
-            <HeaderHallel />
-            <AssociadosADM />
-            <Footer />
-          </>
-        }
-      />
-      <Route
-        path="/administrador/painelFinanceiro/doacoes/dinheiro"
-        element={
-          <>
-            <HeaderHallel />
-            <DoacoesDinheiroAdm />
-            <Footer />
-          </>
-        }
-      />
-      <Route
-        path="/administrador/painelFinanceiro/doacoes/objeto"
-        element={
-          <>
-            <HeaderHallel />
-            <DoacaoObjetoADM />
-            <Footer />
-          </>
-        }
-      />
-      <Route
-        path="/administrador/painelFinanceiro/doacoes/objeto/add"
-        element={
-          <>
-            <HeaderHallel />
-            <AddDoacaoObjetoAdm />
             <Footer />
           </>
         }

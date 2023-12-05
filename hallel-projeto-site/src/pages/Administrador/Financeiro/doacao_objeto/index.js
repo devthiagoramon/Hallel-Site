@@ -29,6 +29,7 @@ import {
     listDoacoesObjetosService,
     recebiObjetoDoacaoService
 } from "../../../../service/FinanceiroService";
+import GuiaAdm from "../../../../components/GuiaAdm";
 
 const DoacaoObjetoADM = () => {
     const [doacoesObjeto, setDoacoesObjeto] = useState()
@@ -103,6 +104,7 @@ const DoacaoObjetoADM = () => {
     }
 
     return (
+        <GuiaAdm title={'Doações objetos'}>
         <div>
             <div className="containerDoacaoObj">
                 <div className="containerCardsDoacaoObj">
@@ -281,6 +283,7 @@ const DoacaoObjetoADM = () => {
                 )}
             </div>
         </div>
+        </GuiaAdm>
     );
 };
 

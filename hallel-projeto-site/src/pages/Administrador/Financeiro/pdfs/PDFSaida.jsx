@@ -9,6 +9,7 @@ import {
 import React from "react";
 import logoHallel from "./../../../../images/LogoHallel.png";
 import dayjs from "dayjs";
+import GuiaAdm from "../../../../components/GuiaAdm";
 
 /*
 - Para sabem como alterar e como funciona o pdf pesquise
@@ -99,6 +100,7 @@ const styles = StyleSheet.create({
 
 const PDFSaida = ({ mesSelecionado, saidas }) => {
   return (
+    <GuiaAdm title={"Pdf saída"}>
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
@@ -190,6 +192,7 @@ const PDFSaida = ({ mesSelecionado, saidas }) => {
         </View>
       </Page>
     </Document>
+    </GuiaAdm>
   );
 };
 
