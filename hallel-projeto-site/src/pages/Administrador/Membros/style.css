@@ -1,5 +1,4 @@
-.sessaoMembro > label{
-
+.sessaoMembro > label {
   color: #35404b;
   font-weight: 700;
   font-size: 2em;
@@ -15,10 +14,8 @@
   margin: 1.5em 0;
 }
 
-
-.filtro .buttonArea, .right-area{
-
-
+.filtro .buttonArea,
+.right-area {
   margin: 0 0.5em;
 }
 
@@ -45,11 +42,9 @@
 
 .right-area .buttonArea {
   flex-direction: row;
-  
 }
 
-.adicionarBt > button{
-
+.adicionarBt > button {
   border-radius: 0.5em;
   border: none;
   padding: 0.2em 0.5em;
@@ -71,39 +66,32 @@
   margin-bottom: 1.5em;
 }
 
-
-.progressCircle{
-
+.progressCircle {
   display: block;
   margin: auto;
-  }
-
-.tableMembro{
-
-  margin: 0 0
 }
 
-.tableMembro .table, thead td{
-
-
- 
+.tableMembro {
+  margin: 0 0;
 }
 
-.tableMembro .table tr, th, td{
-
+.tableMembro .table,
+thead td {
 }
 
-.progressCircle{
+.tableMembro .table tr,
+th,
+td {
+}
 
+.progressCircle {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 5em 0;
 }
 
-
-.coluna_opcoes > button{
-
+.coluna_opcoes > button {
   border-radius: 0.5em;
   border: none;
   padding: 0.2em 0.5em;
@@ -111,12 +99,10 @@
   color: #1e242a;
 }
 
-.coluna_opcoes > button:first-child{
-
+.coluna_opcoes > button:first-child {
   background-color: #ffd885;
 }
 
-.coluna_opcoes > button:last-child{
-
+.coluna_opcoes > button:last-child {
   background-color: #fd8282;
 }

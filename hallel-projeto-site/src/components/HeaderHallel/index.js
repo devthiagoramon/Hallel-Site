@@ -75,7 +75,7 @@ const HeaderHallel = () => {
       localStorage.clear();
       dispacher(atualizarToken(""));
     }
-  }, []);
+  });
 
   const handleClickPerfil = () => {
     if (isNotUsuario()) {

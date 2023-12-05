@@ -110,7 +110,7 @@ const AdicionarEvento = () => {
         return { ...prev, palestrantes: palestranteDTO };
       });
       let eventoToRequest = evento;
-      eventoToRequest.date = dayjs(evento.date).toDate();
+      eventoToRequest .date = dayjs(evento.date).toDate();
       const response = await eventoAdicionarEventoService(evento);
       
     } catch (e) {
