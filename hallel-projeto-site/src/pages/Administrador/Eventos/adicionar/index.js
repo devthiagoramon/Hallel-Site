@@ -11,6 +11,7 @@ import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/Mod
 import { MuiFileInput } from "mui-file-input";
 import { eventoAdicionarEventoService } from "../../../../service/EventoService";
 import GuiaAdm from "../../../../components/GuiaAdm";
+import dayjs from "dayjs";
 
 const AdicionarEvento = () => {
   const tituloDiv = useRef();
@@ -98,16 +99,23 @@ const AdicionarEvento = () => {
     setinputsArray(inputs);
   }
 
-  const enviarEvento = () => {
-    let palestranteDTO = [];
-    let inputsProv = [...inputsArray];
-    inputsProv.forEach((item) => {
-      palestranteDTO.push(item.nome);
-    });
-    setevento((prev) => {
-      return { ...prev, palestrantes: palestranteDTO };
-    });
-    eventoAdicionarEventoService(evento);
+  const enviarEvento = async () => {
+    try {
+      let palestranteDTO = [];
+      let inputsProv = [...inputsArray];
+      inputsProv.forEach((item) => {
+        palestranteDTO.push(item.nome);
+      });
+      setevento((prev) => {
+        return { ...prev, palestrantes: palestranteDTO };
+      });
+      let eventoToRequest = evento;
+      eventoToRequest.date = dayjs(evento.date).toDate();
+      const response = await eventoAdicionarEventoService(evento);
+      
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const abrirModalLocalizacao = (e) => {

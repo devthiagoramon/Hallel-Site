@@ -31,15 +31,11 @@ import { getToken } from "../utils/utilToken";
 export async function listarTodosEventosUsuarioService() {
     let url = eventoListarTodosEventosUsuarios();
     try {
-        let axiosResponse = await axios.get(url, {
-            headers: {
-                Authorization: getToken()
-            }
-        });
+        let axiosResponse = await axios.get(url);
         return axiosResponse.data;
     }catch (e) {
         console.error(e)
-        return [];
+        throw new Error("Error listing all the events")
     }
 }
 
