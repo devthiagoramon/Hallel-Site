@@ -9,7 +9,7 @@ import {eventoListarLocalEventosService} from "../../../../service/EventoService
 
 const TabelaLocaisEventos = (props) => {
   const [eventosLocais, setEventosLocais] = useState([]);
-   useMemo(() => {
+   useEffect(() => {
      eventoListarLocalEventosService().then((response) => {
        setEventosLocais(response);
      });

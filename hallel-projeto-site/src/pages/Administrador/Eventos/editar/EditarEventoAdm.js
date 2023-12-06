@@ -17,6 +17,7 @@ import {
 import formatarData from "../../../../utils/Functions";
 import GuiaAdm from "../../../../components/GuiaAdm";
 import dayjs from "dayjs";
+import { exibirNotificacao } from "../../../../utils/utilNotification.tsx";
 
 const EditarEventoAdm = () => {
   const tituloDiv = useRef();
@@ -159,7 +160,7 @@ const EditarEventoAdm = () => {
     eventoToRequest.date = dayjs(evento.date).toDate();
     eventoAtualizarService(idEvento, evento).then((response) => {
       if (response) {
-        alert("Evento alterado");
+        exibirNotificacao("Evento alterado com sucesso!", "success")
         navigator("/administrador/eventos");
       } else {
         // deu errado

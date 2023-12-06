@@ -82,15 +82,15 @@ export async function participarEventoService(usuarioEventoRequest) {
     }
 }
 
-export async function eventoIsInscritoService(idEvento) {
-    let url = eventoUsuarioIsInscrito(idEvento, localStorage.getItem("HallelId"));
+export async function eventoIsInscritoService(idEvento, idHallel) {
+    let url = eventoUsuarioIsInscrito(idEvento, idHallel);
     try {
         let axiosResponse = await axios
             .get(url, {headers: {Authorization: getToken()}});
         return axiosResponse.data;
     } catch (e) {
         console.error(e);
-        return false;
+        throw new Error("Can not view.")
     }
 }
 
@@ -275,7 +275,7 @@ export async function eventoAdicionarLocalEventoService(localEvento) {
                 Authorization: getToken()
             }
         });
-        return axiosResponse.status === 200;
+        return axiosResponse.data;
     } catch (e) {
         console.error(e);
         return false;

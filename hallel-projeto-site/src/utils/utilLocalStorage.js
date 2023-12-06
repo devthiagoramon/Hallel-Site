@@ -9,3 +9,7 @@ export function getNome(){
 export function getRoles(){
     return localStorage.getItem("rolesHallel");
 }
+
+export function getId(){
+    return localStorage.getItem("idHallel");
+}

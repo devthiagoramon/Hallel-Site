@@ -66,9 +66,10 @@ const ModalEditLocalEvento = (props) => {
 
     function loadLocalEvento(id) {
         eventoListarLocalEventoPorId(id).then((response) => {
-            setLocal(response.data);
-            setLocalNovo(response.data);
-            setnovoTextoLocalizacao(response.data.localizacao);
+            console.log(response.localizacao)
+            setLocal(response);
+            setLocalNovo(response);
+            setnovoTextoLocalizacao(response.localizacao);
         });
     }
 
