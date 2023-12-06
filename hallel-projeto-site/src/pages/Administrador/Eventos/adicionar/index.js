@@ -12,8 +12,11 @@ import { MuiFileInput } from "mui-file-input";
 import { eventoAdicionarEventoService } from "../../../../service/EventoService";
 import GuiaAdm from "../../../../components/GuiaAdm";
 import dayjs from "dayjs";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 const AdicionarEvento = () => {
+  const navigator = useNavigate();
   const tituloDiv = useRef();
   const imagemDiv = useRef();
   const imagemLabelInformativoDiv = useRef();
@@ -100,6 +103,7 @@ const AdicionarEvento = () => {
   }
 
   const enviarEvento = async () => {
+    
     try {
       let palestranteDTO = [];
       let inputsProv = [...inputsArray];
@@ -112,6 +116,7 @@ const AdicionarEvento = () => {
       let eventoToRequest = evento;
       eventoToRequest .date = dayjs(evento.date).toDate();
       const response = await eventoAdicionarEventoService(evento);
+      navigator("/administrador/eventos");
       
     } catch (e) {
       console.log(e);

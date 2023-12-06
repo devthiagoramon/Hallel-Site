@@ -20,6 +20,7 @@ import PagamentosAssociados from "./pages/Administrador/Financeiro/pagamentos/in
 import DoacoesDinheiro from "./pages/Administrador/Financeiro/doacao/index.js";
 import DoacaoObjeto from "./pages/Administrador/Financeiro/doacao_objeto/index.js";
 import AddDoacaoObjeto from "./pages/Administrador/Financeiro/doacao_objeto/add_doacao_obj/index.js";
+import MembrosAdministrador from "./pages/Administrador/Membros/index.js";
 
 const AdmRouter = () => {
   return (
