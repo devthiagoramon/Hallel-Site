@@ -24,6 +24,7 @@ const ButtonTemplate = styled.button`
       color: #FFFFFF;
       font-weight: 600;
       background-color: #002811;
+      
     `
  const OutlinedBlurButtonHallel =
     styled(ButtonTemplate)`

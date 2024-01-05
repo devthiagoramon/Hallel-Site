@@ -129,10 +129,10 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
       <Box sx={styleInnerModal}>
         <div className="cont_modal_adicionar_cartao_pe">
           <div className="header_modal_adicionar_cartao_pe">
-            <h4>Adicionar Cartão</h4>
+            <h4 style={{fontSize: "1.5em", fontWeight: "700", color:"#00471F",marginBottom:'1rem'}}>Adicionar Cartão</h4>
           </div>
           <div className="body_modal_adicionar_cartao_pe">
-            <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+            <label style={{ fontSize: "1.2em", fontWeight: "500", color:"#004F22" }}>
               Numero do cartão
             </label>
             {errorsInputs.numero ? (
@@ -144,7 +144,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
             ) : (
               <InputHallel name="numeroCartao" onChange={handleChangeInputs} />
             )}
-            <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+            <label style={{ fontSize: "1.2em", fontWeight: "500", color:"#004F22" }}>
               Nome do titular
             </label>
             {errorsInputs.nomeTitular ? (
@@ -157,10 +157,10 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
               <InputHallel name="nomeTitular" onChange={handleChangeInputs} />
             )}
             <div className="inputs2_modal_adicionar_cartao_pe">
-              <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+              <label style={{ fontSize: "1.2em", fontWeight: "500", color:"#004F22" }}>
                 Data de Validade
               </label>
-              <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+              <label style={{ fontSize: "1.2em", fontWeight: "500", color:"#004F22" }}>
                 CVC
               </label>
               {errorsInputs.dataValidade ? (
@@ -198,7 +198,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
                 <InputHallel name="cvc" onChange={handleChangeInputs} />
               )}
             </div>
-            <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+            <label style={{ fontSize: "1.2em", fontWeight: "500", color:"#004F22" }}>
               Endereço
             </label>
             {errorsInputs.endereco ? (
@@ -213,7 +213,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
           </div>
           <div className="footer_modal_adicionar_cartao_pe">
             <OutlinedEmptyButtonHallel
-              style={{ width: 100, padding: "0.7rem", fontSize: "24px" }}
+              style={{ width: 100, padding: "0.7rem", fontSize: "20px" }}
               onClick={() => {
                 setOpen(false);
               }}
@@ -221,7 +221,7 @@ const ModalAdicionarCartaoPE = ({ open, setOpen, usuario, setUsuario }) => {
               Voltar
             </OutlinedEmptyButtonHallel>
             <OutlinedButtonHallel
-              style={{ width: 100, padding: "0.7rem", fontSize: "24px" }}
+              style={{ width: 190, padding: "0.7rem", fontSize: "20px" }}
               onClick={handleAdicionarCartao}
             >
               Adicionar Cartão

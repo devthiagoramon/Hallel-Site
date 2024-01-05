@@ -60,6 +60,7 @@ import { getRoles } from "./utils/utilLocalStorage.js";
 import HomeAdm from "./pages/Administrador/HomeAdm/index.js";
 import FormularioAdm from "./pages/Administrador/FormularioAdm/index.js";
 import AdmRouter from "./AdmRouter.js";
+import NaoUsuarioForm from "./pages/Evento/MaisInformacoes/ParticiparEvento/FormularioNaoUsuarioHallel.jsx"
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
@@ -153,6 +154,16 @@ function RoutesApp() {
           <>
             <HeaderHallel />
             <EventoUser />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/formulario"
+        element={
+          <>
+            <HeaderHallel />
+            <NaoUsuarioForm />
             <Footer />
           </>
         }
