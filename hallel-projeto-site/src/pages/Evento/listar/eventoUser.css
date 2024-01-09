@@ -1,61 +1,81 @@
-body {
-  overflow-x: hidden;
-}
+  body {
+    overflow-x: hidden;
+  }
 
-.grupo-evento {
-  margin-top: 5em;
-}
+  .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-.painelEventosUser {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-}
-
-.contPesquisaEventoUser {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-#pesquisaEvents {
-  display: flex;
-}
-
-.CorpoEventoUser {
- 
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.loaderEventoCarroseulEventos {
-  width: 100%;
-  display: flex;
- 
-  flex-wrap: wrap;
-}
-
-.loaderEventoCarroseulEventos > span {
-  width: 10em;
-  height: 10em;
-}
-
-/* referente ao botao roxo */
+  .title {
+    text-align: center;
+    width: 100%;
+  }
 
 
-.container_participar_evento{
+  .TituloEventoUser {
+    margin-left: 20rem;
+    color: #00471F;
+  }
 
-  display: flex;
-  align-items: end;
-}
+  .grupo-evento {
+    margin-top: 5em;
+    padding-left: 1rem;
+  }
 
+  .painelEventosUser {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+  }
 
-/*referentea imagem da capa central*/
-.imagemCp1_evento_user{
+  .contPesquisaEventoUser {
+    width: auto; 
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem; 
+    align-items: center;
+    box-shadow: none;
+    border: none;
+    border-radius: 2000px;
+  }
 
-  max-height: 20em;
-  margin-right: 3em;
-}
+  #pesquisaEvents {
+    border: none;
+    
+  }
+
+  .CorpoEventoUser {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    background-color: #E6E6E6;
+    margin-top: 1rem;
+  }
+
+  .loaderEventoCarroseulEventos {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .loaderEventoCarroseulEventos > span {
+    width: 10em;
+    height: 10em;
+  }
+
+  /* referente ao botao roxo */
+
+  .container_participar_evento {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  /* referente à imagem da capa central */
+  .imagemCp1_evento_user {
+    max-height: 20em;
+    margin-right: 3em;
+  }

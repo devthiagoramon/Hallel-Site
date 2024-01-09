@@ -4,6 +4,7 @@ import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Skeleton, TextField } from "@mui/material";
 import "./eventoUser.css";
 import dayjs from "dayjs";
+import SearchIcon from "@mui/icons-material/Search";
 import { listarTodosEventosUsuarioService } from "../../../service/EventoService";
 
 function EventoUser() {
@@ -21,7 +22,7 @@ function EventoUser() {
       }
     }
     loadEventos();
-  });
+  }, []);
 
   function alterarEventoEspc(item) {
     setEventoEspc("");
@@ -49,18 +50,33 @@ function EventoUser() {
           hide={() => setshowInfos(false)}
         />
       ) : (
-        <div>
+        <div className="master">
+          <div className="top"> 
+          <div className="title" style={{margin:'0 auto'}}>
           <h1 className="TituloEventoUser">Eventos</h1>
-
+          </div>
           <div className="contPesquisaEventoUser">
-            <TextField
-              id="pesquisaEvents"
-              type="text"
-              variant="outlined"
-              size="small"
-              label="Pesquisa..."
-              onChange={filterEventos}
-            />
+          <TextField
+            id="pesquisaEvents"
+            type="text"
+            variant="outlined"
+            size="small"
+            label="Pesquisa..."
+            onChange={filterEventos}
+            
+              sx={{
+                  borderRadius: "0px",
+                  width: "300px",
+                  backgroundColor: '#E6EEE9',
+                  border: 'none',
+                    }}
+                    InputProps={{
+                      endAdornment: (
+                        <SearchIcon style={{ color: "#003617" }} />
+                      ),
+                    }}
+          />
+          </div>
           </div>
 
           <div className="CorpoEventoUser">
@@ -81,16 +97,27 @@ function EventoUser() {
                   <div className="grupo-evento">
                     <div
                       className="card"
-                      style={{ width: "18rem", maxHeight: "480px" }}
+                      style={{ width: "17rem", maxHeight: "480px",borderRadius:0,
+                      borderBottomLeftRadius: "20px",
+                      borderBottomRightRadius: "20px",}}
                     >
                       <img
                         src={evento.imagem}
                         className="card-img-top"
                         alt="..."
-                        style={{ maxHeight: "200px", minHeight: "200px" }}
+                        style={{ maxHeight: "200px", 
+                        minHeight: "200px",
+                       }}
                       />
+                      <hr style={{marginTop:'0px'}}/>
                       <div className="card-body">
-                        <h5 className="card-title">{evento.titulo}</h5>
+                        <h5 className="card-title" style={
+                          {
+                            color:'#00471F',
+                            fontSize: '25px',
+                            marginTop:'-10px'
+                          }
+                        }>{evento.titulo}</h5>
                         <p className="card-text">{evento.descricao}</p>
                         <br />
                         <p className="card-text">
