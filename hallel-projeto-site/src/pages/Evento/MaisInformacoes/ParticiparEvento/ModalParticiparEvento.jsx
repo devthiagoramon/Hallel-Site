@@ -141,15 +141,18 @@ const ModalParticiparEvento = ({evento, open, setOpen}) => {
                 idEvento: evento.id,
                 ...usuarioEvento,
             };
-            participarEventoService(usuarioEventoRequest).then((response) => {
-                if (response) {
-                    notification.render(<SucessoParticiparEvento/>);
-                } else {
-                    notification.render(<ErrorParticiparEvento/>);
-                }
-            });
-
-
+            participarEventoService(usuarioEventoRequest)
+                .then((response) => {
+                    if (response) {
+                        notification.render(<SucessoParticiparEvento />);
+                    } else {
+                        notification.render(<ErrorParticiparEvento />);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Erro ao participar do evento:', error);
+                    notification.render(<ErrorParticiparEvento />);
+                });
         } else {
             // Já membro e não membro passam pela verificação
             let hasError = verifyErrorInputs();
@@ -158,16 +161,22 @@ const ModalParticiparEvento = ({evento, open, setOpen}) => {
                     idEvento: evento.id,
                     ...usuarioEvento,
                 };
-                participarEventoService(usuarioEventoRequest).then((response) => {
-                    if (response) {
-                        notification.render(<SucessoParticiparEvento/>);
-                    } else {
-                        notification.render(<ErrorParticiparEvento/>);
-                    }
-                });
+                participarEventoService(usuarioEventoRequest)
+                    .then((response) => {
+                        if (response) {
+                            notification.render(<SucessoParticiparEvento />);
+                        } else {
+                            notification.render(<ErrorParticiparEvento />);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Erro ao participar do evento:', error);
+                        notification.render(<ErrorParticiparEvento />);
+                    });
             }
         }
     };
+    
 
     useMemo(() => {
         let idUser = localStorage.getItem("HallelId");

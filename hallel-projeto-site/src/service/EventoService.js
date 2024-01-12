@@ -75,6 +75,10 @@ export async function participarEventoService(usuarioEventoRequest) {
     try {
         let axiosResponse = await axios.post(url, {
             ...usuarioEventoRequest
+        }, {
+            headers: {
+                Authorization: getToken()
+            }
         });
         return axiosResponse.data;
     } catch (e) {
@@ -85,12 +89,19 @@ export async function participarEventoService(usuarioEventoRequest) {
 export async function eventoIsInscritoService(idEvento, idHallel) {
     let url = eventoUsuarioIsInscrito(idEvento, idHallel);
     try {
-        let axiosResponse = await axios
-            .get(url, {headers: {Authorization: getToken()}});
+        let axiosResponse = await axios.get(url, { headers: { Authorization: getToken() } });
         return axiosResponse.data;
-    } catch (e) {
-        console.error(e);
-        throw new Error("Can not view.")
+    } catch (error) {
+        console.error("Erro na função eventoIsInscritoService:", error);
+        if (error.response) {
+            console.error("Resposta da API:", error.response.data);
+            console.error("Status da Resposta:", error.response.status);
+        } else if (error.request) {
+            console.error("Requisição não obteve resposta:", error.request);
+        } else {
+            console.error("Erro durante a requisição:", error.message);
+        }
+        throw new Error("Não é possível visualizar.");
     }
 }
 
