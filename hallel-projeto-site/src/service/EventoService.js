@@ -70,16 +70,19 @@ export async function listarTodosEventosArquivadosService() {
 }
 
 export async function participarEventoService(usuarioEventoRequest) {
-  let url = eventoParticiparEventoAPI();
-  try {
-    let axiosResponse = await axios.post(url, {
-      ...usuarioEventoRequest,
-    });
-    return axiosResponse.data;
-  } catch (e) {
-    return false;
+    let url = eventoParticiparEventoAPI();
+    try {
+      let axiosResponse = await axios.post(url, usuarioEventoRequest, {
+        headers: {
+          Authorization: getToken(),
+        },
+      });
+      return axiosResponse.data;
+    } catch (e) {
+      console.error("Erro ao participar do evento:", e);
+      return false;
+    }
   }
-}
 
 export async function eventoIsInscritoService(idEvento, idHallel) {
   let url = eventoUsuarioIsInscrito(idEvento, idHallel);

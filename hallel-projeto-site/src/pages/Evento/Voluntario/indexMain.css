@@ -1,0 +1,190 @@
+.container-doacoes {
+    width: 100vw;
+    min-height: 100vh;
+  }
+  
+  .forms-header-doacoes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3.125rem;
+    margin-top: 3.125rem;
+  }
+  
+  .forms-header-doacoes > label {
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #00471f;
+  }
+  
+  .outer-form-doador {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cont-form-doador {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+    padding: 1rem;
+  }
+  
+  .cont-inputs2-doador {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: 3.75rem max-content;
+    justify-content: space-between;
+  }
+  
+  .outer-form-doador {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+  }
+  
+  .cont-form-tipo-doacao {
+    width: 70%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .top-cont-form-tipo-doacao {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .container_valores_doacao {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  
+  .container_outro_valor_doacao {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    overflow: hidden;
+    padding: 1rem;
+  }
+  
+  .cont-pagamento-doacao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cont-info-user-pagamento-doacao {
+    width: 70%;
+    background-color: #d8dfdc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+  
+  .label-doacao-hallel-strong {
+    color: #003617;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+  }
+  
+  .label-doacao-hallel {
+    color: #003617;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .cont-infos-pagamento-doacao {
+    width: 90%;
+    overflow: hidden;
+    display: grid;
+    row-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border: 2px solid #7B9087;
+    border-radius: 4px;
+  }
+  
+  .cont-forma-pagamento-doacao{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .formas-pagamento-doacao{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  @media screen and (max-width: 768px) {
+    /* Estilos para telas com largura máxima de 768px (tipicamente, smartphones) */
+  
+    .container_valores_doacao {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+  
+    .top-cont-form-tipo-doacao {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+  
+    .container_outro_valor_doacao {
+      flex-direction: column;
+      row-gap: 20px;
+      align-items: center;
+    }
+  
+    .forms-header-doacoes > label {
+      font-size: 1.875rem;
+      text-align: center;
+    }
+  
+    .formas-pagamento-doacao{
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .cont-infos-pagamento-doacao{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 10px;
+    }
+  
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Estilos para tablets (largura de tela entre 769px e 1024px) */
+  }
+  
+  @media screen and (min-width: 1025px) {
+    /* Estilos para telas maiores (desktops) com largura mínima de 1025px */
+  }
+  

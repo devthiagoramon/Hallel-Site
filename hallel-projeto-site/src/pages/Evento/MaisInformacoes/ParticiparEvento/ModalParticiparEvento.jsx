@@ -138,7 +138,7 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
     return hasError;
   }
 
-  const handleParticiparEvento = () => {
+  const handleParticiparEvento = async () => {
     if (usuarioEvento.associado) {
       // Associado não passa pela verificação de inputs
       let usuarioEventoRequest = {
@@ -161,25 +161,26 @@ const ModalParticiparEvento = ({ evento, open, setOpen }) => {
       // Já membro e não membro passam pela verificação
       let hasError = verifyErrorInputs();
       if (!hasError) {
+        
         let usuarioEventoRequest = {
-          idEvento: evento.id,
-          ...usuarioEvento,
-        };
-        participarEventoService(usuarioEventoRequest)
-          .then((response) => {
-            if (response) {
-              notification.render(<SucessoParticiparEvento />);
-            } else {
-              notification.render(<ErrorParticiparEvento />);
-            }
-          })
-          .catch((error) => {
-            console.error("Erro ao participar do evento:", error);
-            notification.render(<ErrorParticiparEvento />);
-          });
+            idEvento: evento.id,
+            ...usuarioEvento,
+          };
+         participarEventoService(usuarioEventoRequest)
+            .then((response) => {
+               if (response) {
+                  notification.render(<SucessoParticiparEvento />);
+               } else {
+                  notification.render(<ErrorParticiparEvento />);
+               }
+            })
+            .catch((error) => {
+               console.error("Erro ao participar do evento:", error);
+               notification.render(<ErrorParticiparEvento />);
+            });
       }
     }
-  };
+   };
 
   useMemo(() => {
     let idUser = getUserId();

@@ -61,6 +61,7 @@ import HomeAdm from "./pages/Administrador/HomeAdm/index.js";
 import FormularioAdm from "./pages/Administrador/FormularioAdm/index.js";
 import AdmRouter from "./AdmRouter.js";
 import NaoUsuarioForm from "./pages/Evento/MaisInformacoes/ParticiparEvento/FormularioNaoUsuarioHallel.jsx"
+import FormularioVoluntario from "./pages/Evento/Voluntario/indexMain.js";
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
@@ -68,7 +69,7 @@ function RoutesApp() {
   return (
     <Routes>
       <Route
-        path="/"
+        path="/"  
         element={
           <>
             <HeaderHallel />
@@ -561,6 +562,18 @@ function RoutesApp() {
         ) : (
           ""
         )}*/}
+
+      <Route
+        path="/formVoluntario"
+        element={
+          <>
+            <HeaderHallel />
+            <FormularioVoluntario />
+            <Footer />
+          </>
+        }
+      />
+
       <Route
         path="/evento/maisInfo"
         element={
