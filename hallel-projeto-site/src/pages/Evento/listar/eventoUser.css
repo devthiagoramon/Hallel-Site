@@ -75,11 +75,6 @@
     align-items: flex-end;
   }
 
-  /* referente à imagem da capa central */
-  .imagemCp1_evento_user {
-    max-height: 20em;
-    margin-right: 3em;
-  }
 
   .dateLine{
     background-color: #B5C0BA;

@@ -70,8 +70,8 @@ const InfoEventos2 = ({ evento, hide }) => {
         <Fab
           style={{
             fontWeight: "600",
-            color: "#35404b",
-            background: "#FFA218",
+            color: "#002811",
+            background: "#FFC085",
             marginBottom: "1rem",
           }}
           onClick={() => navigate(0)}
@@ -120,7 +120,7 @@ const Corpo2 = ({
 
   return (
     <div className="corpo_evento">
-      <hr style={{ marginTop: "30px" }} />
+      <hr style={{ marginTop: "10px" }} />
       <div className="cont_titulo_desc_evento_user">
         <h1 className="titulo_evento">{evento.titulo}</h1>
         <div className="descricao_evento_user">
@@ -137,12 +137,25 @@ const Corpo2 = ({
           </p>
         </div>
       </div>
+
+      <div className="socorro">
+      
+     <img
+  className="imagemCp1_evento_user"
+  src={evento.imagem}
+  alt="imagem"
+  style={{
+    width: 10000
+  }}
+/>
+  <div className="degrade"/>
+</div>
+      
+      
+        
       <div className="container_imagem_evento_user">
-        <img
-          className="imagemCp1_evento_user"
-          src={evento.imagem}
-          alt="imagem"
-        />
+      
+
         {loadingIsInscrito ? (
           <>
             {!isInscrito ? (
