@@ -62,6 +62,23 @@
 
 .card_direita_evento_agenda > a:hover {
   color: #A8FFC7;
+<<<<<<< HEAD
+=======
+}
+
+
+.quadd{
+  background-color: #E6FFD3;
+  width: 700px;
+  margin-left: 400px;
+  margin-top: 45px;
+  border-radius: 10px;
+  overflow: hidden;
+  stroke: #002E14;
+  border: 1px solid #8bbb97;
+  height: 320px;
+ 
+>>>>>>> efb8a47060b2c4e058d45464fee7501e1447abcc
 }
 
 

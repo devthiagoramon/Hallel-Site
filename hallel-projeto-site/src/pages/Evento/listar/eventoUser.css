@@ -8,10 +8,51 @@
     justify-content: space-between;
   }
 
+<<<<<<< HEAD
   .title {
     text-align: center;
     width: 100%;
   }
+=======
+.painelEventosUser {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.contPesquisaEventoUser {
+  width: 99%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+#pesquisaEvents {
+  display: flex;
+}
+
+.CorpoEventoUser {
+ 
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.loaderEventoCarroseulEventos {
+  width: 100%;
+  display: flex;
+ 
+  flex-wrap: wrap;
+}
+
+.loaderEventoCarroseulEventos > span {
+  width: 10em;
+  height: 10em;
+}
+
+/* referente ao botao roxo */
+>>>>>>> efb8a47060b2c4e058d45464fee7501e1447abcc
 
 
   .TituloEventoUser {

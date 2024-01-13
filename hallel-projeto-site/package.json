@@ -5,7 +5,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+<<<<<<< HEAD
     "@hookform/resolvers": "^3.3.2",
+=======
+>>>>>>> efb8a47060b2c4e058d45464fee7501e1447abcc
     "@mui/icons-material": "^5.11.11",
     "@mui/joy": "^5.0.0-alpha.74",
     "@mui/material": "^5.14.13",

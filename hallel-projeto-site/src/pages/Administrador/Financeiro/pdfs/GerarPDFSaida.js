@@ -61,9 +61,21 @@ const GerarPDFSaida = () => {
         let dataString = mesSelecionado.format("MM/YYYY").toString();
         let mesString = dataString.substring(0, 2);
         let anoString = dataString.substring(3);
+<<<<<<< HEAD
         entradaListarByPageAndDateService(paginaSelecionado - 1, mesString, anoString).then((response) => {
             setentradas(response)
         });
+=======
+        let response = saidaGetAllPaginasService(mesString, anoString);
+        settotalPagina(response);
+    }, [mesSelecionado]);
+
+    useEffect(() => {
+        let dataString = mesSelecionado.format("MM/YYYY").toString();
+        let mesString = dataString.substring(0, 2);
+        let anoString = dataString.substring(3);
+       
+>>>>>>> efb8a47060b2c4e058d45464fee7501e1447abcc
     }, [paginaSelecionado, mesSelecionado]);
 
   return (

@@ -77,11 +77,16 @@ const ColorButton = styled(Button)(({ theme }) => ({
 const UltimasRendas = () => {
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const [entradas, setEntradas] = useState([]);
+=======
+
+>>>>>>> efb8a47060b2c4e058d45464fee7501e1447abcc
 
   useEffect(() => {
     let url = entradasUltimasEntradasAPI();
 
+<<<<<<< HEAD
     axios
       .get(url, {
         headers: {
@@ -114,6 +119,23 @@ const UltimasRendas = () => {
           </Fab>
           </div>
           </div>
+=======
+            <TableContainer component={Paper}>
+                <Table sx={{minWidth: 650}} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Código</TableCell>
+                            <TableCell>Data</TableCell>
+                            <TableCell>Valor</TableCell>
+                            <TableCell>Pago com</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+
+                    </TableBody>
+                </Table>
+            </TableContainer>
+>>>>>>> efb8a47060b2c4e058d45464fee7501e1447abcc
         </div>
         <div className="cont-header-financeiro">
         <div className="buttons">
@@ -190,11 +212,16 @@ const UltimasRendas = () => {
 const UltimasSaidas = () => {
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const [saidas, setSaidas] = useState([]);
+=======
+   
+>>>>>>> efb8a47060b2c4e058d45464fee7501e1447abcc
 
   useEffect(() => {
     let url = saidaUltimasSaidasAPI();
 
+<<<<<<< HEAD
     axios
       .get(url, {
         headers: {
@@ -226,6 +253,23 @@ const UltimasSaidas = () => {
           </Fab>
           </div>
           </div>
+=======
+            <TableContainer component={Paper}>
+                <Table sx={{minWidth: 650}} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Código</TableCell>
+                            <TableCell>Data</TableCell>
+                            <TableCell>Valor</TableCell>
+                            <TableCell>Pago com</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        
+                    </TableBody>
+                </Table>
+            </TableContainer>
+>>>>>>> efb8a47060b2c4e058d45464fee7501e1447abcc
         </div>
         <div className="cont-header-financeiro">
         <div className="buttons">
