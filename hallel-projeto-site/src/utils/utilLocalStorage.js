@@ -10,6 +10,6 @@ export function getRoles(){
     return localStorage.getItem("rolesHallel");
 }
 
-export function getId(){
+export function getUserId(){
     return localStorage.getItem("idHallel");
 }

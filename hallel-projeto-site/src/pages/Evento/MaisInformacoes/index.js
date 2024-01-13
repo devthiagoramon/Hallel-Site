@@ -22,7 +22,7 @@ import {
   eventoVerifyStatusPagamentoService,
 } from "../../../service/EventoService";
 import { OutlinedEmptyButtonHallel } from "../../../components/BtnHallel";
-import { getId } from "../../../utils/utilLocalStorage";
+import { getId, getUserId } from "../../../utils/utilLocalStorage";
 
 const InfoEventos2 = ({ evento, hide }) => {
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
@@ -36,7 +36,7 @@ const InfoEventos2 = ({ evento, hide }) => {
   useEffect(() => {
     async function isInscrito() {
       try {
-        const response = await eventoIsInscritoService(evento.id, getId());
+        const response = await eventoIsInscritoService(evento.id, getUserId());
         if (response) {
           setIsInscrito(response);
           setLoadingIsInscrito(false);
