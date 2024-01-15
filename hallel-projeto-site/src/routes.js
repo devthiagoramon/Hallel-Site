@@ -62,11 +62,17 @@ import FormularioAdm from "./pages/Administrador/FormularioAdm/index.js";
 import AdmRouter from "./AdmRouter.js";
 import NaoUsuarioForm from "./pages/Evento/MaisInformacoes/ParticiparEvento/FormularioNaoUsuarioHallel.jsx"
 import FormularioVoluntario from "./pages/Evento/Voluntario/indexMain.js";
+import DoacoesEventos from "./pages/Evento/DoarEvento/index.js";
+import TipoDoacaoEventos from "./pages/Evento/DoarEvento/SelecioneTipoDoacao/index.js";
+import PagamentoDoacaoEventos from "./pages/DoacoesHallel/PagamentoDoacao/index.js";
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
 
   return (
+
+    
+
     <Routes>
       <Route
         path="/"  
@@ -89,6 +95,26 @@ function RoutesApp() {
         }
       />
       <Route
+        path="/tipoDoacaoEventos"
+        element={
+          <>
+            <HeaderHallel />
+            <TipoDoacaoEventos />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/pagamentoDoacaoEventos"
+        element={
+          <>
+            <HeaderHallel />
+            <PagamentoDoacaoEventos />
+            <Footer />
+          </>
+        }
+      />
+      <Route
         path="/pedido"
         element={
           <>
@@ -98,6 +124,18 @@ function RoutesApp() {
           </>
         }
       />
+
+<Route
+        path="/doarEvento"
+        element={
+          <>
+            <HeaderHallel />
+            <DoacoesEventos />
+            <Footer />
+          </>
+        }
+      />
+
       <Route
         path="/associado"
         element={
