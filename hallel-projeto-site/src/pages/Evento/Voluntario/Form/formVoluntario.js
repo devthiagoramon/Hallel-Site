@@ -12,6 +12,7 @@ import RadioButtonHallel from "../../../../components/RadioButtonHallel";
 import { OutlinedButtonHallel } from "../../../../components/BtnHallel";
 import { useNavigate } from "react-router-dom";
 import './form.css';
+import { eventoVoluntariarService } from "../../../../service/EventoService";
 
 const yupErrors = Yup.object().shape({
   nome: Yup.string().min(3, "Ao menos 3 letras").required("Nome é obrigatório"),
@@ -43,9 +44,20 @@ const FormVoluntario = (props) => {
   const [sexoInput, setSexoInput] = useState("Masculino");
   const [concordoInput, setConcordoInput] = useState(false);
 
-  const handleSubmitData = (data) => {
+  const handleSubmitData = async (data) => {
     console.log("submit", data);
-    setModalVisible(true);
+    try {
+      
+      const sucesso = await eventoVoluntariarService(1); 
+      if (sucesso) {
+        
+        setModalVisible(true);
+      } else {
+        console.error("Erro ao voluntariar para o evento");
+      }
+    } catch (error) {
+      console.error("Erro ao voluntariar para o evento:", error);
+    }
   };
 
   const closeModal = () => {

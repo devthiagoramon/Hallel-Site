@@ -20,6 +20,7 @@ import {
   localEventoEditarById,
   localEventoListar,
   localEventoListarById,
+  eventoVoluntariar,
 } from "../api/uris/EventosURLS";
 import axios from "axios";
 import { getToken } from "../utils/utilToken";
@@ -27,6 +28,7 @@ import { getToken } from "../utils/utilToken";
 /*
     Eventos
 */
+
 
 export async function listarTodosEventosUsuarioService() {
   let url = eventoListarTodosEventosUsuarios();
@@ -43,6 +45,7 @@ export async function listarTodosEventosAdmService() {
   let url = eventoListarAdm();
   try {
     let axiosResponse = await axios.get(url, {
+      withCredentials: true,
       headers: {
         Authorization: getToken(),
       },
@@ -58,6 +61,7 @@ export async function listarTodosEventosArquivadosService() {
   let url = eventoListarArquivado();
   try {
     let axiosResponse = await axios.get(url, {
+      withCredentials: true,
       headers: {
         Authorization: getToken(),
       },
@@ -69,25 +73,23 @@ export async function listarTodosEventosArquivadosService() {
   }
 }
 
-export async function participarEventoService(usuarioEventoRequest) {
-    let url = eventoParticiparEventoAPI();
-    try {
-      let axiosResponse = await axios.post(url, usuarioEventoRequest, {
-        headers: {
-          Authorization: getToken(),
-        },
-      });
-      return axiosResponse.data;
-    } catch (e) {
-      console.error("Erro ao participar do evento:", e);
-      return false;
-    }
+export async function participarEventoService(usuarioEventoRequest) { 
+  try {
+    const response = await axios.post(usuarioEventoRequest, {
+      withCredentials: true,headers: { Authorization: getToken() },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao participar do evento:", error);
+    return false;
   }
+}
 
 export async function eventoIsInscritoService(idEvento, idHallel) {
   let url = eventoUsuarioIsInscrito(idEvento, idHallel);
   try {
     let axiosResponse = await axios.get(url, {
+      withCredentials: true,
       headers: { Authorization: getToken() },
     });
     return axiosResponse.data;
@@ -112,6 +114,7 @@ export async function eventoVerifyStatusPagamentoService(idEvento) {
   );
   try {
     let axiosResponse = await axios.get(url, {
+      withCredentials: true,
       headers: { Authorization: getToken() },
     });
     return axiosResponse.data;
@@ -393,3 +396,35 @@ export async function eventoDeletarLocalEventoPorId(idLocalEvento) {
     return false;
   }
 }
+
+/*Voluntariar-se em um evento*/
+
+export async function eventoVoluntariarService(idEvento) {
+  let url = eventoVoluntariar(idEvento);
+  try {
+    let axiosResponse = await axios.post(
+      url,
+      {
+      
+        headers: {
+          Authorization: getToken(),
+        },
+      
+  });
+    return axiosResponse.data; 
+  } catch (error) {
+    if (error.response) {
+
+      console.error("Erro na resposta do servidor:", error.response.data);
+      console.error("Status da resposta:", error.response.status);
+    } else if (error.request) {
+      
+      console.error("Requisição não obteve resposta:", error.request);
+    } else {
+     
+      console.error("Erro durante a requisição:", error.message);
+    }
+    throw error; 
+  }
+}
+

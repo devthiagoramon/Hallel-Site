@@ -1,3 +1,6 @@
-export function getToken(){
-    return localStorage.getItem("tokenHallel");
-}
+export function getToken() {
+    const token = localStorage.getItem("tokenHallel");
+    console.log("Token:", token);
+    return token;
+  }
+  
