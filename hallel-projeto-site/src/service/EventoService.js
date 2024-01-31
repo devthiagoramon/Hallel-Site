@@ -75,9 +75,13 @@ export async function listarTodosEventosArquivadosService() {
 
 export async function participarEventoService(usuarioEventoRequest) { 
   try {
-    const response = await axios.post(usuarioEventoRequest, {
-      withCredentials: true,headers: { Authorization: getToken() },
-    });
+    let url = eventoParticiparEventoAPI();
+    const response = await axios.post(url, usuarioEventoRequest, {
+  withCredentials: true,
+  headers: { 
+    Authorization: getToken() 
+  },
+});
     return response.data;
   } catch (error) {
     console.error("Erro ao participar do evento:", error);
