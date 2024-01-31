@@ -1,0 +1,34 @@
+.topo{
+    width: 100%;
+    height: 10vh;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+    
+  }
+
+.topo > .topo-left{
+
+  display: flex;
+  justify-content: space-around;
+  margin-left: 1em;
+
+}
+
+
+  .topo h2{
+    margin: 0 0 0 50px;
+  }
+  .iconeSeta{
+    margin-right: 60%;
+  
+  }
+  .itemsTopoDireita{
+    margin-right: 130vh;
+    background-color: #403928;
+  }
+  .itemsExtra{
+    margin-right: 50px;
+    width: 30px;
+    height: 40px;
+  }

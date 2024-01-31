@@ -1,0 +1,108 @@
+.sessaoMembro > label {
+  color: #35404b;
+  font-weight: 700;
+  font-size: 2em;
+  margin-top: 2em;
+  text-indent: 4em;
+}
+
+.filtro {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 100%;
+  margin: 1.5em 0;
+}
+
+.filtro .buttonArea,
+.right-area {
+  margin: 0 0.5em;
+}
+
+/*left container*/
+
+.left-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.left-area > div {
+  align-content: flex-start;
+  display: flex;
+  flex-direction: row;
+}
+
+/*right container*/
+
+.right-area {
+  flex-direction: row;
+  display: flex;
+}
+
+.right-area .buttonArea {
+  flex-direction: row;
+}
+
+.adicionarBt > button {
+  border-radius: 0.5em;
+  border: none;
+  padding: 0.2em 0.5em;
+  font-weight: 700;
+  color: #1e242a;
+}
+
+.right-area .buttonArea > button {
+  border-radius: 0.5em;
+  border: none;
+  padding: 0.5em 0.5em;
+  font-weight: 700;
+  color: #1e242a;
+  background-color: rgb(53, 178, 103);
+}
+
+.select-area {
+  min-width: 10dp;
+  margin-bottom: 1.5em;
+}
+
+.progressCircle {
+  display: block;
+  margin: auto;
+}
+
+.tableMembro {
+  margin: 0 0;
+}
+
+.tableMembro .table,
+thead td {
+}
+
+.tableMembro .table tr,
+th,
+td {
+}
+
+.progressCircle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5em 0;
+}
+
+.coluna_opcoes > button {
+  border-radius: 0.5em;
+  border: none;
+  padding: 0.2em 0.5em;
+  font-weight: 700;
+  color: #1e242a;
+}
+
+.coluna_opcoes > button:first-child {
+  background-color: #ffd885;
+}
+
+.coluna_opcoes > button:last-child {
+  background-color: #fd8282;
+}

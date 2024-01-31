@@ -1,0 +1,50 @@
+.containerCursosComunidade{
+    margin-top: 2rem;
+    width: 94vw;
+    min-height: 100%;
+    margin-left: 3rem;
+}
+
+.headerContainerCursosComunidade{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tituloCursosComunidade{
+    font-size: xx-large;
+    color:"#252525";
+    font-weight: 500;
+}
+
+.bodyContainerCursosComunidade{
+    margin-top: 2rem;
+}
+
+.cardCursosComunidade{
+    width: 17rem;
+    max-height: 350px;
+    height: 350px;
+}
+
+.imgCardCursosComunidade{
+    height: 80%;
+    object-fit: contain;
+}
+
+.containerCadsCursosComunidade{
+    width: 100%;
+    min-height: 100%;
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.containerLoadCardsCursosComunidade{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}

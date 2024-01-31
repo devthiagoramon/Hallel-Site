@@ -1,0 +1,68 @@
+.produto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: white;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(0.8);
+  transition: transform 0.3s;
+  background-color: #003617;
+  margin-bottom: 3rem;
+  
+}
+
+.produto img {
+  width: 100%;
+  height: auto;
+}
+
+.nome-produto {
+  margin-left: 1rem;
+  font-weight: normal;
+  font-size: 28px;
+  text-align: start;
+  color: white;
+}
+
+.valorPromocao {
+  font-style: bold;
+  font-size: 19px;
+  font-weight: bold;
+  color: #c1f4d3;
+  text-align: start;
+  text-decoration: underline;
+  margin-left: 1rem;
+}
+
+.destaque {
+  align-items: center;
+  margin-top: -50px;
+  color: #081f39;
+  margin-bottom: 3rem;
+}
+
+.slick-prev,
+.slick-next {
+  color: #081f39;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 40px;
+}
+
+.slick-prev {
+  left: 0;
+}
+
+.slick-next {
+  right: 1;
+}

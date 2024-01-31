@@ -1,0 +1,86 @@
+.contEditCursoAdm{
+    width: 94vw;
+    min-height: 100%;
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.imageDivLoadingTela{
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerEditCurso{
+    width: 100%;
+}
+.headerEditCurso label{
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.bodyEditCurso{
+    width: 100%;
+    margin-top: 3rem;
+    min-height: 100%;
+}
+
+.outContInputsEditCurso{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.contInputsEditCurso{
+    width: 70%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.contInputsEditCurso>div>label{
+    font-size: 18px;
+    font-weight: 550;
+    margin-bottom: 1.1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footerEditCurso{
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.contEnviarEditCurso{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contImagemEditCurso {
+    margin-top: 3rem;
+    width: 640px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 1px 1px 10px ;
+}
+
+.outImagemEditCurso{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.avisoInputArquivoAtividadeEdit{
+  color: "#F4D03F";
+  font-weight: bold;
+}

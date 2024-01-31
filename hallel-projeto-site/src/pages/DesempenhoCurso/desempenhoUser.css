@@ -1,0 +1,259 @@
+.bg-progresso1{
+
+    background-color: #ED254E;
+}
+.bg-progresso2{
+
+    background-color: #28A51E;
+}
+.bg-progresso3{
+
+    background-color: #00387C;
+}
+
+.sessaoDesempenhoUser{
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 8em;
+    color: #35404b;
+}
+
+.SessaoTopDesempenho > label{
+
+    font-size: 1.8em;
+    font-weight: 600;
+    text-indent: 2em;
+
+
+   
+}
+/*.SessaoTopDesempenho{ 
+} */
+.painelDesempenho{
+
+    background: linear-gradient(90deg, #F4B393, rgb(206, 236, 151, 0.5));
+    margin: 1em 25%;
+    padding: 3em;
+    border-radius: 2em;
+
+}
+
+
+.painelDesempenho > label{
+
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #F6FF94;
+     text-shadow: 1px 1px 2px #011E40, -1px 1px 2px #011E40, 1px -1px 2px #011E40, -1px -1px 2px #011E40;
+}
+
+
+.painelDesempenho .progressArea > .progress{
+
+    background-color: #20262C;
+    height: 2em;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.painelDesempenho .progressArea > .progress{
+
+    margin: 0.6em 0;
+}
+
+.painelDesempenho .progressArea > .progress{
+
+
+    margin-right: 40%;
+}
+
+
+
+/*left desempenho*/
+
+.SessaoMeioDesempenho{
+
+    display: flex;
+    justify-content: space-around;
+    margin: 2em 0;
+}
+
+.SessaoMeioDesempenho .modulos-container, .anotacoes-container{
+
+    margin: 1em 2em;
+    max-width: 20em;
+    padding: 2em;
+}
+
+.SessaoMeioDesempenho .modulos-container {
+
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    flex-grow: 1;
+
+}
+
+.SessaoMeioDesempenho .modulos-container > label{
+
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+
+.SessaoMeioDesempenho .modulos-container div label{
+
+    font-size: 1.2em;
+    font-weight: 700;
+ 
+}
+
+.SessaoMeioDesempenho .modulos-container div ul{
+
+    font-size: 1.1em;
+    
+}
+
+
+
+.SessaoMeioDesempenho .anotacoes-container{
+
+    background-color: #D1DB5A;
+    border-radius: 1.2em;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    max-height: 30em;
+    
+}
+
+
+.SessaoMeioDesempenho .anotacoes-container label{
+
+    align-self: center;
+    margin-bottom: 1.5em;
+
+    /*titulo*/
+    font-size: 1.4em;
+    font-weight: 700;
+}
+.SessaoMeioDesempenho .anotacoes-container ul{
+
+    list-style: none;
+    text-decoration: underline;
+    font-size: 1.1em;
+}
+
+
+
+/*modals area*/
+
+.modall{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background-color: #D1DB5A;
+    border-radius: 1em;
+    width: 40%;
+    height: 60%;
+    max-width: 25em;
+    max-height: 28em;
+    padding: 2em 2em 0 2em ;
+
+}
+.modal-over{
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(161, 161, 161, 0.5);
+}
+.modal-anotacoes{
+    
+    color: #35404b;
+}
+
+.modal-anotacoes > label{
+
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.modal-anotacoes .list-anotacoes > label{
+
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.modal-anotacoes .list-anotacoes > ul li{
+
+    text-indent: 1em;
+    font-weight: 600;
+}
+
+.bottom-area{
+
+    display: flex;
+    justify-self:flex-end;
+    justify-content: space-around;
+}
+
+.bottom-area > button{
+
+    border: none;
+    background: none;
+    font-weight: 700;
+    color: #35404b;
+    text-transform: uppercase;
+}
+
+.modal-anotacoes > label{
+
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+  }
+  
+  .ReactModal__Overlay--after-open{
+    opacity: 1;
+  }
+  
+  .ReactModal__Overlay--before-close{
+    opacity: 0;
+  }
+
+
+
+#botaoatividade{
+
+
+    margin-right: 80%;
+    margin-left: 10%;
+    border: none;
+    padding: 0.8em;
+    border-radius: 1.2em;
+    background-color: #D1DB5A;
+    font-weight: 700;
+    font-size: 1em;
+    color: #35404b
+}
+
+#botaoatividade:hover{
+
+
+    background-color: #c0ca4f;
+
+
+}
+

@@ -1,0 +1,210 @@
+#body-associado {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+#body-associado > label {
+  align-self: center;
+  margin-top: 3em;
+}
+
+/*css do conteudo do topo*/
+
+.conteudo-top {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 2em;
+}
+
+.conteudo-top label:nth-child(1) {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2em;
+}
+
+.conteudo-top label:nth-child(2) {
+  font-weight: 600;
+  font-size: 1.4em;
+  margin-left: 1em;
+}
+
+/*css do conteudo*/
+.imagem-top {
+  height: 20%;
+  background-image: url(https://cdn.pixabay.com/photo/2017/02/15/13/39/tulips-2068688_960_720.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  background-position: top;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+.imagem-top > .containerCircular {
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  padding: 5em;
+  width: 28em;
+  height: 28em;
+  border-radius: 20em;
+
+  margin-left: 2.5em;
+}
+
+.containerCircular div {
+  display: flex;
+  flex-direction: column;
+}
+
+.containerCircular div label:nth-child(1) {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.containerCircular div label:nth-child(2) {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+
+.containerCircular div .link > button {
+  background: none;
+  border-color: rgb(255, 81, 0);
+  border-style: solid;
+  padding: 0;
+  margin: 0.5em 0;
+  border-radius: 10em;
+  color: orangered;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.containerCircular div .link > button:hover {
+  background-color: rgb(255, 228, 184);
+}
+
+.containerCircular div .verdefonte {
+  color: #005b04;
+}
+
+.containerCircular div .laranjafonte {
+  color: #d94814;
+}
+
+.containerCircular div .amarelofonte {
+  color: #f2b807;
+}
+
+.containerCircular div .vermelhofonte {
+  color: #ca1e1e;
+}
+
+/*informacoes associado*/
+.informacoes-associado {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 3em 0;
+  margin-left: 0.5em;
+  width: 100%;
+}
+.informacoes-associado .inftexto-Associado {
+  padding: 1em;
+}
+
+/*nth child, porem para elementos com classe e etc*/
+.informacoes-associado .inftexto-Associado:nth-of-type(1) {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.informacoes-associado .inftexto-Associado:nth-of-type(2) {
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.informacoes-associado .inftexto-Associado:nth-of-type(3) {
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+/*cards seção css*/
+
+.containerCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.containerCard .divCard {
+  flex-direction: column;
+  display: flex;
+  padding: 1em;
+  background-color: rgb(255, 255, 255);
+}
+.divCard label {
+  text-align: center;
+}
+.divCard label:nth-child(1) {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+.divCard label:nth-child(2) {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.divCard #tituloazul {
+  color: #0284ad;
+}
+.divCard #tituloverde {
+  color: #005b04;
+}
+
+#divcard1 hr {
+  background-color: #0284ad;
+}
+
+#divcard2 hr {
+  color: #005b04;
+}
+.divCard ul {
+  margin: 1em 5em;
+}
+.divCard ul li {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.divCard .link button {
+  margin: 0 30%;
+  padding: 0.4em 0;
+  width: 40%;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.3em;
+  border-radius: 3em;
+  border: none;
+}
+
+#divcard1 .link button {
+  background-color: #95e5ff;
+}
+
+#divcard1 .link button:hover {
+  background-color: #67bfdc;
+}
+
+#divcard2 .link button {
+  background-color: #bdecb6;
+}
+
+#divcard2 .link button:hover {
+  background-color: #97c790;
+}

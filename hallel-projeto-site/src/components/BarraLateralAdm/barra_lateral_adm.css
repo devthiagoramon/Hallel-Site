@@ -1,0 +1,11 @@
+.container_barra_lateral_adm{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 18%;
+    background: linear-gradient(185deg, #06312E 64.89%, #06312E 64.9%, #184B48 93.66%);
+    height: 100%;
+    top: 0;
+    left: 0;
+    row-gap: 10px;
+}

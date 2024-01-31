@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.containerPagamentos{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.cabecalhoPagamentos{
+    width: 100vw;
+    height: 10%;
+    margin-left: 0;
+    margin-top: 2rem;
+    margin-left: 3rem;
+}
+
+.cabecalhoPagamentos a{
+    font-size: 36px;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+}
+
+.containerTabelaPagamentos{
+    margin-top: 2rem;
+    width: 94%;
+    height: 100%;
+    margin-left: 3rem;
+}
+
+.headContTabelaPagamentos{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.tituloHeadContTabelaPagamentos a{
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.pesquisaHeadContTabelaPagamentos{
+    width: 17%;
+}
+
+.icons{
+    width: 55px;
+    color: #35404B;
+}
+
+.containerUltRenda{
+    display: flex;
+    width: 27%;
+    height: 60%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.CircularProgress{
+
+
+    display: flex;
+    justify-content: center;
+    
+}

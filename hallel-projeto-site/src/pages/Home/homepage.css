@@ -1,0 +1,105 @@
+.homepage{
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 5%;
+    font-family: "Inter", sans-serif;
+}
+
+.sectionCapa{
+    height: 0px;  
+    position: relative;
+    margin-top: -150px;
+}
+
+.body-evento{
+    margin-left: 40px;
+}
+
+.hr{
+    max-width: 100%;
+    color: #35404b;
+}
+
+.containerCapa label{
+    background-color:white;
+    width: 100%;
+    align-self: center;
+    color: #003015;
+    font-weight: 700;
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.area-middle{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.facebook-area{
+
+    width: 30em;
+    height: 40em;
+    margin: 3em 0;
+}
+
+.facebook-area > label{
+
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #35404b;
+    margin: 1em 0;
+}
+
+.area-cartoes-home{
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+@media screen and (max-width: 940px) {
+
+    .div-event{
+        margin-top: 15rem;
+    }
+    .containerCapa label{
+      background-color:white;
+      width: 100%;
+      align-self: center;
+      color: #003015;
+      font-weight: 700;
+      font-size: 2.5em;
+      text-align: center;
+      margin-top: 100px;
+      margin-bottom: 100px;
+  }
+  }
+  @media screen and (max-width: 540px) {
+
+    .div-event{
+      margin-top: 15rem;
+  }
+
+    .div-event-master {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      width: 50px;
+      margin-left: 10rem;
+    }
+
+    .containerCapa label{
+        margin-top: 2rem;
+    }
+
+    .div-carousel{
+        width: 10px;
+        margin: 0 auto;
+    }
+    
+  }

@@ -1,0 +1,124 @@
+.container_add_saidas {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 600px;
+}
+
+.header_add_saidas {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.header_add_saidas > label {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.container_inputs_add_saidas {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 1.5rem;
+}
+
+.inputs_add_saidas {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 80%;
+  row-gap: 10px;
+}
+
+.inputs_add_saidas > label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.inner_inputs_add_saidas_grid {
+  display: grid;
+  grid-template-columns: 35% 60%;
+  column-gap: 10px;
+}
+
+.add_codigo_texto_saidas {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.add_codigo_texto_saidas > label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.container_btn_add_saidas {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.container_adicionar_codigo_saida {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+
+.container_adicionar_codigo_saida > button:hover {
+  background-color: #613191;
+}
+
+.container_comprovante_add_saida {
+  width: 100%;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  /* Estilos para telas menores que 768px de largura */
+  .container_add_saidas {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 100px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Estilos para telas entre 768px e 1024px de largura */
+  .container_add_saidas {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 300px;
+}
+}
+
+@media (min-width: 1025px) {
+  /* Estilos para telas maiores que 1024px de largura */
+  .container_add_saidas {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 600px;
+}
+}

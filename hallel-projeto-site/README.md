@@ -1,0 +1,3 @@
+# APLICATIVO REACT
+
+### EXECUTAR COM npm-start

@@ -1,0 +1,96 @@
+.loja-produto{
+
+    display: flex;
+    flex-direction: column;
+}
+
+.img-lugar{
+
+
+    background-color: #9d9d9d;
+    height: 100%;
+    min-height: 25em;
+    margin: 2em 30%;
+}
+
+.img-lugar > img{
+
+    background-size: cover;
+}
+
+
+.descricao-produto{
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.informes{
+
+    display: flex;
+    flex-direction: column;
+    color: #35404b;
+    font-weight: 700;
+}
+
+/*aumentar a fonte do nome do produto*/
+.informes > label:nth-child(1){
+
+    font-size: 1.2em;
+}
+
+
+/*adicionar uma pequena margem esquerda no preço*/
+
+.informes > label:nth-child(2){
+
+    text-indent: 1em;
+    margin: 0.5em;
+}
+
+
+/*estilização do botão de compra*/
+.button-area > button{
+
+    border: 1px solid #35404b;
+    border-radius: 1em;
+    background-color: #80D88E;
+    font-weight: 700;
+    color: #35404b;
+}
+
+
+.button-area > button:hover{
+
+    border: 1px solid #35404b;
+    border-radius: 1em;
+    background-color: #79c786;
+    font-weight: 700;
+    color: #415840;
+}
+
+.button-quantidade{
+
+    margin: auto;
+    background-color: #DDDDDD;
+    padding: 0.5rem;
+    border-radius: 0.5em;
+}
+
+.button-quantidade > label{
+
+    margin: 0 0.5em;
+}
+
+.button-quantidade .modificadores{
+
+    min-width: 2em;
+    min-height: 1.8em;
+    border: none;
+}
+
+
+.bread{
+
+    margin: 1.2em 2em;
+}

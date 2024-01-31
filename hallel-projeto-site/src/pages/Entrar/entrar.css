@@ -1,0 +1,226 @@
+.img {
+  width: 90%;
+  max-width: 500px;
+  margin: 2rem 0;
+  transform: translateY(0);
+  margin-left: 7.5rem;
+  margin-top: 13.125rem;
+  animation: float 4s ease-in-out infinite;
+  overflow: hidden;
+  display: block; 
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3.125rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.quadrado {
+  background-color: #003617;
+  width: 80%;
+  max-width: 550px;
+  margin: 2rem auto;
+  height: 46rem;
+  margin-left: 53.75rem;
+  margin-top: -36.5rem;
+  margin-bottom: 2rem;
+  border-radius: 1.875rem;
+  box-shadow: 0 0 4.6875rem rgba(0, 0, 0, 0.3);
+  padding-top: 1.5rem;
+  position: relative;
+}
+
+
+.login-text {
+  text-align: center;
+  color: white;
+  font-size: 4.0625rem;
+  font-weight: lighter;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+}
+
+.email-input {
+  border-radius: 0.3125rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.email-text-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3%;
+  margin-top: 1%;
+}
+
+.email-text {
+  font-size: 1rem;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  margin-left: 10.5%;
+}
+
+.email-camp {
+  width: 27rem;
+  height: 1.875rem;
+  border: 0;
+  border-bottom: 0.125rem solid white;
+  background-color: transparent;
+  outline: none;
+  font-size: 1rem;
+  color: white;
+  margin: 0 auto;
+  text-align: start;
+  margin-top: 1%;
+}
+
+.email-label{
+  align-self: flex-start;
+}
+
+.remember {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  display: block; 
+  margin-left: 10.5%;
+}
+
+.forget-password {
+  text-align: end;
+  margin-right: 9%;
+  color: #b4ffd4;
+  text-decoration: none;
+  margin-top: 0;
+  display: inline-block; 
+}
+
+.div-button{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.button-continue {
+  width: 80%;
+  height: 3rem;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0 4.6875rem rgba(0, 0, 0, 0.3);
+  border: 0;
+  background-color: #a8ffc7;
+  font-size: 2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  color: #003617;
+  cursor: pointer;
+  margin: 1rem auto;
+  text-align: center;
+  line-height: 1rem;
+ 
+}
+
+.register-div {
+  margin-left: 10.5%;
+  margin-top: 5rem;
+  display: block; 
+  margin: 2rem 3;
+}
+
+.text-register {
+  color: white;
+  display: inline-block; 
+}
+
+.register {
+  margin-left: 0.25rem;
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  display: inline-block; 
+}
+
+.terms-div {
+  margin-top: 13rem;
+  font-size: 0.625rem;
+  text-align: center;
+  color: #d6fde7;
+  margin-bottom: 6.25rem;
+  display: block; 
+}
+
+.register-terms {
+  color: #d6fde7;
+  display: inline-block;
+}
+
+.register-privace {
+  color: #d6fde7;
+  display: inline-block;
+}
+
+@media screen and (min-width: 1700px) {
+
+  .quadrado {
+    margin-left: 80rem;
+  }
+  .img{
+    margin-left: 15rem;
+  }
+
+}
+
+@media screen and (max-width: 1388px) {
+
+  .quadrado {
+    margin-left: 50rem;
+  }
+
+  .button-continue{
+    margin-top: 1rem 0;
+  }
+}
+
+@media screen and (max-width: 1356px) {
+
+  .quadrado {
+    margin-left: 45rem; 
+  }
+
+  .div-button{
+    margin-top: 100rem;
+  }
+
+  .terms-div{
+    margin: 1rem auto;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+
+  .img{
+    display: none;
+  }
+  .quadrado {
+    margin: 2rem auto;
+    width: 80%;
+  }
+  .div-button{
+    margin-bottom: 100rem;
+  }
+  .terms-div{
+    margin-bottom: 100rem;
+  }
+}

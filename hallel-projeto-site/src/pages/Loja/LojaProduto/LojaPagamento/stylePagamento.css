@@ -1,0 +1,61 @@
+.pagamentoLoja{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.pagamentoLoja > label {
+    
+    font-size: 1.5em;
+    font-weight: 700;
+    text-indent: 2em;
+    color: #35404b;
+    margin: 2em 0;
+}
+
+.componenteReviewLoja{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.componenteReviewLoja > div > label{
+    
+    font-size: 1.3em;
+    color: #35404b;
+    font-weight: 700;
+    margin: 1em 0;
+}
+
+.componenteReviewLoja > div:nth-child(2){
+
+    max-width: 30em;
+}
+
+
+/*finalizar pedido, o botao*/
+.botao-loja{
+
+    background-color: #80D88E;
+    border: 2px solid black;
+    color: #35404b;
+    font-weight: 700;
+    padding: 0.5em;
+    border-radius: 1em;
+    margin: 2em auto;
+    display: flex;
+}
+
+.botao-loja:hover{
+
+    background-color: #6ec37c;
+    border: 2px solid black;
+}
+
+.colunaAcordeao{
+
+    display: flex;
+    flex-direction: column;
+}

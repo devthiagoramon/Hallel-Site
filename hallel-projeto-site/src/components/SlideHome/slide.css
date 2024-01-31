@@ -1,0 +1,46 @@
+.slider {
+    max-width: 2500px;
+    margin: 70px;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    display: block;
+  }
+  
+  .slider>img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  /* button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  } */
+  
+  .slick-dots {
+    bottom: 1px;
+  }
+  
+  @media screen and (max-width: 3000px) {
+
+    .slider{
+      align-self: center;
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+
+    .slider>img{
+      display: none;
+  }
+    
+  }

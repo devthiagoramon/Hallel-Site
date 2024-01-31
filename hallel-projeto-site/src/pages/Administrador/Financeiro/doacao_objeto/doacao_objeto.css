@@ -1,0 +1,56 @@
+.containerDoacaoObj{
+    width: 100%;
+    min-height: 100%;
+    margin-top: 2rem;
+    margin-left: 3rem;
+}
+
+.containerCardsDoacaoObj{
+    width: 93%;
+}
+
+.headerCardsDoacaoObj{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerCardsDoacaoObj label{
+    width: auto;
+    font-size: 36px;
+}
+
+.headerCardsDoacaoObj span{
+    font-size: 18px;
+}
+
+.bodyCardsDoacaoObj{
+    width: auto;
+    margin-top: 3rem;
+    display: flex;
+    gap: 3rem;
+}
+.addDoacaoHeaderCardsDoacao{
+    width: auto;
+    height: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.modalDescricaoObjeto{
+    background-color: #fafafa;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 10px;
+}
+
+.loadingModalDescricaoObjeto{
+    min-height: 200px;
+    border-radius: 10px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

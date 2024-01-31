@@ -1,0 +1,82 @@
+.div-main-doacao-obj{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+#titleDoacao{
+    color: #165336;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.container-doacoes-form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 10vh;
+    border: 3px dashed #165336;
+    border-radius: 15px;
+}
+
+.btnAddDoacao{
+    border: none;
+    background: none;
+}
+
+.iconOutLine{
+    margin-left: 25px;
+
+}
+
+.iconOutLine :hover{
+    opacity: 0.8;
+}
+.div-button-registrar-doacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+    border-radius: 15px;
+    column-gap: 40px;
+}
+.div-button-registrar-doacao  :hover{
+    transform: scale(1.06);
+    cursor: pointer;
+}
+
+.button-registrar-doacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #165336;
+    width: 20%;
+    height: 35%;
+    border-radius: 15px;
+
+}
+.button-registrar-doacao label{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.button-voltar-doacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #165334ac;
+    width: 10%;
+    height: 35%;
+    border-radius: 15px;
+}
+
+.button-voltar-doacao>label{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}

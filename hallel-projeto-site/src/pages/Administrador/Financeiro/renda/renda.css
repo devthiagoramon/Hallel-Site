@@ -1,0 +1,111 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.containerRenda{
+    width: 100vw;
+    min-height: 60vh;
+    display: flex;
+    align-items: normal;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.cabecalho{
+    width: 100vw;
+    height: 10%;
+    margin-left: 0;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    text-indent: 2em;
+}
+
+.cabecalho a{
+    font-size: 36px;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+}
+
+.containerTabelaRenda{
+    margin-top: 2rem;
+    width: 65%;
+    height: 100%;
+    margin-left: 3rem;
+    margin-right: 2rem;
+}
+
+.headContTabelaRenda{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+
+.tituloHeadContTabelaRenda a{
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.iconsHeadContTabelaRenda{
+    display: flex;
+    width: 14%;
+    justify-content: space-between;
+}
+
+.iconsHeadContTabelaRenda a, .iconsHeadContTabelaRenda span{
+    border-radius: 50%;
+    height: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 5px;
+}
+
+.icons{
+    width: 55px;
+    color: #35404B;
+}
+
+
+.containerUltRenda{
+    display: flex;
+    width: 27%;
+    height: 60%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.headUltRenda{
+    width: 100%;
+    height: 5%;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.headUltRenda p{
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 0;
+}
+
+.containerTabelaUltRenda{
+    width: 100%;
+    height: 95%;
+    box-shadow: rgba(0, 0, 0, 0.25);
+    margin-left: 2.5rem;
+    margin-top: 2.6rem;
+}
+
+.containerTabelaUltRenda table{
+    width: 90%;
+    box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 5px;
+}
+
+.containerTabelaUltRenda table,th,td{
+    text-align: left;
+}

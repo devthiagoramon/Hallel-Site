@@ -1,0 +1,64 @@
+.principal_chamada{
+
+
+    background-color: #14191d;
+    display: flex;
+    flex-direction: column;
+}
+
+.principal_chamada .colunaMeio{
+
+    display: flex;
+    flex-direction: row;
+}
+
+.bottom_area{
+
+    display: flex;
+    justify-content: center;
+    background-color: #31383e;
+}
+
+.informacoesChamada{
+
+    display: flex;
+    justify-content: start;
+}
+
+.informacoesChamada label{
+
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 1em;
+    color: #dedede;
+}
+
+.component_video{
+
+    background-color: #cecece;
+    width: 14em;
+    height: 10em;
+}
+
+/*area das cameras*/
+.videoChamada_area{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.videoChamada_area div{
+
+    margin: 1em;
+}
+
+.ChamadaChat{
+
+    width: 20em;
+    height: 30em;
+    min-width: 15em;
+    min-height: 25em;
+    background-color: #cecece;
+    margin: 1em;
+}

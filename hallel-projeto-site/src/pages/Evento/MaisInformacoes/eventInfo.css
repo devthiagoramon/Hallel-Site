@@ -1,0 +1,241 @@
+body {
+  overflow-x: hidden;
+}
+
+.containerEvents{
+  width: 100vw;
+  margin: 0;
+  padding-right: 3rem;
+}
+
+.cont_titulo_desc_evento_user {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+}
+
+.titulo_evento {
+  display: flex;
+  flex-direction: column;
+  color: #252525;
+}
+
+
+.containerEvents .voltar {
+  display: flex;
+  justify-content: right;
+}
+/* Corpo */
+
+.corpo_evento {
+  display: flex;
+}
+
+.corpo_evento > container_imagem_evento_user {
+  display: block;
+  background-color: #8da0b2;
+}
+
+.corpo_evento > img {
+  max-width: 640px;
+  max-height: 480px;
+  aspect-ratio: 6/2;
+}
+
+.descricao_evento_user {
+  display: flex;
+  width: 40%;
+}
+
+/*INFORMAÇÕES*/
+
+.infos{
+  display: flex;
+  flex-direction: column;
+}
+
+.voltar button {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  background-color: #ffb783;
+  font-weight: 700;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #35404b;
+}
+
+.voltar button:hover {
+  width: 3.2em;
+  height: 3.2em;
+  background-color: #ffa768;
+  transition: 0.5s;
+}
+
+.subtopicos {
+}
+
+.topicosInfo > li {
+  font-weight: 700;
+  font-size: 1.2em;
+  color: #35404b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.participantes {
+  flex-direction: column;
+  display: flex;
+  
+}
+
+.participantes > label {
+  font-size: 24px;
+  font-weight: 600;
+  color: #252525;
+}
+
+.descricao_evento_user {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.descricao_evento_user label {
+  font-size: 24px;
+  font-weight: 600;
+  color: #252525;
+}
+
+.cont_loading_is_inscrito{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.status_evento_participando{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.label_status_evento_participando{
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.container_infos_desc_evento {
+  width: 100%;
+  display: flex;
+  column-gap: 4rem;
+}
+
+.subtopicos > label {
+  font-size: 24px;
+  font-weight: 600;
+  color: #252525;
+}
+
+.container_participar_evento{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cont_form_part_evento{
+  width: 100%;
+}
+
+.header_form_part_evento{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.body_form_part_evento{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  margin-top: 2rem;
+  row-gap: 10px;
+}
+
+.body_form_part_evento2{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  row-gap: 10px;
+}
+
+.footer_form_part_evento{
+  margin-top: 2rem;
+}
+
+.container_participar_evento>button{
+  border-radius: 12px;
+}
+
+.container_participar_evento>button:hover{
+  background-color: #613191;
+}
+
+.header_cartao_participar_evento{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.body_cartao_participar_evento{
+
+}
+
+.cont_modal_adicionar_cartao_pe{
+  width: 100%;
+}
+.header_modal_adicionar_cartao_pe{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.body_modal_adicionar_cartao_pe{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  row-gap: 10px;
+  margin-top: 1rem;
+}
+
+.inputs2_modal_adicionar_cartao_pe{
+  width: 100%;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.footer_modal_adicionar_cartao_pe{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  column-gap: 15px;
+}
+
+.cont_cartao_participar_evento{
+  width: 100%;
+  border-radius: 6px;
+  background-color: #613191;
+  padding: 2rem;
+  color: #f4f4f4;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 4px;
+}
+

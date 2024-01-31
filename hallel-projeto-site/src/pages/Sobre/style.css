@@ -1,0 +1,117 @@
+.global {
+
+  font-family: 'Inter', sans-serif;
+  color:#35404B;
+  background-color: #FFFFFF;
+  display: block;
+  margin: 2em 0;
+}
+
+.quemsomos{
+  height: 10px;
+}
+#imgquemsomos{
+  margin-top: -20px;
+  max-height: 600px;
+  width: 100%;
+}
+#titulo {
+
+  color:#35404B;
+
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 45px;
+  text-indent: 2em;
+  font-size: 50px;
+  font-family: 'Inter';
+  margin-top: -30px;
+}
+.global > p {
+
+  font-family: 'Inter';
+  font-style: normal;
+  margin: 1em 2em 0 2em;
+  text-align: justify;
+  text-indent: 2em;
+  font-size: 18px;
+}
+
+
+#titulo>p{
+
+  margin-left: 20px;
+}
+
+.container-text{
+  background-color: #003617;
+  width: 1200px;
+  height: 800px;
+  margin-left: 175px;
+  border: 1px solid;
+  border-radius: 10px;
+  margin-bottom: 130px;
+  margin-top: 16px;
+  margin: 0 auto;
+}
+
+.paragrafo1{
+  color: #FFFFFF;
+  text-align: center;
+  margin: 45px;
+  width: 1100px;
+  margin-top: 20px;
+  font-size: x-large;
+}
+
+.paragrafo2{
+  color: #FFFFFF;
+  text-align: center;
+  margin: 45px;
+  margin-top: -30px;
+  width: 1100px;
+  font-size: x-large;
+}
+
+.paragrafo3{
+  color: #FFFFFF;
+  text-align: center;
+  margin: 45px;
+  margin-top: -30px;
+  width: 1100px;
+  font-size: x-large;
+}
+
+.frasefinal{
+  color: #FFFFFF;
+  text-align: center;
+  margin: 45px;
+  margin-top: -30px;
+  width: 1100px;
+  font-size: x-large;
+}
+
+.who-text{
+  color: #FFFFFF;
+  text-align: center;
+  margin: 45px;
+  margin-top: 10px;
+  width: 1100px;
+  font-size: 50px;
+}
+
+.line{
+  color: black;
+  background-color: black; 
+  height: 4px;
+  border: none;
+  margin-top: -40px;
+}
+
+@media screen and (max-width: 1400px) {
+
+    .container-text{
+        
+    }
+    
+  }

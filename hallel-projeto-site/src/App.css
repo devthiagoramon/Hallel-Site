@@ -1,0 +1,27 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap');
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+  
+*{
+  font-family: 'Inter', 'Roboto Flex', sans-serif;
+}
+.App {
+  text-align: center;
+  background-color: #FFFFFF;
+  color:#35404B;
+  font-family: "Inter", sans-serif;
+  display: flex;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  background-color:#FFFFFF;
+}
+.content-wrap {
+  flex: 1;
+}

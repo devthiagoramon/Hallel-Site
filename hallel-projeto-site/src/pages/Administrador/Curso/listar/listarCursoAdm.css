@@ -1,0 +1,53 @@
+.contListarCursosAdm {
+    width: 94vw;
+    min-height: 100%;
+    margin-top: 2rem;
+    margin-left: 3rem;
+}
+
+.headListCursosAdm{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headListCursosAdm label{
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.contPesquisaCursoAdm{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.innerPesquisa{
+    width: 30%;
+}
+
+.innerPesquisa>input{
+    width: 90% ;
+}
+
+.bodyListCursosAdm{
+    width: 100%;
+    margin-top: 3rem;
+    min-height: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.modalDescricaoCurso{
+    background-color: #fafafa;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 10px;
+}

@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+
+a {
+  color: rgb(12, 12, 12);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 8vh;
+  padding: 20px;
+}
+
+.nav-list {
+  list-style: none;
+  margin-left: -120px;
+  display: flex;
+}
+
+.nav-list li {
+  margin-top: 8px;
+  letter-spacing: 3px;
+  margin-left: 72px;
+
+}
+
+.nav-list li :hover {
+  padding: 15px 10px;
+  background-color: #688c91;
+  border-radius: 10px;
+}
+
+.titulo {
+  position: absolute;
+  top: 18px;
+  margin-left: 20px;
+}
+
+
+.menuHam {
+  position: absolute;
+  margin-left: 1250px;
+  top: 34px;
+}
+
+.menuHam div {
+  width: 32px;
+  height: 4px;
+  background: rgb(7, 7, 7);
+  margin: 8px;
+}
+
+.borda :hover {
+  background-color: #688c91;
+  border-radius: 8px;
+}
+
+.corpo1 {
+  padding: 15px;
+  margin-top: 5px;
+}
+
+.corpo1 a {
+  margin-top: -120px;
+  margin-left: 900px;
+  background-color: #93c8cf;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.input {
+  margin-top: -50px;
+}
+
+.painelEventos {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 2rem;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.options {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.direita_options {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.esquerda_options {
+  display: flex;
+  column-gap: 15px;
+}
+
+/* .options button {
+  width: 9em;
+  height: 2.2em;
+  border-radius: 2em;
+  font-weight: 700;
+  color: #35404b;
+  border: none;
+  transition: 0.5s;
+  background-color: #d5ecef;
+}
+
+
+.options button:hover {
+  background-color: rgb(169, 201, 201);
+  transition: 0.5s;
+} */
+
+.tabela-eventos {
+
+  border: 1px solid #35404b;
+  margin-top: 6em;
+}
+
+.loaderEventos {
+
+  display: flex;
+  justify-content: center;
+  top: 30em;
+}
+
+.menu_evento {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 300px;
+  max-height: 400px;
+}
+
+
+/* icone do kebab */
+
+
+#icKebab{
+
+  font-weight: 700;
+}
+#icKebab:hover{
+
+  background-color: rgba(164, 164, 164, 0.5);
+  border-radius: 1em;
+  transition: 0.5s;
+}
