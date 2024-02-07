@@ -1,28 +1,25 @@
-import React, {useMemo, useRef, useState} from "react";
-import {CircularProgress, Typography} from "@mui/material";
-import {Carousel} from "react-bootstrap";
-import "../CarouselNaoDestacados/styleCarousel.css"
-import "../CarouselDestacados/CarroselDestacados.css"
+import React, {useEffect, useMemo, useRef, useState} from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import Carousel from "react-bootstrap/Carousel";
+import {CircularProgress} from "@mui/material";
 import {listarEventoComDestaqueService} from "../../service/HomeService";
-import Img from '../../images/not-found.png';
 
-const CarroselDestacados = () => {
+export default function CarouselDestacados() {
     const carrosel = useRef();
-    const [timer, setTimer] = useState(false);
-    const [eventos, setEventos] = useState([]);
+    const [eventos, setEventos] = useState([])
     useMemo(() => {
-        listarEventoComDestaqueService().then((response)=>{
-            setEventos(response)
+        listarEventoComDestaqueService().then((res) => {
+            setEventos(res);
         });
     }, []);
+    const [showInfos, setshowInfos] = useState(false);
+    const [eventoEspc, setEventoEspc] = useState();
+    const [width, setWidht] = useState(0);
 
-    useMemo(() => {
-        setTimeout(() => {
-            if (eventos.length === 0) {
-                setTimer(true);
-            }
-        }, 4000);
-    }, [setTimer, eventos]);
+    useEffect(() => {
+        setWidht(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth);
+    }, []);
+
     return (
         <div className="master"
             style={{
@@ -31,36 +28,32 @@ const CarroselDestacados = () => {
                 width: 500,
                 padding: 30,
                 marginTop: "100px",
-                marginBottom: '90px',
                 marginRight: '100px',
                 borderRadius: '10px',
                 background: "#003015",
+                '@media screen and (max-width: 940px)': {
+                width: '100%',
+                height: 'auto',
+                maxWidth: '600px',
+                margin: '0 auto',
+                    
+                  },
 
-                
+                  '@media screen and (max-width: 540px)': {
+                    width: '10%',
+                    height: 'auto',
+                    maxWidth: '600px',
+                    margin: '0 auto',
+                    
+                      },
             }}
         >
-            <h4 style={{textAlign: "left", color:"white"}}>Em destaque</h4>
+            <h4 style={{textAlign: "left", color:'white'}}>Em destaque</h4>
 
             {eventos.length === 0 ? (
-                <>
-                    {!timer ? (
-                        <div className="CircleProgress" style={{top: "10em", color:'white'}}>
-                            <CircularProgress/>
-                        </div>
-                    ) : (
-                        <div className="nenhum-evento-encontrado-cont">
-                            <img
-                                color="white"
-                                width="100"
-                                height="100"
-                                src={Img}
-                                alt="nothing-found"
-                            />
-                            <br/>
-                            <Typography variant="overline" style={{color:'white'}}>Nenhum evento em destaque encontrado</Typography>
-                        </div>
-                    )}
-                </>
+                <div className="CircleProgress" style={{top: "10em"}}>
+                    <CircularProgress/>
+                </div>
             ) : (
                 <Carousel
                     controls={true}
@@ -71,15 +64,9 @@ const CarroselDestacados = () => {
                     touch
                     showIndicators
                 >
-                    {eventos?.map((evento) => {
-
-                        evento.destacado == false ? (
-
-                            <></>
-                        ) : (
-
-
-                            <Carousel.Item interval={4000}>
+                    {eventos.map((evento) => {
+                        return (
+                            <Carousel.Item interval={5000}>
                                 <div
                                     style={{
                                         display: "flex",
@@ -116,12 +103,10 @@ const CarroselDestacados = () => {
                                     <h5>{evento.titulo}</h5>
                                 </div>
                             </Carousel.Item>
-                        )
+                        );
                     })}
                 </Carousel>
             )}
         </div>
     );
-};
-
-export default CarroselDestacados;
+}

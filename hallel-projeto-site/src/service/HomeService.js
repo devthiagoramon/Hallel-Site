@@ -104,7 +104,7 @@ export async function listarEventoComDestaqueService() {
     try {
         return (await axios
             .get(url,
-                {headers: {Authorization: getToken()}}
+                
             )).data;
     } catch (e) {
         console.error(e)

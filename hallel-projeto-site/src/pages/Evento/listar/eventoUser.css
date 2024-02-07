@@ -99,7 +99,7 @@
   }
   
   .saber-mais-button {
-    margin-bottom: -2rem;
+    
     background-color: #004F22;
     color: #FFFFFF;
     border: none;
@@ -110,6 +110,7 @@
     align-items: center;
     display: flex;
     margin: 0 auto;
+    
   }
   
   .saber-mais-button:hover {

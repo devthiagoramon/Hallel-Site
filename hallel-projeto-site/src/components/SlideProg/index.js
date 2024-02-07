@@ -40,7 +40,7 @@ const SlideProg = (props) => {
   return (
 
     <div className="destaque">
-      <h3 style={{textAlign:'center',fontSize:'40px', color:'#003015',marginTop:'2rem',marginBottom:'-0.5rem'}}>Programação Semanal</h3>
+      <h3 style={{textAlign:'center',fontSize:'40px', color:'#003015',marginTop:'6rem',marginBottom:'-0.5rem'}}>Programação Semanal</h3>
       <Slider {...configuracoes}>
       
       <div className="produto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
