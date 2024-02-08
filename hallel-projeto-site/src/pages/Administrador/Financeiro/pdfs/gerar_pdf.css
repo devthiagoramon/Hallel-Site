@@ -169,9 +169,6 @@
     margin-top: auto;
   }
 
-  .esquerda_body_gerar_pdf{
-    
-  }
   .body_gerar_pdf {
     flex-direction: column;
     align-items: center;

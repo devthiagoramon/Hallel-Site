@@ -21,6 +21,7 @@ import DoacoesDinheiro from "./pages/Administrador/Financeiro/doacao/index.js";
 import DoacaoObjeto from "./pages/Administrador/Financeiro/doacao_objeto/index.js";
 import AddDoacaoObjeto from "./pages/Administrador/Financeiro/doacao_objeto/add_doacao_obj/index.js";
 import MembrosAdministrador from "./pages/Administrador/Membros/index.js";
+import VerDoacoes from "./pages/Administrador/Eventos/doações/verDoacoes.js";
 
 const AdmRouter = () => {
   return (
@@ -32,6 +33,7 @@ const AdmRouter = () => {
       <Route path="/eventos/arquivados" element={<EventosArquivado />} />
       <Route path="/eventos/:idEvento/editar" element={<EditarEventoAdm />} />
       <Route path="/eventos/locais" element={<LocaisEventos />} />
+      <Route path="/eventos/verDoacoes" element={<VerDoacoes />} />
       <Route path="/membros" element={<MembrosAdministrador/>}/>
       <Route
         path="/eventos/:idEvento/participantes"

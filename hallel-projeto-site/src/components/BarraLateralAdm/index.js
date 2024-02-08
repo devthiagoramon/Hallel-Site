@@ -44,6 +44,9 @@ const BarraLateralAdm = () => {
       case "locais_eventos":
         navigator("/administrador/eventos/locais");
         break;
+        case "doacoes_eventos":
+          navigator("/administrador/eventos/verDoacoes");
+          break;
       case "painel_financeiro":
         navigator("/administrador/painelfinanceiro");
         break;
@@ -127,6 +130,14 @@ const BarraLateralAdm = () => {
             text={"Adicionar evento"}
             selected={routeName === "adicionar_evento"}
             to={"adicionar_evento"}
+            handleClickButtonLateral={handleClickButtonLateral}
+          />
+          <LeftLineInnerTabs />
+          <ButtonInnerTabs
+            style={{ grid: 2 }}
+            text={"Doações"}
+            selected={routeName === "doacoes_eventos"}
+            to={"doacoes_eventos"}
             handleClickButtonLateral={handleClickButtonLateral}
           />
           <LeftLineInnerTabs />
