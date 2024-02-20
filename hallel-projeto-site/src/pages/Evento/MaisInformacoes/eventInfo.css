@@ -15,6 +15,7 @@ body {
 }
 
 
+
 .titulo_evento {
   margin-top: 40%;
   display: flex;
@@ -81,11 +82,12 @@ body {
 .subtopicos {
 }
 
-.topicosInfo > li {
-  font-weight: 700;
-  font-size: 20px;
+.topicosInfo > p {
+  font-weight: 500;
+  font-size: 1.2em;
   color: #004F22;
-  font-family: "Inter", sans-serif;
+  margin-top: -1.1em;
+  display: block;
 
 }
 
@@ -98,7 +100,7 @@ body {
 .participantes > label {
   font-size: 24px;
   font-weight: 600;
-  color: #172984;
+  
 }
 
 .descricao_evento_user {
@@ -143,13 +145,14 @@ body {
 .subtopicos > label {
   font-size: 24px;
   font-weight: 600;
-  color: #252525;
+
 }
 
 .container_participar_evento{
   width: 100%;
   display: flex;
   justify-content: center;
+
 }
 
 .cont_form_part_evento{
@@ -285,4 +288,5 @@ body {
 .area-infos{
 
 }
+
 

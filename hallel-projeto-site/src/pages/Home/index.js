@@ -45,6 +45,7 @@ function Home() {
         </div>
       </div>
       <SejaAssociado />
+      
     </div>
   );
 }

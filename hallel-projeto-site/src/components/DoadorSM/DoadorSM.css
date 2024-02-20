@@ -1,0 +1,107 @@
+.main{
+    max-width: 75rem;
+    max-height: 7rem;
+    display: flex;
+    align-items: center;
+    background-color: none;
+    width: max-content;
+    height: max-content;
+    align-self: center;
+    margin: 5rem auto;
+}
+
+.container-boxes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.container-doacao {
+    display: flex;
+    flex-direction: column;
+    background-color: #D8EBD9;
+    width: 35rem;
+    margin: 0 1rem;
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+    border: 2px solid rgb(114, 135, 113);
+    max-height: 5rem;
+    overflow: hidden;
+    transition: max-height 1.0s ease-in-out;
+  }
+
+.additional-content {
+   
+    margin-top: 10px;
+    text-align: center; 
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-height: 9rem;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.container-doacao.expanded {
+    max-height: 200rem; 
+    transform: translateY(0);
+}
+
+.text-main {
+  color: #002711;
+  font-weight: bold;
+  font-size: 35px;
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+}
+
+.text-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.container-doacao.expanded {
+    max-height: 1000px;
+  }
+
+  .container-doacao:not(.expanded) {
+    max-height: 5rem;
+  }
+
+  .text-p{
+    font-size: 21px;
+    font-weight: 710px;
+  }
+
+  .div-link{
+    display: flex;
+    align-items: center;
+    background-color: #265539;
+    width: 12rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .link{
+    margin: 0 auto;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .arrow-up{
+    font-size: 2em;
+  }
+
+  .arrow{
+    width: 10;
+  }
