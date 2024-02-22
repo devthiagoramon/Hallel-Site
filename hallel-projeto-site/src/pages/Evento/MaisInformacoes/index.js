@@ -23,6 +23,7 @@ import {
 } from "../../../service/EventoService";
 import { OutlinedEmptyButtonHallel } from "../../../components/BtnHallel";
 import { getId, getUserId } from "../../../utils/utilLocalStorage";
+import DoadorSM from "../../../components/DoadorSM/DoadorSM";
 
 const InfoEventos2 = ({ evento, hide }) => {
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
@@ -68,12 +69,13 @@ const InfoEventos2 = ({ evento, hide }) => {
     <section className="containerEvents">
       <div className="area-infos">
         <Fab
-          style={{
-            fontWeight: "600",
-            color: "#35404b",
-            background: "#FFA218",
-            marginBottom: "1rem",
-          }}
+               style={{
+                fontWeight: "600",
+                color: "#002811",
+                background: "#FFC085",
+                marginLeft: 20,
+                marginTop:-20,
+              }}
           onClick={() => navigate(0)}
         >
           <KeyboardReturnIcon />
@@ -88,7 +90,7 @@ const InfoEventos2 = ({ evento, hide }) => {
           loadingIsInscrito={loadingIsInscrito}
           situacaoPagamento={statusPagamento}
         />
-        <hr style={{ marginTop: "30px" }} />
+       
         <Info2
           evento={evento}
           estado={openModalParticiparEvento}
@@ -104,6 +106,9 @@ const InfoEventos2 = ({ evento, hide }) => {
       )}
     </section>
   );
+  <div className="separator">
+
+  </div>
 };
 
 const Corpo2 = ({
@@ -120,35 +125,39 @@ const Corpo2 = ({
 
   return (
     <div className="corpo_evento">
-      <hr style={{ marginTop: "30px" }} />
+      
       <div className="cont_titulo_desc_evento_user">
         <h1 className="titulo_evento">{evento.titulo}</h1>
         <div className="descricao_evento_user">
           <label
             style={{
               justifySelf: "flex-start",
-              fontSize: "1.4em",
+              fontSize: "25",
+              marginLeft: 30,
             }}
           >
             Descrição
           </label>
-          <p style={{ wordBreak: "break-word", fontSize: "1.2em" }}>
+          <p style={{ wordBreak: "break-word", fontSize: "1.2em", marginLeft: 30, marginTop: 2, width: 800}}>
             {evento.descricao}
           </p>
         </div>
       </div>
+
+
       <div className="container_imagem_evento_user">
         <img
           className="imagemCp1_evento_user"
           src={evento.imagem}
           alt="imagem"
         />
-        {loadingIsInscrito ? (
+        /* */
+           <div className="container_pa">{loadingIsInscrito ? (
           <>
             {!isInscrito ? (
               <div className="container_participar_evento">
                 <OutlinedEmptyButtonHallel
-                  style={{ width: 200, padding: "0.7rem", fontSize: "24px" }}
+                  style={{ width: 300, padding: "0.4rem", fontSize: "23px", color: "white"}}
                   onClick={abrirModal}
                 >
                   {" "}
@@ -168,11 +177,12 @@ const Corpo2 = ({
           <div className="cont_loading_is_inscrito">
             <CircularProgress />
           </div>
-        )}
-      </div>
-      <hr style={{ marginTop: "30px", marginBottom: "30px" }} />
+        )}</div>
     </div>
+      </div>
+
   );
+
 };
 
 const Info2 = ({ estado, setEstado, evento }) => {
@@ -180,22 +190,29 @@ const Info2 = ({ estado, setEstado, evento }) => {
     <div className="infos">
       <div className="container_infos_desc_evento">
         <div className="subtopicos">
-          <h4>Informações</h4>
+          <div classname="separacao"></div>
+          <h4 style={{ color:"#002A12", fontWeight:"semibold", marginBottom:"1em"}}>Informações essenciais:</h4>
           <ul className="topicosInfo">
-            <li>Endereço: {evento.localEvento.localizacao}</li>
-            <li>Data: {dayjs(evento.date).format("DD/MM/YYYY")}</li>
-            <li>Horário: {evento.horario}</li>
+            
+            <p>Endereço: {evento.localEvento.localizacao}</p>
+
+            <p>Data: {dayjs(evento.date).format("DD/MM/YYYY")}</p>
+
+            <p>Horário: {evento.horario}</p>
           </ul>
         </div>
         <div className="participantes">
-          <h4>Palestrantes:</h4>
+          <h4 style={{ color:"#002A12", fontWeight:"semibold", marginBottom:"1em"}}>Palestrantes:</h4>
           <ul className="topicosInfo">
             {evento.palestrantes?.map((palestrante) => {
-              return <li>{palestrante}</li>;
+              return <p>{palestrante}</p>;
+              <p></p>
             })}
           </ul>
         </div>
       </div>
+      <p></p>
+      <DoadorSM />
     </div>
   );
 };

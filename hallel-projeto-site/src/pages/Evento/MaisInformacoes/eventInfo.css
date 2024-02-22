@@ -1,11 +1,10 @@
 body {
-  overflow-x: hidden;
+  
 }
 
 .containerEvents{
   width: 100vw;
-  margin: 0;
-  padding-right: 3rem;
+  padding-right: 1rem;
 }
 
 .cont_titulo_desc_evento_user {
@@ -15,10 +14,15 @@ body {
   width: 100%;
 }
 
+
+
 .titulo_evento {
+  margin-top: 40%;
   display: flex;
   flex-direction: column;
-  color: #252525;
+  color: #002A12;
+  margin-left: 30px;
+  font-weight: bold;
 }
 
 
@@ -78,13 +82,13 @@ body {
 .subtopicos {
 }
 
-.topicosInfo > li {
-  font-weight: 700;
+.topicosInfo > p {
+  font-weight: 500;
   font-size: 1.2em;
-  color: #35404b;
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  text-decoration: none;
+  color: #004F22;
+  margin-top: -1.1em;
+  display: block;
+
 }
 
 .participantes {
@@ -96,7 +100,7 @@ body {
 .participantes > label {
   font-size: 24px;
   font-weight: 600;
-  color: #252525;
+  
 }
 
 .descricao_evento_user {
@@ -129,7 +133,7 @@ body {
 .label_status_evento_participando{
   font-size: 1.3rem;
   font-weight: 700;
-  color: #28a745;
+  color: #e6ffec;
 }
 
 .container_infos_desc_evento {
@@ -141,13 +145,14 @@ body {
 .subtopicos > label {
   font-size: 24px;
   font-weight: 600;
-  color: #252525;
+
 }
 
 .container_participar_evento{
   width: 100%;
   display: flex;
   justify-content: center;
+
 }
 
 .cont_form_part_evento{
@@ -182,12 +187,31 @@ body {
 }
 
 .container_participar_evento>button{
-  border-radius: 12px;
+  background-color: #004F22;
+  border-radius: 15px;
+  margin-top: 468px;
+
 }
 
-.container_participar_evento>button:hover{
-  background-color: #613191;
+.descricao_evento_user>label{
+  color: #002A12;
 }
+
+.subtopicos>h4{
+  margin-left: 30px;
+  color: #002A12;
+}
+
+
+.descricao_evento_user>p{
+  color: #004F22;
+}
+
+.participantes>h4{
+  color: #002A12;
+  margin-left: 32px;
+}
+
 
 .header_cartao_participar_evento{
   width: 100%;
@@ -232,10 +256,37 @@ body {
 
 .cont_cartao_participar_evento{
   width: 100%;
+  margin-top: 100%;
   border-radius: 6px;
-  background-color: #613191;
+  background-color: #ebffdc;
   padding: 2rem;
   color: #f4f4f4;
   box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 4px;
 }
+
+  /* referente à imagem da capa central */
+
+
+.imagemCp1_evento_user{
+
+  position: absolute;
+
+  margin-top: -70px;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  
+
+}
+
+.img{
+  max-width: 10000%;
+  max-height: 100%;
+  
+}
+
+.area-infos{
+
+}
+
 
