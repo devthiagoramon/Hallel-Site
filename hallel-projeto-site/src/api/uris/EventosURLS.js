@@ -88,6 +88,10 @@ export function eventoListarAdm() {
     return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/asc";
 }
 
+export function eventoListarDoacoes() {
+    return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/listDetalhesDoacaoTodosEevntos";
+}
+
 export function eventoListarArquivado() {
     return (
         uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/arquivados"

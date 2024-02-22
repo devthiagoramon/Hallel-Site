@@ -21,6 +21,7 @@ import {
   localEventoListar,
   localEventoListarById,
   eventoVoluntariar,
+  eventoListarDoacoes,
 } from "../api/uris/EventosURLS";
 import axios from "axios";
 import { getToken } from "../utils/utilToken";
@@ -432,3 +433,18 @@ export async function eventoVoluntariarService(idEvento) {
   }
 }
 
+export async function eventoListarTodasDoacoes() {
+  let url = eventoListarDoacoes();
+  try {
+    let axiosResponse = await axios.get(url, {
+      withCredentials: true,
+      headers: {
+        Authorization: getToken(),
+      },
+    });
+    return axiosResponse.data;
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
