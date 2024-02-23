@@ -212,7 +212,7 @@ const Info2 = ({ estado, setEstado, evento }) => {
         </div>
       </div>
       <p></p>
-      <DoadorSM />
+      <DoadorSM eventId={evento.id} />
     </div>
   );
 };

@@ -10,7 +10,7 @@ import {
 import ContainerRadioButtonsHallel from "../../../../components/ContainerRadioButtonsHallel";
 import RadioButtonHallel from "../../../../components/RadioButtonHallel";
 import { OutlinedButtonHallel } from "../../../../components/BtnHallel";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import './form.css';
 import { eventoVoluntariarService } from "../../../../service/EventoService";
 
@@ -27,17 +27,19 @@ const yupErrors = Yup.object().shape({
   concordo: Yup.boolean().required("Recusa das políticas de privacidade"),
 });
 
-const FormVoluntario = (props) => {
+const FormVoluntario = () => {
   const navigate = useNavigate();
+  const { eventId } = useParams();
   const { handleSubmit, register, formState, getValues } = useForm({
     mode: "all",
     resolver: yupResolver(yupErrors),
     defaultValues: {
-      nome: props.userDoacao ? props.userDoacao.nome : "",
-      email: props.userDoacao ? props.userDoacao.email : "",
-      numeroTelefone: props.userDoacao ? props.userDoacao.numeroTelefone : "",
-      dataNascimento: props.userDoacao ? props.userDoacao.dataNascimento : new Date(),
+      nome: "",
+      email: "",
+      numeroTelefone: "",
+      dataNascimento: new Date(),
       concordo: false,
+      eventId: eventId
     },
   });
   const { errors, isSubmitting, isSubmitted } = formState;
@@ -47,18 +49,19 @@ const FormVoluntario = (props) => {
   const handleSubmitData = async (data) => {
     console.log("submit", data);
     try {
-      
-      const sucesso = await eventoVoluntariarService('63cb2c9a44d74871078b3a16'); 
+      const sucesso = await eventoVoluntariarService(data.eventId); 
       if (sucesso) {
-        
         setModalVisible(true);
       } else {
-        console.error("Erro ao voluntariar para o evento");
+        console.error("Erro ao voluntariar para o evento: sucesso falso");
       }
     } catch (error) {
       console.error("Erro ao voluntariar para o evento:", error);
+      console.error("Status da resposta:", error.response?.status);
+      console.error("Data da resposta:", error.response?.data);
+      console.error("Mensagem de erro:", error.message);
     }
-  };
+  };  
 
   const closeModal = () => {
     setModalVisible(false);

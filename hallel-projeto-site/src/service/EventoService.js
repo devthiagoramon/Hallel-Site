@@ -409,27 +409,24 @@ export async function eventoVoluntariarService(idEvento) {
   try {
     let axiosResponse = await axios.post(
       url,
+      {},
       {
-      
         headers: {
           Authorization: getToken(),
         },
-      
-  });
-    return axiosResponse.data; 
+      }
+    );
+    return axiosResponse.data;
   } catch (error) {
     if (error.response) {
-
       console.error("Erro na resposta do servidor:", error.response.data);
       console.error("Status da resposta:", error.response.status);
     } else if (error.request) {
-      
       console.error("Requisição não obteve resposta:", error.request);
     } else {
-     
       console.error("Erro durante a requisição:", error.message);
     }
-    throw error; 
+    throw error;
   }
 }
 
@@ -443,7 +440,7 @@ export async function eventoListarTodasDoacoes() {
       },
     });
     return axiosResponse.data;
-  } catch (e) {
+  } catch (e) { 
     console.error(e);
     return [];
   }
