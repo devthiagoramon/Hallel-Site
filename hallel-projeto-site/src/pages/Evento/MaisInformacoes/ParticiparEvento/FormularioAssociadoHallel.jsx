@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import dayjs from "dayjs";
 import React from "react";
-import BtnHallel from "../../../../components/BtnHallel/ButtonHallel";
+import { OutlinedButtonHallel } from "../../../../components/BtnHallel";
 
 const FormularioAssociadoHallel = ({
   usuarioEvento,
@@ -54,9 +54,9 @@ const FormularioAssociadoHallel = ({
         </div>
       </div>
       <div className="footer_form_part_evento">
-        <BtnHallel sucesso onClick={handleParticiparEvento}>
+        <OutlinedButtonHallel style={{width: 200, padding: "0.7rem", fontSize: "24px"}} sucesso onClick={handleParticiparEvento}>
           Participar
-        </BtnHallel>
+        </OutlinedButtonHallel>
       </div>
     </div>
   );

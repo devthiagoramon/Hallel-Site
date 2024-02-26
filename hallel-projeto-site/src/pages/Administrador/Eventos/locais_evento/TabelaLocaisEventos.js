@@ -1,7 +1,6 @@
 import { Button, LinearProgress } from '@mui/material';
 import axios from 'axios';
-import React, {useMemo} from 'react'
-import { useState } from 'react';
+import React, {useMemo, useState} from 'react'
 import { useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import { localEventoListar } from '../../../../api/uris/EventosURLS';
@@ -9,9 +8,11 @@ import {eventoListarLocalEventosService} from "../../../../service/EventoService
 
 
 const TabelaLocaisEventos = (props) => {
-
-  const eventosLocais = useMemo(() => {
-    return eventoListarLocalEventosService();
+  const [eventosLocais, setEventosLocais] = useState([]);
+   useEffect(() => {
+     eventoListarLocalEventosService().then((response) => {
+       setEventosLocais(response);
+     });
   }, [props.enviadoSucesso])
   function handleEditarLocal(id){
     props.setIdLocalEvento(id)
@@ -29,7 +30,7 @@ const TabelaLocaisEventos = (props) => {
             </tr>
           </thead>
           <tbody>
-            {eventosLocais.map((local) => {
+            {eventosLocais?.map((local) => {
               return(
               <tr key={local.localizacao}> 
                 <td>{local.localizacao}</td>

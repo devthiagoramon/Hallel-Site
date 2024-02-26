@@ -1,24 +1,24 @@
-import React, {useMemo, useState} from "react";
+import React, { useMemo, useState } from "react";
 import "./renda.css";
 import rendasPDF from "../../../../Reports/rendas/entradas";
-import {MoreVertRounded, SaveAlt} from "@mui/icons-material";
-import {Table} from "react-bootstrap";
+import { MoreVertRounded, SaveAlt } from "@mui/icons-material";
+import { Table } from "react-bootstrap";
 import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import {IconButton, LinearProgress, Menu, MenuItem} from "@mui/material";
-import {receitasListarAPI, receitasListarDiaAPI, receitasListarSemanaAPI} from "../../../../api/uris/FinanceiroURLS";
-import {getMesAndAnoAtual} from "../../../../utils/utilData";
-import {entradaUltimasEntradasService} from "../../../../service/FinanceiroService";
+import { IconButton, LinearProgress, Menu, MenuItem } from "@mui/material";
+import { receitasListarAPI, receitasListarDiaAPI, receitasListarSemanaAPI } from "../../../../api/uris/FinanceiroURLS";
+import { getMesAndAnoAtual } from "../../../../utils/utilData";
+import { entradaUltimasEntradasService } from "../../../../service/FinanceiroService";
 
 const EntradasFinanceiroAdm = () => {
     const [entradas, setEntradas] = useState([]);
     const [anchorEl, setAnchorEl] = useState(null);
     const openDateMenu = Boolean(anchorEl);
 
-    const [datasToBePushed, setdatasToBePushed] = useState("todos");
+    const [datasToBePushed, setDatasToBePushed] = useState("todos");
 
     const lastEntradas = useMemo(() => {
-        return entradaUltimasEntradasService()
-    }, []);
+        return entradaUltimasEntradasService();
+    }, [entradas]);
 
     useMemo(() => {
         let auxData = getMesAndAnoAtual();
@@ -68,11 +68,11 @@ const EntradasFinanceiroAdm = () => {
 
     function mudarListagem(select) {
         if (select === "dia") {
-            setdatasToBePushed("dia");
+            setDatasToBePushed("dia");
         } else if (select === "semana") {
-            setdatasToBePushed("semana");
+            setDatasToBePushed("semana");
         } else if (select === "todos") {
-            setdatasToBePushed("todos");
+            setDatasToBePushed("todos");
         }
     }
 
@@ -163,9 +163,9 @@ const EntradasFinanceiroAdm = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {entradas.map((item) => {
+                        {Array.isArray(entradas) && entradas.length > 0 && entradas.map((item) => {
                             return (
-                                <tr>
+                                <tr key={item.id}>
                                     <td>{item.descricaoReceita}</td>
                                     <td>{item.objeto === false ? "Não" : "Sim"}</td>
                                     <td>{item.dataReceita}</td>
@@ -188,19 +188,7 @@ const EntradasFinanceiroAdm = () => {
                     <p>Ultimas Entradas</p>
                 </div>
                 <div className="containerTabelaUltRenda">
-                    {lastEntradas.length === 0 ? (
-                        <div>
-                            <LinearProgress sx={{width: "90%"}}/>
-                            <Table borderless hover>
-                                <thead>
-                                <tr>
-                                    <th>Descrição</th>
-                                    <th>Valor</th>
-                                </tr>
-                                </thead>
-                            </Table>
-                        </div>
-                    ) : (
+                    {Array.isArray(lastEntradas) && lastEntradas.length > 0 ? (
                         <Table hover>
                             <thead>
                             <tr>
@@ -211,7 +199,7 @@ const EntradasFinanceiroAdm = () => {
                             <tbody>
                             {lastEntradas.map((item) => {
                                 return (
-                                    <tr>
+                                    <tr key={item.id}>
                                         <td>{item.descricaoEntrada}</td>
                                         <td>
                                             {item.valorEntrada.toLocaleString("pt-BR", {
@@ -224,6 +212,18 @@ const EntradasFinanceiroAdm = () => {
                             })}
                             </tbody>
                         </Table>
+                    ) : (
+                        <div>
+                            <LinearProgress sx={{width: "90%"}}/>
+                            <Table borderless hover>
+                                <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                </tr>
+                                </thead>
+                            </Table>
+                        </div>
                     )}
                 </div>
             </div>

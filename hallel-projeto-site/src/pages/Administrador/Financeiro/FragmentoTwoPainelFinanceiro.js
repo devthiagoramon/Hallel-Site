@@ -40,8 +40,9 @@ const FragmentoTwoPainelFinanceiro = () => {
                 ? String(data.getMonth() + 1)
                 : "0" + String(data.getMonth() + 1);
         let anoString = String(new Date().getFullYear());
-        let response = metaListarPorMesAnoService(mesString, anoString);
-        setMeta(response);
+        metaListarPorMesAnoService(mesString, anoString).then((response) => {
+            setMeta(response);
+        });
     }, [setMeta]);
 
     useMemo(() => {
@@ -51,9 +52,10 @@ const FragmentoTwoPainelFinanceiro = () => {
                 ? String(data.getMonth() + 1)
                 : "0" + String(data.getMonth() + 1);
         let anoString = String(new Date().getFullYear());
-        let response = entradaGetByMesValorService(mesString, anoString);
-        SetreceitaValue(response);
-        setFaltam(meta - response);
+        entradaGetByMesValorService(mesString, anoString).then((response) => {
+            SetreceitaValue(response);
+            setFaltam(meta - response);
+        });
     }, [setFaltam, meta]);
 
     return (
@@ -79,7 +81,7 @@ const FragmentoTwoPainelFinanceiro = () => {
                         <tbody>
                         {ultimasSaidas.length !== 0 ? (
                             <>
-                                {ultimasSaidas.map((saida) => {
+                                {ultimasSaidas?.map((saida) => {
                                     return (
                                         <tr>
                                             <td>{saida.descricaoSaida}</td>

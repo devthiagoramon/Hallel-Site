@@ -1,7 +1,30 @@
 .container_gerar_pdf {
   width: 100vw;
   min-height: 100vh;
+  display: flex;
 }
+
+.titulo{
+  font-size: 40px;
+  margin-top: 80px;
+  font-weight: normal;
+  color: #003015;
+  text-align: justify;
+  margin-left: -3.5rem;
+}
+
+.cont_header_gerar_pdf-selecionar_mes_gerar_pdf{
+  margin-top: 40px;
+}
+
+.text-infos{
+  text-align: justify;
+}
+
+.text-mes{
+  margin-top: -100px;
+}
+
 .header_gerar_pdf {
   width: 100%;
   padding: 3rem;
@@ -10,6 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .header_gerar_pdf > h2 {
@@ -31,7 +55,7 @@
 }
 
 .pre_visualizar_info_span {
-  color: blue;
+  color: green;
   text-decoration: underline;
 }
 
@@ -50,6 +74,12 @@
 .cont_mes_header_selecionado > label {
   font-size: 18px;
   font-weight: 500;
+  margin-top: 100px;
+}
+
+.cont_mes_header_selecionado{
+  margin-top: 100px;
+  margin-right: 10px;
 }
 
 .tabela_gerar_pdf {
@@ -97,11 +127,12 @@
     display: grid;
     place-items: end;
     max-height: 650px;
+    margin-top: 60px;
 }
 
 .header_preview_gerar_pdf{
     width: 70%;
-    background-color: #06312E;
+    background-color: #003015;
     height: 70px;
     border-radius: 8px 8px 0 0;
     display: flex;
@@ -118,4 +149,52 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.informacoes_gerar_pdf{
+  background-color: none;
+  width: 900px;
+  height: 190px;
+  text-align: flex-start;
+  color: #003015;
+  font-size: 20px;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .titulo{
+    margin-top: auto;
+  }
+
+  .body_gerar_pdf {
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .informacoes_gerar_pdf{
+    width: 100%;
+    margin-bottom: 100rem;
+  }
+
+  .tabela_gerar_pdf,
+  .body_preview_gerar_pdf {
+    width: 100%;
+  }
+
+  .body_preview_gerar_pdf {
+    height: auto;
+  }
+
+  .body_preview_gerar_pdf > div {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Estilos para tablets (largura de tela entre 769px e 1024px) */
+  
 }

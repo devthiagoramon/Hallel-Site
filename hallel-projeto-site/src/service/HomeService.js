@@ -3,12 +3,18 @@ import {
     homeListarDesCursoByIdCurso,
     homeLogin,
     homeMatricularParticipanteInCursoByIdUserAndIdCurso,
-    homeSolicitarCadastro, homeVerificarToken, listarEventosDestacadosHomeAPI, listarEventosSemDestaqueHomeAPI
+    homeCadastrar,
+    homeVerificarToken,
+    listarEventosDestacadosHomeAPI,
+    listarEventosSemDestaqueHomeAPI
 } from "../api/uris/HomeUris";
 import axios from "axios";
+import {membroLoadPerfilById} from "../api/uris/MembroURLS";
+import {associadoListarPerfil} from "../api/uris/AssociadosURLS";
+import { getToken } from "../utils/utilToken";
 
-export async function solicitarCadastroService(cadastro) {
-    let url = homeSolicitarCadastro();
+export async function cadastrarService(cadastro) {
+    let url = homeCadastrar();
     try {
         let axiosResponse = await axios.post(url, {...cadastro});
         return axiosResponse.status === 200
@@ -22,7 +28,7 @@ export async function loginService(login) {
     let url = homeLogin()
     try {
         let axiosResponse = await axios
-            .post(url, {...login}, {headers: {Authorization: localStorage.getItem("token")}});
+            .post(url, {...login});
         return axiosResponse.data;
     } catch (e) {
         console.error(e);
@@ -34,8 +40,10 @@ export async function listarCursosService() {
     let url = homeListarCursos()
     try {
         let axiosResponse = await axios
-            .get(url, {headers: {Authorization: localStorage.getItem("token")}});
-        return axiosResponse.data;
+            .get(url);
+        let data = axiosResponse.data;
+        console.log(data);
+        return data != null ? data : [];
     } catch (e) {
         console.error(e)
         return [];
@@ -46,8 +54,7 @@ export async function listarCursosById(idCurso) {
     let url = homeListarDesCursoByIdCurso(idCurso)
     try {
         let axiosResponse = await axios
-            .get(url,
-                {headers: {Authorization: localStorage.getItem("token")}}
+            .get(url
             );
         return axiosResponse.data;
     } catch (e) {
@@ -56,58 +63,78 @@ export async function listarCursosById(idCurso) {
     }
 }
 
-export async function matricularParticipanteCursoService(idHallel, idCurso){
+export async function matricularParticipanteCursoService(idHallel, idCurso) {
     let url = homeMatricularParticipanteInCursoByIdUserAndIdCurso(idHallel, idCurso);
-    try{
+    try {
         let axiosResponse = await axios
-                  .post(url, {},
-                                {headers:{Authorization: localStorage.getItem("token")}}
-                            );
+            .post(url
+            );
         return axiosResponse.status === 200;
-    }catch(e){
+    } catch (e) {
         console.error(e)
         return false;
     }
 }
 
-export async function verificarTokenService(token){
+export async function verificarTokenService(token) {
     let url = homeVerificarToken(token);
-    try{
+    try {
         let axiosResponse = await axios
-                  .get(url,
-                                {headers:{Authorization: localStorage.getItem("token")}}
-                            );
+            .get(url);
         return axiosResponse.data;
-    }catch(e){
-        console.error(e)
-        return false;
+    } catch (e) {
+        throw new Error("Can't verify the token")
     }
 }
 
-export async function listarEventoSemDestaqueService(){
+export async function listarEventoSemDestaqueService() {
     let url = listarEventosSemDestaqueHomeAPI()
-    try{
-        let axiosResponse = await axios
-                  .get(url,
-                                {headers:{Authorization: localStorage.getItem("token")}}
-                            );
-        return axiosResponse.data;
-    }catch(e){
-        console.error(e);
-        return [];
+    try {
+        return (await axios
+            .get(url
+            )).data;
+    } catch (e) {
+        console.error(e)
+        return []
     }
 }
 
-export async function listarEventoComDestaqueService(){
+export async function listarEventoComDestaqueService() {
     let url = listarEventosDestacadosHomeAPI()
-    try{
-        let axiosResponse = await axios
-                  .get(url,
-                                {headers:{Authorization: localStorage.getItem("token")}}
-                            );
-        return axiosResponse.data;
-    }catch(e){
+    try {
+        return (await axios
+            .get(url,
+                
+            )).data;
+    } catch (e) {
         console.error(e)
-        return [];
+        return []
+    }
+}
+
+export async function loadPerfil(idUser, roles) {
+    let url = "";
+    let isMembro = false;
+    let isAssociado = false;
+    if (roles.includes("ROLE_USER") && roles.includes("ROLE_ASSOCIADO")) {
+        url = associadoListarPerfil(localStorage.getItem("HallelId"));
+        isAssociado = true;
+    } else if (roles.includes("ROLE_USER")) {
+        url = membroLoadPerfilById(localStorage.getItem("HallelId"));
+        isMembro = true;
+    }
+    try {
+        let axiosResponse = await axios
+            .get(url,
+                {headers: {Authorization: getToken()}}
+            );
+        return {
+            isMembro: isMembro,
+            isAssociado: isAssociado,
+            data: axiosResponse.data,
+        };
+    } catch (e) {
+        console.error(e)
+        return undefined;
     }
 }

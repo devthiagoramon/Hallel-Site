@@ -41,9 +41,13 @@ const DireitaBodyCodFinanceiro = ({ entradaSelecionada, saidaSelecionada }) => {
     if (!hasError) {
       let response;
       if (entradaSelecionada) {
-        response = codigoEntradaCriarService(...codigoEnviar);
+        codigoEntradaCriarService(...codigoEnviar).then((resCodEntrada) => {
+          response = resCodEntrada;
+        });
       } else if (saidaSelecionada) {
-        response = codigoSaidaCriarService(...codigoEnviar);
+        codigoSaidaCriarService(...codigoEnviar).then((resCodSaida) => {
+          response = resCodSaida
+        });
       }
       if(response) {
         setCodigoEnviar(codigoTemplate);

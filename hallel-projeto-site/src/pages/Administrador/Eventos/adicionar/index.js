@@ -1,17 +1,22 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 import addImageIcon from "./../../../../images/addImage.svg";
 import addCircle from "./../../../../images/addCircle.svg";
 import deleteIcon from "./../../../../images/deleteIcon.svg";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
-import {Button, IconButton, Switch,} from "@mui/material";
-import {AddLocationRounded} from "@mui/icons-material";
+import { Button, IconButton, Switch } from "@mui/material";
+import { AddLocationRounded } from "@mui/icons-material";
 import ModalListarLocalEvento from "../locais_evento/modalListarLocaisEvento/ModalListarLocalEvento";
-import {MuiFileInput} from "mui-file-input";
-import {eventoAdicionarEventoService} from "../../../../service/EventoService";
+import { MuiFileInput } from "mui-file-input";
+import { eventoAdicionarEventoService } from "../../../../service/EventoService";
+import GuiaAdm from "../../../../components/GuiaAdm";
+import dayjs from "dayjs";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 const AdicionarEvento = () => {
+  const navigator = useNavigate();
   const tituloDiv = useRef();
   const imagemDiv = useRef();
   const imagemLabelInformativoDiv = useRef();
@@ -97,16 +102,25 @@ const AdicionarEvento = () => {
     setinputsArray(inputs);
   }
 
-  const enviarEvento = () => {
-    let palestranteDTO = [];
-    let inputsProv = [...inputsArray];
-    inputsProv.forEach((item) => {
-      palestranteDTO.push(item.nome);
-    });
-    setevento((prev) => {
-      return { ...prev, palestrantes: palestranteDTO };
-    });
-    eventoAdicionarEventoService(evento);
+  const enviarEvento = async () => {
+    
+    try {
+      let palestranteDTO = [];
+      let inputsProv = [...inputsArray];
+      inputsProv.forEach((item) => {
+        palestranteDTO.push(item.nome);
+      });
+      setevento((prev) => {
+        return { ...prev, palestrantes: palestranteDTO };
+      });
+      let eventoToRequest = evento;
+      eventoToRequest .date = dayjs(evento.date).toDate();
+      const response = await eventoAdicionarEventoService(evento);
+      navigator("/administrador/eventos");
+      
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const abrirModalLocalizacao = (e) => {
@@ -176,10 +190,8 @@ const AdicionarEvento = () => {
   };
 
   return (
-    <div>
+    <GuiaAdm title={"Adicionar evento"}>
       <div className="containerPrincipal">
-        <label>Adicionar eventos</label>
-
         <div className="headCont">
           <div className="head_cont_inputs">
             <div className="head_cont_inputs_texts">
@@ -279,7 +291,7 @@ const AdicionarEvento = () => {
                   setevento((prev) => {
                     return { ...prev, destaque: !evento.destaque };
                   });
-                }}  
+                }}
                 color="secondary"
               />
             </Tooltip>
@@ -360,7 +372,7 @@ const AdicionarEvento = () => {
                 ""
               ) : (
                 <div>
-                  {inputsArray.map((item) => {
+                  {inputsArray?.map((item) => {
                     return (
                       <motion.div
                         className="inputPalestrante"
@@ -412,7 +424,7 @@ const AdicionarEvento = () => {
           setLocalEvento={setLocalEvento}
         />
       </div>
-    </div>
+    </GuiaAdm>
   );
 };
 

@@ -23,12 +23,13 @@ const ModalDeleteEvento = (props) => {
   };
 
   const deletarDespesaEvento = () => {
-    let response = eventoDeletarDespesaPorIdEIdEventoService(props.idEvento, props.despesaSelected.id);
-    if(response){
-      props.setopenModalDelete(false);
-      props.setDespesaSelected(null);
-      props.setChangedTabela(!props.changedTabela);
-    }
+    eventoDeletarDespesaPorIdEIdEventoService(props.idEvento, props.despesaSelected.id).then((response) => {
+      if (response) {
+        props.setopenModalDelete(false);
+        props.setDespesaSelected(null);
+        props.setChangedTabela(!props.changedTabela);
+      }
+    });
   };
 
   return (

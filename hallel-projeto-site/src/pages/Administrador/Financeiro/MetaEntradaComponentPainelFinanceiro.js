@@ -25,8 +25,9 @@ const MetaEntradaComponentPainelFinanceiro = () => {
                 ? String(data.getMonth() + 1)
                 : "0" + String(data.getMonth() + 1);
         let anoString = String(new Date().getFullYear());
-        let response = metaGetPorcentagemPorMesEAnoService();
-        setporcentagem(response);
+        metaGetPorcentagemPorMesEAnoService().then((response) => {
+            setporcentagem(response);
+        });
     }, [setporcentagem]);
 
     useMemo(() => {
@@ -36,15 +37,16 @@ const MetaEntradaComponentPainelFinanceiro = () => {
                 ? String(data.getMonth())
                 : "0" + String(data.getMonth() + 1);
         let anoString = String(new Date().getFullYear());
-        let response = metaListarPorMesAnoService(mesString, anoString);
-        setMetaValue(response.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-        }));
-        setMetaValueDefault(response.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-        }));
+        metaListarPorMesAnoService(mesString, anoString).then((response) =>{
+            setMetaValue(response.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+            }));
+            setMetaValueDefault(response.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+            }));
+        });
     }, [setMetaValue, setMetaValueDefault]);
 
     const handleOnChangeMetaValue = (e) => {
@@ -71,12 +73,13 @@ const MetaEntradaComponentPainelFinanceiro = () => {
                 ? String(data.getMonth() + 1)
                 : "0" + String(data.getMonth() + 1);
         let anoString = String(new Date().getFullYear());
-        let response = metaAlterarPorMesAnoService(mesString, anoString, metaValueProv);
-        if (response) {
-            showSnackBarResponse("Meta atualizada com sucesso", "success");
-        } else {
-            showSnackBarResponse("Error na atualização da Meta", "error");
-        }
+        metaAlterarPorMesAnoService(mesString, anoString, metaValueProv).then((response) => {
+            if (response) {
+                showSnackBarResponse("Meta atualizada com sucesso", "success");
+            } else {
+                showSnackBarResponse("Error na atualização da Meta", "error");
+            }
+        });
     }
 
     function showSnackBarResponse(texto, cor) {

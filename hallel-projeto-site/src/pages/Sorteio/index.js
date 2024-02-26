@@ -11,6 +11,7 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Alert, CircularProgress } from "@mui/material";
 import axios from "axios";
 import { sorteioMesAtual } from "../../api/uris/SorteioURIs";
+import {sorteioMesAtualService} from "../../service/SorteioService";
 
 const Sorteio = () => {
   return (
@@ -46,19 +47,12 @@ function TableArea() {
   const [sorteio, setSorteio] = useState([]);
 
   useEffect(()=>{
-
-    let url = sorteioMesAtual();
-    axios.get(url, {
-      headers: {
-        Authorization: localStorage.getItem("token")
-      }
-    }).then((res) => {
-
-    console.log(res)
-      setSorteio(res.data);
-    }).catch((error) => {
-      console.error("Erro na requisição de listar os sortedos mes: " + error);
-    })
+    sorteioMesAtualService().then((response) => {
+        if (response === undefined) {
+            return;
+        }
+        setSorteio(response);
+    });
   })
 
   return (

@@ -8,8 +8,6 @@ import FragmentoThreePainelFinanceiro from './FragmentoThreePainelFinanceiro'
 const PainelFinanceiroAdm = () => {
   return (
     <div className='container_painel_financeiro'>
-      <HeaderPainelFinanceiroAdm/>
-
       <FragmentoTwoPainelFinanceiro/>
       <FragmentoOnePainelFinanceiro/>
       <FragmentoThreePainelFinanceiro/>

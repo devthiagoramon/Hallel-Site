@@ -1,0 +1,9 @@
+.container_home_adm {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    #eff2fc 100%
+  );
+}

@@ -7,3 +7,4 @@ export function getMesAndAnoAtual(){
     let ano = String(new Date().getFullYear());
     return {mes, ano}
 }
+

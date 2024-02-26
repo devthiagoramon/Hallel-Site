@@ -1,0 +1,24 @@
+.container_button_brl {
+  display: flex;
+  height: 45px;
+  width: 100%;
+  padding: 0 18px 0 18px;
+  align-items: center;
+}
+
+.container_button_brl > label {
+  color: #fff;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 16px;
+}
+
+.container_button_brl:hover,
+.container_button_brl.selected {
+  background: rgba(24, 75, 72, 0.76);
+  border-radius: 6;
+}
+

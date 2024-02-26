@@ -65,10 +65,12 @@ const ModalEditLocalEvento = (props) => {
     }, [idLocalEventoModal]);
 
     function loadLocalEvento(id) {
-        let response = eventoListarLocalEventoPorId(id);
-        setLocal(response.data);
-        setLocalNovo(response.data);
-        setnovoTextoLocalizacao(response.data.localizacao);
+        eventoListarLocalEventoPorId(id).then((response) => {
+            console.log(response.localizacao)
+            setLocal(response);
+            setLocalNovo(response);
+            setnovoTextoLocalizacao(response.localizacao);
+        });
     }
 
     const handleChangeImagem = (e) => {
@@ -94,15 +96,18 @@ const ModalEditLocalEvento = (props) => {
             imagem: localNovo.imagem,
             localizacao: novoTextoLocalizacao,
         }
-        let response = eventoEditarLocalEventoPorIdService(idLocalEventoModal, localEventoNew);
-        if (response) {
-            setisRequestSucessFull(true);
-            setEnviando(false);
-            props.setEnviadoSucesso(!props.enviadoSucesso);
-        } else {
-            setisRequestSucessFull(false);
-            setEnviando(false);
-        }
+        eventoEditarLocalEventoPorIdService(idLocalEventoModal, localEventoNew).then((response) => {
+
+            if (response) {
+                setisRequestSucessFull(true);
+                setEnviando(false);
+                props.setEnviadoSucesso(!props.enviadoSucesso);
+            } else {
+                setisRequestSucessFull(false);
+                setEnviando(false);
+            }
+        });
+
 
     };
 
@@ -121,16 +126,17 @@ const ModalEditLocalEvento = (props) => {
 
     const deletarLocalEvento = () => {
         setIsDeletar(true);
-        let response = eventoDeletarLocalEventoPorId(idLocalEventoModal);
-        if (response) {
-            setIsDeletar(null);
-            handleCloseModal();
-            showSnackBar("Deletado com sucesso");
-            props.setEnviadoSucesso(!props.enviadoSucesso);
-        } else {
-            setIsDeletar(null);
-            showSnackBar("Error deletando o local");
-        }
+        eventoDeletarLocalEventoPorId(idLocalEventoModal).then((response) => {
+            if (response) {
+                setIsDeletar(null);
+                handleCloseModal();
+                showSnackBar("Deletado com sucesso");
+                props.setEnviadoSucesso(!props.enviadoSucesso);
+            } else {
+                setIsDeletar(null);
+                showSnackBar("Error deletando o local");
+            }
+        });
     };
 
     function showSnackBar(texto) {

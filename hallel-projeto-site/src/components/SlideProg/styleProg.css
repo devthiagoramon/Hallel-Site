@@ -1,87 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
-
-.body-programacao{
+.produto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: white;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(0.8);
+  transition: transform 0.3s;
+  background-color: #003617;
+  margin-bottom: 3rem;
   
-    display: block;
-    color: #35404B;
-    font-family: 'Inter';
 }
 
-.body-programacao #title{
- 
-    display:block;
-    text-align: center;
-    font-weight: 700;
-}
-.containerCarroseulProg {
-  
-    margin-top: 5rem;
-    width: 100%;
-    min-height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.produto img {
+  width: 100%;
+  height: auto;
 }
 
-.carrousel {
-    cursor: grab;
-    overflow: hidden;
+.nome-produto {
+  margin-left: 1rem;
+  font-weight: normal;
+  font-size: 28px;
+  text-align: start;
+  color: white;
 }
 
-.inner {
-    display: flex;
+.valorPromocao {
+  font-style: bold;
+  font-size: 19px;
+  font-weight: bold;
+  color: #c1f4d3;
+  text-align: start;
+  text-decoration: underline;
+  margin-left: 1rem;
 }
 
-.imagem2 {
-    position: relative;
-    min-width: 400px;
-    min-height: 350px;
-    padding: 15px;
-    
+.destaque {
+  align-items: center;
+  margin-top: -50px;
+  color: #081f39;
+  margin-bottom: 3rem;
 }
 
-.imagem2 img {
-    width: 100%;
-    height: 90%;
-    box-shadow: rgba(0, 0, 0, 0.35) 3px 3px 10px 2px;
-    border-radius: 10px;
-    pointer-events: none;
+.slick-prev,
+.slick-next {
+  color: #081f39;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
 }
 
-.legenda2 {
-    background: linear-gradient(180deg, rgba(0,0,0,0) 9.75%, rgba(0,0,0,0.75) 80%);
-    display: flex;
-    position: absolute;
-    bottom: 13.5%;
-    visibility: hidden;
-    border-radius: 10px;
-    align-items: flex-end;
-    width: 92.5%;
-    height: 25%;
-} 
-
-.legenda2>a {
-    margin-bottom: 1.10rem;
-    margin-left: 1.10rem;
-    padding: 5px;
-    background: none;
-    border-radius: 5px;
-    font-size: 36px;
-    color: #fafafa;
-    border-width: 1px;
-    font-weight: 500;
-    font-family: 'Archivo', sans-serif;
+.slick-prev:before,
+.slick-next:before {
+  font-size: 40px;
 }
 
-.imagem2:hover .legenda2 {
-    visibility: visible;
+.slick-prev {
+  left: 0;
 }
 
-.legenda2:hover{
-    color: #fafafa;
-} 
-
-.imagem2:hover{
-    border-width: 2px;
-    scale: 1.009;
+.slick-next {
+  right: 1;
 }

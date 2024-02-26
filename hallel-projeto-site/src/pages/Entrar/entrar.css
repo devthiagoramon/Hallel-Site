@@ -1,153 +1,226 @@
-
-.containerlogin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 3rem;
+.img {
+  width: 90%;
+  max-width: 500px;
+  margin: 2rem 0;
+  transform: translateY(0);
+  margin-left: 7.5rem;
+  margin-top: 13.125rem;
+  animation: float 4s ease-in-out infinite;
+  overflow: hidden;
+  display: block; 
 }
 
-.containerlogin img {
-  display: flex;
-  margin-top: 7rem;
-  margin-left: 70px;
-  margin-bottom: 5px;
-  max-width: 9.375rem;
-  max-height: 9.375rem;
-  left: 654px;
-  top: 86px;
-  padding: 1px;
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3.125rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-.containerlogin .log {
-  width: 171px;
-  height: 114px;
-  left: 581px;
-  top: 194px;
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 94px;
-  line-height: 114px;
-  color: #038c33;
+.quadrado {
+  background-color: #003617;
+  width: 80%;
+  max-width: 550px;
+  margin: 2rem auto;
+  height: 46rem;
+  margin-left: 53.75rem;
+  margin-top: -36.5rem;
+  margin-bottom: 2rem;
+  border-radius: 1.875rem;
+  box-shadow: 0 0 4.6875rem rgba(0, 0, 0, 0.3);
+  padding-top: 1.5rem;
+  position: relative;
 }
 
-.containerlogin .in {
-  width: 85px;
-  height: 114px;
-  left: 753px;
-  top: 194px;
 
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 94px;
-  line-height: 114px;
-  color: #d94214;
+.login-text {
+  text-align: center;
+  color: white;
+  font-size: 4.0625rem;
+  font-weight: lighter;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
 }
 
-.containerlogin .formulario {
-  margin-top: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.containerlogin .formulario input {
-  align-items: flex-start;
-  padding: 10px;
-  font-size: 15px;
-}
-
-.containerlogin .formulario .inputContainerEmail input {
+.email-input {
+  border-radius: 0.3125rem;
   box-sizing: border-box;
-
-  width: 400px;
-  height: 45px;
-  left: 486px;
-  top: 350px;
-
-  border: 2px solid #d94814;
-  border-radius: 6px;
-}
-
-.containerlogin .formulario .inputContainerSenha input {
-  margin-top: 20px;
-  position: flex;
-  width: 400px;
-  height: 45px;
-  left: 486px;
-  top: 400px;
-
-  border: 2px solid #d94814;
-  border-radius: 6px;
-}
-
-/* Esqueceu sua senha? */
-.containerlogin .formulario a {
+  overflow: hidden;
+  flex-direction: column;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 12px;
-
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 24px;
-  text-decoration-line: underline;
-
-  color: #758b9f;
+  text-align: center;
 }
 
-/* botão entrar */
-.containerlogin .formulario .buttonEntrar {
-  border: none;
-  width: 300px;
-  height: 40px;
-  left: 486px;
-  top: 574px;
-
-  color: #ffff;
-  background: #038c33;
-  border-radius: 24px;
-  font-size: 16px;
-  font-weight: 600;
-
+.email-text-div {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 3%;
+  margin-top: 1%;
 }
 
-.containerlogin .formulario .buttonEntrar:hover {
+.email-text {
+  font-size: 1rem;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  margin-left: 10.5%;
+}
+
+.email-camp {
+  width: 27rem;
+  height: 1.875rem;
+  border: 0;
+  border-bottom: 0.125rem solid white;
+  background-color: transparent;
+  outline: none;
+  font-size: 1rem;
+  color: white;
+  margin: 0 auto;
+  text-align: start;
+  margin-top: 1%;
+}
+
+.email-label{
+  align-self: flex-start;
+}
+
+.remember {
+  color: white;
+  font-family: 'Inter', sans-serif;
   cursor: pointer;
-  opacity: 0.8;
+  display: block; 
+  margin-left: 10.5%;
 }
 
-.containerlogin .formulario .footerEntrar {
+.forget-password {
+  text-align: end;
+  margin-right: 9%;
+  color: #b4ffd4;
+  text-decoration: none;
+  margin-top: 0;
+  display: inline-block; 
+}
+
+.div-button{
   display: flex;
-  width: 300px;
-  justify-content: space-between;
+  justify-content: center;
+  
 }
 
-/* Não tem uma conta? */
-.containerlogin .formulario .footerEntrar p {
-  margin: 0;
-  padding: 0;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 24px;
-  color: #35404b;
-  padding-top: 1.25rem;
+.button-continue {
+  width: 80%;
+  height: 3rem;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0 4.6875rem rgba(0, 0, 0, 0.3);
+  border: 0;
+  background-color: #a8ffc7;
+  font-size: 2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  color: #003617;
+  cursor: pointer;
+  margin: 1rem auto;
+  text-align: center;
+  line-height: 1rem;
+ 
 }
 
-/* Solicite seu cadastro */
-.containerlogin .formulario .footerEntrar a {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 23px;
-  /* identical to box height */
-  text-decoration-line: underline;
+.register-div {
+  margin-left: 10.5%;
+  margin-top: 5rem;
+  display: block; 
+  margin: 2rem 3;
+}
+
+.text-register {
+  color: white;
+  display: inline-block; 
+}
+
+.register {
+  margin-left: 0.25rem;
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  display: inline-block; 
+}
+
+.terms-div {
+  margin-top: 13rem;
+  font-size: 0.625rem;
+  text-align: center;
+  color: #d6fde7;
+  margin-bottom: 6.25rem;
+  display: block; 
+}
+
+.register-terms {
+  color: #d6fde7;
+  display: inline-block;
+}
+
+.register-privace {
+  color: #d6fde7;
+  display: inline-block;
+}
+
+@media screen and (min-width: 1700px) {
+
+  .quadrado {
+    margin-left: 80rem;
+  }
+  .img{
+    margin-left: 15rem;
+  }
+
+}
+
+@media screen and (max-width: 1388px) {
+
+  .quadrado {
+    margin-left: 50rem;
+  }
+
+  .button-continue{
+    margin-top: 1rem 0;
+  }
+}
+
+@media screen and (max-width: 1356px) {
+
+  .quadrado {
+    margin-left: 45rem; 
+  }
+
+  .div-button{
+    margin-top: 100rem;
+  }
+
+  .terms-div{
+    margin: 1rem auto;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+
+  .img{
+    display: none;
+  }
+  .quadrado {
+    margin: 2rem auto;
+    width: 80%;
+  }
+  .div-button{
+    margin-bottom: 100rem;
+  }
+  .terms-div{
+    margin-bottom: 100rem;
+  }
 }

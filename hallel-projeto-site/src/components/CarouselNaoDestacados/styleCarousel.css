@@ -5,4 +5,12 @@
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    margin-top: 50px;
 }
+
+@media screen and (max-width: 540px){
+    .master{
+        width: 1rem,
+    }
+    
+  }

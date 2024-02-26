@@ -2,7 +2,6 @@ import React from "react";
 import "./eventInfo.css";
 import {} from "react-icons/bs";
 import { useState } from "react";
-import BtnHallel from "../../../components/BtnHallel/ButtonHallel";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import Fab from "@mui/material/Fab";
@@ -18,7 +17,12 @@ import axios from "axios";
 import { notification } from "../../..";
 import { ErrorLoadingIsParticipando } from "../../../components/Feedback/FeedbackParticiparEvento";
 import { CircularProgress } from "@mui/material";
-import {eventoIsInscritoService, eventoVerifyStatusPagamentoService} from "../../../service/EventoService";
+import {
+  eventoIsInscritoService,
+  eventoVerifyStatusPagamentoService,
+} from "../../../service/EventoService";
+import { OutlinedEmptyButtonHallel } from "../../../components/BtnHallel";
+import { getId, getUserId } from "../../../utils/utilLocalStorage";
 
 const InfoEventos2 = ({ evento, hide }) => {
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
@@ -29,14 +33,35 @@ const InfoEventos2 = ({ evento, hide }) => {
 
   const navigate = useNavigate();
 
-  useMemo(() => {
-    let responseInscrito = eventoIsInscritoService(evento.id, localStorage.getItem("HallelId"));
-    if(responseInscrito){
-      setIsInscrito(responseInscrito);
-      setLoadingIsInscrito(false);
-      let responsePagamento = eventoVerifyStatusPagamentoService(evento.id);
-      setStatusPagamento(responsePagamento);
+  useEffect(() => {
+    async function isInscrito() {
+      try {
+        const response = await eventoIsInscritoService(evento.id, getUserId());
+        if (response) {
+          setIsInscrito(response);
+          setLoadingIsInscrito(false);
+          eventoVerifyStatusPagamentoService(evento.id).then(
+            (responsePagamento) => {
+              setStatusPagamento(responsePagamento);
+            }
+          );
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
+
+    isInscrito();
+
+    // eventoIsInscritoService(evento.id, getId()).then((responseInscrito) => {
+    //     if (responseInscrito) {
+    //         setIsInscrito(responseInscrito);
+    //         setLoadingIsInscrito(false);
+    //         eventoVerifyStatusPagamentoService(evento.id).then((responsePagamento) => {
+    //             setStatusPagamento(responsePagamento);
+    //         });
+    //     }
+    // });
   }, []);
 
   return (
@@ -118,14 +143,17 @@ const Corpo2 = ({
           src={evento.imagem}
           alt="imagem"
         />
-        {!loadingIsInscrito ? (
+        {loadingIsInscrito ? (
           <>
             {!isInscrito ? (
               <div className="container_participar_evento">
-                <BtnHallel secundario onClick={abrirModal}>
+                <OutlinedEmptyButtonHallel
+                  style={{ width: 200, padding: "0.7rem", fontSize: "24px" }}
+                  onClick={abrirModal}
+                >
                   {" "}
                   Participar do evento
-                </BtnHallel>
+                </OutlinedEmptyButtonHallel>
               </div>
             ) : (
               <div className="status_evento_participando">
@@ -160,7 +188,7 @@ const Info2 = ({ estado, setEstado, evento }) => {
           </ul>
         </div>
         <div className="participantes">
-          <h4>Participantes:</h4>
+          <h4>Palestrantes:</h4>
           <ul className="topicosInfo">
             {evento.palestrantes?.map((palestrante) => {
               return <li>{palestrante}</li>;

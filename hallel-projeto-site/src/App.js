@@ -3,7 +3,8 @@ import "./App.css";
 import Footer from "./components/Footer";
 import RoutesApp from "./routes";
 import { LocalizationProvider, ptBR } from "@mui/x-date-pickers";
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
@@ -15,11 +16,13 @@ function App() {
             ptBR.components.MuiLocalizationProvider.defaultProps.localeText
           }
         >
-          <RoutesApp />
-          <Footer />
+          <BrowserRouter>
+            <RoutesApp />
+          </BrowserRouter>
         </LocalizationProvider>
       </div>
     </div>
   );
 }
+
 export default App;

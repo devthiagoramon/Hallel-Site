@@ -6,8 +6,11 @@ import {listarEventoSemDestaqueService} from "../../service/HomeService";
 
 export default function CarouselNaoDestacados() {
     const carrosel = useRef();
-    const eventos = useMemo(() => {
-        return listarEventoSemDestaqueService();
+    const [eventos, setEventos] = useState([])
+    useMemo(() => {
+        listarEventoSemDestaqueService().then((res) => {
+            setEventos(res);
+        });
     }, []);
     const [showInfos, setshowInfos] = useState(false);
     const [eventoEspc, setEventoEspc] = useState();
@@ -18,16 +21,34 @@ export default function CarouselNaoDestacados() {
     }, []);
 
     return (
-        <div
+        <div className="master"
             style={{
                 display: "block",
                 height: 500,
                 width: 500,
                 padding: 30,
-                background: "#ffffff",
+                marginTop: "100px",
+                marginRight: '100px',
+                borderRadius: '10px',
+                background: "#003015",
+                '@media screen and (max-width: 940px)': {
+                width: '100%',
+                height: 'auto',
+                maxWidth: '600px',
+                margin: '0 auto',
+                    
+                  },
+
+                  '@media screen and (max-width: 540px)': {
+                    width: '10%',
+                    height: 'auto',
+                    maxWidth: '600px',
+                    margin: '0 auto',
+                    
+                      },
             }}
         >
-            <h4 style={{textAlign: "left"}}>Eventos</h4>
+            <h4 style={{textAlign: "left", color:'white'}}>Principais</h4>
 
             {eventos.length === 0 ? (
                 <div className="CircleProgress" style={{top: "10em"}}>

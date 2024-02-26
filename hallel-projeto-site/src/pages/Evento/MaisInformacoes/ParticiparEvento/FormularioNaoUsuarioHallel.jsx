@@ -5,7 +5,7 @@ import { IconButton, Tooltip, Typography } from "@mui/material";
 import { AddRounded } from "@mui/icons-material";
 import dayjs from "dayjs";
 import InputHallel from "../../../../components/InputHallel/InputHallel";
-import BtnHallel from "../../../../components/BtnHallel/ButtonHallel";
+import { OutlinedButtonHallel } from "../../../../components/BtnHallel";
 
 const FormularioNaoUsuarioHallel = ({
   usuarioEvento,
@@ -19,16 +19,16 @@ const FormularioNaoUsuarioHallel = ({
   return (
     <div className="cont_form_part_evento">
       <div className="header_form_part_evento">
-        <label style={{ fontSize: "1.5em", fontWeight: "700" }}>
+        <label style={{ fontSize: "1.5em", fontWeight: "700", color:"#00471F",marginBottom:'1rem' }}>
           Formulário de inscrição
         </label>
       </div>
       <div className="body_form_part_evento2">
-        <label style={{ fontSize: "1.2em", fontWeight: "600" }}>Nome</label>
+        <label style={{ fontSize: "1.2em", fontWeight: "500", color:"#004F22" }}>Nome completo:<span style={{ color: "#CB4335", marginLeft: '4px' }}>*</span></label>
         {errorInputs.nome ? (
           <InputHallel
             name="nome"
-            style={{ width: 350 }}
+            style={{ width: '100%' }}
             type="text"
             value={usuarioEvento.nome}
             onChange={handleAlterarTexto}
@@ -37,17 +37,17 @@ const FormularioNaoUsuarioHallel = ({
         ) : (
           <InputHallel
             name="nome"
-            style={{ width: 350 }}
+            style={{ width: '100%' }}
             type="text"
             value={usuarioEvento.nome}
             onChange={handleAlterarTexto}
           />
         )}
-        <label style={{ fontSize: "1.2em", fontWeight: "600" }}>Email</label>
+        <label style={{ fontSize: "1.2em", fontWeight: "500", color:"#004F22"  }}>Email:<span style={{ color: "#CB4335", marginLeft: '4px' }}>*</span></label>
         {errorInputs.email ? (
           <InputHallel
             name="email"
-            style={{ width: 350 }}
+            style={{ width: '100%' }}
             type="text"
             value={usuarioEvento.email}
             onChange={handleAlterarTexto}
@@ -56,17 +56,17 @@ const FormularioNaoUsuarioHallel = ({
         ) : (
           <InputHallel
             name="email"
-            style={{ width: 350 }}
+            style={{ width: '100%' }}
             type="text"
             value={usuarioEvento.email}
             onChange={handleAlterarTexto}
           />
         )}
-        <label style={{ fontSize: "1.2em", fontWeight: "600" }}>CPF</label>
+        <label style={{ fontSize: "1.2em", fontWeight: "500", color:"#004F22"  }}>CPF:<span style={{ color: "#CB4335", marginLeft: '4px' }}>*</span></label>
         {errorInputs.cpf ? (
           <InputHallel
             name="cpf"
-            style={{ width: 350 }}
+            style={{ width: '100%' }}
             type="text"
             placeholder="Somente números"
             value={usuarioEvento.cpf}
@@ -76,14 +76,14 @@ const FormularioNaoUsuarioHallel = ({
         ) : (
           <InputHallel
             name="cpf"
-            style={{ width: 350 }}
+            style={{ width: '100%' }}
             type="text"
             placeholder="Somente números"
             value={usuarioEvento.cpf}
             onChange={handleAlterarTexto}
           />
         )}
-        <label style={{ fontSize: "1.2em", fontWeight: "600" }}>Idade:</label>
+        <label style={{ fontSize: "1.2em", fontWeight: "500", color:"#004F22"  }}>Idade:<span style={{ color: "#CB4335", marginLeft: '4px' }}>*</span></label>
         {errorInputs.idade ? (
           <InputHallel
             name="idade"
@@ -103,11 +103,11 @@ const FormularioNaoUsuarioHallel = ({
           />
         )}
         <div className="header_cartao_participar_evento">
-          <label style={{ fontSize: "1.2em", fontWeight: "600" }}>
+          <label style={{ fontSize: "1.4em", fontWeight: "700", color:"#004F22" }}>
             Adicionar Cartão
           </label>
           <Tooltip title="Adicionar Cartão">
-            <IconButton
+            <IconButton style={{color:'#004F22',marginLeft:'-0.3rem'}}
               onClick={() => {
                 SetopenAdicionarCartao(true);
               }}
@@ -116,7 +116,7 @@ const FormularioNaoUsuarioHallel = ({
             </IconButton>
           </Tooltip>
         </div>
-        <div className="body_cartao_participar_evento">
+        <div className="body_cartao_participar_evento" style={{alignItems:'center'}}>
           {errorInputs.cartaoCredito ? (
             <Typography color="#F1948A" variant="overline">
               Nenhum cartão adicionado
@@ -165,7 +165,9 @@ const FormularioNaoUsuarioHallel = ({
         ) : (
           <></>
         )}
-        <BtnHallel sucesso onClick={handleParticiparEvento}>Participar</BtnHallel>
+        <div style={{ alignItems: "center", justifyContent: "center", display: "flex" }}>
+        <OutlinedButtonHallel style={{width: 200, height:'2.5rem',padding: "0.7rem", fontSize: "19px",lineHeight: "1" }} onClick={handleParticiparEvento}>Participar</OutlinedButtonHallel>
+        </div>
       </div>
     </div>
   );

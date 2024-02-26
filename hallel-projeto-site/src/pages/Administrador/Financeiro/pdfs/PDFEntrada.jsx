@@ -138,7 +138,7 @@ const PDFEntrada = ({ mesSelecionado, entradas }) => {
                 <Text style={styles.textHeadTable}>Pago com</Text>
               </View>
             </View>
-            {entradas.map((entrada) => {
+            {entradas?.map((entrada) => {
               return (
                 <View style={styles.tableRow}>
                   <View style={styles.tableCell}>

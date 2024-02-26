@@ -84,18 +84,19 @@ const ModalEditDespesaEvento = (props) => {
 
   const editarDespesaEvento = () => {
     setEnviando(true);
-    let response = eventoEditarDespesaPorIdEIdEventoService(idEvento, despesaSelected.id);
-    if(response){
+    eventoEditarDespesaPorIdEIdEventoService(idEvento, despesaSelected?.id).then((response) => {
+      if (response) {
         setEditarPopUp(true);
         setOpenModal(false);
         setOpenPopUp(true);
         setEnviando(false);
         setChangedTabela(changedTabela);
-    }else{
+      } else {
         setEditarPopUp(false);
         setOpenPopUp(true);
         setEnviando(false);
-    }
+      }
+    });
   };
 
   const handleChangeSelect = (e) => {

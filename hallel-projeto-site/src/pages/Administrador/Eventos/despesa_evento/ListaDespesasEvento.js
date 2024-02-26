@@ -1,15 +1,18 @@
-import React, {useMemo} from "react";
-import {Table} from "react-bootstrap";
-import {BsPencilFill} from "react-icons/bs";
-import {AiFillDelete} from "react-icons/ai";
-import {IconButton} from "@mui/material";
-import {CircularProgress} from "@mui/joy";
-import {eventoListarDespesasPorIdEventoService} from "../../../../service/EventoService";
+import React, { useMemo, useState } from "react";
+import { Table } from "react-bootstrap";
+import { BsPencilFill } from "react-icons/bs";
+import { AiFillDelete } from "react-icons/ai";
+import { IconButton } from "@mui/material";
+import { CircularProgress } from "@mui/joy";
+import { eventoListarDespesasPorIdEventoService } from "../../../../service/EventoService";
 
 const ListaDespesasEvento = (props) => {
-  const despesas = useMemo(() => {
-    return eventoListarDespesasPorIdEventoService();
-  }, [])
+  const [despesas, setDespesas] = useState();
+  useMemo(() => {
+    eventoListarDespesasPorIdEventoService().then((response) => {
+      setDespesas(response);
+    });
+  }, []);
 
   function abrirModalEdit(despesa) {
     props.setDespesaSelected(despesa);
@@ -23,9 +26,9 @@ const ListaDespesasEvento = (props) => {
 
   return (
     <section className="sessao_tabela">
-      {despesas.length == 0 ? (
+      {despesas?.length === 0 ? (
         <CircularProgress />
-      ) : despesas.length == null ? (
+      ) : despesas?.length == null ? (
         <h2>Nenhuma despesa encontrada</h2>
       ) : (
         <Table
@@ -49,7 +52,7 @@ const ListaDespesasEvento = (props) => {
           </thead>
           <tbody>
             <>
-              {despesas.map((item) => {
+              {despesas?.map((item) => {
                 return (
                   <tr>
                     <td>{item.nome}</td>

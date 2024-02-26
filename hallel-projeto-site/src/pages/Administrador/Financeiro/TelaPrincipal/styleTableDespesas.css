@@ -3,11 +3,13 @@
     width: 100%;
     display: flex;
 }
+
 /*configurações gerais do css desta página*/
 .financeiro-tabelas-principal {
   display: flex;
   flex-direction: column;
   margin: 2em 0;
+  margin-bottom: 20rem;
 }
 
 .financeiro-tabelas-principal > label {
@@ -22,7 +24,6 @@
 }
 
 /* configurações dos subcomponentes */
-
 .tabela-ultimas-rendas,
 .tabela-ultimas-saidas {
   font-weight: 700;
@@ -36,6 +37,7 @@
   display: flex;
   align-items: center;
   column-gap: 20px;
+  justify-content: center;
 }
 
 .div-grafico-primeira {
@@ -50,6 +52,16 @@
 }
 
 .cont-header-finaceiro > h3 {
-  padding: 20px;
-  text-align: left;
+  margin-right: 10rem;
+  margin-top: 10px;
+}
+
+.buttons{
+  margin-top: 1rem;
+}
+
+.text-and-buttons {
+  display: flex;
+  align-items: start;
+  margin-left: -12rem;
 }

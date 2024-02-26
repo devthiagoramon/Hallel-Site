@@ -7,8 +7,11 @@ import {entradaUltimasEntradasService} from "../../../service/FinanceiroService"
 
 const FragmentoOnePainelFinanceiro = () => {
   const [mesAtual, setmesAtual] = useState("");
-  const utlimasEntradas = useMemo(() => {
-      return entradaUltimasEntradasService();
+  const [utlimasEntradas, setUltimasEntradas] = useState([])
+  useMemo(() => {
+       entradaUltimasEntradasService().then((response) => {
+         setUltimasEntradas(response)
+       });
   }, []);
 
   // Load atual mes
@@ -66,7 +69,7 @@ const FragmentoOnePainelFinanceiro = () => {
             <tbody>
               {utlimasEntradas.length !== 0 ? (
                 <>
-                  {utlimasEntradas.map((entrada) => {
+                  {utlimasEntradas?.map((entrada) => {
                     return (
                       <tr>
                         <td>{entrada.descricaoEntrada}</td>

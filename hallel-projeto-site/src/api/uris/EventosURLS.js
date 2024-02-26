@@ -17,6 +17,10 @@ export function eventoParticiparEventoAPI() {
     return uriDefaultPrefix() + "/home" + eventoPrefix() + "/participarEvento";
 }
 
+export function eventoVoluntariar() {
+    return uriDefaultPrefix() + "/home" + eventoPrefix() + "/seVoluntariar";
+}
+
 export function eventoUsuarioIsInscrito(idEvento, idUser) {
     return (
         uriDefaultPrefix() +

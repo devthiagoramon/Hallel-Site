@@ -3,12 +3,12 @@ import { IconButton, Tooltip, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { AddRounded } from "@mui/icons-material";
 import InputHallel from "../../../../components/InputHallel/InputHallel";
-import BtnHallel from "../../../../components/BtnHallel/ButtonHallel";
+import { OutlinedButtonHallel } from "../../../../components/BtnHallel";
 
 const FormularioMembroHallel = ({
   usuarioEvento,
-  SetopenAdicionarCartao,
   handleAlterarTexto,
+  SetopenAdicionarCartao,
   errorInputs,
   handleParticiparEvento,
 }) => {
@@ -73,7 +73,7 @@ const FormularioMembroHallel = ({
             </IconButton>
           </Tooltip>
         </div>
-        <div className="body_cartao_participar_evento">
+        <div className="body_cartao_participar_evento" style={{alignItems:'center'}}>
           {errorInputs.cartaoCredito ? (
             <Typography color="#F1948A" variant="overline">
               Nenhum cartão adicionado
@@ -108,9 +108,9 @@ const FormularioMembroHallel = ({
             </>
           )}
         </div>
-      </div>
-      <div className="footer_form_part_evento">
-        <BtnHallel sucesso onClick={handleParticiparEvento}>Participar</BtnHallel>
+        <div style={{ alignItems: "center", justifyContent: "center", display: "flex" }}>
+        <OutlinedButtonHallel style={{width: 200, height:'2.5rem',padding: "0.7rem", fontSize: "19px",lineHeight: "1" }} onClick={handleParticiparEvento}>Participar</OutlinedButtonHallel>
+        </div>
       </div>
     </div>
   );
