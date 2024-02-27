@@ -404,16 +404,15 @@ export async function eventoDeletarLocalEventoPorId(idLocalEvento) {
 
 /*Voluntariar-se em um evento*/
 
-export async function eventoVoluntariarService(idEvento) {
+export async function eventoVoluntariarService(idEvento, dataUser) {
   let url = eventoVoluntariar(idEvento);
   try {
     let axiosResponse = await axios.post(
       url,
-      {},
+      dataUser, 
       {
-        headers: {
-          Authorization: getToken(),
-        },
+        withCredentials: true,
+        headers: { Authorization: getToken() },
       }
     );
     return axiosResponse.data;
@@ -429,6 +428,7 @@ export async function eventoVoluntariarService(idEvento) {
     throw error;
   }
 }
+
 
 export async function eventoListarTodasDoacoes() {
   let url = eventoListarDoacoes();

@@ -11,8 +11,8 @@ function DoadorSM({ eventId }) {
   };
 
   const openForm = () => {
-    
     window.location.href = `/formVoluntario?eventId=${eventId}`;
+
   };
   
 

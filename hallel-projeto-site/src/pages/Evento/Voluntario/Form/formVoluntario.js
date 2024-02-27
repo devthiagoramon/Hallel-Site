@@ -10,7 +10,7 @@ import {
 import ContainerRadioButtonsHallel from "../../../../components/ContainerRadioButtonsHallel";
 import RadioButtonHallel from "../../../../components/RadioButtonHallel";
 import { OutlinedButtonHallel } from "../../../../components/BtnHallel";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import './form.css';
 import { eventoVoluntariarService } from "../../../../service/EventoService";
 
@@ -24,12 +24,12 @@ const yupErrors = Yup.object().shape({
     .max(new Date(), "Data de nascimento incorreta")
     .required("Data de nascimento é obrigatório"),
   sexo: Yup.string(),
-  concordo: Yup.boolean().required("Recusa das políticas de privacidade"),
 });
 
 const FormVoluntario = () => {
+  const params = new URLSearchParams(window.location.search);
+  const eventId = params.get('eventId');
   const navigate = useNavigate();
-  const { eventId } = useParams();
   const { handleSubmit, register, formState, getValues } = useForm({
     mode: "all",
     resolver: yupResolver(yupErrors),
@@ -38,25 +38,23 @@ const FormVoluntario = () => {
       email: "",
       numeroTelefone: "",
       dataNascimento: new Date(),
-      concordo: false,
-      eventId: eventId
+      eventId: eventId,
     },
   });
   const { errors, isSubmitting, isSubmitted } = formState;
   const [sexoInput, setSexoInput] = useState("Masculino");
-  const [concordoInput, setConcordoInput] = useState(false);
 
   const handleSubmitData = async (data) => {
     console.log("submit", data);
     try {
-      const sucesso = await eventoVoluntariarService(data.eventId); 
+      const sucesso = await eventoVoluntariarService(eventId, data); 
       if (sucesso) {
         setModalVisible(true);
       } else {
         console.error("Erro ao voluntariar para o evento: sucesso falso");
       }
     } catch (error) {
-      console.error("Erro ao voluntariar para o evento:", error);
+      console.error("Erro ao voluntariar para o evento:", data);
       console.error("Status da resposta:", error.response?.status);
       console.error("Data da resposta:", error.response?.data);
       console.error("Mensagem de erro:", error.message);

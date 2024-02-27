@@ -26,6 +26,7 @@ import { getId, getUserId } from "../../../utils/utilLocalStorage";
 import DoadorSM from "../../../components/DoadorSM/DoadorSM";
 
 const InfoEventos2 = ({ evento, hide }) => {
+  
   const [openModalParticiparEvento, setOpenModalParticiparEvento] =
     useState(false);
   const [isInscrito, setIsInscrito] = useState(false);
@@ -35,6 +36,7 @@ const InfoEventos2 = ({ evento, hide }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    
     async function isInscrito() {
       try {
         const response = await eventoIsInscritoService(evento.id, getUserId());
@@ -44,6 +46,7 @@ const InfoEventos2 = ({ evento, hide }) => {
           eventoVerifyStatusPagamentoService(evento.id).then(
             (responsePagamento) => {
               setStatusPagamento(responsePagamento);
+              
             }
           );
         }
@@ -212,7 +215,9 @@ const Info2 = ({ estado, setEstado, evento }) => {
         </div>
       </div>
       <p></p>
+      
       <DoadorSM eventId={evento.id} />
+      
     </div>
   );
 };
