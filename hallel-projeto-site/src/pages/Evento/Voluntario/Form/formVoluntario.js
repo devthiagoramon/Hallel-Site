@@ -17,18 +17,14 @@ import { eventoVoluntariarService } from "../../../../service/EventoService";
 const yupErrors = Yup.object().shape({
   nome: Yup.string().min(3, "Ao menos 3 letras").required("Nome é obrigatório"),
   email: Yup.string().email("O email tem que ser um email valido").required("Email é obrigatório"),
-  numeroTelefone: Yup.string()
-    .min(10 || 11, "Número invalido")
-    .required("Número de telefone é obrigatório"),
-  dataNascimento: Yup.date()
-    .max(new Date(), "Data de nascimento incorreta")
+  dataNascimento: Yup.string()
     .required("Data de nascimento é obrigatório"),
   sexo: Yup.string(),
 });
 
 const FormVoluntario = () => {
   const params = new URLSearchParams(window.location.search);
-  const eventId = params.get('eventId');
+  const idEvento = params.get('eventId');
   const navigate = useNavigate();
   const { handleSubmit, register, formState, getValues } = useForm({
     mode: "all",
@@ -36,9 +32,9 @@ const FormVoluntario = () => {
     defaultValues: {
       nome: "",
       email: "",
-      numeroTelefone: "",
-      dataNascimento: new Date(),
-      eventId: eventId,
+      sexo: "masculino",
+      dataNascimento: "",
+      idEvento: idEvento,
     },
   });
   const { errors, isSubmitting, isSubmitted } = formState;
@@ -47,7 +43,7 @@ const FormVoluntario = () => {
   const handleSubmitData = async (data) => {
     console.log("submit", data);
     try {
-      const sucesso = await eventoVoluntariarService(eventId, data); 
+      const sucesso = await eventoVoluntariarService(idEvento, data); 
       if (sucesso) {
         setModalVisible(true);
       } else {
@@ -112,7 +108,6 @@ const FormVoluntario = () => {
             <InputHallelNormal
               style={{ width: "100%" }}
               placeholder="(__) ____ - ____"
-              {...register("numeroTelefone")}
               error
             />
           </ContainerInputHallelError>
@@ -120,7 +115,6 @@ const FormVoluntario = () => {
           <InputHallelNormal
             style={{ width: "40%" }}
             placeholder="(__) ____ - ____"
-            {...register("numeroTelefone")}
           />
         )}
         <div className="cont-inputs2-doador">
@@ -134,14 +128,14 @@ const FormVoluntario = () => {
                 style={{ width: "100%" }}
                 {...register("dataNascimento")}
                 error
-                type="date"
+                
               />
             </ContainerInputHallelError>
           ) : (
             <InputHallelNormal
               style={{ width: "100%" }}
               {...register("dataNascimento")}
-              type="date"
+              placeholder="__/__/____"
             />
           )}
           <ContainerRadioButtonsHallel>
