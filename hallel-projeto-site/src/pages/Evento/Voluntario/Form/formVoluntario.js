@@ -10,7 +10,7 @@ import {
 import ContainerRadioButtonsHallel from "../../../../components/ContainerRadioButtonsHallel";
 import RadioButtonHallel from "../../../../components/RadioButtonHallel";
 import { OutlinedButtonHallel } from "../../../../components/BtnHallel";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './form.css';
 import { eventoVoluntariarService } from "../../../../service/EventoService";
 
@@ -19,26 +19,27 @@ const yupErrors = Yup.object().shape({
   email: Yup.string().email("O email tem que ser um email valido").required("Email é obrigatório"),
   dataNascimento: Yup.string()
     .required("Data de nascimento é obrigatório"),
-  sexo: Yup.string(),
+  sexo: Yup.string().required("Sexo é obrigatório"),
 });
 
 const FormVoluntario = () => {
   const params = new URLSearchParams(window.location.search);
-  const idEvento = params.get('eventId');
+  const idEvento = params.get("eventId");
   const navigate = useNavigate();
-  const { handleSubmit, register, formState, getValues } = useForm({
+
+  const { handleSubmit, register, setValue, formState } = useForm({
     mode: "all",
     resolver: yupResolver(yupErrors),
     defaultValues: {
       nome: "",
       email: "",
-      sexo: "masculino",
+      sexo: "", // Definir o valor inicial como vazio
       dataNascimento: "",
       idEvento: idEvento,
     },
   });
-  const { errors, isSubmitting, isSubmitted } = formState;
-  const [sexoInput, setSexoInput] = useState("Masculino");
+
+  const { errors, isSubmitting, isSubmitted, values } = formState;
 
   const handleSubmitData = async (data) => {
     console.log("submit", data);
@@ -60,7 +61,6 @@ const FormVoluntario = () => {
   const closeModal = () => {
     setModalVisible(false);
     navigate('/');
-  
   };
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -128,7 +128,6 @@ const FormVoluntario = () => {
                 style={{ width: "100%" }}
                 {...register("dataNascimento")}
                 error
-                
               />
             </ContainerInputHallelError>
           ) : (
@@ -140,31 +139,31 @@ const FormVoluntario = () => {
           )}
           <ContainerRadioButtonsHallel>
             <RadioButtonHallel
-              isSelected={sexoInput === "Masculino"}
-              setSelected={() => setSexoInput("Masculino")}
+              isSelected={values && values.sexo === "Masculino"}
+              setSelected={() => setValue("sexo", "Masculino")}
               text={"Masculino"}
             />
             <RadioButtonHallel
-              isSelected={sexoInput === "Feminino"}
-              setSelected={() => setSexoInput("Feminino")}
+              isSelected={values && values.sexo === "Feminino"}
+              setSelected={() => setValue("sexo", "Feminino")}
               text={"Feminino"}
             />
           </ContainerRadioButtonsHallel>
         </div>
         
         <div className="divButton" style={{display:'flex',alignItems:'center',justifyContent:'center',marginTop:'2rem'}}> 
-        <OutlinedButtonHallel
-          style={{
-            padding: "0.6rem 0",
-            width: "50%",
-            alignSelf: "center",
-            fontSize: "30px",
-            marginTop: '3.5rem',
-          }}
-          type="submit"
-        >
-          Enviar
-        </OutlinedButtonHallel>
+          <OutlinedButtonHallel
+            style={{
+              padding: "0.6rem 0",
+              width: "50%",
+              alignSelf: "center",
+              fontSize: "30px",
+              marginTop: '3.5rem',
+            }}
+            type="submit"
+          >
+            Enviar
+          </OutlinedButtonHallel>
         </div>
       </form>
 
@@ -174,13 +173,12 @@ const FormVoluntario = () => {
             <h2 className="text">Recebemos com sucesso suas informações! 
               Esteja atento ao seu email e telefone, pois entraremos em contato em breve. 
               Agradecemos pela sua colaboração!</h2>
-              <div className="button-div"> 
-            <button className="button" onClick={closeModal}>Fechar</button>
+            <div className="button-div"> 
+              <button className="button" onClick={closeModal}>Fechar</button>
             </div>
           </div>
         </div>
       )}
-
     </div>
   );
 };
