@@ -65,6 +65,7 @@ import FormularioVoluntario from "./pages/Evento/Voluntario/indexMain.js";
 import DoacoesEventos from "./pages/Evento/DoarEvento/index.js";
 import TipoDoacaoEventos from "./pages/Evento/DoarEvento/SelecioneTipoDoacao/index.js";
 import PagamentoDoacaoEventos from "./pages/DoacoesHallel/PagamentoDoacao/index.js";
+import Pix from "./pages/Pagamento/Pix/Pix.js";
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
@@ -94,6 +95,18 @@ function RoutesApp() {
           </>
         }
       />
+
+<Route
+        path="/PagamentoPix"
+        element={
+          <>
+            <HeaderHallel />
+            <Pix />
+            <Footer />
+          </>
+        }
+      />
+
       <Route
         path="/tipoDoacaoEventos"
         element={

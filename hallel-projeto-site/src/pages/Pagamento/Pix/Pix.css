@@ -1,0 +1,54 @@
+.Pagamento-text{
+    margin-top: 30px;
+    color: #00471F;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.quadrado-pix{
+    width: 300px;
+    height: 300px;
+    border: 1px solid #033117;
+    margin-top: 125%;
+}
+
+.Container{
+    position: absolute;
+    left: 52%;
+    transform: translate(-50%, -50%);
+}
+
+.aa{
+    width: 100%;
+    height: 1000px;
+}
+
+.copyButton{
+    margin-top: 30px;
+   
+}
+
+.ContentCopyOutlinedIcon{
+    margin-left: 40px;
+}
+
+.quadradoInfoPagamento{
+    width: 520px;
+    height: 35px;
+    background-color: #D8DFDC;
+    
+}
+
+.containaerInfo{
+    margin-left: 85px;
+    margin-top: 90px;
+    
+}
+
+.QdInfo{
+    margin-top: 15px;
+    width: 95%;
+    height: 30%;
+    background-color: #D8DFDC;
+}

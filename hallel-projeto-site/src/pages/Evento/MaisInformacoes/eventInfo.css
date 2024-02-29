@@ -1,6 +1,4 @@
-body {
-  
-}
+
 
 .containerEvents{
   width: 100vw;
@@ -79,8 +77,7 @@ body {
   transition: 0.5s;
 }
 
-.subtopicos {
-}
+
 
 .topicosInfo > p {
   font-weight: 500;
@@ -218,9 +215,6 @@ body {
   display: flex;
   align-items: center;
 }
-.body_cartao_participar_evento{
-
-}
 
 .cont_modal_adicionar_cartao_pe{
   width: 100%;
@@ -283,10 +277,6 @@ body {
   max-width: 10000%;
   max-height: 100%;
   
-}
-
-.area-infos{
-
 }
 
 
