@@ -94,7 +94,11 @@ export function eventoListarAdm() {
 }
 
 export function eventoListarDoacoes() {
-    return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/listDetalhesDoacaoTodosEevntos";
+    return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/listDetalhesDoacaoTodosEventos";
+}
+
+export function eventoListarDoacoesDinheiro(idEvento) {
+    return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() +"/ListDetalhesDoacoesDinheiroTodosEventos?idEvento="+idEvento;
 }
 
 export function eventoListarArquivado() {

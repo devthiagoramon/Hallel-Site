@@ -2,17 +2,17 @@ import React, { useMemo, useState, useEffect } from "react";
 import { CDBCard, CDBCardBody, CDBContainer, CDBDataTable } from "cdbreact";
 import "./listar_adm_eventos.css";
 import { CircularProgress, Menu, MenuItem } from "@mui/material";
-import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { ArchiveRounded, LocationOn } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { VscKebabVertical } from "react-icons/vsc";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
-import { eventoListarTodasDoacoes } from "../../../../service/EventoService";
-import formatarData from "../../../../utils/Functions";
-import GuiaAdm from "../../../../components/GuiaAdm";
+import { eventoListarTodasDoacoesDinheiro } from "../../../../../service/EventoService";
+import formatarData from "../../../../../utils/Functions";
+import GuiaAdm from "../../../../../components/GuiaAdm";
 
-function ListarDoacoes() {
+function ListarDoadores() {
   const [eventos, setEventos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [tabelaVazia, setTabelaVazia] = useState(true);
@@ -21,10 +21,10 @@ function ListarDoacoes() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [eventoIdClick, setEventoIdClick] = useState("");
   const navigate = useNavigate();
-  
-
+  const params = new URLSearchParams(window.location.search);
+  const idEvento = params.get("eventId");
   useEffect(() => {
-    eventoListarTodasDoacoes().then((response) => {
+    eventoListarTodasDoacoesDinheiro(idEvento).then((response) => {
       console.log(response);
       if (response.length !== 0) {
         setTabelaVazia(false);
@@ -34,12 +34,6 @@ function ListarDoacoes() {
       setLoading(false);
     });
   }, []);
-
-  const handleClickEvento = (id) => {
-    navigate(`administrador/eventos/${id}/ListDetalhesDoacoesDinheiroTodosEventos`);
-    console.log(id);
-  };
-  
 
   const handleOpenMenu = (e, id) => {
     setAnchorEl(e.currentTarget);
@@ -57,7 +51,7 @@ const data = useMemo(() => {
   return {
     columns: [
       {
-        label: "Nome do Evento",
+        label: "Doador",
         field: "nome",
         width: "auto",
       },
@@ -67,21 +61,25 @@ const data = useMemo(() => {
         width: "auto",
       },
       {
-        label: "Quantidade de Doadores",
+        label: "Forma de pagamento",
         field: "quantidadeDoadores",
+        width: "auto",
+      },
+      {
+        label: "Valor",
+        field: "valor",
         width: "auto",
       },
     ],
     rows: eventos.map((evento) => ({
-      nome: evento.nomeEvento,
-      data: formatarData(evento.dataEvento),
-      quantidadeDoadores: evento.totalDeDoacoes,
-      clickEvent: () => handleClickEvento(evento.idEvento),
+      nome: evento.nomeDoador,
+      data: formatarData(evento.dataDoacao),
+      quantidadeDoadores: evento.formaDePagamento,
+      valor: evento.valorDoado,
     })),
   };  
 }, [eventos]);
  
-
   return (
     <GuiaAdm title={"Doações para eventos"}>
       <div className="painelEventos">
@@ -96,12 +94,11 @@ const data = useMemo(() => {
                 <CDBCardBody>
                   {timer && (
                     <CDBDataTable
-                      onRowClick={true}
-                      entriesLabel="Mostrar eventos"
+                      entriesLabel="Mostrar doadores"
                       searchLabel="Pesquisar"
                       paginationLabel={["Anterior", "Próximo"]}
-                      infoLabel={["Mostrando de", "até", "de", "eventos"]}
-                      noRecordsFoundLabel="Nenhum evento encontrado"
+                      infoLabel={["Mostrando de", "até", "de", "doadores"]}
+                      noRecordsFoundLabel="Nenhum doador encontrado"
                       hover
                       materialSearch
                       bordered
@@ -134,4 +131,4 @@ const data = useMemo(() => {
   );
 }
 
-export default ListarDoacoes;
+export default ListarDoadores;
