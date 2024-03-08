@@ -71,12 +71,14 @@ const data = useMemo(() => {
         width: "auto",
       },
     ],
-    rows: eventos.map((evento) => ({
-      nome: evento.nomeDoador,
-      data: formatarData(evento.dataDoacao),
-      quantidadeDoadores: evento.formaDePagamento,
-      valor: evento.valorDoado,
-    })),
+    rows: eventos.flatMap((evento) => (
+      (evento.doacoesDinheiro ?? []).map((doacao) => ({
+        nome: doacao.emailDoador,
+        data: formatarData(doacao.dataDoacao),
+        quantidadeDoadores: doacao.formaDePagamento,
+        valor: doacao.valorDoado,
+      }))
+    )),    
   };  
 }, [eventos]);
  
@@ -116,16 +118,6 @@ const data = useMemo(() => {
             </CDBContainer>
           )}
         </div>
-        <Menu
-          className="menu_evento"
-          open={openMenu}
-          onClose={handleCloseMenu}
-          anchorEl={anchorEl}
-        >
-          <MenuItem onClick={() => navigate(`/administrador/eventos/${eventoIdClick}/editar`)}>
-            Editar Evento
-          </MenuItem>
-        </Menu>
       </div>
     </GuiaAdm>
   );

@@ -36,7 +36,7 @@ const AdmRouter = () => {
       <Route path="/eventos/locais" element={<LocaisEventos />} />
       <Route path="/eventos/verDoacoes" element={<VerDoacoes />} />
       <Route path="/membros" element={<MembrosAdministrador/>}/>
-      <Route path="/eventos/:eventId/ListDetalhesDoacoesDinheiroTodosEventos" element={<ListarDoadores />} />
+      <Route path="/eventos/:idEvento/verDoadores" element={<ListarDoadores />} />
       <Route
         path="/eventos/:idEvento/participantes"
         element={<ParticipantesEvento />}

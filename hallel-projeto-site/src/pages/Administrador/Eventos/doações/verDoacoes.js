@@ -11,6 +11,7 @@ import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import { eventoListarTodasDoacoes } from "../../../../service/EventoService";
 import formatarData from "../../../../utils/Functions";
 import GuiaAdm from "../../../../components/GuiaAdm";
+import ListarDoadores from "./doadores/eventoDoadores";
 
 function ListarDoacoes() {
   const [eventos, setEventos] = useState([]);
@@ -33,10 +34,10 @@ function ListarDoacoes() {
       setEventos(response);
       setLoading(false);
     });
-  }, []);
+  }, []); 
 
   const handleClickEvento = (id) => {
-    navigate(`administrador/eventos/${id}/ListDetalhesDoacoesDinheiroTodosEventos`);
+    navigate(`/administrador/eventos/${id}/verDoadores`);
     console.log(id);
   };
   
