@@ -101,6 +101,10 @@ export function eventoListarDoacoesDinheiro(idEvento) {
     return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() +"/ListDetalhesDoacoesDinheiroTodosEventos?idEvento="+idEvento;
 }
 
+export function eventoListarDoacoesObj(idEvento) {
+    return uriDefaultPrefix() + administradorPrefix() + eventoPrefix() +"/ListDetalhesDoacoesObjetosTodosEventos?idEvento="+idEvento;
+}
+
 export function eventoListarArquivado() {
     return (
         uriDefaultPrefix() + administradorPrefix() + eventoPrefix() + "/arquivados"

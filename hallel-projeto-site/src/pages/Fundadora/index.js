@@ -1,9 +1,6 @@
 import '../Fundadora/style.css';
 import ImgFundadora from '../../images/Fundadora-final(1).png';
 
-
-
-
 function Fundadora() {
   return (
     <div className='container-fundadora'>
