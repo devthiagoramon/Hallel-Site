@@ -96,7 +96,7 @@ function RoutesApp() {
         }
       />
 
-<Route
+      <Route
         path="/PagamentoPix"
         element={
           <>
@@ -106,6 +106,7 @@ function RoutesApp() {
           </>
         }
       />
+
 
       <Route
         path="/tipoDoacaoEventos"

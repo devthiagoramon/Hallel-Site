@@ -206,7 +206,7 @@ const Info2 = ({ estado, setEstado, evento }) => {
           <ul className="topicosInfo">
             {evento.palestrantes?.map((palestrante) => {
               return <p>{palestrante}</p>;
-              <p></p>
+             
             })}
           </ul>
         </div>
