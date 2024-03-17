@@ -1,0 +1,38 @@
+.Pagamento-texto{
+    margin-top: 40px;
+    color: #00471F;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.container-infos {
+    width: 90%;
+    height: 700px;
+    background-color: #FBFBFB;
+    margin: 0 auto;
+}
+
+.buttom{
+    width: 450px;
+    height: 55px;
+
+}
+
+.circulo {
+    width: 150px; /* Altere o tamanho conforme necessário */
+    height: 150px; /* Altere o tamanho conforme necessário */
+    background-color: #EBEEED; /* Cor de fundo */
+    border-radius: 50%; /* Define bordas arredondadas */
+    margin: 0 auto;
+
+}
+
+.alinha{
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+
+
