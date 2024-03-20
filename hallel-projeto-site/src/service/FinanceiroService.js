@@ -28,7 +28,8 @@ import {
     saidaListarCodigosSaidasAPI,
     saidasGetAllPaginas,
     saidasListEntradasByPageAndDate,
-    saidaUltimasSaidasAPI
+    saidaUltimasSaidasAPI,
+    doar,
 } from "../api/uris/FinanceiroURLS";
 import axios from "axios";
 import { getToken } from "../utils/utilToken";
@@ -498,6 +499,25 @@ export async function codigoSaidaDeletarService(id) {
         let axiosResponse = await axios
             .delete(url,
                 {headers: {Authorization: getToken()}}
+            );
+        return axiosResponse.status === 200;
+    } catch (e) {
+        console.error(e)
+        return false;
+    }
+}
+
+//Doação
+
+export async function doarParaComunidade(dados) {
+    let url = doar()
+    try {
+        let axiosResponse = await axios
+            .post(url, 
+                {...dados},
+                {headers: 
+                    {Authorization: getToken()}
+                }
             );
         return axiosResponse.status === 200;
     } catch (e) {

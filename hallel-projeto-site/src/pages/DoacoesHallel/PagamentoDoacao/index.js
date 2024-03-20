@@ -6,6 +6,7 @@ import FormaPagamentoDoacao from "./FormaPagamentoDoacao";
 
 const PagamentoDoacao = ({setEtapa}) => {
   return (
+    
     <div>
       <HeaderDoacoes text={"Pagamento"} />
       <InfoUserDoacao />

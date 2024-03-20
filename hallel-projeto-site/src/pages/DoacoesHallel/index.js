@@ -17,7 +17,7 @@ const DoacoesHallel = () => {
   }
   
   const [userDoacao, setUserDoacao] = useState(userDoacaoTemplate);
-
+  console.log(userDoacao);
   return (
     <div className="container-doacoes">
       {etapa === 1 && <FormularioDoador userDoacao={userDoacao} setUserDoacao={setUserDoacao} setEtapa={setEtapa} />}
@@ -25,7 +25,9 @@ const DoacoesHallel = () => {
       {etapa === 2.2 && (
         <DoacoesObjAlimentos userDoacao={userDoacao} setEtapa={setEtapa} etapa={etapa} />
       )}
-      {etapa === 3 && <PagamentoDoacao userDoacao={userDoacao} setEtapa={setEtapa} />}
+      {etapa === 3 && <PagamentoDoacao userDoacao={userDoacao} setEtapa={setEtapa} />
+      }
+     
     </div>
   );
 };

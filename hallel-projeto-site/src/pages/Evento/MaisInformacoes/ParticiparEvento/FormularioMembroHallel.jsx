@@ -99,7 +99,7 @@ const FormularioMembroHallel = ({
                     ).format("MM/YY")}{" "}
                   </Typography>
                   <Typography variant="subtitle1">
-                    Endereço: {usuarioEvento.cartaoCredito.endereco}{" "}
+                    Endereço000: {usuarioEvento.cartaoCredito.endereco}{" "}
                   </Typography>
                 </div>
               ) : (

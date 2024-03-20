@@ -145,7 +145,6 @@ const FormsDoador = (props) => {
         <OutlinedButtonHallel
           style={{
             padding: "0.6rem 0",
-            marginTop: "-140px",
             width: "50%",
             alignSelf: "center",
             fontSize: "30px",

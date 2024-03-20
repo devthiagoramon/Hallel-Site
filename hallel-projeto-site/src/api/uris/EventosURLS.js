@@ -26,6 +26,7 @@ export function eventoVoluntariar(idEvento) {
     );
 }
 
+
 export function eventoUsuarioIsInscrito(idEvento, idUser) {
     return (
         uriDefaultPrefix() +

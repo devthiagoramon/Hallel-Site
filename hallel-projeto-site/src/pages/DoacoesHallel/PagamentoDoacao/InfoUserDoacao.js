@@ -2,6 +2,7 @@ import React from "react";
 import { OutlinedButtonHallel } from "../../../components/BtnHallel";
 
 const InfoUserDoacao = () => {
+  
   return (
     <div className="cont-pagamento-doacao">
       <div className="cont-info-user-pagamento-doacao">

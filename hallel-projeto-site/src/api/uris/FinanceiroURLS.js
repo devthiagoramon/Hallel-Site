@@ -9,6 +9,16 @@ import {
     Associados (Financeiro)
 */
 
+
+export function doar() {
+    return (
+        uriDefaultPrefix() +
+        "/home" +
+        doacaoPrefix() +
+        "/virarDoador"
+    );
+}
+
 export function associadosListAPI() {
     return uriDefaultPrefix() + administradorPrefix() + "/associado/listAll";
 }
