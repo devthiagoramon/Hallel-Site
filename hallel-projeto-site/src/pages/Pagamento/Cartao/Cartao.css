@@ -1,19 +1,65 @@
 .Pagamento-text1{
     margin-top: 30px;
     color: #00471F;
-    text-align: center;
+    margin-left: 34%;
     font-size: 32px;
     font-weight: 700;
 }
 
 .container-informacoes {
-    width: 90%;
-    height: 700px;
-    background-color: #f0efef;
-    margin: 0 auto;
-    margin-top: 30px;
+    width: 80%;
+    height: 500px;
+    background-color: #fff1ff;
+     
 }
 
-.buttom{
+
+
+a {
+    font-size: 20px;
+    color: #00471F;
+    margin-left: 25%;
+    margin-right: 15px;
+    font-weight: 400;
+}
+
+.fomaPag{
+    margin-bottom: 10px;
+}
+
+.aa{
+    margin-left: 15%;
+}
+
+input {
+    background-color: #ECF2EE;
+    border: none;
+    border-bottom: 2px solid #002811;
+    margin-bottom: 10px; /* Adiciona um espaço entre os inputs */
+    border-radius: 3px;
+    padding: 5px;
+}
+
+select {
+    background-color: #ECF2EE;
+    border-radius: 3px;
+    padding: 3px;
+    margin-right: 10px;
+    outline: #002811;
+    color: #002811;
+}
+
+select:hover {
+    background-color: #ECF2EE; /* Mude para a cor desejada quando passar o mouse */
+    
+}
+
+option{
+    font-size: 18px;
+}
+
+.securityCode{
     margin-top: 20px;
 }
+
+.cardNumber{margin-top: -60px;}
