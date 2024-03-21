@@ -125,9 +125,14 @@ const Corpo2 = ({
 
   return (
     <div className="corpo_evento">
-      
+    <h1 className="titulo_evento">{evento.titulo}</h1>
+    <div className="container_imagem_evento_user">
+      <img
+        className="imagemCp1_evento_user"
+        src={evento.imagem}
+        alt="imagem"
+      />
       <div className="cont_titulo_desc_evento_user">
-        <h1 className="titulo_evento">{evento.titulo}</h1>
         <div className="descricao_evento_user">
           <label
             style={{
@@ -142,44 +147,40 @@ const Corpo2 = ({
             {evento.descricao}
           </p>
         </div>
+        <div className="container_pa">
+          {loadingIsInscrito ? (
+            <>
+              {!isInscrito ? (
+                <div className="container_participar_evento">
+                  <OutlinedEmptyButtonHallel
+                    style={{ width: 300, padding: "0.4rem", fontSize: "23px", color: "white", marginLeft: 440, marginTop:385}}
+                    onClick={abrirModal}
+                  >
+                    {" "}
+                    Participar do evento
+                  </OutlinedEmptyButtonHallel>
+                </div>
+              ) : (
+                <div className="status_evento_participando">
+                  <label className="label_status_evento_participando">
+                    Inscrito
+                  </label>
+                  <label>Situação do Pagamento: {situacaoPagamento}</label>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="cont_loading_is_inscrito">
+              <CircularProgress />
+            </div>
+          )}
+        </div>
+        
       </div>
-
-
-      <div className="container_imagem_evento_user">
-        <img
-          className="imagemCp1_evento_user"
-          src={evento.imagem}
-          alt="imagem"
-        />
-        /* */
-           <div className="container_pa">{loadingIsInscrito ? (
-          <>
-            {!isInscrito ? (
-              <div className="container_participar_evento">
-                <OutlinedEmptyButtonHallel
-                  style={{ width: 300, padding: "0.4rem", fontSize: "23px", color: "white"}}
-                  onClick={abrirModal}
-                >
-                  {" "}
-                  Participar do evento
-                </OutlinedEmptyButtonHallel>
-              </div>
-            ) : (
-              <div className="status_evento_participando">
-                <label className="label_status_evento_participando">
-                  Inscrito
-                </label>
-                <label>Situação do Pagamento: {situacaoPagamento}</label>
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="cont_loading_is_inscrito">
-            <CircularProgress />
-          </div>
-        )}</div>
     </div>
-      </div>
+</div>
+
+
 
   );
 
@@ -210,7 +211,7 @@ const Info2 = ({ estado, setEstado, evento }) => {
             })}
           </ul>
         </div>
-      </div>
+      </div><div className="separa" style={{backgroundColor:"#DFE0DF",width:1900, height:2, marginBottom:-30, marginTop:50}}></div>
       <p></p>
       <DoadorSM />
     </div>

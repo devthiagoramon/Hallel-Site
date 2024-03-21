@@ -1,4 +1,4 @@
-import "./Pix.css";
+
 import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 
@@ -13,7 +13,7 @@ function Pix() {
                      <button id="copyButton" style={{fontSize:20, color: "#00471F", marginTop:15, fontWeight: "bold", textAlign: "center"}}>Copie o código do seu QR code aqui</button>
                   
                  </div>
-            <h1><ContentCopyOutlinedIcon style={{color: "#00471F", marginLeft:565, marginTop: 365}}/></h1>
+            <h1><ContentCopyOutlinedIcon style={{color: "#00471F", marginLeft:565, marginTop: 372}}/></h1>
 
             <div className="containaerInfo">
                 <div className="quadradoInfoPagamento">

@@ -67,6 +67,7 @@ import TipoDoacaoEventos from "./pages/Evento/DoarEvento/SelecioneTipoDoacao/ind
 import PagamentoDoacaoEventos from "./pages/DoacoesHallel/PagamentoDoacao/index.js";
 import Pix from "./pages/Pagamento/Pix/Pix.js";
 import Boleto from "./pages/Pagamento/Boleto/Boleto.js";
+import Cartao from "./pages/Pagamento/Cartao/Cartao.js";
 
 function RoutesApp() {
   var roles = localStorage.getItem("R0l3s");
@@ -119,6 +120,17 @@ function RoutesApp() {
         }
       />
 
+
+<Route
+        path="/PagamentoCartao"
+        element={
+          <>
+            <HeaderHallel />
+            <Cartao />
+            <Footer />
+          </>
+        }
+      />
 
       <Route
         path="/tipoDoacaoEventos"
