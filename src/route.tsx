@@ -1,12 +1,13 @@
+import { BrowserRouter } from "react-router-dom"
 
-const Router = () => {
-  return (
-    <Router>
-          {/* <Route  path="/" component={Home} />
+const AppRouter = () => {
+    return (
+        <BrowserRouter>
+            {/* <Route  path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} /> */}
-    </Router>
-  )
+        </BrowserRouter>
+    )
 }
 
-export default Router
+export default AppRouter
