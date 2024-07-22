@@ -1,8 +1,8 @@
-import { ReactNode } from 'react'
-import { ThemeProvider } from 'styled-components'
+import { ReactNode } from "react";
+import { ThemeProvider } from "styled-components";
 
 const theme = {
-    mainColors:{
+    mainColors: {
         principal: "#033117",
         secondary: "#42A5F5",
         text: "#252525",
@@ -10,23 +10,20 @@ const theme = {
         background: "#F7F9F9",
         error: "#F44336",
         secondaryLigth: "#E3F2FD",
-        success: "#66BB6A"
+        success: "#66BB6A",
+        whiteText: "#FAFAFA",
     },
     card: {
         background: "#06612E",
         text: "#FAFAFA",
-        button: "#E3F2FD"
-    }
-}
+        button: "#E3F2FD",
+    },
+};
 
-export type ThemeType = typeof theme
+export type ThemeType = typeof theme;
 
 const AppTheme = ({ children }: { children: ReactNode }) => {
-    return (
-        <ThemeProvider theme={theme}>
-            {children}
-        </ThemeProvider>
-    )
-}
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+};
 
-export default AppTheme
+export default AppTheme;
