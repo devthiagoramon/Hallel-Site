@@ -38,10 +38,17 @@ export const ButtonTittle = styled.button`
 
     background-color: #033117;
     border: none;
-    padding: 0;
+    padding: 2px 5px;
     display: flex;
     align-items: center;
     gap: 10px;
+
+    &:hover{
+        border-radius: 10px;
+        background-color: #01210F;
+        opacity: 0.8;
+        cursor: pointer;
+    }
 `
 
 export const Image = styled.img`
