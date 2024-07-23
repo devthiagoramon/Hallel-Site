@@ -26,56 +26,53 @@ const HeaderHome = ({ titles }: Props) => {
             <ContainerItens>
                 {titles.map((title, index) =>
                     <div className="div-menu-items">
-                        <ButtonTittle key={index} onClick={title === "Igreja" ? handleClick : () => { }}>
+                        <ButtonTittle key={index} onClick={handleClick}>
                             <Title>{title}</Title>
                             {title === "Igreja" && (
-                                !open
+                                !open && index === 4
                                     ? <CaretDown size={28} color="#F1F1F1" />
                                     : <CaretUp size={28} color="#F1F1F1" />
                             )}
                             {title === "Cursos" && (
-                                <CaretDown size={28} color="#F1F1F1" />
-                                // !open
-                                //     ? <CaretDown size={28} color="#F1F1F1" />
-                                //     : <CaretUp size={28} color="#F1F1F1" />
+                                !open && index === 4
+                                    ? <CaretDown size={28} color="#F1F1F1" />
+                                    : <CaretUp size={28} color="#F1F1F1" />
                             )}
                         </ButtonTittle>
-                        {title === "Igreja" && (
-                            <Menu
-                                id="basic-menu"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}
-                                MenuListProps={{
-                                    'aria-labelledby': 'basic-button',
-                                }}
-                                sx={{
-                                    '& .MuiPaper-root': {
-                                        backgroundColor: '#06612E',
-                                        color: "white"
-                                    },
-                                }}
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{
+                                'aria-labelledby': 'basic-button',
+                            }}
+                            sx={{
+                                '& .MuiPaper-root': {
+                                    backgroundColor: '#06612E',
+                                    color: "white"
+                                },
+                            }}
+                        >
+                            <MenuItem
+                                onClick={handleClose}
+                                sx={{ display: 'flex', justifyContent: 'space-between' }}
                             >
-                                <MenuItem
-                                    onClick={handleClose}
-                                    sx={{ display: 'flex', justifyContent: 'space-between' }}
-                                >
-                                    Fundadora <ArrowLineUpRight size={20} />
-                                </MenuItem>
-                                <MenuItem
-                                    onClick={handleClose}
-                                    sx={{ display: 'flex', justifyContent: 'space-between' }}
-                                >
-                                    Quem somos <ArrowLineUpRight size={20} />
-                                </MenuItem>
-                                <MenuItem
-                                    onClick={handleClose}
-                                    sx={{ display: 'flex', justifyContent: 'space-between' }}
-                                >
-                                    Logout <ArrowLineUpRight size={20} />
-                                </MenuItem>
-                            </Menu>
-                        )}
+                                Fundadora <ArrowLineUpRight size={20} />
+                            </MenuItem>
+                            <MenuItem
+                                onClick={handleClose}
+                                sx={{ display: 'flex', justifyContent: 'space-between' }}
+                            >
+                                Quem somos <ArrowLineUpRight size={20} />
+                            </MenuItem>
+                            <MenuItem
+                                onClick={handleClose}
+                                sx={{ display: 'flex', justifyContent: 'space-between' }}
+                            >
+                                Logout <ArrowLineUpRight size={20} />
+                            </MenuItem>
+                        </Menu>
                     </div>
                 )}
             </ContainerItens>
