@@ -33,7 +33,7 @@ export const LogoContainer = styled.div`
   @media (max-width: 600px) {
     svg,
     img {
-      max-width: 210px;
+      max-width: 240px;
       max-height: 105px;
     }
   }
@@ -41,14 +41,14 @@ export const LogoContainer = styled.div`
   @media (max-width: 768px) {
     svg,
     img {
-      max-width: 240px;
+      max-width: 270px;
       max-height: 160px;
     }
   }
 
   svg,
   img {
-    width: 460px;
+    width: 490px;
     height: 380px;
   }
 `;
