@@ -1,3 +1,4 @@
+import Fundadora from "pages/Home/Fundadora"
 import QuemSomos from "pages/Home/QuemSomos"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
@@ -12,6 +13,7 @@ const AppRouter = () => {
                 <Route element={<SignIn />} path='signin' />
                 <Route element={<SignUp />} path='signup' />
                 <Route element={<QuemSomos />} path="quem-somos" />
+                <Route element={<Fundadora />} path="fundadora" />
             </Routes>
         </BrowserRouter>
     )
