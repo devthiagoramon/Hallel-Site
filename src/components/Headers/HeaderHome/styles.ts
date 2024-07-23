@@ -9,10 +9,7 @@ export const ContainerHeader = styled.header`
     background-color: #033117;
     padding: 10px;
 
-    .div-menu-items{
-        display: flex;
-        flex-direction: column;
-    }
+    
 
 `
 

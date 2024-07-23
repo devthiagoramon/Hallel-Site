@@ -25,21 +25,10 @@ const HeaderHome = ({ titles }: Props) => {
             <Image src={Logo} />
             <ContainerItens>
                 {titles.map((title, index) =>
-                    <div className="div-menu-items">
-                        <ButtonTittle key={index} onClick={handleClick}>
-                            <Title>{title}</Title>
-                            {title === "Igreja" && (
-                                !open && index === 4
-                                    ? <CaretDown size={28} color="#F1F1F1" />
-                                    : <CaretUp size={28} color="#F1F1F1" />
-                            )}
-                            {title === "Cursos" && (
-                                !open && index === 4
-                                    ? <CaretDown size={28} color="#F1F1F1" />
-                                    : <CaretUp size={28} color="#F1F1F1" />
-                            )}
-                        </ButtonTittle>
-                        <Menu
+                    <ButtonTittle key={index} onClick={handleClick}>
+                        <Title>{title}</Title>
+                    </ButtonTittle>,
+                    {/* <Menu
                             id="basic-menu"
                             anchorEl={anchorEl}
                             open={open}
@@ -72,8 +61,7 @@ const HeaderHome = ({ titles }: Props) => {
                             >
                                 Logout <ArrowLineUpRight size={20} />
                             </MenuItem>
-                        </Menu>
-                    </div>
+                        </Menu> */}
                 )}
             </ContainerItens>
             <UserCircle size={50} color="#F1F1F1" />
