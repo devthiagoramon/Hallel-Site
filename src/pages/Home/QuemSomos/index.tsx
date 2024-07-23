@@ -6,15 +6,6 @@ import { QuemSomosContainer } from './style'
 const QuemSomos = () => {
     return (
         <>
-            <HeaderHome titles={[
-                "Início",
-                "Eventos",
-                "Ministérios",
-                "Doações",
-                "Igreja",
-                "Cursos",
-                "Loja",
-            ]} />
             <QuemSomosContainer className="global">
                 <img src={ImgQuemSomos} />
                 <div className="container-text">
