@@ -1,3 +1,4 @@
+import QuemSomos from "pages/Home/QuemSomos"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import SignIn from "./pages/SignIn"
@@ -10,6 +11,7 @@ const AppRouter = () => {
                 <Route path="/" element={<Home />} />
                 <Route element={<SignIn />} path='signin' />
                 <Route element={<SignUp />} path='signup' />
+                <Route element={<QuemSomos />} path="quem-somos" />
             </Routes>
         </BrowserRouter>
     )

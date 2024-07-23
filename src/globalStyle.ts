@@ -6,6 +6,7 @@ export const GlobalStyle = styled.div`
     overflow-x: hidden;
   }
   body {
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
