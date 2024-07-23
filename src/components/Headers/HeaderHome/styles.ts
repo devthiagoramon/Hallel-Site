@@ -10,9 +10,15 @@ export const ContainerHeader = styled.header`
 
   .div-menu-items {
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    background-color: #033117;
+    padding: 10px;
+
   }
-`;
+
+`
 
 export const ContainerItens = styled.div`
   display: flex;
