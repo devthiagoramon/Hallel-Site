@@ -6,6 +6,7 @@ export const FundadoraContainer = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 1rem;
 
   .square {
     display: flex;
@@ -22,16 +23,22 @@ export const FundadoraContainer = styled.main`
 
   .content {
     margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 70% 1fr;
+    grid-template-rows: 100%;
+    place-items: center center;
+
+    @media (max-width: 1285px) {
+      grid-template-columns: 100%;
+      grid-template-rows: 1fr 1fr;
+    }
   }
 
   .leftcontainer {
     font-size: 20px;
     text-align: left;
     color: #fafafa;
-    width: 60%;
+    width: 100%;
   }
 
   .rightcontainer {
