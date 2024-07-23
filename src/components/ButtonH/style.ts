@@ -38,7 +38,7 @@ export const ButtonHContainer = styled.div<{
     border: none;
     color: ${(props) =>
       whiteTextList.includes(props.$mode)
-        ? "#FAFAFA"
+        ? props.theme.mainColors.whiteText
         : props.theme.mainColors.text};
     &:hover {
       cursor: pointer;
@@ -51,7 +51,7 @@ export const ButtonHContainer = styled.div<{
     max-width: 30px;
     color: ${(props) =>
       whiteTextList.includes(props.$mode)
-        ? "#FAFAFA"
+        ? props.theme.mainColors.whiteText
         : props.theme.mainColors.text};
   }
 

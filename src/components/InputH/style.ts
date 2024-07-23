@@ -1,22 +1,33 @@
 import styled from "styled-components";
 
-export const InputH = styled.input`
+export const InputH = styled.input<{
+  $type: "contained" | "outlined";
+}>`
   min-width: 150px;
   min-height: 30px;
-  border-radius: 6px;
+  border-radius: ${(props) =>
+    props.$type === "outlined" ? "0" : "6px"};
   outline-width: 1px;
   padding: 9px;
   font-size: 16px;
-  outline-color: ${(props) => props.theme.mainColors.text};
+  border: ${(props) =>
+    props.theme.mainColors.text ? "solid" : "none"};
+  border-color: ${(props) => props.theme.mainColors.text};
+  border-style: hidden hidden solid hidden;
+  border-width: 2px;
   &:focus {
+    border: none;
     outline-color: ${(props) => props.theme.mainColors.secondary};
   }
-  box-shadow: rgba(0,0,0, 0.15) 0px 4px 5px;
+  background-color: ${(props) =>
+    props.$type === "contained" ? "#FAFAFA" : "transparent"};
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 5px;
 `;
 
 export const InputIconContainerH = styled.div<{
   $startIcon: boolean;
   $endIcon: boolean;
+  $type: "contained" | "outlined";
 }>`
   display: flex;
   flex-direction: row;
@@ -27,22 +38,28 @@ export const InputIconContainerH = styled.div<{
   font-size: 16px;
   min-width: 150px;
   min-height: 35px;
-  border-radius: 6px;
-  outline-width: 1px;
-  outline-color: ${(props) => props.theme.mainColors.text};
-  box-shadow: rgba(0,0,0, 0.15) 0px 4px 0px;
+  border-radius: ${(props) =>
+    props.$type === "outlined" ? "0" : "6px"};
+  border: ${(props) =>
+    props.theme.mainColors.text ? "solid" : "none"};
+  border-color: ${(props) => props.theme.mainColors.text};
+  border-style: hidden hidden solid hidden;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 0px;
 
   input {
     border: none;
     outline: none;
     padding: 0;
     margin: 0;
+    font-size: 16px;
     background-color: transparent;
     width: 100%;
     height: 100%;
   }
 
   input:focus {
+    border: none;
     outline-color: ${(props) => props.theme.mainColors.secondary};
   }
 

@@ -1,17 +1,23 @@
-import { HTMLProps, ReactNode } from "react"
+import { Dispatch, ReactNode, SetStateAction } from "react"
+import { CSSProperties } from "styled-components"
 import { InputIconContainerH } from "./style"
 
 interface InputIconHProps {
-  startIcon?: ReactNode & Element,
-  endIcon?: ReactNode & Element
-  inputProps?: HTMLProps<HTMLInputElement>
+  startIcon?: ReactNode,
+  endIcon?: ReactNode,
+  inputProps?: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+  value?: string,
+  setValue?: Dispatch<SetStateAction<string>>
+  type: "contained" | "outlined",
+  inputStyle?: CSSProperties,
+  containerStyle?: CSSProperties
 }
 
-export const InputIconH = ({ endIcon, startIcon, inputProps }: InputIconHProps) => {
+export const InputIconH = ({ type, endIcon, startIcon, inputProps, setValue, value, inputStyle, containerStyle }: InputIconHProps) => {
   return (
-    <InputIconContainerH $startIcon={!!startIcon} $endIcon={!!endIcon}>
+    <InputIconContainerH style={containerStyle} $type={type} $startIcon={!!startIcon} $endIcon={!!endIcon}>
       {startIcon}
-      <input {...inputProps} />
+      <input style={inputStyle} value={value} onChange={(e) => setValue && setValue(e.target.value)}  {...inputProps} />
       {endIcon}
     </InputIconContainerH>
   )
