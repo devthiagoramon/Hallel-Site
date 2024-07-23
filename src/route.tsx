@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import HeaderHome from "components/Headers/HeaderHome"
+import FooterHome from "components/Footer/FooterHome"
 
 const AppRouter = () => {
     return (
@@ -25,6 +26,7 @@ const AppRouter = () => {
                 <Route element={<SignUp />} path='signup' />
                 <Route element={<QuemSomos />} path="quem-somos" />
             </Routes>
+            <FooterHome/>
         </BrowserRouter>
     )
 }

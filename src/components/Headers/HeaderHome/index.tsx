@@ -1,5 +1,5 @@
 import { ButtonTittle, ContainerHeader, ContainerItens, Image, Title } from "./styles"
-import Logo from "../../../assets/image.png"
+import Logo from "../../../assets/logoHallelHD.png"
 import { ArrowLineUpRight, CaretDown, CaretUp, UserCircle } from "phosphor-react"
 import { useState } from "react"
 import { Menu, MenuItem } from "@mui/material"
@@ -99,7 +99,10 @@ const HeaderHome = ({ titles }: Props) => {
                                             Fundadora <ArrowLineUpRight size={20} />
                                         </MenuItem>
                                         <MenuItem 
-                                        onClick={()=> handleNavigation("quem-somos")} 
+                                        onClick={()=> {
+                                            handleNavigation("quem-somos")
+                                            handleClose()
+                                        }} 
                                         sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                             Quem somos <ArrowLineUpRight size={20} />
                                         </MenuItem>

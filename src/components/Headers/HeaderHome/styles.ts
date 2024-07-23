@@ -52,5 +52,6 @@ export const ButtonTittle = styled.button`
 
 export const Image = styled.img`
   width: 5%;
+  height: 70px;
   object-fit: cover;
 `;
