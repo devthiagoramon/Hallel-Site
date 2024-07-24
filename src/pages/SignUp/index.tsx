@@ -57,7 +57,7 @@ const SignUp = () => {
   };
 
   const handleGoBack = () => {
-    navigator(-1);
+    navigator("/");
   };
 
   const onSubmit = async (data: SignUpDTO) => {
@@ -80,7 +80,7 @@ const SignUp = () => {
 
   return (
     <SignContainer>
-      <Tooltip title="Voltar">
+      <Tooltip title="Inicio">
         <IconButton onClick={handleGoBack} className="go_back">
           <House size={32} />
         </IconButton>

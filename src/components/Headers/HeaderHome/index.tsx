@@ -1,9 +1,10 @@
-import { ButtonTittle, ContainerHeader, ContainerItens, Image, Title } from "./styles"
-import Logo from "../../../assets/logoHallelHD.png"
-import { ArrowLineUpRight, CaretDown, CaretUp, UserCircle } from "phosphor-react"
-import { useState } from "react"
 import { Menu, MenuItem } from "@mui/material"
-import { useNavigate, useNavigation } from "react-router-dom"
+import ProfileMenu from "components/ProfileMenu"
+import { ArrowLineUpRight, CaretDown, CaretUp } from "phosphor-react"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import Logo from "../../../assets/logoHallelHD.png"
+import { ButtonTittle, ContainerHeader, ContainerItens, Image, Title } from "./styles"
 
 interface Props {
     titles: string[]
@@ -41,7 +42,7 @@ const HeaderHome = ({ titles }: Props) => {
                     handleNavigation("/loja")
                     break;
                 default:
-                    return        
+                    return
             }
         }
         if (openMenuIndex === index) {
@@ -93,20 +94,20 @@ const HeaderHome = ({ titles }: Props) => {
                             >
                                 {index === 4 ? (
                                     <>
-                                        <MenuItem 
-                                        onClick={()=> {
-                                            handleNavigation("fundadora")
-                                            handleClose()
-                                        }}
-                                        sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <MenuItem
+                                            onClick={() => {
+                                                handleNavigation("fundadora")
+                                                handleClose()
+                                            }}
+                                            sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                             Fundadora <ArrowLineUpRight size={20} />
                                         </MenuItem>
-                                        <MenuItem 
-                                        onClick={()=> {
-                                            handleNavigation("quem-somos")
-                                            handleClose()
-                                        }} 
-                                        sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <MenuItem
+                                            onClick={() => {
+                                                handleNavigation("quem-somos")
+                                                handleClose()
+                                            }}
+                                            sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                             Quem somos <ArrowLineUpRight size={20} />
                                         </MenuItem>
                                         <MenuItem onClick={handleClose} sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -128,7 +129,7 @@ const HeaderHome = ({ titles }: Props) => {
                     </div>
                 ))}
             </ContainerItens>
-            <UserCircle size={50} color="#F1F1F1" />
+            <ProfileMenu />
         </ContainerHeader>
     )
 }

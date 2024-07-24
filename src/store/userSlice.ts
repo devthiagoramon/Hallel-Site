@@ -25,5 +25,8 @@ const userSlice = createSlice({
 export const { saveUserInfoRedux } = userSlice.actions;
 
 export const selectUserName = (state: ReduxStore) => state.user.name;
+export const selectUserPhoto = (state: ReduxStore) =>
+  state.user.photo;
+export const selectUserId = (state: ReduxStore) => state.user.id;
 
 export default userSlice.reducer;

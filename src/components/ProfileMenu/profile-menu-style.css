@@ -1,0 +1,13 @@
+.szh-menu {
+  background-color: #fafafa;
+  color: #252525;
+}
+
+.szh-menu__item--hover {
+  opacity: 0.9;
+}
+
+.szh-menu__item {
+  font-size: 18px;
+  column-gap: 0.5rem;
+}

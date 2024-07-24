@@ -1,9 +1,10 @@
+import { HomeContainer } from "./style"
 
 
 const Home = () => {
     return (
-        <div>
-        </div>
+        <HomeContainer>
+        </HomeContainer>
     )
 }
 

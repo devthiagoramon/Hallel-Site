@@ -16,6 +16,7 @@ const ValidateToken = () => {
 
             if (!isValid) {
                 navigate("/signUp");
+                localStorage.clear()
             }
 
             const user = await getMembroInfoService(loadTokenAPI());
