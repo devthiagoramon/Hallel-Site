@@ -1,9 +1,8 @@
-import AppTheme from "AppTheme"
-import { ContainerFooter, ContainerLastMessage, ContainerLogo, ContainerPartOne, Image, Title } from "./styles"
-import Logo from "../../../assets/logoHallelHD.png"
 import { FacebookLogo, InstagramLogo } from "phosphor-react"
+import Logo from "../../../assets/logoHallelHD.png"
 import ListItens from "../ListItens"
 import ListItensWithIcon from "../ListItensWithIcons"
+import { ContainerFooter, ContainerLastMessage, ContainerLogo, ContainerPartOne, Image, Title } from "./styles"
 
 
 const FooterHome = () => {

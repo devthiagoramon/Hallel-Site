@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IconButton, Tooltip } from "@mui/material";
-import { signInService } from "api/main";
+import { signInService } from "api/main/mainAPI";
 import ButtonH from "components/ButtonH";
 import LinkH from "components/LinkH";
 import TextFieldH from "components/TextFieldH";
