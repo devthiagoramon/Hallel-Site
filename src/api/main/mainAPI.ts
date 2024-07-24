@@ -23,11 +23,15 @@ export const signUpService = async (dto: SignUpDTO) => {
 
 export const isTokenExpiredService = async () => {
   try {
-    const response = await api.get("/home/isTokenExpired", {
-      headers: {
-        Authorization: loadTokenAPI(),
+    const token = loadTokenAPI();
+    const response = await api.get(
+      `/home/isTokenValid?token=${token}`,
+      {
+        headers: {
+          Authorization: token,
+        },
       },
-    });
+    );
     return response.data;
   } catch (error) {
     console.error(error);

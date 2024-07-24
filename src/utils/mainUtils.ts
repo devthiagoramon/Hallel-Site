@@ -1,5 +1,5 @@
 export const saveTokenAPI = (token: string) => {
-  localStorage.setItem("apiToken", "Bearer " + token);
+  localStorage.setItem("apiToken", token);
 };
 
 export const loadTokenAPI = () => {

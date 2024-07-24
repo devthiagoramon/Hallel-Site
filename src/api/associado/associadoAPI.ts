@@ -4,9 +4,8 @@ export const getAssociadoInfoService = async (
   token: string | null,
 ) => {
   try {
-    const formattedToken = token?.replace("Bearer ", "");
     const response = await api(
-      `/associado/perfil/${formattedToken}`,
+      `/associado/perfil/token/${token?.replace("Bearer ", "")}`,
       {
         headers: {
           Authorization: token,
