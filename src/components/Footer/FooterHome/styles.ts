@@ -9,6 +9,7 @@ export const ContainerFooter = styled.footer`
     width: 100%;
     background-color: ${({ theme }) => theme.mainColors.principal};
     flex-direction: column;
+    margin-top: 20px;
 
 `
 

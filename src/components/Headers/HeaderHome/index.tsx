@@ -94,7 +94,10 @@ const HeaderHome = ({ titles }: Props) => {
                                 {index === 4 ? (
                                     <>
                                         <MenuItem 
-                                        onClick={handleClose}
+                                        onClick={()=> {
+                                            handleNavigation("fundadora")
+                                            handleClose()
+                                        }}
                                         sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                             Fundadora <ArrowLineUpRight size={20} />
                                         </MenuItem>
