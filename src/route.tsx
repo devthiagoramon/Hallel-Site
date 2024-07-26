@@ -1,6 +1,7 @@
 import HomeRouteWrapper from "components/HomeRouteWrapper";
 import Fundadora from "pages/Home/Fundadora";
 import QuemSomos from "pages/Home/QuemSomos";
+import Profile from "pages/Profile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ValidateToken from "utils/validateToken";
 import Home from "./pages/Home";
@@ -37,6 +38,14 @@ const AppRouter = () => {
                         </HomeRouteWrapper>
                     }
                     path="fundadora"
+                />
+                <Route
+                    element={
+                        <HomeRouteWrapper>
+                            <Profile />
+                        </HomeRouteWrapper>
+                    }
+                    path="profile"
                 />
             </Routes>
         </BrowserRouter>

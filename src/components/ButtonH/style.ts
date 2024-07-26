@@ -3,7 +3,13 @@ import styled from "styled-components";
 const whiteTextList = ["primary", "error", "success"];
 
 export const ButtonHContainer = styled.div<{
-  $mode: "primary" | "secondary" | "ligthSecondary" | "success" | "error";
+  $mode:
+    | "primary"
+    | "secondary"
+    | "ligthSecondary"
+    | "success"
+    | "error";
+  $disabled?: boolean;
 }>`
   display: flex;
   justify-content: center;
@@ -14,6 +20,7 @@ export const ButtonHContainer = styled.div<{
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 2px;
   background-color: ${(props) => {
+    if (props.$disabled) return "#EBEBE4";
     switch (props.$mode) {
       case "primary":
         return props.theme.mainColors.principal;
@@ -41,7 +48,7 @@ export const ButtonHContainer = styled.div<{
         ? props.theme.mainColors.whiteText
         : props.theme.mainColors.text};
     &:hover {
-      cursor: pointer;
+      cursor: ${(props) => (props.$disabled ? "default" : "pointer")};
     }
   }
 
@@ -54,9 +61,8 @@ export const ButtonHContainer = styled.div<{
         ? props.theme.mainColors.whiteText
         : props.theme.mainColors.text};
   }
-
   &:hover {
-    cursor: pointer;
-    opacity: 0.85;
+    cursor: ${(props) => (props.$disabled ? "default" : "pointer")};
+    opacity: ${(props) => (props.$disabled ? "1" : "0.85")};
   }
 `;
