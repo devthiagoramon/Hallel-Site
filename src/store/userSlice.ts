@@ -20,7 +20,7 @@ const userSlice = createSlice({
         email,
         id,
         nome,
-        imagem,
+        image,
         cpf,
         dataNascimento,
         telefone,
@@ -28,7 +28,7 @@ const userSlice = createSlice({
       state.email = email;
       state.id = id;
       state.name = nome;
-      state.photo = imagem;
+      state.photo = image;
       state.cpf = cpf;
       state.dataNascimento = dataNascimento;
       state.telefone = telefone;

@@ -12,4 +12,6 @@ export interface SignUpDTO {
   senha: string;
 }
 
-export interface EditProfileDTO extends ReduxUser {}
+export interface EditProfileDTO extends ReduxUser {
+  image?: string;
+}

@@ -35,17 +35,16 @@ const PersonalInfos = () => {
         handleSubmit,
         register,
         setValue,
-        getValues,
         formState: { errors },
     } = useForm({
         defaultValues: {
             nome: user.name,
             email: user.email,
-            cpf: user.cpf,
+            cpf: formatarCPF(user.cpf),
             dataNascimento: user.dataNascimento
                 ? dayjs(user.dataNascimento).format("YYYY-MM-DD")
                 : null,
-            telefone: user.telefone,
+            telefone: formatarTelefone(user.telefone),
         },
         resolver: yupResolver(schema),
     });
@@ -54,7 +53,10 @@ const PersonalInfos = () => {
         const dto: EditProfileDTO = {
             ...data,
             dataNascimento: dayjs(data.dataNascimento).toISOString(),
+            cpf: data.cpf.replace(/\D/g, ""),
+            telefone: data.telefone.replace(/\D/g, ""),
             id: user.id,
+            image: selectedImage,
         };
 
         try {
@@ -86,6 +88,17 @@ const PersonalInfos = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedImage]);
+
+    // Caso do reload da pagina, ainda salvar as infos do usuário
+    useEffect(() => {
+        if (user) {
+            setValue("nome", user.name);
+            setValue("cpf", formatarCPF(user.cpf));
+            setValue("dataNascimento", user.dataNascimento);
+            setValue("email", user.email);
+            setValue("telefone", formatarTelefone(user.telefone));
+        }
+    }, [user]);
 
     return (
         <PersonalInfosContainer onSubmit={handleSubmit(onSubmitHandler)}>
