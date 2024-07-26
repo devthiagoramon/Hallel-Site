@@ -5,6 +5,11 @@ import AppTheme from './AppTheme';
 import { GlobalStyle } from './globalStyle';
 import AppRouter from './route';
 import { store as reduxStore } from './store/store';
+import { register } from "swiper/element"
+
+
+register()
+
 
 
 function App() {
