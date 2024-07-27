@@ -13,6 +13,14 @@ export const ContainerItens = styled.div`
   align-items: center;
   gap: 10px;
   padding: 10px 0;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+  }
+  @media screen and (max-width: 1400px) {
+    flex-direction: column;
+  }
+
 `
 
 export const ContainerWelcome = styled.section`
@@ -49,4 +57,19 @@ export const ContainerCards = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    gap: 30px;
+    height: auto;
+    min-height: 55vh;
+
+  }
+  @media screen and (max-width: 1400px) {
+    flex-direction: column;
+    gap: 30px;
+    height: auto;
+    min-height: 55vh;
+  }
+
 `
