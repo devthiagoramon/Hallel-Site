@@ -24,3 +24,9 @@ export interface ListEventsDTO {
   localEvento?: LocalEvento;
   imagem: string;
 }
+
+export interface ListSorteadosDTO {
+  image: string;
+  nome: string;
+  nomePremio: string;
+}
