@@ -1,3 +1,4 @@
+import { LocalEvento } from "./hallelTypes";
 import { ReduxUser } from "./reduxTypes";
 
 export interface SignInDTO {
@@ -14,4 +15,12 @@ export interface SignUpDTO {
 
 export interface EditProfileDTO extends ReduxUser {
   image?: string;
+}
+
+export interface ListEventsDTO {
+  id: string;
+  titulo: string;
+  date: Date;
+  localEvento?: LocalEvento;
+  imagem: string;
 }

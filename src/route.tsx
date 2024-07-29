@@ -1,4 +1,5 @@
 import HomeRouteWrapper from "components/HomeRouteWrapper";
+import Eventos from "pages/Home/Eventos";
 import Fundadora from "pages/Home/Fundadora";
 import QuemSomos from "pages/Home/QuemSomos";
 import Profile from "pages/Profile";
@@ -23,6 +24,14 @@ const AppRouter = () => {
                 />
                 <Route element={<SignIn />} path="signin" />
                 <Route element={<SignUp />} path="signup" />
+                <Route
+                    path="eventos"
+                    element={
+                        <HomeRouteWrapper>
+                            <Eventos />
+                        </HomeRouteWrapper>
+                    }
+                />
                 <Route
                     element={
                         <HomeRouteWrapper>

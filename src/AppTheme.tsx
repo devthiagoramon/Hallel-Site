@@ -8,6 +8,7 @@ const theme = {
         text: "#252525",
         title: "rgba(3, 49, 23, 0.9)",
         background: "#F7F9F9",
+        backgroundGrey: "#F5F5F5",
         error: "#F44336",
         secondaryLigth: "#E3F2FD",
         success: "#66BB6A",

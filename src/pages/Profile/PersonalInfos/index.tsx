@@ -35,6 +35,7 @@ const PersonalInfos = () => {
         handleSubmit,
         register,
         setValue,
+        getValues,
         formState: { errors },
     } = useForm({
         defaultValues: {
@@ -52,11 +53,11 @@ const PersonalInfos = () => {
     const onSubmitHandler = async (data: any) => {
         const dto: EditProfileDTO = {
             ...data,
-            dataNascimento: dayjs(data.dataNascimento).toISOString(),
-            cpf: data.cpf.replace(/\D/g, ""),
-            telefone: data.telefone.replace(/\D/g, ""),
+            dataNascimento: dayjs(data.dataNascimento).toDate(),
+            cpf: data.cpf && data.cpf.replace(/\D/g, ""),
+            telefone: data.telefone && data.telefone.replace(/\D/g, ""),
             id: user.id,
-            image: selectedImage,
+            image: selectedImage ? selectedImage : user.photo,
         };
 
         try {
@@ -94,7 +95,12 @@ const PersonalInfos = () => {
         if (user) {
             setValue("nome", user.name);
             setValue("cpf", formatarCPF(user.cpf));
-            setValue("dataNascimento", user.dataNascimento);
+            setValue(
+                "dataNascimento",
+                user.dataNascimento
+                    ? dayjs(user.dataNascimento).format("YYYY-MM-DD")
+                    : null,
+            );
             setValue("email", user.email);
             setValue("telefone", formatarTelefone(user.telefone));
         }
