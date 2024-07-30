@@ -6,6 +6,9 @@ const initialState: ReduxUser = {
   email: "",
   name: "",
   photo: "",
+  cpf: "",
+  dataNascimento: "",
+  telefone: "",
 };
 
 const userSlice = createSlice({
@@ -13,20 +16,37 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     saveUserInfoRedux(state, action) {
-      const { email, id, nome, imagem } = action.payload;
+      const {
+        email,
+        id,
+        nome,
+        image,
+        cpf,
+        dataNascimento,
+        telefone,
+      } = action.payload;
       state.email = email;
       state.id = id;
       state.name = nome;
-      state.photo = imagem;
+      state.photo = image;
+      state.cpf = cpf;
+      state.dataNascimento = dataNascimento;
+      state.telefone = telefone;
+    },
+    editUserPhotoRedux(state, action) {
+      state.photo = action.payload;
     },
   },
 });
 
-export const { saveUserInfoRedux } = userSlice.actions;
+export const { saveUserInfoRedux, editUserPhotoRedux } =
+  userSlice.actions;
 
 export const selectUserName = (state: ReduxStore) => state.user.name;
 export const selectUserPhoto = (state: ReduxStore) =>
   state.user.photo;
 export const selectUserId = (state: ReduxStore) => state.user.id;
+
+export const selectUser = (state: ReduxStore) => state.user;
 
 export default userSlice.reducer;

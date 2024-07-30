@@ -1,6 +1,9 @@
 import HomeRouteWrapper from "components/HomeRouteWrapper";
+import Eventos from "pages/Home/Eventos";
 import Fundadora from "pages/Home/Fundadora";
 import QuemSomos from "pages/Home/QuemSomos";
+import Sorteio from "pages/Home/Sorteio";
+import Profile from "pages/Profile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ValidateToken from "utils/validateToken";
 import Home from "./pages/Home";
@@ -23,6 +26,14 @@ const AppRouter = () => {
                 <Route element={<SignIn />} path="signin" />
                 <Route element={<SignUp />} path="signup" />
                 <Route
+                    path="eventos"
+                    element={
+                        <HomeRouteWrapper>
+                            <Eventos />
+                        </HomeRouteWrapper>
+                    }
+                />
+                <Route
                     element={
                         <HomeRouteWrapper>
                             <QuemSomos />
@@ -37,6 +48,22 @@ const AppRouter = () => {
                         </HomeRouteWrapper>
                     }
                     path="fundadora"
+                />
+                <Route
+                    element={
+                        <HomeRouteWrapper>
+                            <Sorteio />
+                        </HomeRouteWrapper>
+                    }
+                    path="sorteio"
+                />
+                <Route
+                    element={
+                        <HomeRouteWrapper>
+                            <Profile />
+                        </HomeRouteWrapper>
+                    }
+                    path="profile"
                 />
             </Routes>
         </BrowserRouter>

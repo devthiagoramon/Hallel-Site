@@ -13,15 +13,19 @@ export const InputH = styled.input<{
   border: ${(props) =>
     props.theme.mainColors.text ? "solid" : "none"};
   border-color: ${(props) => props.theme.mainColors.text};
-  border-style: hidden hidden solid hidden;
-  border-width: 2px;
+  border-style: ${(props) =>
+    props.$type === "outlined"
+      ? "hidden hidden solid hidden"
+      : "solid"};
+  border-width: ${(props) =>
+    props.$type === "outlined" ? "1px" : "0.5px"};
   &:focus {
     border: none;
     outline-color: ${(props) => props.theme.mainColors.secondary};
   }
   background-color: ${(props) =>
     props.$type === "contained" ? "#FAFAFA" : "transparent"};
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px;
 `;
 
 export const InputIconContainerH = styled.div<{
@@ -43,9 +47,12 @@ export const InputIconContainerH = styled.div<{
   border: ${(props) =>
     props.theme.mainColors.text ? "solid" : "none"};
   border-color: ${(props) => props.theme.mainColors.text};
-  border-style: hidden hidden solid hidden;
-  border-width: 2px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 0px;
+  border-style: ${(props) =>
+    props.$type === "outlined"
+      ? "hidden hidden solid hidden"
+      : "solid"};
+  border-width: 0.5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 0px;
 
   input {
     border: none;
