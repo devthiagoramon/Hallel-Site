@@ -54,7 +54,7 @@ const CarouselEvents = () => {
     useEffect(() => {
 
         const handleResize = () => {
-           if (window.innerWidth < 1200) {
+            if (window.innerWidth < 1200) {
                 setSlidesPerView(1)
             }
             else {
@@ -78,7 +78,7 @@ const CarouselEvents = () => {
                 slidesPerView={slidesPerView}
                 modules={[Navigation, Pagination, A11y, Scrollbar]}
                 spaceBetween={30}
-                a11y={{enabled: true}}
+                a11y={{ enabled: true }}
                 title='Eventos'
             >
                 {data.map((item) => (
