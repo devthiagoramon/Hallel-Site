@@ -1,7 +1,8 @@
 import CardAssociation from "./Cards/CardAssociation/CardAssociation"
 import CardGiving from "./Cards/CardGiving"
+import CarouselEvents from "./Carousels/CarouselEvents"
 import MainCarousel from "./Carousels/MainCarousel"
-import { ContainerCards, ContainerItens, ContainerSchedules, ContainerWelcome, HomeContainer, TittleWelcome } from "./style"
+import { ContainerCards, ContainerHomeEvents, ContainerItens, ContainerSchedules, ContainerWelcome, HomeContainer, TittleWelcome } from "./style"
 
 
 const Home = () => {
@@ -16,9 +17,13 @@ const Home = () => {
 
                 </ContainerSchedules>
             </ContainerItens>
+            <ContainerHomeEvents>
+                <TittleWelcome>Eventos</TittleWelcome>
+                <CarouselEvents />
+            </ContainerHomeEvents>
             <ContainerCards>
-                <CardAssociation/>
-                <CardGiving/>
+                <CardAssociation />
+                <CardGiving />
             </ContainerCards>
         </HomeContainer>
     )

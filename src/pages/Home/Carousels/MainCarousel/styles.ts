@@ -23,4 +23,8 @@ export const ImageItem = styled.img`
     @media screen and (max-width: 1200px) {
         height: 320px;
     }
+
+    &:hover{
+        cursor: grab;
+    }
 `

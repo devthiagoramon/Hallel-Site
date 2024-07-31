@@ -5,6 +5,24 @@ export const HomeContainer = styled.main`
   flex-direction: column;
 `;
 
+export const ContainerHomeEvents = styled.div`
+
+  width: 100%;
+  min-height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  margin-left: 10px;
+
+  @media screen and (max-width: 1400px){
+    align-items: center;
+  }
+
+`
+
 export const ContainerItens = styled.div`
   width: 100%;
   height: 70vh;
@@ -55,7 +73,7 @@ export const ContainerCards = styled.div`
   width: 100%;
   height: 55vh;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 
   @media screen and (max-width: 1200px) {

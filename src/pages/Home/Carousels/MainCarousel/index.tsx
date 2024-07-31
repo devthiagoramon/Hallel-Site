@@ -1,8 +1,8 @@
 import Imagem1 from "../../../../assets/imagemCarrossel1.jpg"
 import Imagem2 from "../../../../assets/imagemCarrosel2.jpg"
 import Imagem3 from "../../../../assets/imagemCarrosel3.jpg"
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { ContainerCarousel, ImageItem } from "./styles";
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
