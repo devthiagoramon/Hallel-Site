@@ -1,11 +1,13 @@
-import { HomeContainer } from "./style"
-
+import ValidateToken from "utils/validateToken";
+import { HomeContainer } from "./style";
 
 const Home = () => {
     return (
-        <HomeContainer>
-        </HomeContainer>
-    )
-}
+        <>
+            <ValidateToken />
+            <HomeContainer></HomeContainer>
+        </>
+    );
+};
 
-export default Home
+export default Home;

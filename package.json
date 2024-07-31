@@ -10,6 +10,7 @@
     "@fontsource/inter": "^5.0.19",
     "@hookform/resolvers": "^3.9.0",
     "@mui/material": "^5.16.4",
+    "@mui/x-data-grid": "^7.11.1",
     "@phosphor-icons/react": "^2.1.7",
     "@reduxjs/toolkit": "^2.2.6",
     "@szhsin/react-menu": "^4.2.0",
