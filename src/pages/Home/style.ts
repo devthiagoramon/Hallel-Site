@@ -29,7 +29,7 @@ export const ContainerItens = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
   padding: 10px 0;
 
   @media screen and (max-width: 1200px) {
@@ -65,6 +65,22 @@ export const ContainerSchedules = styled.section`
 
   width: 35%;
   height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 5px;
+  gap: 10px;
+
+  @media screen and (max-width: 1200px) {
+    align-items: center;
+  justify-content: center;
+
+  }
+  @media screen and (max-width: 1400px) {
+    align-items: center;
+  justify-content: center;
+    
+  }
   //horarios
 
 `

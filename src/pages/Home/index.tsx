@@ -1,6 +1,7 @@
 import CardAssociation from "./Cards/CardAssociation/CardAssociation"
 import CardGiving from "./Cards/CardGiving"
 import CarouselEvents from "./Carousels/CarouselEvents"
+import CarouselSchedules from "./Carousels/CarouselSchedules"
 import MainCarousel from "./Carousels/MainCarousel"
 import { ContainerCards, ContainerHomeEvents, ContainerItens, ContainerSchedules, ContainerWelcome, HomeContainer, TittleWelcome } from "./style"
 
@@ -14,7 +15,8 @@ const Home = () => {
                     <MainCarousel />
                 </ContainerWelcome>
                 <ContainerSchedules>
-
+                    <TittleWelcome>Horários</TittleWelcome>
+                    <CarouselSchedules/>
                 </ContainerSchedules>
             </ContainerItens>
             <ContainerHomeEvents>
