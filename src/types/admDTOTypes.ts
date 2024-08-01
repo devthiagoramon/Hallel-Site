@@ -16,3 +16,19 @@ export interface ListEventsAdmDTO {
   horario: string;
   palestrantes: string[];
 }
+
+export interface LocationMapType {
+  lat?: number;
+  lng?: number;
+}
+
+export interface AddEventAdmDTO {
+  titulo: string;
+  descricao: string;
+  date: Date;
+  localEvento: LocalEvento;
+  imagem: string;
+  banner: string;
+  destaque: boolean;
+  valorDoEvento?: string;
+}

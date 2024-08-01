@@ -1,6 +1,5 @@
 export interface LocalEvento {
-  id: string;
   localizacao: string;
-  imagem: string;
-  dataCadastrada: string;
+  longitude?: number;
+  latitude?: number;
 }

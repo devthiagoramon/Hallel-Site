@@ -14,7 +14,7 @@ interface CardAdmEventsProps {
 
 const CardAdmEvents = ({ events }: CardAdmEventsProps) => {
     return (
-        <>
+        <div style={{ width: "100%" }}>
             {events.length > 0 && (
                 <CardAdmEventsContainer>
                     {events.map((event) => {
@@ -30,7 +30,7 @@ const CardAdmEvents = ({ events }: CardAdmEventsProps) => {
                     </TitleH>
                 </CardAdmEventsNotFoundContainer>
             )}
-        </>
+        </div>
     );
 };
 

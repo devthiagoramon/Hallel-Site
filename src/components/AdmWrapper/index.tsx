@@ -1,12 +1,12 @@
 import AdmSideBar from "components/AdmSideBar";
 import { ReactNode } from "react";
-import { AdmWrapperContainer } from "./style";
+import { AdmWrapperContainer, AdmWrapperContent } from "./style";
 
 const AdmWrapper = ({ children }: { children: ReactNode }) => {
     return (
         <AdmWrapperContainer>
             <AdmSideBar />
-            {children}
+            <AdmWrapperContent>{children}</AdmWrapperContent>
         </AdmWrapperContainer>
     );
 };

@@ -6,18 +6,20 @@ export const CardAdmEventsContainer = styled.div`
   background-color: ${(props) =>
     props.theme.mainColors.backgroundGrey};
   width: 100%;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   column-gap: 60px;
 
+  row-gap: 4rem;
+
   @media (min-width: 768px) and (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 30px;
     place-items: center;
   }
 
   @media (min-width: 600px) and (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     column-gap: 20px;
     place-items: center;
   }

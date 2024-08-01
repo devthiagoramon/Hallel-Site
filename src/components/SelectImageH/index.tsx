@@ -1,41 +1,51 @@
 import { useSnackbar } from "notistack";
 import { ImageSquare } from "phosphor-react";
 import { Dispatch, HTMLProps, SetStateAction, useRef } from "react";
+import { CSSProperties } from "styled-components";
 import { SelectImageHContainer } from "./style";
 
 interface SelectImageH extends HTMLProps<HTMLInputElement> {
     setSelectedImage: Dispatch<
         SetStateAction<string | ArrayBuffer | undefined>
     >;
+    containerStyle?: CSSProperties;
 }
 
 const SelectImageH = ({
     setSelectedImage,
+    containerStyle,
     ...props
 }: SelectImageH) => {
     const refInput = useRef<HTMLInputElement>(null);
     const { enqueueSnackbar } = useSnackbar();
 
     const handleFileChange = (event: any) => {
-        const file = event.target.files[0];
+        try {
+            const file = event.target.files[0];
 
-        if (!file.type.startsWith("image/")) {
-            enqueueSnackbar("Selecione uma imagem!", { variant: "error" });
-        }
-
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-            if (!reader.result) {
-                return false;
+            if (!file.type.startsWith("image/")) {
+                enqueueSnackbar("Selecione uma imagem!", {
+                    variant: "error",
+                });
             }
-            setSelectedImage(reader.result);
-        };
-        reader.readAsDataURL(file);
+
+            const reader = new FileReader();
+            console.log(file);
+
+            reader.onloadend = () => {
+                if (!reader.result) {
+                    return false;
+                }
+                setSelectedImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        } catch (error) {
+            console.error("Cancel file choose");
+        }
     };
 
     return (
-        <SelectImageHContainer>
+        <SelectImageHContainer style={containerStyle}>
             <input
                 id="inputPhoto"
                 ref={refInput}

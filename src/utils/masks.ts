@@ -41,3 +41,14 @@ export const formatarCPF = (valor: string) => {
 
   return response;
 };
+
+export const maskForValueInReal = (event: any) => {
+  const rawValue = event.target.value.replace(/\D/g, "");
+
+  const formattedValue = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(rawValue / 100);
+
+  return formattedValue;
+};

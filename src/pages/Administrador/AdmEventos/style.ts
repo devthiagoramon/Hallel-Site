@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AdmEventosContainer = styled.div`
-  width: 74vw;
+  width: 100%;
   height: 100%;
 `;
 

@@ -4,6 +4,7 @@ export const AdmSideBarContainer = styled.section<{
   $expanded?: boolean;
 }>`
   display: grid;
+  position: fixed;
   width: 23vw;
   min-height: 100vh;
   height: 100%;

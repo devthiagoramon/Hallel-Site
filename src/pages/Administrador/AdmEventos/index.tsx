@@ -3,6 +3,7 @@ import TitleH from "components/TitleH";
 import { useListEventsAdm } from "hooks/admin/useListEventsAdm";
 import { Plus } from "phosphor-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import CardAdmEvents from "./components/CardAdmEvents";
 import ExibitionEventOption from "./components/ExibitionEventOption";
 import TableAdmEvents from "./components/TableAdmEvents";
@@ -15,6 +16,11 @@ import {
 const AdmEventos = () => {
   const [option, setOption] = useState<string>("table");
   const events = useListEventsAdm().data;
+  const navigation = useNavigate();
+
+  const handleAddNewEvento = () => {
+    navigation("/administrador/eventos/adicionar");
+  };
 
   return (
     <AdmEventosContainer>
@@ -28,6 +34,7 @@ const AdmEventos = () => {
             className="add_button_container"
             variant="contained"
             startIcon={<Plus size={28} />}
+            onClick={handleAddNewEvento}
           >
             Adicionar evento
           </Button>

@@ -3,6 +3,7 @@ import NotFoundTableComponentH from "components/NotFoundTableComponent";
 import dayjs from "dayjs";
 import { ListEventsAdmDTO } from "types/admDTOTypes";
 import { LocalEvento } from "types/hallelTypes";
+import { RowTextComponent } from "./style";
 
 interface TableAdmEventsProps {
     events: ListEventsAdmDTO[];
@@ -10,20 +11,45 @@ interface TableAdmEventsProps {
 
 const TableAdmEvents = ({ events }: TableAdmEventsProps) => {
     const columns: GridColDef[] = [
-        { field: "titulo", headerName: "Titulo", width: 150 },
-        { field: "descricao", headerName: "Descrição", width: 150 },
+        {
+            field: "titulo",
+            headerName: "Titulo",
+            minWidth: 200,
+            maxWidth: 300,
+            renderCell: (params) => (
+                <RowTextComponent>{params.value}</RowTextComponent>
+            ),
+        },
+        {
+            field: "descricao",
+            headerName: "Descrição",
+            valueGetter: (e) => (!!!e ? "Sem descrição" : e),
+            minWidth: 300,
+            maxWidth: 500,
+            renderCell: (params) => (
+                <RowTextComponent>{params.value}</RowTextComponent>
+            ),
+        },
         {
             field: "date",
             headerName: "Data",
-            valueSetter: (e) => dayjs(e).format("DD/MM/YYYY"),
-            width: 150,
+            valueGetter: (e) => dayjs(e).format("DD/MM/YYYY"),
+            width: 200,
+            maxWidth: 300,
+            renderCell: (params) => (
+                <RowTextComponent>{params.value}</RowTextComponent>
+            ),
         },
         {
             field: "localEvento",
             headerName: "Local",
-            valueSetter: (localEvento: LocalEvento) =>
+            valueGetter: (localEvento: LocalEvento) =>
                 localEvento.localizacao,
-            width: 150,
+            minWidth: 300,
+            maxWidth: 500,
+            renderCell: (params) => (
+                <RowTextComponent>{params.value}</RowTextComponent>
+            ),
         },
     ];
 
