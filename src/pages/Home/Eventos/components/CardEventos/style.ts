@@ -4,7 +4,7 @@ export const CardEventosContainer = styled.div`
   min-height: 300px;
   min-width: 300px;
   max-width: 300px;
-  max-height: 300px;
+  max-height: 370px;
   border-radius: 1rem;
 
   background-color: transparent;

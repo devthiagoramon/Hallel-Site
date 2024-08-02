@@ -4,7 +4,6 @@ import TitleH from "components/TitleH";
 import { useListEvents } from "hooks/useListEvents";
 import { MagnifyingGlass } from "phosphor-react";
 import { useMemo, useState } from "react";
-import { ListEventsDTO } from "types/dtoTypes";
 import CardEventos from "./components/CardEventos";
 import EventosNotFound from "./components/EventosNotFound";
 import {

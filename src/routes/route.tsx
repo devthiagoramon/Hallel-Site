@@ -5,15 +5,14 @@ import QuemSomos from "pages/Home/QuemSomos";
 import Sorteio from "pages/Home/Sorteio";
 import Profile from "pages/Profile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ValidateToken from "utils/validateToken";
-import Home from "./pages/Home";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
+import AdmRoutes from "routes/AdmRoutes";
+import Home from "../pages/Home";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
-            <ValidateToken />
             <Routes>
                 <Route
                     path="/"
@@ -65,6 +64,7 @@ const AppRouter = () => {
                     }
                     path="profile"
                 />
+                <Route path="administrador/*" element={<AdmRoutes />} />
             </Routes>
         </BrowserRouter>
     );

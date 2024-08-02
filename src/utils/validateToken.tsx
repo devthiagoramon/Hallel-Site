@@ -7,28 +7,32 @@ import { saveUserInfoRedux } from "store/userSlice";
 import { isTokenExist, loadTokenAPI } from "./mainUtils";
 
 const ValidateToken = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        async function verifyToken() {
-            const isValid = await isTokenExpiredService();
+  useEffect(() => {
+    async function verifyToken() {
+      const isValid = await isTokenExpiredService();
 
-            if (!isValid) {
-                navigate("/signUp");
-                localStorage.clear()
-            }
+      if (!isValid) {
+        navigate("/signUp");
+        localStorage.clear();
+      }
+      try {
+        const user = await getMembroInfoService(loadTokenAPI());
+        dispatch(saveUserInfoRedux(user));
+        // Parte associado
+      } catch (error) {
+        navigate("/signUp");
+        localStorage.clear();
+      }
+    }
+    if (isTokenExist()) {
+      verifyToken();
+    }
+  }, []);
 
-            const user = await getMembroInfoService(loadTokenAPI());
-            dispatch(saveUserInfoRedux(user));
-            // Parte associado
-        }
-        if (isTokenExist()) {
-            verifyToken();
-        }
-    }, []);
-
-    return <></>;
+  return <></>;
 };
 
 export default ValidateToken;
