@@ -76,10 +76,12 @@ const AdmEditarEvento = () => {
         useState<LocationMapType>();
 
     const onSubmit = async (data: any) => {
+        console.error("KKKKKKKKK");
         if (!validateForms()) {
             return;
         }
         if (!idEvento) {
+            console.error("KKKKKKKKK");
             return;
         }
 
@@ -152,7 +154,7 @@ const AdmEditarEvento = () => {
                 if (response) {
                     setValue("titulo", response.titulo);
                     setValue("descricao", response.descricao);
-                    setValue("destaque", response.destaque);
+                    setValue("destaque", response.destaque || false);
                     setValue(
                         "date",
                         dayjs(response.date).format("DD/MM/YYYY HH:mm"),
@@ -297,7 +299,7 @@ const AdmEditarEvento = () => {
                     type="submit"
                     sx={{ width: "40%", mt: 4 }}
                 >
-                    Adicionar evento
+                    Editar evento
                 </Button>
             </AdmAdicionarEditarEventoForm>
         </AdmAdicionarEditarEventoContainer>

@@ -21,6 +21,9 @@ interface AdmLocationInputProps {
 
 const libraries: Libraries = ["places"];
 
+const LOCALIZATION_TOKEN =
+    process.env.REACT_GOOGLE_LOCALIZATION_API_KEY;
+
 const AdmLocationInput = ({
     containerStyle,
     inputStyle,
@@ -30,8 +33,7 @@ const AdmLocationInput = ({
     textFieldProps,
 }: AdmLocationInputProps) => {
     const { isLoaded, loadError } = useJsApiLoader({
-        googleMapsApiKey:
-            process.env.REACT_GOOGLE_LOCALTION_API_KEY || "",
+        googleMapsApiKey: LOCALIZATION_TOKEN || "AIzaSyBoQSGAODRYh9JPoxy0tM5NO59Xre5GxnA",
         libraries: libraries,
         id: "google-maps-script",
         language: "pt-BR",

@@ -75,3 +75,19 @@ export const listEventByIdAdmService = async (
     throw new Error("Can't list the event by id from API");
   }
 };
+
+export const deleteEventAdmService = async (idEvento: string) => {
+  try {
+    const response = await api.delete(
+      `/administrador/eventos/${idEvento}/delete`,
+      {
+        headers: {
+          Authorization: loadTokenAPI(),
+        },
+      },
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Can't delete the event from API");
+  }
+};
