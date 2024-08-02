@@ -3,7 +3,10 @@ import Textarea from "@mui/joy/Textarea";
 import { Button, IconButton, Switch, TextField } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { useQueryClient } from "@tanstack/react-query";
-import { adicionarEventAdmService } from "api/admin/eventos/eventosAdmAPI";
+import {
+    editarEventAdmService,
+    listEventByIdAdmService,
+} from "api/admin/eventos/eventosAdmAPI";
 import AdmLocationInput from "components/AdmLocationInput";
 import SelectImageContainerH from "components/SelectImageContainerH";
 import TitleH from "components/TitleH";
@@ -11,9 +14,9 @@ import dayjs from "dayjs";
 import { ADM_QUERIES } from "hooks/queryConsts";
 import { useSnackbar } from "notistack";
 import { CaretLeft } from "phosphor-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
     AddEditEventAdmDTO,
     LocationMapType,
@@ -24,7 +27,7 @@ import {
     AdmAdicionarEditarEventoContainer,
     AdmAdicionarEditarEventoForm,
     AdmAdicionarEditarEventoInputs,
-} from "./style";
+} from "../AdmAdicionarEvento/style";
 
 const schema = yup
     .object({
@@ -39,17 +42,11 @@ const schema = yup
         destaque: yup.boolean(),
     })
     .required();
-interface SchemaAdicionarEventoType {
-    titulo: string;
-    descricao: string;
-    date: Date;
-    localizacao: string;
-    valorDoEvento?: string;
-    destaque?: boolean;
-}
 
-const AdmAdicionarEvento = () => {
+const AdmEditarEvento = () => {
+    const { idEvento } = useParams();
     const navigator = useNavigate();
+    const queryClient = useQueryClient();
 
     const {
         register,
@@ -60,9 +57,11 @@ const AdmAdicionarEvento = () => {
     } = useForm({
         resolver: yupResolver(schema),
     });
-
     const { enqueueSnackbar } = useSnackbar();
-    const queryClient = useQueryClient();
+
+    const handleGoBack = () => {
+        navigator(-1);
+    };
 
     const [banner, setBanner] = useState<
         string | ArrayBuffer | undefined
@@ -72,17 +71,15 @@ const AdmAdicionarEvento = () => {
     >();
     const [errorBanner, setErrorBanner] = useState<boolean>(false);
     const [errorImagem, setErrorImagem] = useState<boolean>(false);
-
     const [isPago, setIsPago] = useState<boolean>(false);
     const [locationInfos, setLocationInfos] =
         useState<LocationMapType>();
 
-    const handleGoBack = () => {
-        navigator(-1);
-    };
-
     const onSubmit = async (data: any) => {
         if (!validateForms()) {
+            return;
+        }
+        if (!idEvento) {
             return;
         }
 
@@ -101,10 +98,9 @@ const AdmAdicionarEvento = () => {
                 titulo: data.titulo,
                 valorDoEvento: data.valorDoEvento || 0,
             };
-            const response = await adicionarEventAdmService(dto);
-
+            const response = await editarEventAdmService(idEvento, dto);
             if (response) {
-                enqueueSnackbar("Evento adicionado com sucesso", {
+                enqueueSnackbar("Evento editado com sucesso", {
                     variant: "success",
                 });
                 queryClient.refetchQueries({
@@ -114,12 +110,9 @@ const AdmAdicionarEvento = () => {
             }
         } catch (error) {
             console.error(error);
-            enqueueSnackbar(
-                "Error ao adicionar o evento, tente novamente!",
-                {
-                    variant: "error",
-                },
-            );
+            enqueueSnackbar("Error ao editar o evento, tente novamente!", {
+                variant: "error",
+            });
         }
     };
 
@@ -149,6 +142,39 @@ const AdmAdicionarEvento = () => {
 
         return value;
     };
+    useEffect(() => {
+        async function getEventById() {
+            if (!!!idEvento) {
+                return;
+            }
+            try {
+                const response = await listEventByIdAdmService(idEvento);
+                if (response) {
+                    setValue("titulo", response.titulo);
+                    setValue("descricao", response.descricao);
+                    setValue("destaque", response.destaque);
+                    setValue(
+                        "date",
+                        dayjs(response.date).format("DD/MM/YYYY HH:mm"),
+                    );
+                    setValue("localizacao", response.localEvento.localizacao);
+                    if (!!response.valorDoEvento) {
+                        setValue(
+                            "valorDoEvento",
+                            maskForValueInReal(response.valorDoEvento),
+                        );
+                        setIsPago(true);
+                    }
+
+                    setImagem(response.imagem);
+                    setBanner(response.banner);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getEventById();
+    }, [idEvento]);
 
     return (
         <AdmAdicionarEditarEventoContainer>
@@ -156,7 +182,7 @@ const AdmAdicionarEvento = () => {
                 <IconButton onClick={handleGoBack}>
                     <CaretLeft size={32} />
                 </IconButton>{" "}
-                Adicionar evento
+                Editar evento
             </TitleH>
             <AdmAdicionarEditarEventoForm onSubmit={handleSubmit(onSubmit)}>
                 <label className="form-controller">Banner</label>
@@ -182,7 +208,6 @@ const AdmAdicionarEvento = () => {
                         <label className="form-controller">Titulo</label>
                         <TextField
                             inputProps={{ ...register("titulo") }}
-                            label="Titulo"
                             error={!!errors["titulo"]}
                             helperText={errors["titulo"]?.message}
                         />
@@ -198,18 +223,20 @@ const AdmAdicionarEvento = () => {
                     <div className="input-container">
                         <label className="form-controller">Data e horário</label>
                         <DateTimePicker
-                            label="Data e horário"
                             disablePast
-                            value={dayjs(getValues("date"))}
+                            // value={dayjs(getValues("date"))}
                             slotProps={{
                                 textField: {
                                     error: !!errors["date"],
                                     helperText: errors["date"]?.message,
+                                    ...register("date"),
                                 },
                             }}
                             onChange={(value) =>
-                                setValue("date", value?.toISOString() || "")
+                                setValue("date", value?.toString() || "")
                             }
+                            format="DD/MM/YYYY HH:mm"
+                            ampm={false}
                         />
                     </div>
                     <div className="input-container">
@@ -225,6 +252,7 @@ const AdmAdicionarEvento = () => {
                             textFieldProps={{
                                 error: !!errors["localizacao"],
                                 helperText: errors["localizacao"]?.message,
+                                value: getValues("localizacao"),
                             }}
                         />
                     </div>
@@ -276,4 +304,4 @@ const AdmAdicionarEvento = () => {
     );
 };
 
-export default AdmAdicionarEvento;
+export default AdmEditarEvento;

@@ -31,8 +31,7 @@ const AdmLocationInput = ({
 }: AdmLocationInputProps) => {
     const { isLoaded, loadError } = useJsApiLoader({
         googleMapsApiKey:
-            process.env.REACT_GOOGLE_LOCALTION_API_KEY ||
-            "AIzaSyBoQSGAODRYh9JPoxy0tM5NO59Xre5GxnA",
+            process.env.REACT_GOOGLE_LOCALTION_API_KEY || "",
         libraries: libraries,
         id: "google-maps-script",
         language: "pt-BR",

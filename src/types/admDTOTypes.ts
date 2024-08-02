@@ -11,10 +11,12 @@ export interface ListEventsAdmDTO {
   descricao: string;
   date: Date;
   imagem: string;
+  banner: string;
   localEvento: LocalEvento;
   destaque: boolean;
   horario: string;
   palestrantes: string[];
+  valorDoEvento: number;
 }
 
 export interface LocationMapType {
@@ -22,7 +24,7 @@ export interface LocationMapType {
   lng?: number;
 }
 
-export interface AddEventAdmDTO {
+export interface AddEditEventAdmDTO {
   titulo: string;
   descricao: string;
   date: Date;
