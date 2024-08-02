@@ -15,7 +15,7 @@ export const ContainerCarouselSchedules = styled.div`
 export const ContainerItem = styled.div`
 
     width: 100%;
-    height: 245px;
+    height: 230px;
     flex-direction: column;
     border-radius: 10px;
     justify-content: flex-start;

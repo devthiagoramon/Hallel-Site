@@ -93,8 +93,7 @@ export const RigthHeaderEventosContainer = styled.section`
 export const BodyEventosContainer = styled.div`
   padding: 0 30px 30px 30px;
   margin-top: 30px;
-  background-color: ${(props) =>
-    props.theme.mainColors.backgroundGrey};
+  background-color: ${(props) => props.theme.mainColors.backgroundGrey};
   min-height: 60vh;
   height: 100%;
   width: 96%;

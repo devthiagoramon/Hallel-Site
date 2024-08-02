@@ -51,6 +51,7 @@ export const InfoCardEventosContainer = styled.div`
     font-weight: 600;
     font-size: 24px;
     color: ${(props) => props.theme.mainColors.text};
+    width: 100%;
   }
 
   .local {
