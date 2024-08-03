@@ -9,6 +9,7 @@ import AdmRoutes from "routes/AdmRoutes";
 import Home from "../pages/Home";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import DetailsEvents from "pages/Home/Eventos/DatailsEvent";
 
 const AppRouter = () => {
     return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
                         </HomeRouteWrapper>
                     }
                 />
+                <Route element={<DetailsEvents/> } path="/detalhesEvento"/>
                 <Route element={<SignIn />} path="signin" />
                 <Route element={<SignUp />} path="signup" />
                 <Route

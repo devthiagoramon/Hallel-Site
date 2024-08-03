@@ -30,3 +30,29 @@ export interface ListSorteadosDTO {
   nome: string;
   nomePremio: string;
 }
+
+export interface EventDTO {
+  id: string
+  associadoParcipando: null
+  descricao: string
+  quantidadeMembros: number
+  maxMembros: number
+  titulo: string
+  integrantes: null
+  membroMarketing: null
+  administrador: null
+  date: string
+  localEvento?: LocalEvento
+  horario: string
+  imagem: string | null
+  participantesEspeciais: null
+  destaque: boolean
+  palestrantes: string[]
+  pagamentoEntradaEventos: null
+  doacaoDinheiroEventos: null
+  doacaoObjetosEventos: null
+  valorDoEvento: null
+  valorDescontoAssociado: null
+  valorDescontoMembro: null
+  banner?: string | null
+}

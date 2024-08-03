@@ -18,6 +18,7 @@ const theme = {
         background: "#06612E",
         text: "#FAFAFA",
         button: "#E3F2FD",
+        header: "#005123"
     },
 };
 
