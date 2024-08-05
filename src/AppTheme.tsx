@@ -13,6 +13,7 @@ const theme = {
         secondaryLigth: "#E3F2FD",
         success: "#66BB6A",
         whiteText: "#FAFAFA",
+        grayText: "#6C879C"
     },
     card: {
         background: "#06612E",

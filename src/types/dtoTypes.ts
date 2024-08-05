@@ -51,7 +51,7 @@ export interface EventDTO {
   pagamentoEntradaEventos: null
   doacaoDinheiroEventos: null
   doacaoObjetosEventos: null
-  valorDoEvento: null
+  valorDoEvento: number |  null
   valorDescontoAssociado: null
   valorDescontoMembro: null
   banner?: string | null

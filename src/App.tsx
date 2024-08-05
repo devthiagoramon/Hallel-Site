@@ -9,28 +9,35 @@ import "./App.css";
 import AppTheme from "./AppTheme";
 import { GlobalStyle } from "./globalStyle";
 import { store as reduxStore } from "./store/store";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+
+
+const queryClient = new QueryClient()
 
 register();
 
 function App() {
   return (
-    <SnackbarProvider maxSnack={3}>
-      <LocalizationProvider
-        dateAdapter={AdapterDayjs}
-        adapterLocale="pt-BR"
-        localeText={
-          ptBR.components.MuiLocalizationProvider.defaultProps
-            .localeText
-        }
-      >
-        <AppTheme>
-          <GlobalStyle />
-          <Provider store={reduxStore}>
-            <AppRouter />
-          </Provider>
-        </AppTheme>
-      </LocalizationProvider>
-    </SnackbarProvider>
+    <QueryClientProvider client={queryClient} >
+      <SnackbarProvider maxSnack={3}>
+        <LocalizationProvider
+          dateAdapter={AdapterDayjs}
+          adapterLocale="pt-BR"
+          localeText={
+            ptBR.components.MuiLocalizationProvider.defaultProps
+              .localeText
+          }
+        >
+          <AppTheme>
+            <GlobalStyle />
+            <Provider store={reduxStore}>
+              <AppRouter />
+            </Provider>
+          </AppTheme>
+        </LocalizationProvider>
+      </SnackbarProvider>
+    </QueryClientProvider>
+
   );
 }
 

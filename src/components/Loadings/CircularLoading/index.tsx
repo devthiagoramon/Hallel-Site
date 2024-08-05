@@ -2,13 +2,12 @@ import { Box, CircularProgress, circularProgressClasses, CircularProgressProps }
 import { ContainerCircularProgress } from "./styled"
 
 interface Props{
-    size: number
+    height?: string
 }
 
-const CircularLoading = (props: CircularProgressProps) => {
+const CircularLoading = (props: CircularProgressProps & Props) => {
     return (
-        <ContainerCircularProgress>
-
+        <ContainerCircularProgress $height={props.height}>
             <Box sx={{ position: 'relative' }}>
                 <CircularProgress
                     variant="indeterminate"

@@ -23,7 +23,7 @@ const AppRouter = () => {
                         </HomeRouteWrapper>
                     }
                 />
-                <Route element={<DetailsEvents/> } path="/detalhesEvento"/>
+                <Route element={ <HomeRouteWrapper><DetailsEvents/></HomeRouteWrapper> } path="/detalhesEvento"/>
                 <Route element={<SignIn />} path="signin" />
                 <Route element={<SignUp />} path="signup" />
                 <Route

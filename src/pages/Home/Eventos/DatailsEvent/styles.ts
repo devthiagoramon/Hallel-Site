@@ -30,11 +30,11 @@ export const ImageBanner = styled.img`
 `
 export const ImageEvent = styled.img`
 
-    width: 800px;
-    height: 320px;
+    width: 750px;
+    height: 370px;
     border-radius: 8px;
     position: absolute;
-    top: 90px;
+    top: 50px;
 
 `
 
@@ -42,17 +42,51 @@ export const ContainerHeaderDetailsEvents = styled.div`
 
     width: 100%;
     height: 200px;
+    min-height: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 70px;
 
 `
 export const ContainerInfosHeaderDetails = styled.section`
 
     width: 45%;
     height: 100%;
-    margin-left: 10px;
+    margin-left: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    flex-direction: column;
+    gap: 20px;
+
+    .div-itens{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        flex-direction: row;
+    }
+
+    h1{
+        font-size: 36px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .text{
+        color: ${({theme})=> theme.mainColors.grayText};
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0;
+        padding: 0;
+    }
+
+    .icon{
+        color: ${({theme})=> theme.mainColors.grayText};
+    }
+
 
 `
 
@@ -60,7 +94,7 @@ export const ContainerToParticipate = styled.section`
 
     width: 22%;
     height: 90%;
-    margin-right: 20px;
+    margin-right: 40px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -159,6 +193,68 @@ export const ContainerToParticipate = styled.section`
             }
             
         }
+    }
+
+`
+
+export const ContainerDescription = styled.section`
+
+    width: 100%;
+    height: 570px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 45px;
+    flex-direction: column;
+    gap: 30px;
+
+    h1{
+        font-size: 24px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .div-description{
+        width: 45%;
+        padding: 20px 0px;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        p{
+            color: black;
+            font-size: 18px;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .div-local{
+        width: 45%;
+        flex-direction: column;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        border-bottom: 1px solid black;
+        gap: 10px;
+        padding-bottom: 20px;
+
+        h2{
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        p{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: ${({theme})=> theme.mainColors.grayText};
+            font-weight: bold;
+        }
+
     }
 
 `
