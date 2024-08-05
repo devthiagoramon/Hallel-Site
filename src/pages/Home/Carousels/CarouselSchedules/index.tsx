@@ -85,7 +85,7 @@ const CarouselSchedules = () => {
                 modules={[Navigation, Pagination, A11y, Scrollbar]}
                 a11y={{ enabled: true }}
                 direction="vertical"
-                
+                spaceBetween={20}
                 style={{
                     width: "100%",
                 }}

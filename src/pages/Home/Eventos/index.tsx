@@ -13,10 +13,12 @@ import {
     LeftHeaderEventosContainer,
     RigthHeaderEventosContainer,
 } from "./style";
+import CircularLoading from "components/Loadings/CircularLoading";
 
 const Eventos = () => {
 
-    const eventos = useListEvents().data;
+
+    const { data: eventos, isLoading } = useListEvents();
     const [searchText, setSearchText] = useState<string>("");
 
     const eventosFiltered = useMemo(() => {
@@ -63,13 +65,17 @@ const Eventos = () => {
                     </div>
                 </RigthHeaderEventosContainer>
             </HeaderEventosContainer>
-            {eventosFiltered && eventosFiltered?.length > 0 && (
-                <BodyEventosContainer>
-                    {eventosFiltered?.map((evento) => {
-                        return <CardEventos evento={evento} />;
-                    })}
-                </BodyEventosContainer>
-            )}
+            {isLoading === false ?
+                eventosFiltered && eventosFiltered?.length > 0 && (
+                    <BodyEventosContainer>
+                        {eventosFiltered?.map((evento) => {
+                            return <CardEventos evento={evento} />;
+                        })}
+                    </BodyEventosContainer>
+                )
+                :
+                <CircularLoading size={60} />
+            }
             {eventosFiltered && eventosFiltered?.length === 0 && (
                 <EventosNotFound />
             )}

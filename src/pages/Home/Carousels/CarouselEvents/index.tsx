@@ -7,49 +7,15 @@ import 'swiper/css/scrollbar';
 import { ContainerCarousel, DivItem, ImageItem, TitleEvents } from './styles';
 import { useEffect, useState } from 'react';
 import { ListEventsDTO } from 'types/dtoTypes';
+import { useListEvents } from 'hooks/useListEvents';
+import SemImagemEvento from "../../../../assets/not_found_image_evento1.png"
+import { useNavigate } from 'react-router-dom';
 
 const CarouselEvents = () => {
 
     const [slidesPerView, setSlidesPerView] = useState(4)
-
-    const data: ListEventsDTO[] = [
-        {
-            id: "1",
-            imagem: "https://images.pexels.com/photos/50675/banquet-wedding-society-deco-50675.jpeg?auto=compress&cs=tinysrgb&w=600",
-            date: new Date(),
-            titulo: "Evento 1",
-        },
-        {
-            id: "2",
-            imagem: "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=600",
-            date: new Date(),
-            titulo: "Evento 2"
-        },
-        {
-            id: "3",
-            imagem: "https://images.pexels.com/photos/16310530/pexels-photo-16310530/free-photo-of-casas-residencias-construcao-predio.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-            date: new Date(),
-            titulo: "Evento 3"
-        },
-        {
-            id: "4",
-            imagem: "https://images.pexels.com/photos/57980/pexels-photo-57980.jpeg?auto=compress&cs=tinysrgb&w=600",
-            date: new Date(),
-            titulo: "Evento 4"
-        },
-        {
-            id: "5",
-            imagem: "https://images.pexels.com/photos/2526105/pexels-photo-2526105.jpeg?auto=compress&cs=tinysrgb&w=600",
-            date: new Date(),
-            titulo: "Evento 5"
-        },
-        {
-            id: "6",
-            imagem: "https://images.pexels.com/photos/433452/pexels-photo-433452.jpeg?auto=compress&cs=tinysrgb&w=600",
-            date: new Date(),
-            titulo: "Evento 6"
-        }
-    ]
+    const navigate = useNavigate()
+    const { data: events } = useListEvents()
 
     useEffect(() => {
 
@@ -59,7 +25,7 @@ const CarouselEvents = () => {
             }
             else {
                 setSlidesPerView(4)
-            } 
+            }
         }
 
         handleResize()
@@ -72,6 +38,14 @@ const CarouselEvents = () => {
 
     }, [])
 
+    const handleDetailsEvent = (eventId: string) => {
+        navigate("/detalhesEvento", {
+            state: {
+                eventId: eventId
+            }
+        })
+    }
+
     return (
         <ContainerCarousel>
             <Swiper
@@ -81,10 +55,20 @@ const CarouselEvents = () => {
                 a11y={{ enabled: true }}
                 title='Eventos'
             >
-                {data.map((item) => (
+                {events?.map((item) => (
                     <SwiperSlide key={item.id}>
-                        <DivItem>
-                            <ImageItem src={item.imagem} alt="slider" />
+                        <DivItem onClick={()=> handleDetailsEvent(item.id)}>
+                            {item.imagem ? (
+                                <ImageItem
+                                    src={item.imagem}
+                                    alt={`evento-${item.titulo}-image`}
+                                />
+                            ) : (
+                                <ImageItem
+                                    src={SemImagemEvento}
+                                    alt={`sem-imagem-${item.titulo}`}
+                                />
+                            )}
                             <TitleEvents>{item.titulo}</TitleEvents>
                         </DivItem>
                     </SwiperSlide>

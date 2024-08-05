@@ -26,6 +26,7 @@ const Profile = () => {
     const [selectedItemIndex, setSelectedItemIndex] =
         useState<number>(0);
 
+
     return (
         <ProfileContainer>
             <LeftProfContainer>
