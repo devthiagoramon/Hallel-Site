@@ -76,7 +76,7 @@ const DetailsEvents = () => {
                                     <p>
                                         {
                                             eventSelected?.valorDoEvento !== null
-                                                ? eventSelected?.valorDoEvento
+                                                ? `Valor: ${eventSelected?.valorDoEvento}`
                                                 : "Não informado"
                                         }
                                     </p>

@@ -6,14 +6,26 @@ import {
     CardEventosContainer,
     InfoCardEventosContainer,
 } from "./style";
+import { useNavigate } from "react-router-dom";
 
 interface CardEventosProps {
     evento: ListEventsDTO;
 }
 
 const CardEventos = ({ evento }: CardEventosProps) => {
+
+    const navigate = useNavigate()
+
+    const handleDetailsEvent = (eventId: string) => {
+        navigate("/detalhesEvento", {
+            state: {
+                eventId: eventId
+            }
+        })
+    }
+
     return (
-        <CardEventosContainer>
+        <CardEventosContainer onClick={()=> handleDetailsEvent(evento.id)}>
             {evento.imagem ? (
                 <img
                     src={evento.imagem}
