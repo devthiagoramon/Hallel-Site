@@ -23,9 +23,10 @@ const AdmSideBar = ({ expanded, setExpanded }: AdmSideBarProps) => {
 
     useEffect(() => {
         const path = window.location.href;
-        const actualPath = path.substring(path.lastIndexOf("/"));
+        const actualPath = path.substring(path.indexOf("/", 8));
+        console.log(actualPath);
         setActualPath(actualPath);
-    }, []);
+    }, [window.location]);
 
     return (
         <AdmSideBarContainer>
@@ -38,7 +39,7 @@ const AdmSideBar = ({ expanded, setExpanded }: AdmSideBarProps) => {
                     return (
                         <MenuItemH
                             name={route.title}
-                            selected={actualPath.includes(route.link)}
+                            selected={actualPath === route.link}
                             onClick={() => goToPage(route.link)}
                             Icon={route.Icon}
                         />
