@@ -37,7 +37,7 @@ const AdmMenuRoutes = () => {
             <Menu open={open} onClose={handleClose} anchorEl={anchorEl}>
                 {admRoutesObj.map((route, index) => {
                     return (
-                        <MenuItem onClick={() => handleGoTo(route.link)}>
+                        <MenuItem key={index} onClick={() => handleGoTo(route.link)}>
                             <ListItemIcon>{route.Icon}</ListItemIcon>
                             <ListItemText>{route.title}</ListItemText>
                         </MenuItem>

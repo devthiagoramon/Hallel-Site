@@ -9,7 +9,7 @@ export const AdmEventosHeaderContainer = styled.header`
   display: flex;
   width: 100%;
   margin-top: 1rem;
-  height: 40px;
+  height: 50px;
   align-items: center;
   column-gap: 1rem;
   justify-content: space-between;
