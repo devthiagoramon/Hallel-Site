@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LogoHallel from "../../assets/logoHallelHD.png";
 import { admRoutesObj } from "./admRouteObj";
@@ -8,7 +8,12 @@ import {
     AdmSideBarHeaderContainer,
 } from "./style";
 
-const AdmSideBar = () => {
+interface AdmSideBarProps {
+    expanded: boolean;
+    setExpanded: Dispatch<SetStateAction<boolean>>;
+}
+
+const AdmSideBar = ({ expanded, setExpanded }: AdmSideBarProps) => {
     const [actualPath, setActualPath] = useState<string>("");
     const navigation = useNavigate();
 

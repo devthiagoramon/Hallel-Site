@@ -11,4 +11,14 @@ export const AdmWrapperContainer = styled.div`
 export const AdmWrapperContent = styled.main`
   margin-left: 24vw;
   width: 73vw;
+
+  @media (max-width: 1024px) {
+    width: 89vw;
+    margin-left: 11vw;
+  }
+  @media (max-width: 768px) {
+    width: 97vw;
+    margin-left: 0;
+    padding: 1rem;
+  }
 `;

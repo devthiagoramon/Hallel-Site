@@ -6,6 +6,7 @@ import {
     Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import "./card_dashboard_adm.css";
 
 interface CardDashboardADMProps {
     title: string;
@@ -25,7 +26,7 @@ const CardDashboardADM = ({
     };
 
     return (
-        <Card sx={{ height: "fit-content", maxWidth: 340, p: 1 }}>
+        <Card className="card_container" sx={{ p: 1 }}>
             <CardContent>
                 <Typography variant="h4">{title}</Typography>
                 <Typography variant="body1" sx={{ mt: 2 }}>

@@ -22,4 +22,19 @@ export const BodyDashBoardAdmContainer = styled.div`
   row-gap: 2rem;
   column-gap: 1rem;
   margin-top: 60px;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+  }
+
+  @media (min-width: 600px) and (max-width: 768px) {
+    grid-template-columns: repeat(1, 100%);
+    column-gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 100%);
+    column-gap: 10px;
+  }
 `;
