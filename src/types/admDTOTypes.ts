@@ -1,3 +1,4 @@
+import { StatusDoacao } from "./admTypes";
 import { LocalEvento } from "./hallelTypes";
 
 export interface LoginAdmDTO {
@@ -33,4 +34,32 @@ export interface AddEditEventAdmDTO {
   banner: string;
   destaque: boolean;
   valorDoEvento?: string;
+}
+
+export interface MembroResponseListDTO {
+  id: string;
+  nome: string;
+  email: string;
+  imagem: string;
+}
+
+export interface DoacaoObjetoDTO {
+  nameObject: string;
+  quantidade: number;
+}
+
+export interface CriarDoacaoDTO {
+  isAnonimo?: boolean;
+  idDonator?: string;
+  nameDonator?: string;
+  telefoneDonator?: string;
+  emailDonator?: string;
+  valor?: number;
+  date?: Date;
+  dateEntregue?: Date;
+  isObjeto?: boolean;
+  nameObjeto?: string;
+  status?: StatusDoacao;
+  idEvento?: string;
+  idRetiro?: string;
 }

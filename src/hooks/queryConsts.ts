@@ -4,6 +4,9 @@ export const QUERIES = {
 };
 
 export const ADM_QUERIES = {
+  // MEMBROS
+  LIST_MEMBROS_ADM: "LIST_MEMBROS_ADM",
+
   // EVENTS
   LIST_EVENTS_ADM: "LIST_EVENTS_ADM",
 };

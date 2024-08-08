@@ -19,10 +19,10 @@ const AdmHeaderH = ({ title, goBack, ...props }: AdmHeaderProps) => {
 
     return (
         <AdmHeaderContainer {...props}>
-            <div>
+            <div style={{ display: "flex", alignItems: "center" }}>
                 {goBack && (
                     <IconButton onClick={handleGoBack}>
-                        <CaretLeft size={24} />
+                        <CaretLeft size={32} color="#252525" />
                     </IconButton>
                 )}
                 <TitleH color="black" size="medium">

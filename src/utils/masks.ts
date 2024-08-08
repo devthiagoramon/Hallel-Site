@@ -52,3 +52,9 @@ export const maskForValueInReal = (event: any) => {
 
   return formattedValue;
 };
+
+export const maskForNumber = (event: any) => {
+  const rawValue = event.target.value.replace(/\D/g, "");
+
+  return rawValue;
+};

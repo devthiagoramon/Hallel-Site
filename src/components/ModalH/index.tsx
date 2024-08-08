@@ -1,9 +1,20 @@
-import { Modal, ModalProps } from "@mui/material";
+import { IconButton, Modal, ModalProps } from "@mui/material";
+import TitleH from "components/TitleH";
+import { CaretLeft } from "phosphor-react";
 import { ModalHContainer } from "./style";
 
-interface ModalHProps extends ModalProps { }
+interface ModalHProps extends ModalProps {
+    showHeader?: boolean;
+    headerTitle?: string;
+    closeModal?: boolean;
+}
 
-const ModalH = (props: ModalHProps) => {
+const ModalH = ({
+    showHeader,
+    headerTitle,
+    closeModal,
+    ...props
+}: ModalHProps) => {
     return (
         <Modal
             sx={{
@@ -15,7 +26,26 @@ const ModalH = (props: ModalHProps) => {
             }}
             {...props}
         >
-            <ModalHContainer>{props.children}</ModalHContainer>
+            <ModalHContainer>
+                {showHeader && (
+                    <header>
+                        <TitleH color="black" size="medium">
+                            {closeModal && (
+                                <IconButton
+                                    onClick={() =>
+                                        props.onClose &&
+                                        props.onClose({}, "backdropClick")
+                                    }
+                                >
+                                    <CaretLeft size={24} />
+                                </IconButton>
+                            )}
+                            {headerTitle}
+                        </TitleH>
+                    </header>
+                )}
+                {props.children}
+            </ModalHContainer>
         </Modal>
     );
 };
