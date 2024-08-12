@@ -63,3 +63,20 @@ export interface CriarDoacaoDTO {
   idEvento?: string;
   idRetiro?: string;
 }
+
+export interface ListDoacaoDTO {
+  id: string;
+  idDonator: string;
+  nameDonator: string;
+  telefoneDonator: string;
+  emailDonator: string;
+  valor: number;
+  date: Date;
+  dateEntregue: Date;
+  nameObjeto: string;
+  status: StatusDoacao;
+  idEvento: string;
+  idRetiro: string;
+  objeto: boolean;
+  anonimo: boolean;
+}
