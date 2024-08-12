@@ -17,18 +17,21 @@ interface AdmListSelectUserHProps {
     onSelect: (user: MembroResponseListDTO) => void;
     containerUserStyle?: CSSProperties;
     containerStyle?: CSSProperties;
+    selectedMember?: MembroResponseListDTO;
 }
 
 const AdmListSelectUserH = ({
     onSelect,
     containerUserStyle,
     containerStyle,
+    selectedMember,
 }: AdmListSelectUserHProps) => {
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
     const [searchText, setSearchText] = useState<string>("");
-    const [selectedUser, setSelectedUser] =
-        useState<MembroResponseListDTO>();
+    const [selectedUser, setSelectedUser] = useState<
+        MembroResponseListDTO | undefined
+    >(selectedMember || undefined);
     const [loading, setLoading] = useState<boolean>(false);
 
     const [membros, setMembros] = useState<MembroResponseListDTO[]>([]);
@@ -87,6 +90,7 @@ const AdmListSelectUserH = ({
         loadMoreData();
     }, [loadMoreData]);
 
+
     return (
         <AdmListSelectUserHContainer
             style={containerStyle}
@@ -120,7 +124,9 @@ const AdmListSelectUserH = ({
                                 onSelect(membro);
                             }}
                             user={membro}
-                            selected={selectedUser === membro}
+                            selected={
+                                selectedUser ? selectedUser.id === membro.id : false
+                            }
                         />
                     );
                 })}

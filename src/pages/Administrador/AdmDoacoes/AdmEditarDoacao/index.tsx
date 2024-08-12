@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, TextField } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
-import { criarDoacaoAdmService } from "api/admin/doacao/admDoacaoAPI";
+import { editDoacaoAdmService } from "api/admin/doacao/admDoacaoAPI";
 import AdmListSelectUserH from "components/AdmListSelectUserH";
 import TitleH from "components/TitleH";
 import dayjs from "dayjs";
@@ -9,39 +9,30 @@ import { useSnackbar } from "notistack";
 import AdmBodyH from "pages/Administrador/components/AdmBodyH";
 import { AdmContainer } from "pages/Administrador/components/AdmContainerH/style";
 import AdmHeaderH from "pages/Administrador/components/AdmHeaderH";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-    CriarEditarDoacaoDTO,
-    DoacaoObjetoDTO,
-} from "types/admDTOTypes";
+    selectSelectedDonationObjectRedux
+} from "store/admDonationSlice";
+import { CriarEditarDoacaoDTO } from "types/admDTOTypes";
 import {
     StatusDoacao,
     TipoDoacaoAdm,
     TipoDoadoresAdm,
 } from "types/admTypes";
-import { maskForValueInReal, transformToNumber } from "utils/masks";
+import {
+    maskForValueInReal,
+    maskForValueUnit,
+    transformToNumber,
+} from "utils/masks";
 import * as yup from "yup";
-import AdmObjetoDoacaoH from "./components/AdmObjetoDoacaoH";
-import AdmSelectStatusDoacao from "./components/AdmSelectStatusDoacao";
-import AdmSelectTiposDoadoresAdm from "./components/AdmSelectTipoDoadoresAdm";
-import AdmSelectTiposDoacaoAdm from "./components/AdmSelectTiposDoacaoAdm";
-import AnonimoForms from "./components/AnonimoForms";
-import { AdmAdicionarEditarDoacaoForm } from "./style";
-
-export type FormDoacao = {
-    isAnonimo?: boolean | undefined;
-    nameDonator?: string | undefined;
-    telefoneDonator?: string | undefined;
-    emailDonator?: string | undefined;
-    date: Date;
-    dateEntregue?: Date | undefined;
-    isObjeto?: boolean | undefined;
-    nameObjeto?: string | undefined;
-    valor?: string | undefined;
-    status: NonNullable<StatusDoacao>;
-};
+import AdmSelectStatusDoacao from "../AdmAdicionarDoacao/components/AdmSelectStatusDoacao";
+import AdmSelectTiposDoadoresAdm from "../AdmAdicionarDoacao/components/AdmSelectTipoDoadoresAdm";
+import AdmSelectTiposDoacaoAdm from "../AdmAdicionarDoacao/components/AdmSelectTiposDoacaoAdm";
+import AnonimoForms from "../AdmAdicionarDoacao/components/AnonimoForms";
+import { AdmAdicionarEditarDoacaoForm } from "../AdmAdicionarDoacao/style";
 
 const schema = yup
     .object({
@@ -65,7 +56,9 @@ const schema = yup
     })
     .required();
 
-const AdmAdicionarEditarDoacao = () => {
+const AdmEditarDoacao = () => {
+    const dispatch = useDispatch();
+    const objectEdit = useSelector(selectSelectedDonationObjectRedux);
     const {
         register,
         handleSubmit,
@@ -73,7 +66,17 @@ const AdmAdicionarEditarDoacao = () => {
         getValues,
         formState: { errors },
         setError,
-    } = useForm({ resolver: yupResolver(schema) });
+    } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    const [doador, setDoador] = useState<TipoDoadoresAdm>(
+        objectEdit.anonimo ? "anonimo" : "membro",
+    );
+    const [tipoDoacao, setTipoDoacao] = useState<TipoDoacaoAdm>(
+        objectEdit.objeto ? "objeto" : "dinheiro",
+    );
+    const [statusDoacao, setStatusDoacao] = useState<StatusDoacao>();
 
     const { enqueueSnackbar } = useSnackbar();
     const navigation = useNavigate();
@@ -81,48 +84,21 @@ const AdmAdicionarEditarDoacao = () => {
     const onSubmit = async (data: any) => {
         if (!validateForms()) return;
 
-        if (data.isObjeto) {
-            listObjects.forEach(async (object) => {
-                const dto: CriarEditarDoacaoDTO = {
-                    ...data,
-                    valor: object.quantidade,
-                    nameObjeto: object.nameObject,
-                };
-                try {
-                    const response = await criarDoacaoAdmService(dto);
-                    enqueueSnackbar(
-                        `Doação do ${object.nameObject} criada com sucesso!`,
-                        {
-                            variant: "success",
-                        },
-                    );
-                    navigation(-1);
-                } catch (error) {
-                    console.error(error);
-                }
+        const dto: CriarEditarDoacaoDTO = {
+            ...data,
+            valor: transformToNumber(data.valor),
+            status: statusDoacao || data.status,
+        };
+        try {
+            const response = await editDoacaoAdmService(objectEdit.id, dto);
+            enqueueSnackbar("Doação editada com sucesso!", {
+                variant: "success",
             });
-        } else {
-            const dto: CriarEditarDoacaoDTO = {
-                ...data,
-                valor: transformToNumber(data.valor),
-            };
-            try {
-                const response = await criarDoacaoAdmService(dto);
-                enqueueSnackbar("Doação criada com sucesso!", {
-                    variant: "success",
-                });
-                navigation(-1);
-            } catch (error) {
-                console.error(error);
-            }
+            navigation(-1);
+        } catch (error) {
+            console.error(error);
         }
     };
-
-    const [doador, setDoador] = useState<TipoDoadoresAdm>();
-    const [tipoDoacao, setTipoDoacao] = useState<TipoDoacaoAdm>();
-    const [listObjects, setListObjects] = useState<DoacaoObjetoDTO[]>(
-        [],
-    );
 
     function validateForms() {
         let value = true;
@@ -159,7 +135,18 @@ const AdmAdicionarEditarDoacao = () => {
         }
 
         if (getValues("isObjeto")) {
-            if (listObjects.length === 0) {
+            if (!getValues("nameObjeto") || getValues("nameObjeto") == "") {
+                setError("nameObjeto", {
+                    type: "required",
+                    message: "Digite o nome do objeto",
+                });
+                value = false;
+            }
+            if (!getValues("valor") || getValues("valor")?.includes("0")) {
+                setError("valor", {
+                    type: "required",
+                    message: "Digite a quantidade do objeto",
+                });
                 value = false;
             }
         }
@@ -167,9 +154,40 @@ const AdmAdicionarEditarDoacao = () => {
         return value;
     }
 
+    useEffect(() => {
+        if (objectEdit) {
+            setValue("date", objectEdit.date || dayjs().toDate());
+            setValue("dateEntregue", objectEdit.dateEntregue || undefined);
+            setValue("emailDonator", objectEdit.emailDonator || undefined);
+            setValue("idDonator", objectEdit.idDonator || undefined);
+            setValue("isAnonimo", objectEdit.anonimo || false);
+            setValue("isObjeto", objectEdit.objeto || false);
+            setValue("nameDonator", objectEdit.nameDonator || undefined);
+            setValue("nameObjeto", objectEdit.nameObjeto || undefined);
+            setValue("status", objectEdit.status || StatusDoacao.PENDENTE);
+            setValue(
+                "telefoneDonator",
+                objectEdit.telefoneDonator || undefined,
+            );
+            setValue(
+                "valor",
+                objectEdit.objeto
+                    ? `${objectEdit.valor} UN`
+                    : new Intl.NumberFormat("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                    }).format(objectEdit.valor || 0),
+            );
+            setStatusDoacao(objectEdit.status || undefined);
+        }
+    }, [objectEdit]);
+
     return (
         <AdmContainer>
-            <AdmHeaderH title="Adicionar doação" goBack />
+            <AdmHeaderH
+                title="Editar doação"
+                goBack
+            />
             <AdmBodyH>
                 <AdmAdicionarEditarDoacaoForm
                     onSubmit={handleSubmit(onSubmit, (e) => console.log(e))}
@@ -193,7 +211,7 @@ const AdmAdicionarEditarDoacao = () => {
                                 setValue("isAnonimo", false);
                             }
                         }}
-                        selectProps={{ error: !doador }}
+                        selectProps={{ error: !doador, defaultValue: doador }}
                     />
                     {doador === "anonimo" && (
                         <AnonimoForms
@@ -209,6 +227,12 @@ const AdmAdicionarEditarDoacao = () => {
                                 setValue("idDonator", user.id);
                                 setValue("nameDonator", user.nome);
                                 setValue("emailDonator", user.email);
+                            }}
+                            selectedMember={{
+                                id: objectEdit.idDonator || "",
+                                email: "",
+                                imagem: "",
+                                nome: "",
                             }}
                             containerUserStyle={{
                                 borderColor: !!errors["idDonator"]
@@ -234,9 +258,8 @@ const AdmAdicionarEditarDoacao = () => {
                             }
                         }}
                         selectProps={{
-                            error:
-                                !!errors["valor"] ||
-                                (getValues("isObjeto") && listObjects.length === 0),
+                            error: !!errors["valor"],
+                            defaultValue: tipoDoacao,
                         }}
                     />
                     {tipoDoacao === "dinheiro" && (
@@ -256,13 +279,32 @@ const AdmAdicionarEditarDoacao = () => {
                         </>
                     )}
                     {tipoDoacao === "objeto" && (
-                        <AdmObjetoDoacaoH
-                            listObjects={listObjects}
-                            setListObjects={setListObjects}
-                            error={
-                                listObjects.length > 0 ? false : "Insira um objeto"
-                            }
-                        />
+                        <div
+                            style={{
+                                display: "grid",
+                                rowGap: 8,
+                                marginTop: 16,
+                                maxWidth: 400,
+                            }}
+                        >
+                            <TextField
+                                inputProps={{ ...register("nameObjeto") }}
+                                label="Nome do objeto"
+                                error={!!errors["nameObjeto"]}
+                                helperText={errors["nameObjeto"]?.message}
+                            />
+                            <TextField
+                                label="Quantidade de objetos"
+                                inputProps={{
+                                    ...register("valor"),
+                                    onChange: (e) =>
+                                        setValue("valor", maskForValueUnit(e)),
+                                }}
+                                sx={{ minWidth: 400, mt: 1 }}
+                                error={!!errors["valor"]}
+                                helperText={errors["valor"]?.message}
+                            />
+                        </div>
                     )}
                     <TitleH
                         textStyle={{ fontWeight: "500" }}
@@ -272,9 +314,16 @@ const AdmAdicionarEditarDoacao = () => {
                         Status da doação
                     </TitleH>
                     <AdmSelectStatusDoacao
-                        isObjeto={getValues("isObjeto")}
-                        onSelect={(status) => setValue("status", status)}
-                        selectProps={{ error: !!errors["status"] }}
+                        value={statusDoacao}
+                        isObjeto={tipoDoacao === "objeto"}
+                        onSelect={(status) => {
+                            setValue("status", status);
+                            setStatusDoacao(status);
+                        }}
+                        selectProps={{
+                            error: !!errors["status"],
+                            value: statusDoacao,
+                        }}
                     />
                     <TitleH
                         textStyle={{ fontWeight: "500" }}
@@ -307,9 +356,10 @@ const AdmAdicionarEditarDoacao = () => {
                                     helperText: errors["date"]?.message,
                                 },
                             }}
+                            value={dayjs(getValues("date"))}
                             sx={{ width: 300 }}
                         />
-                        {getValues("isObjeto") && (
+                        {tipoDoacao === "objeto" && (
                             <DatePicker
                                 label="Data do recebimento da doação"
                                 format="DD/MM/YYYY"
@@ -318,10 +368,11 @@ const AdmAdicionarEditarDoacao = () => {
                                         inputProps: {
                                             ...register("dateEntregue"),
                                             onChange: (e: any) =>
-                                                setValue("dateEntregue", e.target.value),
+                                                setValue("dateEntregue", e?.toDate() || dayjs().toDate()),
                                         },
                                     },
                                 }}
+                                value={dayjs(getValues("dateEntregue"))}
                                 sx={{ width: 300 }}
                             />
                         )}
@@ -334,7 +385,7 @@ const AdmAdicionarEditarDoacao = () => {
                         variant="contained"
                         color="primary"
                     >
-                        Adicionar
+                        Editar
                     </Button>
                 </AdmAdicionarEditarDoacaoForm>
             </AdmBodyH>
@@ -342,4 +393,4 @@ const AdmAdicionarEditarDoacao = () => {
     );
 };
 
-export default AdmAdicionarEditarDoacao;
+export default AdmEditarDoacao;

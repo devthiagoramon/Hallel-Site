@@ -1,8 +1,13 @@
 import api from "api/api";
-import { CriarDoacaoDTO, ListDoacaoDTO } from "types/admDTOTypes";
+import {
+  CriarEditarDoacaoDTO,
+  ListDoacaoDTO,
+} from "types/admDTOTypes";
 import { loadTokenAPI } from "utils/mainUtils";
 
-export const criarDoacaoAdmService = async (dto: CriarDoacaoDTO) => {
+export const criarDoacaoAdmService = async (
+  dto: CriarEditarDoacaoDTO,
+) => {
   try {
     const response = await api.post(
       "/administrador/doacao/criar",
@@ -143,5 +148,26 @@ export const listDoacaoAnonimas = async (): Promise<
     return response.data;
   } catch (error) {
     throw new Error("Can't list anonymous donations");
+  }
+};
+
+export const editDoacaoAdmService = async (
+  idDoacao: string,
+  dto: CriarEditarDoacaoDTO,
+) => {
+  try {
+    const response = await api.put(
+      `/administrador/doacao/${idDoacao}/editar`,
+      dto,
+      {
+        headers: {
+          Authorization: loadTokenAPI(),
+        },
+      },
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Can't edit the donation");
   }
 };

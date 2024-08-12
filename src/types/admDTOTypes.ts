@@ -48,7 +48,7 @@ export interface DoacaoObjetoDTO {
   quantidade: number;
 }
 
-export interface CriarDoacaoDTO {
+export interface CriarEditarDoacaoDTO {
   isAnonimo?: boolean;
   idDonator?: string;
   nameDonator?: string;

@@ -8,13 +8,20 @@ import { AdmHeaderContainer } from "./style";
 interface AdmHeaderProps extends HTMLProps<HTMLDivElement> {
     title: string;
     goBack?: boolean;
+    onGoBack?: () => void;
 }
 
-const AdmHeaderH = ({ title, goBack, ...props }: AdmHeaderProps) => {
+const AdmHeaderH = ({
+    title,
+    goBack,
+    onGoBack,
+    ...props
+}: AdmHeaderProps) => {
     const navigation = useNavigate();
 
     const handleGoBack = () => {
         navigation(-1);
+        onGoBack && onGoBack();
     };
 
     return (

@@ -1,7 +1,23 @@
-import { GridColDef } from "@mui/x-data-grid";
+import {
+    ListItemIcon,
+    ListItemText,
+    Menu,
+    MenuItem,
+} from "@mui/material";
+import {
+    GridColDef,
+    GridRowParams,
+    MuiEvent,
+} from "@mui/x-data-grid";
 import AdmTableH from "components/AdmTableH";
 import dayjs from "dayjs";
 import { useListDoacaoAdm } from "hooks/admin/useListDoacaoAdm";
+import { Pencil, Trash } from "phosphor-react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { startEditDonationAdmRedux } from "store/admDonationSlice";
+import { CriarEditarDoacaoDTO } from "types/admDTOTypes";
 import { FiltersDonations } from "../..";
 
 interface TableDoacoesAdmProps {
@@ -9,6 +25,15 @@ interface TableDoacoesAdmProps {
 }
 
 const TableDoacoesAdm = ({ filter }: TableDoacoesAdmProps) => {
+    const dispatch = useDispatch();
+
+    const [selectedObject, setSelectedObject] =
+        useState<CriarEditarDoacaoDTO>();
+    const [anchorElMenu, setAnchorElMenu] = useState<
+        (EventTarget & Element) | null
+    >(null);
+    const openMenu = Boolean(anchorElMenu);
+
     const columns: GridColDef[] = [
         {
             field: "anonimo",
@@ -73,14 +98,58 @@ const TableDoacoesAdm = ({ filter }: TableDoacoesAdmProps) => {
     const request = useListDoacaoAdm(filter);
     const doacoes = request.data;
     const isLoading = request.isLoading;
+    const navigation = useNavigate();
+
+    const handleClickRowTable = (
+        params: GridRowParams,
+        event: MuiEvent<React.MouseEvent>,
+    ) => {
+        setSelectedObject(params.row);
+        setAnchorElMenu(event.currentTarget);
+    };
+
+    const handleEditDonation = () => {
+        dispatch(startEditDonationAdmRedux(selectedObject));
+        navigation("/administrador/doacoes/editar");
+    };
+
+    const handleCloseMenu = () => {
+        setAnchorElMenu(null);
+        setSelectedObject(undefined);
+    };
 
     return (
-        <AdmTableH
-            titleNotFound="Nenhuma doação encontrada"
-            columns={columns}
-            loading={isLoading}
-            rows={doacoes}
-        />
+        <>
+            <AdmTableH
+                titleNotFound="Nenhuma doação encontrada"
+                columns={columns}
+                loading={isLoading}
+                rows={doacoes}
+                onRowClick={(params, event) =>
+                    handleClickRowTable(params, event)
+                }
+            />
+            <Menu
+                open={openMenu}
+                anchorEl={anchorElMenu}
+                onClose={handleCloseMenu}
+            >
+                <MenuItem onClick={handleEditDonation}>
+                    <ListItemIcon>
+                        <Pencil size={28} color="#42A5F5" />
+                    </ListItemIcon>
+                    <ListItemText>Editar</ListItemText>
+                </MenuItem>
+                <MenuItem>
+                    <ListItemIcon>
+                        <Trash size={28} color="#F44336" />
+                    </ListItemIcon>
+                    <ListItemText sx={{ color: "#F44336" }}>
+                        Excluir
+                    </ListItemText>
+                </MenuItem>
+            </Menu>
+        </>
     );
 };
 

@@ -11,17 +11,20 @@ interface AdmSelectStatusDoacaoProps {
     onSelect: (status: StatusDoacao) => void;
     isObjeto?: boolean;
     selectProps?: SelectProps;
+    value?: StatusDoacao;
 }
 
 const AdmSelectStatusDoacao = ({
     onSelect,
     isObjeto,
     selectProps,
+    value,
 }: AdmSelectStatusDoacaoProps) => {
     return (
         <FormControl sx={{ minWidth: 300 }}>
             <InputLabel required>Qual é o estado da doação?</InputLabel>
             <Select
+                defaultValue={value}
                 onChange={(e) => onSelect(e.target.value as StatusDoacao)}
                 inputProps={{
                     placeholder: "Selecione um doador",

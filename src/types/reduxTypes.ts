@@ -1,3 +1,5 @@
+import { ListDoacaoDTO } from "./admDTOTypes";
+
 export interface ReduxUser {
   id: string;
   name: string;
@@ -8,6 +10,11 @@ export interface ReduxUser {
   telefone: string;
 }
 
+export interface ReduxAdmDonation {
+  selectedDonation: ListDoacaoDTO;
+}
+
 export interface ReduxStore {
   user: ReduxUser;
+  adm_donation: ReduxAdmDonation;
 }
