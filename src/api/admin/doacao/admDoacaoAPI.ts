@@ -4,11 +4,15 @@ import { loadTokenAPI } from "utils/mainUtils";
 
 export const criarDoacaoAdmService = async (dto: CriarDoacaoDTO) => {
   try {
-    const response = await api("/doacao/criar", {
-      headers: {
-        Authorization: loadTokenAPI(),
+    const response = await api.post(
+      "/administrador/doacao/criar",
+      dto,
+      {
+        headers: {
+          Authorization: loadTokenAPI(),
+        },
       },
-    });
+    );
     return response.data;
   } catch (error) {
     console.log(error);

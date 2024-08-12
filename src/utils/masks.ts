@@ -58,3 +58,9 @@ export const maskForNumber = (event: any) => {
 
   return rawValue;
 };
+
+export const transformToNumber = (value: string): number => {
+  return parseFloat(
+    value.replace(/,/g, ".").replace(/[a-zA-Z$\s]/g, ""),
+  );
+};

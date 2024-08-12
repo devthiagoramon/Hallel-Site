@@ -18,7 +18,7 @@ import {
     TipoDoacaoAdm,
     TipoDoadoresAdm,
 } from "types/admTypes";
-import { maskForValueInReal } from "utils/masks";
+import { maskForValueInReal, transformToNumber } from "utils/masks";
 import * as yup from "yup";
 import AdmObjetoDoacaoH from "./components/AdmObjetoDoacaoH";
 import AdmSelectStatusDoacao from "./components/AdmSelectStatusDoacao";
@@ -36,7 +36,7 @@ export type FormDoacao = {
     dateEntregue?: Date | undefined;
     isObjeto?: boolean | undefined;
     nameObjeto?: string | undefined;
-    valor: string;
+    valor?: string | undefined;
     status: NonNullable<StatusDoacao>;
 };
 
@@ -45,14 +45,12 @@ const schema = yup
         isAnonimo: yup.boolean(),
         idDonator: yup.string(),
         nameDonator: yup.string(),
-        telefoneDonator: yup
-            .string()
-            .matches(/(\d\d) \d\d\d\d\d-\d\d\d\d/, {
-                excludeEmptyString: true,
-                message: "Digite um telefone válido!",
-            }),
+        telefoneDonator: yup.string().matches(/\(\d{2}\) \d{5}-\d{4}/gm, {
+            excludeEmptyString: true,
+            message: "Digite um telefone válido!",
+        }),
         emailDonator: yup.string().email("Digite um e-mail valido!"),
-        valor: yup.string().required("Digite um valor!"),
+        valor: yup.string(),
         date: yup.date().required("Digite uma data"),
         dateEntregue: yup.date(),
         isObjeto: yup.boolean(),
@@ -79,15 +77,41 @@ const AdmAdicionarEditarDoacao = () => {
 
     const onSubmit = async (data: any) => {
         if (!validateForms()) return;
-        const dto: CriarDoacaoDTO = data;
-        try {
-            const response = await criarDoacaoAdmService(dto);
-            enqueueSnackbar("Doação criada com sucesso!", {
-                variant: "success",
+
+        if (data.isObjeto) {
+            listObjects.forEach(async (object) => {
+                const dto: CriarDoacaoDTO = {
+                    ...data,
+                    valor: object.quantidade,
+                    nameObjeto: object.nameObject,
+                };
+                try {
+                    const response = await criarDoacaoAdmService(dto);
+                    enqueueSnackbar(
+                        `Doação do ${object.nameObject} criada com sucesso!`,
+                        {
+                            variant: "success",
+                        },
+                    );
+                    navigation(-1);
+                } catch (error) {
+                    console.error(error);
+                }
             });
-            navigation(-1);
-        } catch (error) {
-            console.error(error);
+        } else {
+            const dto: CriarDoacaoDTO = {
+                ...data,
+                valor: transformToNumber(data.valor),
+            };
+            try {
+                const response = await criarDoacaoAdmService(dto);
+                enqueueSnackbar("Doação criada com sucesso!", {
+                    variant: "success",
+                });
+                navigation(-1);
+            } catch (error) {
+                console.error(error);
+            }
         }
     };
 
