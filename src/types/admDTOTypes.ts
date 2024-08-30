@@ -80,3 +80,23 @@ export interface ListDoacaoDTO {
   objeto: boolean;
   anonimo: boolean;
 }
+
+export interface MembroResponse {
+  id: string;
+  nome: string;
+  email: string;
+  statusMembro: string;
+  roles: string[];
+  idade: number;
+  imagem: string;
+}
+
+export interface ListMinisterioDTO {
+  id: string;
+  nome: string;
+  coordenador: MembroResponse;
+  viceCoordenador: MembroResponse;
+  descricao: string;
+  imagem: string;
+  objetivos: string[];
+}

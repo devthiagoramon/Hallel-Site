@@ -4,6 +4,7 @@ import AdmSignUp from "pages/Administrador/AdmSignUp";
 import { Route, Routes } from "react-router-dom";
 import AdmDoacoesRoutes from "./AdmDoacoesRoutes";
 import AdmEventsRoutes from "./AdmEventsRoutes";
+import AdmMinisterioRoutes from "./AdmMinisterioRoutes";
 
 const AdmRoutes = () => {
     return (
@@ -20,6 +21,10 @@ const AdmRoutes = () => {
                 />
                 <Route path="eventos/*" element={<AdmEventsRoutes />} />
                 <Route path="doacoes/*" element={<AdmDoacoesRoutes />} />
+                <Route
+                    path="ministerios/*"
+                    element={<AdmMinisterioRoutes />}
+                />
             </Routes>
         </>
     );

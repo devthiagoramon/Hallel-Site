@@ -1,4 +1,4 @@
-import { HandCoins } from "@phosphor-icons/react";
+import { Guitar, HandCoins } from "@phosphor-icons/react";
 import { Calendar, House } from "phosphor-react";
 import { ReactNode } from "react";
 
@@ -26,5 +26,11 @@ export const admRoutesObj: AdmRouteType[] = [
     link: "/administrador/doacoes",
     description: "Módulo de doações da comunidade",
     Icon: <HandCoins size={32} />,
+  },
+  {
+    title: "Ministérios",
+    link: "/administrador/ministerios",
+    description: "Módulo de ministerios da comunidade",
+    Icon: <Guitar size={32} />,
   },
 ];

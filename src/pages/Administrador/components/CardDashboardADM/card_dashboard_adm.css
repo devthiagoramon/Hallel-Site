@@ -1,6 +1,7 @@
 .card_container {
   max-width: 340px;
   height: fit-content;
+  max-height: 200px;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     max-width: 100%;
