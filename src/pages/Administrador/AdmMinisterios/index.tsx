@@ -13,7 +13,7 @@ const AdmMinisterios = () => {
     const [searchText, setSearchText] = useState<string>("");
 
     const handleAddNewMinisterio = () => {
-        navigator("/administrador/ministerio/adicionar");
+        navigator("/administrador/ministerios/adicionar");
     };
 
     return (

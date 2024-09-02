@@ -100,3 +100,12 @@ export interface ListMinisterioDTO {
   imagem: string;
   objetivos: string[];
 }
+
+export interface MinisterioAdmDTO {
+  nome: string;
+  descricao: string;
+  imagem: string;
+  objetivos: string[];
+  coordenadorId: string;
+  viceCoordenadorId: string;
+}
