@@ -4,7 +4,7 @@ import { loadTokenAPI } from "utils/mainUtils";
 
 export const signInService = async (dto: SignInDTO) => {
   try {
-    const response = await api.post("/cadastrar", dto);
+    const response = await api.post("/public/cadastrar", dto);
     return response.data;
   } catch (error: any) {
     throw new Error(error.description);
@@ -13,7 +13,7 @@ export const signInService = async (dto: SignInDTO) => {
 
 export const signUpService = async (dto: SignUpDTO) => {
   try {
-    const response = await api.post("/login", dto);
+    const response = await api.post("/public/login", dto);
     return response.data;
   } catch (error: any) {
     console.log(error);
@@ -25,7 +25,7 @@ export const isTokenExpiredService = async () => {
   try {
     const token = loadTokenAPI();
     const response = await api.get(
-      `/home/isTokenValid?token=${token}`,
+      `/public/home/isTokenValid?token=${token}`,
       {
         headers: {
           Authorization: token,

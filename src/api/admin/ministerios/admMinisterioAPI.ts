@@ -38,3 +38,21 @@ export const addMinisterioAdmService = async (
     throw new Error("Can't add a ministerio");
   }
 };
+
+export const deleteMinisterioAdmService = async (
+  idMinisterio: string,
+) => {
+  try {
+    const response = await api.delete(
+      `/administrador/v1/ministerio/${idMinisterio}`,
+      {
+        headers: {
+          Authorization: loadTokenAPI(),
+        },
+      },
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Can't delete a ministério");
+  }
+};
