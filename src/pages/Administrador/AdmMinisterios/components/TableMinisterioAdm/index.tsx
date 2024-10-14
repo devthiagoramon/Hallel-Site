@@ -10,6 +10,7 @@ import { useSnackbar } from "notistack";
 import { ActionsTableContainer } from "pages/Administrador/AdmEventos/components/TableAdmEvents/style";
 import { PencilSimple, TrashSimple } from "phosphor-react";
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ListMinisterioDTO } from "types/admDTOTypes";
 
 interface TableMinisterioAdmProps {
@@ -26,6 +27,7 @@ const TableMinisterioAdm = ({ searchText }: TableMinisterioAdmProps) => {
         useState<ListMinisterioDTO>();
     const { enqueueSnackbar } = useSnackbar();
     const queryClient = useQueryClient();
+    const navigator = useNavigate();
 
     const handleDeleteMinisterio = async () => {
         if (!selectedMinisterio) {
@@ -45,14 +47,18 @@ const TableMinisterioAdm = ({ searchText }: TableMinisterioAdmProps) => {
         }
     };
 
-    const handleOpenDeleteModal = (event: any) => {
-        setSelectedMinisterio(event);
+    const handleOpenDeleteModal = (ministerio: any) => {
+        setSelectedMinisterio(ministerio);
         setOpenModalDelete(true);
     };
     const handleCloseDeleteModal = () => {
         setSelectedMinisterio(undefined);
         setOpenModalDelete(false);
     };
+
+    const handleEditMinisterio = (ministerio: any) => {
+        navigator("/administrador/ministerios/editar/" + ministerio.id)
+    }
 
     const columns: GridColDef[] = [
         { field: "nome", headerName: "Nome do ministerio", width: 200 },
@@ -84,7 +90,7 @@ const TableMinisterioAdm = ({ searchText }: TableMinisterioAdmProps) => {
                 <ActionsTableContainer>
                     <Tooltip title="Editar ministério">
                         <IconButton
-                            onClick={() => { }}
+                            onClick={() => handleEditMinisterio(params.row)}
                         >
                             <PencilSimple size={24} />
                         </IconButton>

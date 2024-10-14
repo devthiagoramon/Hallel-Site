@@ -76,12 +76,11 @@ const AdmEditarEvento = () => {
         useState<LocationMapType>();
 
     const onSubmit = async (data: any) => {
-        console.error("KKKKKKKKK");
         if (!validateForms()) {
             return;
         }
         if (!idEvento) {
-            console.error("KKKKKKKKK");
+
             return;
         }
 

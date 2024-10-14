@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import Textarea from "@mui/joy/Textarea";
 import { Button, TextField } from "@mui/material";
-import { addMinisterioAdmService } from "api/admin/ministerios/admMinisterioAPI";
+import { editarMinisterioAdmService, listMinisterioByIdAdmService } from "api/admin/ministerios/admMinisterioAPI";
 import AdmListSelectUserH from "components/AdmListSelectUserH";
 import { LabelInputH } from "components/LabelInputH/style";
 import SelectImageContainerH from "components/SelectImageContainerH";
@@ -9,16 +9,13 @@ import { useSnackbar } from "notistack";
 import AdmBodyH from "pages/Administrador/components/AdmBodyH";
 import AdmContainerH from "pages/Administrador/components/AdmContainerH";
 import AdmHeaderH from "pages/Administrador/components/AdmHeaderH";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import {
-    MembroResponseListDTO,
-    MinisterioAdmDTO,
-} from "types/admDTOTypes";
+import { useNavigate, useParams } from "react-router-dom";
+import { MembroResponseListDTO, MinisterioAdmDTO } from "types/admDTOTypes";
 import * as yup from "yup";
-import ObjetivosAdmMinisterio from "./components/ObjetivosAdmMinisterio";
-import { AdmMinisterioForms } from "./style";
+import ObjetivosAdmMinisterio from "../AdmAdicionarMinisterio/components/ObjetivosAdmMinisterio";
+import { AdmMinisterioForms } from "../AdmAdicionarMinisterio/style";
 
 const schema = yup
     .object({
@@ -32,12 +29,16 @@ const schema = yup
     })
     .required();
 
-const AdmAdicionarMinisterio = () => {
+const AdmEditarMinisterio = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
+        setValue,
     } = useForm({ resolver: yupResolver(schema) });
+
+    const { idMinisterio } = useParams();
+
     const [imageMinisterio, setImageMinisterio] = useState<
         string | ArrayBuffer | undefined
     >("");
@@ -58,6 +59,9 @@ const AdmAdicionarMinisterio = () => {
         useState<boolean>(false);
 
     const onSubmit = async (data: any) => {
+        if (!idMinisterio) {
+            return;
+        }
         if (!validateForms()) {
             return;
         }
@@ -72,9 +76,9 @@ const AdmAdicionarMinisterio = () => {
                 viceCoordenadorId: viceCoordenador?.id || "",
             };
 
-            const response = await addMinisterioAdmService(dto);
+            const response = await editarMinisterioAdmService(idMinisterio, dto);
             if (response) {
-                enqueueSnackbar("Ministério adicionado com sucesso", { variant: "success" });
+                enqueueSnackbar("Ministério editado com sucesso", { variant: "success" });
                 navigation(-1);
             }
         } catch (error) {
@@ -105,9 +109,29 @@ const AdmAdicionarMinisterio = () => {
         return value;
     };
 
+    useEffect(() => {
+        async function listMinisterioById() {
+            if (!idMinisterio) {
+                return;
+            }
+            try {
+                const response = await listMinisterioByIdAdmService(idMinisterio);
+                setObjetivos(response.objetivos)
+                setImageMinisterio(response.imagem)
+                setValue("descricao", response.descricao)
+                setValue("nome", response.nome)
+                setValue("objetivos", response.objetivos)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        listMinisterioById();
+    }, [])
+
+
     return (
         <AdmContainerH>
-            <AdmHeaderH title="Adicionar ministério" goBack></AdmHeaderH>
+            <AdmHeaderH title="Editar ministério" goBack></AdmHeaderH>
             <AdmBodyH>
                 <LabelInputH>Banner do ministério</LabelInputH>
                 <SelectImageContainerH
@@ -158,16 +182,16 @@ const AdmAdicionarMinisterio = () => {
                     />
                     <Button
                         variant="contained"
-                        color="success"
+                        color="primary"
                         sx={{ width: 200, mt: 4, mb: 4 }}
                         type="submit"
                     >
-                        Adicionar
+                        Editar
                     </Button>
                 </AdmMinisterioForms>
             </AdmBodyH>
         </AdmContainerH>
     );
-};
+}
 
-export default AdmAdicionarMinisterio;
+export default AdmEditarMinisterio

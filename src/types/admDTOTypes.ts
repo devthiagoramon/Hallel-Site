@@ -91,6 +91,16 @@ export interface MembroResponse {
   imagem: string;
 }
 
+export interface ListMinisterioRawDTO {
+  id: string;
+  nome: string;
+  coordenadorId: string;
+  viceCoordenadorId: string;
+  descricao: string;
+  imagem: string;
+  objetivos: string[];
+}
+
 export interface ListMinisterioDTO {
   id: string;
   nome: string;
@@ -99,6 +109,39 @@ export interface ListMinisterioDTO {
   descricao: string;
   imagem: string;
   objetivos: string[];
+}
+
+export interface ListMembroMinisterioDTO {
+  id: string;
+  membro: {
+    id: string;
+    nome: string;
+    email: string;
+    statusMembro: "ATIVO" | "INATIVO";
+    roles: {
+      id: string;
+      name: string;
+    }[];
+    idade: number;
+    imagem: string;
+  };
+  ministerio: {
+    id: string;
+    nome: string;
+    coordenadorId: string;
+    viceCoordenadorId: string;
+    descricao: string;
+    imagem: string;
+    objetivos: string[];
+  };
+  funcaoMinisterio: {
+    id: string;
+    ministerioId: string;
+    nome: string;
+    descricao: string;
+    icone: string;
+    cor: string;
+  }[];
 }
 
 export interface MinisterioAdmDTO {
