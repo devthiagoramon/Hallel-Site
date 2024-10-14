@@ -1,6 +1,6 @@
 import Textarea from "@mui/joy/Textarea";
 import { IconButton, Tooltip } from "@mui/material";
-import { Plus, Warning } from "phosphor-react";
+import { Plus, Trash, Warning } from "phosphor-react";
 import { Dispatch, SetStateAction, useState } from "react";
 import {
   BodyObjetivosAdmMinisterio,
@@ -37,12 +37,21 @@ const ObjetivosAdmMinisterio = ({
     setObjetivoAdd("");
   };
 
+  const handleDeleteObjetivo = (objetivo: string) => {
+    let objetivosFiltered = objetivos.filter((item) => item !== objetivo);
+    setObjetivos(objetivosFiltered)
+  }
+
   return (
     <ContainerObjetivosAdmMinisterio>
       <HeaderObjetivosAdmMinisterio>
         <div>
           <label>Objetivos do ministério</label>
-          {error && <Tooltip title="Digite um objetivo do ministério!"><Warning size={24} color="#F44336" /></Tooltip>}
+          {error && (
+            <Tooltip title="Digite um objetivo do ministério!">
+              <Warning size={24} color="#F44336" />
+            </Tooltip>
+          )}
         </div>
         <Tooltip title="Adicionar objetivo">
           <IconButton onClick={startAddNewObjetivo}>
@@ -53,7 +62,16 @@ const ObjetivosAdmMinisterio = ({
       <BodyObjetivosAdmMinisterio>
         <ul>
           {objetivos.map((objetivo, index) => {
-            return <li key={index}>{objetivo}</li>;
+            return (
+              <li style={{ alignItems: "center", fontSize: 20 }} key={index}>
+                {objetivo}
+                <Tooltip title="Excluir">
+                  <IconButton onClick={() => handleDeleteObjetivo(objetivo)}>
+                    <Trash size={20} color="#F44336" />
+                  </IconButton>
+                </Tooltip>
+              </li>
+            );
           })}
         </ul>
         {addingNewObjetivo && (
